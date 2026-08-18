@@ -1,0 +1,355 @@
+openapi: 3.1.0
+info:
+  title: VRINGON FLAT API
+  version: 1.0.0
+  description: |
+    제품 사진 한 장을 **레이어가 분리된 Illustrator 파일(.ai)** 로 바꾸는 API.
+
+    사진 → 플랫 스케치(테크팩 스타일) → 파트별 amodal 레이어 분해 → 벡터화 →
+    `.ai` / `.svg` / `.jsx` / Vector IR.
+
+    ### 사용 흐름
+    1. `POST /v1/jobs` 에 이미지를 올린다 → `202 { id }`
+    2. `GET /v1/jobs/{id}` 를 5초 간격으로 폴링한다 → `status: running → done`
+    3. `GET /v1/jobs/{id}/file/ai` 로 결과를 받는다
+
+    한 건당 **2~5분**이 걸린다(생성 모델 2종 + 분해 + 벡터화). 동기 응답은 없다.
+
+    ### 인증
+    서버에 `API_KEYS`가 설정돼 있으면 `X-API-Key` 헤더가 필요하다.
+    설정돼 있지 않으면(로컬 개발 기본값) 인증 없이 열린다.
+  license:
+    name: MIT
+servers:
+  - url: http://localhost:5201
+    description: 로컬 실행
+  - url: https://{host}
+    description: 자체 호스팅
+    variables:
+      host:
+        default: flat.example.com
+
+security:
+  - ApiKeyAuth: []
+
+paths:
+  /v1/health:
+    get:
+      summary: 서버 상태·엔진·한도
+      description: 인증 없이 호출할 수 있다. 배포 점검과 준비 상태 확인에 쓴다.
+      security: []
+      tags: [상태]
+      responses:
+        "200":
+          description: 정상
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Health" }
+              example:
+                ok: true
+                version: "1.0.0"
+                ready: true
+                engines:
+                  understand: "OpenAI gpt-5.6"
+                  flatgen: "gemini-3-pro-image + gpt-image-2"
+                  decompose: "Qwen amodal + SAM 3 (fal.ai)"
+                  vectorize: "VTracer + 자체 중심선"
+                keys: { openai: true, gemini: true, fal: true, vectorizer: false }
+                limits: { maxUploadMb: 30, maxConcurrentJobs: 2, runningJobs: 0 }
+                authRequired: false
+
+  /v1/jobs:
+    post:
+      summary: 변환 잡 생성
+      description: |
+        이미지를 올리면 즉시 `202`와 잡 id를 돌려주고 백그라운드에서 파이프라인이 돈다.
+        동시 실행 한도를 넘으면 `429`(Retry-After 포함)로 즉시 거절한다.
+      tags: [잡]
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [image]
+              properties:
+                image:
+                  type: string
+                  format: binary
+                  description: 제품 사진 (JPEG/PNG/WebP/TIFF·최대 30MB). 배경·EXIF 회전·알파는 자동 처리된다
+                style:
+                  type: string
+                  enum: [color, bw, design]
+                  default: color
+                  description: 플랫 스케치 스타일. `bw`는 흑백 라인, `color`는 컬러 플랫
+                layerDetail:
+                  type: string
+                  enum: [simple, standard, detailed]
+                  default: standard
+                  description: Layer Plan의 파트 분해 세밀도
+                categoryHint:
+                  type: string
+                  enum: [footwear, bag, jewelry, apparel, eyewear, watch, headwear, furniture, electronics, packaging, other]
+                  description: 카테고리를 알고 있으면 지정한다. 없으면 모델이 판단한다
+      responses:
+        "202":
+          description: 잡 생성됨
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id: { type: string, format: uuid }
+                  status: { type: string, enum: [running] }
+                  statusUrl: { type: string, format: uri }
+                  pollAfterMs: { type: integer, example: 5000 }
+                  notes:
+                    type: array
+                    items: { type: string }
+                    description: 입력 정규화 중 적용된 보정 (EXIF 회전·알파 평탄화 등)
+              example:
+                id: "0f7d1b23-1462-4911-8f6b-9f9277087672"
+                status: running
+                statusUrl: "http://localhost:5201/v1/jobs/0f7d1b23-1462-4911-8f6b-9f9277087672"
+                pollAfterMs: 5000
+                notes: ["EXIF 회전 적용", "알파 → 흰 배경 평탄화"]
+        "400":
+          description: 이미지가 없거나 해석 불가, 또는 잘못된 옵션
+          content: { application/json: { schema: { $ref: "#/components/schemas/Error" } } }
+        "401":
+          description: API 키 없음/불일치
+          content: { application/json: { schema: { $ref: "#/components/schemas/Error" } } }
+        "429":
+          description: 동시 실행 한도 초과
+          headers:
+            Retry-After: { schema: { type: integer }, description: 초 }
+          content: { application/json: { schema: { $ref: "#/components/schemas/Error" } } }
+        "503":
+          description: 서버에 모델 키가 설정되지 않음
+          content: { application/json: { schema: { $ref: "#/components/schemas/Error" } } }
+    get:
+      summary: 최근 잡 목록
+      tags: [잡]
+      parameters:
+        - in: query
+          name: limit
+          schema: { type: integer, default: 20, minimum: 1, maximum: 100 }
+      responses:
+        "200":
+          description: 목록
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jobs:
+                    type: array
+                    items: { $ref: "#/components/schemas/Job" }
+
+  /v1/jobs/{id}:
+    get:
+      summary: 잡 상태 조회
+      description: |
+        `status`가 `done`이 될 때까지 폴링한다. `progress`는 0~1,
+        `stages`는 9단계 각각의 상태와 소요 시간을 담는다.
+        서버가 재시작되면 메모리의 잡 목록은 사라지고 `404`가 된다
+        (산출물 파일은 디스크에 남아 있다).
+      tags: [잡]
+      parameters:
+        - $ref: "#/components/parameters/JobId"
+      responses:
+        "200":
+          description: 잡 상태
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Job" }
+        "404":
+          description: 없는 잡
+          content: { application/json: { schema: { $ref: "#/components/schemas/Error" } } }
+
+  /v1/jobs/{id}/file/{kind}:
+    get:
+      summary: 산출물 다운로드
+      tags: [잡]
+      parameters:
+        - $ref: "#/components/parameters/JobId"
+        - in: path
+          name: kind
+          required: true
+          schema: { type: string, enum: [ai, svg, jsx, ir] }
+          description: |
+            * `ai` — Illustrator 파일 (PDF 호환, OCG 레이어). 바로 열린다
+            * `svg` — 미리보기·웹용
+            * `jsx` — Illustrator 스크립트. 실행하면 **네이티브 .ai**가 만들어진다
+            * `ir` — Vector IR (JSON). 레이어·그룹·패스 구조를 프로그램으로 다룰 때
+      responses:
+        "200":
+          description: 파일
+          content:
+            application/postscript: { schema: { type: string, format: binary } }
+            image/svg+xml: { schema: { type: string } }
+            application/json: { schema: { $ref: "#/components/schemas/VectorIR" } }
+        "409":
+          description: 아직 생성 중
+          content: { application/json: { schema: { $ref: "#/components/schemas/Error" } } }
+        "404":
+          description: 산출물 없음
+          content: { application/json: { schema: { $ref: "#/components/schemas/Error" } } }
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+
+  parameters:
+    JobId:
+      in: path
+      name: id
+      required: true
+      schema: { type: string, format: uuid }
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              enum: [unauthorized, missing_image, bad_image, bad_style, bad_layer_detail, bad_category, bad_kind, bad_id, not_found, not_ready, busy, not_configured, internal]
+            message: { type: string }
+      example:
+        error: { code: busy, message: "동시 실행 한도(2)에 도달했습니다. 잠시 후 다시 시도하세요" }
+
+    Health:
+      type: object
+      properties:
+        ok: { type: boolean }
+        version: { type: string }
+        ready: { type: boolean, description: 필수 키(OpenAI·Gemini·fal)가 모두 있는가 }
+        engines: { type: object, additionalProperties: { type: string } }
+        keys: { type: object, additionalProperties: { type: boolean } }
+        limits:
+          type: object
+          properties:
+            maxUploadMb: { type: integer }
+            maxConcurrentJobs: { type: integer }
+            runningJobs: { type: integer }
+        authRequired: { type: boolean }
+
+    Stage:
+      type: object
+      properties:
+        id:
+          type: string
+          enum: [prepare, understand, flatgen, rank, segment, qa, vectorize, optimize, build]
+        label: { type: string }
+        status: { type: string, enum: [pending, running, done, error, skipped] }
+        detail: { type: string }
+        ms: { type: integer, description: 소요 시간 }
+
+    Part:
+      type: object
+      properties:
+        id: { type: string, example: black_mesh_quarter }
+        name: { type: string, example: Quarter }
+        group: { type: string, example: UPPER, description: Illustrator 상위 레이어 }
+        kind: { type: string, enum: [fill, line, logo] }
+
+    Qa:
+      type: object
+      description: 재합성 QA — 레이어를 다시 쌓아 플랫과 대조한 결과
+      properties:
+        pass: { type: boolean }
+        coverage: { type: number, description: "전경 중 레이어가 덮은 비율 (목표 ≥ 0.8)" }
+        spill: { type: number, description: "배경 침범 비율 (목표 ≤ 0.08)" }
+        colorDeltaE: { type: number, description: "재합성 평균 색차 0~441 (목표 ≤ 60)" }
+        colorOutliers:
+          type: array
+          items:
+            type: object
+            properties:
+              name: { type: string }
+              deltaE: { type: number }
+        duplicates:
+          type: array
+          description: 사실상 같은 형상인 레이어 쌍
+          items:
+            type: object
+            properties:
+              a: { type: string }
+              b: { type: string }
+              iou: { type: number }
+        emptyLayers: { type: array, items: { type: string } }
+        notes: { type: array, items: { type: string } }
+
+    Job:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        status: { type: string, enum: [running, done, error] }
+        createdAt: { type: string, format: date-time }
+        progress: { type: number, description: 0~1 }
+        error: { type: string }
+        options:
+          type: object
+          properties:
+            style: { type: string }
+            layerDetail: { type: string }
+            categoryHint: { type: string }
+        inputNotes: { type: array, items: { type: string } }
+        category: { type: string, example: footwear }
+        objectNoun: { type: string, example: shoe }
+        parts: { type: array, items: { $ref: "#/components/schemas/Part" } }
+        stages: { type: array, items: { $ref: "#/components/schemas/Stage" } }
+        engines:
+          type: object
+          properties:
+            segment: { type: string }
+            vectorize: { type: string }
+        qa: { $ref: "#/components/schemas/Qa" }
+        files:
+          type: object
+          description: status가 done일 때만 존재
+          properties:
+            ai: { type: string, format: uri }
+            svg: { type: string, format: uri }
+            jsx: { type: string, format: uri }
+            ir: { type: string, format: uri }
+        previewUrl: { type: string, format: uri }
+
+    VectorIR:
+      type: object
+      description: |
+        벡터 중간표현 — 레이어(그룹) → 그룹(파트) → 패스. `.ai`/`.svg`/`.jsx`가 모두 이걸로 만들어진다.
+      properties:
+        width: { type: number }
+        height: { type: number }
+        layers:
+          type: array
+          items:
+            type: object
+            properties:
+              name: { type: string, example: UPPER }
+              groups:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name: { type: string, example: Quarter }
+                    paths:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          d: { type: string, description: SVG path data }
+                          fill: { type: string, nullable: true, example: "#171717" }
+                          stroke: { type: string, nullable: true }
+                          strokeWidth: { type: number, nullable: true }
+
+tags:
+  - name: 상태
+  - name: 잡

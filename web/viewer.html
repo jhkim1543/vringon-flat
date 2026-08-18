@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VRINGON FLAT — 벡터 뷰어</title>
+<style>
+*{box-sizing:border-box;margin:0}
+:root{--bg:#0e1116;--panel:#171c24;--line:#2a3242;--text:#e7ecf3;--dim:#8b96a8;--accent:#4f8cff;--ok:#35c26e;--warn:#e2a33c}
+body{background:var(--bg);color:var(--text);font:13px/1.5 "Segoe UI","Malgun Gothic",sans-serif;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+header{display:flex;gap:12px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);flex:none}
+header h1{font-size:15px;letter-spacing:1px}
+header h1 span{color:var(--accent)}
+select,button{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:5px 9px;font-size:12px;cursor:pointer}
+button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.main{flex:1;display:flex;min-height:0}
+aside{width:290px;flex:none;border-right:1px solid var(--line);overflow-y:auto;padding:10px}
+aside h2{font-size:11px;color:var(--dim);letter-spacing:1px;margin:12px 0 6px}
+aside h2:first-child{margin-top:0}
+.layer{border:1px solid var(--line);border-radius:6px;margin-bottom:5px;overflow:hidden}
+.lhead{display:flex;align-items:center;gap:6px;padding:5px 7px;background:#1c2230;font-weight:600;font-size:12px}
+.grp{display:flex;align-items:center;gap:6px;padding:4px 7px 4px 20px;border-top:1px solid var(--line);font-size:12px}
+.grp:hover{background:#1c2230}
+.sw{width:11px;height:11px;border-radius:2px;border:1px solid #0006;flex:none}
+.gname{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gstat{color:var(--dim);font-size:10px;flex:none}
+.stage{flex:1;position:relative;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center}
+.stage.dark{background:#11151c}
+#canvasWrap{position:relative;transform-origin:center center}
+#refImg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;pointer-events:none;transition:opacity .15s}
+#refImg.on{opacity:.45}
+.grp.solo{background:#26405e}
+svg{display:block}
+.info{padding:8px;border-top:1px solid var(--line);font-size:11px;color:var(--dim);flex:none;display:flex;gap:16px;flex-wrap:wrap}
+.info b{color:var(--text)}
+.badge{display:inline-block;padding:1px 6px;border-radius:99px;font-size:10px;border:1px solid var(--line)}
+.badge.ok{color:var(--ok);border-color:var(--ok)}
+.badge.warn{color:var(--warn);border-color:var(--warn)}
+label.chk{display:flex;align-items:center;gap:5px;cursor:pointer}
+.toolbar{display:flex;gap:5px;flex-wrap:wrap}
+table{width:100%;border-collapse:collapse;font-size:11px}
+td{padding:2px 4px;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;color:var(--dim)}
+</style>
+</head>
+<body>
+<header>
+  <h1>VRINGON <span>FLAT</span> 벡터 뷰어</h1>
+  <select id="jobSel"></select>
+  <div class="toolbar">
+    <button id="mNormal" class="on">채움</button>
+    <button id="mOutline">외곽선</button>
+    <button id="mAnchor">앵커</button>
+    <button id="bgToggle">배경</button>
+    <button id="refToggle">원본 대조</button>
+    <button id="soloToggle">단독 보기</button>
+    <button id="zoomOut">−</button><button id="zoomIn">+</button><button id="zoomFit">맞춤</button>
+  </div>
+  <span id="zoomLabel" style="color:var(--dim);font-size:11px"></span>
+</header>
+<div class="main">
+  <aside>
+    <h2>레이어</h2>
+    <div id="layers"></div>
+    <h2>통계</h2>
+    <table id="stats"></table>
+    <h2>선 품질</h2>
+    <table id="lineq"></table>
+  </aside>
+  <div class="stage" id="stage"><div id="canvasWrap"></div><img id="refImg" alt=""></div>
+</div>
+<div class="info" id="info"></div>
+
+<script>
+const NS="http://www.w3.org/2000/svg";
+let IR=null, mode="normal", zoom=1, hidden=new Set(), darkBg=false;
+let solo=null, jobId=null;
+
+/** 단독 보기: 선택한 그룹만 남기고 나머지는 감춘다 */
+function applySolo(){
+  document.querySelectorAll(".grp").forEach((el)=>el.classList.remove("solo"));
+  if(solo){
+    hidden.clear();
+    for(const L of IR.layers) for(const g of L.groups){
+      const k=L.name+"/"+g.name;
+      if(k!==solo) hidden.add(k);
+    }
+  }else hidden.clear();
+  document.querySelectorAll(".grp input").forEach((cb,i)=>{ void cb; void i; });
+  // 체크박스 상태를 hidden과 동기화
+  for(const L of IR.layers) for(const g of L.groups){
+    const k=L.name+"/"+g.name;
+    const el=document.querySelector(`[data-key="${CSS.escape(k)}"]`);
+    if(el){ el.querySelector("input").checked=!hidden.has(k); el.classList.toggle("solo", k===solo); }
+  }
+  render();
+}
+
+const $=id=>document.getElementById(id);
+const el=(n,a={})=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e};
+
+async function loadJobs(){
+  const jobs=await (await fetch("/api/jobs")).json();
+  const sel=$("jobSel");
+  sel.innerHTML="";
+  if(!jobs.length){sel.innerHTML="<option>결과 없음</option>";return}
+  for(const j of jobs){
+    const o=document.createElement("option");
+    o.value=j.ir; o.textContent=j.id.slice(0,8)+" · "+new Date(j.mtime).toLocaleString("ko-KR");
+    sel.appendChild(o);
+  }
+  sel.onchange=()=>loadIR(sel.value);
+  const q=new URLSearchParams(location.search).get("job");
+  const match=q?jobs.find(j=>j.id.startsWith(q)):null;
+  sel.value=(match||jobs[0]).ir;
+  loadIR(sel.value);
+}
+
+async function loadIR(url){
+  IR=await (await fetch(url)).json();
+  jobId=url.split("/")[2];
+  // 원본 대조용 이미지 (입력 → 없으면 정렬된 플랫)
+  const ref=$("refImg");
+  ref.src=`/outputs/${jobId}/input.png`;
+  ref.onerror=()=>{ ref.src=`/outputs/${jobId}/layers/_aligned_flat.png`; ref.onerror=null; };
+  solo=null;
+  hidden.clear();
+  buildLayerPanel();
+  buildStats();
+  render();
+  fitZoom();
+}
+
+function pathStats(p){
+  const anchors=(p.d.match(/[LC]/g)||[]).length;
+  const subs=(p.d.match(/M/g)||[]).length;
+  return {anchors,subs,closed:/Z/.test(p.d)};
+}
+function groupStats(g){
+  let a=0,s=0,closed=0,open=0,stroked=0;
+  for(const p of g.paths){const st=pathStats(p);a+=st.anchors;s+=st.subs;st.closed?closed++:open++;if(p.stroke)stroked++}
+  return {paths:g.paths.length,anchors:a,subs:s,closed,open,stroked};
+}
+
+function buildLayerPanel(){
+  const box=$("layers"); box.innerHTML="";
+  // IR 배열은 아래→위 순서. 패널은 Illustrator처럼 위가 최상단.
+  [...IR.layers].reverse().forEach(L=>{
+    const d=document.createElement("div"); d.className="layer";
+    const h=document.createElement("div"); h.className="lhead";
+    const cb=document.createElement("input"); cb.type="checkbox"; cb.checked=true;
+    cb.onchange=()=>{L.groups.forEach(g=>{const k=L.name+"/"+g.name;cb.checked?hidden.delete(k):hidden.add(k)});
+      d.querySelectorAll(".grp input").forEach(i=>i.checked=cb.checked); render()};
+    h.appendChild(cb);
+    const t=document.createElement("span"); t.textContent=L.name; t.style.flex="1"; h.appendChild(t);
+    const n=document.createElement("span"); n.className="gstat"; n.textContent=L.groups.length; h.appendChild(n);
+    d.appendChild(h);
+    L.groups.forEach(g=>{
+      const key=L.name+"/"+g.name;
+      const r=document.createElement("div"); r.className="grp";
+      r.dataset.key=key;
+      const c=document.createElement("input"); c.type="checkbox"; c.checked=true;
+      c.onchange=()=>{c.checked?hidden.delete(key):hidden.add(key);render()};
+      r.appendChild(c);
+      const sw=document.createElement("span"); sw.className="sw";
+      const p0=g.paths[0]||{};
+      sw.style.background=p0.fill||p0.stroke||"#888"; r.appendChild(sw);
+      const nm=document.createElement("span"); nm.className="gname"; nm.textContent=g.name; r.appendChild(nm);
+      // 이름 클릭 = 이 그룹만 단독 표시 (디자이너가 파트 분리를 확인하는 용도)
+      nm.style.cursor="pointer";
+      nm.onclick=()=>{ solo = solo===key ? null : key; applySolo(); };
+      const st=groupStats(g);
+      const s=document.createElement("span"); s.className="gstat";
+      s.textContent=st.paths+"p/"+st.anchors+"a"; r.appendChild(s);
+      r.title=`paths ${st.paths} · anchors ${st.anchors} · subpaths ${st.subs} · 열린 ${st.open} 닫힌 ${st.closed} · stroke ${st.stroked}`;
+      d.appendChild(r);
+    });
+    box.appendChild(d);
+  });
+}
+
+function buildStats(){
+  let paths=0,anchors=0,open=0,closed=0,stroked=0,groups=0;
+  for(const L of IR.layers)for(const g of L.groups){
+    const s=groupStats(g); groups++; paths+=s.paths; anchors+=s.anchors; open+=s.open; closed+=s.closed; stroked+=s.stroked;
+  }
+  const rows=[["캔버스",IR.width+" × "+IR.height],["레이어",IR.layers.length],["그룹",groups],
+    ["패스",paths],["앵커",anchors],["앵커/패스",(anchors/Math.max(1,paths)).toFixed(1)],
+    ["열린 패스",open],["닫힌 패스",closed],["stroke 패스",stroked]];
+  $("stats").innerHTML=rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join("");
+
+  // 선 레이어 품질 지표
+  const lineGroups=[];
+  for(const L of IR.layers)for(const g of L.groups)
+    if(g.paths.some(p=>p.stroke&&!p.fill)) lineGroups.push([L.name+"/"+g.name,groupStats(g),g]);
+  if(!lineGroups.length){$("lineq").innerHTML='<tr><td colspan=2>선 레이어 없음</td></tr>';return}
+  const html=lineGroups.map(([name,s,g])=>{
+    const w=g.paths[0].strokeWidth;
+    const openPct=Math.round(100*s.open/Math.max(1,s.paths));
+    const ok=openPct>=80;
+    return `<tr><td>${name}</td><td><span class="badge ${ok?'ok':'warn'}">열린 ${openPct}%</span> ${w}pt</td></tr>`;
+  }).join("");
+  $("lineq").innerHTML=html+
+    `<tr><td colspan=2 style="color:var(--dim)">열린 패스 비율이 높을수록 중심선 추출이 잘 된 것 (리본 외곽선은 닫힘)</td></tr>`;
+}
+
+function render(){
+  const wrap=$("canvasWrap"); wrap.innerHTML="";
+  const svg=el("svg",{width:IR.width,height:IR.height,viewBox:`0 0 ${IR.width} ${IR.height}`});
+  for(const L of IR.layers){
+    for(const g of L.groups){
+      if(hidden.has(L.name+"/"+g.name)) continue;
+      const grp=el("g",{id:L.name+"/"+g.name});
+      for(const p of g.paths){
+        if(mode==="normal"){
+          grp.appendChild(el("path",{d:p.d,fill:p.fill||"none",
+            ...(p.stroke?{stroke:p.stroke,"stroke-width":p.strokeWidth,"stroke-linecap":"round","stroke-linejoin":"round"}:{}),
+            "fill-rule":"evenodd"}));
+        }else{
+          grp.appendChild(el("path",{d:p.d,fill:"none",stroke:"#e5534b","stroke-width":Math.max(0.4,0.8/zoom),
+            "vector-effect":"non-scaling-stroke"}));
+          if(mode==="anchor") drawAnchors(grp,p.d);
+        }
+      }
+      svg.appendChild(grp);
+    }
+  }
+  wrap.appendChild(svg);
+  applyZoom();
+}
+
+/** path data에서 앵커 좌표만 뽑아 점으로 표시 */
+function drawAnchors(parent,d){
+  const re=/([MLC])([^MLCZ]*)/g; let m;
+  const pts=[];
+  while((m=re.exec(d))){
+    const n=(m[2].match(/-?\d+\.?\d*/g)||[]).map(Number);
+    if(m[1]==="C"){ if(n.length>=6) pts.push([n[4],n[5]]); }
+    else if(n.length>=2) pts.push([n[0],n[1]]);
+  }
+  const r=Math.max(0.6,1.6/zoom);
+  for(const [x,y] of pts) parent.appendChild(el("circle",{cx:x,cy:y,r,fill:"#4f8cff"}));
+}
+
+function applyZoom(){
+  $("canvasWrap").style.transform=`scale(${zoom})`;
+  $("zoomLabel").textContent=Math.round(zoom*100)+"%";
+}
+function fitZoom(){
+  const s=$("stage"); if(!IR) return;
+  // 레이아웃이 아직 안 잡혔으면 다음 프레임에 다시 시도 (초기 로드 시 0/음수 방지)
+  if(s.clientWidth<40||s.clientHeight<40){requestAnimationFrame(fitZoom);return}
+  const z=Math.min((s.clientWidth-40)/IR.width,(s.clientHeight-40)/IR.height);
+  zoom=z>0?z:1;
+  applyZoom();
+}
+
+$("mNormal").onclick=()=>setMode("normal");
+$("mOutline").onclick=()=>setMode("outline");
+$("mAnchor").onclick=()=>setMode("anchor");
+function setMode(m){
+  mode=m;
+  for(const [id,v] of [["mNormal","normal"],["mOutline","outline"],["mAnchor","anchor"]])
+    $(id).classList.toggle("on",v===m);
+  render();
+}
+$("bgToggle").onclick=()=>{darkBg=!darkBg;$("stage").classList.toggle("dark",darkBg)};
+$("refToggle").onclick=(e)=>{
+  const on=$("refImg").classList.toggle("on");
+  e.target.classList.toggle("on",on);
+};
+$("soloToggle").onclick=()=>{ solo=null; applySolo(); };
+$("zoomIn").onclick=()=>{zoom*=1.35;applyZoom();if(mode!=="normal")render()};
+$("zoomOut").onclick=()=>{zoom/=1.35;applyZoom();if(mode!=="normal")render()};
+$("zoomFit").onclick=fitZoom;
+$("stage").addEventListener("wheel",e=>{e.preventDefault();zoom*=e.deltaY<0?1.12:1/1.12;applyZoom();},{passive:false});
+addEventListener("resize",fitZoom);
+
+$("info").innerHTML=
+  '휠 확대 · <b>외곽선</b> 패스 형상 · <b>앵커</b> 제어점 밀도 · ' +
+  '<b>원본 대조</b> 원본을 반투명으로 겹쳐 정합 확인 · ' +
+  '그룹 <b>이름 클릭</b> 시 해당 파트만 단독 표시';
+loadJobs();
+</script>
+</body>
+</html>

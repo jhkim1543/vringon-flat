@@ -1,0 +1,1509 @@
+{
+  "generatedAt": "2026-08-18",
+  "samples": [
+    {
+      "id": "shoe_1",
+      "name": "shoe_1",
+      "category": "shoe",
+      "categoryLabel": "신발",
+      "jobId": "dd923c3a-58c1-4dc1-bcf4-23019bd1cc57",
+      "source": {
+        "title": "File:20160110 150800 copy.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File%3A20160110%20150800%20copy.jpg"
+      },
+      "width": 1400,
+      "height": 1098,
+      "instances": 1,
+      "layers": [
+        {
+          "name": "Quarter",
+          "group": "UPPER",
+          "color": "#171717",
+          "paths": 20,
+          "anchors": 1129,
+          "kind": "fill"
+        },
+        {
+          "name": "Vamp",
+          "group": "UPPER",
+          "color": "#2d2d2d",
+          "paths": 2,
+          "anchors": 177,
+          "kind": "fill"
+        },
+        {
+          "name": "Heel Counter",
+          "group": "UPPER",
+          "color": "#db276c",
+          "paths": 1,
+          "anchors": 50,
+          "kind": "fill"
+        },
+        {
+          "name": "Eyestay",
+          "group": "UPPER",
+          "color": "#2e2e2e",
+          "paths": 2,
+          "anchors": 77,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 21",
+          "group": "UPPER",
+          "color": "#dd4885",
+          "paths": 1,
+          "anchors": 36,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 9",
+          "group": "UPPER",
+          "color": "#da286d",
+          "paths": 1,
+          "anchors": 32,
+          "kind": "fill"
+        },
+        {
+          "name": "Air Unit",
+          "group": "SOLE",
+          "color": "#da256b",
+          "paths": 2,
+          "anchors": 157,
+          "kind": "fill"
+        },
+        {
+          "name": "Midsole",
+          "group": "SOLE",
+          "color": "#f2efe8",
+          "paths": 1,
+          "anchors": 130,
+          "kind": "fill"
+        },
+        {
+          "name": "Midsole 2",
+          "group": "SOLE",
+          "color": "#f2efe8",
+          "paths": 1,
+          "anchors": 33,
+          "kind": "fill"
+        },
+        {
+          "name": "Detail ×2",
+          "group": "SOLE",
+          "color": "#e54e18",
+          "paths": 2,
+          "anchors": 94,
+          "kind": "fill"
+        },
+        {
+          "name": "Logo 2",
+          "group": "BRANDING",
+          "color": "#d92569",
+          "paths": 11,
+          "anchors": 211,
+          "kind": "fill"
+        },
+        {
+          "name": "Logo",
+          "group": "BRANDING",
+          "color": "#dc286e",
+          "paths": 2,
+          "anchors": 48,
+          "kind": "fill"
+        },
+        {
+          "name": "Linework",
+          "group": "CONSTRUCTION",
+          "color": "#111111",
+          "paths": 232,
+          "anchors": 676,
+          "kind": "stroke"
+        }
+      ],
+      "stats": {
+        "groups": 13,
+        "paths": 278,
+        "anchors": 2850,
+        "unnamed": 3,
+        "lineGroups": 1
+      },
+      "qa": {
+        "pass": true,
+        "coverage": 0.997,
+        "spill": 0.01,
+        "colorDeltaE": 6.7,
+        "notes": []
+      },
+      "files": {
+        "svg": "samples/shoe_1/result.svg",
+        "ai": "samples/shoe_1/result.ai",
+        "jsx": "samples/shoe_1/result.jsx",
+        "ir": "samples/shoe_1/result.ir.json",
+        "input": "samples/shoe_1/input.jpg",
+        "flat": "samples/shoe_1/flat.jpg"
+      }
+    },
+    {
+      "id": "shoe_2",
+      "name": "shoe_2",
+      "category": "shoe",
+      "categoryLabel": "신발",
+      "jobId": "26aee140-d15f-4c6b-88fa-c0e7c599d790",
+      "source": {
+        "title": "File:Merrell All Out Crush Light.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File%3AMerrell%20All%20Out%20Crush%20Light.jpg"
+      },
+      "width": 1400,
+      "height": 786,
+      "instances": 2,
+      "layers": [
+        {
+          "name": "Base",
+          "group": "#2 UPPER",
+          "color": "#f57635",
+          "paths": 25,
+          "anchors": 523,
+          "kind": "fill"
+        },
+        {
+          "name": "Eyestay",
+          "group": "#2 UPPER",
+          "color": "#c1c1c9",
+          "paths": 1,
+          "anchors": 56,
+          "kind": "fill"
+        },
+        {
+          "name": "Vamp",
+          "group": "#2 UPPER",
+          "color": "#343e61",
+          "paths": 1,
+          "anchors": 83,
+          "kind": "fill"
+        },
+        {
+          "name": "Quarter",
+          "group": "#2 UPPER",
+          "color": "#343e61",
+          "paths": 1,
+          "anchors": 62,
+          "kind": "fill"
+        },
+        {
+          "name": "Collar",
+          "group": "#2 UPPER",
+          "color": "#c2c2c9",
+          "paths": 1,
+          "anchors": 27,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 22",
+          "group": "#2 UPPER",
+          "color": "#c5c5cb",
+          "paths": 1,
+          "anchors": 27,
+          "kind": "fill"
+        },
+        {
+          "name": "Midsole",
+          "group": "#2 SOLE",
+          "color": "#c2c2c9",
+          "paths": 369,
+          "anchors": 545,
+          "kind": "stroke"
+        },
+        {
+          "name": "Midsole 2",
+          "group": "#2 SOLE",
+          "color": "#c1c1c9",
+          "paths": 2,
+          "anchors": 354,
+          "kind": "fill"
+        },
+        {
+          "name": "Midsole 3",
+          "group": "#2 SOLE",
+          "color": "#c2c2c9",
+          "paths": 1,
+          "anchors": 105,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 15",
+          "group": "#2 SOLE",
+          "color": "#f47535",
+          "paths": 28,
+          "anchors": 40,
+          "kind": "stroke"
+        },
+        {
+          "name": "Region 10",
+          "group": "#2 SOLE",
+          "color": "#343d61",
+          "paths": 11,
+          "anchors": 63,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 18",
+          "group": "#2 SOLE",
+          "color": "#363b56",
+          "paths": 1,
+          "anchors": 16,
+          "kind": "stroke"
+        },
+        {
+          "name": "Logo",
+          "group": "#2 BRANDING",
+          "color": "#f57634",
+          "paths": 1,
+          "anchors": 34,
+          "kind": "fill"
+        },
+        {
+          "name": "Logo 2",
+          "group": "#2 BRANDING",
+          "color": "#f57634",
+          "paths": 1,
+          "anchors": 27,
+          "kind": "fill"
+        },
+        {
+          "name": "Logo 3",
+          "group": "#2 BRANDING",
+          "color": "#f57634",
+          "paths": 1,
+          "anchors": 26,
+          "kind": "fill"
+        },
+        {
+          "name": "Linework",
+          "group": "#2 CONSTRUCTION",
+          "color": "#111111",
+          "paths": 147,
+          "anchors": 481,
+          "kind": "stroke"
+        },
+        {
+          "name": "Region 1",
+          "group": "#1 UPPER",
+          "color": "#f97335",
+          "paths": 1,
+          "anchors": 75,
+          "kind": "fill"
+        },
+        {
+          "name": "Eyestay",
+          "group": "#1 UPPER",
+          "color": "#b7b9c8",
+          "paths": 1,
+          "anchors": 91,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 6",
+          "group": "#1 UPPER",
+          "color": "#b7b9c8",
+          "paths": 1,
+          "anchors": 87,
+          "kind": "fill"
+        },
+        {
+          "name": "Tongue",
+          "group": "#1 UPPER",
+          "color": "#323755",
+          "paths": 26,
+          "anchors": 35,
+          "kind": "stroke"
+        },
+        {
+          "name": "Collar",
+          "group": "#1 UPPER",
+          "color": "#a1a1b8",
+          "paths": 1,
+          "anchors": 26,
+          "kind": "fill"
+        },
+        {
+          "name": "Eyestay 2",
+          "group": "#1 UPPER",
+          "color": "#b8bac9",
+          "paths": 7,
+          "anchors": 10,
+          "kind": "stroke"
+        },
+        {
+          "name": "Detail ×3",
+          "group": "#1 UPPER",
+          "color": "#f67638",
+          "paths": 3,
+          "anchors": 18,
+          "kind": "fill"
+        },
+        {
+          "name": "Linework",
+          "group": "#1 CONSTRUCTION",
+          "color": "#111111",
+          "paths": 311,
+          "anchors": 490,
+          "kind": "stroke"
+        }
+      ],
+      "stats": {
+        "groups": 24,
+        "paths": 943,
+        "anchors": 3301,
+        "unnamed": 7,
+        "lineGroups": 7
+      },
+      "qa": {
+        "pass": true,
+        "coverage": 0.998,
+        "spill": 0.001,
+        "colorDeltaE": 9.5,
+        "notes": []
+      },
+      "files": {
+        "svg": "samples/shoe_2/result.svg",
+        "ai": "samples/shoe_2/result.ai",
+        "jsx": "samples/shoe_2/result.jsx",
+        "ir": "samples/shoe_2/result.ir.json",
+        "input": "samples/shoe_2/input.jpg",
+        "flat": "samples/shoe_2/flat.jpg"
+      }
+    },
+    {
+      "id": "shoe_3",
+      "name": "shoe_3",
+      "category": "shoe",
+      "categoryLabel": "신발",
+      "jobId": "0f7d1b23-1462-4911-8f6b-9f9277087672",
+      "source": {
+        "title": "File:Merrell Vapor Glove 3 rolled.png",
+        "url": "https://commons.wikimedia.org/wiki/File%3AMerrell%20Vapor%20Glove%203%20rolled.png"
+      },
+      "width": 1400,
+      "height": 1059,
+      "instances": 1,
+      "layers": [
+        {
+          "name": "Base",
+          "group": "SOLE",
+          "color": "#657686",
+          "paths": 26,
+          "anchors": 843,
+          "kind": "fill"
+        },
+        {
+          "name": "Outsole",
+          "group": "SOLE",
+          "color": "#744888",
+          "paths": 1,
+          "anchors": 74,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 17",
+          "group": "SOLE",
+          "color": "#b6b6b6",
+          "paths": 1,
+          "anchors": 75,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 7",
+          "group": "SOLE",
+          "color": "#737373",
+          "paths": 1,
+          "anchors": 49,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 9",
+          "group": "SOLE",
+          "color": "#fcd00e",
+          "paths": 1,
+          "anchors": 47,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 18",
+          "group": "SOLE",
+          "color": "#b6b5b6",
+          "paths": 1,
+          "anchors": 15,
+          "kind": "stroke"
+        },
+        {
+          "name": "Region 1",
+          "group": "UPPER",
+          "color": "#9d5396",
+          "paths": 1,
+          "anchors": 176,
+          "kind": "fill"
+        },
+        {
+          "name": "Vamp",
+          "group": "UPPER",
+          "color": "#687486",
+          "paths": 3,
+          "anchors": 351,
+          "kind": "fill"
+        },
+        {
+          "name": "Eyestay",
+          "group": "UPPER",
+          "color": "#667787",
+          "paths": 1,
+          "anchors": 43,
+          "kind": "fill"
+        },
+        {
+          "name": "Quarter",
+          "group": "UPPER",
+          "color": "#5b6b79",
+          "paths": 1,
+          "anchors": 42,
+          "kind": "fill"
+        },
+        {
+          "name": "Eyestay 2",
+          "group": "UPPER",
+          "color": "#5d6d7d",
+          "paths": 1,
+          "anchors": 42,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 12",
+          "group": "UPPER",
+          "color": "#9d5395",
+          "paths": 1,
+          "anchors": 56,
+          "kind": "fill"
+        },
+        {
+          "name": "Collar",
+          "group": "UPPER",
+          "color": "#637283",
+          "paths": 5,
+          "anchors": 13,
+          "kind": "stroke"
+        },
+        {
+          "name": "Eyestay 3",
+          "group": "UPPER",
+          "color": "#647686",
+          "paths": 2,
+          "anchors": 13,
+          "kind": "stroke"
+        },
+        {
+          "name": "Lace Loops",
+          "group": "CONSTRUCTION",
+          "color": "#fcd10d",
+          "paths": 197,
+          "anchors": 259,
+          "kind": "stroke"
+        },
+        {
+          "name": "Linework",
+          "group": "CONSTRUCTION",
+          "color": "#111111",
+          "paths": 169,
+          "anchors": 538,
+          "kind": "stroke"
+        }
+      ],
+      "stats": {
+        "groups": 16,
+        "paths": 412,
+        "anchors": 2636,
+        "unnamed": 6,
+        "lineGroups": 5
+      },
+      "qa": {
+        "pass": true,
+        "coverage": 1,
+        "spill": 0.003,
+        "colorDeltaE": 6.5,
+        "notes": []
+      },
+      "files": {
+        "svg": "samples/shoe_3/result.svg",
+        "ai": "samples/shoe_3/result.ai",
+        "jsx": "samples/shoe_3/result.jsx",
+        "ir": "samples/shoe_3/result.ir.json",
+        "input": "samples/shoe_3/input.jpg",
+        "flat": "samples/shoe_3/flat.jpg"
+      }
+    },
+    {
+      "id": "bag_1",
+      "name": "bag_1",
+      "category": "bag",
+      "categoryLabel": "가방",
+      "jobId": "ac17797e-5a8b-43e3-bc46-e6545607ebbb",
+      "source": {
+        "title": "File:1000Miglia2.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File%3A1000Miglia2.jpg"
+      },
+      "width": 304,
+      "height": 433,
+      "instances": 1,
+      "layers": [
+        {
+          "name": "Base",
+          "group": "BODY",
+          "color": "#242424",
+          "paths": 5,
+          "anchors": 92,
+          "kind": "fill"
+        },
+        {
+          "name": "Gusset",
+          "group": "BODY",
+          "color": "#242424",
+          "paths": 3,
+          "anchors": 36,
+          "kind": "fill"
+        },
+        {
+          "name": "Front Panel",
+          "group": "BODY",
+          "color": "#242424",
+          "paths": 9,
+          "anchors": 377,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 7",
+          "group": "BODY",
+          "color": "#e21c1f",
+          "paths": 1,
+          "anchors": 49,
+          "kind": "fill"
+        },
+        {
+          "name": "Detail ×3",
+          "group": "BODY",
+          "color": "#272726",
+          "paths": 3,
+          "anchors": 15,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 15",
+          "group": "BODY",
+          "color": "#898888",
+          "paths": 1,
+          "anchors": 8,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 16",
+          "group": "BODY",
+          "color": "#250c0c",
+          "paths": 1,
+          "anchors": 1,
+          "kind": "stroke"
+        },
+        {
+          "name": "D-ring",
+          "group": "HARDWARE",
+          "color": "#252525",
+          "paths": 1,
+          "anchors": 20,
+          "kind": "fill"
+        },
+        {
+          "name": "Buckle",
+          "group": "HARDWARE",
+          "color": "#242424",
+          "paths": 6,
+          "anchors": 8,
+          "kind": "stroke"
+        },
+        {
+          "name": "Handle",
+          "group": "HANDLES",
+          "color": "#212121",
+          "paths": 2,
+          "anchors": 19,
+          "kind": "fill"
+        },
+        {
+          "name": "Piping",
+          "group": "CONSTRUCTION",
+          "color": "#111111",
+          "paths": 53,
+          "anchors": 60,
+          "kind": "stroke"
+        },
+        {
+          "name": "Piping 2",
+          "group": "CONSTRUCTION",
+          "color": "#111111",
+          "paths": 3,
+          "anchors": 7,
+          "kind": "stroke"
+        },
+        {
+          "name": "Piping 3",
+          "group": "CONSTRUCTION",
+          "color": "#111111",
+          "paths": 1,
+          "anchors": 1,
+          "kind": "stroke"
+        },
+        {
+          "name": "Linework",
+          "group": "CONSTRUCTION",
+          "color": "#111111",
+          "paths": 20,
+          "anchors": 37,
+          "kind": "stroke"
+        }
+      ],
+      "stats": {
+        "groups": 14,
+        "paths": 109,
+        "anchors": 730,
+        "unnamed": 4,
+        "lineGroups": 6
+      },
+      "qa": {
+        "pass": true,
+        "coverage": 1,
+        "spill": 0.009,
+        "colorDeltaE": 10.9,
+        "notes": []
+      },
+      "files": {
+        "svg": "samples/bag_1/result.svg",
+        "ai": "samples/bag_1/result.ai",
+        "jsx": "samples/bag_1/result.jsx",
+        "ir": "samples/bag_1/result.ir.json",
+        "input": "samples/bag_1/input.jpg",
+        "flat": "samples/bag_1/flat.jpg"
+      }
+    },
+    {
+      "id": "bag_2",
+      "name": "bag_2",
+      "category": "bag",
+      "categoryLabel": "가방",
+      "jobId": "06936d60-df8f-4f1d-85de-7827ae02fb08",
+      "source": {
+        "title": "File:Aftonväska helt överbroderad med vita glaspärlor. Tillhört Ellen Roosval-de Maré - Hallwylska museet - 89278.tif",
+        "url": "https://commons.wikimedia.org/wiki/File%3AAftonv%C3%A4ska%20helt%20%C3%B6verbroderad%20med%20vita%20glasp%C3%A4rlor.%20Tillh%C3%B6rt%20Ellen%20Roosval-de%20Mar%C3%A9%20-%20Hallwylska%20museet%20-%2089278.tif"
+      },
+      "width": 796,
+      "height": 933,
+      "instances": 1,
+      "layers": [
+        {
+          "name": "Front Panel",
+          "group": "BODY",
+          "color": "#f1ece1",
+          "paths": 1,
+          "anchors": 293,
+          "kind": "fill"
+        },
+        {
+          "name": "Gussets",
+          "group": "BODY",
+          "color": "#f1ebe1",
+          "paths": 1,
+          "anchors": 124,
+          "kind": "fill"
+        },
+        {
+          "name": "Clasp",
+          "group": "CLOSURE",
+          "color": "#967649",
+          "paths": 5,
+          "anchors": 129,
+          "kind": "fill"
+        },
+        {
+          "name": "Frame Closure",
+          "group": "CLOSURE",
+          "color": "#96774a",
+          "paths": 1,
+          "anchors": 36,
+          "kind": "fill"
+        },
+        {
+          "name": "Chain Handle",
+          "group": "HANDLES",
+          "color": "#96764a",
+          "paths": 2,
+          "anchors": 23,
+          "kind": "stroke"
+        },
+        {
+          "name": "Region 8",
+          "group": "HANDLES",
+          "color": "#a58968",
+          "paths": 5,
+          "anchors": 24,
+          "kind": "stroke"
+        },
+        {
+          "name": "Region 9",
+          "group": "HANDLES",
+          "color": "#a48868",
+          "paths": 1,
+          "anchors": 25,
+          "kind": "stroke"
+        },
+        {
+          "name": "Region 7",
+          "group": "HANDLES",
+          "color": "#261c15",
+          "paths": 20,
+          "anchors": 47,
+          "kind": "stroke"
+        },
+        {
+          "name": "Beading",
+          "group": "CONSTRUCTION",
+          "color": "#f1ede2",
+          "paths": 1,
+          "anchors": 6,
+          "kind": "stroke"
+        },
+        {
+          "name": "Linework",
+          "group": "CONSTRUCTION",
+          "color": "#111111",
+          "paths": 54,
+          "anchors": 196,
+          "kind": "stroke"
+        }
+      ],
+      "stats": {
+        "groups": 10,
+        "paths": 91,
+        "anchors": 903,
+        "unnamed": 3,
+        "lineGroups": 6
+      },
+      "qa": {
+        "pass": true,
+        "coverage": 0.995,
+        "spill": 0.01,
+        "colorDeltaE": 2.1,
+        "notes": []
+      },
+      "files": {
+        "svg": "samples/bag_2/result.svg",
+        "ai": "samples/bag_2/result.ai",
+        "jsx": "samples/bag_2/result.jsx",
+        "ir": "samples/bag_2/result.ir.json",
+        "input": "samples/bag_2/input.jpg",
+        "flat": "samples/bag_2/flat.jpg"
+      }
+    },
+    {
+      "id": "bag_3",
+      "name": "bag_3",
+      "category": "bag",
+      "categoryLabel": "가방",
+      "jobId": "1ff07960-3395-4bc0-be26-3b9c1c1faa94",
+      "source": {
+        "title": "File:Aftonväska i påsmodell med dragsko. Tillhört Ellen Roosval-de Maré - Hallwylska museet - 89267.tif",
+        "url": "https://commons.wikimedia.org/wiki/File%3AAftonv%C3%A4ska%20i%20p%C3%A5smodell%20med%20dragsko.%20Tillh%C3%B6rt%20Ellen%20Roosval-de%20Mar%C3%A9%20-%20Hallwylska%20museet%20-%2089267.tif"
+      },
+      "width": 627,
+      "height": 1400,
+      "instances": 1,
+      "layers": [
+        {
+          "name": "Base",
+          "group": "BODY",
+          "color": "#95887c",
+          "paths": 5,
+          "anchors": 445,
+          "kind": "fill"
+        },
+        {
+          "name": "Front Panel",
+          "group": "BODY",
+          "color": "#a29589",
+          "paths": 1,
+          "anchors": 275,
+          "kind": "fill"
+        },
+        {
+          "name": "Gusset",
+          "group": "BODY",
+          "color": "#95877b",
+          "paths": 4,
+          "anchors": 244,
+          "kind": "fill"
+        },
+        {
+          "name": "Gusset 2",
+          "group": "BODY",
+          "color": "#95887b",
+          "paths": 5,
+          "anchors": 100,
+          "kind": "fill"
+        },
+        {
+          "name": "Drawstring 2",
+          "group": "CLOSURE",
+          "color": "#94877b",
+          "paths": 18,
+          "anchors": 40,
+          "kind": "stroke"
+        },
+        {
+          "name": "Drawstring",
+          "group": "CLOSURE",
+          "color": "#95887c",
+          "paths": 28,
+          "anchors": 41,
+          "kind": "stroke"
+        },
+        {
+          "name": "Drawstring 3",
+          "group": "CLOSURE",
+          "color": "#978a7d",
+          "paths": 8,
+          "anchors": 8,
+          "kind": "stroke"
+        },
+        {
+          "name": "Decorative Stones",
+          "group": "HARDWARE",
+          "color": "#64b8b3",
+          "paths": 26,
+          "anchors": 164,
+          "kind": "fill"
+        },
+        {
+          "name": "Linework",
+          "group": "CONSTRUCTION",
+          "color": "#111111",
+          "paths": 1004,
+          "anchors": 1394,
+          "kind": "stroke"
+        }
+      ],
+      "stats": {
+        "groups": 9,
+        "paths": 1099,
+        "anchors": 2711,
+        "unnamed": 0,
+        "lineGroups": 4
+      },
+      "qa": {
+        "pass": true,
+        "coverage": 0.992,
+        "spill": 0.004,
+        "colorDeltaE": 14,
+        "notes": []
+      },
+      "files": {
+        "svg": "samples/bag_3/result.svg",
+        "ai": "samples/bag_3/result.ai",
+        "jsx": "samples/bag_3/result.jsx",
+        "ir": "samples/bag_3/result.ir.json",
+        "input": "samples/bag_3/input.jpg",
+        "flat": "samples/bag_3/flat.jpg"
+      }
+    },
+    {
+      "id": "jewelry_1",
+      "name": "jewelry_1",
+      "category": "jewelry",
+      "categoryLabel": "주얼리",
+      "jobId": "426f87f3-980d-40bd-a3e6-ed6870a04818",
+      "source": {
+        "title": "File:Bague-fond-blanc-3-.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File%3ABague-fond-blanc-3-.jpg"
+      },
+      "width": 618,
+      "height": 580,
+      "instances": 1,
+      "layers": [
+        {
+          "name": "Base",
+          "group": "STRUCTURE",
+          "color": "#c9c9c8",
+          "paths": 17,
+          "anchors": 276,
+          "kind": "fill"
+        },
+        {
+          "name": "Left Shank",
+          "group": "STRUCTURE",
+          "color": "#c9c9c8",
+          "paths": 1,
+          "anchors": 188,
+          "kind": "fill"
+        },
+        {
+          "name": "Lower Shank",
+          "group": "STRUCTURE",
+          "color": "#c9c9c8",
+          "paths": 2,
+          "anchors": 127,
+          "kind": "fill"
+        },
+        {
+          "name": "Detail ×12",
+          "group": "STRUCTURE",
+          "color": "#565653",
+          "paths": 12,
+          "anchors": 90,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 11",
+          "group": "STRUCTURE",
+          "color": "#585954",
+          "paths": 1,
+          "anchors": 29,
+          "kind": "fill"
+        },
+        {
+          "name": "Right Shank",
+          "group": "STRUCTURE",
+          "color": "#d6d6d4",
+          "paths": 18,
+          "anchors": 22,
+          "kind": "stroke"
+        },
+        {
+          "name": "Center Notch 2",
+          "group": "DETAILS",
+          "color": "#c9c9c7",
+          "paths": 2,
+          "anchors": 11,
+          "kind": "fill"
+        },
+        {
+          "name": "Engraving 2",
+          "group": "DETAILS",
+          "color": "#111111",
+          "paths": 3,
+          "anchors": 4,
+          "kind": "stroke"
+        },
+        {
+          "name": "Engraving 3",
+          "group": "DETAILS",
+          "color": "#111111",
+          "paths": 2,
+          "anchors": 4,
+          "kind": "stroke"
+        },
+        {
+          "name": "Center Notch",
+          "group": "DETAILS",
+          "color": "#c9c9c7",
+          "paths": 9,
+          "anchors": 12,
+          "kind": "stroke"
+        },
+        {
+          "name": "Engraving",
+          "group": "DETAILS",
+          "color": "#c8c9c8",
+          "paths": 7,
+          "anchors": 7,
+          "kind": "stroke"
+        },
+        {
+          "name": "Linework",
+          "group": "CONSTRUCTION",
+          "color": "#111111",
+          "paths": 42,
+          "anchors": 155,
+          "kind": "stroke"
+        }
+      ],
+      "stats": {
+        "groups": 12,
+        "paths": 116,
+        "anchors": 925,
+        "unnamed": 2,
+        "lineGroups": 6
+      },
+      "qa": {
+        "pass": true,
+        "coverage": 0.998,
+        "spill": 0.002,
+        "colorDeltaE": 4.3,
+        "notes": []
+      },
+      "files": {
+        "svg": "samples/jewelry_1/result.svg",
+        "ai": "samples/jewelry_1/result.ai",
+        "jsx": "samples/jewelry_1/result.jsx",
+        "ir": "samples/jewelry_1/result.ir.json",
+        "input": "samples/jewelry_1/input.jpg",
+        "flat": "samples/jewelry_1/flat.jpg"
+      }
+    },
+    {
+      "id": "jewelry_2",
+      "name": "jewelry_2",
+      "category": "jewelry",
+      "categoryLabel": "주얼리",
+      "jobId": "12dbfdd2-4dd9-4690-a973-7b87e4c48a24",
+      "source": {
+        "title": "File:Anello Arpa.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File%3AAnello%20Arpa.jpg"
+      },
+      "width": 545,
+      "height": 804,
+      "instances": 1,
+      "layers": [
+        {
+          "name": "Region 2",
+          "group": "PARTS",
+          "color": "#c3a369",
+          "paths": 2,
+          "anchors": 215,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 1",
+          "group": "PARTS",
+          "color": "#a88953",
+          "paths": 6,
+          "anchors": 288,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 6",
+          "group": "PARTS",
+          "color": "#bcb8b6",
+          "paths": 5,
+          "anchors": 265,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 8",
+          "group": "PARTS",
+          "color": "#bcb8b7",
+          "paths": 1,
+          "anchors": 120,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 9",
+          "group": "PARTS",
+          "color": "#bcb8b6",
+          "paths": 1,
+          "anchors": 37,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 4",
+          "group": "PARTS",
+          "color": "#bbb7b6",
+          "paths": 34,
+          "anchors": 67,
+          "kind": "stroke"
+        },
+        {
+          "name": "Region 11",
+          "group": "PARTS",
+          "color": "#bcb8b6",
+          "paths": 1,
+          "anchors": 17,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 29",
+          "group": "PARTS",
+          "color": "#c3a36b",
+          "paths": 3,
+          "anchors": 35,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 19",
+          "group": "PARTS",
+          "color": "#aa8b54",
+          "paths": 1,
+          "anchors": 17,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 14",
+          "group": "PARTS",
+          "color": "#bcb7b6",
+          "paths": 8,
+          "anchors": 12,
+          "kind": "stroke"
+        },
+        {
+          "name": "Region 20",
+          "group": "PARTS",
+          "color": "#a98b53",
+          "paths": 1,
+          "anchors": 11,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 10",
+          "group": "PARTS",
+          "color": "#bcb8b7",
+          "paths": 1,
+          "anchors": 5,
+          "kind": "stroke"
+        },
+        {
+          "name": "Region 21",
+          "group": "PARTS",
+          "color": "#c2a369",
+          "paths": 1,
+          "anchors": 13,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 23",
+          "group": "PARTS",
+          "color": "#a98a54",
+          "paths": 1,
+          "anchors": 22,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 12",
+          "group": "PARTS",
+          "color": "#bcb8b7",
+          "paths": 1,
+          "anchors": 19,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 22",
+          "group": "PARTS",
+          "color": "#aa8c55",
+          "paths": 6,
+          "anchors": 13,
+          "kind": "stroke"
+        },
+        {
+          "name": "Region 17",
+          "group": "PARTS",
+          "color": "#c7a874",
+          "paths": 4,
+          "anchors": 8,
+          "kind": "stroke"
+        },
+        {
+          "name": "Region 26",
+          "group": "PARTS",
+          "color": "#ab8d56",
+          "paths": 1,
+          "anchors": 21,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 36",
+          "group": "PARTS",
+          "color": "#bbb5b5",
+          "paths": 1,
+          "anchors": 12,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 33",
+          "group": "PARTS",
+          "color": "#c2a26c",
+          "paths": 2,
+          "anchors": 4,
+          "kind": "stroke"
+        },
+        {
+          "name": "Region 25",
+          "group": "PARTS",
+          "color": "#bcb8b7",
+          "paths": 4,
+          "anchors": 6,
+          "kind": "stroke"
+        },
+        {
+          "name": "Region 3",
+          "group": "PARTS",
+          "color": "#f6f6f5",
+          "paths": 10,
+          "anchors": 11,
+          "kind": "stroke"
+        },
+        {
+          "name": "Region 39",
+          "group": "PARTS",
+          "color": "#46392a",
+          "paths": 1,
+          "anchors": 6,
+          "kind": "stroke"
+        },
+        {
+          "name": "Region 41",
+          "group": "PARTS",
+          "color": "#574935",
+          "paths": 3,
+          "anchors": 3,
+          "kind": "stroke"
+        },
+        {
+          "name": "Linework",
+          "group": "CONSTRUCTION",
+          "color": "#111111",
+          "paths": 152,
+          "anchors": 356,
+          "kind": "stroke"
+        }
+      ],
+      "stats": {
+        "groups": 25,
+        "paths": 251,
+        "anchors": 1583,
+        "unnamed": 24,
+        "lineGroups": 11
+      },
+      "qa": {
+        "pass": true,
+        "coverage": 0.96,
+        "spill": 0.004,
+        "colorDeltaE": 10,
+        "notes": []
+      },
+      "files": {
+        "svg": "samples/jewelry_2/result.svg",
+        "ai": "samples/jewelry_2/result.ai",
+        "jsx": "samples/jewelry_2/result.jsx",
+        "ir": "samples/jewelry_2/result.ir.json",
+        "input": "samples/jewelry_2/input.jpg",
+        "flat": "samples/jewelry_2/flat.jpg"
+      }
+    },
+    {
+      "id": "jewelry_3",
+      "name": "jewelry_3",
+      "category": "jewelry",
+      "categoryLabel": "주얼리",
+      "jobId": "f7b04d66-8bd8-453c-abe7-5df6b3ea68aa",
+      "source": {
+        "title": "File:Bagues saphirs Yves Gratas.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File%3ABagues%20saphirs%20Yves%20Gratas.jpg"
+      },
+      "width": 1020,
+      "height": 462,
+      "instances": 3,
+      "layers": [
+        {
+          "name": "Shank",
+          "group": "#3 STRUCTURE",
+          "color": "#e6d8c5",
+          "paths": 1,
+          "anchors": 191,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 7",
+          "group": "#3 STRUCTURE",
+          "color": "#dcb354",
+          "paths": 6,
+          "anchors": 67,
+          "kind": "fill"
+        },
+        {
+          "name": "Region 6",
+          "group": "#3 STRUCTURE",
+          "color": "#dbb252",
+          "paths": 1,
+          "anchors": 11,
+          "kind": "fill"
+        },
+        {
+          "name": "Bezel",
+          "group": "#3 SETTING",
+          "color": "#d8ae4d",
+          "paths": 1,
+          "anchors": 15,
+          "kind": "fill"
+        },
+        {
+          "name": "Head",
+          "group": "#3 SETTING",
+          "color": "#e6d7c4",
+          "paths": 1,
+          "anchors": 103,
+          "kind": "fill"
+        },
+        {
+          "name": "Center Stone",
+          "group": "#3 STONES",
+          "color": "#d8ad4c",
+          "paths": 1,
+          "anchors": 26,
+          "kind": "fill"
+        },
+        {
+          "name": "Internal Fractures",
+          "group": "#3 DETAILS",
+          "color": "#e6d7c4",
+          "paths": 19,
+          "anchors": 22,
+          "kind": "stroke"
+        },
+        {
+          "name": "Linework",
+          "group": "#3 CONSTRUCTION",
+          "color": "#111111",
+          "paths": 87,
+          "anchors": 189,
+          "kind": "stroke"
+        },
+        {
+          "name": "Center Stone",
+          "group": "#2 STONES",
+          "color": "#8ba7d5",
+          "paths": 1,
+          "anchors": 157,
+          "kind": "fill"
+        },
+        {
+          "name": "Shank",
+          "group": "#2 STRUCTURE",
+          "color": "#e6c869",
+          "paths": 2,
+          "anchors": 171,
+          "kind": "fill"
+        },
+        {
+          "name": "Detail ×3",
+          "group": "#2 STRUCTURE",
+          "color": "#e5c869",
+          "paths": 4,
+          "anchors": 39,
+          "kind": "fill"
+        },
+        {
+          "name": "Internal Fractures",
+          "group": "#2 DETAILS",
+          "color": "#8ca7d6",
+          "paths": 24,
+          "anchors": 41,
+          "kind": "stroke"
+        },
+        {
+          "name": "Bezel",
+          "group": "#2 SETTING",
+          "color": "#e7c96a",
+          "paths": 4,
+          "anchors": 82,
+          "kind": "fill"
+        },
+        {
+          "name": "Head 2",
+          "group": "#2 SETTING",
+          "color": "#e7c96c",
+          "paths": 2,
+          "anchors": 26,
+          "kind": "fill"
+        },
+        {
+          "name": "Head",
+          "group": "#2 SETTING",
+          "color": "#e5c866",
+          "paths": 4,
+          "anchors": 4,
+          "kind": "stroke"
+        },
+        {
+          "name": "Linework",
+          "group": "#2 CONSTRUCTION",
+          "color": "#111111",
+          "paths": 69,
+          "anchors": 162,
+          "kind": "stroke"
+        },
+        {
+          "name": "Base",
+          "group": "#1 STRUCTURE",
+          "color": "#f3d473",
+          "paths": 2,
+          "anchors": 103,
+          "kind": "fill"
+        },
+        {
+          "name": "Internal Fractures",
+          "group": "#1 DETAILS",
+          "color": "#c2cee7",
+          "paths": 1,
+          "anchors": 3,
+          "kind": "stroke"
+        },
+        {
+          "name": "Center Stone",
+          "group": "#1 STONES",
+          "color": "#c2cde7",
+          "paths": 1,
+          "anchors": 119,
+          "kind": "fill"
+        },
+        {
+          "name": "Center Stone 2",
+          "group": "#1 STONES",
+          "color": "#c2cee7",
+          "paths": 6,
+          "anchors": 6,
+          "kind": "stroke"
+        },
+        {
+          "name": "Head",
+          "group": "#1 SETTING",
+          "color": "#f2d373",
+          "paths": 4,
+          "anchors": 39,
+          "kind": "fill"
+        },
+        {
+          "name": "Linework",
+          "group": "#1 CONSTRUCTION",
+          "color": "#111111",
+          "paths": 22,
+          "anchors": 68,
+          "kind": "stroke"
+        }
+      ],
+      "stats": {
+        "groups": 22,
+        "paths": 263,
+        "anchors": 1644,
+        "unnamed": 3,
+        "lineGroups": 8
+      },
+      "qa": {
+        "pass": true,
+        "coverage": 0.884,
+        "spill": 0.002,
+        "colorDeltaE": 18.2,
+        "notes": [
+          "빈 레이어: Region 7"
+        ]
+      },
+      "files": {
+        "svg": "samples/jewelry_3/result.svg",
+        "ai": "samples/jewelry_3/result.ai",
+        "jsx": "samples/jewelry_3/result.jsx",
+        "ir": "samples/jewelry_3/result.ir.json",
+        "input": "samples/jewelry_3/input.jpg",
+        "flat": "samples/jewelry_3/flat.jpg"
+      }
+    }
+  ]
+}

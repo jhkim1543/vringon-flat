@@ -1,0 +1,11 @@
+# 기본: 텍스트는 저장소에 LF로 보관
+* text=auto eol=lf
+
+# .ai는 PDF 기반 바이너리다 — 줄바꿈 변환이 들어가면 스트림 길이가 어긋나
+# Illustrator가 파일을 못 연다. 반드시 바이너리로 취급한다.
+*.ai binary
+*.pdf binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.ico binary

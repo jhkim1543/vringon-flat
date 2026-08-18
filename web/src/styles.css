@@ -1,0 +1,107 @@
+* { box-sizing: border-box; margin: 0; }
+:root {
+  --bg: #0e1116;
+  --panel: #171c24;
+  --line: #2a3242;
+  --text: #e7ecf3;
+  --dim: #8b96a8;
+  --accent: #4f8cff;
+  --ok: #35c26e;
+  --err: #e5534b;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", "Malgun Gothic", sans-serif;
+}
+.wrap { max-width: 1080px; margin: 0 auto; padding: 32px 20px 80px; }
+header h1 { font-size: 28px; letter-spacing: 2px; }
+header h1 span { color: var(--accent); }
+header p { color: var(--dim); margin-top: 4px; }
+.engines { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font-size: 11px; color: var(--dim);
+  border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px;
+}
+.chip b { color: var(--text); font-weight: 600; }
+
+.panel {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px; padding: 20px; margin-top: 20px;
+}
+.panel h2 { font-size: 16px; margin-bottom: 14px; }
+.panel h2 small { color: var(--dim); font-weight: 400; }
+
+.uploader { display: grid; grid-template-columns: 1fr 280px; gap: 20px; }
+.drop {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 260px; border: 2px dashed var(--line); border-radius: 10px;
+  cursor: pointer; color: var(--dim); overflow: hidden;
+}
+.drop input { display: none; }
+.drop img { max-width: 100%; max-height: 340px; object-fit: contain; }
+.controls { display: flex; flex-direction: column; gap: 12px; }
+fieldset { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+legend { font-size: 11px; color: var(--dim); padding: 0 6px; }
+fieldset label { display: block; font-size: 13px; padding: 3px 0; cursor: pointer; }
+select {
+  width: 100%; background: var(--bg); color: var(--text);
+  border: 1px solid var(--line); border-radius: 6px; padding: 6px;
+}
+button {
+  background: var(--accent); color: #fff; border: 0; border-radius: 8px;
+  padding: 12px; font-size: 14px; font-weight: 600; cursor: pointer;
+}
+button:disabled { opacity: 0.4; cursor: default; }
+
+.stages { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.stages li { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; }
+.stages i {
+  width: 10px; height: 10px; border-radius: 50%; margin-top: 4px;
+  background: var(--line); flex: none;
+}
+.stages li.running i { background: var(--accent); animation: pulse 1s infinite; }
+.stages li.done i { background: var(--ok); }
+.stages li.error i { background: var(--err); }
+.stages small { display: block; color: var(--dim); margin-top: 2px; }
+@keyframes pulse { 50% { opacity: 0.3; } }
+.error { color: var(--err); margin-top: 10px; font-size: 13px; }
+
+.tree { display: flex; flex-wrap: wrap; gap: 16px; }
+.tree-group { min-width: 140px; }
+.tree-group b { color: var(--accent); font-size: 12px; letter-spacing: 1px; }
+.tree-group ul { list-style: none; margin-top: 6px; }
+.tree-group li {
+  font-size: 13px; padding: 2px 0 2px 12px;
+  border-left: 1px solid var(--line);
+}
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+.grid figure {
+  border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+  background: #fff;
+}
+.grid figure.winner { border-color: var(--ok); box-shadow: 0 0 0 1px var(--ok); }
+.grid img { width: 100%; aspect-ratio: 1; object-fit: contain; display: block; }
+.grid figcaption { padding: 8px; font-size: 11px; background: var(--panel); }
+.grid figcaption b { display: block; }
+.grid figcaption small { color: var(--dim); }
+.grid figcaption em { color: var(--ok); font-style: normal; font-weight: 700; }
+
+.downloads { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+.dl {
+  display: block; text-decoration: none; color: var(--text);
+  border: 1px solid var(--line); border-radius: 8px; padding: 10px 16px;
+  font-weight: 600; font-size: 14px;
+}
+.dl small { display: block; color: var(--dim); font-weight: 400; font-size: 11px; }
+.dl.primary { border-color: var(--accent); background: rgba(79, 140, 255, 0.12); }
+
+.compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.compare figure { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; }
+.compare img, .compare object { width: 100%; aspect-ratio: 4/3; object-fit: contain; display: block; }
+.compare figcaption { padding: 8px; font-size: 12px; background: var(--panel); text-align: center; }
+
+@media (max-width: 720px) {
+  .uploader { grid-template-columns: 1fr; }
+}

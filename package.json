@@ -1,0 +1,51 @@
+{
+  "name": "vringon-flat",
+  "version": "1.0.0",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": "tsx watch server/index.ts",
+    "dev:web": "vite",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "smoke": "tsx server/smoke.ts",
+    "start": "tsx server/index.ts",
+    "export:demo": "tsx server/export-demo.ts"
+  },
+  "dependencies": {
+    "@neplex/vectorizer": "^0.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "multer": "^1.4.5-lts.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/multer": "^1.4.12",
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "esbuild@0.25.12": true,
+    "sharp@0.33.5": true
+  },
+  "description": "제품 사진 → 플랫 스케치 → 파트별 레이어 분리 → Illustrator .ai 자동 생성",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jhkim1543/vringon-flat.git"
+  },
+  "homepage": "https://jhkim1543.github.io/vringon-flat/"
+}
