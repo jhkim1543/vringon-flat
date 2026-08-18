@@ -23,6 +23,31 @@ async function post(url: string, body: BodyInit, headers: Record<string, string>
   );
 }
 
+/**
+ * 샘플링 파라미터를 지원하지 않는 모델이 있다. 실측: 현재 기본 모델은
+ * `temperature: 0`을 400 `unsupported_value`로 거절한다("Only the default (1)
+ * value is supported"). 결정론을 위해 넣은 값이 파이프라인 전체를 죽이면 안 되므로,
+ * 거절당하면 그 파라미터를 빼고 한 번 더 시도한다.
+ *
+ * 결정론은 이것 말고도 두 겹으로 지켜진다: Structured Outputs(스키마 고정)와
+ * 규칙 기반 명명 폴백(nameRules.ts). 온도를 못 낮춰도 산출물 구조는 흔들리지 않는다.
+ */
+async function postChat(body: Record<string, unknown>) {
+  const send = (b: Record<string, unknown>) =>
+    post(`${API}/chat/completions`, JSON.stringify(b), { "Content-Type": "application/json" });
+  try {
+    return await send(body);
+  } catch (e) {
+    const msg = (e as Error).message;
+    const unsupported = /unsupported_value|does not support|Unrecognized request argument/i.test(msg);
+    const hasSampling = "temperature" in body || "seed" in body || "top_p" in body;
+    if (!unsupported || !hasSampling) throw e;
+    const { temperature, seed, top_p, ...rest } = body;
+    void temperature; void seed; void top_p;
+    return send(rest);
+  }
+}
+
 const LAYER_PLAN_SCHEMA = {
   type: "object",
   additionalProperties: false,
@@ -142,9 +167,7 @@ export async function understandImage(
     },
   };
 
-  const json = await post(`${API}/chat/completions`, JSON.stringify(body), {
-    "Content-Type": "application/json",
-  });
+  const json = await postChat(body);
   return JSON.parse(json.choices[0].message.content) as LayerPlan;
 }
 
@@ -235,9 +258,7 @@ export async function nameComponents(
     },
   };
 
-  const json = await post(`${API}/chat/completions`, JSON.stringify(body), {
-    "Content-Type": "application/json",
-  });
+  const json = await postChat(body);
   const parsed = JSON.parse(json.choices[0].message.content) as {
     assignments: { index: number; partId: string }[];
   };
