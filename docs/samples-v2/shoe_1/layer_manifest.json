@@ -1,0 +1,398 @@
+{
+  "schema_version": "1.0",
+  "object": {
+    "category": "athletic sneaker",
+    "view": "lateral side view with slight three-quarter perspective, toe pointing right",
+    "style": "clean flat vector reconstruction of a black, magenta, white, and red running shoe",
+    "background": "excluded; original contains a photographic floor and white vignette",
+    "confidence": 0.96
+  },
+  "policy": {
+    "target_mode": "clean_flat",
+    "strict_vector": true,
+    "max_layers": 8,
+    "layer_order": "back_to_front"
+  },
+  "layers": [
+    {
+      "id": "tongue",
+      "label": "Padded tongue",
+      "semantic_role": "structural",
+      "parent_id": null,
+      "z_index": 0,
+      "material": "fabric",
+      "bbox_norm": [
+        0.405,
+        0.16,
+        0.603,
+        0.473
+      ],
+      "visible_description": "Extraction prompt: isolate the complete raised black padded tongue with its magenta-red central accent, including the visible rounded top and lower section behind the laces. Spatial hint: upper-center of the shoe. Negative prompt: exclude laces, eyelets, side upper, floor, glow, and cast shadows.",
+      "hidden_geometry_hint": "Reconstruct the tongue as one continuous tapered panel extending downward beneath the eyestay and laces to approximately the shoe's vamp line; the exact concealed lower contour is uncertain.",
+      "occludes": [],
+      "occluded_by": [
+        "upper_body",
+        "eyestay_accent",
+        "laces"
+      ],
+      "vector_profile": "flat_color",
+      "expected_color_count": 3,
+      "confidence": 0.9,
+      "requires_review": false,
+      "profile_reason": "flatness 0.69 ≥ 0.62, texture 0.367 < 0.45",
+      "features": {
+        "localColorVariance": 2.48,
+        "gradientCoherence": 0.19,
+        "specularRatio": 0.068,
+        "edgeDensity": 0.229,
+        "alphaSoftness": 0.187,
+        "flatnessScore": 0.69,
+        "textureScore": 0.367,
+        "distinctColors": 1187
+      }
+    },
+    {
+      "id": "sole_assembly",
+      "label": "Midsole and outsole assembly",
+      "semantic_role": "structural",
+      "parent_id": null,
+      "z_index": 1,
+      "material": "rubber",
+      "bbox_norm": [
+        0.067,
+        0.477,
+        0.941,
+        0.892
+      ],
+      "visible_description": "Extraction prompt: isolate the complete layered sole assembly, including the black upper midsole band, white foam midsole, magenta heel cushioning section, red-orange air window, and thin black tread edge. Spatial hint: full lower silhouette from heel at left to upturned toe at right. Negative prompt: exclude shoe upper, loose lace, floor, external shadows, and vignette.",
+      "hidden_geometry_hint": "Create a continuous sole silhouette beneath the entire upper. Continue the white and black sole boundaries behind the magenta heel cushioning section and behind the hanging lace; concealed transitions are inferred and should remain simple smooth curves.",
+      "occludes": [],
+      "occluded_by": [
+        "upper_body",
+        "laces",
+        "airmax_lettering"
+      ],
+      "vector_profile": "flat_color",
+      "expected_color_count": 5,
+      "confidence": 0.95,
+      "requires_review": false,
+      "profile_reason": "flatness 0.765 ≥ 0.62, texture 0.238 < 0.45",
+      "features": {
+        "localColorVariance": 1.88,
+        "gradientCoherence": 0.182,
+        "specularRatio": 0.05,
+        "edgeDensity": 0.149,
+        "alphaSoftness": 0.162,
+        "flatnessScore": 0.765,
+        "textureScore": 0.238,
+        "distinctColors": 1442
+      }
+    },
+    {
+      "id": "airmax_lettering",
+      "label": "AIR MAX heel lettering",
+      "semantic_role": "appearance",
+      "parent_id": "sole_assembly",
+      "z_index": 2,
+      "material": "line_work",
+      "bbox_norm": [
+        0.319,
+        0.578,
+        0.469,
+        0.634
+      ],
+      "visible_description": "Extraction prompt: isolate only the uppercase red-orange AIR MAX lettering centered inside the magenta lateral heel insert. Spatial hint: lower-left midfoot above the white midsole. Negative prompt: exclude the magenta insert, ribs, air window, sole outlines, shadows, and background.",
+      "hidden_geometry_hint": "No substantial hidden geometry is required; reconstruct each letter as a complete clean uppercase glyph where blur or compression obscures small edges. Preserve the visible wording without inventing additional branding.",
+      "occludes": [
+        "sole_assembly"
+      ],
+      "occluded_by": [],
+      "vector_profile": "line_mono",
+      "expected_color_count": 1,
+      "confidence": 0.95,
+      "requires_review": false,
+      "profile_reason": "material=line_work",
+      "features": {
+        "localColorVariance": 3.31,
+        "gradientCoherence": 0.023,
+        "specularRatio": 0,
+        "edgeDensity": 0.456,
+        "alphaSoftness": 0.355,
+        "flatnessScore": 0.586,
+        "textureScore": 0.729,
+        "distinctColors": 628
+      }
+    },
+    {
+      "id": "upper_body",
+      "label": "Main black upper",
+      "semantic_role": "structural",
+      "parent_id": null,
+      "z_index": 3,
+      "material": "fabric",
+      "bbox_norm": [
+        0.074,
+        0.274,
+        0.938,
+        0.701
+      ],
+      "visible_description": "Extraction prompt: isolate the primary black sneaker upper as one coherent structural shell, including the collar, quarter, eyestay structure, vamp, mudguard, and toe box. Spatial hint: broad central body above the sole. Negative prompt: exclude tongue, laces, magenta heel panel, pink side logo, pink lace-bed accent, sole, lettering, background, and photographic texture noise.",
+      "hidden_geometry_hint": "Reconstruct a continuous closed upper silhouette beneath all overlays. Continue the quarter beneath the side logo and heel counter, the eyestay beneath the laces, and the lower edge behind the sole overlap. The hidden collar opening should remain a single smooth concave boundary.",
+      "occludes": [
+        "sole_assembly",
+        "tongue"
+      ],
+      "occluded_by": [
+        "heel_counter",
+        "side_swoosh",
+        "eyestay_accent",
+        "laces"
+      ],
+      "vector_profile": "flat_color",
+      "expected_color_count": 2,
+      "confidence": 0.94,
+      "requires_review": false,
+      "profile_reason": "flatness 0.762 ≥ 0.62, texture 0.26 < 0.45",
+      "features": {
+        "localColorVariance": 1.9,
+        "gradientCoherence": 0.122,
+        "specularRatio": 0.037,
+        "edgeDensity": 0.162,
+        "alphaSoftness": 0.221,
+        "flatnessScore": 0.762,
+        "textureScore": 0.26,
+        "distinctColors": 1304
+      }
+    },
+    {
+      "id": "side_swoosh",
+      "label": "Magenta lateral side logo",
+      "semantic_role": "appearance",
+      "parent_id": "upper_body",
+      "z_index": 4,
+      "material": "flat_color",
+      "bbox_norm": [
+        0.164,
+        0.458,
+        0.621,
+        0.599
+      ],
+      "visible_description": "Extraction prompt: isolate the elongated magenta swoosh-shaped lateral logo with its narrow trailing point at the heel and broad curved head near the midfoot. Spatial hint: centered along the lateral quarter above the black midsole band. Negative prompt: exclude black upper, stitching, heel counter, lace, sole, air unit, and background.",
+      "hidden_geometry_hint": "Restore the logo as one continuous closed swoosh beneath the hanging lace and any dark trim crossings. The central hidden contour should follow a smooth tapered curve without adding unobserved markings.",
+      "occludes": [
+        "upper_body"
+      ],
+      "occluded_by": [
+        "laces"
+      ],
+      "vector_profile": "flat_color",
+      "expected_color_count": 2,
+      "confidence": 0.94,
+      "requires_review": false,
+      "profile_reason": "flatness 0.884 ≥ 0.62, texture 0.106 < 0.45",
+      "features": {
+        "localColorVariance": 0.93,
+        "gradientCoherence": 0.006,
+        "specularRatio": 0,
+        "edgeDensity": 0.066,
+        "alphaSoftness": 0.284,
+        "flatnessScore": 0.884,
+        "textureScore": 0.106,
+        "distinctColors": 249
+      }
+    },
+    {
+      "id": "heel_counter",
+      "label": "Magenta rear heel counter",
+      "semantic_role": "structural",
+      "parent_id": "upper_body",
+      "z_index": 5,
+      "material": "plastic",
+      "bbox_norm": [
+        0.066,
+        0.347,
+        0.181,
+        0.582
+      ],
+      "visible_description": "Extraction prompt: isolate the ribbed magenta-red heel counter wrapping the rear-left of the upper, preserving its tapered top and rounded forward boundary. Spatial hint: far left rear of shoe above the sole. Negative prompt: exclude black collar, main upper, side logo, sole cushioning panel, floor, and shadows.",
+      "hidden_geometry_hint": "Complete the heel counter as a single wraparound panel extending slightly behind the visible rear silhouette and beneath the collar edge; its medial-side extent is not visible and should be represented by a conservative continuation.",
+      "occludes": [
+        "upper_body"
+      ],
+      "occluded_by": [],
+      "vector_profile": "flat_color",
+      "expected_color_count": 2,
+      "confidence": 0.91,
+      "requires_review": false,
+      "profile_reason": "flatness 0.789 ≥ 0.62, texture 0.214 < 0.45",
+      "features": {
+        "localColorVariance": 1.69,
+        "gradientCoherence": 0.291,
+        "specularRatio": 0.025,
+        "edgeDensity": 0.134,
+        "alphaSoftness": 0.167,
+        "flatnessScore": 0.789,
+        "textureScore": 0.214,
+        "distinctColors": 1022
+      }
+    },
+    {
+      "id": "eyestay_accent",
+      "label": "Magenta lace-bed accent",
+      "semantic_role": "structural",
+      "parent_id": "upper_body",
+      "z_index": 6,
+      "material": "fabric",
+      "bbox_norm": [
+        0.541,
+        0.402,
+        0.721,
+        0.557
+      ],
+      "visible_description": "Extraction prompt: isolate the magenta underlay visible around and beneath the black lace loops on the lateral eyestay, including the curved lower patch toward the midfoot. Spatial hint: upper-right central region between tongue and toe box. Negative prompt: exclude black laces, tongue, main upper, side logo, eyelet holes, and shadows.",
+      "hidden_geometry_hint": "Reconstruct the accent as one continuous inset panel beneath all lace crossings, extending under the black eyestay edges. Its concealed upper boundary is uncertain and should use a simple tapered continuation.",
+      "occludes": [
+        "tongue",
+        "upper_body"
+      ],
+      "occluded_by": [
+        "laces"
+      ],
+      "vector_profile": "flat_precise",
+      "expected_color_count": 2,
+      "confidence": 0.9,
+      "requires_review": false,
+      "profile_reason": "faithful_vector 경로 (flatness 0.593)",
+      "features": {
+        "localColorVariance": 3.26,
+        "gradientCoherence": 0.027,
+        "specularRatio": 0,
+        "edgeDensity": 0.343,
+        "alphaSoftness": 0.191,
+        "flatnessScore": 0.593,
+        "textureScore": 0.548,
+        "distinctColors": 1255
+      }
+    },
+    {
+      "id": "laces",
+      "label": "Black laces",
+      "semantic_role": "structural",
+      "parent_id": "upper_body",
+      "z_index": 7,
+      "material": "fabric",
+      "bbox_norm": [
+        0.495,
+        0.335,
+        0.747,
+        0.768
+      ],
+      "visible_description": "Extraction prompt: isolate the complete black lacing system as merged editable line shapes, including horizontal crisscross segments, knot-area overlaps, and the long loose lace end descending toward the sole. Spatial hint: across the tongue and eyestay, with one strand hanging vertically near center. Negative prompt: exclude eyelet panels, tongue, side logo, sole, seams, and unrelated dark edges.",
+      "hidden_geometry_hint": "Represent each lace strand as a continuous rounded-width vector path. Continue obscured portions logically through crossings and beneath the knot; crossing order and the exact second loose end are partially uncertain and require review.",
+      "occludes": [
+        "eyestay_accent",
+        "side_swoosh",
+        "sole_assembly",
+        "tongue",
+        "upper_body"
+      ],
+      "occluded_by": [],
+      "vector_profile": "flat_color",
+      "expected_color_count": 1,
+      "confidence": 0.84,
+      "requires_review": true,
+      "profile_reason": "flatness 0.738 ≥ 0.62, texture 0.271 < 0.45",
+      "features": {
+        "localColorVariance": 2.09,
+        "gradientCoherence": 0.042,
+        "specularRatio": 0.053,
+        "edgeDensity": 0.169,
+        "alphaSoftness": 0.197,
+        "flatnessScore": 0.738,
+        "textureScore": 0.271,
+        "distinctColors": 1227
+      }
+    }
+  ],
+  "relations": [
+    {
+      "back": "eyestay_accent",
+      "front": "laces",
+      "type": "occlusion",
+      "confidence": 0.98
+    },
+    {
+      "back": "side_swoosh",
+      "front": "laces",
+      "type": "occlusion",
+      "confidence": 0.9
+    },
+    {
+      "back": "sole_assembly",
+      "front": "upper_body",
+      "type": "occlusion",
+      "confidence": 0.94
+    },
+    {
+      "back": "sole_assembly",
+      "front": "laces",
+      "type": "occlusion",
+      "confidence": 0.88
+    },
+    {
+      "back": "sole_assembly",
+      "front": "airmax_lettering",
+      "type": "occlusion",
+      "confidence": 0.99
+    },
+    {
+      "back": "tongue",
+      "front": "upper_body",
+      "type": "occlusion",
+      "confidence": 0.93
+    },
+    {
+      "back": "tongue",
+      "front": "eyestay_accent",
+      "type": "occlusion",
+      "confidence": 0.86
+    },
+    {
+      "back": "tongue",
+      "front": "laces",
+      "type": "occlusion",
+      "confidence": 0.98
+    },
+    {
+      "back": "upper_body",
+      "front": "heel_counter",
+      "type": "occlusion",
+      "confidence": 0.94
+    },
+    {
+      "back": "upper_body",
+      "front": "side_swoosh",
+      "type": "occlusion",
+      "confidence": 0.98
+    },
+    {
+      "back": "upper_body",
+      "front": "eyestay_accent",
+      "type": "occlusion",
+      "confidence": 0.92
+    },
+    {
+      "back": "upper_body",
+      "front": "laces",
+      "type": "occlusion",
+      "confidence": 0.98
+    }
+  ],
+  "provenance": {
+    "planner_prompt_version": "planner.v1.3.0",
+    "model": "gpt-5.6",
+    "input_sha256": "8afbbb1ffb27cd0dd0141232768dd5a14bfab5220193de2c2da97243fcafa2ea",
+    "created_at": "2026-08-20T10:51:29.535Z",
+    "repaired": []
+  }
+}

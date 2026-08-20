@@ -1,0 +1,261 @@
+{
+  "job": {
+    "state": "NEEDS_REVIEW",
+    "input_sha256": "ba824094776e0dc2e59048a94c90b97af229dafb134489a37f117161f265ea21",
+    "canvas": {
+      "width": 618,
+      "height": 580
+    },
+    "created_at": "2026-08-20T10:59:57.219Z",
+    "total_ms": 22285
+  },
+  "options": {
+    "targetMode": "clean_flat",
+    "strictVector": true,
+    "qualityPreset": "draft",
+    "minLayers": 3,
+    "maxLayers": 8,
+    "includeAppearanceLayers": true,
+    "restoreOccludedRegions": true,
+    "maxRetryRounds": 1,
+    "workLong": 1024,
+    "categoryHint": "jewelry"
+  },
+  "provenance": {
+    "planner_prompt_version": "planner.v1.3.0",
+    "model": "gpt-5.6",
+    "input_sha256": "ba824094776e0dc2e59048a94c90b97af229dafb134489a37f117161f265ea21",
+    "created_at": "2026-08-20T10:02:45.922Z",
+    "repaired": [],
+    "extract_prompt_version": "qwen.extract.v1.2.1",
+    "candidate_backend": "layered_hosted",
+    "metric_version": "qa.v1.0.0",
+    "seed_set": [
+      104,
+      209
+    ]
+  },
+  "selection": [
+    {
+      "layer_id": "ring_band",
+      "score": {
+        "total": 0.844,
+        "mask": 1,
+        "edge": 1,
+        "color": 0.962,
+        "shape": 0.998,
+        "graph": 1,
+        "hallucination": 0,
+        "complexity": 0.863
+      },
+      "profile": "metal_gradient",
+      "profile_reason": "material=polished_metal",
+      "checks": {
+        "continuity": 0.996,
+        "symmetry": 1,
+        "widthConsistency": 1,
+        "seamDeltaE": 0,
+        "hiddenRatio": 0,
+        "uncertain": false
+      }
+    },
+    {
+      "layer_id": "dark_reflections",
+      "score": {
+        "total": 0.7795,
+        "mask": 1,
+        "edge": 1,
+        "color": 0.665,
+        "shape": 0.999,
+        "graph": 1,
+        "hallucination": 0,
+        "complexity": 1
+      },
+      "profile": "metal_gradient",
+      "profile_reason": "material=polished_metal",
+      "checks": {
+        "continuity": 0.997,
+        "symmetry": 1,
+        "widthConsistency": 1,
+        "seamDeltaE": 0,
+        "hiddenRatio": 0,
+        "uncertain": false
+      }
+    },
+    {
+      "layer_id": "engraving",
+      "score": {
+        "total": 0.8207,
+        "mask": 1,
+        "edge": 1,
+        "color": 0.743,
+        "shape": 1,
+        "graph": 1,
+        "hallucination": 0,
+        "complexity": 0.662
+      },
+      "profile": "line_mono",
+      "profile_reason": "material=line_work",
+      "checks": {
+        "continuity": 0.999,
+        "symmetry": 1,
+        "widthConsistency": 1,
+        "seamDeltaE": 0,
+        "hiddenRatio": 0,
+        "uncertain": true
+      }
+    },
+    {
+      "layer_id": "specular_highlights",
+      "score": {
+        "total": 0.8321,
+        "mask": 1,
+        "edge": 1,
+        "color": 0.959,
+        "shape": 0.996,
+        "graph": 1,
+        "hallucination": 0,
+        "complexity": 1
+      },
+      "profile": "metal_gradient",
+      "profile_reason": "material=polished_metal",
+      "checks": {
+        "continuity": 0.991,
+        "symmetry": 1,
+        "widthConsistency": 1,
+        "seamDeltaE": 0,
+        "hiddenRatio": 0,
+        "uncertain": false
+      }
+    }
+  ],
+  "qa": {
+    "pass": true,
+    "needsReview": true,
+    "structure": {
+      "layerCount": 4,
+      "idUnique": true,
+      "zOrderDag": true,
+      "parentRelationOk": true,
+      "manifestSvgIntegrity": 1,
+      "violations": []
+    },
+    "silhouette": {
+      "foregroundIou": 0.9603,
+      "boundaryFScore": 0.9195,
+      "boundaryPrecision": 0.9682,
+      "boundaryRecall": 0.8755
+    },
+    "color": {
+      "maskedDeltaE2000": 9.62,
+      "outliers": [
+        {
+          "layerId": "engraving",
+          "deltaE": 25.43
+        },
+        {
+          "layerId": "dark_reflections",
+          "deltaE": 14.77
+        }
+      ]
+    },
+    "perceptual": {
+      "ssim": 0.897,
+      "globalError": 0.3206
+    },
+    "amodal": {
+      "continuity": 1,
+      "hiddenRatioMax": 0,
+      "uncertainLayers": [
+        "engraving"
+      ]
+    },
+    "vector": {
+      "invalidGeometry": 0,
+      "totalPaths": 156,
+      "totalNodes": 1572,
+      "fileKb": 59.5,
+      "budgetViolations": [],
+      "strictVectorCompliant": true
+    },
+    "failures": [
+      {
+        "signal": "visible_color_edge",
+        "layerId": "engraving",
+        "detail": "masked ΔE2000 25.43",
+        "action": "원본 visible-pixel 보호 비율 상향, 후보 재선택"
+      },
+      {
+        "signal": "visible_color_edge",
+        "layerId": "dark_reflections",
+        "detail": "masked ΔE2000 14.77",
+        "action": "원본 visible-pixel 보호 비율 상향, 후보 재선택"
+      }
+    ],
+    "notes": [
+      "추정 영역 확인 필요: engraving"
+    ],
+    "metricVersion": "qa.v1.0.0"
+  },
+  "retries": [],
+  "stages": [
+    {
+      "id": "S00_S01_preprocess",
+      "state": "PREPROCESSING",
+      "ms": 15741,
+      "detail": "618×580 / 배경 제거 (SAM 3 \"ring\" 1개 인스턴스, 최고점 0.96, 면적 7%) / 제품 크롭 1400x869 → 618x580 (화면 점유 23% → ~88%)"
+    },
+    {
+      "id": "S02_plan",
+      "state": "PLANNING",
+      "ms": 1,
+      "detail": "4 layers (캐시)"
+    },
+    {
+      "id": "S03_graph",
+      "state": "VALIDATING_PLAN",
+      "ms": 8,
+      "detail": ""
+    },
+    {
+      "id": "S04_masks",
+      "state": "SEGMENTING",
+      "ms": 3253,
+      "detail": "커버리지 100.0%"
+    },
+    {
+      "id": "S05_S06_candidates",
+      "state": "GENERATING_LAYERS",
+      "ms": 354,
+      "detail": "backend=layered_hosted 호출 0 캐시 2"
+    },
+    {
+      "id": "S07_S08_compose_r0",
+      "state": "REFINING_ALPHA",
+      "ms": 817
+    },
+    {
+      "id": "S09_select_r0",
+      "state": "SELECTING_CANDIDATES",
+      "ms": 34,
+      "detail": "composite 0.7273 · 조합 9개 평가"
+    },
+    {
+      "id": "S10_S12_vectorize_r0",
+      "state": "VECTORIZING",
+      "ms": 1667
+    },
+    {
+      "id": "S13_assemble_r0",
+      "state": "ASSEMBLING",
+      "ms": 9,
+      "detail": "path 156 · 60KB"
+    },
+    {
+      "id": "S14_qa_r0",
+      "state": "VALIDATING_OUTPUT",
+      "ms": 316,
+      "detail": "IoU 0.9603 · F 0.9195 · ΔE 9.62"
+    }
+  ]
+}

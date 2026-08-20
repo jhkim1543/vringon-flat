@@ -1,0 +1,20 @@
+{
+  "extract_prompt_version": "qwen.extract.v1.2.1",
+  "backend": "layered_hosted",
+  "configs": [
+    {
+      "cfg": 4,
+      "steps": 30,
+      "negative": "other parts, background, table, external cast shadow, duplicate, crop,\nrescale, shifted position, altered perspective, additional gemstone, extra prong,\nnew engraving, text, watermark, disconnected fragments, opaque background",
+      "numLayers": 8,
+      "seed": 104
+    },
+    {
+      "cfg": 4,
+      "steps": 30,
+      "negative": "other parts, background, table, external cast shadow, duplicate, crop,\nrescale, shifted position, altered perspective, additional gemstone, extra prong,\nnew engraving, text, watermark, disconnected fragments, opaque background",
+      "numLayers": 8,
+      "seed": 209
+    }
+  ]
+}

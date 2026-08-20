@@ -6,7 +6,7 @@
 나누고, 벡터로 다시 그리는 일 — 을 파이프라인으로 만든 것입니다.
 결과물은 Illustrator에서 바로 열려서 파트별로 색·형태를 수정할 수 있습니다.
 
-**▶ 데모 · 결과 9종 · API 문서: https://jhkim1543.github.io/vringon-flat/**
+**▶ 데모 · 결과 9종 · V2 레이어 SVG · API 문서: https://jhkim1543.github.io/vringon-flat/**
 
 <sub>신발 · 가방 · 주얼리를 중심으로 검증했고, 의류·안경·시계·가구 등 11개 카테고리와
 분류 밖의 물건도 처리합니다.</sub>
@@ -197,6 +197,71 @@ npx tsx server/export-demo.ts         # docs/samples 갱신
 - 메시·비즈처럼 반복 질감이 많은 제품은 선 패스가 많아져 Illustrator가 무거워집니다.
 - 한 장의 사진에서 보이지 않는 면(바닥·안감)은 만들 수 없습니다.
 - 잡 목록이 메모리에 있어 서버 재시작 시 상태 조회가 끊깁니다(파일은 남음).
+
+---
+
+## V2 — 레이어 분리 벡터 SVG (개발계획서 구현)
+
+`server/v2/`는 별도 설계 문서(*단일 객체 디자인 이미지의 레이어 분리 벡터 SVG 변환 시스템*, v1.0)를
+그대로 구현한 **두 번째 파이프라인**입니다. V1과 목표가 다릅니다.
+
+| | V1 (기본) | V2 (`server/v2/`) |
+|---|---|---|
+| 목표 | 테크팩용 **클린 플랫 도면** | **원본 충실 재현** (사진 픽셀 보존) |
+| 경로 | 사진 → 플랫 스케치 생성 → 분해 → 벡터 | 사진 → Layer Manifest → 가시 마스크 → amodal 복원 → 벡터 |
+| 산출 | `.ai` / `.jsx` / `.svg` / IR | `layered.svg` / manifest / layers/{id}.{png,svg} / QA / bundle |
+| 강점 | 패스·노드가 적어 편집이 가볍다 | 형상·색이 원본과 일치한다 |
+
+```bash
+npx tsx server/run-v2.ts <이미지> <이름> --preset draft|standard|high --category jewelry.ring
+npx tsx server/compare-v1-v2.ts            # 같은 지표로 V1↔V2 비교표
+```
+
+### 16단계 (S00–S15)
+
+| 단계 | 모듈 | 하는 일 |
+|---|---|---|
+| S00–S01 | `run2.ts` | 입력 수신·정규화·객체 격리·크롭 |
+| S02 | `planner.ts` | GPT-5.6 Structured Outputs → **Layer Manifest** (단일 source of truth) |
+| S03 | `graph.ts` | id 정규화 · occlusion DAG 검증 · 순환 제거 · z 재계산 |
+| S04 | `masks.ts` | 레이어별 가시영역 마스크 (후보 생성·선택·커버리지 검증·bleed) |
+| S05–S06 | `qwenWorker.ts` | 레이어별 프롬프트 구성 + K개 후보 생성 (seed/CFG/negative) |
+| S07–S08 | `amodal.ts` | 가려진 영역 복원 + alpha matting · seam 색 조화 |
+| S09 | `scorer.ts` | 후보 점수(mask·edge·color·shape·graph·hallucination) + beam search |
+| S10–S12 | `profiles.ts`, `vectorizeV2.ts` | 재질 분기 · 프로파일 벡터화 · 기하/Bézier 정리 |
+| S13 | `assemble.ts` | z-order대로 `<g>` 조립 · defs · metadata · strict 검사 |
+| S14 | `qaV2.ts` | **SVG를 다시 래스터화해** 원본과 대조 (IoU·경계F·ΔE2000·SSIM) |
+| S15 | `run2.ts` | 실패 레이어만 재생성 · 산출물 패키지 |
+
+### 핵심 합성 규칙
+
+생성 모델이 원본을 바꾸지 못하게, **보이는 픽셀은 원본에서 가져오고 가려진 부분만 생성**합니다.
+
+```
+M_hidden = clamp(M_amodal − dilate(M_visible, seam_margin), 0, 1)
+RGB      = I_original × M_visible + G × M_hidden
+Alpha    = union(M_visible, M_hidden)
+```
+
+### 실측 비교 (3종, 같은 기준 이미지·같은 지표)
+
+| | 레이어 | 패스 | 노드 | KB | 실루엣 IoU | 경계 F | 색차 ΔE2000 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| **V2** | 6.0 | 563 | 15,861 | 546 | **0.974** | **0.894** | **7.6** |
+| **V1** | 11.7 | 162 | 1,578 | 66 | 0.859 | 0.322 | 19.9 |
+
+원본 충실도는 V2가, 편집 경량성은 V1이 앞섭니다 — 설계 문서가 예고한 트레이드오프 그대로입니다.
+**테크팩 용도면 V1, 원본 재현 용도면 V2**를 쓰세요.
+
+### 모델 가용성
+
+`Qwen-Image-Layered-Control`은 공개 inference provider가 없어 **자체 호스팅(80GB GPU)이 전제**입니다.
+그래서 생성 워커를 두 백엔드로 만들었습니다.
+
+- `QWEN_LC_URL` 설정 시 → 레이어별 프롬프트 추출 (설계 문서의 1순위 경로)
+- 미설정 시 → 같은 계약을 채우는 대체 백엔드 (전체 분해 후 가시 마스크와 매칭)
+
+두 경로 모두 후보마다 model revision·seed·config hash를 남기므로 GPU가 준비되면 env만 바꾸면 됩니다.
 
 ---
 

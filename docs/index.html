@@ -135,6 +135,7 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
     </div>
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-tab="gallery">결과 갤러리</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="v2">V2 · 레이어 SVG</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="run">직접 실행</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="api">API 문서</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="how">동작 원리</button>
@@ -153,6 +154,68 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
   </p>
   <div class="grid" id="cards"></div>
   <div class="detail" id="detail" hidden></div>
+</section>
+
+<!-- ─────────── V2 레이어 분리 SVG ─────────── -->
+<section id="v2" hidden>
+  <h2>V2 — 레이어 분리 벡터 SVG (개발계획서 구현)</h2>
+  <p class="sub">
+    <b>사진의 픽셀을 그대로 지키면서</b> 파트별 레이어로 나누는 두 번째 파이프라인입니다.
+    플랫 스케치를 거치지 않고, GPT-5.6이 만든 <b>Layer Manifest</b>를 단일 계약으로 삼아
+    가시영역 마스크 → amodal 복원 → 재질별 벡터화 → 재합성 검증까지 16단계(S00–S15)를 돕니다.
+  </p>
+
+  <div class="note">
+    <b>V1과 목표가 다릅니다.</b> V1은 테크팩용 <b>클린 플랫 도면</b>(원본을 스타일 변환),
+    V2는 <b>원본 충실 재현</b>(원본 픽셀 보존). 아래 표에서 트레이드오프가 그대로 보입니다 —
+    V2는 형상·색 일치가 높고, V1은 패스·노드가 훨씬 적어 편집이 가볍습니다.
+  </div>
+
+  <h3>V1 ↔ V2 실측 비교</h3>
+  <p class="sub" style="margin-bottom:8px">같은 기준 이미지(격리·크롭된 원본)를 두 결과의 최종 SVG를 래스터화해 동일 지표로 측정</p>
+  <div style="overflow-x:auto"><table id="v2cmp">
+    <tr><th>샘플</th><th>경로</th><th class="num">레이어</th><th class="num">패스</th><th class="num">노드</th>
+        <th class="num">KB</th><th class="num">실루엣 IoU</th><th class="num">경계 F</th><th class="num">색차 ΔE2000</th></tr>
+  </table></div>
+  <p class="sub" style="margin-top:8px">
+    실루엣 IoU·경계 F는 <b>높을수록</b> 원본과 형상이 일치, 색차 ΔE2000은 <b>낮을수록</b> 원본 색에 가깝습니다.
+  </p>
+
+  <h3>샘플</h3>
+  <div class="grid" id="v2cards"></div>
+  <div class="detail" id="v2detail" hidden></div>
+
+  <h3>16단계 파이프라인</h3>
+  <div class="pipe">
+    <div class="st"><b>S00–S01</b>입력 수신 · 정규화 · 객체 격리</div>
+    <div class="st"><b>S02</b>Layer Manifest (Structured Outputs)</div>
+    <div class="st"><b>S03</b>occlusion DAG 검증·수리</div>
+    <div class="st"><b>S04</b>가시영역 마스크</div>
+    <div class="st"><b>S05–S06</b>레이어별 후보 생성</div>
+    <div class="st"><b>S07–S08</b>amodal 복원 · alpha 정제</div>
+    <div class="st"><b>S09</b>후보 평가 · beam search</div>
+    <div class="st"><b>S10–S12</b>재질 프로파일 · 벡터화 · 기하 정리</div>
+    <div class="st"><b>S13</b>SVG 조립</div>
+    <div class="st"><b>S14</b>재합성 검증</div>
+    <div class="st"><b>S15</b>레이어 단위 재시도 · 납품</div>
+  </div>
+
+  <h3>핵심 합성 규칙</h3>
+  <p>생성 모델이 원본을 바꾸지 못하게, <b>보이는 픽셀은 원본에서 가져오고 가려진 부분만 생성</b>합니다.</p>
+  <pre><code>M_hidden = clamp(M_amodal − dilate(M_visible, seam_margin), 0, 1)
+RGB      = I_original × M_visible + G × M_hidden
+Alpha    = union(M_visible, M_hidden)
+L        = edge_harmonize(RGB, Alpha, seam_band)</code></pre>
+
+  <h3>알려진 제약</h3>
+  <ul>
+    <li><b>Qwen-Image-Layered-Control은 호스팅 API가 없습니다.</b> 자체 호스팅(80GB GPU)이 전제라
+      워커를 2백엔드로 만들었습니다 — <code>QWEN_LC_URL</code>이 있으면 레이어별 프롬프트 추출,
+      없으면 같은 계약을 채우는 대체 백엔드로 동작합니다.</li>
+    <li>반복 질감이 많은 제품(비즈 메시 가방)은 패스가 1,200개를 넘겨 편집이 무거워집니다.
+      계획서의 complexity budget이 자동으로 단순화를 강화하지만 한계가 있습니다.</li>
+    <li>배경이 복잡하거나 반사가 강한 사진은 MVP 입력 범위 밖입니다.</li>
+  </ul>
 </section>
 
 <!-- ─────────── 직접 실행 ─────────── -->
@@ -459,6 +522,186 @@ async function open(i){
   });
   document.getElementById("allOn").onclick = () => list.querySelectorAll("input").forEach(b => { if(!b.checked){ b.checked = true; b.onchange(); } });
   document.getElementById("allOff").onclick = () => list.querySelectorAll("input").forEach(b => { if(b.checked){ b.checked = false; b.onchange(); } });
+}
+
+
+// ── V2 (레이어 분리 SVG) ────────────────────────────────────
+let V2 = null;
+fetch("samples-v2/index.json").then(r => r.json()).then(d => {
+  V2 = d;
+
+  // 비교표 — 두 경로 중 더 나은 쪽을 굵게
+  const t = document.getElementById("v2cmp");
+  const rows = d.comparison?.rows ?? [];
+  const byName = {};
+  for (const r of rows) (byName[r.sample] ??= {})[r.variant] = r;
+  for (const name of d.samples.map(s => s.name)) {
+    for (const v of ["V2", "V1"]) {
+      const r = byName[name]?.[v];
+      if (!r) continue;
+      const o = byName[name]?.[v === "V2" ? "V1" : "V2"];
+      const bold = cond => (cond ? ' style="font-weight:700"' : "");
+      t.insertAdjacentHTML("beforeend", `<tr>
+        <td>${v === "V2" ? name : ""}</td>
+        <td><b>${v}</b> <span style="color:var(--dim);font-size:11.5px">${v === "V2" ? "계획서" : "플랫"}</span></td>
+        <td class="num">${r.layers}</td>
+        <td class="num">${r.paths.toLocaleString()}</td>
+        <td class="num">${r.nodes.toLocaleString()}</td>
+        <td class="num">${r.kb}</td>
+        <td class="num"${bold(o && r.iou > o.iou)}>${r.iou.toFixed(3)}</td>
+        <td class="num"${bold(o && r.boundaryF > o.boundaryF)}>${r.boundaryF.toFixed(3)}</td>
+        <td class="num"${bold(o && r.deltaE < o.deltaE)}>${r.deltaE.toFixed(1)}</td></tr>`);
+    }
+  }
+  const avg = (v, k) => {
+    const xs = rows.filter(r => r.variant === v).map(r => r[k]);
+    return xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : 0;
+  };
+  for (const v of ["V2", "V1"]) {
+    if (!rows.some(r => r.variant === v)) continue;
+    t.insertAdjacentHTML("beforeend", `<tr style="background:var(--panel-2)">
+      <td><b>평균</b></td><td><b>${v}</b></td>
+      <td class="num">${avg(v, "layers").toFixed(1)}</td>
+      <td class="num">${avg(v, "paths").toFixed(0)}</td>
+      <td class="num">${avg(v, "nodes").toFixed(0)}</td>
+      <td class="num">${avg(v, "kb").toFixed(0)}</td>
+      <td class="num">${avg(v, "iou").toFixed(3)}</td>
+      <td class="num">${avg(v, "boundaryF").toFixed(3)}</td>
+      <td class="num">${avg(v, "deltaE").toFixed(1)}</td></tr>`);
+  }
+
+  const c = document.getElementById("v2cards");
+  c.innerHTML = d.samples.map((s, i) => `
+    <button class="card" data-i="${i}">
+      <img src="${s.files.input}" alt="${s.name}" loading="lazy">
+      <div class="meta">
+        <div class="t">${s.categoryLabel} · ${s.name}</div>
+        <div class="d">레이어 ${s.layers.length}개 · IoU ${s.qa.foregroundIou.toFixed(3)}</div>
+      </div>
+    </button>`).join("");
+  c.querySelectorAll(".card").forEach(x => x.onclick = () => openV2(+x.dataset.i));
+  openV2(0);
+}).catch(e => {
+  const c = document.getElementById("v2cards");
+  if (c) c.innerHTML = `<p class="sub">V2 샘플을 불러오지 못했습니다: ${e.message}</p>`;
+});
+
+async function openV2(i) {
+  const s = V2.samples[i];
+  const host = document.getElementById("v2detail");
+  document.querySelectorAll("#v2cards .card").forEach((c, k) => c.setAttribute("aria-current", String(k === i)));
+  host.hidden = false;
+  const q = s.qa;
+  const kpi = (ok, label) => `<span class="badge ${ok ? "ok" : "warn"}">${label}</span>`;
+  const prov = s.provenance || {};
+  const candErrors = prov.candidate_errors ?? [];
+
+  host.innerHTML = `
+    <div class="detail-head">
+      <div class="t">${s.categoryLabel} · ${s.name}</div>
+      <div class="badges">
+        <span class="badge">${s.width}×${s.height}</span>
+        ${kpi(q.foregroundIou >= 0.90, `실루엣 IoU ${q.foregroundIou.toFixed(3)}`)}
+        ${kpi(q.boundaryF >= 0.90, `경계 F ${q.boundaryF.toFixed(3)}`)}
+        ${kpi(q.deltaE <= 12, `ΔE2000 ${q.deltaE.toFixed(1)}`)}
+        ${kpi(q.invalidGeometry === 0, `invalid ${q.invalidGeometry}`)}
+        ${kpi(q.integrity >= 1, `manifest↔SVG ${q.integrity}`)}
+        <span class="badge ${s.state === "SUCCEEDED" ? "ok" : "warn"}">${s.state}</span>
+      </div>
+    </div>
+    <div class="stage3">
+      <div class="pane"><h4>1. 원본 (격리·크롭)</h4><div class="frame"><img src="${s.files.input}" alt="원본"></div></div>
+      <div class="pane"><h4>2. V2 — 레이어 분리 벡터</h4><div class="frame" id="v2svgHost">불러오는 중…</div></div>
+      <div class="pane"><h4>3. V1 — 플랫 도면 (비교)</h4><div class="frame" id="v1svgHost">${s.v1 ? "불러오는 중…" : "<span style='color:var(--dim);font-size:13px'>V1 결과 없음</span>"}</div></div>
+    </div>
+    <div class="layers">
+      <div class="layerbar">
+        <b style="font-size:13.5px">Layer Manifest — 뒤에서 앞 순서</b>
+        <button class="btn" id="v2AllOn">전체 켜기</button>
+        <button class="btn" id="v2AllOff">전체 끄기</button>
+        <span style="color:var(--dim);font-size:12.5px">체크를 끄면 그 파트만 사라집니다</span>
+      </div>
+      <div style="overflow-x:auto"><table id="v2layers">
+        <tr><th>표시</th><th class="num">z</th><th>레이어</th><th>역할</th><th>재질</th>
+            <th>벡터 프로파일</th><th class="num">패스</th><th class="num">신뢰도</th><th>가려짐</th></tr>
+      </table></div>
+    </div>
+    ${q.failures.length ? `<div class="layers">
+      <b style="font-size:13.5px">QA 실패 신호 ${q.failures.length}건 — 레이어 단위로 귀속</b>
+      <div style="margin-top:8px">${q.failures.map(f => `<div style="font-size:13px;margin-bottom:6px">
+        <code>${f.signal}</code> ${f.layerId ? `<b>${f.layerId}</b>` : ""} — ${f.detail}
+        <div style="color:var(--dim);font-size:12.3px">→ ${f.action}</div></div>`).join("")}</div>
+    </div>` : ""}
+    <div class="layers">
+      <b style="font-size:13.5px">파이프라인 소요 · 재현 정보</b>
+      <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+        ${s.stages.filter(x => x.ms > 300).map(x => `<span class="badge">${x.id.replace(/_r\d+$/, "")} ${(x.ms / 1000).toFixed(1)}s</span>`).join("")}
+      </div>
+      <div style="margin-top:10px;color:var(--dim);font-size:12.5px">
+        백엔드 <code>${prov.candidate_backend ?? "-"}</code> ·
+        planner <code>${prov.planner_prompt_version ?? "-"}</code> ·
+        추출 <code>${prov.extract_prompt_version ?? "-"}</code> ·
+        지표 <code>${prov.metric_version ?? "-"}</code>
+        ${candErrors.length ? `<br><span style="color:var(--warn)">후보 생성 실패 ${candErrors.length}건 — 해당 레이어는 가림 복원 없이 가시영역만으로 구성됨</span>` : ""}
+        ${s.retries.length ? `<br>레이어 재시도 ${s.retries.length}회: ${s.retries.map(r => r.layerIds.join(", ")).join(" / ")}` : ""}
+      </div>
+    </div>
+    <div class="dl">
+      <b style="font-size:13.5px">다운로드</b>
+      <a class="btn pri" href="${s.files.svg}" download="${s.name}-layered.svg">layered.svg</a>
+      <a class="btn" href="${s.files.manifest}" download>layer_manifest.json</a>
+      <a class="btn" href="${s.files.qa}" download>qa_report.json</a>
+      ${s.files.bundle ? `<a class="btn" href="${s.files.bundle}" download>job_bundle.zip</a>` : ""}
+    </div>`;
+
+  // V2 SVG 인라인 (레이어 토글을 위해)
+  const v2host = document.getElementById("v2svgHost");
+  let svg = null;
+  try {
+    v2host.innerHTML = await (await fetch(s.files.svg)).text();
+    svg = v2host.querySelector("svg");
+    if (svg) {
+      svg.removeAttribute("width"); svg.removeAttribute("height");
+      svg.style.width = "100%"; svg.style.height = "100%";
+    }
+  } catch (e) { v2host.textContent = "SVG를 불러오지 못했습니다"; }
+
+  if (s.v1) {
+    const v1host = document.getElementById("v1svgHost");
+    try {
+      v1host.innerHTML = await (await fetch(s.v1.svg)).text();
+      const v1svg = v1host.querySelector("svg");
+      if (v1svg) {
+        v1svg.removeAttribute("width"); v1svg.removeAttribute("height");
+        v1svg.style.width = "100%"; v1svg.style.height = "100%";
+      }
+    } catch { v1host.textContent = "V1 결과를 불러오지 못했습니다"; }
+  }
+
+  const tbl = document.getElementById("v2layers");
+  for (const L of s.layers) {
+    tbl.insertAdjacentHTML("beforeend", `<tr>
+      <td><input type="checkbox" checked data-lid="${L.id}" style="accent-color:var(--accent)"></td>
+      <td class="num">${L.z}</td>
+      <td><b>${L.label || L.id}</b><div style="color:var(--dim);font-size:11.5px">${L.id}</div></td>
+      <td>${L.role}${L.requiresReview ? ' <span class="badge warn" style="font-size:10.5px">검토</span>' : ""}</td>
+      <td>${L.material}</td>
+      <td><code style="font-size:11.5px">${L.profile}</code>${L.profileReason ? `<div style="color:var(--dim);font-size:11px">${L.profileReason}</div>` : ""}</td>
+      <td class="num">${L.paths}</td>
+      <td class="num">${L.confidence}</td>
+      <td style="color:var(--dim);font-size:12px">${L.occludedBy.length ? L.occludedBy.join(", ") : "—"}</td></tr>`);
+  }
+  tbl.querySelectorAll("input[data-lid]").forEach(box => {
+    box.onchange = () => {
+      const g = svg ? svg.querySelector(`#layer-${CSS.escape(box.dataset.lid)}`) : null;
+      if (g) g.style.display = box.checked ? "" : "none";
+      box.closest("tr").style.opacity = box.checked ? "1" : "0.45";
+    };
+  });
+  document.getElementById("v2AllOn").onclick = () =>
+    tbl.querySelectorAll("input").forEach(b => { if (!b.checked) { b.checked = true; b.onchange(); } });
+  document.getElementById("v2AllOff").onclick = () =>
+    tbl.querySelectorAll("input").forEach(b => { if (b.checked) { b.checked = false; b.onchange(); } });
 }
 
 // ── 직접 실행 ───────────────────────────────────────────────

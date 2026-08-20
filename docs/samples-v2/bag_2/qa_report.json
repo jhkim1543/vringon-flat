@@ -1,0 +1,357 @@
+{
+  "job": {
+    "state": "NEEDS_REVIEW",
+    "input_sha256": "d07a3b66d4fb25e29e4d878422d1dac2850ad8a475d8252cb96bd51390c591d3",
+    "canvas": {
+      "width": 796,
+      "height": 933
+    },
+    "created_at": "2026-08-20T11:08:11.747Z",
+    "total_ms": 170648
+  },
+  "options": {
+    "targetMode": "clean_flat",
+    "strictVector": true,
+    "qualityPreset": "draft",
+    "minLayers": 3,
+    "maxLayers": 8,
+    "includeAppearanceLayers": true,
+    "restoreOccludedRegions": true,
+    "maxRetryRounds": 1,
+    "workLong": 1024,
+    "categoryHint": "bag"
+  },
+  "provenance": {
+    "planner_prompt_version": "planner.v1.3.0",
+    "model": "gpt-5.6",
+    "input_sha256": "d07a3b66d4fb25e29e4d878422d1dac2850ad8a475d8252cb96bd51390c591d3",
+    "created_at": "2026-08-20T11:07:27.486Z",
+    "repaired": [],
+    "extract_prompt_version": "qwen.extract.v1.2.1",
+    "candidate_backend": "layered_hosted",
+    "candidate_errors": [
+      "fal fal-ai/qwen-image-layered 403: {\"detail\":\"User is locked. Reason: TOP_UP.\"}"
+    ],
+    "metric_version": "qa.v1.0.0",
+    "seed_set": [
+      104,
+      209
+    ]
+  },
+  "selection": [
+    {
+      "layer_id": "chain_strap",
+      "score": {
+        "total": 0.7974,
+        "mask": 1,
+        "edge": 1,
+        "color": 0.764,
+        "shape": 1,
+        "graph": 1,
+        "hallucination": 0,
+        "complexity": 1
+      },
+      "profile": "metal_gradient",
+      "profile_reason": "material=polished_metal",
+      "checks": {
+        "continuity": 0.999,
+        "symmetry": 1,
+        "widthConsistency": 1,
+        "seamDeltaE": 0,
+        "hiddenRatio": 0,
+        "uncertain": false
+      }
+    },
+    {
+      "layer_id": "bag_body",
+      "score": {
+        "total": 0.7881,
+        "mask": 1,
+        "edge": 1,
+        "color": 0.712,
+        "shape": 0.999,
+        "graph": 1,
+        "hallucination": 0,
+        "complexity": 1
+      },
+      "profile": "flat_color",
+      "profile_reason": "고주파 텍스처(texture 0.873) — strict 모드라 clean_flat로 단순화",
+      "checks": {
+        "continuity": 0.998,
+        "symmetry": 1,
+        "widthConsistency": 1,
+        "seamDeltaE": 0,
+        "hiddenRatio": 0,
+        "uncertain": false
+      }
+    },
+    {
+      "layer_id": "bead_surface",
+      "score": {
+        "total": 0.8313,
+        "mask": 1,
+        "edge": 1,
+        "color": 0.952,
+        "shape": 1,
+        "graph": 1,
+        "hallucination": 0,
+        "complexity": 1
+      },
+      "profile": "flat_precise",
+      "profile_reason": "faithful_vector 경로 (flatness 0.532)",
+      "checks": {
+        "continuity": 1,
+        "symmetry": 1,
+        "widthConsistency": 1,
+        "seamDeltaE": 0,
+        "hiddenRatio": 0,
+        "uncertain": false
+      }
+    },
+    {
+      "layer_id": "fold_shadows",
+      "score": {
+        "total": 0.9096,
+        "mask": 1,
+        "edge": 1,
+        "color": 0.994,
+        "shape": 1,
+        "graph": 1,
+        "hallucination": 0,
+        "complexity": 0.115
+      },
+      "profile": "flat_color",
+      "profile_reason": "고주파 텍스처(texture 1) — strict 모드라 clean_flat로 단순화",
+      "checks": {
+        "continuity": 1,
+        "symmetry": 1,
+        "widthConsistency": 1,
+        "seamDeltaE": 0,
+        "hiddenRatio": 0,
+        "uncertain": true
+      }
+    },
+    {
+      "layer_id": "metal_frame",
+      "score": {
+        "total": 0.8947,
+        "mask": 1,
+        "edge": 1,
+        "color": 0.97,
+        "shape": 1,
+        "graph": 1,
+        "hallucination": 0,
+        "complexity": 0.248
+      },
+      "profile": "metal_base",
+      "profile_reason": "material=brushed_metal",
+      "checks": {
+        "continuity": 1,
+        "symmetry": 1,
+        "widthConsistency": 1,
+        "seamDeltaE": 0,
+        "hiddenRatio": 0,
+        "uncertain": false
+      }
+    },
+    {
+      "layer_id": "floral_clasp",
+      "score": {
+        "total": 0.8997,
+        "mask": 1,
+        "edge": 1,
+        "color": 0.935,
+        "shape": 1,
+        "graph": 1,
+        "hallucination": 0,
+        "complexity": 0.107
+      },
+      "profile": "metal_gradient",
+      "profile_reason": "material=polished_metal",
+      "checks": {
+        "continuity": 1,
+        "symmetry": 1,
+        "widthConsistency": 1,
+        "seamDeltaE": 0,
+        "hiddenRatio": 0,
+        "uncertain": false
+      }
+    }
+  ],
+  "qa": {
+    "pass": false,
+    "needsReview": true,
+    "structure": {
+      "layerCount": 6,
+      "idUnique": true,
+      "zOrderDag": true,
+      "parentRelationOk": true,
+      "manifestSvgIntegrity": 1,
+      "violations": []
+    },
+    "silhouette": {
+      "foregroundIou": 0.962,
+      "boundaryFScore": 0.7952,
+      "boundaryPrecision": 0.9036,
+      "boundaryRecall": 0.71
+    },
+    "color": {
+      "maskedDeltaE2000": 7.14,
+      "outliers": [
+        {
+          "layerId": "chain_strap",
+          "deltaE": 20.53
+        },
+        {
+          "layerId": "floral_clasp",
+          "deltaE": 14.42
+        }
+      ]
+    },
+    "perceptual": {
+      "ssim": 0.7342,
+      "globalError": 0.2379
+    },
+    "amodal": {
+      "continuity": 1,
+      "hiddenRatioMax": 0,
+      "uncertainLayers": [
+        "fold_shadows"
+      ]
+    },
+    "vector": {
+      "invalidGeometry": 0,
+      "totalPaths": 1244,
+      "totalNodes": 37885,
+      "fileKb": 1224.5,
+      "budgetViolations": [
+        "fold_shadows: budget 초과로 단순화 강화"
+      ],
+      "strictVectorCompliant": true
+    },
+    "failures": [
+      {
+        "signal": "visible_color_edge",
+        "layerId": "chain_strap",
+        "detail": "masked ΔE2000 20.53",
+        "action": "원본 visible-pixel 보호 비율 상향, 후보 재선택"
+      },
+      {
+        "signal": "visible_color_edge",
+        "layerId": "floral_clasp",
+        "detail": "masked ΔE2000 14.42",
+        "action": "원본 visible-pixel 보호 비율 상향, 후보 재선택"
+      },
+      {
+        "signal": "path_count_excess",
+        "layerId": "fold_shadows",
+        "detail": "path 962 / node 31702",
+        "action": "profile 변경, palette 축소, gradient fitting"
+      }
+    ],
+    "notes": [
+      "경계 F-score 0.795 < 0.9",
+      "추정 영역 확인 필요: fold_shadows"
+    ],
+    "metricVersion": "qa.v1.0.0"
+  },
+  "retries": [
+    {
+      "round": 1,
+      "layerIds": [
+        "chain_strap",
+        "floral_clasp",
+        "fold_shadows"
+      ],
+      "reason": "chain_strap:visible_color_edge, floral_clasp:visible_color_edge, fold_shadows:path_count_excess"
+    }
+  ],
+  "stages": [
+    {
+      "id": "S00_S01_preprocess",
+      "state": "PREPROCESSING",
+      "ms": 8855,
+      "detail": "796×933 / SAM 3이 제품을 찾지 못함 — 원본 그대로 진행 / 제품 크롭 1400x933 → 796x933 (화면 점유 46% → ~88%)"
+    },
+    {
+      "id": "S02_plan",
+      "state": "PLANNING",
+      "ms": 117530,
+      "detail": "6 layers"
+    },
+    {
+      "id": "S03_graph",
+      "state": "VALIDATING_PLAN",
+      "ms": 10,
+      "detail": ""
+    },
+    {
+      "id": "S04_masks",
+      "state": "SEGMENTING",
+      "ms": 3596,
+      "detail": "커버리지 97.6%"
+    },
+    {
+      "id": "S05_S06_candidates",
+      "state": "GENERATING_LAYERS",
+      "ms": 2001,
+      "detail": "backend=layered_hosted 호출 0 캐시 0 · 실패 1"
+    },
+    {
+      "id": "S07_S08_compose_r0",
+      "state": "REFINING_ALPHA",
+      "ms": 887
+    },
+    {
+      "id": "S09_select_r0",
+      "state": "SELECTING_CANDIDATES",
+      "ms": 44,
+      "detail": "composite 0.7422 · 조합 6개 평가"
+    },
+    {
+      "id": "S10_S12_vectorize_r0",
+      "state": "VECTORIZING",
+      "ms": 14817
+    },
+    {
+      "id": "S13_assemble_r0",
+      "state": "ASSEMBLING",
+      "ms": 16,
+      "detail": "path 1244 · 1225KB"
+    },
+    {
+      "id": "S14_qa_r0",
+      "state": "VALIDATING_OUTPUT",
+      "ms": 1066,
+      "detail": "IoU 0.962 · F 0.7952 · ΔE 7.14"
+    },
+    {
+      "id": "S07_S08_compose_r1",
+      "state": "REFINING_ALPHA",
+      "ms": 789
+    },
+    {
+      "id": "S09_select_r1",
+      "state": "SELECTING_CANDIDATES",
+      "ms": 27,
+      "detail": "composite 0.7422 · 조합 6개 평가"
+    },
+    {
+      "id": "S10_S12_vectorize_r1",
+      "state": "VECTORIZING",
+      "ms": 14979
+    },
+    {
+      "id": "S13_assemble_r1",
+      "state": "ASSEMBLING",
+      "ms": 11,
+      "detail": "path 1244 · 1225KB"
+    },
+    {
+      "id": "S14_qa_r1",
+      "state": "VALIDATING_OUTPUT",
+      "ms": 1079,
+      "detail": "IoU 0.962 · F 0.7952 · ΔE 7.14"
+    }
+  ]
+}

@@ -54,6 +54,17 @@ export const config = {
    * 테크팩은 질감을 그리지 않으므로 기본을 크게 잡았다.
    */
   textureMinLen: Number(env("TEXTURE_MIN_LEN", "0.035")),
+  // ── V2 (레이어 분리 벡터 SVG) ────────────────────────────
+  /**
+   * 자체 호스팅 Qwen-Image-Layered-Control 엔드포인트.
+   * 개발계획서 §17.1: 이 모델은 공개 inference provider가 없어 자체 호스팅이 전제다
+   * (80GB급 GPU 1장 권장). 설정하면 레이어별 프롬프트 추출 경로로 전환되고,
+   * 없으면 fal의 qwen-image-layered로 같은 계약을 채운다.
+   */
+  qwenLayeredControlUrl: env("QWEN_LC_URL"),
+  qwenLayeredControlKey: env("QWEN_LC_KEY"),
+  qwenModelRevision: env("QWEN_MODEL_REVISION"),
+
   /** Vectorizer.AI는 품질 문제로 기본 비활성 — 1로 두면 강제 사용 */
   forceVectorizerAI: env("VECTORIZER_FORCE") === "1",
 

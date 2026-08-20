@@ -1,0 +1,213 @@
+{
+  "schema_version": "1.0",
+  "object": {
+    "category": "jewelry.ring",
+    "view": "near-frontal elevation with slight oblique view of the band surfaces",
+    "style": "clean flat vector interpretation of a polished silver open ring",
+    "background": "white reference background, excluded from reconstruction",
+    "confidence": 0.93
+  },
+  "policy": {
+    "target_mode": "clean_flat",
+    "strict_vector": true,
+    "max_layers": 8,
+    "layer_order": "back_to_front"
+  },
+  "layers": [
+    {
+      "id": "ring_band",
+      "label": "Open silver ring band",
+      "semantic_role": "structural",
+      "parent_id": null,
+      "z_index": 0,
+      "material": "polished_metal",
+      "bbox_norm": [
+        0.057,
+        0.059,
+        0.89,
+        0.884
+      ],
+      "visible_description": "Extraction prompt: Isolate the complete polished silver C-shaped ring band, including the broad rounded lower section, tapered upper arms, squared open tips, central opening, and small inward V-shaped notch at the lower inner edge. Spatial hint: centered and occupying most of the image. Negative prompt: exclude the white background, dark reflections, bright glare, engraving marks, and detached shadows.",
+      "hidden_geometry_hint": "Construct one complete compound vector path for the ring: a continuous outer contour and inner contour joined through the two open upper tips. Preserve the lower inner V-shaped notch as part of the structural contour. Portions beneath reflection, engraving, and highlight overlays should continue as smooth silver band surfaces; exact unseen surface coloration is not required.",
+      "occludes": [],
+      "occluded_by": [
+        "dark_reflections",
+        "engraving",
+        "specular_highlights"
+      ],
+      "vector_profile": "metal_gradient",
+      "expected_color_count": 2,
+      "confidence": 0.96,
+      "requires_review": false,
+      "profile_reason": "material=polished_metal",
+      "features": {
+        "localColorVariance": 1.66,
+        "gradientCoherence": 0.22,
+        "specularRatio": 0.3,
+        "edgeDensity": 0.157,
+        "alphaSoftness": 0.589,
+        "flatnessScore": 0.793,
+        "textureScore": 0.252,
+        "distinctColors": 260
+      }
+    },
+    {
+      "id": "dark_reflections",
+      "label": "Dark reflected and shadowed metal regions",
+      "semantic_role": "appearance",
+      "parent_id": "ring_band",
+      "z_index": 1,
+      "material": "polished_metal",
+      "bbox_norm": [
+        0.057,
+        0.057,
+        0.873,
+        0.815
+      ],
+      "visible_description": "Extraction prompt: Isolate the coherent dark reflection system on the ring, including the black-to-charcoal strip along the left outer side, the broad dark patch on the right inner band, the shaded upper end faces, thin inner-edge shading, and the dark lower-notch facet. Spatial hint: strongest on the left outer arc and right inner arc. Negative prompt: exclude the base silver silhouette, engraved motifs, white highlights, central opening, and background.",
+      "hidden_geometry_hint": "Treat these marks as clipped appearance shapes on the complete band rather than separate physical pieces. Extend each reflection slightly beneath adjoining highlights and engraving so isolated editing does not create gaps. Boundaries hidden by glare are uncertain and should remain simple smooth curves.",
+      "occludes": [
+        "ring_band"
+      ],
+      "occluded_by": [
+        "engraving",
+        "specular_highlights"
+      ],
+      "vector_profile": "metal_gradient",
+      "expected_color_count": 2,
+      "confidence": 0.89,
+      "requires_review": false,
+      "profile_reason": "material=polished_metal",
+      "features": {
+        "localColorVariance": 4.51,
+        "gradientCoherence": 0.105,
+        "specularRatio": 0.034,
+        "edgeDensity": 0.423,
+        "alphaSoftness": 0.745,
+        "flatnessScore": 0.437,
+        "textureScore": 0.677,
+        "distinctColors": 697
+      }
+    },
+    {
+      "id": "engraving",
+      "label": "Recessed side engraving",
+      "semantic_role": "appearance",
+      "parent_id": "ring_band",
+      "z_index": 2,
+      "material": "line_work",
+      "bbox_norm": [
+        0.059,
+        0.178,
+        0.121,
+        0.611
+      ],
+      "visible_description": "Extraction prompt: Isolate the repeating recessed decorative marks visible along the left outer side of the band as simplified dark engraved strokes and small inset shapes. Spatial hint: a narrow vertical arc following the left edge from upper-left to lower-left. Negative prompt: exclude generic reflection patches, silver edge contours, highlights, background, and any invented letters or symbols.",
+      "hidden_geometry_hint": "Continue the engraving sequence only where its rhythm is directly supported by visible evidence. Keep each visible motif clipped to the left side surface; details hidden by reflections or curvature are uncertain and should not be invented. The exact motif identity is unreadable in the reference.",
+      "occludes": [
+        "dark_reflections",
+        "ring_band"
+      ],
+      "occluded_by": [
+        "specular_highlights"
+      ],
+      "vector_profile": "line_mono",
+      "expected_color_count": 1,
+      "confidence": 0.72,
+      "requires_review": true,
+      "profile_reason": "material=line_work",
+      "features": {
+        "localColorVariance": 4.57,
+        "gradientCoherence": 0.013,
+        "specularRatio": 0.007,
+        "edgeDensity": 0.387,
+        "alphaSoftness": 0.725,
+        "flatnessScore": 0.429,
+        "textureScore": 0.62,
+        "distinctColors": 286
+      }
+    },
+    {
+      "id": "specular_highlights",
+      "label": "Polished metal highlights",
+      "semantic_role": "appearance",
+      "parent_id": "ring_band",
+      "z_index": 3,
+      "material": "polished_metal",
+      "bbox_norm": [
+        0.105,
+        0.06,
+        0.824,
+        0.875
+      ],
+      "visible_description": "Extraction prompt: Isolate the brightest white and pale-silver specular accents tracing the upper arms, outer right arc, inner left arc, and broad lower front surface of the ring. Spatial hint: thin elongated streaks near curved edges with a larger soft highlight across the lower band. Negative prompt: exclude the structural silhouette, dark reflections, engraving, central opening, white background, and cast shadows.",
+      "hidden_geometry_hint": "Represent highlights as clean closed vector ribbons clipped to the ring surface. Extend narrow streaks smoothly beneath contour transitions where interrupted by darker reflections. Do not create highlights across the open center or top gap.",
+      "occludes": [
+        "dark_reflections",
+        "engraving",
+        "ring_band"
+      ],
+      "occluded_by": [],
+      "vector_profile": "metal_gradient",
+      "expected_color_count": 2,
+      "confidence": 0.9,
+      "requires_review": false,
+      "profile_reason": "material=polished_metal",
+      "features": {
+        "localColorVariance": 2.72,
+        "gradientCoherence": 0.036,
+        "specularRatio": 0.31,
+        "edgeDensity": 0.234,
+        "alphaSoftness": 0.525,
+        "flatnessScore": 0.66,
+        "textureScore": 0.375,
+        "distinctColors": 413
+      }
+    }
+  ],
+  "relations": [
+    {
+      "back": "dark_reflections",
+      "front": "engraving",
+      "type": "occlusion",
+      "confidence": 0.78
+    },
+    {
+      "back": "dark_reflections",
+      "front": "specular_highlights",
+      "type": "occlusion",
+      "confidence": 0.93
+    },
+    {
+      "back": "engraving",
+      "front": "specular_highlights",
+      "type": "occlusion",
+      "confidence": 0.7
+    },
+    {
+      "back": "ring_band",
+      "front": "dark_reflections",
+      "type": "occlusion",
+      "confidence": 0.98
+    },
+    {
+      "back": "ring_band",
+      "front": "engraving",
+      "type": "occlusion",
+      "confidence": 0.96
+    },
+    {
+      "back": "ring_band",
+      "front": "specular_highlights",
+      "type": "occlusion",
+      "confidence": 0.99
+    }
+  ],
+  "provenance": {
+    "planner_prompt_version": "planner.v1.3.0",
+    "model": "gpt-5.6",
+    "input_sha256": "ba824094776e0dc2e59048a94c90b97af229dafb134489a37f117161f265ea21",
+    "created_at": "2026-08-20T10:02:45.922Z",
+    "repaired": []
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "schema_version": "1.0",
+  "object": {
+    "category": "beaded evening bag with chain strap and floral clasp",
+    "view": "front-facing product view, slightly elevated straight-on presentation, strap extending upward and cropped by the image",
+    "style": "clean flat vector reconstruction of an ornate vintage accessory",
+    "background": "excluded white studio background; unrelated cast shadow beneath bag excluded",
+    "confidence": 0.98
+  },
+  "policy": {
+    "target_mode": "clean_flat",
+    "strict_vector": true,
+    "max_layers": 8,
+    "layer_order": "back_to_front"
+  },
+  "layers": [
+    {
+      "id": "chain_strap",
+      "label": "Gold chain strap",
+      "semantic_role": "structural",
+      "parent_id": null,
+      "z_index": 0,
+      "material": "polished_metal",
+      "bbox_norm": [
+        0.291,
+        0,
+        0.769,
+        0.389
+      ],
+      "visible_description": "Extraction prompt: isolate the two diagonal runs of the antique-gold oval-link chain strap above the bag, including the short visible attachment segments near both upper corners; simplify links into clean, repeatable vector forms. Negative prompt: exclude the white background, bag body, frame, clasp, beads, and cast shadow. Spatial hint: centered upper half, forming an inverted V with its apex cropped beyond the top edge.",
+      "hidden_geometry_hint": "Preserve each chain run as a continuous linked path beneath the upper frame at its lower attachment point. The strap also continues beyond the top crop, but its unseen off-canvas connection shape is uncertain and should not be invented.",
+      "occludes": [],
+      "occluded_by": [
+        "bag_body",
+        "metal_frame"
+      ],
+      "vector_profile": "metal_gradient",
+      "expected_color_count": 3,
+      "confidence": 0.96,
+      "requires_review": false,
+      "profile_reason": "material=polished_metal",
+      "features": {
+        "localColorVariance": 15.45,
+        "gradientCoherence": 0.047,
+        "specularRatio": 0.115,
+        "edgeDensity": 0.98,
+        "alphaSoftness": 0.961,
+        "flatnessScore": 0,
+        "textureScore": 1,
+        "distinctColors": 869
+      }
+    },
+    {
+      "id": "bag_body",
+      "label": "Ivory gathered pouch body",
+      "semantic_role": "structural",
+      "parent_id": null,
+      "z_index": 1,
+      "material": "fabric",
+      "bbox_norm": [
+        0.063,
+        0.391,
+        0.937,
+        0.881
+      ],
+      "visible_description": "Extraction prompt: isolate the complete ivory pouch silhouette, with a narrow gathered top, sloping rounded sides, broad softly curved bottom, and asymmetric fullness. Render as a clean closed vector shape. Negative prompt: exclude individual bead dots, fold shadows, metal hardware, chain, background, and ground shadow. Spatial hint: large centered lower object occupying most of the image width.",
+      "hidden_geometry_hint": "Complete the pouch behind the frame as a closed bag form with its gathered upper edge extending beneath the metal rim. Continue the body behind the central clasp and leaves without adding unseen seams or rear panels.",
+      "occludes": [
+        "chain_strap"
+      ],
+      "occluded_by": [
+        "metal_frame",
+        "floral_clasp",
+        "bead_surface",
+        "fold_shadows"
+      ],
+      "vector_profile": "flat_color",
+      "expected_color_count": 2,
+      "confidence": 0.99,
+      "requires_review": false,
+      "profile_reason": "고주파 텍스처(texture 0.873) — strict 모드라 clean_flat로 단순화",
+      "features": {
+        "localColorVariance": 4.31,
+        "gradientCoherence": 0.291,
+        "specularRatio": 0.331,
+        "edgeDensity": 0.546,
+        "alphaSoftness": 1,
+        "flatnessScore": 0.462,
+        "textureScore": 0.873,
+        "distinctColors": 192
+      }
+    },
+    {
+      "id": "bead_surface",
+      "label": "Ivory bead surface pattern",
+      "semantic_role": "appearance",
+      "parent_id": "bag_body",
+      "z_index": 2,
+      "material": "texture",
+      "bbox_norm": [
+        0.078,
+        0.397,
+        0.925,
+        0.872
+      ],
+      "visible_description": "Extraction prompt: create an editable simplified field of tiny ivory bead marks following the pouch contour and gathered fabric flow, denser and orderly across the main body. Negative prompt: exclude the outer body silhouette, dark fold shading, metal frame, clasp, chain, background, and detached dots outside the pouch. Spatial hint: contained across nearly the entire bag body below the top frame.",
+      "hidden_geometry_hint": "Extend the repeatable bead pattern beneath the clasp, frame overlap, and fold-shadow masks so isolated editing reveals a continuous surface treatment. Exact bead placement in hidden regions is uncertain; use a regular continuation rather than invented ornament.",
+      "occludes": [
+        "bag_body"
+      ],
+      "occluded_by": [
+        "fold_shadows",
+        "metal_frame",
+        "floral_clasp"
+      ],
+      "vector_profile": "flat_precise",
+      "expected_color_count": 2,
+      "confidence": 0.94,
+      "requires_review": false,
+      "profile_reason": "faithful_vector 경로 (flatness 0.532)",
+      "features": {
+        "localColorVariance": 3.74,
+        "gradientCoherence": 0.021,
+        "specularRatio": 0.168,
+        "edgeDensity": 0.423,
+        "alphaSoftness": 0.598,
+        "flatnessScore": 0.532,
+        "textureScore": 0.677,
+        "distinctColors": 359
+      }
+    },
+    {
+      "id": "fold_shadows",
+      "label": "Gather and fold shading",
+      "semantic_role": "appearance",
+      "parent_id": "bag_body",
+      "z_index": 3,
+      "material": "flat_color",
+      "bbox_norm": [
+        0.114,
+        0.398,
+        0.895,
+        0.848
+      ],
+      "visible_description": "Extraction prompt: isolate the soft gray-beige shadow shapes defining vertical gathers beneath the frame, the central folds, side recesses, and lower volume; convert them to a small set of clean tapered vector shapes. Negative prompt: exclude bead dots, base ivory fill, metal hardware, chain, background, and ground shadow. Spatial hint: shadows descend mainly from the gathered top and remain clipped inside the pouch.",
+      "hidden_geometry_hint": "Each shadow shape should continue naturally beneath the frame and clasp where a fold alignment is evident, while remaining fully clipped to the bag-body silhouette. Do not create speculative folds in concealed areas.",
+      "occludes": [
+        "bag_body",
+        "bead_surface"
+      ],
+      "occluded_by": [
+        "metal_frame",
+        "floral_clasp"
+      ],
+      "vector_profile": "flat_color",
+      "expected_color_count": 3,
+      "confidence": 0.9,
+      "requires_review": true,
+      "profile_reason": "고주파 텍스처(texture 1) — strict 모드라 clean_flat로 단순화",
+      "features": {
+        "localColorVariance": 5.96,
+        "gradientCoherence": 0.007,
+        "specularRatio": 0.184,
+        "edgeDensity": 0.748,
+        "alphaSoftness": 0.073,
+        "flatnessScore": 0.255,
+        "textureScore": 1,
+        "distinctColors": 417
+      }
+    },
+    {
+      "id": "metal_frame",
+      "label": "Engraved bronze bag frame",
+      "semantic_role": "structural",
+      "parent_id": null,
+      "z_index": 4,
+      "material": "brushed_metal",
+      "bbox_norm": [
+        0.186,
+        0.381,
+        0.861,
+        0.475
+      ],
+      "visible_description": "Extraction prompt: isolate the antique-bronze rigid top frame, including the long horizontal engraved rim and both short descending side terminals; simplify the engraved decoration into restrained editable line motifs. Negative prompt: exclude the floral clasp, ivory pouch, beads, chain, background, and cast shadow. Spatial hint: narrow horizontal structure spanning the upper width of the pouch. Nondegenerate normalized box: left 0.186, top 0.381, right 0.861, bottom 0.475.",
+      "hidden_geometry_hint": "Construct the frame as a continuous rigid bar behind the central clasp, with the engraved band uninterrupted beneath that overlap. Side terminals should continue only to their visibly supported endpoints; rear hardware is not visible and remains uncertain.",
+      "occludes": [
+        "bag_body",
+        "bead_surface",
+        "chain_strap",
+        "fold_shadows"
+      ],
+      "occluded_by": [
+        "floral_clasp"
+      ],
+      "vector_profile": "metal_base",
+      "expected_color_count": 4,
+      "confidence": 0.97,
+      "requires_review": false,
+      "profile_reason": "material=brushed_metal",
+      "features": {
+        "localColorVariance": 6.19,
+        "gradientCoherence": 0.015,
+        "specularRatio": 0.24,
+        "edgeDensity": 0.694,
+        "alphaSoftness": 0.231,
+        "flatnessScore": 0.226,
+        "textureScore": 1,
+        "distinctColors": 659
+      }
+    },
+    {
+      "id": "floral_clasp",
+      "label": "Rose-and-leaf floral clasp",
+      "semantic_role": "structural",
+      "parent_id": "metal_frame",
+      "z_index": 5,
+      "material": "polished_metal",
+      "bbox_norm": [
+        0.449,
+        0.367,
+        0.575,
+        0.478
+      ],
+      "visible_description": "Extraction prompt: isolate the central antique-gold clasp assembly with the small rectangular top knob, sculpted rose, and two downward-pointing leaves; preserve the recognizable floral silhouette with simplified internal contour lines. Negative prompt: exclude the horizontal frame, chain, ivory pouch, beads, background, and unrelated shadows. Spatial hint: centered over the top frame and upper gathered pouch. Nondegenerate normalized box: left 0.449, top 0.367, right 0.575, bottom 0.478.",
+      "hidden_geometry_hint": "Complete the rose and both leaf silhouettes where their edges overlap one another, and include a compact hidden mounting base behind the flower only where needed for attachment to the frame. The exact concealed hinge mechanism is uncertain and should not be invented.",
+      "occludes": [
+        "bag_body",
+        "bead_surface",
+        "fold_shadows",
+        "metal_frame"
+      ],
+      "occluded_by": [],
+      "vector_profile": "metal_gradient",
+      "expected_color_count": 5,
+      "confidence": 0.96,
+      "requires_review": false,
+      "profile_reason": "material=polished_metal",
+      "features": {
+        "localColorVariance": 8.53,
+        "gradientCoherence": 0.009,
+        "specularRatio": 0.027,
+        "edgeDensity": 0.85,
+        "alphaSoftness": 0.283,
+        "flatnessScore": 0,
+        "textureScore": 1,
+        "distinctColors": 891
+      }
+    }
+  ],
+  "relations": [
+    {
+      "back": "bag_body",
+      "front": "metal_frame",
+      "type": "occlusion",
+      "confidence": 0.99
+    },
+    {
+      "back": "bag_body",
+      "front": "floral_clasp",
+      "type": "occlusion",
+      "confidence": 0.99
+    },
+    {
+      "back": "bag_body",
+      "front": "bead_surface",
+      "type": "occlusion",
+      "confidence": 0.6
+    },
+    {
+      "back": "bag_body",
+      "front": "fold_shadows",
+      "type": "occlusion",
+      "confidence": 0.6
+    },
+    {
+      "back": "bead_surface",
+      "front": "fold_shadows",
+      "type": "occlusion",
+      "confidence": 0.97
+    },
+    {
+      "back": "bead_surface",
+      "front": "metal_frame",
+      "type": "occlusion",
+      "confidence": 0.99
+    },
+    {
+      "back": "bead_surface",
+      "front": "floral_clasp",
+      "type": "occlusion",
+      "confidence": 0.99
+    },
+    {
+      "back": "chain_strap",
+      "front": "bag_body",
+      "type": "occlusion",
+      "confidence": 0.82
+    },
+    {
+      "back": "chain_strap",
+      "front": "metal_frame",
+      "type": "occlusion",
+      "confidence": 0.96
+    },
+    {
+      "back": "fold_shadows",
+      "front": "metal_frame",
+      "type": "occlusion",
+      "confidence": 0.96
+    },
+    {
+      "back": "fold_shadows",
+      "front": "floral_clasp",
+      "type": "occlusion",
+      "confidence": 0.98
+    },
+    {
+      "back": "metal_frame",
+      "front": "floral_clasp",
+      "type": "occlusion",
+      "confidence": 0.99
+    }
+  ],
+  "provenance": {
+    "planner_prompt_version": "planner.v1.3.0",
+    "model": "gpt-5.6",
+    "input_sha256": "d07a3b66d4fb25e29e4d878422d1dac2850ad8a475d8252cb96bd51390c591d3",
+    "created_at": "2026-08-20T11:07:27.486Z",
+    "repaired": []
+  }
+}

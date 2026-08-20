@@ -1,0 +1,748 @@
+{
+  "generatedAt": "2026-08-20",
+  "samples": [
+    {
+      "id": "bag_2",
+      "name": "bag_2",
+      "category": "bag",
+      "categoryLabel": "가방",
+      "state": "NEEDS_REVIEW",
+      "width": 796,
+      "height": 933,
+      "layers": [
+        {
+          "id": "chain_strap",
+          "label": "Gold chain strap",
+          "role": "structural",
+          "material": "polished_metal",
+          "profile": "metal_gradient",
+          "profileReason": "material=polished_metal",
+          "z": 0,
+          "confidence": 0.96,
+          "requiresReview": false,
+          "occludedBy": [
+            "bag_body",
+            "metal_frame"
+          ],
+          "paths": 39
+        },
+        {
+          "id": "bag_body",
+          "label": "Ivory gathered pouch body",
+          "role": "structural",
+          "material": "fabric",
+          "profile": "flat_color",
+          "profileReason": "고주파 텍스처(texture 0.873) — strict 모드라 clean_flat로 단순화",
+          "z": 1,
+          "confidence": 0.99,
+          "requiresReview": false,
+          "occludedBy": [
+            "metal_frame",
+            "floral_clasp",
+            "bead_surface",
+            "fold_shadows"
+          ],
+          "paths": 11
+        },
+        {
+          "id": "bead_surface",
+          "label": "Ivory bead surface pattern",
+          "role": "appearance",
+          "material": "texture",
+          "profile": "flat_precise",
+          "profileReason": "faithful_vector 경로 (flatness 0.532)",
+          "z": 2,
+          "confidence": 0.94,
+          "requiresReview": false,
+          "occludedBy": [
+            "fold_shadows",
+            "metal_frame",
+            "floral_clasp"
+          ],
+          "paths": 57
+        },
+        {
+          "id": "fold_shadows",
+          "label": "Gather and fold shading",
+          "role": "appearance",
+          "material": "flat_color",
+          "profile": "flat_color",
+          "profileReason": "고주파 텍스처(texture 1) — strict 모드라 clean_flat로 단순화",
+          "z": 3,
+          "confidence": 0.9,
+          "requiresReview": true,
+          "occludedBy": [
+            "metal_frame",
+            "floral_clasp"
+          ],
+          "paths": 962
+        },
+        {
+          "id": "metal_frame",
+          "label": "Engraved bronze bag frame",
+          "role": "structural",
+          "material": "brushed_metal",
+          "profile": "metal_base",
+          "profileReason": "material=brushed_metal",
+          "z": 4,
+          "confidence": 0.97,
+          "requiresReview": false,
+          "occludedBy": [
+            "floral_clasp"
+          ],
+          "paths": 166
+        },
+        {
+          "id": "floral_clasp",
+          "label": "Rose-and-leaf floral clasp",
+          "role": "structural",
+          "material": "polished_metal",
+          "profile": "metal_gradient",
+          "profileReason": "material=polished_metal",
+          "z": 5,
+          "confidence": 0.96,
+          "requiresReview": false,
+          "occludedBy": [],
+          "paths": 9
+        }
+      ],
+      "qa": {
+        "pass": false,
+        "needsReview": true,
+        "foregroundIou": 0.962,
+        "boundaryF": 0.7952,
+        "deltaE": 7.14,
+        "ssim": 0.7342,
+        "integrity": 1,
+        "invalidGeometry": 0,
+        "strict": true,
+        "paths": 1244,
+        "nodes": 37885,
+        "kb": 1224.5,
+        "failures": [
+          {
+            "signal": "visible_color_edge",
+            "layerId": "chain_strap",
+            "detail": "masked ΔE2000 20.53",
+            "action": "원본 visible-pixel 보호 비율 상향, 후보 재선택"
+          },
+          {
+            "signal": "visible_color_edge",
+            "layerId": "floral_clasp",
+            "detail": "masked ΔE2000 14.42",
+            "action": "원본 visible-pixel 보호 비율 상향, 후보 재선택"
+          },
+          {
+            "signal": "path_count_excess",
+            "layerId": "fold_shadows",
+            "detail": "path 962 / node 31702",
+            "action": "profile 변경, palette 축소, gradient fitting"
+          }
+        ],
+        "notes": [
+          "경계 F-score 0.795 < 0.9",
+          "추정 영역 확인 필요: fold_shadows"
+        ]
+      },
+      "provenance": {
+        "planner_prompt_version": "planner.v1.3.0",
+        "model": "gpt-5.6",
+        "input_sha256": "d07a3b66d4fb25e29e4d878422d1dac2850ad8a475d8252cb96bd51390c591d3",
+        "created_at": "2026-08-20T11:07:27.486Z",
+        "repaired": [],
+        "extract_prompt_version": "qwen.extract.v1.2.1",
+        "candidate_backend": "layered_hosted",
+        "candidate_errors": [
+          "fal fal-ai/qwen-image-layered 403: {\"detail\":\"User is locked. Reason: TOP_UP.\"}"
+        ],
+        "metric_version": "qa.v1.0.0",
+        "seed_set": [
+          104,
+          209
+        ]
+      },
+      "retries": [
+        {
+          "round": 1,
+          "layerIds": [
+            "chain_strap",
+            "floral_clasp",
+            "fold_shadows"
+          ],
+          "reason": "chain_strap:visible_color_edge, floral_clasp:visible_color_edge, fold_shadows:path_count_excess"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S00_S01_preprocess",
+          "ms": 8855,
+          "detail": "796×933 / SAM 3이 제품을 찾지 못함 — 원본 그대로 진행 / 제품 크롭 1400x933 → 796x933 (화면 점유 46% → ~88%)"
+        },
+        {
+          "id": "S02_plan",
+          "ms": 117530,
+          "detail": "6 layers"
+        },
+        {
+          "id": "S03_graph",
+          "ms": 10,
+          "detail": ""
+        },
+        {
+          "id": "S04_masks",
+          "ms": 3596,
+          "detail": "커버리지 97.6%"
+        },
+        {
+          "id": "S05_S06_candidates",
+          "ms": 2001,
+          "detail": "backend=layered_hosted 호출 0 캐시 0 · 실패 1"
+        },
+        {
+          "id": "S07_S08_compose_r0",
+          "ms": 887
+        },
+        {
+          "id": "S09_select_r0",
+          "ms": 44,
+          "detail": "composite 0.7422 · 조합 6개 평가"
+        },
+        {
+          "id": "S10_S12_vectorize_r0",
+          "ms": 14817
+        },
+        {
+          "id": "S13_assemble_r0",
+          "ms": 16,
+          "detail": "path 1244 · 1225KB"
+        },
+        {
+          "id": "S14_qa_r0",
+          "ms": 1066,
+          "detail": "IoU 0.962 · F 0.7952 · ΔE 7.14"
+        },
+        {
+          "id": "S07_S08_compose_r1",
+          "ms": 789
+        },
+        {
+          "id": "S09_select_r1",
+          "ms": 27,
+          "detail": "composite 0.7422 · 조합 6개 평가"
+        },
+        {
+          "id": "S10_S12_vectorize_r1",
+          "ms": 14979
+        },
+        {
+          "id": "S13_assemble_r1",
+          "ms": 11,
+          "detail": "path 1244 · 1225KB"
+        },
+        {
+          "id": "S14_qa_r1",
+          "ms": 1079,
+          "detail": "IoU 0.962 · F 0.7952 · ΔE 7.14"
+        }
+      ],
+      "files": {
+        "svg": "samples-v2/bag_2/layered.svg",
+        "manifest": "samples-v2/bag_2/layer_manifest.json",
+        "qa": "samples-v2/bag_2/qa_report.json",
+        "input": "samples-v2/bag_2/input.jpg"
+      },
+      "v1": {
+        "svg": "samples/bag_2/result.svg",
+        "groups": 10
+      }
+    },
+    {
+      "id": "jewelry_1",
+      "name": "jewelry_1",
+      "category": "jewelry",
+      "categoryLabel": "주얼리",
+      "state": "NEEDS_REVIEW",
+      "width": 618,
+      "height": 580,
+      "layers": [
+        {
+          "id": "ring_band",
+          "label": "Open silver ring band",
+          "role": "structural",
+          "material": "polished_metal",
+          "profile": "metal_gradient",
+          "profileReason": "material=polished_metal",
+          "z": 0,
+          "confidence": 0.96,
+          "requiresReview": false,
+          "occludedBy": [
+            "dark_reflections",
+            "engraving",
+            "specular_highlights"
+          ],
+          "paths": 7
+        },
+        {
+          "id": "dark_reflections",
+          "label": "Dark reflected and shadowed metal regions",
+          "role": "appearance",
+          "material": "polished_metal",
+          "profile": "metal_gradient",
+          "profileReason": "material=polished_metal",
+          "z": 1,
+          "confidence": 0.89,
+          "requiresReview": false,
+          "occludedBy": [
+            "engraving",
+            "specular_highlights"
+          ],
+          "paths": 34
+        },
+        {
+          "id": "engraving",
+          "label": "Recessed side engraving",
+          "role": "appearance",
+          "material": "line_work",
+          "profile": "line_mono",
+          "profileReason": "material=line_work",
+          "z": 2,
+          "confidence": 0.72,
+          "requiresReview": true,
+          "occludedBy": [
+            "specular_highlights"
+          ],
+          "paths": 86
+        },
+        {
+          "id": "specular_highlights",
+          "label": "Polished metal highlights",
+          "role": "appearance",
+          "material": "polished_metal",
+          "profile": "metal_gradient",
+          "profileReason": "material=polished_metal",
+          "z": 3,
+          "confidence": 0.9,
+          "requiresReview": false,
+          "occludedBy": [],
+          "paths": 29
+        }
+      ],
+      "qa": {
+        "pass": true,
+        "needsReview": true,
+        "foregroundIou": 0.9603,
+        "boundaryF": 0.9195,
+        "deltaE": 9.62,
+        "ssim": 0.897,
+        "integrity": 1,
+        "invalidGeometry": 0,
+        "strict": true,
+        "paths": 156,
+        "nodes": 1572,
+        "kb": 59.5,
+        "failures": [
+          {
+            "signal": "visible_color_edge",
+            "layerId": "engraving",
+            "detail": "masked ΔE2000 25.43",
+            "action": "원본 visible-pixel 보호 비율 상향, 후보 재선택"
+          },
+          {
+            "signal": "visible_color_edge",
+            "layerId": "dark_reflections",
+            "detail": "masked ΔE2000 14.77",
+            "action": "원본 visible-pixel 보호 비율 상향, 후보 재선택"
+          }
+        ],
+        "notes": [
+          "추정 영역 확인 필요: engraving"
+        ]
+      },
+      "provenance": {
+        "planner_prompt_version": "planner.v1.3.0",
+        "model": "gpt-5.6",
+        "input_sha256": "ba824094776e0dc2e59048a94c90b97af229dafb134489a37f117161f265ea21",
+        "created_at": "2026-08-20T10:02:45.922Z",
+        "repaired": [],
+        "extract_prompt_version": "qwen.extract.v1.2.1",
+        "candidate_backend": "layered_hosted",
+        "metric_version": "qa.v1.0.0",
+        "seed_set": [
+          104,
+          209
+        ]
+      },
+      "retries": [],
+      "stages": [
+        {
+          "id": "S00_S01_preprocess",
+          "ms": 15741,
+          "detail": "618×580 / 배경 제거 (SAM 3 \"ring\" 1개 인스턴스, 최고점 0.96, 면적 7%) / 제품 크롭 1400x869 → 618x580 (화면 점유 23% → ~88%)"
+        },
+        {
+          "id": "S02_plan",
+          "ms": 1,
+          "detail": "4 layers (캐시)"
+        },
+        {
+          "id": "S03_graph",
+          "ms": 8,
+          "detail": ""
+        },
+        {
+          "id": "S04_masks",
+          "ms": 3253,
+          "detail": "커버리지 100.0%"
+        },
+        {
+          "id": "S05_S06_candidates",
+          "ms": 354,
+          "detail": "backend=layered_hosted 호출 0 캐시 2"
+        },
+        {
+          "id": "S07_S08_compose_r0",
+          "ms": 817
+        },
+        {
+          "id": "S09_select_r0",
+          "ms": 34,
+          "detail": "composite 0.7273 · 조합 9개 평가"
+        },
+        {
+          "id": "S10_S12_vectorize_r0",
+          "ms": 1667
+        },
+        {
+          "id": "S13_assemble_r0",
+          "ms": 9,
+          "detail": "path 156 · 60KB"
+        },
+        {
+          "id": "S14_qa_r0",
+          "ms": 316,
+          "detail": "IoU 0.9603 · F 0.9195 · ΔE 9.62"
+        }
+      ],
+      "files": {
+        "svg": "samples-v2/jewelry_1/layered.svg",
+        "manifest": "samples-v2/jewelry_1/layer_manifest.json",
+        "qa": "samples-v2/jewelry_1/qa_report.json",
+        "input": "samples-v2/jewelry_1/input.jpg",
+        "bundle": "samples-v2/jewelry_1/job_bundle.zip"
+      },
+      "v1": {
+        "svg": "samples/jewelry_1/result.svg",
+        "groups": 12
+      }
+    },
+    {
+      "id": "shoe_1",
+      "name": "shoe_1",
+      "category": "shoe",
+      "categoryLabel": "신발",
+      "state": "NEEDS_REVIEW",
+      "width": 1024,
+      "height": 803,
+      "layers": [
+        {
+          "id": "tongue",
+          "label": "Padded tongue",
+          "role": "structural",
+          "material": "fabric",
+          "profile": "flat_color",
+          "profileReason": "flatness 0.69 ≥ 0.62, texture 0.367 < 0.45",
+          "z": 0,
+          "confidence": 0.9,
+          "requiresReview": false,
+          "occludedBy": [
+            "upper_body",
+            "eyestay_accent",
+            "laces"
+          ],
+          "paths": 11
+        },
+        {
+          "id": "sole_assembly",
+          "label": "Midsole and outsole assembly",
+          "role": "structural",
+          "material": "rubber",
+          "profile": "flat_color",
+          "profileReason": "flatness 0.765 ≥ 0.62, texture 0.238 < 0.45",
+          "z": 1,
+          "confidence": 0.95,
+          "requiresReview": false,
+          "occludedBy": [
+            "upper_body",
+            "laces",
+            "airmax_lettering"
+          ],
+          "paths": 85
+        },
+        {
+          "id": "airmax_lettering",
+          "label": "AIR MAX heel lettering",
+          "role": "appearance",
+          "material": "line_work",
+          "profile": "line_mono",
+          "profileReason": "material=line_work",
+          "z": 2,
+          "confidence": 0.95,
+          "requiresReview": false,
+          "occludedBy": [],
+          "paths": 1
+        },
+        {
+          "id": "upper_body",
+          "label": "Main black upper",
+          "role": "structural",
+          "material": "fabric",
+          "profile": "flat_color",
+          "profileReason": "flatness 0.762 ≥ 0.62, texture 0.26 < 0.45",
+          "z": 3,
+          "confidence": 0.94,
+          "requiresReview": false,
+          "occludedBy": [
+            "heel_counter",
+            "side_swoosh",
+            "eyestay_accent",
+            "laces"
+          ],
+          "paths": 74
+        },
+        {
+          "id": "side_swoosh",
+          "label": "Magenta lateral side logo",
+          "role": "appearance",
+          "material": "flat_color",
+          "profile": "flat_color",
+          "profileReason": "flatness 0.884 ≥ 0.62, texture 0.106 < 0.45",
+          "z": 4,
+          "confidence": 0.94,
+          "requiresReview": false,
+          "occludedBy": [
+            "laces"
+          ],
+          "paths": 4
+        },
+        {
+          "id": "heel_counter",
+          "label": "Magenta rear heel counter",
+          "role": "structural",
+          "material": "plastic",
+          "profile": "flat_color",
+          "profileReason": "flatness 0.789 ≥ 0.62, texture 0.214 < 0.45",
+          "z": 5,
+          "confidence": 0.91,
+          "requiresReview": false,
+          "occludedBy": [],
+          "paths": 11
+        },
+        {
+          "id": "eyestay_accent",
+          "label": "Magenta lace-bed accent",
+          "role": "structural",
+          "material": "fabric",
+          "profile": "flat_precise",
+          "profileReason": "faithful_vector 경로 (flatness 0.593)",
+          "z": 6,
+          "confidence": 0.9,
+          "requiresReview": false,
+          "occludedBy": [
+            "laces"
+          ],
+          "paths": 52
+        },
+        {
+          "id": "laces",
+          "label": "Black laces",
+          "role": "structural",
+          "material": "fabric",
+          "profile": "flat_color",
+          "profileReason": "flatness 0.738 ≥ 0.62, texture 0.271 < 0.45",
+          "z": 7,
+          "confidence": 0.84,
+          "requiresReview": true,
+          "occludedBy": [],
+          "paths": 51
+        }
+      ],
+      "qa": {
+        "pass": true,
+        "needsReview": true,
+        "foregroundIou": 0.9969,
+        "boundaryF": 0.9955,
+        "deltaE": 6.15,
+        "ssim": 0.7288,
+        "integrity": 1,
+        "invalidGeometry": 0,
+        "strict": true,
+        "paths": 289,
+        "nodes": 10088,
+        "kb": 354.8,
+        "failures": [
+          {
+            "signal": "visible_color_edge",
+            "layerId": "airmax_lettering",
+            "detail": "masked ΔE2000 59.71",
+            "action": "원본 visible-pixel 보호 비율 상향, 후보 재선택"
+          }
+        ],
+        "notes": [
+          "추정 영역 확인 필요: laces"
+        ]
+      },
+      "provenance": {
+        "planner_prompt_version": "planner.v1.3.0",
+        "model": "gpt-5.6",
+        "input_sha256": "8afbbb1ffb27cd0dd0141232768dd5a14bfab5220193de2c2da97243fcafa2ea",
+        "created_at": "2026-08-20T10:51:29.535Z",
+        "repaired": [],
+        "extract_prompt_version": "qwen.extract.v1.2.1",
+        "candidate_backend": "layered_hosted",
+        "metric_version": "qa.v1.0.0",
+        "seed_set": [
+          104,
+          209
+        ]
+      },
+      "retries": [],
+      "stages": [
+        {
+          "id": "S00_S01_preprocess",
+          "ms": 6321,
+          "detail": "1024×803 / SAM 3이 제품을 찾지 못함 — 원본 그대로 진행"
+        },
+        {
+          "id": "S02_plan",
+          "ms": 1,
+          "detail": "8 layers (캐시)"
+        },
+        {
+          "id": "S03_graph",
+          "ms": 8,
+          "detail": ""
+        },
+        {
+          "id": "S04_masks",
+          "ms": 3335,
+          "detail": "커버리지 100.0%"
+        },
+        {
+          "id": "S05_S06_candidates",
+          "ms": 1032,
+          "detail": "backend=layered_hosted 호출 0 캐시 2"
+        },
+        {
+          "id": "S07_S08_compose_r0",
+          "ms": 2314
+        },
+        {
+          "id": "S09_select_r0",
+          "ms": 424,
+          "detail": "composite 0.7689 · 조합 49개 평가"
+        },
+        {
+          "id": "S10_S12_vectorize_r0",
+          "ms": 25423
+        },
+        {
+          "id": "S13_assemble_r0",
+          "ms": 16,
+          "detail": "path 289 · 355KB"
+        },
+        {
+          "id": "S14_qa_r0",
+          "ms": 1653,
+          "detail": "IoU 0.9969 · F 0.9955 · ΔE 6.15"
+        }
+      ],
+      "files": {
+        "svg": "samples-v2/shoe_1/layered.svg",
+        "manifest": "samples-v2/shoe_1/layer_manifest.json",
+        "qa": "samples-v2/shoe_1/qa_report.json",
+        "input": "samples-v2/shoe_1/input.jpg"
+      },
+      "v1": {
+        "svg": "samples/shoe_1/result.svg",
+        "groups": 13
+      }
+    }
+  ],
+  "comparison": {
+    "generatedAt": "2026-08-20T11:08:53.050Z",
+    "rows": [
+      {
+        "sample": "jewelry_1",
+        "variant": "V2",
+        "layers": 4,
+        "paths": 156,
+        "nodes": 1370,
+        "kb": 59.5,
+        "iou": 0.9643,
+        "boundaryF": 0.9233,
+        "deltaE": 9.62,
+        "note": "NEEDS_REVIEW"
+      },
+      {
+        "sample": "jewelry_1",
+        "variant": "V1",
+        "layers": 12,
+        "paths": 116,
+        "nodes": 947,
+        "kb": 39.1,
+        "iou": 0.881,
+        "boundaryF": 0.6186,
+        "deltaE": 22.51,
+        "note": "flat 스케치 경로"
+      },
+      {
+        "sample": "shoe_1",
+        "variant": "V2",
+        "layers": 8,
+        "paths": 289,
+        "nodes": 9548,
+        "kb": 354.8,
+        "iou": 0.9976,
+        "boundaryF": 0.9938,
+        "deltaE": 6.15,
+        "note": "NEEDS_REVIEW"
+      },
+      {
+        "sample": "shoe_1",
+        "variant": "V1",
+        "layers": 13,
+        "paths": 278,
+        "nodes": 2864,
+        "kb": 120.9,
+        "iou": 0.8655,
+        "boundaryF": 0.0895,
+        "deltaE": 23,
+        "note": "flat 스케치 경로"
+      },
+      {
+        "sample": "bag_2",
+        "variant": "V2",
+        "layers": 6,
+        "paths": 1244,
+        "nodes": 36665,
+        "kb": 1224.5,
+        "iou": 0.9592,
+        "boundaryF": 0.7642,
+        "deltaE": 7.14,
+        "note": "NEEDS_REVIEW · 재시도 1"
+      },
+      {
+        "sample": "bag_2",
+        "variant": "V1",
+        "layers": 10,
+        "paths": 91,
+        "nodes": 924,
+        "kb": 38.4,
+        "iou": 0.8319,
+        "boundaryF": 0.2568,
+        "deltaE": 14.11,
+        "note": "flat 스케치 경로"
+      }
+    ]
+  }
+}

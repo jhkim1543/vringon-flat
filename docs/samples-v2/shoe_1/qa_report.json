@@ -1,0 +1,343 @@
+{
+  "job": {
+    "state": "NEEDS_REVIEW",
+    "input_sha256": "8afbbb1ffb27cd0dd0141232768dd5a14bfab5220193de2c2da97243fcafa2ea",
+    "canvas": {
+      "width": 1024,
+      "height": 803
+    },
+    "created_at": "2026-08-20T11:00:39.644Z",
+    "total_ms": 40702
+  },
+  "options": {
+    "targetMode": "clean_flat",
+    "strictVector": true,
+    "qualityPreset": "draft",
+    "minLayers": 3,
+    "maxLayers": 8,
+    "includeAppearanceLayers": true,
+    "restoreOccludedRegions": true,
+    "maxRetryRounds": 1,
+    "workLong": 1024,
+    "categoryHint": "shoe"
+  },
+  "provenance": {
+    "planner_prompt_version": "planner.v1.3.0",
+    "model": "gpt-5.6",
+    "input_sha256": "8afbbb1ffb27cd0dd0141232768dd5a14bfab5220193de2c2da97243fcafa2ea",
+    "created_at": "2026-08-20T10:51:29.535Z",
+    "repaired": [],
+    "extract_prompt_version": "qwen.extract.v1.2.1",
+    "candidate_backend": "layered_hosted",
+    "metric_version": "qa.v1.0.0",
+    "seed_set": [
+      104,
+      209
+    ]
+  },
+  "selection": [
+    {
+      "layer_id": "tongue",
+      "score": {
+        "total": 0.9081,
+        "mask": 1,
+        "edge": 1,
+        "color": 0.975,
+        "shape": 1,
+        "graph": 1,
+        "hallucination": 0,
+        "complexity": 0.093
+      },
+      "profile": "flat_color",
+      "profile_reason": "flatness 0.69 ≥ 0.62, texture 0.367 < 0.45",
+      "checks": {
+        "continuity": 1,
+        "symmetry": 1,
+        "widthConsistency": 1,
+        "seamDeltaE": 0,
+        "hiddenRatio": 0,
+        "uncertain": false
+      }
+    },
+    {
+      "layer_id": "sole_assembly",
+      "score": {
+        "total": 0.8843,
+        "mask": 1,
+        "edge": 1,
+        "color": 0.971,
+        "shape": 1,
+        "graph": 1,
+        "hallucination": 0,
+        "complexity": 0.381
+      },
+      "profile": "flat_color",
+      "profile_reason": "flatness 0.765 ≥ 0.62, texture 0.238 < 0.45",
+      "checks": {
+        "continuity": 1,
+        "symmetry": 1,
+        "widthConsistency": 1,
+        "seamDeltaE": 0,
+        "hiddenRatio": 0,
+        "uncertain": false
+      }
+    },
+    {
+      "layer_id": "airmax_lettering",
+      "score": {
+        "total": 0.9013,
+        "mask": 1,
+        "edge": 1,
+        "color": 0.96,
+        "shape": 1,
+        "graph": 1,
+        "hallucination": 0,
+        "complexity": 0.145
+      },
+      "profile": "line_mono",
+      "profile_reason": "material=line_work",
+      "checks": {
+        "continuity": 1,
+        "symmetry": 1,
+        "widthConsistency": 1,
+        "seamDeltaE": 0,
+        "hiddenRatio": 0,
+        "uncertain": false
+      }
+    },
+    {
+      "layer_id": "upper_body",
+      "score": {
+        "total": 0.8452,
+        "mask": 1,
+        "edge": 1,
+        "color": 0.962,
+        "shape": 1,
+        "graph": 1,
+        "hallucination": 0,
+        "complexity": 0.85
+      },
+      "profile": "flat_color",
+      "profile_reason": "flatness 0.762 ≥ 0.62, texture 0.26 < 0.45",
+      "checks": {
+        "continuity": 1,
+        "symmetry": 1,
+        "widthConsistency": 1,
+        "seamDeltaE": 0,
+        "hiddenRatio": 0,
+        "uncertain": false
+      }
+    },
+    {
+      "layer_id": "side_swoosh",
+      "score": {
+        "total": 0.8831,
+        "mask": 1,
+        "edge": 1,
+        "color": 0.973,
+        "shape": 0.996,
+        "graph": 1,
+        "hallucination": 0,
+        "complexity": 0.395
+      },
+      "profile": "flat_color",
+      "profile_reason": "flatness 0.884 ≥ 0.62, texture 0.106 < 0.45",
+      "checks": {
+        "continuity": 0.992,
+        "symmetry": 1,
+        "widthConsistency": 1,
+        "seamDeltaE": 0,
+        "hiddenRatio": 0,
+        "uncertain": false
+      }
+    },
+    {
+      "layer_id": "heel_counter",
+      "score": {
+        "total": 0.9066,
+        "mask": 1,
+        "edge": 1,
+        "color": 0.973,
+        "shape": 1,
+        "graph": 1,
+        "hallucination": 0,
+        "complexity": 0.106
+      },
+      "profile": "flat_color",
+      "profile_reason": "flatness 0.789 ≥ 0.62, texture 0.214 < 0.45",
+      "checks": {
+        "continuity": 1,
+        "symmetry": 1,
+        "widthConsistency": 1,
+        "seamDeltaE": 0,
+        "hiddenRatio": 0,
+        "uncertain": false
+      }
+    },
+    {
+      "layer_id": "eyestay_accent",
+      "score": {
+        "total": 0.9064,
+        "mask": 1,
+        "edge": 1,
+        "color": 0.973,
+        "shape": 1,
+        "graph": 1,
+        "hallucination": 0,
+        "complexity": 0.109
+      },
+      "profile": "flat_precise",
+      "profile_reason": "faithful_vector 경로 (flatness 0.593)",
+      "checks": {
+        "continuity": 1,
+        "symmetry": 1,
+        "widthConsistency": 1,
+        "seamDeltaE": 0,
+        "hiddenRatio": 0,
+        "uncertain": false
+      }
+    },
+    {
+      "layer_id": "laces",
+      "score": {
+        "total": 0.8881,
+        "mask": 1,
+        "edge": 1,
+        "color": 0.968,
+        "shape": 1,
+        "graph": 1,
+        "hallucination": 0,
+        "complexity": 0.328
+      },
+      "profile": "flat_color",
+      "profile_reason": "flatness 0.738 ≥ 0.62, texture 0.271 < 0.45",
+      "checks": {
+        "continuity": 1,
+        "symmetry": 1,
+        "widthConsistency": 1,
+        "seamDeltaE": 0,
+        "hiddenRatio": 0,
+        "uncertain": true
+      }
+    }
+  ],
+  "qa": {
+    "pass": true,
+    "needsReview": true,
+    "structure": {
+      "layerCount": 8,
+      "idUnique": true,
+      "zOrderDag": true,
+      "parentRelationOk": true,
+      "manifestSvgIntegrity": 1,
+      "violations": []
+    },
+    "silhouette": {
+      "foregroundIou": 0.9969,
+      "boundaryFScore": 0.9955,
+      "boundaryPrecision": 1,
+      "boundaryRecall": 0.991
+    },
+    "color": {
+      "maskedDeltaE2000": 6.15,
+      "outliers": [
+        {
+          "layerId": "airmax_lettering",
+          "deltaE": 59.71
+        }
+      ]
+    },
+    "perceptual": {
+      "ssim": 0.7288,
+      "globalError": 0.2049
+    },
+    "amodal": {
+      "continuity": 1,
+      "hiddenRatioMax": 0,
+      "uncertainLayers": [
+        "laces"
+      ]
+    },
+    "vector": {
+      "invalidGeometry": 0,
+      "totalPaths": 289,
+      "totalNodes": 10088,
+      "fileKb": 354.8,
+      "budgetViolations": [],
+      "strictVectorCompliant": true
+    },
+    "failures": [
+      {
+        "signal": "visible_color_edge",
+        "layerId": "airmax_lettering",
+        "detail": "masked ΔE2000 59.71",
+        "action": "원본 visible-pixel 보호 비율 상향, 후보 재선택"
+      }
+    ],
+    "notes": [
+      "추정 영역 확인 필요: laces"
+    ],
+    "metricVersion": "qa.v1.0.0"
+  },
+  "retries": [],
+  "stages": [
+    {
+      "id": "S00_S01_preprocess",
+      "state": "PREPROCESSING",
+      "ms": 6321,
+      "detail": "1024×803 / SAM 3이 제품을 찾지 못함 — 원본 그대로 진행"
+    },
+    {
+      "id": "S02_plan",
+      "state": "PLANNING",
+      "ms": 1,
+      "detail": "8 layers (캐시)"
+    },
+    {
+      "id": "S03_graph",
+      "state": "VALIDATING_PLAN",
+      "ms": 8,
+      "detail": ""
+    },
+    {
+      "id": "S04_masks",
+      "state": "SEGMENTING",
+      "ms": 3335,
+      "detail": "커버리지 100.0%"
+    },
+    {
+      "id": "S05_S06_candidates",
+      "state": "GENERATING_LAYERS",
+      "ms": 1032,
+      "detail": "backend=layered_hosted 호출 0 캐시 2"
+    },
+    {
+      "id": "S07_S08_compose_r0",
+      "state": "REFINING_ALPHA",
+      "ms": 2314
+    },
+    {
+      "id": "S09_select_r0",
+      "state": "SELECTING_CANDIDATES",
+      "ms": 424,
+      "detail": "composite 0.7689 · 조합 49개 평가"
+    },
+    {
+      "id": "S10_S12_vectorize_r0",
+      "state": "VECTORIZING",
+      "ms": 25423
+    },
+    {
+      "id": "S13_assemble_r0",
+      "state": "ASSEMBLING",
+      "ms": 16,
+      "detail": "path 289 · 355KB"
+    },
+    {
+      "id": "S14_qa_r0",
+      "state": "VALIDATING_OUTPUT",
+      "ms": 1653,
+      "detail": "IoU 0.9969 · F 0.9955 · ΔE 6.15"
+    }
+  ]
+}
