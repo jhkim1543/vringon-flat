@@ -44,6 +44,8 @@ export interface V3Options {
   inkThreshold: number;
   /** 이미 만든 도면을 재사용한다 (백엔드 없이 벡터화·어셈블만 검증) */
   schematicFrom?: string;
+  /** 업스케일 단계 (워커의 공통 단계, 실패는 무시) */
+  upscale?: boolean;
 }
 
 export const DEFAULT_V3_OPTIONS: V3Options = {
@@ -170,7 +172,7 @@ export async function runV3(
     ts = Date.now();
     say("SKETCHING", "전체 도면 1회 생성");
     wholeSketch = await generateSchematic(canonical, sketchDir,
-      { category: normalizeCategory(plan.category), grayscale: opts.grayscale }, (m) => say("SKETCHING", m));
+      { category: normalizeCategory(plan.category), grayscale: opts.grayscale, upscale: opts.upscale }, (m) => say("SKETCHING", m));
     mark("S5_schematic_whole", ts);
   }
 
@@ -246,7 +248,7 @@ export async function runV3(
       const st = Date.now();
       say("SKETCHING", `${p.label || p.id} 도면 생성`);
       const r = await generateSchematic(partPng, sketchDir,
-        { category: normalizeCategory(plan.category), grayscale: opts.grayscale }, (m) => say("SKETCHING", m));
+        { category: normalizeCategory(plan.category), grayscale: opts.grayscale, upscale: opts.upscale }, (m) => say("SKETCHING", m));
       const alignedPath = path.join(workDir, `${p.id}.aligned.png`);
       await fs.writeFile(alignedPath, await alignToBox(r.pngPath, origBox, W, H));
       alignedSketches.push(alignedPath);

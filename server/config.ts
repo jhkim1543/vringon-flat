@@ -72,6 +72,10 @@ export const config = {
   /** Replicate — 워커의 common.qwen-image-edit가 실제로 도는 경로 */
   replicateToken: env("REPLICATE_API_TOKEN"),
   replicateQwenModel: env("REPLICATE_QWEN_MODEL", "qwen/qwen-image-edit-2511"),
+  /** 컬러 도식용 컬러화 모델 (워커의 common.image-edit 경로) */
+  replicateColorizeModel: env("REPLICATE_COLORIZE_MODEL", "google/nano-banana"),
+  /** 업스케일 (워커의 common.upscale 경로). 실패는 무시된다 */
+  replicateUpscaleModel: env("REPLICATE_UPSCALE_MODEL", "prunaai/p-image-upscale"),
   /** fal 대체 경로 */
   falQwenEditModel: env("FAL_QWEN_EDIT_MODEL", "fal-ai/qwen-image-edit-plus-lora"),
 

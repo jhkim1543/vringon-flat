@@ -10,6 +10,7 @@
  *   --parts 3-10                      구성품 개수 범위
  *   --ink 190                         잉크 판정 임계
  *   --schematic-from <경로>           기존 도면 재사용 (백엔드 없이 벡터화·어셈블 검증)
+ *   --no-upscale                      업스케일 단계 생략 (워커 기본은 켬)
  */
 import path from "node:path";
 import fs from "node:fs/promises";
@@ -42,6 +43,7 @@ const opts: V3Options = {
   grayscale: !has("color"),
   inkThreshold: Number(flag("ink") ?? 190),
   schematicFrom: flag("schematic-from"),
+  upscale: !has("no-upscale"),
 };
 
 const backend = activeBackend();

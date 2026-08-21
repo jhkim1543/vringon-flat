@@ -1,24 +1,24 @@
 /**
- * VRINGON 플랫 스케치(schematic) 생성 어댑터.
+ * VRINGON 플랫 스케치(schematic) 생성 어댑터 — **qa 브랜치 구현을 그대로 재현**한다.
+ * (RebuilderAI/vringon-ai-workers-services @ qa → generate_schematic_image/handler.py)
  *
- * 사내 워커 `generate_schematic_image`의 레시피를 그대로 재현한다.
- * (RebuilderAI/vringon-ai-workers-services → src/services/features/generate_schematic_image)
+ * 워커의 파이프라인 형태:
  *
- *   입력 → 1024×1024 stretch resize(bilinear, divisible_by 2)
- *        → qwen-image-edit i2i + 사내 schematic LoRA(strength 1.2)
- *          prompt = 카테고리별 베이크 프롬프트, seed = 484861632801927
- *        → 원본 해상도로 stretch resize back(divisible_by 1)
+ *   image → load(#209/#210) → 원본 크기 기록(#213)
+ *         → 1024×1024 stretch(#191, bilinear, divisible_by 2)
+ *         → common.qwen-image-edit 1회 (schematic LoRA i2i, 카테고리 프롬프트, 고정 시드)
+ *         → 원본 크기로 stretch back(#214, divisible_by 1) → PNG 저장(#212)
+ *         → [is_grayscale=false] nano-banana 컬러화 (Image1=도식, Image2=원본) → 종횡비 복원
+ *         → 업스케일 (흑백·컬러 공통, 실패는 무시)
+ *         → vtracer로 SVG (mono=binary / color=color)
  *
- * 백엔드 3종. 계약은 동일하므로 접근 가능한 것으로 env만 바꾸면 된다.
+ * `is_grayscale`는 그래프에 들어가지 않는다 — **후처리 단계를 고르는 스위치**다.
+ * 그래프 자체는 언제나 모노톤 선화만 만든다.
  *
- *  1. `vringon`   — 사내 엔드포인트 `POST /v2/edit/generate_schematic_image`
- *                   (Server-Vringon-Lib의 SchematicClient와 같은 계약:
- *                    {category, image, is_grayscale} → jobId → 폴링)
- *  2. `replicate` — `qwen/qwen-image-edit-2511` + 공개 LoRA URL.
- *                   워커가 실제로 도는 경로(common.qwen-image-edit 'auto' provider)와 같다.
- *  3. `fal`       — fal의 qwen-image-edit 계열 + 같은 LoRA.
- *
- * LoRA는 공개 버킷에 있어 별도 배포가 필요 없다(실측: HTTP 200).
+ * 백엔드 3종. 계약이 같으므로 접근 가능한 것으로 env만 바꾸면 된다.
+ *  1. `vringon`   — 사내 엔드포인트 `/v2/edit/generate_schematic_image` (Lib의 SchematicClient와 동일)
+ *  2. `replicate` — 공통 워커가 실제로 도는 경로를 직접 호출 (qwen-image-edit / nano-banana / p-image-upscale)
+ *  3. `fal`       — fal의 qwen-image-edit 계열 (컬러화·업스케일은 미지원 → 모노톤만)
  */
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -26,48 +26,27 @@ import crypto from "node:crypto";
 import sharp from "sharp";
 import { config } from "../config.js";
 import { withRetry } from "../clients/retry.js";
+import {
+  COLORIZE_MODEL, COLOR_SKETCH_ASPECT_RATIO, COLOR_SKETCH_PROMPT,
+  DEFAULT_LORA_URL, LORA_STRENGTH, OUTPUT_DIVISIBLE_BY,
+  QWEN_INPUT_DIVISIBLE_BY, QWEN_INPUT_SIZE, SAMPLER_SEED,
+  UPSCALE_FACTOR, UPSCALE_MODE, UPSCALE_MODEL, UPSCALE_OUTPUT_QUALITY, UPSCALE_TARGET,
+  resolvePrompt, type SchematicCategory,
+} from "./schematicConstants.js";
 
-// ── 워커에서 그대로 가져온 상수 (pipeline_constants.py) ──────
-
-/** #211 카테고리별 베이크 프롬프트 */
-export const CATEGORY_PROMPTS: Record<string, string> = {
-  shoe: "convert this shoe to a schematic",
-  bag: "convert this bag to a schematic",
-  jewelry: "convert this ornament to a schematic",
-};
-export const DEFAULT_PROMPT = "Create a schematic";
-
-export function resolvePrompt(category: string): string {
-  return CATEGORY_PROMPTS[category] ?? DEFAULT_PROMPT;
-}
-
-/** #191 생성측 작업 해상도 */
-export const QWEN_INPUT_SIZE = 1024;
-export const QWEN_INPUT_DIVISIBLE_BY = 2;
-export const OUTPUT_DIVISIBLE_BY = 1;
-/** #192 KSampler 고정 시드 */
-export const SAMPLER_SEED = 484861632801927;
-/** #124 Lora Loader Stack slot 1 */
-export const LORA_NAME = "sbj_qwen_image_edit_schematic_20260213.safetensors";
-export const LORA_STRENGTH = 1.2;
-export const DEFAULT_LORA_URL =
-  `https://vringon-ai-lora-public.s3.ap-northeast-2.amazonaws.com/${LORA_NAME}`;
-
-/** 워커 contract.py가 받는 카테고리 */
-export const SCHEMATIC_CATEGORIES = [
-  "shoe", "bag", "top", "bottom", "outer", "jewelry", "glasses", "cosmetic",
-] as const;
-export type SchematicCategory = (typeof SCHEMATIC_CATEGORIES)[number];
+export * from "./schematicConstants.js";
 
 export type SchematicBackend = "vringon" | "replicate" | "fal";
 
 export interface SchematicOptions {
   category: string;
-  /** true면 모노톤 도식, false면 컬러 플랫 (사내 Lib의 is_grayscale와 같은 의미) */
+  /** true면 모노톤 도식(기본). false면 컬러화 호출이 추가로 붙는다 */
   grayscale: boolean;
   /** 후보 다양화용. 미지정이면 워커와 동일한 고정 시드 */
   seed?: number;
   loraScale?: number;
+  /** 업스케일 단계를 돌릴 것인가 (워커 기본은 켬, 실패는 무시) */
+  upscale?: boolean;
 }
 
 export interface SchematicResult {
@@ -77,6 +56,8 @@ export interface SchematicResult {
   seed: number | null;
   loraUrl: string | null;
   loraScale: number;
+  /** 실제로 거친 단계 — 재현·과금 추적용 */
+  stages: string[];
   cached: boolean;
   ms: number;
 }
@@ -89,10 +70,17 @@ export function activeBackend(): SchematicBackend | null {
 }
 
 /**
+ * 워커의 RESIZE_UPSCALE_METHOD="bilinear"에 대응하는 커널.
+ * sharp 런타임에는 "linear"(=bilinear)가 있지만 타입 정의에 빠져 있어 캐스팅한다.
+ * mitchell 등으로 바꾸면 리샘플 특성이 달라져 선 굵기가 미묘하게 어긋난다.
+ */
+const BILINEAR = "linear" as unknown as keyof import("sharp").KernelEnum;
+
+const divisible = (v: number, by: number) => (by <= 1 ? Math.round(v) : Math.max(by, Math.round(v / by) * by));
+
+/**
  * 한 장을 도식화한다. 결과는 원본과 같은 크기의 PNG.
- *
- * 캐시 키는 입력 해시 + 프롬프트 + 시드 + LoRA + 백엔드다.
- * 같은 파트를 여러 번 시도해도 재과금되지 않는다.
+ * 캐시 키 = 입력 해시 + 프롬프트 + 시드 + LoRA + 백엔드 + 컬러 여부.
  */
 export async function generateSchematic(
   imagePath: string,
@@ -109,77 +97,119 @@ export async function generateSchematic(
   }
 
   await fs.mkdir(outDir, { recursive: true });
-  const prompt = resolvePrompt(opts.category);
+  const prompt = resolvePrompt(normalizeCategory(opts.category));
   const seed = opts.seed ?? SAMPLER_SEED;
   const loraScale = opts.loraScale ?? LORA_STRENGTH;
   const loraUrl = config.schematicLoraUrl || DEFAULT_LORA_URL;
+  const wantUpscale = opts.upscale ?? true;
 
   const src = await fs.readFile(imagePath);
   const key = crypto
     .createHash("sha256")
     .update(src)
-    .update(JSON.stringify({ prompt, seed, loraScale, loraUrl, backend, gray: opts.grayscale }))
+    .update(JSON.stringify({ prompt, seed, loraScale, loraUrl, backend, gray: opts.grayscale, up: wantUpscale }))
     .digest("hex")
     .slice(0, 16);
   const dest = path.join(outDir, `schematic_${key}.png`);
   try {
     await fs.access(dest);
-    return { pngPath: dest, backend, prompt, seed, loraUrl, loraScale, cached: true, ms: 0 };
+    return { pngPath: dest, backend, prompt, seed, loraUrl, loraScale, stages: ["cached"], cached: true, ms: 0 };
   } catch { /* 캐시 미스 */ }
 
-  // 원본 크기 기억 (#213 GetImageSize+)
+  // #213 원본 크기
   const meta = await sharp(src).metadata();
   const origW = meta.width!, origH = meta.height!;
+  const stages: string[] = [];
 
-  // #191 stretch resize → 1024×1024 (divisible_by 2)
+  // 사내 워커는 전 단계를 자기가 돈다 — 우리가 나눌 필요가 없다
+  if (backend === "vringon") {
+    const png = await callVringon(src, opts, onProgress);
+    await sharp(png).png().toFile(dest);
+    stages.push("vringon:all");
+    return { pngPath: dest, backend, prompt, seed, loraUrl, loraScale, stages, cached: false, ms: Date.now() - t0 };
+  }
+
+  // #191 stretch → 1024×1024 (bilinear)
   const sized = divisible(QWEN_INPUT_SIZE, QWEN_INPUT_DIVISIBLE_BY);
-  const resized = await sharp(src)
+  const qwenInput = await sharp(src)
     .flatten({ background: "#ffffff" })
-    .resize(sized, sized, { fit: "fill", kernel: "cubic" })
+    .resize(sized, sized, { fit: "fill", kernel: BILINEAR })
     .png()
     .toBuffer();
 
-  onProgress?.(`schematic(${backend}) ${opts.category}${opts.grayscale ? "/gray" : "/color"} seed=${seed}`);
+  onProgress?.(`schematic(${backend}) ${normalizeCategory(opts.category)}${opts.grayscale ? "/mono" : "/color"} seed=${seed}`);
 
-  let outPng: Buffer;
-  switch (backend) {
-    case "vringon":
-      outPng = await callVringon(resized, opts, onProgress);
-      break;
-    case "replicate":
-      outPng = await callReplicate(resized, prompt, seed, loraUrl, loraScale);
-      break;
-    case "fal":
-      outPng = await callFal(resized, prompt, seed, loraUrl, loraScale);
-      break;
-  }
+  // 도식 생성 (그래프는 언제나 모노톤)
+  let current =
+    backend === "replicate"
+      ? await replicateQwenEdit(qwenInput, prompt, seed, loraUrl, loraScale)
+      : await falQwenEdit(qwenInput, prompt, seed, loraUrl, loraScale);
+  stages.push(`${backend}:qwen-image-edit`);
 
-  // #214 원본 해상도로 되돌린다 (divisible_by 1)
-  await sharp(outPng)
+  // #214 원본 해상도로 복원
+  current = await sharp(current)
     .resize(divisible(origW, OUTPUT_DIVISIBLE_BY), divisible(origH, OUTPUT_DIVISIBLE_BY), {
       fit: "fill",
-      kernel: "cubic",
+      kernel: BILINEAR,
     })
     .png()
-    .toFile(dest);
+    .toBuffer();
 
-  return { pngPath: dest, backend, prompt, seed, loraUrl, loraScale, cached: false, ms: Date.now() - t0 };
+  // 컬러 분기 — 모노톤 도식 + 원본 사진을 nano-banana에 넘긴다
+  if (!opts.grayscale) {
+    if (backend !== "replicate") {
+      onProgress?.("컬러화는 Replicate 경로에서만 지원됩니다 — 모노톤으로 진행");
+    } else {
+      onProgress?.("nano-banana 컬러화");
+      const colorized = await replicateColorize(current, src);
+      // nano-banana는 aspect_ratio를 강제해 비정방 입력이 정방으로 눌린다.
+      // 워커와 같게, 가로폭은 두고 세로만 원본 비율로 되돌린다(해상도 손실 방지).
+      const cm = await sharp(colorized).metadata();
+      const targetH = Math.max(1, Math.round((cm.width! * origH) / origW));
+      current =
+        targetH === cm.height!
+          ? colorized
+          : await sharp(colorized)
+              .resize(cm.width!, divisible(targetH, OUTPUT_DIVISIBLE_BY), { fit: "fill", kernel: BILINEAR })
+              .png()
+              .toBuffer();
+      stages.push("replicate:nano-banana");
+    }
+  }
+
+  // 업스케일 — 흑백·컬러 공통. 실패해도 잡을 죽이지 않는다(레거시 copy fallback).
+  if (wantUpscale && backend === "replicate") {
+    try {
+      onProgress?.("업스케일");
+      current = await replicateUpscale(current);
+      stages.push("replicate:p-image-upscale");
+    } catch (e) {
+      onProgress?.(`업스케일 실패 — 원본 유지 (${(e as Error).message.slice(0, 60)})`);
+    }
+  }
+
+  await sharp(current).png().toFile(dest);
+  return { pngPath: dest, backend, prompt, seed, loraUrl, loraScale, stages, cached: false, ms: Date.now() - t0 };
 }
 
-const divisible = (v: number, by: number) => (by <= 1 ? v : Math.max(by, Math.round(v / by) * by));
+/** 워커 contract가 받는 카테고리로 정규화 */
+export function normalizeCategory(c: string): SchematicCategory {
+  const s = (c ?? "").toLowerCase();
+  if (s.includes("shoe") || s.includes("footwear") || s.includes("sneaker")) return "shoe";
+  if (s.includes("bag") || s.includes("purse") || s.includes("backpack")) return "bag";
+  if (s.includes("jewel") || s.includes("ring") || s.includes("earring") || s.includes("necklace")) return "jewelry";
+  if (s.includes("glass") || s.includes("eyewear")) return "glasses";
+  if (s.includes("cosmetic")) return "cosmetic";
+  if (s.includes("outer") || s.includes("coat") || s.includes("jacket")) return "outer";
+  if (s.includes("bottom") || s.includes("pants") || s.includes("skirt")) return "bottom";
+  if (s.includes("top") || s.includes("shirt") || s.includes("apparel")) return "top";
+  return "shoe";
+}
 
 // ── 백엔드 1: 사내 워커 ──────────────────────────────────────
 
-/**
- * Server-Vringon-Lib의 SchematicClient와 같은 계약.
- *   POST /v2/edit/generate_schematic_image  {category, image, is_grayscale} → {jobId}
- *   GET  /v2/generate_schematic_image/{jobId} → {status, imageUrl, svgUrl}
- *
- * image는 워커가 받을 수 있는 형태여야 한다. 공개 URL을 못 주는 환경을 위해
- * data URI를 먼저 시도하고, 거부되면 VRINGON_SCHEMATIC_UPLOAD로 올린 URL을 쓴다.
- */
 async function callVringon(
-  resized: Buffer,
+  src: Buffer,
   opts: SchematicOptions,
   onProgress?: (m: string) => void,
 ): Promise<Buffer> {
@@ -189,7 +219,7 @@ async function callVringon(
 
   const body = {
     category: normalizeCategory(opts.category),
-    image: `data:image/png;base64,${resized.toString("base64")}`,
+    image: `data:image/png;base64,${src.toString("base64")}`,
     is_grayscale: opts.grayscale,
   };
 
@@ -208,49 +238,63 @@ async function callVringon(
   const jobId = submit.jobId ?? submit.job_id;
   if (!jobId) throw new Error("vringon schematic: jobId 없음");
 
-  // 폴링 — 워커는 GPU 큐를 타므로 수십 초 걸린다
-  for (let i = 0; i < 120; i++) {
+  for (let i = 0; i < 200; i++) {
     await new Promise((r) => setTimeout(r, 3000));
     const st = await fetch(`${base}/v2/generate_schematic_image/${jobId}`, { headers });
     if (!st.ok) continue;
-    const j = (await st.json()) as { status?: string; imageUrl?: string; image_url?: string; details?: string };
-    const status = (j.status ?? "").toUpperCase();
-    const url = j.imageUrl ?? j.image_url;
+    const j = (await st.json()) as { status?: string; image_url?: string; imageUrl?: string; details?: string };
+    const url = j.image_url ?? j.imageUrl;
     if (url) return Buffer.from(await (await fetch(url)).arrayBuffer());
+    const status = (j.status ?? "").toUpperCase();
     if (status.includes("FAIL") || status.includes("ERROR")) throw new Error(`vringon schematic 실패: ${j.details ?? status}`);
     if (i % 10 === 9) onProgress?.(`  대기 ${(i + 1) * 3}s (${status || "…"})`);
   }
   throw new Error("vringon schematic: 폴링 시간 초과");
 }
 
-/** 워커 contract가 받는 카테고리로 정규화 */
-export function normalizeCategory(c: string): SchematicCategory {
-  const s = c.toLowerCase();
-  if (s.includes("shoe") || s.includes("footwear") || s.includes("sneaker")) return "shoe";
-  if (s.includes("bag") || s.includes("purse") || s.includes("backpack")) return "bag";
-  if (s.includes("jewel") || s.includes("ring") || s.includes("earring") || s.includes("necklace")) return "jewelry";
-  if (s.includes("glass") || s.includes("eyewear")) return "glasses";
-  if (s.includes("cosmetic")) return "cosmetic";
-  if (s.includes("outer") || s.includes("coat") || s.includes("jacket")) return "outer";
-  if (s.includes("bottom") || s.includes("pants") || s.includes("skirt")) return "bottom";
-  if (s.includes("top") || s.includes("shirt") || s.includes("apparel")) return "top";
-  return "shoe";
+// ── 백엔드 2: Replicate (공통 워커가 실제로 도는 경로) ───────
+
+async function replicateRun(model: string, input: Record<string, unknown>): Promise<Buffer> {
+  const token = config.replicateToken;
+  const created = await withRetry(
+    async () => {
+      const r = await fetch(`https://api.replicate.com/v1/models/${model}/predictions`, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", Prefer: "wait" },
+        body: JSON.stringify({ input }),
+      });
+      if (!r.ok) throw new Error(`replicate ${model} ${r.status}: ${(await r.text()).slice(0, 300)}`);
+      return r.json() as Promise<{ status: string; output?: unknown; urls?: { get: string }; error?: string }>;
+    },
+    { label: `replicate:${model}` },
+  );
+
+  let pred = created;
+  for (let i = 0; i < 150 && pred.status !== "succeeded"; i++) {
+    if (pred.status === "failed" || pred.status === "canceled")
+      throw new Error(`replicate ${model} 실패: ${pred.error ?? pred.status}`);
+    await new Promise((r) => setTimeout(r, 2000));
+    const r = await fetch(pred.urls!.get, { headers: { Authorization: `Bearer ${token}` } });
+    pred = (await r.json()) as typeof pred;
+  }
+  const url = firstUrl(pred.output);
+  if (!url) throw new Error(`replicate ${model}: 출력 URL 없음`);
+  return Buffer.from(await (await fetch(url)).arrayBuffer());
 }
 
-// ── 백엔드 2: Replicate (워커가 실제로 도는 경로) ────────────
+const dataUri = (b: Buffer) => `data:image/png;base64,${b.toString("base64")}`;
 
-async function callReplicate(
-  resized: Buffer,
+/** common.qwen-image-edit — mode=custom / normal_mode=i2i + schematic LoRA */
+async function replicateQwenEdit(
+  image: Buffer,
   prompt: string,
   seed: number,
   loraUrl: string,
   loraScale: number,
 ): Promise<Buffer> {
-  const token = config.replicateToken;
-  const model = config.replicateQwenModel; // 기본 qwen/qwen-image-edit-2511
   const input: Record<string, unknown> = {
     prompt,
-    image: `data:image/png;base64,${resized.toString("base64")}`,
+    image: dataUri(image),
     output_format: "png",
     seed,
   };
@@ -258,50 +302,49 @@ async function callReplicate(
     input.lora_weights = loraUrl;
     input.lora_scale = loraScale;
   }
-
-  const created = await withRetry(
-    async () => {
-      const r = await fetch(`https://api.replicate.com/v1/models/${model}/predictions`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-          Prefer: "wait",
-        },
-        body: JSON.stringify({ input }),
-      });
-      if (!r.ok) throw new Error(`replicate ${r.status}: ${(await r.text()).slice(0, 300)}`);
-      return r.json() as Promise<{ status: string; output?: unknown; urls?: { get: string }; error?: string }>;
-    },
-    { label: "replicate-qwen" },
-  );
-
-  let pred = created;
-  for (let i = 0; i < 120 && pred.status !== "succeeded"; i++) {
-    if (pred.status === "failed" || pred.status === "canceled")
-      throw new Error(`replicate 실패: ${pred.error ?? pred.status}`);
-    await new Promise((r) => setTimeout(r, 2000));
-    const r = await fetch(pred.urls!.get, { headers: { Authorization: `Bearer ${token}` } });
-    pred = (await r.json()) as typeof pred;
-  }
-  const url = firstUrl(pred.output);
-  if (!url) throw new Error("replicate: 출력 URL 없음");
-  return Buffer.from(await (await fetch(url)).arrayBuffer());
+  return replicateRun(config.replicateQwenModel, input);
 }
 
-// ── 백엔드 3: fal ───────────────────────────────────────────
+/**
+ * common.image-edit — nano-banana 컬러화.
+ * 프롬프트가 Image 1(구조) / Image 2(색)를 **순서로** 참조하므로 도식이 먼저, 원본이 뒤.
+ */
+async function replicateColorize(schematic: Buffer, original: Buffer): Promise<Buffer> {
+  return replicateRun(config.replicateColorizeModel || COLORIZE_MODEL, {
+    prompt: COLOR_SKETCH_PROMPT,
+    image_input: [dataUri(schematic), dataUri(original)],
+    aspect_ratio: COLOR_SKETCH_ASPECT_RATIO,
+    output_format: "png",
+  });
+}
 
-async function callFal(
-  resized: Buffer,
+/** common.upscale — target=4는 배율이 아니라 목표 4메가픽셀 */
+async function replicateUpscale(image: Buffer): Promise<Buffer> {
+  return replicateRun(config.replicateUpscaleModel || UPSCALE_MODEL, {
+    image: dataUri(image),
+    upscale_mode: UPSCALE_MODE,
+    target: UPSCALE_TARGET,
+    factor: UPSCALE_FACTOR,
+    enhance_details: false,
+    enhance_realism: false,
+    output_format: "png",
+    output_quality: UPSCALE_OUTPUT_QUALITY,
+    no_op: false,
+  });
+}
+
+// ── 백엔드 3: fal (모노톤만) ────────────────────────────────
+
+async function falQwenEdit(
+  image: Buffer,
   prompt: string,
   seed: number,
   loraUrl: string,
   loraScale: number,
 ): Promise<Buffer> {
-  const model = config.falQwenEditModel;
   const payload: Record<string, unknown> = {
     prompt,
-    image_url: `data:image/png;base64,${resized.toString("base64")}`,
+    image_url: dataUri(image),
     num_images: 1,
     output_format: "png",
     seed,
@@ -310,7 +353,7 @@ async function callFal(
 
   const j = await withRetry(
     async () => {
-      const r = await fetch(`https://fal.run/${model}`, {
+      const r = await fetch(`https://fal.run/${config.falQwenEditModel}`, {
         method: "POST",
         headers: { Authorization: `Key ${config.falKey}`, "Content-Type": "application/json" },
         body: JSON.stringify(payload),
