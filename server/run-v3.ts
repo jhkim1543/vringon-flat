@@ -5,7 +5,13 @@
  *
  * 옵션
  *   --category shoe|bag|jewelry|...   카테고리 힌트 (schematic 프롬프트에 쓰인다)
- *   --scope part|whole                파트별 도면(기본) / 전체 도면 1회 후 분할
+ *   --scope whole|part                전체 도면 1회 후 분할(기본) / 파트별 도면
+ *
+ *   scope=part는 파트 크롭을 도면 모델에 따로 넣는다. LoRA가 **제품 전체 사진**으로
+ *   학습돼 있어 조각을 주면 분포 밖으로 나가고, 그 조각으로 완성품을 지어낸다
+ *   (실측: 반지의 검은 인레이 크롭 → 목걸이 펜던트를 그려냄. 실루엣 IoU 0.889,
+ *   선 일치 F 0.468, 사진 대비 IoU 0.327 / 같은 샘플 scope=whole은 0.958·0.925·0.881).
+ *   그래서 기본은 whole이고, part는 실험용으로만 남긴다.
  *   --color                           컬러 플랫 (기본은 모노톤 도식)
  *   --parts 3-10                      구성품 개수 범위
  *   --ink 190                         잉크 판정 임계
@@ -39,7 +45,7 @@ const opts: V3Options = {
   categoryHint: flag("category"),
   minParts: partsRange[0] || 3,
   maxParts: partsRange[1] || 10,
-  schematicScope: (flag("scope") as V3Options["schematicScope"]) ?? "part",
+  schematicScope: (flag("scope") as V3Options["schematicScope"]) ?? "whole",
   grayscale: !has("color"),
   inkThreshold: Number(flag("ink") ?? 190),
   schematicFrom: flag("schematic-from"),

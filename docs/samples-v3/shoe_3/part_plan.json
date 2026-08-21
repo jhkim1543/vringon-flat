@@ -1,0 +1,140 @@
+{
+  "category": "shoe",
+  "objectNoun": "pair of athletic shoes",
+  "view": "oblique view with one shoe upright in back and one overturned shoe presenting its outsole in front",
+  "parts": [
+    {
+      "id": "back_shoe_sole",
+      "label": "Back shoe sole unit",
+      "description": "Brown and black midsole/outsole assembly beneath the upright rear shoe.",
+      "bbox": [
+        0.49,
+        0.45,
+        0.98,
+        0.86
+      ],
+      "z": 0,
+      "occludedBy": [
+        "back_shoe_upper",
+        "front_shoe_upper",
+        "front_shoe_outsole"
+      ],
+      "kind": "component",
+      "confidence": 0.88
+    },
+    {
+      "id": "back_shoe_upper",
+      "label": "Back shoe upper",
+      "description": "Gray and brown textile upper, including the padded heel and collar structure of the upright shoe.",
+      "bbox": [
+        0.43,
+        0.14,
+        0.99,
+        0.73
+      ],
+      "z": 1,
+      "occludedBy": [
+        "back_shoe_laces",
+        "front_shoe_upper",
+        "front_shoe_eyestay",
+        "front_shoe_laces",
+        "front_shoe_outsole"
+      ],
+      "kind": "component",
+      "confidence": 0.9
+    },
+    {
+      "id": "back_shoe_laces",
+      "label": "Back shoe laces",
+      "description": "Dark gray laces with yellow stripes crossing and looping over the rear shoe upper.",
+      "bbox": [
+        0.59,
+        0.18,
+        0.98,
+        0.59
+      ],
+      "z": 2,
+      "occludedBy": [
+        "front_shoe_upper",
+        "front_shoe_outsole"
+      ],
+      "kind": "component",
+      "confidence": 0.94
+    },
+    {
+      "id": "front_shoe_upper",
+      "label": "Front shoe upper",
+      "description": "Gray mesh and textile body of the overturned foreground shoe, visible around the opening and forefoot.",
+      "bbox": [
+        0.35,
+        0.26,
+        0.76,
+        0.99
+      ],
+      "z": 3,
+      "occludedBy": [
+        "front_shoe_eyestay",
+        "front_shoe_laces",
+        "front_shoe_outsole"
+      ],
+      "kind": "component",
+      "confidence": 0.93
+    },
+    {
+      "id": "front_shoe_eyestay",
+      "label": "Front shoe eyestay overlay",
+      "description": "Gray synthetic reinforcement panel with integrated bright yellow lace loops on the foreground shoe.",
+      "bbox": [
+        0.43,
+        0.39,
+        0.76,
+        0.9
+      ],
+      "z": 4,
+      "occludedBy": [
+        "front_shoe_laces",
+        "front_shoe_outsole"
+      ],
+      "kind": "component",
+      "confidence": 0.91
+    },
+    {
+      "id": "front_shoe_laces",
+      "label": "Front shoe laces",
+      "description": "Dark gray laces with yellow stripes threaded through the yellow webbing loops.",
+      "bbox": [
+        0.41,
+        0.35,
+        0.73,
+        0.81
+      ],
+      "z": 5,
+      "occludedBy": [
+        "front_shoe_outsole"
+      ],
+      "kind": "component",
+      "confidence": 0.95
+    },
+    {
+      "id": "front_shoe_outsole",
+      "label": "Front shoe outsole",
+      "description": "Large purple molded rubber outsole with deep segmented tread, facing the viewer and wrapping around the bent shoe.",
+      "bbox": [
+        0.01,
+        0.01,
+        0.72,
+        0.95
+      ],
+      "z": 6,
+      "occludedBy": [],
+      "kind": "component",
+      "confidence": 0.99
+    }
+  ],
+  "provenance": {
+    "model": "gpt-5.6",
+    "promptVersion": "v3.parts.v1.0.0",
+    "inputSha256": "91a70e033e2befed8fb2309a66f86095b63f9d6c25f2e3538cac51b26a828091",
+    "createdAt": "2026-08-21T17:06:36.807Z"
+  }
+}

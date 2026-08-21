@@ -1,0 +1,81 @@
+{
+  "category": "bag",
+  "objectNoun": "drawstring chainmail pouch bag",
+  "view": "front view",
+  "parts": [
+    {
+      "id": "inner_pouch",
+      "label": "Inner pouch lining",
+      "description": "Soft dark inner pouch forming the enclosed bag cavity behind the open metalwork exterior.",
+      "bbox": [
+        0.18,
+        0.52,
+        0.82,
+        0.86
+      ],
+      "z": 0,
+      "occludedBy": [
+        "shoulder_chain",
+        "chainmail_body",
+        "turquoise_studs"
+      ],
+      "kind": "component",
+      "confidence": 0.82
+    },
+    {
+      "id": "shoulder_chain",
+      "label": "Shoulder chain strap",
+      "description": "Single long doubled metal chain strap rising vertically from the gathered top of the bag.",
+      "bbox": [
+        0.46,
+        0,
+        0.58,
+        0.54
+      ],
+      "z": 1,
+      "occludedBy": [
+        "chainmail_body"
+      ],
+      "kind": "component",
+      "confidence": 0.96
+    },
+    {
+      "id": "chainmail_body",
+      "label": "Linked metal body shell",
+      "description": "Gathered exterior shell assembled from interlinked dark metal discs and rings, including the reinforced top and lower perimeter.",
+      "bbox": [
+        0.12,
+        0.5,
+        0.87,
+        0.88
+      ],
+      "z": 2,
+      "occludedBy": [
+        "turquoise_studs"
+      ],
+      "kind": "component",
+      "confidence": 0.97
+    },
+    {
+      "id": "turquoise_studs",
+      "label": "Turquoise cabochon embellishments",
+      "description": "Set of small turquoise-colored stone studs mounted across the exterior metal shell.",
+      "bbox": [
+        0.17,
+        0.53,
+        0.87,
+        0.87
+      ],
+      "z": 3,
+      "occludedBy": [],
+      "kind": "component",
+      "confidence": 0.94
+    }
+  ],
+  "provenance": {
+    "model": "gpt-5.6",
+    "promptVersion": "v3.parts.v1.0.0",
+    "inputSha256": "7334667183430fe5a0969d519cb1c7a3e302e69584326808618ebe7e15f83362",
+    "createdAt": "2026-08-21T17:10:09.376Z"
+  }
+}

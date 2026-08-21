@@ -135,6 +135,7 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
     </div>
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-tab="gallery">결과 갤러리</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="v3">V3 · VRINGON 도면</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="v2">V2 · 레이어 SVG</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="run">직접 실행</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="api">API 문서</button>
@@ -154,6 +155,46 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
   </p>
   <div class="grid" id="cards"></div>
   <div class="detail" id="detail" hidden></div>
+</section>
+
+<!-- ─────────── V3 VRINGON 도면 기반 라인 벡터 ─────────── -->
+<section id="v3" hidden>
+  <h2>V3 — VRINGON 플랫스케치 → 라인 기준 벡터화</h2>
+  <p class="sub">
+    사진을 먼저 <b>VRINGON schematic 워커</b>로 도면화하고, 그 <b>라인만 기준으로</b> 벡터를 만듭니다.
+    도면은 흰 배경에 선이 명확하므로 색 클러스터링이 필요 없고, 면과 선이 <b>같은 이진 마스크</b>에서
+    나와 경계가 정확히 맞물립니다.
+  </p>
+
+  <div class="note">
+    <b>왜 이 순서인가.</b> V1·V2는 사진의 그라데이션·질감 위에서 경계를 찾느라 파트가 뭉치거나 쪼개졌습니다.
+    도면화를 먼저 하면 그 문제가 사라집니다 — 도면의 선이 곧 파트 경계입니다.
+  </div>
+
+  <h3>4단계</h3>
+  <div class="pipe">
+    <div class="st"><b>S1–S2</b>정규화 · 격리 → GPT-5.6 구성품 분해</div>
+    <div class="st"><b>S3–S5</b>파트 마스크 · VRINGON 도면 생성</div>
+    <div class="st"><b>S6</b>라인 기준 벡터화 (해프톤은 톤 면으로)</div>
+    <div class="st"><b>S7–S8</b>레이어 어셈블 · 재래스터화 검증</div>
+  </div>
+
+  <h3>샘플 9종</h3>
+  <div class="grid" id="v3cards"></div>
+  <div class="detail" id="v3detail" hidden></div>
+
+  <h3>실측으로 확인한 것</h3>
+  <ul>
+    <li><b>파트별 도면 생성은 실패합니다.</b> schematic LoRA가 제품 전체 사진으로 학습돼 있어
+      파트 크롭을 주면 그 조각으로 완성품을 지어냅니다(반지의 검은 인레이 크롭 → 목걸이 펜던트).
+      실측 <code>scope=part</code> 실루엣 IoU 0.889 · 선 일치 F 0.468 vs
+      <code>scope=whole</code> 0.958 · 0.925. 그래서 <b>도면은 한 장만 만들고 그 그림을 파트로 나눕니다</b>.</li>
+    <li><b>해프톤은 선이 아니라 톤입니다.</b> 도면은 메시·니트를 점으로 표현하는데, 점을 선으로 따면
+      스크래치가 되거나 통째로 검게 뭉칩니다. 점 크기로 판별해 지우고 그 자리를 옅은 면으로 칠합니다.</li>
+    <li><b>컬러는 기하와 색을 나눠 뽑습니다.</b> 컬러 도면은 선과 색면이 같은 검정이라 밝기 임계가 무너집니다
+      (검정 가방 실측: 패스 6개, 실루엣 IoU 0.002). 컬러화 <b>직전</b>의 모노 도면에서 선을 뽑고,
+      색만 컬러본에서 샘플링해 둘 다 살립니다.</li>
+  </ul>
 </section>
 
 <!-- ─────────── V2 레이어 분리 SVG ─────────── -->
@@ -701,6 +742,137 @@ async function openV2(i) {
   document.getElementById("v2AllOn").onclick = () =>
     tbl.querySelectorAll("input").forEach(b => { if (!b.checked) { b.checked = true; b.onchange(); } });
   document.getElementById("v2AllOff").onclick = () =>
+    tbl.querySelectorAll("input").forEach(b => { if (b.checked) { b.checked = false; b.onchange(); } });
+}
+
+// ── V3 (VRINGON 도면 기반 라인 벡터) ────────────────────────
+let V3 = null;
+fetch("samples-v3/index.json").then(r => r.json()).then(d => {
+  V3 = d;
+  const c = document.getElementById("v3cards");
+  c.innerHTML = d.samples.map((s, i) => `
+    <button class="card" data-i="${i}">
+      <img src="${s.files.schematic || s.files.input}" alt="${s.name}" loading="lazy">
+      <div class="meta">
+        <div class="t">${s.categoryLabel} · ${s.name}</div>
+        <div class="d">레이어 ${s.layers.length}개 · 패스 ${s.qa.totalPaths.toLocaleString()}${s.color ? " · 컬러 있음" : ""}</div>
+      </div>
+    </button>`).join("");
+  c.querySelectorAll(".card").forEach(x => x.onclick = () => openV3(+x.dataset.i));
+  openV3(0);
+}).catch(e => {
+  const c = document.getElementById("v3cards");
+  if (c) c.innerHTML = `<p class="sub">V3 샘플을 불러오지 못했습니다: ${e.message}</p>`;
+});
+
+async function openV3(i) {
+  const s = V3.samples[i];
+  const host = document.getElementById("v3detail");
+  document.querySelectorAll("#v3cards .card").forEach((c, k) => c.setAttribute("aria-current", String(k === i)));
+  host.hidden = false;
+  const q = s.qa;
+  const kpi = (ok, label) => `<span class="badge ${ok ? "ok" : "warn"}">${label}</span>`;
+
+  host.innerHTML = `
+    <div class="detail-head">
+      <div class="t">${s.categoryLabel} · ${s.name}<span style="color:var(--dim);font-weight:400;font-size:13px"> — ${s.objectNoun}</span></div>
+      <div class="badges">
+        <span class="badge">${s.width}×${s.height}</span>
+        ${kpi(q.silhouetteIou >= 0.90, `도면 대비 실루엣 IoU ${q.silhouetteIou.toFixed(3)}`)}
+        ${kpi(q.boundaryF >= 0.85, `선 일치 F ${q.boundaryF.toFixed(3)}`)}
+        ${kpi(q.partCoverage >= 0.95, `파트 커버리지 ${(q.partCoverage * 100).toFixed(1)}%`)}
+        ${kpi(q.invalidPaths === 0, `invalid ${q.invalidPaths}`)}
+        <span class="badge">패스 ${q.totalPaths.toLocaleString()} · ${q.fileKb} KB</span>
+        <span class="badge ${s.state === "SUCCEEDED" ? "ok" : "warn"}">${s.state}</span>
+      </div>
+    </div>
+    <div class="stage3">
+      <div class="pane"><h4>1. 사진 (격리·크롭)</h4><div class="frame"><img src="${s.files.input}" alt="원본"></div></div>
+      <div class="pane"><h4>2. VRINGON 도면</h4><div class="frame">${s.files.schematic ? `<img src="${s.files.schematic}" alt="도면">` : "<span style='color:var(--dim);font-size:13px'>도면 없음</span>"}</div></div>
+      <div class="pane"><h4>3. V3 — 라인 기준 벡터</h4><div class="frame" id="v3svgHost">불러오는 중…</div></div>
+    </div>
+    ${s.color ? `<div class="stage3" style="margin-top:1px">
+      <div class="pane"><h4>컬러 — nano-banana 컬러화 도면</h4><div class="frame"><img src="${s.color.schematic}" alt="컬러 도면"></div></div>
+      <div class="pane"><h4>컬러 — V3 벡터</h4><div class="frame" id="v3colorHost">불러오는 중…</div></div>
+      <div class="pane"><h4>컬러 경로</h4><div class="frame" style="display:block;padding:14px;font-size:13px;line-height:1.7">
+        선은 <b>모노 도면</b>에서, 색은 <b>컬러 도면</b>에서 뽑습니다.<br>
+        패스 ${s.color.paths.toLocaleString()} · ${s.color.kb} KB
+      </div></div>
+    </div>` : ""}
+    <div class="layers">
+      <div class="layerbar">
+        <b style="font-size:13.5px">구성품 레이어 — 뒤에서 앞 순서</b>
+        <button class="btn" id="v3AllOn">전체 켜기</button>
+        <button class="btn" id="v3AllOff">전체 끄기</button>
+        <span style="color:var(--dim);font-size:12.5px">체크를 끄면 그 파트만 사라집니다</span>
+      </div>
+      <div style="overflow-x:auto"><table id="v3layers">
+        <tr><th>표시</th><th class="num">z</th><th>구성품</th><th>종류</th>
+            <th class="num">면</th><th class="num">선</th><th class="num">노드</th>
+            <th class="num">신뢰도</th><th>가려짐</th><th>파일</th></tr>
+      </table></div>
+    </div>
+    ${q.notes.length ? `<div class="layers">
+      <b style="font-size:13.5px">QA 메모</b>
+      <div style="margin-top:8px">${q.notes.map(n => `<div style="font-size:13px;margin-bottom:5px">· ${n}</div>`).join("")}</div>
+    </div>` : ""}
+    <div class="layers">
+      <b style="font-size:13.5px">도면 생성 · 재현 정보</b>
+      <div style="margin-top:8px;color:var(--dim);font-size:12.5px;line-height:1.8">
+        백엔드 <code>${s.schematic.backend}</code> · scope <code>${s.schematic.scope}</code> ·
+        시드 <code>${s.schematic.seed ?? "-"}</code> · 업스케일 <code>${s.schematic.upscaled ? "on" : "off"}</code><br>
+        프롬프트 <code>${s.schematic.prompt}</code><br>
+        시점 <code>${s.view}</code>
+      </div>
+      <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+        ${Object.entries(s.timings).filter(([, ms]) => ms > 300).map(([k, ms]) => `<span class="badge">${k} ${(ms / 1000).toFixed(1)}s</span>`).join("")}
+      </div>
+    </div>
+    <div class="dl">
+      <b style="font-size:13.5px">다운로드</b>
+      <a class="btn pri" href="${s.files.svg}" download="${s.name}-v3.svg">layered.svg</a>
+      ${s.color ? `<a class="btn" href="${s.color.svg}" download="${s.name}-v3-color.svg">layered_color.svg</a>` : ""}
+      <a class="btn" href="${s.files.plan}" download>part_plan.json</a>
+      <a class="btn" href="${s.files.qa}" download>qa_report.json</a>
+    </div>`;
+
+  const inline = async (hostId, url) => {
+    const h = document.getElementById(hostId);
+    if (!h) return null;
+    try {
+      h.innerHTML = await (await fetch(url)).text();
+      const el = h.querySelector("svg");
+      if (el) { el.removeAttribute("width"); el.removeAttribute("height"); el.style.width = "100%"; el.style.height = "100%"; }
+      return el;
+    } catch { h.textContent = "SVG를 불러오지 못했습니다"; return null; }
+  };
+  const svg = await inline("v3svgHost", s.files.svg);
+  if (s.color) await inline("v3colorHost", s.color.svg);
+
+  const tbl = document.getElementById("v3layers");
+  for (const L of s.layers) {
+    tbl.insertAdjacentHTML("beforeend", `<tr>
+      <td><input type="checkbox" checked data-lid="${L.id}" style="accent-color:var(--accent)"></td>
+      <td class="num">${L.z}</td>
+      <td><b>${L.label}</b><div style="color:var(--dim);font-size:11.5px">${L.id}</div></td>
+      <td>${L.kind === "marking" ? "마킹" : "구성품"}</td>
+      <td class="num">${L.regions}</td>
+      <td class="num">${L.strokes}</td>
+      <td class="num">${L.nodes}</td>
+      <td class="num">${L.confidence}</td>
+      <td style="color:var(--dim);font-size:12px">${L.occludedBy.length ? L.occludedBy.join(", ") : "—"}</td>
+      <td>${L.file ? `<a class="btn" style="padding:3px 8px;font-size:11.5px" href="${L.file}" download>SVG</a>` : "<span style='color:var(--dim);font-size:12px'>빈 레이어</span>"}</td></tr>`);
+  }
+  tbl.querySelectorAll("input[data-lid]").forEach(box => {
+    box.onchange = () => {
+      const g = svg ? svg.querySelector(`#layer-${CSS.escape(box.dataset.lid)}`) : null;
+      if (g) g.style.display = box.checked ? "" : "none";
+      box.closest("tr").style.opacity = box.checked ? "1" : "0.45";
+    };
+  });
+  document.getElementById("v3AllOn").onclick = () =>
+    tbl.querySelectorAll("input").forEach(b => { if (!b.checked) { b.checked = true; b.onchange(); } });
+  document.getElementById("v3AllOff").onclick = () =>
     tbl.querySelectorAll("input").forEach(b => { if (b.checked) { b.checked = false; b.onchange(); } });
 }
 

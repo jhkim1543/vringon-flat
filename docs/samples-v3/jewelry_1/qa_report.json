@@ -1,0 +1,217 @@
+{
+  "job": {
+    "state": "SUCCEEDED",
+    "canvas": {
+      "width": 618,
+      "height": 580
+    },
+    "totalMs": 40601,
+    "createdAt": "2026-08-21T17:16:44.762Z"
+  },
+  "options": {
+    "minParts": 3,
+    "maxParts": 10,
+    "schematicScope": "whole",
+    "grayscale": true,
+    "workLong": 1400,
+    "inkThreshold": 190,
+    "categoryHint": "jewelry",
+    "upscale": false
+  },
+  "plan": {
+    "category": "jewelry",
+    "objectNoun": "hinged hoop earring",
+    "view": "front view, open clasp at top",
+    "parts": [
+      {
+        "id": "hinge_connector",
+        "label": "Bottom hinge connector",
+        "description": "Recessed joint connecting the two metal hoop halves at the bottom center.",
+        "bbox": [
+          0.49,
+          0.77,
+          0.57,
+          0.87
+        ],
+        "z": 0,
+        "occludedBy": [
+          "left_hoop_half",
+          "right_hoop_half"
+        ],
+        "kind": "component",
+        "confidence": 0.82
+      },
+      {
+        "id": "left_hoop_half",
+        "label": "Left hoop half",
+        "description": "Curved left section of the polished metal hoop, including the upper-left clasp terminal.",
+        "bbox": [
+          0.05,
+          0.06,
+          0.53,
+          0.94
+        ],
+        "z": 1,
+        "occludedBy": [
+          "right_hoop_half",
+          "left_side_decoration"
+        ],
+        "kind": "component",
+        "confidence": 0.93
+      },
+      {
+        "id": "right_hoop_half",
+        "label": "Right hoop half",
+        "description": "Curved right section of the polished metal hoop extending from the bottom hinge to the upper clasp.",
+        "bbox": [
+          0.5,
+          0.06,
+          0.95,
+          0.94
+        ],
+        "z": 2,
+        "occludedBy": [
+          "clasp_catch"
+        ],
+        "kind": "component",
+        "confidence": 0.93
+      },
+      {
+        "id": "clasp_catch",
+        "label": "Upper clasp catch",
+        "description": "Dark recessed catch insert at the upper end of the right hoop half.",
+        "bbox": [
+          0.56,
+          0.05,
+          0.63,
+          0.12
+        ],
+        "z": 3,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.86
+      },
+      {
+        "id": "left_side_decoration",
+        "label": "Left-side engraved decoration",
+        "description": "Repeated recessed or faceted decorative pattern on the outer face of the left hoop half.",
+        "bbox": [
+          0.06,
+          0.17,
+          0.18,
+          0.76
+        ],
+        "z": 4,
+        "occludedBy": [],
+        "kind": "marking",
+        "confidence": 0.76
+      }
+    ],
+    "provenance": {
+      "model": "gpt-5.6",
+      "promptVersion": "v3.parts.v1.0.0",
+      "inputSha256": "9254493c15b38bf53374ad6b74440a8dc697fbb1e2f50cef7bc2389cb583dc33",
+      "createdAt": "2026-08-21T17:16:35.989Z"
+    }
+  },
+  "layers": [
+    {
+      "partId": "hinge_connector",
+      "label": "Bottom hinge connector",
+      "z": 0,
+      "regions": 1,
+      "strokes": 2,
+      "nodes": 21,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "left_hoop_half",
+      "label": "Left hoop half",
+      "z": 1,
+      "regions": 2,
+      "strokes": 16,
+      "nodes": 214,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "right_hoop_half",
+      "label": "Right hoop half",
+      "z": 2,
+      "regions": 2,
+      "strokes": 9,
+      "nodes": 97,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "clasp_catch",
+      "label": "Upper clasp catch",
+      "z": 3,
+      "regions": 1,
+      "strokes": 5,
+      "nodes": 29,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "left_side_decoration",
+      "label": "Left-side engraved decoration",
+      "z": 4,
+      "regions": 6,
+      "strokes": 35,
+      "nodes": 183,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    }
+  ],
+  "qa": {
+    "pass": true,
+    "silhouetteIou": 0.9576,
+    "boundaryF": 0.9253,
+    "partCoverage": 0.9993,
+    "invalidPaths": 0,
+    "totalPaths": 79,
+    "totalNodes": 544,
+    "fileKb": 29.4,
+    "notes": [
+      "참고: 사진 실루엣 대비 IoU 0.881 (도면화는 재해석이므로 낮을 수 있음)"
+    ]
+  },
+  "timings": {
+    "S1_preprocess": 5294,
+    "S2_plan": 26532,
+    "S3_masks": 793,
+    "S5_schematic_whole": 7260,
+    "S5_schematic": 69,
+    "S6_vectorize": 442,
+    "S7_assemble": 3,
+    "S8_qa": 135
+  }
+}

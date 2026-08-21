@@ -1,0 +1,188 @@
+{
+  "job": {
+    "state": "NEEDS_REVIEW",
+    "canvas": {
+      "width": 796,
+      "height": 933
+    },
+    "totalMs": 75461,
+    "createdAt": "2026-08-21T17:09:41.691Z"
+  },
+  "options": {
+    "minParts": 3,
+    "maxParts": 10,
+    "schematicScope": "whole",
+    "grayscale": true,
+    "workLong": 1400,
+    "inkThreshold": 190,
+    "categoryHint": "bag",
+    "upscale": false
+  },
+  "plan": {
+    "category": "bag",
+    "objectNoun": "beaded evening bag",
+    "view": "front view",
+    "parts": [
+      {
+        "id": "chain_strap",
+        "label": "Chain strap",
+        "description": "Bronze-tone linked carrying chain rising behind the bag and attaching near the top corners.",
+        "bbox": [
+          0.29,
+          0,
+          0.77,
+          0.4
+        ],
+        "z": 0,
+        "occludedBy": [
+          "metal_frame"
+        ],
+        "kind": "component",
+        "confidence": 0.98
+      },
+      {
+        "id": "beaded_body",
+        "label": "Beaded bag body",
+        "description": "Gathered white beaded textile shell forming the main pouch.",
+        "bbox": [
+          0.06,
+          0.39,
+          0.94,
+          0.88
+        ],
+        "z": 1,
+        "occludedBy": [
+          "metal_frame",
+          "floral_clasp"
+        ],
+        "kind": "component",
+        "confidence": 0.99
+      },
+      {
+        "id": "metal_frame",
+        "label": "Metal closure frame",
+        "description": "Engraved bronze-tone rigid frame around the bag opening.",
+        "bbox": [
+          0.18,
+          0.37,
+          0.87,
+          0.55
+        ],
+        "z": 2,
+        "occludedBy": [
+          "floral_clasp"
+        ],
+        "kind": "component",
+        "confidence": 0.97
+      },
+      {
+        "id": "floral_clasp",
+        "label": "Floral clasp assembly",
+        "description": "Central bronze-tone closure with a raised rose, leaves, and rectangular latch tab.",
+        "bbox": [
+          0.45,
+          0.36,
+          0.58,
+          0.48
+        ],
+        "z": 3,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.96
+      }
+    ],
+    "provenance": {
+      "model": "gpt-5.6",
+      "promptVersion": "v3.parts.v1.0.0",
+      "inputSha256": "d07a3b66d4fb25e29e4d878422d1dac2850ad8a475d8252cb96bd51390c591d3",
+      "createdAt": "2026-08-21T17:08:45.205Z"
+    }
+  },
+  "layers": [
+    {
+      "partId": "chain_strap",
+      "label": "Chain strap",
+      "z": 0,
+      "regions": 0,
+      "strokes": 0,
+      "nodes": 0,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "beaded_body",
+      "label": "Beaded bag body",
+      "z": 1,
+      "regions": 1,
+      "strokes": 73,
+      "nodes": 403,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "metal_frame",
+      "label": "Metal closure frame",
+      "z": 2,
+      "regions": 14,
+      "strokes": 162,
+      "nodes": 571,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "floral_clasp",
+      "label": "Floral clasp assembly",
+      "z": 3,
+      "regions": 3,
+      "strokes": 39,
+      "nodes": 132,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    }
+  ],
+  "qa": {
+    "pass": false,
+    "silhouetteIou": 0.9909,
+    "boundaryF": 0.6249,
+    "partCoverage": 0.999,
+    "invalidPaths": 0,
+    "totalPaths": 292,
+    "totalNodes": 1106,
+    "fileKb": 73,
+    "notes": [
+      "도면 대비 선 일치 F 0.625",
+      "해프톤 질감 27.1%를 톤 면으로 치환 — 그만큼 선 일치 F가 낮게 나온다",
+      "참고: 사진 실루엣 대비 IoU 0.647 (도면화는 재해석이므로 낮을 수 있음)"
+    ]
+  },
+  "timings": {
+    "S1_preprocess": 5447,
+    "S2_plan": 13526,
+    "S3_masks": 2696,
+    "S5_schematic_whole": 50137,
+    "S5_schematic": 174,
+    "S6_vectorize": 3237,
+    "S7_assemble": 2,
+    "S8_qa": 173
+  }
+}

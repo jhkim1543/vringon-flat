@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     viewBox="0 0 304 433" width="304" height="433">
+<g id="layer-closure_strap" inkscape:label="Vertical closure strap" data-z="6" data-kind="component" data-regions="3" data-strokes="8">
+      <path d="M107 96C109.89 95.4 111.23 95.18 114 96C134.57 114.16 139.89 147.06 141.63 172.76C142.69 191.36 142.97 210.03 143.09 228.65C143.09 229.86 143.1 231.06 143.11 232.3C143 235 143 235 142 236C139.67 236.04 137.33 236.04 135 236C134.99 235.45 134.98 234.9 134.97 234.33C134.86 228.45 134.74 222.58 134.63 216.7C134.59 214.52 134.54 212.35 134.5 210.17C134.29 198.7 134.02 187.25 133.53 175.79C133.49 174.89 133.45 173.99 133.42 173.06C133.21 168.63 132.85 164.36 132 160C131.51 159.84 131.51 159.84 129 159C128.91 158.42 128.82 157.85 128.73 157.25C125.8 138.86 121.96 117.9 109.06 103.5C107 101 107 101 106.69 98.13C106.79 97.42 106.89 96.72 107 96Z" fill="#ffffff" fill-rule="evenodd"/>
+      <path d="M135 239C136.98 239 138.96 239 141 239C141 244.94 141 250.88 141 257C138.36 256.67 135.72 256.34 133 256C132.78 250 133.49 244.81 135 239Z" fill="#ffffff" fill-rule="evenodd"/>
+      <path d="M123.56 244.88C123.94 244.87 123.94 244.87 125.88 244.87C128 245 128 245 131 246C131 248.31 131 250.62 131 253C130.34 253 129.68 253 129 253C129 253.99 129 254.98 129 256C123.26 256.83 117.8 257.09 112 257C112 254.03 112 251.06 112 248C112.99 248 113.98 248 115 248C115 247.34 115 246.68 115 246C117.92 245.16 120.53 244.87 123.56 244.88Z" fill="#c2c2c2" fill-rule="evenodd"/>
+      <path d="M126 234C123.56 234.2 121.44 234.8 119 235" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M143 235C139.34 236.53 137.77 237.26 134 236" fill="none" stroke="#111111" stroke-width="5.75" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M134 237C131.72 243.84 130.36 244 123 244" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M140 237C140 243.99 141.85 252.71 137 258" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M123 244C117.67 244 111.88 245.45 108 249" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M123 244C123 245 123 246 123 247" fill="none" stroke="#111111" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M119 245C119 246 119 247 119 248" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M113 300C113 301 113 302 113 303" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+</svg>

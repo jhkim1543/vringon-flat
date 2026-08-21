@@ -40,10 +40,22 @@ export interface LineVectorOptions {
   emitStrokes: boolean;
   /** 면 색을 원본에서 샘플링할 것인가 (컬러 도면) */
   sampleFill: boolean;
+  /**
+   * 색을 뽑을 다른 이미지. 컬러 도식은 선과 색면이 같은 검정이라 선을 못 뽑으므로
+   * **기하는 모노 도식(pngPath)에서, 색은 여기(컬러 도식)에서** 가져온다.
+   * 두 이미지는 같은 크기여야 한다 — 다르면 늘려서 맞춘다.
+   */
+  colorFrom?: string;
   /** 선 패스 상한 */
   maxStrokes: number;
   /** 같은 면색으로 묶을 ΔE2000 한계 */
   colorMergeDeltaE: number;
+  /**
+   * 이 길이(px) 미만의 선은 버린다. 도면의 해프톤 도트·미세 해칭이 잔선 수백 개로
+   * 변환되는 것을 막는다(실측: 메시 갑피의 도트가 스크래치처럼 그려짐).
+   * 미지정이면 캔버스 최소변의 1.2%.
+   */
+  minStrokeLength?: number;
   /** 중간 산출물을 둘 디렉터리. 미지정이면 입력 옆의 .lv/ */
   workDir?: string;
   /**
@@ -85,6 +97,8 @@ export interface LineVectorResult {
   stats: {
     inkRatio: number;
     enclosedRatio: number;
+    /** 해프톤으로 판정해 톤 면으로 바꾼 화면 비율 */
+    textureRatio: number;
     regionCount: number;
     regionDropped: number;
     colorGroups: number;
@@ -113,7 +127,16 @@ export async function vectorizeByLines(
     .toBuffer({ resolveWithObject: true });
   const W = info.width, H = info.height, N = W * H;
   const ch = info.channels;
-  const src: Raster = { data, channels: ch, width: W, height: H };
+  let src: Raster = { data, channels: ch, width: W, height: H };
+  if (o.colorFrom) {
+    const c = await sharp(o.colorFrom)
+      .flatten({ background: "#ffffff" })
+      .removeAlpha()
+      .resize(W, H, { fit: "fill" })
+      .raw()
+      .toBuffer({ resolveWithObject: true });
+    src = { data: c.data, channels: c.info.channels, width: W, height: H };
+  }
   const workDir = o.workDir ?? path.join(path.dirname(pngPath), ".lv");
   await fsp.mkdir(workDir, { recursive: true });
 
@@ -141,6 +164,39 @@ export async function vectorizeByLines(
     }
   }
   if (clip) for (let i = 0; i < N; i++) if (!clip[i]) ink[i] = 0;
+
+  // ── 1b) 해프톤 질감 → 톤 면 ────────────────────────────────
+  //
+  // 도면은 메시·니트·가죽결을 **작은 점을 촘촘히 찍어** 나타낸다. 이걸 선으로 따면
+  // 점 하나하나가 잔선이 되어 스크래치처럼 보이고(신발 갑피), 점이 더 촘촘하면
+  // 통째로 검은 덩어리가 된다(가방 옆판·스트랩). 테크팩 관례대로 **점은 지우고
+  // 그 자리를 옅은 톤 면**으로 표시한다.
+  //
+  // 판별은 점의 크기로 한다 — 선은 길게 이어진 큰 성분이 되고, 해프톤 점은 작고
+  // 고립된 성분이 된다. 그래서 연속선(끈·스티치)을 질감으로 오인하지 않는다.
+  const texture = new Uint8Array(N);
+  {
+    const dot = Math.max(2, Math.round(Math.min(W, H) * 0.008));
+    const speck = new Uint8Array(N);
+    let speckN = 0;
+    for (const c of components(ink, W, H, 1)) {
+      const w = c.bbox[2] - c.bbox[0] + 1, h = c.bbox[3] - c.bbox[1] + 1;
+      if (w > dot * 3 || h > dot * 3 || c.area > dot * dot * 4) continue;
+      for (let i = 0; i < N; i++) if (c.mask[i]) { speck[i] = 1; speckN++; }
+    }
+    if (speckN > N * 0.0004) {
+      // 점이 모여 있는 곳만 질감이다 — 흩어진 점 몇 개는 그냥 노이즈로 두고 지운다
+      const cluster = close(dilate(speck, W, H, dot * 2), W, H, dot);
+      for (const c of components(cluster, W, H, 1)) {
+        if (c.area < N * 0.0015) continue;
+        let dots = 0;
+        for (let i = 0; i < N; i++) if (c.mask[i] && speck[i]) dots++;
+        if (dots < c.area * 0.05) continue; // 성긴 곳은 질감이 아니다
+        for (let i = 0; i < N; i++) if (c.mask[i]) texture[i] = 1;
+      }
+      for (let i = 0; i < N; i++) if (speck[i]) ink[i] = 0;
+    }
+  }
 
   // 선의 끊긴 곳을 잇는다 — 1~2px 틈이 있으면 닫힌 면이 배경으로 새어 나간다
   ink = close(ink, W, H, 1);
@@ -201,7 +257,14 @@ export async function vectorizeByLines(
   const groups: { color: string; area: number; mask: Uint8Array; partId?: string }[] = [];
   for (const c of comps) {
     if (c.area < o.minRegionPx) { dropped++; continue; }
-    const color = o.sampleFill ? toHex(dominantColor(src, c.mask, false)) : "#ffffff";
+    let color = o.sampleFill ? toHex(dominantColor(src, c.mask, false)) : "#ffffff";
+    // 지운 해프톤 자리는 톤 면으로 되살린다. 점을 지운 뒤 색을 샘플링하면 흰색이
+    // 나와 질감이 통째로 사라지므로, 덮인 비율만큼 어둡게 눌러 준다.
+    {
+      let tex = 0;
+      for (let i = 0; i < N; i++) if (c.mask[i] && texture[i]) tex++;
+      if (tex > c.area * 0.35) color = tone(color, 0.14 + 0.1 * (tex / c.area));
+    }
     // 파트가 주어지면 겹침이 가장 큰 파트에 배분한다
     let partId: string | undefined;
     if (o.parts?.length) {
@@ -245,10 +308,11 @@ export async function vectorizeByLines(
     for (let i = 0; i < N; i++) if (ink[i]) inkPng[i] = 0;
     const tmp = workPath(pngPath, "ink", workDir);
     await sharp(inkPng, { raw: { width: W, height: H, channels: 1 } }).png().toFile(tmp);
+    const minLen = o.minStrokeLength ?? Math.max(4, Math.round(Math.min(W, H) * 0.012));
     const traced = await centerlineTrace(tmp, {
       color: "#111111",
       inkThreshold: 128,
-      minLength: 4,
+      minLength: minLen,
       maxPaths: o.maxStrokes,
     });
     strokes = traced.map((s) => ({
@@ -274,6 +338,7 @@ export async function vectorizeByLines(
     stats: {
       inkRatio: +(area(ink) / N).toFixed(4),
       enclosedRatio: +(enclosedN / N).toFixed(4),
+      textureRatio: +(area(texture) / N).toFixed(4),
       regionCount: regions.length,
       regionDropped: dropped,
       colorGroups: groups.length,
@@ -299,7 +364,10 @@ function assignStroke(
   W: number,
   H: number,
 ): string | undefined {
-  const nums = d.match(/-?d*.?d+(?:e[-+]?d+)?/gi);
+  // 정규식은 반드시 위의 NUMBER 상수를 쓴다. 여기에 리터럴로 적었다가 셸 heredoc으로
+  // 파일을 고치는 과정에서 역슬래시가 사라져(\d → d) 매치가 0이 됐고, 그 결과 모든 선이
+  // fallback인 parts[0]으로 몰렸다(실측: 선 1009개 전부 rubber_outsole).
+  const nums = d.match(NUMBER);
   if (!nums || nums.length < 2) return parts[0]?.id;
   const score = new Map<string, number>();
   const step = Math.max(2, Math.floor(nums.length / 40) * 2); // 좌표쌍 단위
@@ -315,12 +383,30 @@ function assignStroke(
       }
     }
   }
-  let best: string | undefined, bestN = 0;
-  for (const [id, n] of score) if (n > bestN) { bestN = n; best = id; }
-  return best ?? parts[0]?.id;
+  // 겹침이 가장 큰 파트를 고르면 **베이스가 전부 가져간다** — 몸통 마스크가 제일 넓어
+  // 거의 모든 선이 그 위에 놓이기 때문이다(실측: 선 1009개가 전부 base_upper로).
+  // 선은 파트 경계에 놓이므로, 충분히 겹치는 파트들 중 **가장 앞(z가 큰) 파트**가 주인이다.
+  // parts는 z 오름차순으로 들어오므로 뒤쪽이 앞 레이어다.
+  let bestN = 0;
+  for (const n of score.values()) if (n > bestN) bestN = n;
+  if (!bestN) return parts[parts.length - 1]?.id;
+  const threshold = bestN * 0.35;
+  for (let i = parts.length - 1; i >= 0; i--) {
+    const n = score.get(parts[i].id) ?? 0;
+    if (n >= threshold) return parts[i].id;
+  }
+  return parts[0]?.id;
 }
 
 /** 두 hex 색이 ΔE2000 기준으로 가까운가 */
+/** 색을 amount 만큼 검정 쪽으로 눌러 톤 면을 만든다 */
+function tone(hex: string, amount: number): string {
+  const v = parseInt(hex.slice(1), 16);
+  const k = 1 - Math.min(0.45, amount);
+  const c = (s: number) => Math.round(((v >> s) & 255) * k);
+  return toHex([c(16), c(8), c(0)]);
+}
+
 function colorClose(a: string, b: string, limit: number): boolean {
   const p = (h: string) => [
     parseInt(h.slice(1, 3), 16),

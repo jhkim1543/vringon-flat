@@ -1,0 +1,1312 @@
+{
+  "generatedAt": "2026-08-21",
+  "samples": [
+    {
+      "id": "bag_1",
+      "name": "bag_1",
+      "category": "bag",
+      "categoryLabel": "가방",
+      "state": "SUCCEEDED",
+      "width": 304,
+      "height": 433,
+      "objectNoun": "briefcase",
+      "view": "front-left three-quarter view",
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "scope": "whole",
+        "upscaled": false
+      },
+      "layers": [
+        {
+          "id": "top_handle",
+          "label": "Top carry handle",
+          "z": 0,
+          "kind": "component",
+          "confidence": 0.98,
+          "occludedBy": [
+            "main_body",
+            "front_flap"
+          ],
+          "regions": 0,
+          "strokes": 0,
+          "nodes": 0
+        },
+        {
+          "id": "main_body",
+          "label": "Main bag body",
+          "z": 1,
+          "kind": "component",
+          "confidence": 0.96,
+          "occludedBy": [
+            "side_gusset",
+            "front_flap",
+            "red_accent_bands",
+            "closure_strap"
+          ],
+          "regions": 2,
+          "strokes": 2,
+          "nodes": 49,
+          "file": "samples-v3/bag_1/layers/main_body.svg"
+        },
+        {
+          "id": "side_gusset",
+          "label": "Left side gusset",
+          "z": 2,
+          "kind": "component",
+          "confidence": 0.95,
+          "occludedBy": [
+            "side_attachment",
+            "front_flap"
+          ],
+          "regions": 2,
+          "strokes": 1,
+          "nodes": 58,
+          "file": "samples-v3/bag_1/layers/side_gusset.svg"
+        },
+        {
+          "id": "side_attachment",
+          "label": "Side strap attachment",
+          "z": 3,
+          "kind": "component",
+          "confidence": 0.82,
+          "occludedBy": [],
+          "regions": 1,
+          "strokes": 7,
+          "nodes": 14,
+          "file": "samples-v3/bag_1/layers/side_attachment.svg"
+        },
+        {
+          "id": "front_flap",
+          "label": "Front flap",
+          "z": 4,
+          "kind": "component",
+          "confidence": 0.99,
+          "occludedBy": [
+            "red_accent_bands",
+            "closure_strap"
+          ],
+          "regions": 6,
+          "strokes": 18,
+          "nodes": 171,
+          "file": "samples-v3/bag_1/layers/front_flap.svg"
+        },
+        {
+          "id": "red_accent_bands",
+          "label": "Red accent bands",
+          "z": 5,
+          "kind": "component",
+          "confidence": 0.94,
+          "occludedBy": [
+            "closure_strap"
+          ],
+          "regions": 2,
+          "strokes": 11,
+          "nodes": 55,
+          "file": "samples-v3/bag_1/layers/red_accent_bands.svg"
+        },
+        {
+          "id": "closure_strap",
+          "label": "Vertical closure strap",
+          "z": 6,
+          "kind": "component",
+          "confidence": 0.96,
+          "occludedBy": [
+            "logo_plaque",
+            "front_buckle"
+          ],
+          "regions": 3,
+          "strokes": 8,
+          "nodes": 39,
+          "file": "samples-v3/bag_1/layers/closure_strap.svg"
+        },
+        {
+          "id": "logo_plaque",
+          "label": "Embossed logo plaque",
+          "z": 7,
+          "kind": "component",
+          "confidence": 0.91,
+          "occludedBy": [],
+          "regions": 1,
+          "strokes": 7,
+          "nodes": 39,
+          "file": "samples-v3/bag_1/layers/logo_plaque.svg"
+        },
+        {
+          "id": "front_buckle",
+          "label": "Front buckle",
+          "z": 8,
+          "kind": "component",
+          "confidence": 0.94,
+          "occludedBy": [],
+          "regions": 2,
+          "strokes": 18,
+          "nodes": 44,
+          "file": "samples-v3/bag_1/layers/front_buckle.svg"
+        }
+      ],
+      "qa": {
+        "pass": true,
+        "silhouetteIou": 0.9832,
+        "boundaryF": 0.9392,
+        "partCoverage": 0.9979,
+        "invalidPaths": 0,
+        "totalPaths": 91,
+        "totalNodes": 469,
+        "fileKb": 28.4,
+        "notes": [
+          "해프톤 질감 5.8%를 톤 면으로 치환 — 그만큼 선 일치 F가 낮게 나온다",
+          "참고: 사진 실루엣 대비 IoU 0.620 (도면화는 재해석이므로 낮을 수 있음)"
+        ]
+      },
+      "timings": {
+        "S1_preprocess": 11563,
+        "S2_plan": 44925,
+        "S3_masks": 1669,
+        "S5_schematic_whole": 42564,
+        "S5_schematic": 69,
+        "S6_vectorize": 445,
+        "S7_assemble": 2,
+        "S8_qa": 105
+      },
+      "files": {
+        "svg": "samples-v3/bag_1/layered.svg",
+        "qa": "samples-v3/bag_1/qa_report.json",
+        "plan": "samples-v3/bag_1/part_plan.json",
+        "input": "samples-v3/bag_1/input.jpg",
+        "schematic": "samples-v3/bag_1/schematic.jpg"
+      },
+      "color": {
+        "svg": "samples-v3/bag_1/layered_color.svg",
+        "schematic": "samples-v3/bag_1/schematic_color.jpg",
+        "paths": 87,
+        "kb": 27.2
+      }
+    },
+    {
+      "id": "bag_2",
+      "name": "bag_2",
+      "category": "bag",
+      "categoryLabel": "가방",
+      "state": "NEEDS_REVIEW",
+      "width": 796,
+      "height": 933,
+      "objectNoun": "beaded evening bag",
+      "view": "front view",
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "scope": "whole",
+        "upscaled": false
+      },
+      "layers": [
+        {
+          "id": "chain_strap",
+          "label": "Chain strap",
+          "z": 0,
+          "kind": "component",
+          "confidence": 0.98,
+          "occludedBy": [
+            "metal_frame"
+          ],
+          "regions": 0,
+          "strokes": 0,
+          "nodes": 0
+        },
+        {
+          "id": "beaded_body",
+          "label": "Beaded bag body",
+          "z": 1,
+          "kind": "component",
+          "confidence": 0.99,
+          "occludedBy": [
+            "metal_frame",
+            "floral_clasp"
+          ],
+          "regions": 1,
+          "strokes": 73,
+          "nodes": 403,
+          "file": "samples-v3/bag_2/layers/beaded_body.svg"
+        },
+        {
+          "id": "metal_frame",
+          "label": "Metal closure frame",
+          "z": 2,
+          "kind": "component",
+          "confidence": 0.97,
+          "occludedBy": [
+            "floral_clasp"
+          ],
+          "regions": 14,
+          "strokes": 162,
+          "nodes": 571,
+          "file": "samples-v3/bag_2/layers/metal_frame.svg"
+        },
+        {
+          "id": "floral_clasp",
+          "label": "Floral clasp assembly",
+          "z": 3,
+          "kind": "component",
+          "confidence": 0.96,
+          "occludedBy": [],
+          "regions": 3,
+          "strokes": 39,
+          "nodes": 132,
+          "file": "samples-v3/bag_2/layers/floral_clasp.svg"
+        }
+      ],
+      "qa": {
+        "pass": false,
+        "silhouetteIou": 0.9909,
+        "boundaryF": 0.6249,
+        "partCoverage": 0.999,
+        "invalidPaths": 0,
+        "totalPaths": 292,
+        "totalNodes": 1106,
+        "fileKb": 73,
+        "notes": [
+          "도면 대비 선 일치 F 0.625",
+          "해프톤 질감 27.1%를 톤 면으로 치환 — 그만큼 선 일치 F가 낮게 나온다",
+          "참고: 사진 실루엣 대비 IoU 0.647 (도면화는 재해석이므로 낮을 수 있음)"
+        ]
+      },
+      "timings": {
+        "S1_preprocess": 5447,
+        "S2_plan": 13526,
+        "S3_masks": 2696,
+        "S5_schematic_whole": 50137,
+        "S5_schematic": 174,
+        "S6_vectorize": 3237,
+        "S7_assemble": 2,
+        "S8_qa": 173
+      },
+      "files": {
+        "svg": "samples-v3/bag_2/layered.svg",
+        "qa": "samples-v3/bag_2/qa_report.json",
+        "plan": "samples-v3/bag_2/part_plan.json",
+        "input": "samples-v3/bag_2/input.jpg",
+        "schematic": "samples-v3/bag_2/schematic.jpg"
+      }
+    },
+    {
+      "id": "bag_3",
+      "name": "bag_3",
+      "category": "bag",
+      "categoryLabel": "가방",
+      "state": "SUCCEEDED",
+      "width": 627,
+      "height": 1400,
+      "objectNoun": "drawstring chainmail pouch bag",
+      "view": "front view",
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "scope": "whole",
+        "upscaled": false
+      },
+      "layers": [
+        {
+          "id": "inner_pouch",
+          "label": "Inner pouch lining",
+          "z": 0,
+          "kind": "component",
+          "confidence": 0.82,
+          "occludedBy": [
+            "shoulder_chain",
+            "chainmail_body",
+            "turquoise_studs"
+          ],
+          "regions": 225,
+          "strokes": 1093,
+          "nodes": 5349,
+          "file": "samples-v3/bag_3/layers/inner_pouch.svg"
+        },
+        {
+          "id": "shoulder_chain",
+          "label": "Shoulder chain strap",
+          "z": 1,
+          "kind": "component",
+          "confidence": 0.96,
+          "occludedBy": [
+            "chainmail_body"
+          ],
+          "regions": 2,
+          "strokes": 224,
+          "nodes": 301,
+          "file": "samples-v3/bag_3/layers/shoulder_chain.svg"
+        },
+        {
+          "id": "chainmail_body",
+          "label": "Linked metal body shell",
+          "z": 2,
+          "kind": "component",
+          "confidence": 0.97,
+          "occludedBy": [
+            "turquoise_studs"
+          ],
+          "regions": 8,
+          "strokes": 29,
+          "nodes": 106,
+          "file": "samples-v3/bag_3/layers/chainmail_body.svg"
+        },
+        {
+          "id": "turquoise_studs",
+          "label": "Turquoise cabochon embellishments",
+          "z": 3,
+          "kind": "component",
+          "confidence": 0.94,
+          "occludedBy": [],
+          "regions": 14,
+          "strokes": 178,
+          "nodes": 385,
+          "file": "samples-v3/bag_3/layers/turquoise_studs.svg"
+        }
+      ],
+      "qa": {
+        "pass": true,
+        "silhouetteIou": 0.9749,
+        "boundaryF": 0.9848,
+        "partCoverage": 0.9692,
+        "invalidPaths": 0,
+        "totalPaths": 1773,
+        "totalNodes": 6141,
+        "fileKb": 418.4,
+        "notes": [
+          "참고: 사진 실루엣 대비 IoU 0.844 (도면화는 재해석이므로 낮을 수 있음)"
+        ]
+      },
+      "timings": {
+        "S1_preprocess": 5504,
+        "S2_plan": 19183,
+        "S3_masks": 2947,
+        "S5_schematic_whole": 41098,
+        "S5_schematic": 153,
+        "S6_vectorize": 3012,
+        "S7_assemble": 3,
+        "S8_qa": 262
+      },
+      "files": {
+        "svg": "samples-v3/bag_3/layered.svg",
+        "qa": "samples-v3/bag_3/qa_report.json",
+        "plan": "samples-v3/bag_3/part_plan.json",
+        "input": "samples-v3/bag_3/input.jpg",
+        "schematic": "samples-v3/bag_3/schematic.jpg"
+      }
+    },
+    {
+      "id": "jewelry_1",
+      "name": "jewelry_1",
+      "category": "jewelry",
+      "categoryLabel": "주얼리",
+      "state": "SUCCEEDED",
+      "width": 618,
+      "height": 580,
+      "objectNoun": "hinged hoop earring",
+      "view": "front view, open clasp at top",
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "scope": "whole",
+        "upscaled": false
+      },
+      "layers": [
+        {
+          "id": "hinge_connector",
+          "label": "Bottom hinge connector",
+          "z": 0,
+          "kind": "component",
+          "confidence": 0.82,
+          "occludedBy": [
+            "left_hoop_half",
+            "right_hoop_half"
+          ],
+          "regions": 1,
+          "strokes": 2,
+          "nodes": 21,
+          "file": "samples-v3/jewelry_1/layers/hinge_connector.svg"
+        },
+        {
+          "id": "left_hoop_half",
+          "label": "Left hoop half",
+          "z": 1,
+          "kind": "component",
+          "confidence": 0.93,
+          "occludedBy": [
+            "right_hoop_half",
+            "left_side_decoration"
+          ],
+          "regions": 2,
+          "strokes": 16,
+          "nodes": 214,
+          "file": "samples-v3/jewelry_1/layers/left_hoop_half.svg"
+        },
+        {
+          "id": "right_hoop_half",
+          "label": "Right hoop half",
+          "z": 2,
+          "kind": "component",
+          "confidence": 0.93,
+          "occludedBy": [
+            "clasp_catch"
+          ],
+          "regions": 2,
+          "strokes": 9,
+          "nodes": 97,
+          "file": "samples-v3/jewelry_1/layers/right_hoop_half.svg"
+        },
+        {
+          "id": "clasp_catch",
+          "label": "Upper clasp catch",
+          "z": 3,
+          "kind": "component",
+          "confidence": 0.86,
+          "occludedBy": [],
+          "regions": 1,
+          "strokes": 5,
+          "nodes": 29,
+          "file": "samples-v3/jewelry_1/layers/clasp_catch.svg"
+        },
+        {
+          "id": "left_side_decoration",
+          "label": "Left-side engraved decoration",
+          "z": 4,
+          "kind": "marking",
+          "confidence": 0.76,
+          "occludedBy": [],
+          "regions": 6,
+          "strokes": 35,
+          "nodes": 183,
+          "file": "samples-v3/jewelry_1/layers/left_side_decoration.svg"
+        }
+      ],
+      "qa": {
+        "pass": true,
+        "silhouetteIou": 0.9576,
+        "boundaryF": 0.9253,
+        "partCoverage": 0.9993,
+        "invalidPaths": 0,
+        "totalPaths": 79,
+        "totalNodes": 544,
+        "fileKb": 29.4,
+        "notes": [
+          "참고: 사진 실루엣 대비 IoU 0.881 (도면화는 재해석이므로 낮을 수 있음)"
+        ]
+      },
+      "timings": {
+        "S1_preprocess": 5294,
+        "S2_plan": 26532,
+        "S3_masks": 793,
+        "S5_schematic_whole": 7260,
+        "S5_schematic": 69,
+        "S6_vectorize": 442,
+        "S7_assemble": 3,
+        "S8_qa": 135
+      },
+      "files": {
+        "svg": "samples-v3/jewelry_1/layered.svg",
+        "qa": "samples-v3/jewelry_1/qa_report.json",
+        "plan": "samples-v3/jewelry_1/part_plan.json",
+        "input": "samples-v3/jewelry_1/input.jpg",
+        "schematic": "samples-v3/jewelry_1/schematic.jpg"
+      }
+    },
+    {
+      "id": "jewelry_2",
+      "name": "jewelry_2",
+      "category": "jewelry",
+      "categoryLabel": "주얼리",
+      "state": "SUCCEEDED",
+      "width": 545,
+      "height": 804,
+      "objectNoun": "harp-shaped brooch",
+      "view": "front oblique view",
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "scope": "whole",
+        "upscaled": false
+      },
+      "layers": [
+        {
+          "id": "pin_clasp_assembly",
+          "label": "Brooch pin and clasp assembly",
+          "z": 0,
+          "kind": "component",
+          "confidence": 0.85,
+          "occludedBy": [
+            "main_harp_body"
+          ],
+          "regions": 9,
+          "strokes": 38,
+          "nodes": 291,
+          "file": "samples-v3/jewelry_2/layers/pin_clasp_assembly.svg"
+        },
+        {
+          "id": "harp_strings",
+          "label": "Harp string wires",
+          "z": 1,
+          "kind": "component",
+          "confidence": 0.91,
+          "occludedBy": [
+            "main_harp_body"
+          ],
+          "regions": 2,
+          "strokes": 1,
+          "nodes": 74,
+          "file": "samples-v3/jewelry_2/layers/harp_strings.svg"
+        },
+        {
+          "id": "main_harp_body",
+          "label": "Main harp body and frame",
+          "z": 2,
+          "kind": "component",
+          "confidence": 0.96,
+          "occludedBy": [
+            "raised_leaf_ornaments",
+            "fastener_studs"
+          ],
+          "regions": 20,
+          "strokes": 87,
+          "nodes": 723,
+          "file": "samples-v3/jewelry_2/layers/main_harp_body.svg"
+        },
+        {
+          "id": "raised_leaf_ornaments",
+          "label": "Raised leaf ornaments",
+          "z": 3,
+          "kind": "component",
+          "confidence": 0.79,
+          "occludedBy": [],
+          "regions": 0,
+          "strokes": 0,
+          "nodes": 0
+        },
+        {
+          "id": "fastener_studs",
+          "label": "Decorative fastener studs",
+          "z": 4,
+          "kind": "component",
+          "confidence": 0.88,
+          "occludedBy": [],
+          "regions": 1,
+          "strokes": 1,
+          "nodes": 51,
+          "file": "samples-v3/jewelry_2/layers/fastener_studs.svg"
+        },
+        {
+          "id": "engraved_flourish",
+          "label": "Engraved flourish",
+          "z": 5,
+          "kind": "marking",
+          "confidence": 0.95,
+          "occludedBy": [],
+          "regions": 0,
+          "strokes": 0,
+          "nodes": 0
+        }
+      ],
+      "qa": {
+        "pass": true,
+        "silhouetteIou": 0.9895,
+        "boundaryF": 0.9474,
+        "partCoverage": 0.9996,
+        "invalidPaths": 0,
+        "totalPaths": 159,
+        "totalNodes": 1139,
+        "fileKb": 59.9,
+        "notes": [
+          "참고: 사진 실루엣 대비 IoU 0.982 (도면화는 재해석이므로 낮을 수 있음)"
+        ]
+      },
+      "timings": {
+        "S1_preprocess": 5992,
+        "S2_plan": 15728,
+        "S3_masks": 1041,
+        "S5_schematic_whole": 7705,
+        "S5_schematic": 64,
+        "S6_vectorize": 431,
+        "S7_assemble": 2,
+        "S8_qa": 104
+      },
+      "files": {
+        "svg": "samples-v3/jewelry_2/layered.svg",
+        "qa": "samples-v3/jewelry_2/qa_report.json",
+        "plan": "samples-v3/jewelry_2/part_plan.json",
+        "input": "samples-v3/jewelry_2/input.jpg",
+        "schematic": "samples-v3/jewelry_2/schematic.jpg"
+      }
+    },
+    {
+      "id": "jewelry_3",
+      "name": "jewelry_3",
+      "category": "jewelry",
+      "categoryLabel": "주얼리",
+      "state": "NEEDS_REVIEW",
+      "width": 1020,
+      "height": 462,
+      "objectNoun": "set of three gemstone rings",
+      "view": "oblique top view",
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "scope": "whole",
+        "upscaled": false
+      },
+      "layers": [
+        {
+          "id": "rear_ring_body",
+          "label": "Rear ring body",
+          "z": 0,
+          "kind": "component",
+          "confidence": 0.92,
+          "occludedBy": [
+            "rear_gemstone"
+          ],
+          "regions": 3,
+          "strokes": 6,
+          "nodes": 94,
+          "file": "samples-v3/jewelry_3/layers/rear_ring_body.svg"
+        },
+        {
+          "id": "rear_gemstone",
+          "label": "Rear gemstone",
+          "z": 1,
+          "kind": "component",
+          "confidence": 0.94,
+          "occludedBy": [],
+          "regions": 2,
+          "strokes": 20,
+          "nodes": 142,
+          "file": "samples-v3/jewelry_3/layers/rear_gemstone.svg"
+        },
+        {
+          "id": "center_ring_body",
+          "label": "Center ring body",
+          "z": 2,
+          "kind": "component",
+          "confidence": 0.95,
+          "occludedBy": [
+            "center_gemstone",
+            "front_ring_body"
+          ],
+          "regions": 2,
+          "strokes": 6,
+          "nodes": 51,
+          "file": "samples-v3/jewelry_3/layers/center_ring_body.svg"
+        },
+        {
+          "id": "center_gemstone",
+          "label": "Center gemstone",
+          "z": 3,
+          "kind": "component",
+          "confidence": 0.98,
+          "occludedBy": [],
+          "regions": 2,
+          "strokes": 61,
+          "nodes": 338,
+          "file": "samples-v3/jewelry_3/layers/center_gemstone.svg"
+        },
+        {
+          "id": "front_ring_body",
+          "label": "Front ring body",
+          "z": 4,
+          "kind": "component",
+          "confidence": 0.96,
+          "occludedBy": [
+            "front_gemstone"
+          ],
+          "regions": 3,
+          "strokes": 16,
+          "nodes": 136,
+          "file": "samples-v3/jewelry_3/layers/front_ring_body.svg"
+        },
+        {
+          "id": "front_gemstone",
+          "label": "Front gemstone",
+          "z": 5,
+          "kind": "component",
+          "confidence": 0.98,
+          "occludedBy": [],
+          "regions": 1,
+          "strokes": 14,
+          "nodes": 154,
+          "file": "samples-v3/jewelry_3/layers/front_gemstone.svg"
+        }
+      ],
+      "qa": {
+        "pass": false,
+        "silhouetteIou": 0.9359,
+        "boundaryF": 0.777,
+        "partCoverage": 0.9998,
+        "invalidPaths": 0,
+        "totalPaths": 136,
+        "totalNodes": 915,
+        "fileKb": 49.3,
+        "notes": [
+          "도면 대비 선 일치 F 0.777",
+          "해프톤 질감 1.0%를 톤 면으로 치환 — 그만큼 선 일치 F가 낮게 나온다",
+          "참고: 사진 실루엣 대비 IoU 0.825 (도면화는 재해석이므로 낮을 수 있음)"
+        ]
+      },
+      "timings": {
+        "S1_preprocess": 5295,
+        "S2_plan": 14718,
+        "S3_masks": 1950,
+        "S5_schematic_whole": 7904,
+        "S5_schematic": 71,
+        "S6_vectorize": 674,
+        "S7_assemble": 2,
+        "S8_qa": 154
+      },
+      "files": {
+        "svg": "samples-v3/jewelry_3/layered.svg",
+        "qa": "samples-v3/jewelry_3/qa_report.json",
+        "plan": "samples-v3/jewelry_3/part_plan.json",
+        "input": "samples-v3/jewelry_3/input.jpg",
+        "schematic": "samples-v3/jewelry_3/schematic.jpg"
+      }
+    },
+    {
+      "id": "shoe_1",
+      "name": "shoe_1",
+      "category": "shoe",
+      "categoryLabel": "신발",
+      "state": "SUCCEEDED",
+      "width": 1400,
+      "height": 1098,
+      "objectNoun": "athletic sneaker",
+      "view": "lateral side view with toe pointing right",
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "scope": "whole",
+        "upscaled": false
+      },
+      "layers": [
+        {
+          "id": "tongue",
+          "label": "Padded tongue",
+          "z": 0,
+          "kind": "component",
+          "confidence": 0.94,
+          "occludedBy": [
+            "main_upper",
+            "eyestay_overlay",
+            "laces"
+          ],
+          "regions": 3,
+          "strokes": 7,
+          "nodes": 30,
+          "file": "samples-v3/shoe_1/layers/tongue.svg"
+        },
+        {
+          "id": "rubber_outsole",
+          "label": "Rubber outsole",
+          "z": 1,
+          "kind": "component",
+          "confidence": 0.96,
+          "occludedBy": [
+            "foam_midsole"
+          ],
+          "regions": 0,
+          "strokes": 0,
+          "nodes": 0
+        },
+        {
+          "id": "foam_midsole",
+          "label": "Foam midsole",
+          "z": 2,
+          "kind": "component",
+          "confidence": 0.95,
+          "occludedBy": [
+            "main_upper",
+            "airmax_badge"
+          ],
+          "regions": 7,
+          "strokes": 8,
+          "nodes": 535,
+          "file": "samples-v3/shoe_1/layers/foam_midsole.svg"
+        },
+        {
+          "id": "main_upper",
+          "label": "Main shoe upper",
+          "z": 3,
+          "kind": "component",
+          "confidence": 0.97,
+          "occludedBy": [
+            "heel_reinforcement",
+            "toe_mudguard",
+            "swoosh_logo",
+            "eyestay_overlay",
+            "laces"
+          ],
+          "regions": 4,
+          "strokes": 17,
+          "nodes": 84,
+          "file": "samples-v3/shoe_1/layers/main_upper.svg"
+        },
+        {
+          "id": "heel_reinforcement",
+          "label": "Heel reinforcement panel",
+          "z": 4,
+          "kind": "component",
+          "confidence": 0.93,
+          "occludedBy": [],
+          "regions": 4,
+          "strokes": 60,
+          "nodes": 670,
+          "file": "samples-v3/shoe_1/layers/heel_reinforcement.svg"
+        },
+        {
+          "id": "toe_mudguard",
+          "label": "Toe mudguard overlay",
+          "z": 5,
+          "kind": "component",
+          "confidence": 0.91,
+          "occludedBy": [],
+          "regions": 4,
+          "strokes": 32,
+          "nodes": 305,
+          "file": "samples-v3/shoe_1/layers/toe_mudguard.svg"
+        },
+        {
+          "id": "eyestay_overlay",
+          "label": "Eyestay overlay",
+          "z": 6,
+          "kind": "component",
+          "confidence": 0.94,
+          "occludedBy": [
+            "laces"
+          ],
+          "regions": 6,
+          "strokes": 35,
+          "nodes": 249,
+          "file": "samples-v3/shoe_1/layers/eyestay_overlay.svg"
+        },
+        {
+          "id": "laces",
+          "label": "Shoelaces",
+          "z": 7,
+          "kind": "component",
+          "confidence": 0.98,
+          "occludedBy": [],
+          "regions": 22,
+          "strokes": 106,
+          "nodes": 928,
+          "file": "samples-v3/shoe_1/layers/laces.svg"
+        },
+        {
+          "id": "swoosh_logo",
+          "label": "Side swoosh logo",
+          "z": 8,
+          "kind": "marking",
+          "confidence": 0.98,
+          "occludedBy": [
+            "laces"
+          ],
+          "regions": 5,
+          "strokes": 36,
+          "nodes": 683,
+          "file": "samples-v3/shoe_1/layers/swoosh_logo.svg"
+        },
+        {
+          "id": "airmax_badge",
+          "label": "Air Max side badge",
+          "z": 9,
+          "kind": "marking",
+          "confidence": 0.98,
+          "occludedBy": [],
+          "regions": 10,
+          "strokes": 54,
+          "nodes": 453,
+          "file": "samples-v3/shoe_1/layers/airmax_badge.svg"
+        }
+      ],
+      "qa": {
+        "pass": true,
+        "silhouetteIou": 0.9881,
+        "boundaryF": 0.8631,
+        "partCoverage": 0.999,
+        "invalidPaths": 0,
+        "totalPaths": 420,
+        "totalNodes": 3937,
+        "fileKb": 188.6,
+        "notes": [
+          "해프톤 질감 16.0%를 톤 면으로 치환 — 그만큼 선 일치 F가 낮게 나온다",
+          "참고: 사진 실루엣 대비 IoU 0.538 (도면화는 재해석이므로 낮을 수 있음)"
+        ]
+      },
+      "timings": {
+        "S1_preprocess": 6144,
+        "S2_plan": 30980,
+        "S3_masks": 9430,
+        "S5_schematic_whole": 12390,
+        "S5_schematic": 182,
+        "S6_vectorize": 4817,
+        "S7_assemble": 3,
+        "S8_qa": 245
+      },
+      "files": {
+        "svg": "samples-v3/shoe_1/layered.svg",
+        "qa": "samples-v3/shoe_1/qa_report.json",
+        "plan": "samples-v3/shoe_1/part_plan.json",
+        "input": "samples-v3/shoe_1/input.jpg",
+        "schematic": "samples-v3/shoe_1/schematic.jpg"
+      }
+    },
+    {
+      "id": "shoe_2",
+      "name": "shoe_2",
+      "category": "shoe",
+      "categoryLabel": "신발",
+      "state": "SUCCEEDED",
+      "width": 1400,
+      "height": 786,
+      "objectNoun": "pair of trail running shoes",
+      "view": "foreground lateral three-quarter view with rear shoe showing outsole",
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "scope": "whole",
+        "upscaled": false
+      },
+      "layers": [
+        {
+          "id": "rear_upper",
+          "label": "Rear shoe upper",
+          "z": 0,
+          "kind": "component",
+          "confidence": 0.87,
+          "occludedBy": [
+            "rear_midsole",
+            "rear_outsole"
+          ],
+          "regions": 7,
+          "strokes": 23,
+          "nodes": 297,
+          "file": "samples-v3/shoe_2/layers/rear_upper.svg"
+        },
+        {
+          "id": "rear_midsole",
+          "label": "Rear shoe midsole",
+          "z": 1,
+          "kind": "component",
+          "confidence": 0.92,
+          "occludedBy": [
+            "rear_outsole"
+          ],
+          "regions": 9,
+          "strokes": 61,
+          "nodes": 606,
+          "file": "samples-v3/shoe_2/layers/rear_midsole.svg"
+        },
+        {
+          "id": "rear_outsole",
+          "label": "Rear shoe outsole",
+          "z": 2,
+          "kind": "component",
+          "confidence": 0.99,
+          "occludedBy": [],
+          "regions": 54,
+          "strokes": 268,
+          "nodes": 2537,
+          "file": "samples-v3/shoe_2/layers/rear_outsole.svg"
+        },
+        {
+          "id": "front_outsole",
+          "label": "Foreground shoe outsole",
+          "z": 3,
+          "kind": "component",
+          "confidence": 0.97,
+          "occludedBy": [
+            "front_midsole",
+            "front_upper",
+            "front_overlay"
+          ],
+          "regions": 23,
+          "strokes": 157,
+          "nodes": 1580,
+          "file": "samples-v3/shoe_2/layers/front_outsole.svg"
+        },
+        {
+          "id": "front_midsole",
+          "label": "Foreground shoe midsole",
+          "z": 4,
+          "kind": "component",
+          "confidence": 0.95,
+          "occludedBy": [
+            "front_upper",
+            "front_overlay"
+          ],
+          "regions": 1,
+          "strokes": 28,
+          "nodes": 66,
+          "file": "samples-v3/shoe_2/layers/front_midsole.svg"
+        },
+        {
+          "id": "front_upper",
+          "label": "Foreground shoe mesh upper",
+          "z": 5,
+          "kind": "component",
+          "confidence": 0.94,
+          "occludedBy": [
+            "front_overlay",
+            "front_laces",
+            "front_heel_pull_tab"
+          ],
+          "regions": 7,
+          "strokes": 25,
+          "nodes": 160,
+          "file": "samples-v3/shoe_2/layers/front_upper.svg"
+        },
+        {
+          "id": "front_overlay",
+          "label": "Foreground synthetic support overlay",
+          "z": 6,
+          "kind": "component",
+          "confidence": 0.96,
+          "occludedBy": [
+            "front_laces",
+            "brand_graphic"
+          ],
+          "regions": 3,
+          "strokes": 22,
+          "nodes": 200,
+          "file": "samples-v3/shoe_2/layers/front_overlay.svg"
+        },
+        {
+          "id": "front_laces",
+          "label": "Foreground shoe laces",
+          "z": 7,
+          "kind": "component",
+          "confidence": 0.99,
+          "occludedBy": [],
+          "regions": 50,
+          "strokes": 212,
+          "nodes": 990,
+          "file": "samples-v3/shoe_2/layers/front_laces.svg"
+        },
+        {
+          "id": "front_heel_pull_tab",
+          "label": "Foreground heel pull tab",
+          "z": 8,
+          "kind": "component",
+          "confidence": 0.98,
+          "occludedBy": [],
+          "regions": 2,
+          "strokes": 17,
+          "nodes": 59,
+          "file": "samples-v3/shoe_2/layers/front_heel_pull_tab.svg"
+        },
+        {
+          "id": "brand_graphic",
+          "label": "Merrell side branding",
+          "z": 9,
+          "kind": "marking",
+          "confidence": 0.98,
+          "occludedBy": [],
+          "regions": 3,
+          "strokes": 42,
+          "nodes": 402,
+          "file": "samples-v3/shoe_2/layers/brand_graphic.svg"
+        }
+      ],
+      "qa": {
+        "pass": true,
+        "silhouetteIou": 0.9847,
+        "boundaryF": 0.8712,
+        "partCoverage": 0.9955,
+        "invalidPaths": 0,
+        "totalPaths": 1014,
+        "totalNodes": 6897,
+        "fileKb": 360.6,
+        "notes": [
+          "해프톤 질감 18.3%를 톤 면으로 치환 — 그만큼 선 일치 F가 낮게 나온다",
+          "참고: 사진 실루엣 대비 IoU 0.967 (도면화는 재해석이므로 낮을 수 있음)"
+        ]
+      },
+      "timings": {
+        "S1_preprocess": 5598,
+        "S2_plan": 29952,
+        "S3_masks": 6091,
+        "S5_schematic_whole": 15765,
+        "S5_schematic": 205,
+        "S6_vectorize": 4519,
+        "S7_assemble": 3,
+        "S8_qa": 257
+      },
+      "files": {
+        "svg": "samples-v3/shoe_2/layered.svg",
+        "qa": "samples-v3/shoe_2/qa_report.json",
+        "plan": "samples-v3/shoe_2/part_plan.json",
+        "input": "samples-v3/shoe_2/input.jpg",
+        "schematic": "samples-v3/shoe_2/schematic.jpg"
+      }
+    },
+    {
+      "id": "shoe_3",
+      "name": "shoe_3",
+      "category": "shoe",
+      "categoryLabel": "신발",
+      "state": "SUCCEEDED",
+      "width": 1400,
+      "height": 1059,
+      "objectNoun": "pair of athletic shoes",
+      "view": "oblique view with one shoe upright in back and one overturned shoe presenting its outsole in front",
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "scope": "whole",
+        "upscaled": false
+      },
+      "layers": [
+        {
+          "id": "back_shoe_sole",
+          "label": "Back shoe sole unit",
+          "z": 0,
+          "kind": "component",
+          "confidence": 0.88,
+          "occludedBy": [
+            "back_shoe_upper",
+            "front_shoe_upper",
+            "front_shoe_outsole"
+          ],
+          "regions": 4,
+          "strokes": 5,
+          "nodes": 89,
+          "file": "samples-v3/shoe_3/layers/back_shoe_sole.svg"
+        },
+        {
+          "id": "back_shoe_upper",
+          "label": "Back shoe upper",
+          "z": 1,
+          "kind": "component",
+          "confidence": 0.9,
+          "occludedBy": [
+            "back_shoe_laces",
+            "front_shoe_upper",
+            "front_shoe_eyestay",
+            "front_shoe_laces",
+            "front_shoe_outsole"
+          ],
+          "regions": 5,
+          "strokes": 31,
+          "nodes": 170,
+          "file": "samples-v3/shoe_3/layers/back_shoe_upper.svg"
+        },
+        {
+          "id": "back_shoe_laces",
+          "label": "Back shoe laces",
+          "z": 2,
+          "kind": "component",
+          "confidence": 0.94,
+          "occludedBy": [
+            "front_shoe_upper",
+            "front_shoe_outsole"
+          ],
+          "regions": 112,
+          "strokes": 298,
+          "nodes": 1703,
+          "file": "samples-v3/shoe_3/layers/back_shoe_laces.svg"
+        },
+        {
+          "id": "front_shoe_upper",
+          "label": "Front shoe upper",
+          "z": 3,
+          "kind": "component",
+          "confidence": 0.93,
+          "occludedBy": [
+            "front_shoe_eyestay",
+            "front_shoe_laces",
+            "front_shoe_outsole"
+          ],
+          "regions": 11,
+          "strokes": 27,
+          "nodes": 108,
+          "file": "samples-v3/shoe_3/layers/front_shoe_upper.svg"
+        },
+        {
+          "id": "front_shoe_eyestay",
+          "label": "Front shoe eyestay overlay",
+          "z": 4,
+          "kind": "component",
+          "confidence": 0.91,
+          "occludedBy": [
+            "front_shoe_laces",
+            "front_shoe_outsole"
+          ],
+          "regions": 6,
+          "strokes": 18,
+          "nodes": 78,
+          "file": "samples-v3/shoe_3/layers/front_shoe_eyestay.svg"
+        },
+        {
+          "id": "front_shoe_laces",
+          "label": "Front shoe laces",
+          "z": 5,
+          "kind": "component",
+          "confidence": 0.95,
+          "occludedBy": [
+            "front_shoe_outsole"
+          ],
+          "regions": 1,
+          "strokes": 5,
+          "nodes": 19,
+          "file": "samples-v3/shoe_3/layers/front_shoe_laces.svg"
+        },
+        {
+          "id": "front_shoe_outsole",
+          "label": "Front shoe outsole",
+          "z": 6,
+          "kind": "component",
+          "confidence": 0.99,
+          "occludedBy": [],
+          "regions": 468,
+          "strokes": 1252,
+          "nodes": 9099,
+          "file": "samples-v3/shoe_3/layers/front_shoe_outsole.svg"
+        }
+      ],
+      "qa": {
+        "pass": true,
+        "silhouetteIou": 0.9842,
+        "boundaryF": 0.915,
+        "partCoverage": 0.9983,
+        "invalidPaths": 0,
+        "totalPaths": 2243,
+        "totalNodes": 11266,
+        "fileKb": 645.3,
+        "notes": [
+          "해프톤 질감 18.4%를 톤 면으로 치환 — 그만큼 선 일치 F가 낮게 나온다",
+          "참고: 사진 실루엣 대비 IoU 0.971 (도면화는 재해석이므로 낮을 수 있음)"
+        ]
+      },
+      "timings": {
+        "S1_preprocess": 5771,
+        "S2_plan": 33517,
+        "S3_masks": 6937,
+        "S5_schematic_whole": 89914,
+        "S5_schematic": 234,
+        "S6_vectorize": 9126,
+        "S7_assemble": 5,
+        "S8_qa": 378
+      },
+      "files": {
+        "svg": "samples-v3/shoe_3/layered.svg",
+        "qa": "samples-v3/shoe_3/qa_report.json",
+        "plan": "samples-v3/shoe_3/part_plan.json",
+        "input": "samples-v3/shoe_3/input.jpg",
+        "schematic": "samples-v3/shoe_3/schematic.jpg"
+      }
+    }
+  ]
+}

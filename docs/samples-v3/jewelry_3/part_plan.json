@@ -1,0 +1,110 @@
+{
+  "category": "jewelry",
+  "objectNoun": "set of three gemstone rings",
+  "view": "oblique top view",
+  "parts": [
+    {
+      "id": "rear_ring_body",
+      "label": "Rear ring body",
+      "description": "Gold-tone band and integrated bezel of the upper-right ring.",
+      "bbox": [
+        0.621,
+        0.121,
+        0.946,
+        0.416
+      ],
+      "z": 0,
+      "occludedBy": [
+        "rear_gemstone"
+      ],
+      "kind": "component",
+      "confidence": 0.92
+    },
+    {
+      "id": "rear_gemstone",
+      "label": "Rear gemstone",
+      "description": "Pale blue-gray rounded cabochon mounted in the upper-right ring.",
+      "bbox": [
+        0.779,
+        0.17,
+        0.909,
+        0.417
+      ],
+      "z": 1,
+      "occludedBy": [],
+      "kind": "component",
+      "confidence": 0.94
+    },
+    {
+      "id": "center_ring_body",
+      "label": "Center ring body",
+      "description": "Gold-tone band and integrated circular bezel of the center ring.",
+      "bbox": [
+        0.358,
+        0.323,
+        0.774,
+        0.754
+      ],
+      "z": 2,
+      "occludedBy": [
+        "center_gemstone",
+        "front_ring_body"
+      ],
+      "kind": "component",
+      "confidence": 0.95
+    },
+    {
+      "id": "center_gemstone",
+      "label": "Center gemstone",
+      "description": "Large translucent pale blue circular gemstone mounted in the center ring.",
+      "bbox": [
+        0.493,
+        0.353,
+        0.713,
+        0.733
+      ],
+      "z": 3,
+      "occludedBy": [],
+      "kind": "component",
+      "confidence": 0.98
+    },
+    {
+      "id": "front_ring_body",
+      "label": "Front ring body",
+      "description": "Gold-tone band and integrated oval bezel of the lower-left foreground ring.",
+      "bbox": [
+        0.053,
+        0.407,
+        0.486,
+        0.881
+      ],
+      "z": 4,
+      "occludedBy": [
+        "front_gemstone"
+      ],
+      "kind": "component",
+      "confidence": 0.96
+    },
+    {
+      "id": "front_gemstone",
+      "label": "Front gemstone",
+      "description": "Translucent cream oval gemstone mounted in the foreground ring.",
+      "bbox": [
+        0.19,
+        0.527,
+        0.42,
+        0.84
+      ],
+      "z": 5,
+      "occludedBy": [],
+      "kind": "component",
+      "confidence": 0.98
+    }
+  ],
+  "provenance": {
+    "model": "gpt-5.6",
+    "promptVersion": "v3.parts.v1.0.0",
+    "inputSha256": "332d432d7ee93eb32a33d6f100ef280f2378cf82e91a1e16d99f1fe8c22d14ba",
+    "createdAt": "2026-08-21T17:11:53.357Z"
+  }
+}

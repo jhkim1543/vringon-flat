@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     viewBox="0 0 304 433" width="304" height="433">
+<g id="layer-red_accent_bands" inkscape:label="Red accent bands" data-z="5" data-kind="component" data-regions="2" data-strokes="11">
+      <path d="M103.38 97.56C106 98 106 98 108.31 100.37C110 103 110 103 110 105C110.66 105 111.32 105 112 105C112 105.99 112 106.98 112 108C112.66 108 113.32 108 114 108C114.66 109.98 115.32 111.96 116 114C116.66 114 117.32 114 118 114C118.13 120.62 118.13 120.62 117 124C118.65 124 120.3 124 122 124C121.99 124.82 121.98 125.64 121.97 126.48C121.96 127.56 121.95 128.64 121.94 129.75C121.93 130.82 121.91 131.88 121.9 132.98C121.99 135.53 122.25 137.58 123 140C124.32 140.33 125.64 140.66 127 141C128.71 148.76 129.25 156.07 129 164C127.85 164.16 127.85 164.16 122 165C122 166.32 122 167.64 122 169C119.03 169 116.06 169 113 169C113 168.34 113 167.68 113 167C111.35 166.67 109.7 166.34 108 166C107.88 165.3 107.75 164.6 107.62 163.88C99.38 118.38 99.38 118.38 91 110C90.77 104.47 90.77 104.47 92 102C92.66 102 93.32 102 94 102C94 101.34 94 100.68 94 100C94.78 100.04 95.57 100.08 96.38 100.12C99.72 99.97 100.17 98.15 103.38 97.56Z" fill="#c2c2c2" fill-rule="evenodd"/>
+      <path d="M118 300C118 300.66 118 301.32 118 302C118.99 302 119.98 302 121 302C121 303.32 121 304.64 121 306C121.66 306 122.32 306 123 306C123.31 312.88 123.31 312.88 121 316C118.94 316.63 118.94 316.63 117 317C116.67 317.66 116.34 318.32 116 319C110.47 320.81 106.67 321.18 101 320C100.71 315.1 100.74 311.85 104 308C105.32 308 106.64 308 108 308C108.33 305.69 108.66 303.38 109 301C112.07 300.09 114.8 299.91 118 300Z" fill="#c2c2c2" fill-rule="evenodd"/>
+      <path d="M110 80C98.46 83.85 99 81.18 99 95" fill="none" stroke="#111111" stroke-width="4.75" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M166 84C157.38 89.75 128.27 95.09 119 92" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M114 93C108.8 93 103.8 95.6 99 94" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M131 94C131.41 98.93 135.19 101.9 137.75 106C140.97 111.16 143.63 117.35 145.75 123C155.19 148.18 156 175.13 156 202C156 212.23 157.91 224.62 154 234" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M104 95C108.39 101.59 116.97 110.78 118 119C118.79 125.29 112.01 123.81 115 131" fill="none" stroke="#111111" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M98 97C99.01 100.03 100 102.63 100 106" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M100 106C98.55 111.81 104.06 117.18 106 123" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M251 212C227.67 213.94 205.21 224.1 182 227C174.48 227.94 162.39 234.26 156 230" fill="none" stroke="#111111" stroke-width="4.75" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M106 300C103.53 307.4 99 313.94 99 322" fill="none" stroke="#111111" stroke-width="4.75" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M136 310C132.38 313.62 127.08 314.69 122 313" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M122 314C115.84 318.11 106.56 323.52 99 321" fill="none" stroke="#111111" stroke-width="4.75" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+</svg>

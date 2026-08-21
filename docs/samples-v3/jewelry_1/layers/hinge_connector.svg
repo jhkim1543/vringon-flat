@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     viewBox="0 0 618 580" width="618" height="580">
+<g id="layer-hinge_connector" inkscape:label="Bottom hinge connector" data-z="0" data-kind="component" data-regions="1" data-strokes="2">
+      <path d="M321.01 451.37C327.28 451.57 332.33 453.35 338 456C339.93 469.89 339.73 478.96 331.21 490.3C328.64 493.92 326.75 497.97 324.7 501.9C324.14 502.59 323.58 503.29 323 504C320.39 504.13 320.39 504.13 318 504C317.68 503.29 317.35 502.59 317.02 501.86C315.56 498.66 314.09 495.45 312.62 492.25C312.12 491.14 311.61 490.03 311.09 488.88C310.6 487.81 310.11 486.74 309.6 485.64C309.38 485.15 309.38 485.15 308.24 482.66C307.48 481.04 306.69 479.43 305.83 477.86C304.42 474.7 305.19 472.29 306 469C307.93 465.87 307.93 465.87 310.31 462.88C310.7 462.38 310.7 462.38 312.68 459.87C313.44 458.92 314.21 457.98 315 457C315.67 456.07 316.34 455.13 317.03 454.17C319 452 319 452 321.01 451.37Z" fill="#ffffff" fill-rule="evenodd"/>
+      <path d="M342 461C340.75 459.12 339.59 456.59 338 455C334.24 451.24 321.29 447.71 317 452C311.67 457.33 309.11 464.42 303 469" fill="none" stroke="#111111" stroke-width="4.75" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M316 455C315 456 314 457 313 458" fill="none" stroke="#111111" stroke-width="4.75" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+</svg>

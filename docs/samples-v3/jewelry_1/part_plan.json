@@ -1,0 +1,96 @@
+{
+  "category": "jewelry",
+  "objectNoun": "hinged hoop earring",
+  "view": "front view, open clasp at top",
+  "parts": [
+    {
+      "id": "hinge_connector",
+      "label": "Bottom hinge connector",
+      "description": "Recessed joint connecting the two metal hoop halves at the bottom center.",
+      "bbox": [
+        0.49,
+        0.77,
+        0.57,
+        0.87
+      ],
+      "z": 0,
+      "occludedBy": [
+        "left_hoop_half",
+        "right_hoop_half"
+      ],
+      "kind": "component",
+      "confidence": 0.82
+    },
+    {
+      "id": "left_hoop_half",
+      "label": "Left hoop half",
+      "description": "Curved left section of the polished metal hoop, including the upper-left clasp terminal.",
+      "bbox": [
+        0.05,
+        0.06,
+        0.53,
+        0.94
+      ],
+      "z": 1,
+      "occludedBy": [
+        "right_hoop_half",
+        "left_side_decoration"
+      ],
+      "kind": "component",
+      "confidence": 0.93
+    },
+    {
+      "id": "right_hoop_half",
+      "label": "Right hoop half",
+      "description": "Curved right section of the polished metal hoop extending from the bottom hinge to the upper clasp.",
+      "bbox": [
+        0.5,
+        0.06,
+        0.95,
+        0.94
+      ],
+      "z": 2,
+      "occludedBy": [
+        "clasp_catch"
+      ],
+      "kind": "component",
+      "confidence": 0.93
+    },
+    {
+      "id": "clasp_catch",
+      "label": "Upper clasp catch",
+      "description": "Dark recessed catch insert at the upper end of the right hoop half.",
+      "bbox": [
+        0.56,
+        0.05,
+        0.63,
+        0.12
+      ],
+      "z": 3,
+      "occludedBy": [],
+      "kind": "component",
+      "confidence": 0.86
+    },
+    {
+      "id": "left_side_decoration",
+      "label": "Left-side engraved decoration",
+      "description": "Repeated recessed or faceted decorative pattern on the outer face of the left hoop half.",
+      "bbox": [
+        0.06,
+        0.17,
+        0.18,
+        0.76
+      ],
+      "z": 4,
+      "occludedBy": [],
+      "kind": "marking",
+      "confidence": 0.76
+    }
+  ],
+  "provenance": {
+    "model": "gpt-5.6",
+    "promptVersion": "v3.parts.v1.0.0",
+    "inputSha256": "9254493c15b38bf53374ad6b74440a8dc697fbb1e2f50cef7bc2389cb583dc33",
+    "createdAt": "2026-08-21T17:16:35.989Z"
+  }
+}

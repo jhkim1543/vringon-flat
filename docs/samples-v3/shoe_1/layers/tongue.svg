@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     viewBox="0 0 1400 1098" width="1400" height="1098">
+<g id="layer-tongue" inkscape:label="Padded tongue" data-z="0" data-kind="component" data-regions="3" data-strokes="7">
+      <path d="M691 272C692.98 272 694.96 272 697 272C697.33 272.33 697.66 272.66 698 273C697.73 275.34 697.38 277.67 697 280C696.81 281.13 696.63 282.27 696.44 283.44C696.37 283.86 696.37 283.86 696 286C694.35 286 692.7 286 691 286C691 281.38 691 276.76 691 272Z" fill="#c2c2c2" fill-rule="evenodd"/>
+      <path d="M699 279C702.61 278.51 703.85 278.89 706.9 281.01C707.86 281.9 708.82 282.78 709.81 283.69C710.3 284.12 710.3 284.12 712.77 286.32C715 289 715 289 715.32 291.83C715.22 292.55 715.11 293.26 715 294C706.86 294.63 706.86 294.63 703.44 292.13C702 290 702 290 702 288C701.34 288 700.68 288 700 288C699.67 285.03 699.34 282.06 699 279Z" fill="#c2c2c2" fill-rule="evenodd"/>
+      <path d="M685 267C686.98 267 688.96 267 691 267C691.08 271.16 690.98 274.95 690 279C688.35 279 686.7 279 685 279C684.24 274.68 683.84 271.26 685 267Z" fill="#ffffff" fill-rule="evenodd"/>
+      <path d="M657 245C666.87 245 677.18 252.67 685 258.25C686.32 259.2 685.85 260.85 687 262C689.94 264.94 692.57 262.87 693 268" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M687 263C680.94 267.41 679.35 277.84 688 280" fill="none" stroke="#111111" stroke-width="5.75" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M693 268C704.44 268.95 699.41 273.23 697.25 279C696.21 281.78 696.94 285.17 696 288" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M693 268C689.95 272.07 690.64 276.05 688 280" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M687 263C686 264 685 265 684 266" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M693 268C692.48 268.78 691.65 270.03 691 271" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M701 275C700 276 699 277 698 278" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+</svg>

@@ -196,15 +196,27 @@ export async function runV3(
       : wholeSketch!.pngPath;
     const alignedPath = path.join(workDir, "whole.aligned.png");
     await fs.writeFile(alignedPath, await alignToBox(raw, origBox, W, H));
-    alignedSketches.push(alignedPath);
+
+    // 컬러 모드: 선은 컬러화 **전** 모노 도식에서 뽑는다. 컬러본은 색면과 선이 같은
+    // 검정이라 밝기 임계가 제품 전체를 잉크로 잡는다(실측: 검정 가방 → 패스 6개).
+    let geomPath = alignedPath;
+    let colorFrom: string | undefined;
+    if (!opts.grayscale && wholeSketch?.monoPath) {
+      geomPath = path.join(workDir, "whole.mono.aligned.png");
+      await fs.writeFile(geomPath, await alignToBox(wholeSketch.monoPath, origBox, W, H));
+      colorFrom = alignedPath;
+    }
+    // QA는 벡터가 실제로 따라 그린 그림과 대조해야 한다 — 컬러 모드에서는 모노 도식이다
+    alignedSketches.push(geomPath);
     sketchMs += Date.now() - st;
 
     const vt = Date.now();
     say("VECTORIZING", "도면 전체 라인 벡터화 후 파트 배분");
-    const lv = await vectorizeByLines(alignedPath, {
+    const lv = await vectorizeByLines(geomPath, {
       inkThreshold: opts.inkThreshold,
       workDir,
       sampleFill: !opts.grayscale,
+      colorFrom,
       parts: partMasks,
     });
     vecMs += Date.now() - vt;
@@ -227,7 +239,14 @@ export async function runV3(
     }
     say("VECTORIZING", `면 ${lv.regions.length} · 선 ${lv.strokes.length} · 노드 ${lv.stats.nodes}`);
   } else {
-    // ── 파트별 도면 경로 (계획한 본래 흐름) ──────────────────
+    // ── 파트별 도면 경로 (실험용) ─────────────────────────────
+    //
+    // 파트를 크롭해 도면 모델에 따로 넣는 흐름. 이론상 레이어 분리가 가장 깔끔해야
+    // 하지만 실제로는 무너진다 — schematic LoRA는 **제품 전체 사진**으로 학습돼
+    // 있어서 조각을 주면 그 조각을 단서로 완성품 하나를 지어낸다.
+    // (실측: 반지 "검은 인레이" 크롭 → 목걸이 펜던트가 나옴. 조각마다 자기 외곽선을
+    //  갖게 되어 어셈블하면 윤곽이 겹치고 어긋난다.)
+    // 기본 경로는 whole이며, 이 분기는 모델을 파트로 파인튜닝할 때를 위해 남겨 둔다.
     for (const p of ordered) {
       const mask = vm.masks.get(p.id);
       if (!mask || !area(mask)) {
@@ -543,9 +562,12 @@ async function validate(
   }
   if (!area(refFg)) { refFg = photoForeground.slice(); refInk = boundary(photoForeground, W, H); }
 
-  // 벡터가 그린 잉크 — 면을 채운 QA 렌더가 아니라 **원본 SVG 렌더**에서 뽑는다.
-  // 채운 렌더로 재면 면 전체가 잉크가 되어 선 일치도가 무의미해진다.
-  const inkRender = await sharp(Buffer.from(svg), { density: 96 })
+  // 벡터가 그린 잉크 — 면을 채운 QA 렌더가 아니라 **선만 남긴 렌더**에서 뽑는다.
+  // 채운 렌더로 재면 면 전체가 잉크가 되어 선 일치도가 무의미해진다. 컬러 모드에서는
+  // 면 색 자체가 어두워(검정 가방) 같은 일이 벌어지므로 fill을 아예 없앤다
+  // (실측: 컬러 가방 선 일치 F 0.657 → fill 제거 후 실제 선끼리 비교).
+  const lineSvg = svg.replace(/fill="#[0-9a-fA-F]{3,6}"/g, 'fill="none"');
+  const inkRender = await sharp(Buffer.from(lineSvg), { density: 96 })
     .resize(W, H, { fit: "fill" })
     .flatten({ background: "#ffffff" })
     .removeAlpha()
@@ -584,6 +606,18 @@ async function validate(
 
   if (silhouetteIou < 0.9) notes.push(`도면 대비 실루엣 IoU ${silhouetteIou.toFixed(3)}`);
   if (ef.f1 < 0.8) notes.push(`도면 대비 선 일치 F ${ef.f1.toFixed(3)}`);
+  // 해프톤을 톤 면으로 바꾸면 그 점들이 벡터에는 선으로 남지 않는다. 참조(도면)에는
+  // 남아 있으므로 선 일치 F가 그만큼 내려간다 — 품질 저하가 아니라 의도된 차이라서
+  // 수치와 함께 밝힌다.
+  {
+    let tex = 0;
+    for (const v of vectors.values()) tex = Math.max(tex, v.stats.textureRatio ?? 0);
+    if (tex > 0.005) {
+      notes.push(
+        `해프톤 질감 ${(tex * 100).toFixed(1)}%를 톤 면으로 치환 — 그만큼 선 일치 F가 낮게 나온다`,
+      );
+    }
+  }
   notes.push(`참고: 사진 실루엣 대비 IoU ${photoIou.toFixed(3)} (도면화는 재해석이므로 낮을 수 있음)`);
   if (invalid) notes.push(`유효하지 않은 패스 ${invalid}개`);
   if (partCoverage < 0.95) notes.push(`파트 내부 커버리지 ${(partCoverage * 100).toFixed(1)}% — 닫히지 않은 라인 의심`);

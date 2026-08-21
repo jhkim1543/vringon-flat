@@ -1,0 +1,379 @@
+{
+  "job": {
+    "state": "SUCCEEDED",
+    "canvas": {
+      "width": 1400,
+      "height": 786
+    },
+    "totalMs": 62516,
+    "createdAt": "2026-08-21T17:05:54.768Z"
+  },
+  "options": {
+    "minParts": 3,
+    "maxParts": 10,
+    "schematicScope": "whole",
+    "grayscale": true,
+    "workLong": 1400,
+    "inkThreshold": 190,
+    "categoryHint": "shoe",
+    "upscale": false
+  },
+  "plan": {
+    "category": "shoe",
+    "objectNoun": "pair of trail running shoes",
+    "view": "foreground lateral three-quarter view with rear shoe showing outsole",
+    "parts": [
+      {
+        "id": "rear_upper",
+        "label": "Rear shoe upper",
+        "description": "Mesh and synthetic upper assembly of the rear shoe, visible above the sole.",
+        "bbox": [
+          0.02,
+          0.01,
+          0.58,
+          0.24
+        ],
+        "z": 0,
+        "occludedBy": [
+          "rear_midsole",
+          "rear_outsole"
+        ],
+        "kind": "component",
+        "confidence": 0.87
+      },
+      {
+        "id": "rear_midsole",
+        "label": "Rear shoe midsole",
+        "description": "Gray cushioned midsole layer running between the rear shoe upper and orange outsole.",
+        "bbox": [
+          0.02,
+          0.11,
+          0.59,
+          0.28
+        ],
+        "z": 1,
+        "occludedBy": [
+          "rear_outsole"
+        ],
+        "kind": "component",
+        "confidence": 0.92
+      },
+      {
+        "id": "rear_outsole",
+        "label": "Rear shoe outsole",
+        "description": "Large orange lugged rubber outsole facing the viewer.",
+        "bbox": [
+          0.01,
+          0.14,
+          0.6,
+          0.52
+        ],
+        "z": 2,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.99
+      },
+      {
+        "id": "front_outsole",
+        "label": "Foreground shoe outsole",
+        "description": "Orange lugged rubber outsole visible around the bottom perimeter of the foreground shoe.",
+        "bbox": [
+          0.29,
+          0.65,
+          0.93,
+          0.99
+        ],
+        "z": 3,
+        "occludedBy": [
+          "front_midsole",
+          "front_upper",
+          "front_overlay"
+        ],
+        "kind": "component",
+        "confidence": 0.97
+      },
+      {
+        "id": "front_midsole",
+        "label": "Foreground shoe midsole",
+        "description": "Layered dark blue and gray cushioning platform above the foreground outsole.",
+        "bbox": [
+          0.3,
+          0.57,
+          0.95,
+          0.97
+        ],
+        "z": 4,
+        "occludedBy": [
+          "front_upper",
+          "front_overlay"
+        ],
+        "kind": "component",
+        "confidence": 0.95
+      },
+      {
+        "id": "front_upper",
+        "label": "Foreground shoe mesh upper",
+        "description": "Dark navy mesh body and gray padded collar/tongue assembly forming the main upper.",
+        "bbox": [
+          0.29,
+          0.39,
+          0.97,
+          0.92
+        ],
+        "z": 5,
+        "occludedBy": [
+          "front_overlay",
+          "front_laces",
+          "front_heel_pull_tab"
+        ],
+        "kind": "component",
+        "confidence": 0.94
+      },
+      {
+        "id": "front_overlay",
+        "label": "Foreground synthetic support overlay",
+        "description": "Light gray and dark blue structural panels wrapping the toe, eyestay, sides, and heel.",
+        "bbox": [
+          0.29,
+          0.45,
+          0.95,
+          0.92
+        ],
+        "z": 6,
+        "occludedBy": [
+          "front_laces",
+          "brand_graphic"
+        ],
+        "kind": "component",
+        "confidence": 0.96
+      },
+      {
+        "id": "front_laces",
+        "label": "Foreground shoe laces",
+        "description": "Bright orange lace threaded through the eyestay across the tongue.",
+        "bbox": [
+          0.47,
+          0.35,
+          0.75,
+          0.72
+        ],
+        "z": 7,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.99
+      },
+      {
+        "id": "front_heel_pull_tab",
+        "label": "Foreground heel pull tab",
+        "description": "Orange woven pull loop attached at the back of the foreground shoe collar.",
+        "bbox": [
+          0.94,
+          0.39,
+          0.995,
+          0.58
+        ],
+        "z": 8,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.98
+      },
+      {
+        "id": "brand_graphic",
+        "label": "Merrell side branding",
+        "description": "Orange MERRELL wordmark and adjacent orange side stripe printed on the lateral overlay.",
+        "bbox": [
+          0.75,
+          0.63,
+          0.91,
+          0.76
+        ],
+        "z": 9,
+        "occludedBy": [],
+        "kind": "marking",
+        "confidence": 0.98
+      }
+    ],
+    "provenance": {
+      "model": "gpt-5.6",
+      "promptVersion": "v3.parts.v1.0.0",
+      "inputSha256": "a78a53f1aa6161360fa39c266250b61afcbd7e7687987ef3c3b7c35611486090",
+      "createdAt": "2026-08-21T17:05:27.802Z"
+    }
+  },
+  "layers": [
+    {
+      "partId": "rear_upper",
+      "label": "Rear shoe upper",
+      "z": 0,
+      "regions": 7,
+      "strokes": 23,
+      "nodes": 297,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "rear_midsole",
+      "label": "Rear shoe midsole",
+      "z": 1,
+      "regions": 9,
+      "strokes": 61,
+      "nodes": 606,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "rear_outsole",
+      "label": "Rear shoe outsole",
+      "z": 2,
+      "regions": 54,
+      "strokes": 268,
+      "nodes": 2537,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "front_outsole",
+      "label": "Foreground shoe outsole",
+      "z": 3,
+      "regions": 23,
+      "strokes": 157,
+      "nodes": 1580,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "front_midsole",
+      "label": "Foreground shoe midsole",
+      "z": 4,
+      "regions": 1,
+      "strokes": 28,
+      "nodes": 66,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "front_upper",
+      "label": "Foreground shoe mesh upper",
+      "z": 5,
+      "regions": 7,
+      "strokes": 25,
+      "nodes": 160,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "front_overlay",
+      "label": "Foreground synthetic support overlay",
+      "z": 6,
+      "regions": 3,
+      "strokes": 22,
+      "nodes": 200,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "front_laces",
+      "label": "Foreground shoe laces",
+      "z": 7,
+      "regions": 50,
+      "strokes": 212,
+      "nodes": 990,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "front_heel_pull_tab",
+      "label": "Foreground heel pull tab",
+      "z": 8,
+      "regions": 2,
+      "strokes": 17,
+      "nodes": 59,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "brand_graphic",
+      "label": "Merrell side branding",
+      "z": 9,
+      "regions": 3,
+      "strokes": 42,
+      "nodes": 402,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    }
+  ],
+  "qa": {
+    "pass": true,
+    "silhouetteIou": 0.9847,
+    "boundaryF": 0.8712,
+    "partCoverage": 0.9955,
+    "invalidPaths": 0,
+    "totalPaths": 1014,
+    "totalNodes": 6897,
+    "fileKb": 360.6,
+    "notes": [
+      "해프톤 질감 18.3%를 톤 면으로 치환 — 그만큼 선 일치 F가 낮게 나온다",
+      "참고: 사진 실루엣 대비 IoU 0.967 (도면화는 재해석이므로 낮을 수 있음)"
+    ]
+  },
+  "timings": {
+    "S1_preprocess": 5598,
+    "S2_plan": 29952,
+    "S3_masks": 6091,
+    "S5_schematic_whole": 15765,
+    "S5_schematic": 205,
+    "S6_vectorize": 4519,
+    "S7_assemble": 3,
+    "S8_qa": 257
+  }
+}

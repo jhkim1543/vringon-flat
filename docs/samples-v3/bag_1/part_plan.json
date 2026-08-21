@@ -1,0 +1,167 @@
+{
+  "category": "bag",
+  "objectNoun": "briefcase",
+  "view": "front-left three-quarter view",
+  "parts": [
+    {
+      "id": "top_handle",
+      "label": "Top carry handle",
+      "description": "Rigid arched black handle attached behind the top of the bag.",
+      "bbox": [
+        0.28,
+        0.05,
+        0.64,
+        0.19
+      ],
+      "z": 0,
+      "occludedBy": [
+        "main_body",
+        "front_flap"
+      ],
+      "kind": "component",
+      "confidence": 0.98
+    },
+    {
+      "id": "main_body",
+      "label": "Main bag body",
+      "description": "Large structured black body forming the lower front, rear, and base of the briefcase.",
+      "bbox": [
+        0.2,
+        0.13,
+        0.92,
+        0.79
+      ],
+      "z": 1,
+      "occludedBy": [
+        "side_gusset",
+        "front_flap",
+        "red_accent_bands",
+        "closure_strap"
+      ],
+      "kind": "component",
+      "confidence": 0.96
+    },
+    {
+      "id": "side_gusset",
+      "label": "Left side gusset",
+      "description": "Thick rounded side panel forming the visible left end of the bag.",
+      "bbox": [
+        0.08,
+        0.19,
+        0.36,
+        0.79
+      ],
+      "z": 2,
+      "occludedBy": [
+        "side_attachment",
+        "front_flap"
+      ],
+      "kind": "component",
+      "confidence": 0.95
+    },
+    {
+      "id": "side_attachment",
+      "label": "Side strap attachment",
+      "description": "Small black attachment tab and loop mounted on the left side panel.",
+      "bbox": [
+        0.07,
+        0.35,
+        0.16,
+        0.55
+      ],
+      "z": 3,
+      "occludedBy": [],
+      "kind": "component",
+      "confidence": 0.82
+    },
+    {
+      "id": "front_flap",
+      "label": "Front flap",
+      "description": "Broad curved black flap covering the upper front of the briefcase.",
+      "bbox": [
+        0.18,
+        0.13,
+        0.92,
+        0.56
+      ],
+      "z": 4,
+      "occludedBy": [
+        "red_accent_bands",
+        "closure_strap"
+      ],
+      "kind": "component",
+      "confidence": 0.99
+    },
+    {
+      "id": "red_accent_bands",
+      "label": "Red accent bands",
+      "description": "Pair of narrow red decorative strips running vertically over the flap and lower front.",
+      "bbox": [
+        0.35,
+        0.17,
+        0.54,
+        0.75
+      ],
+      "z": 5,
+      "occludedBy": [
+        "closure_strap"
+      ],
+      "kind": "component",
+      "confidence": 0.94
+    },
+    {
+      "id": "closure_strap",
+      "label": "Vertical closure strap",
+      "description": "Black vertical strap crossing the flap edge and supporting the front closure hardware.",
+      "bbox": [
+        0.3,
+        0.35,
+        0.46,
+        0.7
+      ],
+      "z": 6,
+      "occludedBy": [
+        "logo_plaque",
+        "front_buckle"
+      ],
+      "kind": "component",
+      "confidence": 0.96
+    },
+    {
+      "id": "logo_plaque",
+      "label": "Embossed logo plaque",
+      "description": "Raised rectangular black brand plaque fixed to the upper portion of the closure strap.",
+      "bbox": [
+        0.32,
+        0.37,
+        0.44,
+        0.53
+      ],
+      "z": 7,
+      "occludedBy": [],
+      "kind": "component",
+      "confidence": 0.91
+    },
+    {
+      "id": "front_buckle",
+      "label": "Front buckle",
+      "description": "Rectangular dark metal clasp mounted near the lower end of the closure strap.",
+      "bbox": [
+        0.33,
+        0.59,
+        0.45,
+        0.69
+      ],
+      "z": 8,
+      "occludedBy": [],
+      "kind": "component",
+      "confidence": 0.94
+    }
+  ],
+  "provenance": {
+    "model": "gpt-5.6",
+    "promptVersion": "v3.parts.v1.0.0",
+    "inputSha256": "8367b5f655f68a6f58808f7931cc08895baecdff5a4b1a1d336180a8707462e2",
+    "createdAt": "2026-08-21T17:15:16.736Z"
+  }
+}

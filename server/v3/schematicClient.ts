@@ -52,6 +52,13 @@ export interface SchematicOptions {
 
 export interface SchematicResult {
   pngPath: string;
+  /**
+   * 컬러 모드에서 컬러화 **직전**의 모노톤 도식. 컬러 도식은 선이 색면과 같은 검정이라
+   * 밝기 임계로 선을 못 뽑는다(실측: 검정 가방 컬러 도식 → 패스 6개, 실루엣 IoU 0.002).
+   * 컬러화는 모노 도식의 선을 그대로 보존하도록 프롬프트돼 있으므로, **기하는 모노에서
+   * 뽑고 색만 컬러본에서 샘플링**하면 둘 다 살아난다.
+   */
+  monoPath?: string;
   backend: SchematicBackend;
   prompt: string;
   seed: number | null;
@@ -112,15 +119,23 @@ export async function generateSchematic(
     .digest("hex")
     .slice(0, 16);
   const dest = path.join(outDir, `schematic_${key}.png`);
+  const monoDest = path.join(outDir, `schematic_${key}.mono.png`);
+  const monoIfExists = async (): Promise<string | undefined> => {
+    try { await fs.access(monoDest); return monoDest; } catch { return undefined; }
+  };
   try {
     await fs.access(dest);
-    return { pngPath: dest, backend, prompt, seed, loraUrl, loraScale, stages: ["cached"], cached: true, ms: 0 };
+    return {
+      pngPath: dest, monoPath: await monoIfExists(), backend, prompt, seed, loraUrl, loraScale,
+      stages: ["cached"], cached: true, ms: 0,
+    };
   } catch { /* 캐시 미스 */ }
 
   // #213 원본 크기
   const meta = await sharp(src).metadata();
   const origW = meta.width!, origH = meta.height!;
   const stages: string[] = [];
+  let monoOut: string | undefined;
 
   // 사내 워커는 전 단계를 자기가 돈다 — 우리가 나눌 필요가 없다
   if (backend === "vringon") {
@@ -162,6 +177,8 @@ export async function generateSchematic(
       onProgress?.("컬러화는 Replicate 경로에서만 지원됩니다 — 모노톤으로 진행");
     } else {
       onProgress?.("nano-banana 컬러화");
+      await sharp(current).png().toFile(monoDest);
+      monoOut = monoDest;
       const colorized = await replicateColorize(current, src);
       // nano-banana는 aspect_ratio를 강제해 비정방 입력이 정방으로 눌린다.
       // 워커와 같게, 가로폭은 두고 세로만 원본 비율로 되돌린다(해상도 손실 방지).
@@ -190,7 +207,10 @@ export async function generateSchematic(
   }
 
   await sharp(current).png().toFile(dest);
-  return { pngPath: dest, backend, prompt, seed, loraUrl, loraScale, stages, cached: false, ms: Date.now() - t0 };
+  return {
+    pngPath: dest, monoPath: monoOut, backend, prompt, seed, loraUrl, loraScale,
+    stages, cached: false, ms: Date.now() - t0,
+  };
 }
 
 /** 워커 contract가 받는 카테고리로 정규화 */
