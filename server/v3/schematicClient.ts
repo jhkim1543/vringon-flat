@@ -30,6 +30,7 @@ import {
   COLORIZE_MODEL, COLOR_SKETCH_ASPECT_RATIO, COLOR_SKETCH_PROMPT,
   DEFAULT_LORA_URL, LORA_STRENGTH, OUTPUT_DIVISIBLE_BY,
   QWEN_INPUT_DIVISIBLE_BY, QWEN_INPUT_SIZE, SAMPLER_SEED,
+  QWEN_GO_FAST, QWEN_OUTPUT_QUALITY,
   UPSCALE_FACTOR, UPSCALE_MODE, UPSCALE_MODEL, UPSCALE_OUTPUT_QUALITY, UPSCALE_TARGET,
   resolvePrompt, type SchematicCategory,
 } from "./schematicConstants.js";
@@ -284,7 +285,18 @@ async function replicateRun(model: string, input: Record<string, unknown>): Prom
 
 const dataUri = (b: Buffer) => `data:image/png;base64,${b.toString("base64")}`;
 
-/** common.qwen-image-edit — mode=custom / normal_mode=i2i + schematic LoRA */
+/**
+ * common.qwen-image-edit → Replicate `qwen/qwen-image-edit-2511`.
+ *
+ * 페이로드는 사내 provider의 `_qwen_image_edit_2511_input()`을 그대로 따른다.
+ * 주의할 점 둘:
+ *  · **`image`는 배열이다.** 문자열 하나를 주면 스키마가 맞지 않는다
+ *    (provider의 `_qwen_image_sources()`가 input_image/reference_images를 모아 리스트로 넘긴다).
+ *  · `go_fast`는 capability contract의 기본값이 true라 그대로 전달된다(fp8 양자화 경로).
+ *    schematic 워커가 따로 끄지 않으므로 운영도 true다.
+ * `mode`/`normal_mode`는 provider 내부에서 프롬프트·이미지 조립에만 쓰이고
+ * Replicate로는 넘어가지 않으므로 여기서는 보내지 않는다.
+ */
 async function replicateQwenEdit(
   image: Buffer,
   prompt: string,
@@ -294,9 +306,12 @@ async function replicateQwenEdit(
 ): Promise<Buffer> {
   const input: Record<string, unknown> = {
     prompt,
-    image: dataUri(image),
-    output_format: "png",
+    image: [dataUri(image)],
+    go_fast: QWEN_GO_FAST,
     seed,
+    disable_safety_checker: false,
+    output_format: "png",
+    output_quality: QWEN_OUTPUT_QUALITY,
   };
   if (loraUrl) {
     input.lora_weights = loraUrl;

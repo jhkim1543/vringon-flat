@@ -33,6 +33,13 @@ export const OUTPUT_DIVISIBLE_BY = 1;
 /** 워커는 bilinear를 쓴다 — cubic으로 바꾸면 선 굵기가 미묘하게 달라진다 */
 export const RESIZE_UPSCALE_METHOD = "bilinear" as const;
 
+/**
+ * capability contract(QwenImageEditRequest)의 기본값. schematic 워커가 끄지 않으므로
+ * 운영도 이 값으로 돈다. go_fast=true는 fp8 양자화 경로다.
+ */
+export const QWEN_GO_FAST = true;
+export const QWEN_OUTPUT_QUALITY = 95;
+
 /** #192 KSampler 고정 시드 */
 export const SAMPLER_SEED = 484861632801927;
 
