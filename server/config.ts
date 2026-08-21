@@ -54,6 +54,27 @@ export const config = {
    * 테크팩은 질감을 그리지 않으므로 기본을 크게 잡았다.
    */
   textureMinLen: Number(env("TEXTURE_MIN_LEN", "0.035")),
+  // ── V3 (VRINGON 플랫스케치 기반) ─────────────────────────
+  /**
+   * 사내 schematic 워커 엔드포인트 (Server-Vringon-Lib의 client.schematic.host와 같은 것).
+   * POST {url}/v2/edit/generate_schematic_image, GET {url}/v2/generate_schematic_image/{jobId}
+   */
+  vringonSchematicUrl: env("VRINGON_SCHEMATIC_URL"),
+  vringonSchematicAuth: env("VRINGON_SCHEMATIC_AUTH"),
+  /**
+   * 사내 schematic LoRA. 공개 버킷에 있어 그대로 쓸 수 있다(실측: HTTP 200).
+   * 워커의 GENERATE_SCHEMATIC_IMAGE_QWEN_LORA_WEIGHTS와 같은 값.
+   */
+  schematicLoraUrl: env(
+    "SCHEMATIC_LORA_URL",
+    "https://vringon-ai-lora-public.s3.ap-northeast-2.amazonaws.com/sbj_qwen_image_edit_schematic_20260213.safetensors",
+  ),
+  /** Replicate — 워커의 common.qwen-image-edit가 실제로 도는 경로 */
+  replicateToken: env("REPLICATE_API_TOKEN"),
+  replicateQwenModel: env("REPLICATE_QWEN_MODEL", "qwen/qwen-image-edit-2511"),
+  /** fal 대체 경로 */
+  falQwenEditModel: env("FAL_QWEN_EDIT_MODEL", "fal-ai/qwen-image-edit-plus-lora"),
+
   // ── V2 (레이어 분리 벡터 SVG) ────────────────────────────
   /**
    * 자체 호스팅 Qwen-Image-Layered-Control 엔드포인트.
