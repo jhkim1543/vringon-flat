@@ -1,6 +1,10 @@
-node_modules/
-dist/
-outputs/
-.env
 .cache/
+.env
 .probe*
+__*
+_dup.ts
+_fix.ts
+_probe*
+dist/
+node_modules/
+outputs/

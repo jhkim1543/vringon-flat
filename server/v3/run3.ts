@@ -122,8 +122,15 @@ export interface V3Result {
     /** 등방 정합 뒤에도 남은 종횡비 불일치 — 1.02 이하가 목표 */
     aspectRatio: number;
     partCoverage: number;
-    /** 파트별 실제 커버리지 */
-    perPart: { id: string; paths: number; coverage: number }[];
+    /**
+     * 파트별 **실측** 배분. precision 은 그 파트로 배정된 그림이 실제로 그 파트 영역 안에
+     * 있는 비율이다. -1 은 마스크가 없어 잴 수 없었다는 뜻(전역값을 복제하지 않는다).
+     */
+    perPart: { id: string; paths: number; coverage: number; precision: number; recall: number; iou: number }[];
+    /** 잴 수 있었던 파트들의 평균 precision */
+    partPrecision: number;
+    /** precision 이 0.5 미만인 파트 — 배분이 틀렸을 가능성 */
+    misassignedParts: string[];
     /** 보이는데 패스가 0인 파트 — 있으면 자동 검토 */
     emptyVisibleParts: string[];
     invalidPaths: number;
@@ -244,6 +251,8 @@ export async function runV3(
   let vectorCanvas = { w: W, h: H };
   let aspectRatio = 1;
   let alignNote = "";
+  /** 도면 좌표계로 옮긴 파트 마스크 — QA가 파트별 배분을 실제로 검사한다 */
+  let qaPartMasks: { id: string; mask: Uint8Array }[] = [];
 
   const partMasks = ordered
     .map((p) => ({ id: p.id, mask: vm.masks.get(p.id) }))
@@ -300,6 +309,8 @@ export async function runV3(
       id: pm.id,
       mask: warpMask(pm.mask, W, H, VW, VH, fit),
     })).filter((pm) => area(pm.mask) > 0);
+    // QA가 파트별 배분을 실제로 검사할 수 있게 넘긴다 — 마스크는 도면 좌표계다
+    qaPartMasks = warpedParts;
     sketchMs += Date.now() - st;
 
     const vt = Date.now();
@@ -408,7 +419,7 @@ export async function runV3(
   // 기준은 **사용자가 화면에서 보는 도면**이다. 예전에는 파이프라인이 스스로 축소·왜곡한
   // aligned 입력을 기준으로 삼아, 자기가 망가뜨린 그림을 얼마나 잘 따라 그렸는지만 쟀다.
   const qa = await validate(svg, alignedSketches, vectors, ordered, {
-    aspectRatio, alignNote, canvas: vectorCanvas,
+    aspectRatio, alignNote, canvas: vectorCanvas, partMasks: qaPartMasks,
   });
   mark("S8_qa", ts);
 
@@ -448,6 +459,20 @@ export async function runV3(
 }
 
 // ── 헬퍼 ────────────────────────────────────────────────────
+
+/** layered.svg 에서 한 파트의 <g> 만 떼어내 독립 SVG 로 만든다 (파트별 QA용) */
+function extractLayer(svg: string, partId: string): string | null {
+  const open = svg.indexOf(`<g id="layer-${partId}"`);
+  if (open < 0) return null;
+  const end = svg.indexOf("</g>", open);
+  if (end < 0) return null;
+  const head = svg.slice(0, svg.indexOf(">", svg.indexOf("<svg")) + 1)
+    .replace(/^[sS]*?<svg/, "<svg");
+  return `${head}
+${svg.slice(open, end + 4)}
+</svg>
+`;
+}
 
 /**
  * 화면에서 채도가 뚜렷한 픽셀의 비율. 모노톤을 요청했는데 모델이 컬러로 그려 보냈는지
@@ -675,7 +700,13 @@ async function validate(
   sketchPaths: string[],
   vectors: Map<string, LineVectorResult>,
   ordered: ProductPart[],
-  ctx: { aspectRatio: number; alignNote: string; canvas: { w: number; h: number } },
+  ctx: {
+    aspectRatio: number;
+    alignNote: string;
+    canvas: { w: number; h: number };
+    /** 도면 좌표계의 파트 마스크. 있으면 파트별 IoU를 실제로 잰다. */
+    partMasks: { id: string; mask: Uint8Array }[];
+  },
 ): Promise<V3Result["qa"]> {
   const notes: string[] = [];
   const W = ctx.canvas.w, H = ctx.canvas.h;
@@ -757,17 +788,67 @@ async function validate(
     }
   }
 
-  // ── 파트별 진짜 커버리지 ─────────────────────────────────
-  // 전역 통계를 복제하지 않고 파트마다 자기 패스 수를 센다. 보이는 파트인데 패스가
-  // 0개면 그것만으로 검토 대상이다(예전에는 통과했다).
-  const perPart: { id: string; paths: number; coverage: number }[] = [];
+  // ── 파트별 진짜 배분 검사 ────────────────────────────────
+  //
+  // 예전에는 `v.stats.coverage`(전역 통계)를 파트마다 복제해 넣었다. whole 경로에서는
+  // 모든 파트가 같은 `lv`를 공유하므로 값이 전부 똑같이 나왔고(bag_1 8개 파트가 전부
+  // 0.9996), 파트 배분이 맞는지는 아예 재지 않은 셈이었다.
+  //
+  // 이제 파트 레이어를 **하나씩 따로 래스터화**해 그 파트의 마스크와 대조한다.
+  //   precision — 그 파트로 배정된 그림이 실제로 그 파트 영역 안에 있는가 (배분 정확도)
+  //   recall    — 그 파트 영역을 그 파트의 그림이 덮는가
+  // 선은 파트 **경계**에 놓이므로 마스크를 조금 넓혀서 잰다. 그리고 marking 류(로고·각인)는
+  // 면을 채우지 않으므로 recall이 구조적으로 낮다 — 합격 판정은 **precision으로만** 한다.
+  const perPart: { id: string; paths: number; coverage: number; precision: number; recall: number; iou: number }[] = [];
   const emptyVisibleParts: string[] = [];
+  const maskById = new Map(ctx.partMasks.map((m) => [m.id, m.mask]));
+  const tol = Math.max(2, Math.round(Math.min(W, H) * 0.01));
+
   for (const part of ordered) {
     const v = vectors.get(part.id);
     const paths = v ? v.regions.length + v.strokes.length : 0;
-    perPart.push({ id: part.id, paths, coverage: v ? v.stats.coverage : 0 });
-    if (!paths) emptyVisibleParts.push(part.id);
+    if (!paths) {
+      emptyVisibleParts.push(part.id);
+      perPart.push({ id: part.id, paths: 0, coverage: 0, precision: 0, recall: 0, iou: 0 });
+      continue;
+    }
+    const mask = maskById.get(part.id);
+    if (!mask) {
+      // 마스크가 없으면(파트별 도면 경로 등) 배분을 잴 근거가 없다 — 전역값을 쓰지 않는다
+      perPart.push({ id: part.id, paths, coverage: v!.stats.coverage, precision: -1, recall: -1, iou: -1 });
+      continue;
+    }
+    const layer = extractLayer(svg, part.id);
+    if (!layer) {
+      perPart.push({ id: part.id, paths, coverage: 0, precision: 0, recall: 0, iou: 0 });
+      continue;
+    }
+    // 면을 검게 칠해 렌더한다 — 흰 fill은 배경과 구분되지 않는다
+    const one = await svgInkMask(layer.replace(/fill="#[0-9a-fA-F]{3,6}"/g, 'fill="#000000"'), W, H, 200);
+    const grown = dilate(mask, W, H, tol);
+    let inter = 0, drawn = 0, maskN = 0, union = 0;
+    for (let i = 0; i < W * H; i++) {
+      const d = one.data[i], m = grown[i];
+      if (d) drawn++;
+      if (m) maskN++;
+      if (d && m) inter++;
+      if (d || m) union++;
+    }
+    perPart.push({
+      id: part.id,
+      paths,
+      coverage: v!.stats.coverage,
+      precision: drawn ? +(inter / drawn).toFixed(4) : 0,
+      recall: maskN ? +(inter / maskN).toFixed(4) : 0,
+      iou: union ? +(inter / union).toFixed(4) : 0,
+    });
   }
+
+  const measured = perPart.filter((p) => p.precision >= 0 && p.paths > 0);
+  const partPrecision = measured.length
+    ? measured.reduce((s, p) => s + p.precision, 0) / measured.length
+    : 1;
+  const misassigned = measured.filter((p) => p.precision < 0.5).map((p) => p.id);
   const partCoverage = vectors.size
     ? [...vectors.values()].reduce((s, v) => s + v.stats.coverage, 0) / vectors.size
     : 0;
@@ -783,6 +864,12 @@ async function validate(
     notes.push(`사진↔도면 종횡비 불일치 ${((ctx.aspectRatio - 1) * 100).toFixed(1)}% — 파트 배분 정확도에만 영향 (도면은 왜곡하지 않는다)`);
   }
   if (ctx.alignNote) notes.push(ctx.alignNote);
+  if (misassigned.length) {
+    notes.push(`파트 배분이 의심되는 레이어 ${misassigned.length}개: ${misassigned.join(", ")} (precision < 0.5)`);
+  }
+  if (measured.length && partPrecision < 0.7) {
+    notes.push(`파트 배분 정확도 평균 ${(partPrecision * 100).toFixed(0)}% — 사진↔도면 대응이 어긋났을 수 있다`);
+  }
   if (emptyVisibleParts.length) notes.push(`패스가 없는 파트 ${emptyVisibleParts.length}개: ${emptyVisibleParts.join(", ")}`);
   if (invalid) notes.push(`유효하지 않은 패스 ${invalid}개`);
   if (partCoverage < 0.95) notes.push(`파트 내부 커버리지 ${(partCoverage * 100).toFixed(1)}% — 닫히지 않은 라인 의심`);
@@ -823,6 +910,8 @@ async function validate(
     aspectRatio: +ctx.aspectRatio.toFixed(3),
     partCoverage: +partCoverage.toFixed(4),
     perPart,
+    partPrecision: +partPrecision.toFixed(4),
+    misassignedParts: misassigned,
     emptyVisibleParts,
     invalidPaths: invalid,
     totalPaths,
