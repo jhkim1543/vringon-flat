@@ -5,8 +5,12 @@
       "width": 545,
       "height": 804
     },
-    "totalMs": 31133,
-    "createdAt": "2026-08-21T17:11:30.820Z"
+    "vectorCanvas": {
+      "width": 1388,
+      "height": 2048
+    },
+    "totalMs": 19252,
+    "createdAt": "2026-08-22T05:17:03.802Z"
   },
   "options": {
     "minParts": 3,
@@ -14,128 +18,170 @@
     "schematicScope": "whole",
     "grayscale": true,
     "workLong": 1400,
-    "inkThreshold": 190,
+    "vectorLong": 2200,
+    "vectorMode": "hybrid",
+    "textureMode": "auto",
+    "inkThreshold": 170,
     "categoryHint": "jewelry",
     "upscale": false
   },
   "plan": {
     "category": "jewelry",
     "objectNoun": "harp-shaped brooch",
-    "view": "front oblique view",
+    "view": "oblique front view",
     "parts": [
       {
-        "id": "pin_clasp_assembly",
-        "label": "Brooch pin and clasp assembly",
-        "description": "Rear fastening hardware visible along the right side and through openings in the brooch body.",
+        "id": "rear_clasp_hardware",
+        "label": "Rear brooch clasp hardware",
+        "description": "Pin, hinge, clasp, and projecting rear fittings visible along the right side behind the brooch body.",
         "bbox": [
-          0.49,
+          0.63,
           0.31,
-          0.66,
+          0.92,
           0.77
         ],
         "z": 0,
         "occludedBy": [
-          "main_harp_body"
+          "outer_curved_spine",
+          "lower_frame_body"
         ],
         "kind": "component",
-        "confidence": 0.85
+        "confidence": 0.78
       },
       {
-        "id": "harp_strings",
-        "label": "Harp string wires",
-        "description": "Set of narrow metal wires spanning between the upper neck and lower frame, treated as one manufactured string assembly.",
+        "id": "upper_tuning_pegs",
+        "label": "Upper tuning pegs",
+        "description": "Dark metal peg-like fittings projecting behind the upper neck plate.",
         "bbox": [
-          0.22,
-          0.17,
-          0.41,
-          0.56
+          0.29,
+          0.05,
+          0.54,
+          0.19
         ],
         "z": 1,
         "occludedBy": [
-          "main_harp_body"
+          "upper_neck_plate"
         ],
         "kind": "component",
-        "confidence": 0.91
+        "confidence": 0.82
       },
       {
-        "id": "main_harp_body",
-        "label": "Main harp body and frame",
-        "description": "Large formed metal component comprising the curved outer arm, top neck, lower circular frame, and triangular soundboard.",
+        "id": "string_wire_set",
+        "label": "String wire set",
+        "description": "Multiple thin metal wires spanning the open interior of the harp form.",
         "bbox": [
-          0.06,
-          0.09,
-          0.59,
-          0.95
+          0.3,
+          0.16,
+          0.58,
+          0.58
         ],
         "z": 2,
         "occludedBy": [
-          "raised_leaf_ornaments",
-          "fastener_studs"
+          "lower_frame_body",
+          "upper_neck_plate",
+          "front_leaf_ornament"
+        ],
+        "kind": "component",
+        "confidence": 0.94
+      },
+      {
+        "id": "outer_curved_spine",
+        "label": "Outer curved spine",
+        "description": "Dark-edged curved structural rail running down the right side of the harp.",
+        "bbox": [
+          0.45,
+          0.2,
+          0.84,
+          0.85
+        ],
+        "z": 3,
+        "occludedBy": [
+          "lower_frame_body",
+          "upper_neck_plate"
+        ],
+        "kind": "component",
+        "confidence": 0.9
+      },
+      {
+        "id": "lower_frame_body",
+        "label": "Lower frame and soundboard",
+        "description": "Large gold-toned lower body with the circular opening and tapered right soundboard.",
+        "bbox": [
+          0.08,
+          0.41,
+          0.78,
+          0.95
+        ],
+        "z": 4,
+        "occludedBy": [
+          "front_leaf_ornament"
         ],
         "kind": "component",
         "confidence": 0.96
       },
       {
-        "id": "raised_leaf_ornaments",
-        "label": "Raised leaf ornaments",
-        "description": "Pair of applied dark metal leaf-like decorative elements mounted near the center of the harp body.",
+        "id": "upper_neck_plate",
+        "label": "Upper neck plate",
+        "description": "Broad gold-toned curved plate crossing the top and joining the outer spine.",
         "bbox": [
-          0.29,
-          0.48,
-          0.42,
-          0.63
-        ],
-        "z": 3,
-        "occludedBy": [],
-        "kind": "component",
-        "confidence": 0.79
-      },
-      {
-        "id": "fastener_studs",
-        "label": "Decorative fastener studs",
-        "description": "Round-headed studs fixed across the upper neck of the harp body, grouped as one repeated hardware component set.",
-        "bbox": [
-          0.18,
           0.13,
-          0.32,
-          0.25
-        ],
-        "z": 4,
-        "occludedBy": [],
-        "kind": "component",
-        "confidence": 0.88
-      },
-      {
-        "id": "engraved_flourish",
-        "label": "Engraved flourish",
-        "description": "Dark incised curving decorative line on the triangular soundboard surface.",
-        "bbox": [
-          0.41,
-          0.51,
-          0.48,
-          0.76
+          0.09,
+          0.61,
+          0.31
         ],
         "z": 5,
-        "occludedBy": [],
-        "kind": "marking",
+        "occludedBy": [
+          "neck_fasteners"
+        ],
+        "kind": "component",
         "confidence": 0.95
+      },
+      {
+        "id": "front_leaf_ornament",
+        "label": "Front leaf ornament",
+        "description": "Raised dark-gold leaf-shaped decorative pieces mounted on the front of the lower body.",
+        "bbox": [
+          0.4,
+          0.47,
+          0.6,
+          0.64
+        ],
+        "z": 6,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.86
+      },
+      {
+        "id": "neck_fasteners",
+        "label": "Neck fasteners",
+        "description": "Round rivet or screw heads securing the upper neck plate.",
+        "bbox": [
+          0.26,
+          0.13,
+          0.44,
+          0.23
+        ],
+        "z": 7,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.93
       }
     ],
     "provenance": {
       "model": "gpt-5.6",
       "promptVersion": "v3.parts.v1.0.0",
       "inputSha256": "697c72dd900445b4bb00c61e441c76f938a1e1bf60d579842b28fbb9e922cafa",
-      "createdAt": "2026-08-21T17:11:21.408Z"
+      "createdAt": "2026-08-22T04:45:58.352Z"
     }
   },
   "layers": [
     {
-      "partId": "pin_clasp_assembly",
-      "label": "Brooch pin and clasp assembly",
+      "partId": "rear_clasp_hardware",
+      "label": "Rear brooch clasp hardware",
       "z": 0,
-      "regions": 9,
-      "strokes": 38,
-      "nodes": 291,
+      "regions": 12,
+      "strokes": 64,
+      "nodes": 639,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -145,12 +191,12 @@
       }
     },
     {
-      "partId": "harp_strings",
-      "label": "Harp string wires",
+      "partId": "upper_tuning_pegs",
+      "label": "Upper tuning pegs",
       "z": 1,
-      "regions": 2,
-      "strokes": 1,
-      "nodes": 74,
+      "regions": 3,
+      "strokes": 16,
+      "nodes": 167,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -160,42 +206,12 @@
       }
     },
     {
-      "partId": "main_harp_body",
-      "label": "Main harp body and frame",
+      "partId": "string_wire_set",
+      "label": "String wire set",
       "z": 2,
-      "regions": 20,
-      "strokes": 87,
-      "nodes": 723,
-      "schematic": {
-        "backend": "replicate",
-        "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
-        "seed": 484861632801927,
-        "cached": true,
-        "ms": 0
-      }
-    },
-    {
-      "partId": "raised_leaf_ornaments",
-      "label": "Raised leaf ornaments",
-      "z": 3,
-      "regions": 0,
-      "strokes": 0,
-      "nodes": 0,
-      "schematic": {
-        "backend": "replicate",
-        "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
-        "seed": 484861632801927,
-        "cached": true,
-        "ms": 0
-      }
-    },
-    {
-      "partId": "fastener_studs",
-      "label": "Decorative fastener studs",
-      "z": 4,
       "regions": 1,
-      "strokes": 1,
-      "nodes": 51,
+      "strokes": 35,
+      "nodes": 250,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -205,12 +221,72 @@
       }
     },
     {
-      "partId": "engraved_flourish",
-      "label": "Engraved flourish",
+      "partId": "outer_curved_spine",
+      "label": "Outer curved spine",
+      "z": 3,
+      "regions": 2,
+      "strokes": 29,
+      "nodes": 207,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "lower_frame_body",
+      "label": "Lower frame and soundboard",
+      "z": 4,
+      "regions": 17,
+      "strokes": 222,
+      "nodes": 2610,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "upper_neck_plate",
+      "label": "Upper neck plate",
       "z": 5,
-      "regions": 0,
-      "strokes": 0,
-      "nodes": 0,
+      "regions": 7,
+      "strokes": 70,
+      "nodes": 758,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "front_leaf_ornament",
+      "label": "Front leaf ornament",
+      "z": 6,
+      "regions": 2,
+      "strokes": 16,
+      "nodes": 154,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "neck_fasteners",
+      "label": "Neck fasteners",
+      "z": 7,
+      "regions": 2,
+      "strokes": 44,
+      "nodes": 289,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -222,25 +298,83 @@
   ],
   "qa": {
     "pass": true,
-    "silhouetteIou": 0.9895,
-    "boundaryF": 0.9474,
-    "partCoverage": 0.9996,
+    "silhouetteIou": 0.9947,
+    "boundaryF": 0.9936,
+    "rawF0": 0.8572,
+    "rawF1": 0.9681,
+    "rawF2": 0.9936,
+    "lineF1": 0.9681,
+    "lineF2": 0.9936,
+    "textureShare": 0,
+    "inkRatio": 0.834,
+    "chamfer": 0.17,
+    "p95": 1,
+    "detailRecall": 1,
+    "majorComponents": [
+      5,
+      5
+    ],
+    "aspectRatio": 1.007,
+    "partCoverage": 0.9999,
+    "perPart": [
+      {
+        "id": "rear_clasp_hardware",
+        "paths": 76,
+        "coverage": 0.9999
+      },
+      {
+        "id": "upper_tuning_pegs",
+        "paths": 19,
+        "coverage": 0.9999
+      },
+      {
+        "id": "string_wire_set",
+        "paths": 36,
+        "coverage": 0.9999
+      },
+      {
+        "id": "outer_curved_spine",
+        "paths": 31,
+        "coverage": 0.9999
+      },
+      {
+        "id": "lower_frame_body",
+        "paths": 239,
+        "coverage": 0.9999
+      },
+      {
+        "id": "upper_neck_plate",
+        "paths": 77,
+        "coverage": 0.9999
+      },
+      {
+        "id": "front_leaf_ornament",
+        "paths": 18,
+        "coverage": 0.9999
+      },
+      {
+        "id": "neck_fasteners",
+        "paths": 46,
+        "coverage": 0.9999
+      }
+    ],
+    "emptyVisibleParts": [],
     "invalidPaths": 0,
-    "totalPaths": 159,
-    "totalNodes": 1139,
-    "fileKb": 59.9,
+    "totalPaths": 542,
+    "totalNodes": 5074,
+    "fileKb": 234.8,
     "notes": [
-      "참고: 사진 실루엣 대비 IoU 0.982 (도면화는 재해석이므로 낮을 수 있음)"
+      "도면이 컬러로 생성됨 (채도 화면의 10%) — 색면을 그대로 옮긴다"
     ]
   },
   "timings": {
-    "S1_preprocess": 5992,
-    "S2_plan": 15728,
-    "S3_masks": 1041,
-    "S5_schematic_whole": 7705,
-    "S5_schematic": 64,
-    "S6_vectorize": 431,
-    "S7_assemble": 2,
-    "S8_qa": 104
+    "S1_preprocess": 5973,
+    "S2_plan": 12,
+    "S3_masks": 3413,
+    "S5_schematic_whole": 16,
+    "S5_schematic": 463,
+    "S6_vectorize": 7064,
+    "S7_assemble": 8,
+    "S8_qa": 1877
   }
 }

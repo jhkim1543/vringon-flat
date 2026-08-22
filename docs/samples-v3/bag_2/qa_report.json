@@ -1,12 +1,16 @@
 {
   "job": {
-    "state": "NEEDS_REVIEW",
+    "state": "SUCCEEDED",
     "canvas": {
       "width": 796,
       "height": 933
     },
-    "totalMs": 75461,
-    "createdAt": "2026-08-21T17:09:41.691Z"
+    "vectorCanvas": {
+      "width": 1748,
+      "height": 2048
+    },
+    "totalMs": 31052,
+    "createdAt": "2026-08-22T05:16:10.184Z"
   },
   "options": {
     "minParts": 3,
@@ -14,36 +18,40 @@
     "schematicScope": "whole",
     "grayscale": true,
     "workLong": 1400,
-    "inkThreshold": 190,
+    "vectorLong": 2200,
+    "vectorMode": "hybrid",
+    "textureMode": "auto",
+    "inkThreshold": 170,
     "categoryHint": "bag",
     "upscale": false
   },
   "plan": {
     "category": "bag",
-    "objectNoun": "beaded evening bag",
+    "objectNoun": "beaded evening purse",
     "view": "front view",
     "parts": [
       {
-        "id": "chain_strap",
-        "label": "Chain strap",
-        "description": "Bronze-tone linked carrying chain rising behind the bag and attaching near the top corners.",
+        "id": "chain_handle",
+        "label": "Chain handle",
+        "description": "Metal link carrying chain attached at the upper corners and rising behind the purse.",
         "bbox": [
           0.29,
           0,
           0.77,
-          0.4
+          0.39
         ],
         "z": 0,
         "occludedBy": [
+          "bag_body",
           "metal_frame"
         ],
         "kind": "component",
         "confidence": 0.98
       },
       {
-        "id": "beaded_body",
-        "label": "Beaded bag body",
-        "description": "Gathered white beaded textile shell forming the main pouch.",
+        "id": "bag_body",
+        "label": "Beaded pouch body",
+        "description": "Gathered white beaded textile pouch forming the main body of the purse.",
         "bbox": [
           0.06,
           0.39,
@@ -53,59 +61,75 @@
         "z": 1,
         "occludedBy": [
           "metal_frame",
-          "floral_clasp"
+          "floral_ornament"
         ],
         "kind": "component",
         "confidence": 0.99
       },
       {
         "id": "metal_frame",
-        "label": "Metal closure frame",
-        "description": "Engraved bronze-tone rigid frame around the bag opening.",
+        "label": "Metal purse frame",
+        "description": "Engraved rigid metal frame spanning the gathered top edge and continuing down both upper sides.",
         "bbox": [
           0.18,
-          0.37,
+          0.38,
           0.87,
-          0.55
+          0.54
         ],
         "z": 2,
         "occludedBy": [
-          "floral_clasp"
+          "closure_clasp",
+          "floral_ornament"
         ],
         "kind": "component",
-        "confidence": 0.97
+        "confidence": 0.98
       },
       {
-        "id": "floral_clasp",
-        "label": "Floral clasp assembly",
-        "description": "Central bronze-tone closure with a raised rose, leaves, and rectangular latch tab.",
+        "id": "closure_clasp",
+        "label": "Closure clasp",
+        "description": "Small ridged metal closure tab projecting above the center of the frame.",
         "bbox": [
-          0.45,
+          0.48,
           0.36,
-          0.58,
-          0.48
+          0.56,
+          0.4
         ],
         "z": 3,
         "occludedBy": [],
         "kind": "component",
-        "confidence": 0.96
+        "confidence": 0.92
+      },
+      {
+        "id": "floral_ornament",
+        "label": "Floral metal ornament",
+        "description": "Applied metal rose-and-leaf decoration centered on the front of the frame and pouch.",
+        "bbox": [
+          0.45,
+          0.38,
+          0.58,
+          0.48
+        ],
+        "z": 4,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.98
       }
     ],
     "provenance": {
       "model": "gpt-5.6",
       "promptVersion": "v3.parts.v1.0.0",
       "inputSha256": "d07a3b66d4fb25e29e4d878422d1dac2850ad8a475d8252cb96bd51390c591d3",
-      "createdAt": "2026-08-21T17:08:45.205Z"
+      "createdAt": "2026-08-22T04:55:08.552Z"
     }
   },
   "layers": [
     {
-      "partId": "chain_strap",
-      "label": "Chain strap",
+      "partId": "chain_handle",
+      "label": "Chain handle",
       "z": 0,
       "regions": 0,
-      "strokes": 0,
-      "nodes": 0,
+      "strokes": 3,
+      "nodes": 527,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -115,12 +139,12 @@
       }
     },
     {
-      "partId": "beaded_body",
-      "label": "Beaded bag body",
+      "partId": "bag_body",
+      "label": "Beaded pouch body",
       "z": 1,
       "regions": 1,
-      "strokes": 73,
-      "nodes": 403,
+      "strokes": 2528,
+      "nodes": 27628,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -131,11 +155,11 @@
     },
     {
       "partId": "metal_frame",
-      "label": "Metal closure frame",
+      "label": "Metal purse frame",
       "z": 2,
-      "regions": 14,
-      "strokes": 162,
-      "nodes": 571,
+      "regions": 19,
+      "strokes": 532,
+      "nodes": 5107,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -145,12 +169,27 @@
       }
     },
     {
-      "partId": "floral_clasp",
-      "label": "Floral clasp assembly",
+      "partId": "closure_clasp",
+      "label": "Closure clasp",
       "z": 3,
-      "regions": 3,
-      "strokes": 39,
-      "nodes": 132,
+      "regions": 1,
+      "strokes": 1,
+      "nodes": 19,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "floral_ornament",
+      "label": "Floral metal ornament",
+      "z": 4,
+      "regions": 9,
+      "strokes": 489,
+      "nodes": 3031,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -161,28 +200,69 @@
     }
   ],
   "qa": {
-    "pass": false,
-    "silhouetteIou": 0.9909,
-    "boundaryF": 0.6249,
-    "partCoverage": 0.999,
+    "pass": true,
+    "silhouetteIou": 0.9971,
+    "boundaryF": 0.9449,
+    "rawF0": 0.6643,
+    "rawF1": 0.895,
+    "rawF2": 0.9449,
+    "lineF1": 0.895,
+    "lineF2": 0.9449,
+    "textureShare": 0,
+    "inkRatio": 1.823,
+    "chamfer": 0.707,
+    "p95": 3.41,
+    "detailRecall": 0.9972,
+    "majorComponents": [
+      1,
+      5
+    ],
+    "aspectRatio": 1.015,
+    "partCoverage": 0.9985,
+    "perPart": [
+      {
+        "id": "chain_handle",
+        "paths": 3,
+        "coverage": 0.9985
+      },
+      {
+        "id": "bag_body",
+        "paths": 2529,
+        "coverage": 0.9985
+      },
+      {
+        "id": "metal_frame",
+        "paths": 551,
+        "coverage": 0.9985
+      },
+      {
+        "id": "closure_clasp",
+        "paths": 2,
+        "coverage": 0.9985
+      },
+      {
+        "id": "floral_ornament",
+        "paths": 498,
+        "coverage": 0.9985
+      }
+    ],
+    "emptyVisibleParts": [],
     "invalidPaths": 0,
-    "totalPaths": 292,
-    "totalNodes": 1106,
-    "fileKb": 73,
+    "totalPaths": 3583,
+    "totalNodes": 36312,
+    "fileKb": 1616.3,
     "notes": [
-      "도면 대비 선 일치 F 0.625",
-      "해프톤 질감 27.1%를 톤 면으로 치환 — 그만큼 선 일치 F가 낮게 나온다",
-      "참고: 사진 실루엣 대비 IoU 0.647 (도면화는 재해석이므로 낮을 수 있음)"
+      "선이 원본보다 82% 굵다"
     ]
   },
   "timings": {
-    "S1_preprocess": 5447,
-    "S2_plan": 13526,
-    "S3_masks": 2696,
-    "S5_schematic_whole": 50137,
-    "S5_schematic": 174,
-    "S6_vectorize": 3237,
-    "S7_assemble": 2,
-    "S8_qa": 173
+    "S1_preprocess": 6453,
+    "S2_plan": 12,
+    "S3_masks": 6279,
+    "S5_schematic_whole": 9,
+    "S5_schematic": 504,
+    "S6_vectorize": 12777,
+    "S7_assemble": 25,
+    "S8_qa": 4143
   }
 }

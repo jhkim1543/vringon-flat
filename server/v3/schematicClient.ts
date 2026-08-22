@@ -48,6 +48,11 @@ export interface SchematicOptions {
   loraScale?: number;
   /** 업스케일 단계를 돌릴 것인가 (워커 기본은 켬, 실패는 무시) */
   upscale?: boolean;
+  /**
+   * 워커와 **픽셀 단위로 같은** 산출물이 필요할 때 켠다. 기본은 꺼짐 — 종횡비만 되돌리고
+   * 해상도는 모델 캔버스(1024) 아래로 내리지 않는다. 이유는 #214 복원 단계의 주석 참조.
+   */
+  matchWorkerResolution?: boolean;
 }
 
 export interface SchematicResult {
@@ -115,7 +120,7 @@ export async function generateSchematic(
   const key = crypto
     .createHash("sha256")
     .update(src)
-    .update(JSON.stringify({ prompt, seed, loraScale, loraUrl, backend, gray: opts.grayscale, up: wantUpscale }))
+    .update(JSON.stringify({ prompt, seed, loraScale, loraUrl, backend, gray: opts.grayscale, up: wantUpscale, native: !opts.matchWorkerResolution }))
     .digest("hex")
     .slice(0, 16);
   const dest = path.join(outDir, `schematic_${key}.png`);
@@ -162,14 +167,28 @@ export async function generateSchematic(
       : await falQwenEdit(qwenInput, prompt, seed, loraUrl, loraScale);
   stages.push(`${backend}:qwen-image-edit`);
 
-  // #214 원본 해상도로 복원
-  current = await sharp(current)
-    .resize(divisible(origW, OUTPUT_DIVISIBLE_BY), divisible(origH, OUTPUT_DIVISIBLE_BY), {
-      fit: "fill",
-      kernel: BILINEAR,
-    })
-    .png()
-    .toBuffer();
+  // #214 종횡비 복원.
+  //
+  // 워커는 정확히 origW×origH로 되돌린다. 그런데 우리 쪽은 이 그림을 **벡터화**하므로
+  // 그대로 따라 하면 모델이 1024²에 그린 획을 그 자리에서 버리게 된다 — 사진 크롭이 작을수록
+  // 손해가 크다(bag_1은 304×433이라 모델 픽셀의 12.6%만 남는다. 같은 도면을 0.297배로 내려
+  // 벡터화하면 면 -86% · 노드 -77% · 잉크 F1 -0.076).
+  //
+  // 그래서 **종횡비만 되돌리고 해상도는 모델 캔버스 아래로 내리지 않는다**. 늘리는 것이
+  // 아니라 덜 줄이는 것이므로 새 정보를 지어내지 않는다. 워커와 픽셀 단위로 같은 산출물이
+  // 필요하면 `matchWorkerResolution: true`로 예전 동작을 그대로 쓴다.
+  {
+    const long = Math.max(origW, origH);
+    const keep = opts.matchWorkerResolution ? 1 : Math.max(1, QWEN_INPUT_SIZE / long);
+    current = await sharp(current)
+      .resize(
+        divisible(Math.round(origW * keep), OUTPUT_DIVISIBLE_BY),
+        divisible(Math.round(origH * keep), OUTPUT_DIVISIBLE_BY),
+        { fit: "fill", kernel: BILINEAR },
+      )
+      .png()
+      .toBuffer();
+  }
 
   // 컬러 분기 — 모노톤 도식 + 원본 사진을 nano-banana에 넘긴다
   if (!opts.grayscale) {

@@ -5,8 +5,12 @@
       "width": 1400,
       "height": 1059
     },
-    "totalMs": 146065,
-    "createdAt": "2026-08-21T17:08:23.583Z"
+    "vectorCanvas": {
+      "width": 2800,
+      "height": 2118
+    },
+    "totalMs": 73363,
+    "createdAt": "2026-08-22T05:14:32.603Z"
   },
   "options": {
     "minParts": 3,
@@ -14,158 +18,181 @@
     "schematicScope": "whole",
     "grayscale": true,
     "workLong": 1400,
-    "inkThreshold": 190,
+    "vectorLong": 2200,
+    "vectorMode": "hybrid",
+    "textureMode": "auto",
+    "inkThreshold": 170,
     "categoryHint": "shoe",
     "upscale": false
   },
   "plan": {
     "category": "shoe",
-    "objectNoun": "pair of athletic shoes",
-    "view": "oblique view with one shoe upright in back and one overturned shoe presenting its outsole in front",
+    "objectNoun": "folded athletic shoe",
+    "view": "oblique lateral view with the flexible outsole folded toward the camera",
     "parts": [
       {
-        "id": "back_shoe_sole",
-        "label": "Back shoe sole unit",
-        "description": "Brown and black midsole/outsole assembly beneath the upright rear shoe.",
+        "id": "tongue",
+        "label": "Tongue",
+        "description": "Dark textile tongue inside the shoe beneath the closure system.",
         "bbox": [
-          0.49,
-          0.45,
-          0.98,
-          0.86
+          0.42,
+          0.31,
+          0.82,
+          0.79
         ],
         "z": 0,
         "occludedBy": [
-          "back_shoe_upper",
-          "front_shoe_upper",
-          "front_shoe_outsole"
+          "mesh_upper",
+          "eyestay_overlay",
+          "lace_loops",
+          "laces",
+          "outsole"
         ],
         "kind": "component",
-        "confidence": 0.88
+        "confidence": 0.73
       },
       {
-        "id": "back_shoe_upper",
-        "label": "Back shoe upper",
-        "description": "Gray and brown textile upper, including the padded heel and collar structure of the upright shoe.",
+        "id": "mesh_upper",
+        "label": "Mesh upper",
+        "description": "Gray woven vamp and quarter forming the main body of the shoe.",
         "bbox": [
-          0.43,
-          0.14,
-          0.99,
-          0.73
+          0.35,
+          0.19,
+          0.98,
+          0.99
         ],
         "z": 1,
         "occludedBy": [
-          "back_shoe_laces",
-          "front_shoe_upper",
-          "front_shoe_eyestay",
-          "front_shoe_laces",
-          "front_shoe_outsole"
-        ],
-        "kind": "component",
-        "confidence": 0.9
-      },
-      {
-        "id": "back_shoe_laces",
-        "label": "Back shoe laces",
-        "description": "Dark gray laces with yellow stripes crossing and looping over the rear shoe upper.",
-        "bbox": [
-          0.59,
-          0.18,
-          0.98,
-          0.59
-        ],
-        "z": 2,
-        "occludedBy": [
-          "front_shoe_upper",
-          "front_shoe_outsole"
+          "padded_collar",
+          "eyestay_overlay",
+          "lace_loops",
+          "laces",
+          "outsole"
         ],
         "kind": "component",
         "confidence": 0.94
       },
       {
-        "id": "front_shoe_upper",
-        "label": "Front shoe upper",
-        "description": "Gray mesh and textile body of the overturned foreground shoe, visible around the opening and forefoot.",
+        "id": "padded_collar",
+        "label": "Padded collar",
+        "description": "Thick gray textile rim surrounding the heel opening.",
         "bbox": [
-          0.35,
-          0.26,
-          0.76,
-          0.99
+          0.61,
+          0.14,
+          0.995,
+          0.59
+        ],
+        "z": 2,
+        "occludedBy": [
+          "laces",
+          "outsole"
+        ],
+        "kind": "component",
+        "confidence": 0.94
+      },
+      {
+        "id": "eyestay_overlay",
+        "label": "Eyestay overlay",
+        "description": "Gray synthetic reinforcement panel around the lace attachment area.",
+        "bbox": [
+          0.44,
+          0.41,
+          0.94,
+          0.91
         ],
         "z": 3,
         "occludedBy": [
-          "front_shoe_eyestay",
-          "front_shoe_laces",
-          "front_shoe_outsole"
-        ],
-        "kind": "component",
-        "confidence": 0.93
-      },
-      {
-        "id": "front_shoe_eyestay",
-        "label": "Front shoe eyestay overlay",
-        "description": "Gray synthetic reinforcement panel with integrated bright yellow lace loops on the foreground shoe.",
-        "bbox": [
-          0.43,
-          0.39,
-          0.76,
-          0.9
-        ],
-        "z": 4,
-        "occludedBy": [
-          "front_shoe_laces",
-          "front_shoe_outsole"
+          "lace_loops",
+          "laces",
+          "outsole"
         ],
         "kind": "component",
         "confidence": 0.91
       },
       {
-        "id": "front_shoe_laces",
-        "label": "Front shoe laces",
-        "description": "Dark gray laces with yellow stripes threaded through the yellow webbing loops.",
+        "id": "lace_loops",
+        "label": "Yellow lace loops",
+        "description": "Separate yellow webbing loops sewn to the upper for routing the lace.",
         "bbox": [
-          0.41,
-          0.35,
-          0.73,
-          0.81
+          0.43,
+          0.55,
+          0.67,
+          0.82
+        ],
+        "z": 4,
+        "occludedBy": [
+          "laces",
+          "outsole"
+        ],
+        "kind": "component",
+        "confidence": 0.9
+      },
+      {
+        "id": "laces",
+        "label": "Laces",
+        "description": "Dark gray webbing lace threaded across the upper and around the collar area.",
+        "bbox": [
+          0.42,
+          0.18,
+          0.98,
+          0.8
         ],
         "z": 5,
         "occludedBy": [
-          "front_shoe_outsole"
+          "lace_stitching",
+          "outsole"
         ],
         "kind": "component",
-        "confidence": 0.95
+        "confidence": 0.93
       },
       {
-        "id": "front_shoe_outsole",
-        "label": "Front shoe outsole",
-        "description": "Large purple molded rubber outsole with deep segmented tread, facing the viewer and wrapping around the bent shoe.",
+        "id": "outsole",
+        "label": "Flexible tread outsole",
+        "description": "Large purple molded rubber sole with raised tread, folded upward over the shoe; darker heel edge remains visible at right.",
         "bbox": [
+          0.005,
           0.01,
-          0.01,
-          0.72,
-          0.95
+          0.98,
+          0.94
         ],
         "z": 6,
         "occludedBy": [],
         "kind": "component",
-        "confidence": 0.99
+        "confidence": 0.98
+      },
+      {
+        "id": "lace_stitching",
+        "label": "Yellow lace stitching",
+        "description": "Yellow contrast stitching woven along the dark lace and webbing surfaces.",
+        "bbox": [
+          0.43,
+          0.18,
+          0.98,
+          0.78
+        ],
+        "z": 7,
+        "occludedBy": [
+          "outsole"
+        ],
+        "kind": "marking",
+        "confidence": 0.92
       }
     ],
     "provenance": {
       "model": "gpt-5.6",
       "promptVersion": "v3.parts.v1.0.0",
       "inputSha256": "91a70e033e2befed8fb2309a66f86095b63f9d6c25f2e3538cac51b26a828091",
-      "createdAt": "2026-08-21T17:06:36.807Z"
+      "createdAt": "2026-08-22T04:39:42.646Z"
     }
   },
   "layers": [
     {
-      "partId": "back_shoe_sole",
-      "label": "Back shoe sole unit",
+      "partId": "tongue",
+      "label": "Tongue",
       "z": 0,
-      "regions": 4,
-      "strokes": 5,
-      "nodes": 89,
+      "regions": 30,
+      "strokes": 117,
+      "nodes": 1618,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -175,12 +202,12 @@
       }
     },
     {
-      "partId": "back_shoe_upper",
-      "label": "Back shoe upper",
+      "partId": "mesh_upper",
+      "label": "Mesh upper",
       "z": 1,
-      "regions": 5,
-      "strokes": 31,
-      "nodes": 170,
+      "regions": 0,
+      "strokes": 6,
+      "nodes": 28,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -190,12 +217,12 @@
       }
     },
     {
-      "partId": "back_shoe_laces",
-      "label": "Back shoe laces",
+      "partId": "padded_collar",
+      "label": "Padded collar",
       "z": 2,
-      "regions": 112,
-      "strokes": 298,
-      "nodes": 1703,
+      "regions": 0,
+      "strokes": 3,
+      "nodes": 13,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -205,27 +232,12 @@
       }
     },
     {
-      "partId": "front_shoe_upper",
-      "label": "Front shoe upper",
+      "partId": "eyestay_overlay",
+      "label": "Eyestay overlay",
       "z": 3,
-      "regions": 11,
-      "strokes": 27,
-      "nodes": 108,
-      "schematic": {
-        "backend": "replicate",
-        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
-        "seed": 484861632801927,
-        "cached": true,
-        "ms": 0
-      }
-    },
-    {
-      "partId": "front_shoe_eyestay",
-      "label": "Front shoe eyestay overlay",
-      "z": 4,
       "regions": 6,
-      "strokes": 18,
-      "nodes": 78,
+      "strokes": 53,
+      "nodes": 1172,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -235,12 +247,27 @@
       }
     },
     {
-      "partId": "front_shoe_laces",
-      "label": "Front shoe laces",
+      "partId": "lace_loops",
+      "label": "Yellow lace loops",
+      "z": 4,
+      "regions": 51,
+      "strokes": 88,
+      "nodes": 2119,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "laces",
+      "label": "Laces",
       "z": 5,
-      "regions": 1,
-      "strokes": 5,
-      "nodes": 19,
+      "regions": 0,
+      "strokes": 2,
+      "nodes": 5,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -250,12 +277,27 @@
       }
     },
     {
-      "partId": "front_shoe_outsole",
-      "label": "Front shoe outsole",
+      "partId": "outsole",
+      "label": "Flexible tread outsole",
       "z": 6,
-      "regions": 468,
-      "strokes": 1252,
-      "nodes": 9099,
+      "regions": 322,
+      "strokes": 1338,
+      "nodes": 24492,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "lace_stitching",
+      "label": "Yellow lace stitching",
+      "z": 7,
+      "regions": 293,
+      "strokes": 419,
+      "nodes": 12976,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -267,26 +309,84 @@
   ],
   "qa": {
     "pass": true,
-    "silhouetteIou": 0.9842,
-    "boundaryF": 0.915,
-    "partCoverage": 0.9983,
+    "silhouetteIou": 0.9995,
+    "boundaryF": 0.9663,
+    "rawF0": 0.8686,
+    "rawF1": 0.9552,
+    "rawF2": 0.9663,
+    "lineF1": 0.9866,
+    "lineF2": 0.9981,
+    "textureShare": 0.2525,
+    "inkRatio": 0.928,
+    "chamfer": 0.112,
+    "p95": 1,
+    "detailRecall": 1,
+    "majorComponents": [
+      1,
+      3
+    ],
+    "aspectRatio": 1.006,
+    "partCoverage": 0.9985,
+    "perPart": [
+      {
+        "id": "tongue",
+        "paths": 147,
+        "coverage": 0.9985
+      },
+      {
+        "id": "mesh_upper",
+        "paths": 6,
+        "coverage": 0.9985
+      },
+      {
+        "id": "padded_collar",
+        "paths": 3,
+        "coverage": 0.9985
+      },
+      {
+        "id": "eyestay_overlay",
+        "paths": 59,
+        "coverage": 0.9985
+      },
+      {
+        "id": "lace_loops",
+        "paths": 139,
+        "coverage": 0.9985
+      },
+      {
+        "id": "laces",
+        "paths": 2,
+        "coverage": 0.9985
+      },
+      {
+        "id": "outsole",
+        "paths": 1660,
+        "coverage": 0.9985
+      },
+      {
+        "id": "lace_stitching",
+        "paths": 712,
+        "coverage": 0.9985
+      }
+    ],
+    "emptyVisibleParts": [],
     "invalidPaths": 0,
-    "totalPaths": 2243,
-    "totalNodes": 11266,
-    "fileKb": 645.3,
+    "totalPaths": 2728,
+    "totalNodes": 42423,
+    "fileKb": 1893.7,
     "notes": [
-      "해프톤 질감 18.4%를 톤 면으로 치환 — 그만큼 선 일치 F가 낮게 나온다",
-      "참고: 사진 실루엣 대비 IoU 0.971 (도면화는 재해석이므로 낮을 수 있음)"
+      "피사체 검출 실패 — 캔버스 중심 정렬로 대체 (사진 98% · 도면 98%)",
+      "해프톤 질감을 톤 면으로 치환 — 화면의 19.5%, 도면 잉크의 25%. 전체 F@2px 0.966, 이 영역을 뺀 선 충실도 0.998"
     ]
   },
   "timings": {
-    "S1_preprocess": 5771,
-    "S2_plan": 33517,
-    "S3_masks": 6937,
-    "S5_schematic_whole": 89914,
-    "S5_schematic": 234,
-    "S6_vectorize": 9126,
-    "S7_assemble": 5,
-    "S8_qa": 378
+    "S1_preprocess": 7246,
+    "S2_plan": 14,
+    "S3_masks": 20674,
+    "S5_schematic_whole": 13,
+    "S5_schematic": 888,
+    "S6_vectorize": 26823,
+    "S7_assemble": 19,
+    "S8_qa": 16394
   }
 }

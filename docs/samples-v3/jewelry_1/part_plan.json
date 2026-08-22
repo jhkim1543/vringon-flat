@@ -1,17 +1,17 @@
 {
   "category": "jewelry",
   "objectNoun": "hinged hoop earring",
-  "view": "front view, open clasp at top",
+  "view": "front view, clasp open",
   "parts": [
     {
-      "id": "hinge_connector",
-      "label": "Bottom hinge connector",
-      "description": "Recessed joint connecting the two metal hoop halves at the bottom center.",
+      "id": "hinge_pivot",
+      "label": "Bottom hinge pivot",
+      "description": "Dark pivot element joining the two hinged hoop halves at the bottom seam.",
       "bbox": [
-        0.49,
+        0.48,
         0.77,
         0.57,
-        0.87
+        0.88
       ],
       "z": 0,
       "occludedBy": [
@@ -19,78 +19,77 @@
         "right_hoop_half"
       ],
       "kind": "component",
-      "confidence": 0.82
+      "confidence": 0.77
     },
     {
       "id": "left_hoop_half",
       "label": "Left hoop half",
-      "description": "Curved left section of the polished metal hoop, including the upper-left clasp terminal.",
+      "description": "Curved polished metal half extending from the bottom hinge to the upper-left open end.",
       "bbox": [
         0.05,
         0.06,
-        0.53,
+        0.51,
         0.94
       ],
       "z": 1,
       "occludedBy": [
-        "right_hoop_half",
-        "left_side_decoration"
+        "engraved_pattern"
       ],
       "kind": "component",
-      "confidence": 0.93
+      "confidence": 0.94
     },
     {
       "id": "right_hoop_half",
       "label": "Right hoop half",
-      "description": "Curved right section of the polished metal hoop extending from the bottom hinge to the upper clasp.",
+      "description": "Curved polished metal half extending from the bottom hinge to the upper-right clasp end.",
       "bbox": [
-        0.5,
+        0.52,
         0.06,
         0.95,
         0.94
       ],
       "z": 2,
       "occludedBy": [
-        "clasp_catch"
+        "clasp_insert"
       ],
       "kind": "component",
-      "confidence": 0.93
+      "confidence": 0.94
     },
     {
-      "id": "clasp_catch",
-      "label": "Upper clasp catch",
-      "description": "Dark recessed catch insert at the upper end of the right hoop half.",
+      "id": "clasp_insert",
+      "label": "Clasp insert",
+      "description": "Small dark latch or receiving insert fitted into the upper terminal of the right hoop half.",
       "bbox": [
         0.56,
         0.05,
         0.63,
-        0.12
+        0.11
       ],
       "z": 3,
       "occludedBy": [],
       "kind": "component",
-      "confidence": 0.86
+      "confidence": 0.71
     },
     {
-      "id": "left_side_decoration",
-      "label": "Left-side engraved decoration",
-      "description": "Repeated recessed or faceted decorative pattern on the outer face of the left hoop half.",
+      "id": "engraved_pattern",
+      "label": "Engraved side pattern",
+      "description": "Repeated recessed decorative graphics along the outer-facing surface of the left hoop half.",
       "bbox": [
-        0.06,
+        0.05,
         0.17,
         0.18,
-        0.76
+        0.79
       ],
       "z": 4,
       "occludedBy": [],
       "kind": "marking",
-      "confidence": 0.76
+      "confidence": 0.8
     }
   ],
   "provenance": {
     "model": "gpt-5.6",
     "promptVersion": "v3.parts.v1.0.0",
     "inputSha256": "9254493c15b38bf53374ad6b74440a8dc697fbb1e2f50cef7bc2389cb583dc33",
-    "createdAt": "2026-08-21T17:16:35.989Z"
+    "createdAt": "2026-08-22T04:44:37.129Z"
   }
 }

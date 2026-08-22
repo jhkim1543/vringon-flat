@@ -5,8 +5,12 @@
       "width": 1400,
       "height": 1098
     },
-    "totalMs": 64316,
-    "createdAt": "2026-08-21T17:14:17.753Z"
+    "vectorCanvas": {
+      "width": 2800,
+      "height": 2196
+    },
+    "totalMs": 48492,
+    "createdAt": "2026-08-22T05:12:14.999Z"
   },
   "options": {
     "minParts": 3,
@@ -14,163 +18,149 @@
     "schematicScope": "whole",
     "grayscale": true,
     "workLong": 1400,
-    "inkThreshold": 190,
+    "vectorLong": 2200,
+    "vectorMode": "hybrid",
+    "textureMode": "auto",
+    "inkThreshold": 170,
     "categoryHint": "shoe",
     "upscale": false
   },
   "plan": {
     "category": "shoe",
-    "objectNoun": "athletic sneaker",
-    "view": "lateral side view with toe pointing right",
+    "objectNoun": "sneaker",
+    "view": "left lateral side view",
     "parts": [
-      {
-        "id": "tongue",
-        "label": "Padded tongue",
-        "description": "Black padded tongue with a pink central accent, positioned behind the throat and laces.",
-        "bbox": [
-          0.41,
-          0.16,
-          0.59,
-          0.45
-        ],
-        "z": 0,
-        "occludedBy": [
-          "main_upper",
-          "eyestay_overlay",
-          "laces"
-        ],
-        "kind": "component",
-        "confidence": 0.94
-      },
       {
         "id": "rubber_outsole",
         "label": "Rubber outsole",
-        "description": "Bottom tread layer, predominantly pink and black, including the visible heel and forefoot tread.",
+        "description": "Black tread layer running along the bottom edge of the shoe.",
         "bbox": [
-          0.16,
-          0.7,
+          0.08,
+          0.72,
           0.93,
           0.88
         ],
+        "z": 0,
+        "occludedBy": [
+          "cushioned_midsole"
+        ],
+        "kind": "component",
+        "confidence": 0.91
+      },
+      {
+        "id": "cushioned_midsole",
+        "label": "Cushioned midsole",
+        "description": "White and pink sculpted cushioning platform with a visible heel air window.",
+        "bbox": [
+          0.07,
+          0.62,
+          0.93,
+          0.86
+        ],
         "z": 1,
         "occludedBy": [
-          "foam_midsole"
+          "main_upper"
         ],
         "kind": "component",
         "confidence": 0.96
       },
       {
-        "id": "foam_midsole",
-        "label": "Foam midsole",
-        "description": "Thick white and black cushioning platform with the pink visible-air housing around the heel.",
+        "id": "tongue",
+        "label": "Tongue",
+        "description": "Padded black tongue rising behind the eyestay, with a pink accent along its face.",
         "bbox": [
-          0.07,
-          0.55,
-          0.94,
-          0.84
+          0.4,
+          0.16,
+          0.61,
+          0.48
         ],
         "z": 2,
         "occludedBy": [
           "main_upper",
-          "airmax_badge"
+          "laces"
         ],
         "kind": "component",
         "confidence": 0.95
       },
       {
-        "id": "main_upper",
-        "label": "Main shoe upper",
-        "description": "Primary black textile and synthetic upper forming the collar, quarters, vamp, and toe area.",
+        "id": "eyelet_underlay",
+        "label": "Eyelet underlay",
+        "description": "Pink ribbed panel exposed beneath the upper around the forefoot lace openings.",
         "bbox": [
-          0.07,
-          0.27,
-          0.93,
-          0.68
+          0.58,
+          0.38,
+          0.72,
+          0.52
         ],
         "z": 3,
         "occludedBy": [
-          "heel_reinforcement",
-          "toe_mudguard",
+          "main_upper",
+          "laces"
+        ],
+        "kind": "component",
+        "confidence": 0.84
+      },
+      {
+        "id": "main_upper",
+        "label": "Main upper",
+        "description": "Black textile and synthetic body forming the toe box, quarters, collar, and eyestay.",
+        "bbox": [
+          0.07,
+          0.27,
+          0.94,
+          0.69
+        ],
+        "z": 4,
+        "occludedBy": [
+          "heel_overlay",
           "swoosh_logo",
-          "eyestay_overlay",
+          "airmax_badge",
           "laces"
         ],
         "kind": "component",
         "confidence": 0.97
       },
       {
-        "id": "heel_reinforcement",
-        "label": "Heel reinforcement panel",
-        "description": "Ribbed pink synthetic panel wrapping the rear heel of the upper.",
+        "id": "heel_overlay",
+        "label": "Heel reinforcement overlay",
+        "description": "Pink ribbed reinforcement panel wrapping the rear heel area.",
         "bbox": [
           0.06,
-          0.34,
+          0.33,
           0.18,
           0.59
-        ],
-        "z": 4,
-        "occludedBy": [],
-        "kind": "component",
-        "confidence": 0.93
-      },
-      {
-        "id": "toe_mudguard",
-        "label": "Toe mudguard overlay",
-        "description": "Black synthetic overlay wrapping around the toe and lower forefoot edge.",
-        "bbox": [
-          0.51,
-          0.47,
-          0.94,
-          0.68
         ],
         "z": 5,
         "occludedBy": [],
         "kind": "component",
-        "confidence": 0.91
-      },
-      {
-        "id": "eyestay_overlay",
-        "label": "Eyestay overlay",
-        "description": "Gray and black reinforced throat panel containing the lace eyelets and surrounding the pink underlay.",
-        "bbox": [
-          0.38,
-          0.29,
-          0.72,
-          0.59
-        ],
-        "z": 6,
-        "occludedBy": [
-          "laces"
-        ],
-        "kind": "component",
-        "confidence": 0.94
+        "confidence": 0.9
       },
       {
         "id": "laces",
-        "label": "Shoelaces",
-        "description": "Black laces crossing the eyestay, including the long loose lace end hanging downward.",
+        "label": "Laces",
+        "description": "Black laces threaded through the eyestay, including the long loose hanging end.",
         "bbox": [
           0.49,
-          0.35,
+          0.34,
           0.73,
           0.77
         ],
-        "z": 7,
+        "z": 6,
         "occludedBy": [],
         "kind": "component",
-        "confidence": 0.98
+        "confidence": 0.97
       },
       {
         "id": "swoosh_logo",
-        "label": "Side swoosh logo",
-        "description": "Pink elongated swoosh graphic applied across the lateral quarter panel.",
+        "label": "Swoosh logo",
+        "description": "Pink swoosh-shaped lateral logo applied across the quarter.",
         "bbox": [
-          0.18,
+          0.23,
           0.46,
-          0.61,
-          0.58
+          0.62,
+          0.59
         ],
-        "z": 8,
+        "z": 7,
         "occludedBy": [
           "laces"
         ],
@@ -179,15 +169,15 @@
       },
       {
         "id": "airmax_badge",
-        "label": "Air Max side badge",
-        "description": "Pink oval AIRMAX branding on the lateral heel portion of the sole unit.",
+        "label": "AIRMAX badge",
+        "description": "Pink oval AIRMAX graphic on the lateral rear quarter.",
         "bbox": [
           0.29,
-          0.57,
+          0.56,
           0.5,
-          0.65
+          0.66
         ],
-        "z": 9,
+        "z": 8,
         "occludedBy": [],
         "kind": "marking",
         "confidence": 0.98
@@ -197,32 +187,17 @@
       "model": "gpt-5.6",
       "promptVersion": "v3.parts.v1.0.0",
       "inputSha256": "25a6f354b2dd27ebdefdf7d78d3f304a36089678d8c59449d7ac612dd57f43ce",
-      "createdAt": "2026-08-21T17:13:50.566Z"
+      "createdAt": "2026-08-22T04:35:54.181Z"
     }
   },
   "layers": [
     {
-      "partId": "tongue",
-      "label": "Padded tongue",
-      "z": 0,
-      "regions": 3,
-      "strokes": 7,
-      "nodes": 30,
-      "schematic": {
-        "backend": "replicate",
-        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
-        "seed": 484861632801927,
-        "cached": true,
-        "ms": 0
-      }
-    },
-    {
       "partId": "rubber_outsole",
       "label": "Rubber outsole",
-      "z": 1,
-      "regions": 0,
-      "strokes": 0,
-      "nodes": 0,
+      "z": 0,
+      "regions": 2,
+      "strokes": 39,
+      "nodes": 402,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -232,12 +207,42 @@
       }
     },
     {
-      "partId": "foam_midsole",
-      "label": "Foam midsole",
+      "partId": "cushioned_midsole",
+      "label": "Cushioned midsole",
+      "z": 1,
+      "regions": 9,
+      "strokes": 149,
+      "nodes": 2022,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "tongue",
+      "label": "Tongue",
       "z": 2,
-      "regions": 7,
-      "strokes": 8,
-      "nodes": 535,
+      "regions": 10,
+      "strokes": 36,
+      "nodes": 623,
+      "schematic": {
+        "backend": "replicate",
+        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
+        "seed": 484861632801927,
+        "cached": true,
+        "ms": 0
+      }
+    },
+    {
+      "partId": "eyelet_underlay",
+      "label": "Eyelet underlay",
+      "z": 3,
+      "regions": 16,
+      "strokes": 36,
+      "nodes": 750,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -248,26 +253,11 @@
     },
     {
       "partId": "main_upper",
-      "label": "Main shoe upper",
-      "z": 3,
-      "regions": 4,
-      "strokes": 17,
-      "nodes": 84,
-      "schematic": {
-        "backend": "replicate",
-        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
-        "seed": 484861632801927,
-        "cached": true,
-        "ms": 0
-      }
-    },
-    {
-      "partId": "heel_reinforcement",
-      "label": "Heel reinforcement panel",
+      "label": "Main upper",
       "z": 4,
-      "regions": 4,
-      "strokes": 60,
-      "nodes": 670,
+      "regions": 23,
+      "strokes": 223,
+      "nodes": 6245,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -277,27 +267,12 @@
       }
     },
     {
-      "partId": "toe_mudguard",
-      "label": "Toe mudguard overlay",
+      "partId": "heel_overlay",
+      "label": "Heel reinforcement overlay",
       "z": 5,
-      "regions": 4,
-      "strokes": 32,
-      "nodes": 305,
-      "schematic": {
-        "backend": "replicate",
-        "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
-        "seed": 484861632801927,
-        "cached": true,
-        "ms": 0
-      }
-    },
-    {
-      "partId": "eyestay_overlay",
-      "label": "Eyestay overlay",
-      "z": 6,
-      "regions": 6,
-      "strokes": 35,
-      "nodes": 249,
+      "regions": 7,
+      "strokes": 80,
+      "nodes": 1331,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -308,11 +283,11 @@
     },
     {
       "partId": "laces",
-      "label": "Shoelaces",
-      "z": 7,
-      "regions": 22,
-      "strokes": 106,
-      "nodes": 928,
+      "label": "Laces",
+      "z": 6,
+      "regions": 5,
+      "strokes": 101,
+      "nodes": 1034,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -323,11 +298,11 @@
     },
     {
       "partId": "swoosh_logo",
-      "label": "Side swoosh logo",
-      "z": 8,
-      "regions": 5,
-      "strokes": 36,
-      "nodes": 683,
+      "label": "Swoosh logo",
+      "z": 7,
+      "regions": 1,
+      "strokes": 75,
+      "nodes": 1531,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -338,11 +313,11 @@
     },
     {
       "partId": "airmax_badge",
-      "label": "Air Max side badge",
-      "z": 9,
-      "regions": 10,
-      "strokes": 54,
-      "nodes": 453,
+      "label": "AIRMAX badge",
+      "z": 8,
+      "regions": 22,
+      "strokes": 56,
+      "nodes": 1160,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -354,26 +329,89 @@
   ],
   "qa": {
     "pass": true,
-    "silhouetteIou": 0.9881,
-    "boundaryF": 0.8631,
-    "partCoverage": 0.999,
+    "silhouetteIou": 0.9991,
+    "boundaryF": 0.8943,
+    "rawF0": 0.7889,
+    "rawF1": 0.8829,
+    "rawF2": 0.8943,
+    "lineF1": 0.9874,
+    "lineF2": 0.998,
+    "textureShare": 0.596,
+    "inkRatio": 0.929,
+    "chamfer": 0.128,
+    "p95": 1,
+    "detailRecall": 1,
+    "majorComponents": [
+      6,
+      6
+    ],
+    "aspectRatio": 1.052,
+    "partCoverage": 0.9995,
+    "perPart": [
+      {
+        "id": "rubber_outsole",
+        "paths": 41,
+        "coverage": 0.9995
+      },
+      {
+        "id": "cushioned_midsole",
+        "paths": 158,
+        "coverage": 0.9995
+      },
+      {
+        "id": "tongue",
+        "paths": 46,
+        "coverage": 0.9995
+      },
+      {
+        "id": "eyelet_underlay",
+        "paths": 52,
+        "coverage": 0.9995
+      },
+      {
+        "id": "main_upper",
+        "paths": 246,
+        "coverage": 0.9995
+      },
+      {
+        "id": "heel_overlay",
+        "paths": 87,
+        "coverage": 0.9995
+      },
+      {
+        "id": "laces",
+        "paths": 106,
+        "coverage": 0.9995
+      },
+      {
+        "id": "swoosh_logo",
+        "paths": 76,
+        "coverage": 0.9995
+      },
+      {
+        "id": "airmax_badge",
+        "paths": 78,
+        "coverage": 0.9995
+      }
+    ],
+    "emptyVisibleParts": [],
     "invalidPaths": 0,
-    "totalPaths": 420,
-    "totalNodes": 3937,
-    "fileKb": 188.6,
+    "totalPaths": 890,
+    "totalNodes": 15098,
+    "fileKb": 684.4,
     "notes": [
-      "해프톤 질감 16.0%를 톤 면으로 치환 — 그만큼 선 일치 F가 낮게 나온다",
-      "참고: 사진 실루엣 대비 IoU 0.538 (도면화는 재해석이므로 낮을 수 있음)"
+      "사진↔도면 종횡비 불일치 5.2% — 파트 배분 정확도에만 영향 (도면은 왜곡하지 않는다)",
+      "해프톤 질감을 톤 면으로 치환 — 화면의 20.1%, 도면 잉크의 60%. 전체 F@2px 0.894, 이 영역을 뺀 선 충실도 0.998"
     ]
   },
   "timings": {
-    "S1_preprocess": 6144,
-    "S2_plan": 30980,
-    "S3_masks": 9430,
-    "S5_schematic_whole": 12390,
-    "S5_schematic": 182,
-    "S6_vectorize": 4817,
-    "S7_assemble": 3,
-    "S8_qa": 245
+    "S1_preprocess": 9207,
+    "S2_plan": 15,
+    "S3_masks": 15581,
+    "S5_schematic_whole": 15,
+    "S5_schematic": 1021,
+    "S6_vectorize": 18256,
+    "S7_assemble": 9,
+    "S8_qa": 3846
   }
 }

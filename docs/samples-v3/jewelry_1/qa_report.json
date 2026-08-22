@@ -5,8 +5,12 @@
       "width": 618,
       "height": 580
     },
-    "totalMs": 40601,
-    "createdAt": "2026-08-21T17:16:44.762Z"
+    "vectorCanvas": {
+      "width": 2048,
+      "height": 1922
+    },
+    "totalMs": 23736,
+    "createdAt": "2026-08-22T05:16:39.120Z"
   },
   "options": {
     "minParts": 3,
@@ -14,24 +18,27 @@
     "schematicScope": "whole",
     "grayscale": true,
     "workLong": 1400,
-    "inkThreshold": 190,
+    "vectorLong": 2200,
+    "vectorMode": "hybrid",
+    "textureMode": "auto",
+    "inkThreshold": 170,
     "categoryHint": "jewelry",
     "upscale": false
   },
   "plan": {
     "category": "jewelry",
     "objectNoun": "hinged hoop earring",
-    "view": "front view, open clasp at top",
+    "view": "front view, clasp open",
     "parts": [
       {
-        "id": "hinge_connector",
-        "label": "Bottom hinge connector",
-        "description": "Recessed joint connecting the two metal hoop halves at the bottom center.",
+        "id": "hinge_pivot",
+        "label": "Bottom hinge pivot",
+        "description": "Dark pivot element joining the two hinged hoop halves at the bottom seam.",
         "bbox": [
-          0.49,
+          0.48,
           0.77,
           0.57,
-          0.87
+          0.88
         ],
         "z": 0,
         "occludedBy": [
@@ -39,89 +46,88 @@
           "right_hoop_half"
         ],
         "kind": "component",
-        "confidence": 0.82
+        "confidence": 0.77
       },
       {
         "id": "left_hoop_half",
         "label": "Left hoop half",
-        "description": "Curved left section of the polished metal hoop, including the upper-left clasp terminal.",
+        "description": "Curved polished metal half extending from the bottom hinge to the upper-left open end.",
         "bbox": [
           0.05,
           0.06,
-          0.53,
+          0.51,
           0.94
         ],
         "z": 1,
         "occludedBy": [
-          "right_hoop_half",
-          "left_side_decoration"
+          "engraved_pattern"
         ],
         "kind": "component",
-        "confidence": 0.93
+        "confidence": 0.94
       },
       {
         "id": "right_hoop_half",
         "label": "Right hoop half",
-        "description": "Curved right section of the polished metal hoop extending from the bottom hinge to the upper clasp.",
+        "description": "Curved polished metal half extending from the bottom hinge to the upper-right clasp end.",
         "bbox": [
-          0.5,
+          0.52,
           0.06,
           0.95,
           0.94
         ],
         "z": 2,
         "occludedBy": [
-          "clasp_catch"
+          "clasp_insert"
         ],
         "kind": "component",
-        "confidence": 0.93
+        "confidence": 0.94
       },
       {
-        "id": "clasp_catch",
-        "label": "Upper clasp catch",
-        "description": "Dark recessed catch insert at the upper end of the right hoop half.",
+        "id": "clasp_insert",
+        "label": "Clasp insert",
+        "description": "Small dark latch or receiving insert fitted into the upper terminal of the right hoop half.",
         "bbox": [
           0.56,
           0.05,
           0.63,
-          0.12
+          0.11
         ],
         "z": 3,
         "occludedBy": [],
         "kind": "component",
-        "confidence": 0.86
+        "confidence": 0.71
       },
       {
-        "id": "left_side_decoration",
-        "label": "Left-side engraved decoration",
-        "description": "Repeated recessed or faceted decorative pattern on the outer face of the left hoop half.",
+        "id": "engraved_pattern",
+        "label": "Engraved side pattern",
+        "description": "Repeated recessed decorative graphics along the outer-facing surface of the left hoop half.",
         "bbox": [
-          0.06,
+          0.05,
           0.17,
           0.18,
-          0.76
+          0.79
         ],
         "z": 4,
         "occludedBy": [],
         "kind": "marking",
-        "confidence": 0.76
+        "confidence": 0.8
       }
     ],
     "provenance": {
       "model": "gpt-5.6",
       "promptVersion": "v3.parts.v1.0.0",
       "inputSha256": "9254493c15b38bf53374ad6b74440a8dc697fbb1e2f50cef7bc2389cb583dc33",
-      "createdAt": "2026-08-21T17:16:35.989Z"
+      "createdAt": "2026-08-22T04:44:37.129Z"
     }
   },
   "layers": [
     {
-      "partId": "hinge_connector",
-      "label": "Bottom hinge connector",
+      "partId": "hinge_pivot",
+      "label": "Bottom hinge pivot",
       "z": 0,
       "regions": 1,
-      "strokes": 2,
-      "nodes": 21,
+      "strokes": 5,
+      "nodes": 79,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -134,9 +140,9 @@
       "partId": "left_hoop_half",
       "label": "Left hoop half",
       "z": 1,
-      "regions": 2,
-      "strokes": 16,
-      "nodes": 214,
+      "regions": 3,
+      "strokes": 68,
+      "nodes": 1222,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -150,8 +156,8 @@
       "label": "Right hoop half",
       "z": 2,
       "regions": 2,
-      "strokes": 9,
-      "nodes": 97,
+      "strokes": 73,
+      "nodes": 1106,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -161,12 +167,12 @@
       }
     },
     {
-      "partId": "clasp_catch",
-      "label": "Upper clasp catch",
+      "partId": "clasp_insert",
+      "label": "Clasp insert",
       "z": 3,
-      "regions": 1,
-      "strokes": 5,
-      "nodes": 29,
+      "regions": 2,
+      "strokes": 13,
+      "nodes": 373,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -176,12 +182,12 @@
       }
     },
     {
-      "partId": "left_side_decoration",
-      "label": "Left-side engraved decoration",
+      "partId": "engraved_pattern",
+      "label": "Engraved side pattern",
       "z": 4,
-      "regions": 6,
-      "strokes": 35,
-      "nodes": 183,
+      "regions": 5,
+      "strokes": 63,
+      "nodes": 2254,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -193,25 +199,66 @@
   ],
   "qa": {
     "pass": true,
-    "silhouetteIou": 0.9576,
-    "boundaryF": 0.9253,
-    "partCoverage": 0.9993,
+    "silhouetteIou": 0.9969,
+    "boundaryF": 0.9909,
+    "rawF0": 0.8912,
+    "rawF1": 0.9814,
+    "rawF2": 0.9909,
+    "lineF1": 0.9814,
+    "lineF2": 0.9909,
+    "textureShare": 0,
+    "inkRatio": 0.964,
+    "chamfer": 0.172,
+    "p95": 1,
+    "detailRecall": 1,
+    "majorComponents": [
+      1,
+      1
+    ],
+    "aspectRatio": 1.01,
+    "partCoverage": 0.9999,
+    "perPart": [
+      {
+        "id": "hinge_pivot",
+        "paths": 6,
+        "coverage": 0.9999
+      },
+      {
+        "id": "left_hoop_half",
+        "paths": 71,
+        "coverage": 0.9999
+      },
+      {
+        "id": "right_hoop_half",
+        "paths": 75,
+        "coverage": 0.9999
+      },
+      {
+        "id": "clasp_insert",
+        "paths": 15,
+        "coverage": 0.9999
+      },
+      {
+        "id": "engraved_pattern",
+        "paths": 68,
+        "coverage": 0.9999
+      }
+    ],
+    "emptyVisibleParts": [],
     "invalidPaths": 0,
-    "totalPaths": 79,
-    "totalNodes": 544,
-    "fileKb": 29.4,
-    "notes": [
-      "참고: 사진 실루엣 대비 IoU 0.881 (도면화는 재해석이므로 낮을 수 있음)"
-    ]
+    "totalPaths": 235,
+    "totalNodes": 5034,
+    "fileKb": 223.2,
+    "notes": []
   },
   "timings": {
-    "S1_preprocess": 5294,
-    "S2_plan": 26532,
-    "S3_masks": 793,
-    "S5_schematic_whole": 7260,
-    "S5_schematic": 69,
-    "S6_vectorize": 442,
-    "S7_assemble": 3,
-    "S8_qa": 135
+    "S1_preprocess": 6642,
+    "S2_plan": 13,
+    "S3_masks": 2951,
+    "S5_schematic_whole": 16,
+    "S5_schematic": 532,
+    "S6_vectorize": 10589,
+    "S7_assemble": 9,
+    "S8_qa": 2653
   }
 }

@@ -1,156 +1,139 @@
 {
   "category": "shoe",
-  "objectNoun": "athletic sneaker",
-  "view": "lateral side view with toe pointing right",
+  "objectNoun": "sneaker",
+  "view": "left lateral side view",
   "parts": [
-    {
-      "id": "tongue",
-      "label": "Padded tongue",
-      "description": "Black padded tongue with a pink central accent, positioned behind the throat and laces.",
-      "bbox": [
-        0.41,
-        0.16,
-        0.59,
-        0.45
-      ],
-      "z": 0,
-      "occludedBy": [
-        "main_upper",
-        "eyestay_overlay",
-        "laces"
-      ],
-      "kind": "component",
-      "confidence": 0.94
-    },
     {
       "id": "rubber_outsole",
       "label": "Rubber outsole",
-      "description": "Bottom tread layer, predominantly pink and black, including the visible heel and forefoot tread.",
+      "description": "Black tread layer running along the bottom edge of the shoe.",
       "bbox": [
-        0.16,
-        0.7,
+        0.08,
+        0.72,
         0.93,
         0.88
       ],
+      "z": 0,
+      "occludedBy": [
+        "cushioned_midsole"
+      ],
+      "kind": "component",
+      "confidence": 0.91
+    },
+    {
+      "id": "cushioned_midsole",
+      "label": "Cushioned midsole",
+      "description": "White and pink sculpted cushioning platform with a visible heel air window.",
+      "bbox": [
+        0.07,
+        0.62,
+        0.93,
+        0.86
+      ],
       "z": 1,
       "occludedBy": [
-        "foam_midsole"
+        "main_upper"
       ],
       "kind": "component",
       "confidence": 0.96
     },
     {
-      "id": "foam_midsole",
-      "label": "Foam midsole",
-      "description": "Thick white and black cushioning platform with the pink visible-air housing around the heel.",
+      "id": "tongue",
+      "label": "Tongue",
+      "description": "Padded black tongue rising behind the eyestay, with a pink accent along its face.",
       "bbox": [
-        0.07,
-        0.55,
-        0.94,
-        0.84
+        0.4,
+        0.16,
+        0.61,
+        0.48
       ],
       "z": 2,
       "occludedBy": [
         "main_upper",
-        "airmax_badge"
+        "laces"
       ],
       "kind": "component",
       "confidence": 0.95
     },
     {
-      "id": "main_upper",
-      "label": "Main shoe upper",
-      "description": "Primary black textile and synthetic upper forming the collar, quarters, vamp, and toe area.",
+      "id": "eyelet_underlay",
+      "label": "Eyelet underlay",
+      "description": "Pink ribbed panel exposed beneath the upper around the forefoot lace openings.",
       "bbox": [
-        0.07,
-        0.27,
-        0.93,
-        0.68
+        0.58,
+        0.38,
+        0.72,
+        0.52
       ],
       "z": 3,
       "occludedBy": [
-        "heel_reinforcement",
-        "toe_mudguard",
+        "main_upper",
+        "laces"
+      ],
+      "kind": "component",
+      "confidence": 0.84
+    },
+    {
+      "id": "main_upper",
+      "label": "Main upper",
+      "description": "Black textile and synthetic body forming the toe box, quarters, collar, and eyestay.",
+      "bbox": [
+        0.07,
+        0.27,
+        0.94,
+        0.69
+      ],
+      "z": 4,
+      "occludedBy": [
+        "heel_overlay",
         "swoosh_logo",
-        "eyestay_overlay",
+        "airmax_badge",
         "laces"
       ],
       "kind": "component",
       "confidence": 0.97
     },
     {
-      "id": "heel_reinforcement",
-      "label": "Heel reinforcement panel",
-      "description": "Ribbed pink synthetic panel wrapping the rear heel of the upper.",
+      "id": "heel_overlay",
+      "label": "Heel reinforcement overlay",
+      "description": "Pink ribbed reinforcement panel wrapping the rear heel area.",
       "bbox": [
         0.06,
-        0.34,
+        0.33,
         0.18,
         0.59
-      ],
-      "z": 4,
-      "occludedBy": [],
-      "kind": "component",
-      "confidence": 0.93
-    },
-    {
-      "id": "toe_mudguard",
-      "label": "Toe mudguard overlay",
-      "description": "Black synthetic overlay wrapping around the toe and lower forefoot edge.",
-      "bbox": [
-        0.51,
-        0.47,
-        0.94,
-        0.68
       ],
       "z": 5,
       "occludedBy": [],
       "kind": "component",
-      "confidence": 0.91
-    },
-    {
-      "id": "eyestay_overlay",
-      "label": "Eyestay overlay",
-      "description": "Gray and black reinforced throat panel containing the lace eyelets and surrounding the pink underlay.",
-      "bbox": [
-        0.38,
-        0.29,
-        0.72,
-        0.59
-      ],
-      "z": 6,
-      "occludedBy": [
-        "laces"
-      ],
-      "kind": "component",
-      "confidence": 0.94
+      "confidence": 0.9
     },
     {
       "id": "laces",
-      "label": "Shoelaces",
-      "description": "Black laces crossing the eyestay, including the long loose lace end hanging downward.",
+      "label": "Laces",
+      "description": "Black laces threaded through the eyestay, including the long loose hanging end.",
       "bbox": [
         0.49,
-        0.35,
+        0.34,
         0.73,
         0.77
       ],
-      "z": 7,
+      "z": 6,
       "occludedBy": [],
       "kind": "component",
-      "confidence": 0.98
+      "confidence": 0.97
     },
     {
       "id": "swoosh_logo",
-      "label": "Side swoosh logo",
-      "description": "Pink elongated swoosh graphic applied across the lateral quarter panel.",
+      "label": "Swoosh logo",
+      "description": "Pink swoosh-shaped lateral logo applied across the quarter.",
       "bbox": [
-        0.18,
+        0.23,
         0.46,
-        0.61,
-        0.58
+        0.62,
+        0.59
       ],
-      "z": 8,
+      "z": 7,
       "occludedBy": [
         "laces"
       ],
@@ -159,15 +142,15 @@
     },
     {
       "id": "airmax_badge",
-      "label": "Air Max side badge",
-      "description": "Pink oval AIRMAX branding on the lateral heel portion of the sole unit.",
+      "label": "AIRMAX badge",
+      "description": "Pink oval AIRMAX graphic on the lateral rear quarter.",
       "bbox": [
         0.29,
-        0.57,
+        0.56,
         0.5,
-        0.65
+        0.66
       ],
-      "z": 9,
+      "z": 8,
       "occludedBy": [],
       "kind": "marking",
       "confidence": 0.98
@@ -177,6 +160,6 @@
     "model": "gpt-5.6",
     "promptVersion": "v3.parts.v1.0.0",
     "inputSha256": "25a6f354b2dd27ebdefdf7d78d3f304a36089678d8c59449d7ac612dd57f43ce",
-    "createdAt": "2026-08-21T17:13:50.566Z"
+    "createdAt": "2026-08-22T04:35:54.181Z"
   }
 }

@@ -183,17 +183,63 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
   <div class="grid" id="v3cards"></div>
   <div class="detail" id="v3detail" hidden></div>
 
-  <h3>실측으로 확인한 것</h3>
+  <h3>외부 감사 후 고친 것 — 실측 전후</h3>
+  <p class="sub">
+    2026-08-22, 외부 벡터화 품질 감사를 받고 파이프라인을 다시 만들었습니다.
+    지표의 기준을 <b>사용자가 화면에서 보는 도면</b>으로 바꾸자, 예전 QA가 통과시키던 결과가
+    실제로는 원본과 크게 어긋나 있었습니다.
+  </p>
+
+  <div class="note">
+    <b>예전 QA는 자기가 망가뜨린 입력을 기준으로 재고 있었습니다.</b>
+    벡터화 직전에 도면을 사진 크기로 축소하고 비등방으로 늘린 뒤, <b>그 왜곡된 이미지</b>와
+    결과를 비교했습니다. 9종 평균 — 보고 F 0.872 · 왜곡 입력 대비 0.917 ·
+    <b>사용자가 보는 도면 대비 0.620</b>.
+  </div>
+
+  <h4>고친 것</h4>
   <ul>
-    <li><b>파트별 도면 생성은 실패합니다.</b> schematic LoRA가 제품 전체 사진으로 학습돼 있어
-      파트 크롭을 주면 그 조각으로 완성품을 지어냅니다(반지의 검은 인레이 크롭 → 목걸이 펜던트).
-      실측 <code>scope=part</code> 실루엣 IoU 0.889 · 선 일치 F 0.468 vs
-      <code>scope=whole</code> 0.958 · 0.925. 그래서 <b>도면은 한 장만 만들고 그 그림을 파트로 나눕니다</b>.</li>
-    <li><b>해프톤은 선이 아니라 톤입니다.</b> 도면은 메시·니트를 점으로 표현하는데, 점을 선으로 따면
-      스크래치가 되거나 통째로 검게 뭉칩니다. 점 크기로 판별해 지우고 그 자리를 옅은 면으로 칠합니다.</li>
-    <li><b>컬러는 기하와 색을 나눠 뽑습니다.</b> 컬러 도면은 선과 색면이 같은 검정이라 밝기 임계가 무너집니다
-      (검정 가방 실측: 패스 6개, 실루엣 IoU 0.002). 컬러화 <b>직전</b>의 모노 도면에서 선을 뽑고,
-      색만 컬러본에서 샘플링해 둘 다 살립니다.</li>
+    <li><b>도면을 건드리지 않는다.</b> 벡터는 도면 좌표계에서 만들고, 사진에서 온 파트 마스크
+      쪽을 등방 변환으로 옮깁니다. 예전에는 반대로 도면을 사진 bbox에 <code>fit:"fill"</code>로
+      욱여넣어 x·y를 다른 배율로 늘렸습니다(bag_1 실측 종횡비 왜곡 21%).</li>
+    <li><b>배경 검출을 교체.</b> 루미넌스 <code>&lt;245</code>를 전경으로 보던 규칙이 RGB 235짜리
+      도면 배경을 전경으로 잡아 9종 중 5종에서 bbox가 캔버스 전체로 오판됐습니다.
+      이제 테두리에서 번지는 배경 flood fill로 잡고, 실패하면 정합을 포기합니다.</li>
+    <li><b>모델 해상도를 버리지 않는다.</b> 1024² 결과를 사진 크기(예: 304×433)로 줄여 저장하고
+      있었습니다 — 모델 픽셀의 12.6%만 남았습니다. 이제 종횡비만 되돌립니다.</li>
+    <li><b>작은 성분을 무조건 지우지 않는다.</b> 해프톤으로 <b>승인된 클러스터 안의 점만</b> 지웁니다.
+      예전에는 스티치·지퍼 이빨·로고 문자가 함께 사라졌습니다.</li>
+    <li><b>면과 선의 마스크를 분리.</b> 닫힌 면을 찾으려면 morphological closing이 필요하지만,
+      같은 마스크로 선까지 그리면 평행선이 붙고 교차점에 혹이 생깁니다.</li>
+    <li><b>표현을 hybrid로.</b> centerline은 편집성이 좋지만 작은 디테일을 잃습니다
+      (shoe_1 실측 보존율 4.5%). 굵기가 안정적인 긴 구조선만 stroke로 올리고 나머지는
+      채워진 outline으로 남깁니다.</li>
+    <li><b>파트 배분을 곡선 샘플링으로.</b> 예전에는 <code>d</code> 문자열의 숫자를 훑어
+      <b>베지어 제어점</b>까지 좌표로 썼습니다. 제어점은 곡선 위에 없습니다.</li>
+  </ul>
+
+  <h4>9종 실측 (기준 = 사용자가 보는 도면)</h4>
+  <div style="overflow-x:auto"><table id="v3fix">
+    <tr><th>샘플</th><th class="num">이전 F@2px</th><th class="num">현재 F@2px</th>
+        <th class="num">선 F@2px</th><th class="num">작은 디테일</th><th class="num">패스</th><th>판정</th></tr>
+  </table></div>
+  <p class="sub" style="margin-top:8px">
+    「선 F@2px」는 해프톤 질감 영역을 뺀 값입니다 — 그 자리는 점 대신 톤 면으로 그리는 것이
+    의도이므로 전체 지표에 넣으면 "선이 빠졌다"로 집계돼 진짜 결함이 묻힙니다.
+    jewelry_3은 도면 자체가 보석을 사진처럼 그라데이션으로 그려 보내 이진 추적의 한계에
+    걸립니다 — QA가 <code>NEEDS_REVIEW</code>로 표시합니다.
+  </p>
+
+  <h4>아직 남은 것</h4>
+  <ul>
+    <li>교차점(junction)에서 어느 선이 어느 선의 연장인지 전역으로 판단하지 않습니다.
+      centerline 모드에서 분기점에 혹·틈이 남습니다. hybrid가 그 부분을 outline으로 돌려
+      가리고 있을 뿐입니다.</li>
+    <li>선 굵기가 체인당 하나의 중앙값입니다. 원근으로 폭이 변하는 스트랩은 정확하지 않습니다.</li>
+    <li>파트 경계선은 한 파트에 귀속시키되 공유 파트를 <code>data-shared</code>로 표시만 합니다.
+      별도 공유 레이어로 빼는 것은 하지 않았습니다.</li>
+    <li>사진 파트 마스크와 생성 도면은 원래 정합되지 않습니다. 등방 변환으로 옮기지만
+      내부 경계는 근사입니다 — 종횡비 불일치를 QA에 기록합니다.</li>
   </ul>
 </section>
 
@@ -758,6 +804,34 @@ fetch("samples-v3/index.json").then(r => r.json()).then(d => {
         <div class="d">레이어 ${s.layers.length}개 · 패스 ${s.qa.totalPaths.toLocaleString()}${s.color ? " · 컬러 있음" : ""}</div>
       </div>
     </button>`).join("");
+
+  // 감사 전 수치 — 배포돼 있던 SVG를 raw 도면과 대조해 잰 값 (scratchpad/probe1.mjs)
+  const BEFORE = {"shoe_1":0.384,"shoe_2":0.689,"shoe_3":0.73,"bag_1":0.465,"bag_2":0.319,"bag_3":0.756,"jewelry_1":0.744,"jewelry_2":0.879,"jewelry_3":0.645};
+  const ft = document.getElementById("v3fix");
+  if (ft) {
+    for (const x of d.samples) {
+      const b = BEFORE[x.name];
+      const now = x.qa.rawF2, line = x.qa.lineF2 ?? x.qa.rawF2;
+      ft.insertAdjacentHTML("beforeend", `<tr>
+        <td>${x.name}</td>
+        <td class="num" style="color:var(--dim)">${b !== undefined ? b.toFixed(3) : "—"}</td>
+        <td class="num"><b>${now.toFixed(3)}</b></td>
+        <td class="num"><b>${line.toFixed(3)}</b></td>
+        <td class="num">${(x.qa.detailRecall * 100).toFixed(0)}%</td>
+        <td class="num">${x.qa.totalPaths.toLocaleString()}</td>
+        <td><span class="badge ${x.qa.pass ? "ok" : "warn"}">${x.qa.pass ? "PASS" : "REVIEW"}</span></td></tr>`);
+    }
+    const avg = (f) => (d.samples.reduce((a, x) => a + f(x), 0) / d.samples.length).toFixed(3);
+    const avgBefore = (Object.values(BEFORE).reduce((a, b) => a + b, 0) / Object.keys(BEFORE).length).toFixed(3);
+    ft.insertAdjacentHTML("beforeend", `<tr style="background:var(--panel-2)">
+      <td><b>평균</b></td>
+      <td class="num" style="color:var(--dim)">${avgBefore}</td>
+      <td class="num"><b>${avg((x) => x.qa.rawF2)}</b></td>
+      <td class="num"><b>${avg((x) => x.qa.lineF2 ?? x.qa.rawF2)}</b></td>
+      <td class="num">${avg((x) => x.qa.detailRecall * 100)}%</td>
+      <td class="num"></td><td></td></tr>`);
+  }
+
   c.querySelectorAll(".card").forEach(x => x.onclick = () => openV3(+x.dataset.i));
   openV3(0);
 }).catch(e => {
@@ -777,10 +851,11 @@ async function openV3(i) {
     <div class="detail-head">
       <div class="t">${s.categoryLabel} · ${s.name}<span style="color:var(--dim);font-weight:400;font-size:13px"> — ${s.objectNoun}</span></div>
       <div class="badges">
-        <span class="badge">${s.width}×${s.height}</span>
-        ${kpi(q.silhouetteIou >= 0.90, `도면 대비 실루엣 IoU ${q.silhouetteIou.toFixed(3)}`)}
-        ${kpi(q.boundaryF >= 0.85, `선 일치 F ${q.boundaryF.toFixed(3)}`)}
-        ${kpi(q.partCoverage >= 0.95, `파트 커버리지 ${(q.partCoverage * 100).toFixed(1)}%`)}
+        <span class="badge">${s.width}×${s.height} → 벡터 ${s.vectorCanvas ? s.vectorCanvas.width + "×" + s.vectorCanvas.height : "-"}</span>
+        ${kpi((q.lineF2 ?? q.rawF2) >= 0.95, `선 일치 F@2px ${(q.lineF2 ?? q.rawF2).toFixed(3)}`)}
+        ${kpi((q.lineF1 ?? q.rawF1) >= 0.90, `F@1px ${(q.lineF1 ?? q.rawF1).toFixed(3)}`)}
+        ${kpi(q.detailRecall >= 0.9, `작은 디테일 ${(q.detailRecall * 100).toFixed(0)}%`)}
+        ${kpi(Math.abs((q.inkRatio ?? 1) - 1) <= 0.25, `선 굵기 ${q.inkRatio}×`)}
         ${kpi(q.invalidPaths === 0, `invalid ${q.invalidPaths}`)}
         <span class="badge">패스 ${q.totalPaths.toLocaleString()} · ${q.fileKb} KB</span>
         <span class="badge ${s.state === "SUCCEEDED" ? "ok" : "warn"}">${s.state}</span>
@@ -788,7 +863,7 @@ async function openV3(i) {
     </div>
     <div class="stage3">
       <div class="pane"><h4>1. 사진 (격리·크롭)</h4><div class="frame"><img src="${s.files.input}" alt="원본"></div></div>
-      <div class="pane"><h4>2. VRINGON 도면</h4><div class="frame">${s.files.schematic ? `<img src="${s.files.schematic}" alt="도면">` : "<span style='color:var(--dim);font-size:13px'>도면 없음</span>"}</div></div>
+      <div class="pane"><h4>2. VRINGON 도면 <span style="color:var(--dim);font-weight:400">— 이 그림이 그대로 벡터화 입력이다</span></h4><div class="frame">${s.files.schematic ? `<img src="${s.files.schematic}" alt="도면">` : "<span style='color:var(--dim);font-size:13px'>도면 없음</span>"}</div></div>
       <div class="pane"><h4>3. V3 — 라인 기준 벡터</h4><div class="frame" id="v3svgHost">불러오는 중…</div></div>
     </div>
     ${s.color ? `<div class="stage3" style="margin-top:1px">
@@ -822,7 +897,12 @@ async function openV3(i) {
         백엔드 <code>${s.schematic.backend}</code> · scope <code>${s.schematic.scope}</code> ·
         시드 <code>${s.schematic.seed ?? "-"}</code> · 업스케일 <code>${s.schematic.upscaled ? "on" : "off"}</code><br>
         프롬프트 <code>${s.schematic.prompt}</code><br>
-        시점 <code>${s.view}</code>
+        시점 <code>${s.view}</code><br>
+        전체 잉크 대비 F — 0px <code>${q.rawF0}</code> · 1px <code>${q.rawF1}</code> · 2px <code>${q.rawF2}</code>
+        ${q.textureShare > 0.01 ? ` · 해프톤이 도면 잉크의 ${(q.textureShare * 100).toFixed(0)}%` : ""}<br>
+        거리 오차 평균 <code>${q.chamfer}px</code> · p95 <code>${q.p95}px</code> ·
+        큰 성분 <code>${q.majorComponents ? q.majorComponents[0] + " → " + q.majorComponents[1] : "-"}</code> ·
+        종횡비 불일치 <code>${q.aspectRatio}</code>
       </div>
       <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
         ${Object.entries(s.timings).filter(([, ms]) => ms > 300).map(([k, ms]) => `<span class="badge">${k} ${(ms / 1000).toFixed(1)}s</span>`).join("")}

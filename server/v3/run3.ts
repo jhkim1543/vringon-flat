@@ -20,9 +20,11 @@ import sharp from "sharp";
 import { isolateProduct, cropToSubject } from "../pipeline/prepare.js";
 import { planParts, type PartPlan, type ProductPart } from "./partPlan.js";
 import { generateSchematic, activeBackend, normalizeCategory, type SchematicResult } from "./schematicClient.js";
-import { vectorizeByLines, type LineVectorResult, type VecPath } from "./lineVector.js";
+import { vectorizeByLines, type LineMode, type LineVectorResult, type VecPath } from "./lineVector.js";
+import { detectSubject, similarityFit, warpMask } from "./subject.js";
+import { inkMask, svgInkMask, fidelity, detailRecall, topology } from "./metrics.js";
 import { buildVisibleMasks } from "../v2/masks.js";
-import { alignToBox, fgBBox } from "../pipeline/layers.js";
+import { alignToBox } from "../pipeline/layers.js";
 import { area, backgroundMask, boundary, dilate, edgeF1, iou, loadRaster } from "../v2/raster.js";
 import type { LayerManifest, ManifestLayer } from "../v2/schema.js";
 
@@ -38,8 +40,18 @@ export interface V3Options {
   schematicScope: "part" | "whole";
   /** 모노톤 도식(true) / 컬러 플랫(false) */
   grayscale: boolean;
-  /** 작업 캔버스 긴 변 */
+  /** 사진 전처리 캔버스 긴 변 (파트 마스크가 만들어지는 해상도) */
   workLong: number;
+  /**
+   * **벡터 작업 캔버스**의 목표 긴 변. 도면을 이 크기로 키워서 추적한다.
+   * 확대 자체가 정보를 만들지는 않지만 이진화 경계가 부드러워져 tracer가 더 적은 패스로
+   * 더 정확한 곡선을 낸다(bag_1 실측: 302패스 F@2px 0.968 → 279패스 0.994).
+   */
+  vectorLong: number;
+  /** 선을 어떻게 표현할 것인가 — hybrid(기본) / outline(최고 충실도) / centerline(최고 편집성) */
+  vectorMode: LineMode;
+  /** 해프톤 처리 — auto(기본) / tone(항상 톤 면) / keep(항상 유지) */
+  textureMode: "auto" | "tone" | "keep";
   /** 잉크 임계 */
   inkThreshold: number;
   /** 이미 만든 도면을 재사용한다 (백엔드 없이 벡터화·어셈블만 검증) */
@@ -51,10 +63,15 @@ export interface V3Options {
 export const DEFAULT_V3_OPTIONS: V3Options = {
   minParts: 3,
   maxParts: 10,
-  schematicScope: "part",
+  schematicScope: "whole",
   grayscale: true,
   workLong: 1400,
-  inkThreshold: 190,
+  vectorLong: 2200,
+  vectorMode: "hybrid",
+  textureMode: "auto",
+  // 도면 배경은 순백이 아니라 RGB 235 근처다. 190은 그 배경을 잉크로 잡지는 않지만
+  // 옅은 회색 톤 면까지 잉크로 끌어들인다. 170이 선만 남긴다.
+  inkThreshold: 170,
 };
 
 export interface V3Result {
@@ -73,8 +90,42 @@ export interface V3Result {
   qa: {
     pass: boolean;
     silhouetteIou: number;
+    /** 하위호환 — rawF2 와 같은 값 */
     boundaryF: number;
+    /**
+     * **사용자가 보는 도면** 대비 양방향 F1. 허용오차 0/1/2px.
+     * 예전 지표는 기준을 파이프라인이 스스로 축소·왜곡한 aligned 입력으로 잡아서
+     * "자기가 망가뜨린 입력을 얼마나 잘 따라 그렸나"만 쟀다(9종 평균 보고 0.872 vs
+     * raw 대비 0.620, bag_1 은 0.939 vs 0.465).
+     */
+    rawF0: number;
+    rawF1: number;
+    rawF2: number;
+    /**
+     * 해프톤 질감 영역을 뺀 **선** 충실도. 그 영역은 점 대신 톤 면으로 그리는 것이 의도이므로
+     * 전체 지표에 넣으면 "선이 빠졌다"로 집계돼 실제 결함이 묻힌다
+     * (shoe_1 실측: 잉크비 0.757 · p95 19.6px가 거의 전부 메시 때문). 합격 판정은 이 값으로 한다.
+     */
+    lineF1: number;
+    lineF2: number;
+    /** 도면 잉크 중 해프톤이 차지하는 비율 */
+    textureShare: number;
+    /** 벡터 잉크 / 도면 잉크. 1보다 크면 선이 굵어진 것이다 */
+    inkRatio: number;
+    /** 대칭 chamfer 거리(px)와 그 95 백분위 */
+    chamfer: number;
+    p95: number;
+    /** 스티치·로고·하드웨어 같은 작은 성분의 보존율 */
+    detailRecall: number;
+    /** 큰 연결성분 개수 (도면 / 벡터) */
+    majorComponents: [number, number];
+    /** 등방 정합 뒤에도 남은 종횡비 불일치 — 1.02 이하가 목표 */
+    aspectRatio: number;
     partCoverage: number;
+    /** 파트별 실제 커버리지 */
+    perPart: { id: string; paths: number; coverage: number }[];
+    /** 보이는데 패스가 0인 파트 — 있으면 자동 검토 */
+    emptyVisibleParts: string[];
     invalidPaths: number;
     totalPaths: number;
     totalNodes: number;
@@ -157,10 +208,19 @@ export async function runV3(
   mark("S3_masks", ts);
   say("SEGMENTING", `마스크 ${vm.masks.size}개 · 커버리지 ${(vm.coverage * 100).toFixed(1)}%`);
 
-  // 생성 모델은 제품을 원본과 다른 크기·위치로 그린다. 정합하지 않으면 파트 마스크와
-  // 도면이 어긋나 실루엣이 통째로 밀린다(실측: 사진 전경 59.7% vs 도면 38.9%, IoU 0.65).
-  // V1에서 쓰던 alignToBox로 도면의 잉크 bbox를 원본 전경 bbox에 맞춘다.
-  const origBox = await fgBBox(canonical);
+  // 사진 쪽 피사체. 도면과 맞출 때의 출발점이다.
+  //
+  // 예전에는 여기서 얻은 bbox에 **도면을 억지로 끼워 넣었다**(alignToBox, fit:"fill").
+  // 두 가지가 잘못됐다.
+  //   · fgBBox는 루미넌스 <245를 전경으로 봤는데 도면 배경은 RGB 235 근처라
+  //     9종 중 5종에서 캔버스 전체가 전경으로 판정됐다(shoe_1·2·3, bag_1, bag_2).
+  //   · fit:"fill"이 x·y를 다른 배율로 늘렸다. 생성 도면은 사진을 **다시 그린 것**이라
+  //     종횡비가 애초에 다르고(bag_1 실측 21%), 억지로 맞추면 손잡이 곡률·스트랩 폭·
+  //     버클 위치가 전부 바뀐다.
+  // 결과: 배포된 벡터가 사용자에게 보이는 도면과 F@2px 0.40밖에 안 맞았다.
+  // 이제 **도면을 건드리지 않는다**. 벡터는 도면 좌표계에서 만들고, 사진에서 온 파트
+  // 마스크 쪽을 등방 상사변환으로 도면 좌표계에 옮긴다(정합 오차는 파트 배분에만 영향).
+  const photoSubject = await detectSubject(canonical);
 
   // ── S4~S6 파트별: 이미지 → 도면 → 라인 벡터 ────────────────
   const backend = activeBackend();
@@ -180,6 +240,10 @@ export async function runV3(
   const vectors = new Map<string, LineVectorResult>();
   const alignedSketches: string[] = [];
   let sketchMs = 0, vecMs = 0;
+  /** 벡터가 사는 좌표계 — 도면 해상도 × supersample */
+  let vectorCanvas = { w: W, h: H };
+  let aspectRatio = 1;
+  let alignNote = "";
 
   const partMasks = ordered
     .map((p) => ({ id: p.id, mask: vm.masks.get(p.id) }))
@@ -191,34 +255,67 @@ export async function runV3(
     // 파트마다 clip해서 따로 벡터화하면 clip 경계가 외곽선을 잘라 면이 새어나간다
     // (실측: 가방 파트 커버리지 83.8%). 한 번 벡터화하고 파트에 배분한다.
     const st = Date.now();
-    let raw = opts.schematicFrom
+    const raw = opts.schematicFrom
       ? await resolveExistingSketch(opts.schematicFrom, "_whole", canonical, W, H, sketchDir)
       : wholeSketch!.pngPath;
-    const alignedPath = path.join(workDir, "whole.aligned.png");
-    await fs.writeFile(alignedPath, await alignToBox(raw, origBox, W, H));
 
     // 컬러 모드: 선은 컬러화 **전** 모노 도식에서 뽑는다. 컬러본은 색면과 선이 같은
     // 검정이라 밝기 임계가 제품 전체를 잉크로 잡는다(실측: 검정 가방 → 패스 6개).
-    let geomPath = alignedPath;
-    let colorFrom: string | undefined;
-    if (!opts.grayscale && wholeSketch?.monoPath) {
-      geomPath = path.join(workDir, "whole.mono.aligned.png");
-      await fs.writeFile(geomPath, await alignToBox(wholeSketch.monoPath, origBox, W, H));
-      colorFrom = alignedPath;
+    const geomPath = (!opts.grayscale && wholeSketch?.monoPath) ? wholeSketch.monoPath : raw;
+    let colorFrom = (!opts.grayscale && wholeSketch?.monoPath) ? raw : undefined;
+
+    // 모노톤을 요청해도 모델이 **컬러로 그려 보내는 경우**가 있다(실측: jewelry_3은 금색 테와
+    // 파란 보석으로 그려졌다). 그걸 흑백 선화로 취급하면 색면이 잡음 덩어리로 이진화돼
+    // 보석이 얼룩이 된다. 채도가 뚜렷하면 색면을 그대로 샘플링해 평면 색으로 옮긴다.
+    let sampleFill = !opts.grayscale;
+    let neutralInkOnly = false;
+    if (opts.grayscale) {
+      const chroma = await chromaShare(geomPath);
+      if (chroma > 0.03) {
+        sampleFill = true;
+        colorFrom = geomPath;
+        // neutralInkOnly 는 켜지 않는다. 이런 도면은 **윤곽선 자체가 짙은 금색**이라
+        // 채도로 거르면 진짜 선이 지워진다(실측: jewelry_3 선 일치 F@2px 0.866 → 0.789,
+        // 잉크비 0.752 → 0.525, 작은 디테일 100% → 8.3%).
+        alignNote = `도면이 컬러로 생성됨 (채도 화면의 ${(chroma * 100).toFixed(0)}%) — 색면을 그대로 옮긴다`;
+      }
     }
-    // QA는 벡터가 실제로 따라 그린 그림과 대조해야 한다 — 컬러 모드에서는 모노 도식이다
+    // QA 기준 = 벡터가 실제로 따라 그린 그림. 정합하지 않으므로 raw 그대로다.
     alignedSketches.push(geomPath);
+
+    // 파트 마스크를 도면 좌표계로 옮긴다 (등방 — 확대·이동만)
+    const sm = await sharp(geomPath).metadata();
+    const sketchSubject = await detectSubject(geomPath);
+    const supersample = Math.max(1, Math.min(4, Math.round(opts.vectorLong / Math.max(sm.width!, sm.height!))));
+    const VW = sm.width! * supersample, VH = sm.height! * supersample;
+    const fit = similarityFit(photoSubject.box, {
+      x: sketchSubject.box.x * supersample, y: sketchSubject.box.y * supersample,
+      w: sketchSubject.box.w * supersample, h: sketchSubject.box.h * supersample,
+    });
+    aspectRatio = fit.aspectRatio;
+    if (!photoSubject.confident || !sketchSubject.confident) {
+      alignNote = `피사체 검출 실패 — 캔버스 중심 정렬로 대체 (사진 ${(photoSubject.fill * 100).toFixed(0)}% · 도면 ${(sketchSubject.fill * 100).toFixed(0)}%)`;
+    }
+    const warpedParts = partMasks.map((pm) => ({
+      id: pm.id,
+      mask: warpMask(pm.mask, W, H, VW, VH, fit),
+    })).filter((pm) => area(pm.mask) > 0);
     sketchMs += Date.now() - st;
 
     const vt = Date.now();
-    say("VECTORIZING", "도면 전체 라인 벡터화 후 파트 배분");
+    say("VECTORIZING", `도면 좌표계 ${VW}×${VH} (×${supersample}) · ${opts.vectorMode}`);
     const lv = await vectorizeByLines(geomPath, {
       inkThreshold: opts.inkThreshold,
+      mode: opts.vectorMode,
+      textureMode: opts.textureMode,
+      workLong: opts.vectorLong,
       workDir,
-      sampleFill: !opts.grayscale,
+      sampleFill,
+      neutralInkOnly,
       colorFrom,
-      parts: partMasks,
+      parts: warpedParts,
     });
+    vectorCanvas = { w: lv.width, h: lv.height };
     vecMs += Date.now() - vt;
 
     for (const p of ordered) {
@@ -228,7 +325,7 @@ export async function runV3(
       layers.push({
         partId: p.id, label: p.label, z: p.z,
         regions: regions.length, strokes: strokes.length,
-        nodes: [...regions, ...strokes].reduce((n, x) => n + (x.d.match(/[LC]/g) ?? []).length, 0),
+        nodes: [...regions, ...strokes].reduce((n, x) => n + (x.d.match(/[LCQSTA]/g) ?? []).length, 0),
         schematic: {
           backend: opts.schematicFrom ? "reuse" : wholeSketch!.backend,
           prompt: opts.schematicFrom ? "(재사용)" : wholeSketch!.prompt,
@@ -268,8 +365,10 @@ export async function runV3(
       say("SKETCHING", `${p.label || p.id} 도면 생성`);
       const r = await generateSchematic(partPng, sketchDir,
         { category: normalizeCategory(plan.category), grayscale: opts.grayscale, upscale: opts.upscale }, (m) => say("SKETCHING", m));
+      // 파트별 경로는 실험용이라 예전 정합을 유지한다 — 조각 도면끼리 좌표계를 맞출
+      // 방법이 bbox 말고 없기 때문이다. 이 경로 자체가 권장되지 않는다(위 주석 참조).
       const alignedPath = path.join(workDir, `${p.id}.aligned.png`);
-      await fs.writeFile(alignedPath, await alignToBox(r.pngPath, origBox, W, H));
+      await fs.writeFile(alignedPath, await alignToBox(r.pngPath, photoSubject.box, W, H));
       alignedSketches.push(alignedPath);
       sketchMs += Date.now() - st;
 
@@ -277,8 +376,11 @@ export async function runV3(
       const vt = Date.now();
       say("VECTORIZING", `${p.label || p.id} 라인 벡터화`);
       const lv = await vectorizeByLines(alignedPath, {
-        inkThreshold: opts.inkThreshold, workDir, sampleFill: !opts.grayscale,
+        inkThreshold: opts.inkThreshold, mode: opts.vectorMode, textureMode: opts.textureMode,
+        workLong: opts.vectorLong,
+        workDir, sampleFill: !opts.grayscale,
       });
+      vectorCanvas = { w: lv.width, h: lv.height };
       vecMs += Date.now() - vt;
       vectors.set(p.id, lv);
       layers.push({
@@ -295,7 +397,7 @@ export async function runV3(
   // ── S7 어셈블 ─────────────────────────────────────────────
   ts = Date.now();
   say("ASSEMBLING", "레이어 어셈블");
-  const svg = assemble(plan, ordered, vectors, W, H);
+  const svg = assemble(plan, ordered, vectors, vectorCanvas.w, vectorCanvas.h);
   const svgPath = path.join(jobDir, "layered.svg");
   await fs.writeFile(svgPath, svg, "utf8");
   mark("S7_assemble", ts);
@@ -303,21 +405,28 @@ export async function runV3(
   // ── S8 재합성 QA ──────────────────────────────────────────
   ts = Date.now();
   say("VALIDATING", "SVG 래스터화 후 원본 대조");
-  // 기준은 사진이 아니라 **정합된 도면**이다. 벡터는 도면에서 파생되므로
-  // 도면과 대조해야 "벡터화가 잘 됐는가"를 재는 것이 된다. 사진과 대조하면
-  // 도면화 단계의 스타일 차이까지 섞여 지표가 흐려진다(V1에서 같은 교훈).
-  const qa = await validate(svg, alignedSketches, vm.foreground, vectors, W, H);
+  // 기준은 **사용자가 화면에서 보는 도면**이다. 예전에는 파이프라인이 스스로 축소·왜곡한
+  // aligned 입력을 기준으로 삼아, 자기가 망가뜨린 그림을 얼마나 잘 따라 그렸는지만 쟀다.
+  const qa = await validate(svg, alignedSketches, vectors, ordered, {
+    aspectRatio, alignNote, canvas: vectorCanvas,
+  });
   mark("S8_qa", ts);
 
   await sharp(Buffer.from(svg), { density: 96 })
-    .resize(Math.min(1400, W * 2), undefined)
+    .resize(Math.min(1400, vectorCanvas.w), undefined)
     .flatten({ background: "#ffffff" })
     .png()
     .toFile(path.join(jobDir, "preview.png"));
 
   const state: V3State = qa.pass ? "SUCCEEDED" : "NEEDS_REVIEW";
   const report = {
-    job: { state, canvas: { width: W, height: H }, totalMs: Date.now() - t0, createdAt: new Date().toISOString() },
+    job: {
+      state,
+      canvas: { width: W, height: H },
+      vectorCanvas: { width: vectorCanvas.w, height: vectorCanvas.h },
+      totalMs: Date.now() - t0,
+      createdAt: new Date().toISOString(),
+    },
     options: opts,
     plan,
     layers,
@@ -339,6 +448,30 @@ export async function runV3(
 }
 
 // ── 헬퍼 ────────────────────────────────────────────────────
+
+/**
+ * 화면에서 채도가 뚜렷한 픽셀의 비율. 모노톤을 요청했는데 모델이 컬러로 그려 보냈는지
+ * 판정한다 — 흑백 선화로 취급하면 색면이 잡음으로 이진화된다.
+ */
+async function chromaShare(src: string): Promise<number> {
+  const { data, info } = await sharp(src)
+    .flatten({ background: "#ffffff" })
+    .removeAlpha()
+    .resize(256, 256, { fit: "inside" })
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+  const ch = info.channels;
+  const n = info.width * info.height;
+  let colored = 0;
+  for (let i = 0; i < n; i++) {
+    const p = i * ch;
+    const r = data[p], g = data[p + 1], b = data[p + 2];
+    const mx = Math.max(r, g, b), mn = Math.min(r, g, b);
+    // 밝고 채도 있는 픽셀만 — 검은 선의 JPEG 색번짐은 세지 않는다
+    if (mx > 60 && mx - mn > 34) colored++;
+  }
+  return colored / n;
+}
 
 function guessNoun(hint?: string): { noun: string; category: string } {
   const h = (hint ?? "").toLowerCase();
@@ -438,8 +571,8 @@ function assemble(
     const v = vectors.get(p.id);
     if (!v || (!v.regions.length && !v.strokes.length)) continue;
     const paths = [
-      ...v.regions.map((r) => pathTag(r, true)),
-      ...v.strokes.map((s) => pathTag(s, false)),
+      ...v.regions.map((r) => pathTag(r)),
+      ...v.strokes.map((s) => pathTag(s)),
     ].join("\n");
     body.push(
       `    <g id="layer-${p.id}" inkscape:label="${esc(p.label || p.id)}" ` +
@@ -464,14 +597,21 @@ function assemble(
   );
 }
 
-function pathTag(p: VecPath, isFill: boolean): string {
-  if (isFill) {
-    return `      <path d="${p.d}" fill="${p.fill ?? "#ffffff"}" fill-rule="evenodd"/>`;
+/**
+ * 패스를 SVG 태그로. **위치가 아니라 `kind`로 갈라야 한다.**
+ *
+ * outline 방식의 선은 채워진 리본이라 `fill`로 그려야 한다. 예전에는 "regions면 fill,
+ * strokes면 stroke"라는 위치 기반 분기여서 리본의 **테두리만** 2px stroke로 그렸다.
+ * 그 결과 선이 얇아지고 이중선처럼 보였다(실측: 잉크비 0.457, F@2px 0.714).
+ */
+function pathTag(p: VecPath): string {
+  if (p.kind === "centerline") {
+    return (
+      `      <path d="${p.d}" fill="none" stroke="${p.stroke ?? "#111111"}" ` +
+      `stroke-width="${p.strokeWidth ?? 2}" stroke-linecap="round" stroke-linejoin="round"/>`
+    );
   }
-  return (
-    `      <path d="${p.d}" fill="none" stroke="${p.stroke ?? "#111111"}" ` +
-    `stroke-width="${p.strokeWidth ?? 2}" stroke-linecap="round" stroke-linejoin="round"/>`
-  );
+  return `      <path d="${p.d}" fill="${p.fill ?? "#111111"}" fill-rule="evenodd"/>`;
 }
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -517,80 +657,96 @@ function enclosedForeground(
   return fg;
 }
 
-/** SVG를 다시 래스터화해 원본 실루엣과 대조 */
+/**
+ * 산출된 SVG를 **사용자가 보는 도면**과 대조한다.
+ *
+ * 예전 QA의 결함:
+ *   · 기준이 `whole.aligned.png` — 파이프라인이 스스로 축소하고 비등방으로 늘린 입력이었다.
+ *     자기가 망가뜨린 그림을 얼마나 잘 따라 그렸는지만 재게 된다.
+ *     (9종 평균 보고 F 0.872 · aligned 대비 0.917 · **raw 대비 0.620**)
+ *   · 허용오차 2px 하나만 봤다. 선이 굵어지거나 1px 밀린 것이 전부 통과한다.
+ *   · `partCoverage`가 파트별이 아니라 전역 통계의 복제였다. 보이는 파트에 패스가
+ *     0개여도 통과했다(bag_1 top_handle).
+ *   · 작은 디테일(스티치·로고·하드웨어) 손실을 재는 지표가 아예 없었다. 픽셀 수가 적어
+ *     F1을 거의 못 움직이므로 전체 지표에 묻힌다.
+ */
 async function validate(
   svg: string,
   sketchPaths: string[],
-  photoForeground: Uint8Array,
   vectors: Map<string, LineVectorResult>,
-  W: number,
-  H: number,
+  ordered: ProductPart[],
+  ctx: { aspectRatio: number; alignNote: string; canvas: { w: number; h: number } },
 ): Promise<V3Result["qa"]> {
   const notes: string[] = [];
-  // QA용 렌더는 면을 검게 칠한다. 모노톤 도면에서는 면 fill이 흰색이라
-  // 그대로 렌더하면 흰 배경과 구분되지 않아 "면을 못 그렸다"고 오판한다
-  // (실측: 도면 전경 41%인데 벡터 전경 2%로 측정됨).
-  const qaSvg = svg.replace(/fill="#[0-9a-fA-F]{3,6}"/g, 'fill="#000000"');
-  const rendered = await sharp(Buffer.from(qaSvg), { density: 96 })
+  const W = ctx.canvas.w, H = ctx.canvas.h;
+
+  // ── 기준: 도면 원본 ──────────────────────────────────────
+  const ref = sketchPaths.length
+    ? await inkMask(sketchPaths[0], W, H)
+    : { data: new Uint8Array(W * H), width: W, height: H };
+
+  // ── 선 충실도 ────────────────────────────────────────────
+  // centerline 모드에서는 면까지 칠한 렌더로 재면 면 전체가 잉크가 되어 선 일치도가
+  // 무의미해진다(컬러 모드는 면 색 자체가 어두워 더 심하다). 그래서 fill을 지운다.
+  // 다만 outline 방식의 **선은 fill로 그려지므로** 그때는 지우면 안 된다.
+  const hasOutline = [...vectors.values()].some((v) => v.strokes.some((s) => s.kind === "outline"));
+  const lineSvg = hasOutline ? svg : svg.replace(/fill="#[0-9a-fA-F]{3,6}"/g, 'fill="none"');
+  const vec = await svgInkMask(lineSvg, W, H);
+
+  const fid = fidelity(ref, vec, [0, 1, 2]);
+  const small = Math.max(6, Math.round(W * H * 0.00008));
+
+  // 해프톤 자리를 톤 면으로 바꾼 것은 **의도**다. 그 영역을 그대로 두고 재면 "선이 빠졌다"로
+  // 집계돼 실제 결함이 묻힌다(shoe_1 실측: 잉크비 0.757 · p95 19.6px 가 거의 전부 메시 때문).
+  // 그래서 질감 영역을 뺀 **선 충실도**를 따로 내고, 합격 판정은 이쪽으로 한다.
+  const texMask = [...vectors.values()][0]?.texture;
+  const detail = detailRecall(ref, vec, small, 2, texMask);
+  let fidLine = fid;
+  let textureShare = 0;
+  if (texMask) {
+    const cut = (m: { data: Uint8Array; width: number; height: number }) => {
+      const d = new Uint8Array(m.data.length);
+      for (let i = 0; i < d.length; i++) d[i] = m.data[i] && !texMask[i] ? 1 : 0;
+      return { data: d, width: m.width, height: m.height };
+    };
+    let inTex = 0, tot = 0;
+    for (let i = 0; i < ref.data.length; i++) if (ref.data[i]) { tot++; if (texMask[i]) inTex++; }
+    textureShare = tot ? inTex / tot : 0;
+    if (textureShare > 0.01) fidLine = fidelity(cut(ref), cut(vec), [0, 1, 2]);
+  }
+  const topo = topology(ref, vec);
+
+  // ── 실루엣 ───────────────────────────────────────────────
+  // 라인 드로잉의 전경은 "흰색이 아닌 픽셀"이 아니다 — 내부가 흰색이므로 그렇게 재면
+  // 선만 전경이 되어 IoU가 구조적으로 낮게 나온다. 바깥에서 flood fill 해서
+  // **외곽선이 막아 준 안쪽**을 전경으로 본다.
+  const filledSvg = svg.replace(/fill="#[0-9a-fA-F]{3,6}"/g, 'fill="#000000"');
+  const rendered = await sharp(Buffer.from(filledSvg), { density: 192 })
     .resize(W, H, { fit: "fill" })
     .flatten({ background: "#ffffff" })
     .removeAlpha()
     .raw()
     .toBuffer({ resolveWithObject: true });
   const raster = { data: rendered.data, channels: rendered.info.channels, width: W, height: H };
-  // 라인 드로잉의 전경은 "흰색이 아닌 픽셀"이 아니다 — 내부가 흰색이므로 그렇게 재면
-  // 선만 전경이 되어 실루엣 IoU가 구조적으로 낮게 나온다(실측: 0.65인데 결과물은 정확했다).
-  // 바깥에서 flood fill 해서 **외곽선이 막아 준 안쪽**을 전경으로 본다.
-  const bg = backgroundMask(raster, W, H, 246);
-  const fg = enclosedForeground(raster, bg, W, H);
+  const fg = enclosedForeground(raster, backgroundMask(raster, W, H, 246), W, H);
 
-  // 기준 = 도면들의 합집합에서 뽑은 전경·경계
   let refFg: Uint8Array<ArrayBufferLike> = new Uint8Array(W * H);
-  let refInk: Uint8Array<ArrayBufferLike> = new Uint8Array(W * H);
-  for (const sp of sketchPaths) {
-    const sk = await sharp(sp).flatten({ background: "#ffffff" }).resize(W, H, { fit: "fill" })
-      .removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  if (sketchPaths.length) {
+    const sk = await sharp(sketchPaths[0]).flatten({ background: "#ffffff" })
+      .resize(W, H, { fit: "fill" }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
     const r2 = { data: sk.data, channels: sk.info.channels, width: W, height: H };
-    const sbg = backgroundMask(r2, W, H, 246);
-    const sfg = enclosedForeground(r2, sbg, W, H);
-    for (let i = 0; i < W * H; i++) {
-      if (sfg[i]) refFg[i] = 1;
-      const q = i * r2.channels;
-      const lum = 0.299 * sk.data[q] + 0.587 * sk.data[q + 1] + 0.114 * sk.data[q + 2];
-      if (lum < 200) refInk[i] = 1;
-    }
+    refFg = enclosedForeground(r2, backgroundMask(r2, W, H, 246), W, H);
   }
-  if (!area(refFg)) { refFg = photoForeground.slice(); refInk = boundary(photoForeground, W, H); }
+  const silhouetteIou = area(refFg) ? iou(fg, refFg) : 0;
 
-  // 벡터가 그린 잉크 — 면을 채운 QA 렌더가 아니라 **선만 남긴 렌더**에서 뽑는다.
-  // 채운 렌더로 재면 면 전체가 잉크가 되어 선 일치도가 무의미해진다. 컬러 모드에서는
-  // 면 색 자체가 어두워(검정 가방) 같은 일이 벌어지므로 fill을 아예 없앤다
-  // (실측: 컬러 가방 선 일치 F 0.657 → fill 제거 후 실제 선끼리 비교).
-  const lineSvg = svg.replace(/fill="#[0-9a-fA-F]{3,6}"/g, 'fill="none"');
-  const inkRender = await sharp(Buffer.from(lineSvg), { density: 96 })
-    .resize(W, H, { fit: "fill" })
-    .flatten({ background: "#ffffff" })
-    .removeAlpha()
-    .raw()
-    .toBuffer({ resolveWithObject: true });
-  const vecInk = new Uint8Array(W * H);
-  for (let i = 0; i < W * H; i++) {
-    const q = i * inkRender.info.channels;
-    const lum = 0.299 * inkRender.data[q] + 0.587 * inkRender.data[q + 1] + 0.114 * inkRender.data[q + 2];
-    if (lum < 200) vecInk[i] = 1;
-  }
-
-  const silhouetteIou = iou(fg, refFg);
-  const ef = edgeF1(vecInk, refInk, W, H, 2);
-  const photoIou = iou(fg, photoForeground);
-
+  // ── 패스 위생 ────────────────────────────────────────────
   let totalPaths = 0, totalNodes = 0, invalid = 0;
   const margin = Math.max(W, H) * 0.5;
   for (const v of vectors.values()) {
-    for (const p of [...v.regions, ...v.strokes]) {
+    for (const q of [...v.regions, ...v.strokes]) {
       totalPaths++;
-      totalNodes += (p.d.match(/[LC]/g) ?? []).length;
-      const nums = (p.d.match(/-?\d*\.?\d+(?:e[-+]?\d+)?/gi) ?? []).map(Number);
+      totalNodes += (q.d.match(/[LCQSTA]/g) ?? []).length;
+      const nums = (q.d.match(/-?\d*\.?\d+(?:e[-+]?\d+)?/gi) ?? []).map(Number);
       if (nums.some((n) => !Number.isFinite(n))) { invalid++; continue; }
       for (let i = 0; i + 1 < nums.length; i += 2) {
         if (nums[i] < -margin || nums[i] > W + margin || nums[i + 1] < -margin || nums[i + 1] > H + margin) {
@@ -600,33 +756,74 @@ async function validate(
       }
     }
   }
+
+  // ── 파트별 진짜 커버리지 ─────────────────────────────────
+  // 전역 통계를 복제하지 않고 파트마다 자기 패스 수를 센다. 보이는 파트인데 패스가
+  // 0개면 그것만으로 검토 대상이다(예전에는 통과했다).
+  const perPart: { id: string; paths: number; coverage: number }[] = [];
+  const emptyVisibleParts: string[] = [];
+  for (const part of ordered) {
+    const v = vectors.get(part.id);
+    const paths = v ? v.regions.length + v.strokes.length : 0;
+    perPart.push({ id: part.id, paths, coverage: v ? v.stats.coverage : 0 });
+    if (!paths) emptyVisibleParts.push(part.id);
+  }
   const partCoverage = vectors.size
     ? [...vectors.values()].reduce((s, v) => s + v.stats.coverage, 0) / vectors.size
     : 0;
 
-  if (silhouetteIou < 0.9) notes.push(`도면 대비 실루엣 IoU ${silhouetteIou.toFixed(3)}`);
-  if (ef.f1 < 0.8) notes.push(`도면 대비 선 일치 F ${ef.f1.toFixed(3)}`);
-  // 해프톤을 톤 면으로 바꾸면 그 점들이 벡터에는 선으로 남지 않는다. 참조(도면)에는
-  // 남아 있으므로 선 일치 F가 그만큼 내려간다 — 품질 저하가 아니라 의도된 차이라서
-  // 수치와 함께 밝힌다.
+  // ── 메모 ─────────────────────────────────────────────────
+  if (fidLine.f.f2 < 0.9) notes.push(`도면 대비 선 일치 F@2px ${fidLine.f.f2.toFixed(3)} (F@1px ${fidLine.f.f1.toFixed(3)})`);
+  if (fidLine.inkRatio > 1.25) notes.push(`선이 원본보다 ${((fidLine.inkRatio - 1) * 100).toFixed(0)}% 굵다`);
+  if (fidLine.inkRatio < 0.8) notes.push(`선이 원본보다 ${((1 - fidLine.inkRatio) * 100).toFixed(0)}% 얇거나 빠졌다`);
+  if (detail.recall < 0.85) {
+    notes.push(`작은 디테일 보존 ${(detail.recall * 100).toFixed(0)}% — ${detail.total - detail.kept}개 소실 (스티치·로고·하드웨어 확인)`);
+  }
+  if (ctx.aspectRatio > 1.02) {
+    notes.push(`사진↔도면 종횡비 불일치 ${((ctx.aspectRatio - 1) * 100).toFixed(1)}% — 파트 배분 정확도에만 영향 (도면은 왜곡하지 않는다)`);
+  }
+  if (ctx.alignNote) notes.push(ctx.alignNote);
+  if (emptyVisibleParts.length) notes.push(`패스가 없는 파트 ${emptyVisibleParts.length}개: ${emptyVisibleParts.join(", ")}`);
+  if (invalid) notes.push(`유효하지 않은 패스 ${invalid}개`);
+  if (partCoverage < 0.95) notes.push(`파트 내부 커버리지 ${(partCoverage * 100).toFixed(1)}% — 닫히지 않은 라인 의심`);
   {
     let tex = 0;
     for (const v of vectors.values()) tex = Math.max(tex, v.stats.textureRatio ?? 0);
     if (tex > 0.005) {
       notes.push(
-        `해프톤 질감 ${(tex * 100).toFixed(1)}%를 톤 면으로 치환 — 그만큼 선 일치 F가 낮게 나온다`,
+        `해프톤 질감을 톤 면으로 치환 — 화면의 ${(tex * 100).toFixed(1)}%, 도면 잉크의 ${(textureShare * 100).toFixed(0)}%. ` +
+        `전체 F@2px ${fid.f.f2.toFixed(3)}, 이 영역을 뺀 선 충실도 ${fidLine.f.f2.toFixed(3)}`,
       );
     }
   }
-  notes.push(`참고: 사진 실루엣 대비 IoU ${photoIou.toFixed(3)} (도면화는 재해석이므로 낮을 수 있음)`);
-  if (invalid) notes.push(`유효하지 않은 패스 ${invalid}개`);
-  if (partCoverage < 0.95) notes.push(`파트 내부 커버리지 ${(partCoverage * 100).toFixed(1)}% — 닫히지 않은 라인 의심`);
+
+  const pass =
+    fidLine.f.f2 >= 0.9 &&
+    fidLine.f.f1 >= 0.8 &&
+    detail.recall >= 0.85 &&
+    invalid === 0 &&
+    emptyVisibleParts.length === 0 &&
+    partCoverage >= 0.95;
 
   return {
-    pass: silhouetteIou >= 0.9 && ef.f1 >= 0.8 && invalid === 0 && partCoverage >= 0.95,
+    pass,
     silhouetteIou: +silhouetteIou.toFixed(4),
-    boundaryF: +ef.f1.toFixed(4),
+    boundaryF: fid.f.f2,
+    rawF0: fid.f.f0,
+    rawF1: fid.f.f1,
+    rawF2: fid.f.f2,
+    lineF1: fidLine.f.f1,
+    lineF2: fidLine.f.f2,
+    textureShare: +textureShare.toFixed(4),
+    inkRatio: fidLine.inkRatio,
+    chamfer: fidLine.chamfer,
+    p95: fidLine.p95,
+    detailRecall: detail.recall,
+    majorComponents: [topo.refMajor, topo.vecMajor],
+    aspectRatio: +ctx.aspectRatio.toFixed(3),
     partCoverage: +partCoverage.toFixed(4),
+    perPart,
+    emptyVisibleParts,
     invalidPaths: invalid,
     totalPaths,
     totalNodes,

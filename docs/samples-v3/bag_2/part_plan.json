@@ -1,29 +1,30 @@
 {
   "category": "bag",
-  "objectNoun": "beaded evening bag",
+  "objectNoun": "beaded evening purse",
   "view": "front view",
   "parts": [
     {
-      "id": "chain_strap",
-      "label": "Chain strap",
-      "description": "Bronze-tone linked carrying chain rising behind the bag and attaching near the top corners.",
+      "id": "chain_handle",
+      "label": "Chain handle",
+      "description": "Metal link carrying chain attached at the upper corners and rising behind the purse.",
       "bbox": [
         0.29,
         0,
         0.77,
-        0.4
+        0.39
       ],
       "z": 0,
       "occludedBy": [
+        "bag_body",
         "metal_frame"
       ],
       "kind": "component",
       "confidence": 0.98
     },
     {
-      "id": "beaded_body",
-      "label": "Beaded bag body",
-      "description": "Gathered white beaded textile shell forming the main pouch.",
+      "id": "bag_body",
+      "label": "Beaded pouch body",
+      "description": "Gathered white beaded textile pouch forming the main body of the purse.",
       "bbox": [
         0.06,
         0.39,
@@ -33,48 +34,64 @@
       "z": 1,
       "occludedBy": [
         "metal_frame",
-        "floral_clasp"
+        "floral_ornament"
       ],
       "kind": "component",
       "confidence": 0.99
     },
     {
       "id": "metal_frame",
-      "label": "Metal closure frame",
-      "description": "Engraved bronze-tone rigid frame around the bag opening.",
+      "label": "Metal purse frame",
+      "description": "Engraved rigid metal frame spanning the gathered top edge and continuing down both upper sides.",
       "bbox": [
         0.18,
-        0.37,
+        0.38,
         0.87,
-        0.55
+        0.54
       ],
       "z": 2,
       "occludedBy": [
-        "floral_clasp"
+        "closure_clasp",
+        "floral_ornament"
       ],
       "kind": "component",
-      "confidence": 0.97
+      "confidence": 0.98
     },
     {
-      "id": "floral_clasp",
-      "label": "Floral clasp assembly",
-      "description": "Central bronze-tone closure with a raised rose, leaves, and rectangular latch tab.",
+      "id": "closure_clasp",
+      "label": "Closure clasp",
+      "description": "Small ridged metal closure tab projecting above the center of the frame.",
       "bbox": [
-        0.45,
+        0.48,
         0.36,
-        0.58,
-        0.48
+        0.56,
+        0.4
       ],
       "z": 3,
       "occludedBy": [],
       "kind": "component",
-      "confidence": 0.96
+      "confidence": 0.92
+    },
+    {
+      "id": "floral_ornament",
+      "label": "Floral metal ornament",
+      "description": "Applied metal rose-and-leaf decoration centered on the front of the frame and pouch.",
+      "bbox": [
+        0.45,
+        0.38,
+        0.58,
+        0.48
+      ],
+      "z": 4,
+      "occludedBy": [],
+      "kind": "component",
+      "confidence": 0.98
     }
   ],
   "provenance": {
     "model": "gpt-5.6",
     "promptVersion": "v3.parts.v1.0.0",
     "inputSha256": "d07a3b66d4fb25e29e4d878422d1dac2850ad8a475d8252cb96bd51390c591d3",
-    "createdAt": "2026-08-21T17:08:45.205Z"
+    "createdAt": "2026-08-22T04:55:08.552Z"
   }
 }

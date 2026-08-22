@@ -52,19 +52,12 @@ interface V3Sample {
   height: number;
   objectNoun: string;
   view: string;
+  /** 벡터가 사는 좌표계 (도면 해상도 × supersample) */
+  vectorCanvas: { width: number; height: number } | null;
   schematic: { backend: string; prompt: string; seed: number | null; scope: string; upscaled: boolean };
   layers: V3Layer[];
-  qa: {
-    pass: boolean;
-    silhouetteIou: number;
-    boundaryF: number;
-    partCoverage: number;
-    invalidPaths: number;
-    totalPaths: number;
-    totalNodes: number;
-    fileKb: number;
-    notes: string[];
-  };
+  /** QA 리포트 전문 — 지표가 늘어나므로 형태를 고정하지 않는다 */
+  qa: Record<string, any>;
   timings: Record<string, number>;
   files: Record<string, string>;
   /** 같은 샘플의 컬러 결과 (있으면) */
@@ -96,7 +89,8 @@ async function main() {
     .map((d) => d.name)
     .sort();
 
-  const monoDirs = dirs.filter((d) => d.endsWith("_tex"));
+  const SUFFIX = "_v31";
+  const monoDirs = dirs.filter((d) => d.endsWith(SUFFIX));
   const colorDirs = new Map(
     dirs.filter((d) => d.endsWith("_color")).map((d) => [d.slice(3, -"_color".length), d]),
   );
@@ -104,7 +98,7 @@ async function main() {
   const samples: V3Sample[] = [];
   for (const dir of monoDirs) {
     const src = path.join(V3, dir);
-    const name = dir.slice(3, -"_tex".length);
+    const name = dir.slice(3, -SUFFIX.length);
     let report: Record<string, any>;
     try {
       report = JSON.parse(await fs.readFile(path.join(src, "qa_report.json"), "utf8"));
@@ -197,6 +191,7 @@ async function main() {
       height: meta.height!,
       objectNoun: plan.objectNoun ?? "",
       view: plan.view ?? "",
+      vectorCanvas: report.job?.vectorCanvas ?? null,
       schematic: {
         backend: first.backend ?? "unknown",
         prompt: first.prompt ?? "",
@@ -212,7 +207,8 @@ async function main() {
     });
     console.log(
       `  ${name.padEnd(11)} 레이어 ${layers.length} · path ${report.qa.totalPaths} ` +
-      `· IoU ${report.qa.silhouetteIou} · F ${report.qa.boundaryF}${color ? " · 컬러 O" : ""}`,
+      `· 선F@2px ${report.qa.lineF2 ?? report.qa.rawF2} · 디테일 ${report.qa.detailRecall}` +
+      `${report.qa.pass ? "" : " · REVIEW"}${color ? " · 컬러 O" : ""}`,
     );
   }
 
