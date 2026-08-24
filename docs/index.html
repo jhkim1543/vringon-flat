@@ -210,6 +210,47 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
     줄어든 것은 <b>객체 수</b>이지 형상 정보가 아니라는 뜻입니다.
   </p>
 
+  <h3>Illustrator 파일 — 레이어가 실제로 나뉘어 옵니다</h3>
+  <div class="note">
+    <b>SVG 는 Illustrator 에서 레이어가 오지 않습니다.</b> 최상위 <code>&lt;g&gt;</code> 는 그냥 그룹이 되고
+    레이어 패널에는 &lt;Group&gt; 하나만 뜹니다. 테크팩을 쓰는 사람은 레이어 패널에서 파트를 켜고 끄므로
+    그것으로는 일이 안 됩니다. 그래서 <code>layered.ai</code> 를 따로 굽습니다 —
+    .ai(PDF 호환)의 <b>중첩 OCG</b> 가 Illustrator 에서 레이어·하위 레이어로 복원됩니다.
+  </div>
+  <div class="pipe">
+    <div class="st"><b>기능 레이어</b>FILLS · OUTLINES · PRIMITIVES · STITCH · PATTERNS · SHARED_BOUNDARIES</div>
+    <div class="st"><b>└ 파트 하위 레이어</b>Main upper · Laces · Chain shoulder strap …</div>
+  </div>
+  <p class="sub">
+    <b>레이어 순서는 기능이 먼저입니다.</b> 파트를 최상위로 두면 아래 파트의 선 위로 위 파트의 흰 면이
+    덮입니다 — 면은 불투명합니다. 보이는 그림이 달라지면 레이어 구조가 아무리 예뻐도 틀린 파일입니다.
+    Illustrator 가 없는 환경을 위해 <code>native-layers.jsx</code> 도 함께 냅니다(파일 &gt; 스크립트로
+    실행하면 네이티브 레이어·그룹·패스로 재구성됩니다).
+  </p>
+
+  <h3>.ai 를 세 가지로 검증했습니다</h3>
+  <div style="overflow-x:auto"><table id="v4ai">
+    <tr><th>샘플</th><th class="num">레이어</th><th class="num">하위</th><th class="num">레이어 밖 패스</th>
+        <th class="num">.ai vs SVG IoU</th><th class="num">선 중간 끊김</th></tr>
+  </table></div>
+  <ul>
+    <li><b>레이어</b> — .ai 를 되읽어 OCG 트리를 세웁니다. 9종 모두 중첩 깊이 2, BDC/EMC 짝이 맞고,
+      <b>레이어 밖에 그려진 패스가 0개</b>입니다. 패스 합계도 장면과 정확히 일치합니다.</li>
+    <li><b>그림</b> — Illustrator 가 아닌 <b>제3의 렌더러(poppler)</b>로 .ai 를 굽고 같은 장면의 SVG 와
+      픽셀로 비교합니다. 우리 코드가 자기 자신을 채점하지 않게 하려는 것입니다. 평균 IoU 0.968,
+      남은 차이는 두 렌더러의 안티에일리어싱 차이입니다(양방향으로 고르게 납니다).</li>
+    <li><b>끊김</b> — 도면 선의 골격 중 .ai 가 덮지 못한 구간을 찾습니다.
+      <b>제품 구조선에서는 끊김이 0곳</b>입니다. 검출되는 것은 전부 해프톤 점무늬와
+      보석 안쪽 광채 텍스처 — 톤 채움으로 <b>의도적으로 치환한</b> 영역입니다.</li>
+  </ul>
+  <div class="note" style="border-left-color:var(--warn)">
+    <b>이 작업에서 실제 버그를 하나 잡았습니다.</b> 공유 경계 레이어는 맨 위에 그려지는데,
+    거기에 <b>불투명한 흰 면</b>이 올라가 그 아래 선을 지우고 있었습니다. bag_3 은 공유 프리미티브
+    665개가 전부 FACE_FILL 이라 <code>production.svg</code> 의 잉크가 <code>fidelity.svg</code> 대비
+    <b>77%</b> 로 줄어 있었습니다 — 이미 배포돼 있던 파일이 다른 그림이었다는 뜻입니다.
+    면은 올리지 않도록 고쳤고, bag_3 IoU 는 0.747 → <b>0.952</b> 가 됐습니다.
+  </div>
+
   <h3>외부 감사에서 드러난 것 — V4.1 에서 고쳤습니다</h3>
   <div class="note" style="border-left-color:var(--warn)">
     <b>가장 큰 것은 실제 렌더링 버그였습니다.</b> 닫힌 면에 적합한 기하 프리미티브를
@@ -233,7 +274,7 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
     <li><b>export 와 QA 가 같은 렌더러를 씁니다.</b> QA 가 패턴을 <code>d</code> 로만 찾아 아예
       못 그렸고, 모든 기하 프리미티브를 stroke 로 그려 면 프리미티브를 놓쳤습니다.</li>
     <li><b>편집성을 서브패스로 셉니다.</b> <code>&lt;path&gt;</code> 요소만 세면 컴파운드 패스가
-      1개로 집계됩니다 — bag_3 은 패스 747 이지만 <b>서브패스 2,518, 한 패스에 1,089개</b>입니다.
+      1개로 집계됩니다 — bag_3 은 패스 747 이지만 <b>서브패스 1,835, 한 패스에 1,089개</b>입니다.
       길이도 서브패스마다 따로 재야 합니다(이어 붙이면 존재하지 않는 도약이 더해져 앵커 밀도가
       낮아집니다).</li>
   </ul>
@@ -963,6 +1004,35 @@ async function openV2(i) {
     tbl.querySelectorAll("input").forEach(b => { if (b.checked) { b.checked = false; b.onchange(); } });
 }
 
+// ── V4 .ai 검증 (poppler 로 되읽은 값) ──────────────────────
+fetch("samples-v4/ai-verify.json").then(r => r.json()).then(v => {
+  const t = document.getElementById("v4ai");
+  if (!t) return;
+  const ORDER = ["shoe_1", "shoe_2", "shoe_3", "bag_1", "bag_2", "bag_3", "jewelry_1", "jewelry_2", "jewelry_3"];
+  const rows = ORDER.map(n => v.samples.find(s => s.name === n)).filter(Boolean);
+  for (const s of rows) {
+    t.insertAdjacentHTML("beforeend", `<tr>
+      <td>${s.name}<div style="color:var(--dim);font-size:11.5px">${s.tree.map(l => l.name).join(" · ")}</div></td>
+      <td class="num">${s.layers}</td>
+      <td class="num">${s.sublayers}</td>
+      <td class="num" style="color:${s.outsideLeaf ? "var(--warn)" : "var(--ok,#3a9)"}">${s.outsideLeaf}</td>
+      <td class="num"><b>${s.iou.toFixed(3)}</b></td>
+      <td class="num" style="color:${s.gaps ? "var(--dim)" : "var(--ok,#3a9)"}">${s.gaps ? `${s.gaps}곳 · ${s.gapLen}px` : "0"}</td></tr>`);
+  }
+  const mean = rows.reduce((a, s) => a + s.iou, 0) / rows.length;
+  t.insertAdjacentHTML("beforeend", `<tr style="background:var(--panel-2)">
+    <td><b>합계·평균</b></td>
+    <td class="num">${rows.reduce((a, s) => a + s.layers, 0)}</td>
+    <td class="num">${rows.reduce((a, s) => a + s.sublayers, 0)}</td>
+    <td class="num"><b>0</b></td>
+    <td class="num"><b>${mean.toFixed(3)}</b></td>
+    <td class="num"></td></tr>`);
+  t.insertAdjacentHTML("beforeend", `<tr><td colspan="6" style="color:var(--dim);font-size:12.5px;line-height:1.7">
+    끊김으로 잡힌 곳은 전부 해프톤 점무늬와 보석 안쪽 광채 텍스처입니다 — 톤 채움으로 의도적으로 치환한 영역이고,
+    <b>제품 구조선(외곽·솔·끈·시임·로고)에서는 0곳</b>입니다. jewelry_3 의 673px 이 그 예입니다.
+    </td></tr>`);
+}).catch(() => {});
+
 // ── V4 (Semantic Topology) ─────────────────────────────────
 let V4 = null;
 fetch("samples-v4/index.json").then(r => r.json()).then(d => {
@@ -1017,7 +1087,10 @@ fetch("samples-v4/index.json").then(r => r.json()).then(d => {
     <td class="num"></td><td class="num"></td><td></td></tr>`);
   t.insertAdjacentHTML("beforeend", `<tr><td colspan="12" style="color:var(--dim);font-size:12.5px;line-height:1.7">
     <b>패스 수만 보면 편집성을 과대평가합니다.</b> 하나의 <code>&lt;path&gt;</code> 안에 <code>M…Z</code> 가 수백 개 들어갑니다 —
-    bag_2 는 패스 631 개 안에 서브패스 3,657 개(한 패스에 최대 2,738 개)를 숨기고 있습니다. V4.1 부터 QA 가 둘 다 냅니다.
+    bag_2 는 패스 631 개 안에 서브패스 3,602 개(한 패스에 최대 2,738 개)를 숨기고 있습니다. V4.1 부터 QA 가 둘 다 냅니다.
+    <br>처음 낸 서브패스 수(9종 합 9,346)는 <b>틀렸습니다</b> — <code>d="…"</code> 를 경계 없이 찾아
+    <code>data-shared="main_compartment_shell"</code> 같은 속성 값 안의 <code>m</code> 까지 세고 있었습니다.
+    고친 값은 <b>8,469</b> 입니다. 게이트 판정은 바뀌지 않았습니다.
     </td></tr>`);
   openV4(0);
 }).catch(e => {
@@ -1104,7 +1177,9 @@ async function openV4(i) {
     </div>
     <div class="dl">
       <b style="font-size:13.5px">다운로드</b>
-      <a class="btn pri" href="${s.files.fidelity}" download="${s.name}-fidelity.svg">fidelity.svg</a>
+      <a class="btn pri" href="${s.files.ai}" download="${s.name}-layered.ai">layered.ai</a>
+      <a class="btn" href="${s.files.jsx}" download="${s.name}-native-layers.jsx">native-layers.jsx</a>
+      <a class="btn" href="${s.files.fidelity}" download="${s.name}-fidelity.svg">fidelity.svg</a>
       <a class="btn" href="${s.files.editable}" download="${s.name}-editable.svg">editable.svg</a>
       <a class="btn" href="${s.files.production}" download="${s.name}-production.svg">production.svg</a>
       <a class="btn" href="${s.files.routes}" download>routes.json</a>

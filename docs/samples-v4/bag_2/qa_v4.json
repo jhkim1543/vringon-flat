@@ -1,279 +1,279 @@
 {
-  "job": {
-    "state": "FIDELITY_REVIEW / EDITABILITY_REVIEW / SEMANTIC_REVIEW",
-    "canvas": {
-      "width": 1748,
-      "height": 2048,
-      "sourceWidth": 874,
-      "sourceHeight": 1024,
-      "supersample": 2
-    },
-    "totalMs": 12802,
-    "createdAt": "2026-08-24T07:47:40.057Z"
+ "job": {
+  "state": "FIDELITY_REVIEW / EDITABILITY_REVIEW / SEMANTIC_REVIEW",
+  "canvas": {
+   "width": 1748,
+   "height": 2048,
+   "sourceWidth": 874,
+   "sourceHeight": 1024,
+   "supersample": 2
   },
-  "options": {
-    "minParts": 3,
-    "maxParts": 10,
-    "grayscale": true,
-    "workLong": 1400,
-    "vectorLong": 2200,
-    "inkThreshold": 170,
-    "localContrast": 22,
-    "textureMode": "auto",
-    "categoryHint": "bag",
-    "schematicFrom": "outputs/v3/v3_bag_2_v31/schematics/schematic_bf1fc0a71a70d0eb.png",
-    "upscale": false
-  },
-  "plan": {
-    "category": "bag",
-    "objectNoun": "beaded evening purse",
-    "view": "front view",
-    "parts": [
-      {
-        "id": "chain_handle",
-        "label": "Chain handle",
-        "description": "Metal link carrying chain attached at the upper corners and rising behind the purse.",
-        "bbox": [
-          0.29,
-          0,
-          0.77,
-          0.39
-        ],
-        "z": 0,
-        "occludedBy": [
-          "bag_body",
-          "metal_frame"
-        ],
-        "kind": "component",
-        "confidence": 0.98
-      },
-      {
-        "id": "bag_body",
-        "label": "Beaded pouch body",
-        "description": "Gathered white beaded textile pouch forming the main body of the purse.",
-        "bbox": [
-          0.06,
-          0.39,
-          0.94,
-          0.88
-        ],
-        "z": 1,
-        "occludedBy": [
-          "metal_frame",
-          "floral_ornament"
-        ],
-        "kind": "component",
-        "confidence": 0.99
-      },
-      {
-        "id": "metal_frame",
-        "label": "Metal purse frame",
-        "description": "Engraved rigid metal frame spanning the gathered top edge and continuing down both upper sides.",
-        "bbox": [
-          0.18,
-          0.38,
-          0.87,
-          0.54
-        ],
-        "z": 2,
-        "occludedBy": [
-          "closure_clasp",
-          "floral_ornament"
-        ],
-        "kind": "component",
-        "confidence": 0.98
-      },
-      {
-        "id": "closure_clasp",
-        "label": "Closure clasp",
-        "description": "Small ridged metal closure tab projecting above the center of the frame.",
-        "bbox": [
-          0.48,
-          0.36,
-          0.56,
-          0.4
-        ],
-        "z": 3,
-        "occludedBy": [],
-        "kind": "component",
-        "confidence": 0.92
-      },
-      {
-        "id": "floral_ornament",
-        "label": "Floral metal ornament",
-        "description": "Applied metal rose-and-leaf decoration centered on the front of the frame and pouch.",
-        "bbox": [
-          0.45,
-          0.38,
-          0.58,
-          0.48
-        ],
-        "z": 4,
-        "occludedBy": [],
-        "kind": "component",
-        "confidence": 0.98
-      }
+  "totalMs": 12802,
+  "createdAt": "2026-08-24T07:47:40.057Z"
+ },
+ "options": {
+  "minParts": 3,
+  "maxParts": 10,
+  "grayscale": true,
+  "workLong": 1400,
+  "vectorLong": 2200,
+  "inkThreshold": 170,
+  "localContrast": 22,
+  "textureMode": "auto",
+  "categoryHint": "bag",
+  "schematicFrom": "outputs/v3/v3_bag_2_v31/schematics/schematic_bf1fc0a71a70d0eb.png",
+  "upscale": false
+ },
+ "plan": {
+  "category": "bag",
+  "objectNoun": "beaded evening purse",
+  "view": "front view",
+  "parts": [
+   {
+    "id": "chain_handle",
+    "label": "Chain handle",
+    "description": "Metal link carrying chain attached at the upper corners and rising behind the purse.",
+    "bbox": [
+     0.29,
+     0,
+     0.77,
+     0.39
     ],
-    "provenance": {
-      "model": "gpt-5.6",
-      "promptVersion": "v3.parts.v1.0.0",
-      "inputSha256": "d07a3b66d4fb25e29e4d878422d1dac2850ad8a475d8252cb96bd51390c591d3",
-      "createdAt": "2026-08-22T04:55:08.552Z"
-    }
-  },
-  "counts": {
-    "GEOMETRIC_PRIMITIVE": 522,
-    "FACE_FILL": 24,
-    "OUTLINE_SHAPE": 68,
-    "REPEATING_PATTERN": 17
-  },
-  "qa": {
-    "fidelity": {
-      "pass": false,
-      "f0": 0.7448,
-      "f1": 0.8992,
-      "f2": 0.9368,
-      "lineF1": 0.8992,
-      "lineF2": 0.9368,
-      "textureShare": 0,
-      "inkRatio": 1.518,
-      "chamfer": 0.605,
-      "p95": 3.41,
-      "detailRecall": 0.9768,
-      "holes": [
-        182,
-        160
-      ],
-      "majorComponents": [
-        1,
-        1
-      ],
-      "notes": [
-        "선 일치 F@2px 0.9368 < 0.95",
-        "선 굵기 1.518× (1.0 이 원본)"
-      ]
-    },
-    "editability": {
-      "pass": false,
-      "paths": 631,
-      "subpaths": 3657,
-      "maxSubpathsInPath": 2738,
-      "objectComplexity": 6890,
-      "anchors": 23294,
-      "uses": 2602,
-      "kb": 1235.4,
-      "anchorDensity": 16.18,
-      "shortPathRatio": 0.182,
-      "primitives": 522,
-      "anchorsSavedByPrimitives": 4106,
-      "pathsSavedByPatterns": 2585,
-      "editableReduction": {
-        "paths": 0.024,
-        "anchors": 0.714,
-        "kb": 0.42
-      },
-      "notes": [
-        "앵커 밀도 16.2/100px > 12",
-        "한 패스에 서브패스 2738개 — Illustrator 에서 통째로 선택된다"
-      ]
-    },
-    "semantic": {
-      "pass": false,
-      "perPart": [
-        {
-          "id": "chain_handle",
-          "label": "Chain handle",
-          "kind": "thin",
-          "paths": 0,
-          "areaShare": 0.01,
-          "precision": 0,
-          "recall": 0,
-          "iou": 0,
-          "boundaryF1": 0
-        },
-        {
-          "id": "bag_body",
-          "label": "Beaded pouch body",
-          "kind": "area",
-          "paths": 449,
-          "areaShare": 0.227,
-          "precision": 0.7241,
-          "recall": 0.9247,
-          "iou": 0.6838,
-          "boundaryF1": -1
-        },
-        {
-          "id": "metal_frame",
-          "label": "Metal purse frame",
-          "kind": "area",
-          "paths": 113,
-          "areaShare": 0.0813,
-          "precision": 0.2973,
-          "recall": 0.4437,
-          "iou": 0.2166,
-          "boundaryF1": -1
-        },
-        {
-          "id": "closure_clasp",
-          "label": "Closure clasp",
-          "kind": "area",
-          "paths": 1,
-          "areaShare": 0.0024,
-          "precision": 1,
-          "recall": 0.0258,
-          "iou": 0.0258,
-          "boundaryF1": -1
-        },
-        {
-          "id": "floral_ornament",
-          "label": "Floral metal ornament",
-          "kind": "area",
-          "paths": 85,
-          "areaShare": 0.01,
-          "precision": 0.7446,
-          "recall": 0.492,
-          "iou": 0.4209,
-          "boundaryF1": -1
-        }
-      ],
-      "meanPrecision": 0.5532,
-      "weightedMeanIou": 0.5355,
-      "failingMajorParts": [
-        "metal_frame"
-      ],
-      "misassigned": [
-        "metal_frame"
-      ],
-      "emptyVisibleParts": [],
-      "sharedOnlyParts": [
-        "chain_handle"
-      ],
-      "sharedBoundaries": 28,
-      "aspectRatio": 1.015,
-      "lowConfidenceRoutes": 11,
-      "notes": [
-        "기준 미달 주요 파트 1개: metal_frame (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
-        "배분이 의심되는 레이어 1개: metal_frame",
-        "공유 경계로만 그려진 파트 1개: chain_handle",
-        "라우터가 확신하지 못한 성분 11개",
-        "면적 가중 평균 IoU 0.536 < 0.65"
-      ]
-    },
-    "state": "FIDELITY_REVIEW / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
-  },
-  "timings": {
-    "S1_preprocess": 5054,
-    "S2_plan": 10,
-    "S3_masks": 2543,
-    "S4_schematic": 285,
-    "S5_evidence": 3197,
-    "S7_export": 55,
-    "S8_qa": 1471
-  },
-  "correspondence": {
-    "method": "global-similarity",
-    "aspectRatio": 1.0154628381473387,
-    "confident": true,
-    "note": ""
+    "z": 0,
+    "occludedBy": [
+     "bag_body",
+     "metal_frame"
+    ],
+    "kind": "component",
+    "confidence": 0.98
+   },
+   {
+    "id": "bag_body",
+    "label": "Beaded pouch body",
+    "description": "Gathered white beaded textile pouch forming the main body of the purse.",
+    "bbox": [
+     0.06,
+     0.39,
+     0.94,
+     0.88
+    ],
+    "z": 1,
+    "occludedBy": [
+     "metal_frame",
+     "floral_ornament"
+    ],
+    "kind": "component",
+    "confidence": 0.99
+   },
+   {
+    "id": "metal_frame",
+    "label": "Metal purse frame",
+    "description": "Engraved rigid metal frame spanning the gathered top edge and continuing down both upper sides.",
+    "bbox": [
+     0.18,
+     0.38,
+     0.87,
+     0.54
+    ],
+    "z": 2,
+    "occludedBy": [
+     "closure_clasp",
+     "floral_ornament"
+    ],
+    "kind": "component",
+    "confidence": 0.98
+   },
+   {
+    "id": "closure_clasp",
+    "label": "Closure clasp",
+    "description": "Small ridged metal closure tab projecting above the center of the frame.",
+    "bbox": [
+     0.48,
+     0.36,
+     0.56,
+     0.4
+    ],
+    "z": 3,
+    "occludedBy": [],
+    "kind": "component",
+    "confidence": 0.92
+   },
+   {
+    "id": "floral_ornament",
+    "label": "Floral metal ornament",
+    "description": "Applied metal rose-and-leaf decoration centered on the front of the frame and pouch.",
+    "bbox": [
+     0.45,
+     0.38,
+     0.58,
+     0.48
+    ],
+    "z": 4,
+    "occludedBy": [],
+    "kind": "component",
+    "confidence": 0.98
+   }
+  ],
+  "provenance": {
+   "model": "gpt-5.6",
+   "promptVersion": "v3.parts.v1.0.0",
+   "inputSha256": "d07a3b66d4fb25e29e4d878422d1dac2850ad8a475d8252cb96bd51390c591d3",
+   "createdAt": "2026-08-22T04:55:08.552Z"
   }
+ },
+ "counts": {
+  "GEOMETRIC_PRIMITIVE": 522,
+  "FACE_FILL": 24,
+  "OUTLINE_SHAPE": 68,
+  "REPEATING_PATTERN": 17
+ },
+ "qa": {
+  "fidelity": {
+   "pass": false,
+   "f0": 0.7448,
+   "f1": 0.8992,
+   "f2": 0.9368,
+   "lineF1": 0.8992,
+   "lineF2": 0.9368,
+   "textureShare": 0,
+   "inkRatio": 1.518,
+   "chamfer": 0.605,
+   "p95": 3.41,
+   "detailRecall": 0.9768,
+   "holes": [
+    182,
+    160
+   ],
+   "majorComponents": [
+    1,
+    1
+   ],
+   "notes": [
+    "선 일치 F@2px 0.9368 < 0.95",
+    "선 굵기 1.518× (1.0 이 원본)"
+   ]
+  },
+  "editability": {
+   "pass": false,
+   "paths": 631,
+   "subpaths": 3602,
+   "maxSubpathsInPath": 2738,
+   "objectComplexity": 6835,
+   "anchors": 23294,
+   "uses": 2602,
+   "kb": 1235.4,
+   "anchorDensity": 16.18,
+   "shortPathRatio": 0.182,
+   "primitives": 522,
+   "anchorsSavedByPrimitives": 4106,
+   "pathsSavedByPatterns": 2585,
+   "editableReduction": {
+    "paths": 0.024,
+    "anchors": 0.714,
+    "kb": 0.42
+   },
+   "notes": [
+    "앵커 밀도 16.2/100px > 12",
+    "한 패스에 서브패스 2738개 — Illustrator 에서 통째로 선택된다"
+   ]
+  },
+  "semantic": {
+   "pass": false,
+   "perPart": [
+    {
+     "id": "chain_handle",
+     "label": "Chain handle",
+     "kind": "thin",
+     "paths": 0,
+     "areaShare": 0.01,
+     "precision": 0,
+     "recall": 0,
+     "iou": 0,
+     "boundaryF1": 0
+    },
+    {
+     "id": "bag_body",
+     "label": "Beaded pouch body",
+     "kind": "area",
+     "paths": 449,
+     "areaShare": 0.227,
+     "precision": 0.7241,
+     "recall": 0.9247,
+     "iou": 0.6838,
+     "boundaryF1": -1
+    },
+    {
+     "id": "metal_frame",
+     "label": "Metal purse frame",
+     "kind": "area",
+     "paths": 113,
+     "areaShare": 0.0813,
+     "precision": 0.2973,
+     "recall": 0.4437,
+     "iou": 0.2166,
+     "boundaryF1": -1
+    },
+    {
+     "id": "closure_clasp",
+     "label": "Closure clasp",
+     "kind": "area",
+     "paths": 1,
+     "areaShare": 0.0024,
+     "precision": 1,
+     "recall": 0.0258,
+     "iou": 0.0258,
+     "boundaryF1": -1
+    },
+    {
+     "id": "floral_ornament",
+     "label": "Floral metal ornament",
+     "kind": "area",
+     "paths": 85,
+     "areaShare": 0.01,
+     "precision": 0.7446,
+     "recall": 0.492,
+     "iou": 0.4209,
+     "boundaryF1": -1
+    }
+   ],
+   "meanPrecision": 0.5532,
+   "weightedMeanIou": 0.5355,
+   "failingMajorParts": [
+    "metal_frame"
+   ],
+   "misassigned": [
+    "metal_frame"
+   ],
+   "emptyVisibleParts": [],
+   "sharedOnlyParts": [
+    "chain_handle"
+   ],
+   "sharedBoundaries": 28,
+   "aspectRatio": 1.015,
+   "lowConfidenceRoutes": 11,
+   "notes": [
+    "기준 미달 주요 파트 1개: metal_frame (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+    "배분이 의심되는 레이어 1개: metal_frame",
+    "공유 경계로만 그려진 파트 1개: chain_handle",
+    "라우터가 확신하지 못한 성분 11개",
+    "면적 가중 평균 IoU 0.536 < 0.65"
+   ]
+  },
+  "state": "FIDELITY_REVIEW / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
+ },
+ "timings": {
+  "S1_preprocess": 5054,
+  "S2_plan": 10,
+  "S3_masks": 2543,
+  "S4_schematic": 285,
+  "S5_evidence": 3197,
+  "S7_export": 55,
+  "S8_qa": 1471
+ },
+ "correspondence": {
+  "method": "global-similarity",
+  "aspectRatio": 1.0154628381473387,
+  "confident": true,
+  "note": ""
+ }
 }

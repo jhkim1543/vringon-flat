@@ -150,7 +150,8 @@ function inkSvg(scene: VectorScene): string {
 /** SVG 의 서브패스 통계 — 컴파운드 패스가 몇 개의 도형을 숨기고 있는가 */
 function subpathStats(svg: string): { subpaths: number; maxInPath: number } {
   let total = 0, max = 0;
-  for (const m of svg.matchAll(new RegExp('d="([^"]*)"', "g"))) {
+  // 경계 없이 d="…" 로 찾으면 data-shared="main_compartment_shell" 같은 값의 m 까지 센다.
+  for (const m of svg.matchAll(new RegExp('(?:^|[\\s"])d="([^"]*)"', "g"))) {
     const n = (m[1].match(new RegExp("[Mm]", "g")) ?? []).length;
     total += n;
     if (n > max) max = n;

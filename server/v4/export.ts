@@ -183,6 +183,9 @@ export function exportEditable(scene: VectorScene, o: Partial<EditableOptions> =
  * 파트만으로 나누면 **한 파트를 끄는 순간 이웃의 외곽선까지 사라진다** — 경계선은 두 파트가
  * 함께 쓰기 때문이다. 공유 경계를 별도 레이어로 빼면 그 일이 없다.
  */
+/** 위로 올리면 아래 잉크를 덮는 표현 — 공유 경계 레이어로 hoist 하지 않는다 */
+const OPAQUE_AREA = new Set(["FACE_FILL", "TEXTURE_TONE"]);
+
 export function exportProduction(scene: VectorScene): string {
   const byId = new Map(scene.parts.map((p) => [p.id, p]));
   const sharedIds = new Set(scene.sharedBoundaries.map((s) => s.primitiveId));
@@ -192,7 +195,11 @@ export function exportProduction(scene: VectorScene): string {
     OUTLINES: [], PRIMITIVES: [], STITCH: [], STRUCTURE: [],
   };
   for (const p of scene.primitives) {
-    if (sharedIds.has(p.id)) { buckets.SHARED_BOUNDARIES.push(p); continue; }
+    // **불투명한 면은 위로 올리지 않는다.** SHARED_BOUNDARIES 는 맨 위에 그려지므로
+    // 흰 FACE_FILL 이 여기로 올라가면 그 아래 선을 지운다. 실측으로 bag_3 은 공유
+    // 프리미티브 665개가 전부 FACE_FILL 이었고, production.svg 의 잉크가 fidelity.svg
+    // 대비 77% 로 줄어 있었다 — 파일이 다른 그림이었다는 뜻이다.
+    if (sharedIds.has(p.id) && !OPAQUE_AREA.has(p.cls)) { buckets.SHARED_BOUNDARIES.push(p); continue; }
     const b = p.cls === "FACE_FILL" ? "FILLS"
       : p.cls === "TEXTURE_TONE" ? "TEXTURE"
         : p.cls === "REPEATING_PATTERN" ? "PATTERNS"
@@ -247,7 +254,10 @@ export function complexity(svg: string): { paths: number; anchors: number; uses:
   const paths = (svg.match(new RegExp("<path\\b", "g")) ?? []).length;
   const uses = (svg.match(new RegExp("<use\\b", "g")) ?? []).length;
   let anchors = 0;
-  for (const m of svg.matchAll(new RegExp('d="([^"]*)"', "g"))) {
+  // **경계를 붙여야 한다.** 그냥 d="…" 로 찾으면 data-shared="…" · data-kind="…" · id="…" 처럼
+  // d 로 끝나는 속성까지 걸린다. 실제로 그래서 서브패스가 bag_3 에서 1,835 → 2,518 로
+  // 부풀어 있었다(파트 id 안의 m 이 M 으로 세어졌다).
+  for (const m of svg.matchAll(new RegExp('(?:^|[\\s"])d="([^"]*)"', "g"))) {
     anchors += (m[1].match(new RegExp("[MLCQSTA]", "g")) ?? []).length;
   }
   return { paths, anchors, uses, kb: +(Buffer.byteLength(svg) / 1024).toFixed(1) };

@@ -39,7 +39,8 @@ async function main() {
 
     const dest = path.join(OUT, name);
     await fs.mkdir(dest, { recursive: true });
-    for (const f of ["fidelity.svg", "editable.svg", "production.svg", "qa_v4.json"]) {
+    for (const f of ["fidelity.svg", "editable.svg", "production.svg", "qa_v4.json",
+      "layered.ai", "native-layers.jsx"]) {
       await fs.copyFile(path.join(src, f), path.join(dest, f));
     }
     // scene.json 은 라우팅 근거가 들어 있어 크다 — 요약만 싣는다
@@ -84,6 +85,8 @@ async function main() {
         fidelity: `samples-v4/${name}/fidelity.svg`,
         editable: `samples-v4/${name}/editable.svg`,
         production: `samples-v4/${name}/production.svg`,
+        ai: `samples-v4/${name}/layered.ai`,
+        jsx: `samples-v4/${name}/native-layers.jsx`,
         routes: `samples-v4/${name}/routes.json`,
         qa: `samples-v4/${name}/qa_v4.json`,
         input: `samples-v4/${name}/input.jpg`,

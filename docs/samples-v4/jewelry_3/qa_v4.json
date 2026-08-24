@@ -1,385 +1,385 @@
 {
-  "job": {
-    "state": "FIDELITY_REVIEW / EDITABILITY_PASS / SEMANTIC_REVIEW",
-    "canvas": {
-      "width": 2048,
-      "height": 928,
-      "sourceWidth": 1024,
-      "sourceHeight": 464,
-      "supersample": 2
-    },
-    "totalMs": 11061,
-    "createdAt": "2026-08-24T07:49:00.257Z"
+ "job": {
+  "state": "FIDELITY_REVIEW / EDITABILITY_PASS / SEMANTIC_REVIEW",
+  "canvas": {
+   "width": 2048,
+   "height": 928,
+   "sourceWidth": 1024,
+   "sourceHeight": 464,
+   "supersample": 2
   },
-  "options": {
-    "minParts": 3,
-    "maxParts": 10,
-    "grayscale": true,
-    "workLong": 1400,
-    "vectorLong": 2200,
-    "inkThreshold": 170,
-    "localContrast": 22,
-    "textureMode": "auto",
-    "categoryHint": "jewelry",
-    "schematicFrom": "outputs/v3/v3_jewelry_3_v31/schematics/schematic_28f3bf7b81fb0812.png",
-    "upscale": false
-  },
-  "plan": {
-    "category": "jewelry",
-    "objectNoun": "three gemstone rings",
-    "view": "oblique top view",
-    "parts": [
-      {
-        "id": "rear_ring_band",
-        "label": "Rear ring band",
-        "description": "Thin gold-colored loop of the rear pearl ring.",
-        "bbox": [
-          0.62,
-          0.12,
-          0.95,
-          0.31
-        ],
-        "z": 0,
-        "occludedBy": [
-          "rear_ring_setting"
-        ],
-        "kind": "component",
-        "confidence": 0.94
-      },
-      {
-        "id": "rear_ring_pearl",
-        "label": "Rear ring pearl",
-        "description": "Pale blue-gray rounded pearl mounted on the rear ring.",
-        "bbox": [
-          0.78,
-          0.18,
-          0.91,
-          0.41
-        ],
-        "z": 1,
-        "occludedBy": [
-          "rear_ring_setting"
-        ],
-        "kind": "component",
-        "confidence": 0.9
-      },
-      {
-        "id": "rear_ring_setting",
-        "label": "Rear ring setting",
-        "description": "Gold-colored cup and shoulder structure securing the pearl to the band.",
-        "bbox": [
-          0.77,
-          0.14,
-          0.93,
-          0.42
-        ],
-        "z": 2,
-        "occludedBy": [],
-        "kind": "component",
-        "confidence": 0.82
-      },
-      {
-        "id": "center_ring_band",
-        "label": "Center ring band",
-        "description": "Thin gold-colored loop and shank behind the central blue gemstone setting.",
-        "bbox": [
-          0.36,
-          0.32,
-          0.78,
-          0.63
-        ],
-        "z": 3,
-        "occludedBy": [
-          "center_ring_bezel",
-          "front_ring_band"
-        ],
-        "kind": "component",
-        "confidence": 0.96
-      },
-      {
-        "id": "center_ring_gemstone",
-        "label": "Center ring gemstone",
-        "description": "Large translucent pale blue round-to-oval gemstone.",
-        "bbox": [
-          0.5,
-          0.36,
-          0.71,
-          0.73
-        ],
-        "z": 4,
-        "occludedBy": [
-          "center_ring_bezel"
-        ],
-        "kind": "component",
-        "confidence": 0.98
-      },
-      {
-        "id": "center_ring_bezel",
-        "label": "Center ring bezel",
-        "description": "Gold-colored annular bezel surrounding and retaining the blue gemstone.",
-        "bbox": [
-          0.48,
-          0.32,
-          0.72,
-          0.76
-        ],
-        "z": 5,
-        "occludedBy": [],
-        "kind": "component",
-        "confidence": 0.97
-      },
-      {
-        "id": "front_ring_band",
-        "label": "Front ring band",
-        "description": "Thin gold-colored loop and shank of the foreground ring.",
-        "bbox": [
-          0.05,
-          0.4,
-          0.49,
-          0.73
-        ],
-        "z": 6,
-        "occludedBy": [
-          "front_ring_bezel"
-        ],
-        "kind": "component",
-        "confidence": 0.96
-      },
-      {
-        "id": "front_ring_gemstone",
-        "label": "Front ring gemstone",
-        "description": "Translucent cream-colored oval gemstone with natural internal inclusions.",
-        "bbox": [
-          0.19,
-          0.54,
-          0.42,
-          0.84
-        ],
-        "z": 7,
-        "occludedBy": [
-          "front_ring_bezel"
-        ],
-        "kind": "component",
-        "confidence": 0.98
-      },
-      {
-        "id": "front_ring_bezel",
-        "label": "Front ring bezel",
-        "description": "Gold-colored oval bezel surrounding and retaining the cream gemstone.",
-        "bbox": [
-          0.17,
-          0.49,
-          0.44,
-          0.88
-        ],
-        "z": 8,
-        "occludedBy": [],
-        "kind": "component",
-        "confidence": 0.97
-      }
+  "totalMs": 11061,
+  "createdAt": "2026-08-24T07:49:00.257Z"
+ },
+ "options": {
+  "minParts": 3,
+  "maxParts": 10,
+  "grayscale": true,
+  "workLong": 1400,
+  "vectorLong": 2200,
+  "inkThreshold": 170,
+  "localContrast": 22,
+  "textureMode": "auto",
+  "categoryHint": "jewelry",
+  "schematicFrom": "outputs/v3/v3_jewelry_3_v31/schematics/schematic_28f3bf7b81fb0812.png",
+  "upscale": false
+ },
+ "plan": {
+  "category": "jewelry",
+  "objectNoun": "three gemstone rings",
+  "view": "oblique top view",
+  "parts": [
+   {
+    "id": "rear_ring_band",
+    "label": "Rear ring band",
+    "description": "Thin gold-colored loop of the rear pearl ring.",
+    "bbox": [
+     0.62,
+     0.12,
+     0.95,
+     0.31
     ],
-    "provenance": {
-      "model": "gpt-5.6",
-      "promptVersion": "v3.parts.v1.0.0",
-      "inputSha256": "332d432d7ee93eb32a33d6f100ef280f2378cf82e91a1e16d99f1fe8c22d14ba",
-      "createdAt": "2026-08-22T04:59:50.162Z"
-    }
-  },
-  "counts": {
-    "GEOMETRIC_PRIMITIVE": 21,
-    "FACE_FILL": 15,
-    "STRUCTURAL_STROKE": 1,
-    "OUTLINE_SHAPE": 90
-  },
-  "qa": {
-    "fidelity": {
-      "pass": false,
-      "f0": 0.8016,
-      "f1": 0.8471,
-      "f2": 0.8615,
-      "lineF1": 0.8507,
-      "lineF2": 0.865,
-      "textureShare": 0.0102,
-      "inkRatio": 0.877,
-      "chamfer": 2.12,
-      "p95": 15,
-      "detailRecall": 1,
-      "holes": [
-        38,
-        25
-      ],
-      "majorComponents": [
-        8,
-        17
-      ],
-      "notes": [
-        "선 일치 F@2px 0.865 < 0.95",
-        "구멍 수 38 → 25 (15% 이상 차이)",
-        "해프톤이 도면 잉크의 1% — 전체 F@2px 0.8615, 그 영역 뺀 선 충실도 0.865"
-      ]
-    },
-    "editability": {
-      "pass": true,
-      "paths": 127,
-      "subpaths": 237,
-      "maxSubpathsInPath": 46,
-      "objectComplexity": 364,
-      "anchors": 3618,
-      "uses": 0,
-      "kb": 145.3,
-      "anchorDensity": 6.63,
-      "shortPathRatio": 0.026,
-      "primitives": 21,
-      "anchorsSavedByPrimitives": 161,
-      "pathsSavedByPatterns": 0,
-      "editableReduction": {
-        "paths": 0.228,
-        "anchors": 0.207,
-        "kb": 0.187
-      },
-      "notes": []
-    },
-    "semantic": {
-      "pass": false,
-      "perPart": [
-        {
-          "id": "rear_ring_band",
-          "label": "Rear ring band",
-          "kind": "area",
-          "paths": 2,
-          "areaShare": 0.0246,
-          "precision": 0.7603,
-          "recall": 0.8147,
-          "iou": 0.6482,
-          "boundaryF1": -1
-        },
-        {
-          "id": "rear_ring_pearl",
-          "label": "Rear ring pearl",
-          "kind": "area",
-          "paths": 22,
-          "areaShare": 0.0274,
-          "precision": 0.9924,
-          "recall": 0.7859,
-          "iou": 0.7812,
-          "boundaryF1": -1
-        },
-        {
-          "id": "rear_ring_setting",
-          "label": "Rear ring setting",
-          "kind": "area",
-          "paths": 1,
-          "areaShare": 0.0087,
-          "precision": 0.2226,
-          "recall": 0.3989,
-          "iou": 0.1667,
-          "boundaryF1": -1
-        },
-        {
-          "id": "center_ring_band",
-          "label": "Center ring band",
-          "kind": "area",
-          "paths": 4,
-          "areaShare": 0.014,
-          "precision": 0.7627,
-          "recall": 0.4418,
-          "iou": 0.3884,
-          "boundaryF1": -1
-        },
-        {
-          "id": "center_ring_gemstone",
-          "label": "Center ring gemstone",
-          "kind": "area",
-          "paths": 52,
-          "areaShare": 0.075,
-          "precision": 0.9346,
-          "recall": 0.9432,
-          "iou": 0.8848,
-          "boundaryF1": -1
-        },
-        {
-          "id": "center_ring_bezel",
-          "label": "Center ring bezel",
-          "kind": "area",
-          "paths": 0,
-          "areaShare": 0.0115,
-          "precision": 0,
-          "recall": 0,
-          "iou": 0,
-          "boundaryF1": 0
-        },
-        {
-          "id": "front_ring_band",
-          "label": "Front ring band",
-          "kind": "area",
-          "paths": 6,
-          "areaShare": 0.0411,
-          "precision": 0.5145,
-          "recall": 0.7692,
-          "iou": 0.4457,
-          "boundaryF1": -1
-        },
-        {
-          "id": "front_ring_gemstone",
-          "label": "Front ring gemstone",
-          "kind": "area",
-          "paths": 35,
-          "areaShare": 0.0691,
-          "precision": 0.9878,
-          "recall": 0.7998,
-          "iou": 0.792,
-          "boundaryF1": -1
-        },
-        {
-          "id": "front_ring_bezel",
-          "label": "Front ring bezel",
-          "kind": "area",
-          "paths": 5,
-          "areaShare": 0.0167,
-          "precision": 0.241,
-          "recall": 0.7971,
-          "iou": 0.2271,
-          "boundaryF1": -1
-        }
-      ],
-      "meanPrecision": 0.6018,
-      "weightedMeanIou": 0.6506,
-      "failingMajorParts": [
-        "front_ring_band"
-      ],
-      "misassigned": [
-        "rear_ring_setting",
-        "front_ring_bezel"
-      ],
-      "emptyVisibleParts": [],
-      "sharedOnlyParts": [
-        "center_ring_bezel"
-      ],
-      "sharedBoundaries": 7,
-      "aspectRatio": 1,
-      "lowConfidenceRoutes": 19,
-      "notes": [
-        "기준 미달 주요 파트 1개: front_ring_band (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
-        "배분이 의심되는 레이어 2개: rear_ring_setting, front_ring_bezel",
-        "공유 경계로만 그려진 파트 1개: center_ring_bezel",
-        "라우터가 확신하지 못한 성분 19개"
-      ]
-    },
-    "state": "FIDELITY_REVIEW / EDITABILITY_PASS / SEMANTIC_REVIEW"
-  },
-  "timings": {
-    "S1_preprocess": 4853,
-    "S2_plan": 3,
-    "S3_masks": 2154,
-    "S4_schematic": 255,
-    "S5_evidence": 2412,
-    "S7_export": 14,
-    "S8_qa": 1321
-  },
-  "correspondence": {
-    "method": "global-similarity",
-    "aspectRatio": 1.0003705533596838,
-    "confident": true,
-    "note": "도면이 컬러로 생성됨 (채도 12%) — 색면을 그대로 옮긴다"
+    "z": 0,
+    "occludedBy": [
+     "rear_ring_setting"
+    ],
+    "kind": "component",
+    "confidence": 0.94
+   },
+   {
+    "id": "rear_ring_pearl",
+    "label": "Rear ring pearl",
+    "description": "Pale blue-gray rounded pearl mounted on the rear ring.",
+    "bbox": [
+     0.78,
+     0.18,
+     0.91,
+     0.41
+    ],
+    "z": 1,
+    "occludedBy": [
+     "rear_ring_setting"
+    ],
+    "kind": "component",
+    "confidence": 0.9
+   },
+   {
+    "id": "rear_ring_setting",
+    "label": "Rear ring setting",
+    "description": "Gold-colored cup and shoulder structure securing the pearl to the band.",
+    "bbox": [
+     0.77,
+     0.14,
+     0.93,
+     0.42
+    ],
+    "z": 2,
+    "occludedBy": [],
+    "kind": "component",
+    "confidence": 0.82
+   },
+   {
+    "id": "center_ring_band",
+    "label": "Center ring band",
+    "description": "Thin gold-colored loop and shank behind the central blue gemstone setting.",
+    "bbox": [
+     0.36,
+     0.32,
+     0.78,
+     0.63
+    ],
+    "z": 3,
+    "occludedBy": [
+     "center_ring_bezel",
+     "front_ring_band"
+    ],
+    "kind": "component",
+    "confidence": 0.96
+   },
+   {
+    "id": "center_ring_gemstone",
+    "label": "Center ring gemstone",
+    "description": "Large translucent pale blue round-to-oval gemstone.",
+    "bbox": [
+     0.5,
+     0.36,
+     0.71,
+     0.73
+    ],
+    "z": 4,
+    "occludedBy": [
+     "center_ring_bezel"
+    ],
+    "kind": "component",
+    "confidence": 0.98
+   },
+   {
+    "id": "center_ring_bezel",
+    "label": "Center ring bezel",
+    "description": "Gold-colored annular bezel surrounding and retaining the blue gemstone.",
+    "bbox": [
+     0.48,
+     0.32,
+     0.72,
+     0.76
+    ],
+    "z": 5,
+    "occludedBy": [],
+    "kind": "component",
+    "confidence": 0.97
+   },
+   {
+    "id": "front_ring_band",
+    "label": "Front ring band",
+    "description": "Thin gold-colored loop and shank of the foreground ring.",
+    "bbox": [
+     0.05,
+     0.4,
+     0.49,
+     0.73
+    ],
+    "z": 6,
+    "occludedBy": [
+     "front_ring_bezel"
+    ],
+    "kind": "component",
+    "confidence": 0.96
+   },
+   {
+    "id": "front_ring_gemstone",
+    "label": "Front ring gemstone",
+    "description": "Translucent cream-colored oval gemstone with natural internal inclusions.",
+    "bbox": [
+     0.19,
+     0.54,
+     0.42,
+     0.84
+    ],
+    "z": 7,
+    "occludedBy": [
+     "front_ring_bezel"
+    ],
+    "kind": "component",
+    "confidence": 0.98
+   },
+   {
+    "id": "front_ring_bezel",
+    "label": "Front ring bezel",
+    "description": "Gold-colored oval bezel surrounding and retaining the cream gemstone.",
+    "bbox": [
+     0.17,
+     0.49,
+     0.44,
+     0.88
+    ],
+    "z": 8,
+    "occludedBy": [],
+    "kind": "component",
+    "confidence": 0.97
+   }
+  ],
+  "provenance": {
+   "model": "gpt-5.6",
+   "promptVersion": "v3.parts.v1.0.0",
+   "inputSha256": "332d432d7ee93eb32a33d6f100ef280f2378cf82e91a1e16d99f1fe8c22d14ba",
+   "createdAt": "2026-08-22T04:59:50.162Z"
   }
+ },
+ "counts": {
+  "GEOMETRIC_PRIMITIVE": 21,
+  "FACE_FILL": 15,
+  "STRUCTURAL_STROKE": 1,
+  "OUTLINE_SHAPE": 90
+ },
+ "qa": {
+  "fidelity": {
+   "pass": false,
+   "f0": 0.8016,
+   "f1": 0.8471,
+   "f2": 0.8615,
+   "lineF1": 0.8507,
+   "lineF2": 0.865,
+   "textureShare": 0.0102,
+   "inkRatio": 0.877,
+   "chamfer": 2.12,
+   "p95": 15,
+   "detailRecall": 1,
+   "holes": [
+    38,
+    25
+   ],
+   "majorComponents": [
+    8,
+    17
+   ],
+   "notes": [
+    "선 일치 F@2px 0.865 < 0.95",
+    "구멍 수 38 → 25 (15% 이상 차이)",
+    "해프톤이 도면 잉크의 1% — 전체 F@2px 0.8615, 그 영역 뺀 선 충실도 0.865"
+   ]
+  },
+  "editability": {
+   "pass": true,
+   "paths": 127,
+   "subpaths": 234,
+   "maxSubpathsInPath": 46,
+   "objectComplexity": 361,
+   "anchors": 3618,
+   "uses": 0,
+   "kb": 145.3,
+   "anchorDensity": 6.63,
+   "shortPathRatio": 0.026,
+   "primitives": 21,
+   "anchorsSavedByPrimitives": 161,
+   "pathsSavedByPatterns": 0,
+   "editableReduction": {
+    "paths": 0.228,
+    "anchors": 0.207,
+    "kb": 0.187
+   },
+   "notes": []
+  },
+  "semantic": {
+   "pass": false,
+   "perPart": [
+    {
+     "id": "rear_ring_band",
+     "label": "Rear ring band",
+     "kind": "area",
+     "paths": 2,
+     "areaShare": 0.0246,
+     "precision": 0.7603,
+     "recall": 0.8147,
+     "iou": 0.6482,
+     "boundaryF1": -1
+    },
+    {
+     "id": "rear_ring_pearl",
+     "label": "Rear ring pearl",
+     "kind": "area",
+     "paths": 22,
+     "areaShare": 0.0274,
+     "precision": 0.9924,
+     "recall": 0.7859,
+     "iou": 0.7812,
+     "boundaryF1": -1
+    },
+    {
+     "id": "rear_ring_setting",
+     "label": "Rear ring setting",
+     "kind": "area",
+     "paths": 1,
+     "areaShare": 0.0087,
+     "precision": 0.2226,
+     "recall": 0.3989,
+     "iou": 0.1667,
+     "boundaryF1": -1
+    },
+    {
+     "id": "center_ring_band",
+     "label": "Center ring band",
+     "kind": "area",
+     "paths": 4,
+     "areaShare": 0.014,
+     "precision": 0.7627,
+     "recall": 0.4418,
+     "iou": 0.3884,
+     "boundaryF1": -1
+    },
+    {
+     "id": "center_ring_gemstone",
+     "label": "Center ring gemstone",
+     "kind": "area",
+     "paths": 52,
+     "areaShare": 0.075,
+     "precision": 0.9346,
+     "recall": 0.9432,
+     "iou": 0.8848,
+     "boundaryF1": -1
+    },
+    {
+     "id": "center_ring_bezel",
+     "label": "Center ring bezel",
+     "kind": "area",
+     "paths": 0,
+     "areaShare": 0.0115,
+     "precision": 0,
+     "recall": 0,
+     "iou": 0,
+     "boundaryF1": 0
+    },
+    {
+     "id": "front_ring_band",
+     "label": "Front ring band",
+     "kind": "area",
+     "paths": 6,
+     "areaShare": 0.0411,
+     "precision": 0.5145,
+     "recall": 0.7692,
+     "iou": 0.4457,
+     "boundaryF1": -1
+    },
+    {
+     "id": "front_ring_gemstone",
+     "label": "Front ring gemstone",
+     "kind": "area",
+     "paths": 35,
+     "areaShare": 0.0691,
+     "precision": 0.9878,
+     "recall": 0.7998,
+     "iou": 0.792,
+     "boundaryF1": -1
+    },
+    {
+     "id": "front_ring_bezel",
+     "label": "Front ring bezel",
+     "kind": "area",
+     "paths": 5,
+     "areaShare": 0.0167,
+     "precision": 0.241,
+     "recall": 0.7971,
+     "iou": 0.2271,
+     "boundaryF1": -1
+    }
+   ],
+   "meanPrecision": 0.6018,
+   "weightedMeanIou": 0.6506,
+   "failingMajorParts": [
+    "front_ring_band"
+   ],
+   "misassigned": [
+    "rear_ring_setting",
+    "front_ring_bezel"
+   ],
+   "emptyVisibleParts": [],
+   "sharedOnlyParts": [
+    "center_ring_bezel"
+   ],
+   "sharedBoundaries": 7,
+   "aspectRatio": 1,
+   "lowConfidenceRoutes": 19,
+   "notes": [
+    "기준 미달 주요 파트 1개: front_ring_band (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+    "배분이 의심되는 레이어 2개: rear_ring_setting, front_ring_bezel",
+    "공유 경계로만 그려진 파트 1개: center_ring_bezel",
+    "라우터가 확신하지 못한 성분 19개"
+   ]
+  },
+  "state": "FIDELITY_REVIEW / EDITABILITY_PASS / SEMANTIC_REVIEW"
+ },
+ "timings": {
+  "S1_preprocess": 4853,
+  "S2_plan": 3,
+  "S3_masks": 2154,
+  "S4_schematic": 255,
+  "S5_evidence": 2412,
+  "S7_export": 14,
+  "S8_qa": 1321
+ },
+ "correspondence": {
+  "method": "global-similarity",
+  "aspectRatio": 1.0003705533596838,
+  "confident": true,
+  "note": "도면이 컬러로 생성됨 (채도 12%) — 색면을 그대로 옮긴다"
+ }
 }
