@@ -142,6 +142,7 @@ function inkSvg(scene: VectorScene): string {
   const prims = scene.primitives.filter((p) => {
     if (p.cls === "FACE_FILL" || p.cls === "TEXTURE_TONE") return false;
     if (p.cls === "GEOMETRIC_PRIMITIVE" && (p as GeometricPrimitive).paint === "fill") return false;
+    if (p.cls === "REPEATING_PATTERN" && (p as PatternPrimitive).paint === "fill") return false;
     return true;
   });
   return renderStandalone(prims, W, H, "ink");

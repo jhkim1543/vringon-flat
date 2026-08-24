@@ -1,370 +1,381 @@
 {
- "job": {
-  "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW",
-  "canvas": {
-   "width": 1438,
-   "height": 2048,
-   "sourceWidth": 719,
-   "sourceHeight": 1024,
-   "supersample": 2
+  "job": {
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW",
+    "canvas": {
+      "width": 1438,
+      "height": 2048,
+      "sourceWidth": 719,
+      "sourceHeight": 1024,
+      "supersample": 2
+    },
+    "totalMs": 15695,
+    "createdAt": "2026-08-24T10:47:38.690Z"
   },
-  "totalMs": 14153,
-  "createdAt": "2026-08-24T07:47:24.826Z"
- },
- "options": {
-  "minParts": 3,
-  "maxParts": 10,
-  "grayscale": true,
-  "workLong": 1400,
-  "vectorLong": 2200,
-  "inkThreshold": 170,
-  "localContrast": 22,
-  "textureMode": "auto",
-  "categoryHint": "bag",
-  "schematicFrom": "outputs/v3/v3_bag_1_v31/schematics/schematic_f21ced2fd547961e.png",
-  "upscale": false
- },
- "plan": {
-  "category": "bag",
-  "objectNoun": "briefcase",
-  "view": "front-left three-quarter view",
-  "parts": [
-   {
-    "id": "top_handle",
-    "label": "Top carry handle",
-    "description": "Rigid padded handle attached behind the top edge of the briefcase.",
-    "bbox": [
-     0.29,
-     0.05,
-     0.63,
-     0.21
-    ],
-    "z": 0,
-    "occludedBy": [
-     "main_compartment_shell",
-     "front_flap"
-    ],
-    "kind": "component",
-    "confidence": 0.97
-   },
-   {
-    "id": "main_compartment_shell",
-    "label": "Main compartment shell",
-    "description": "Structural black body forming the rear, top, and underlying compartment of the bag.",
-    "bbox": [
-     0.08,
-     0.13,
-     0.91,
-     0.79
-    ],
-    "z": 1,
-    "occludedBy": [
-     "left_side_gusset",
-     "front_lower_panel",
-     "front_flap",
-     "red_trim_bands",
-     "closure_strap"
-    ],
-    "kind": "component",
-    "confidence": 0.91
-   },
-   {
-    "id": "left_side_gusset",
-    "label": "Left side gusset",
-    "description": "Thick sewn side wall defining the depth of the compartment.",
-    "bbox": [
-     0.08,
-     0.18,
-     0.39,
-     0.79
-    ],
-    "z": 2,
-    "occludedBy": [
-     "front_flap",
-     "closure_strap"
-    ],
-    "kind": "component",
-    "confidence": 0.93
-   },
-   {
-    "id": "front_lower_panel",
-    "label": "Front lower body panel",
-    "description": "Black front-facing lower panel beneath the flap.",
-    "bbox": [
-     0.31,
-     0.43,
-     0.91,
-     0.77
-    ],
-    "z": 3,
-    "occludedBy": [
-     "front_flap",
-     "red_trim_bands",
-     "closure_strap",
-     "clasp_assembly"
-    ],
-    "kind": "component",
-    "confidence": 0.94
-   },
-   {
-    "id": "front_flap",
-    "label": "Front cover flap",
-    "description": "Large rounded black flap covering the upper front of the briefcase.",
-    "bbox": [
-     0.2,
-     0.13,
-     0.92,
-     0.57
-    ],
-    "z": 4,
-    "occludedBy": [
-     "red_trim_bands",
-     "closure_strap"
-    ],
-    "kind": "component",
-    "confidence": 0.98
-   },
-   {
-    "id": "red_trim_bands",
-    "label": "Red decorative trim bands",
-    "description": "Pair of narrow red applique bands aligned vertically across the flap and lower front.",
-    "bbox": [
-     0.36,
-     0.18,
-     0.53,
-     0.75
-    ],
-    "z": 5,
-    "occludedBy": [
-     "closure_strap"
-    ],
-    "kind": "component",
-    "confidence": 0.94
-   },
-   {
-    "id": "closure_strap",
-    "label": "Vertical closure strap",
-    "description": "Black leather-like strap descending over the left-front area to secure the flap.",
-    "bbox": [
-     0.29,
-     0.36,
-     0.46,
-     0.72
-    ],
-    "z": 6,
-    "occludedBy": [
-     "clasp_assembly"
-    ],
-    "kind": "component",
-    "confidence": 0.95
-   },
-   {
-    "id": "clasp_assembly",
-    "label": "Front clasp assembly",
-    "description": "Rectangular dark fastening hardware mounted at the lower end of the closure strap.",
-    "bbox": [
-     0.33,
-     0.59,
-     0.45,
-     0.72
-    ],
-    "z": 7,
-    "occludedBy": [],
-    "kind": "component",
-    "confidence": 0.96
-   }
-  ],
-  "provenance": {
-   "model": "gpt-5.6",
-   "promptVersion": "v3.parts.v1.0.0",
-   "inputSha256": "8367b5f655f68a6f58808f7931cc08895baecdff5a4b1a1d336180a8707462e2",
-   "createdAt": "2026-08-22T04:52:18.357Z"
-  }
- },
- "counts": {
-  "GEOMETRIC_PRIMITIVE": 3,
-  "FACE_FILL": 40,
-  "OUTLINE_SHAPE": 11
- },
- "qa": {
-  "fidelity": {
-   "pass": true,
-   "f0": 0.859,
-   "f1": 0.8926,
-   "f2": 0.8953,
-   "lineF1": 0.9952,
-   "lineF2": 0.9981,
-   "textureShare": 0.6183,
-   "inkRatio": 1.007,
-   "chamfer": 0.047,
-   "p95": 0,
-   "detailRecall": 1,
-   "holes": [
-    53,
-    51
-   ],
-   "majorComponents": [
-    2,
-    3
-   ],
-   "notes": [
-    "해프톤이 도면 잉크의 62% — 전체 F@2px 0.8953, 그 영역 뺀 선 충실도 0.9981"
-   ]
+  "options": {
+    "minParts": 3,
+    "maxParts": 10,
+    "grayscale": true,
+    "workLong": 1400,
+    "vectorLong": 2200,
+    "inkThreshold": 170,
+    "localContrast": 22,
+    "textureMode": "auto",
+    "categoryHint": "bag",
+    "schematicFrom": "outputs/v3/v3_bag_1_v31/schematics/schematic_f21ced2fd547961e.png",
+    "upscale": false
   },
-  "editability": {
-   "pass": true,
-   "paths": 54,
-   "subpaths": 116,
-   "maxSubpathsInPath": 49,
-   "objectComplexity": 170,
-   "anchors": 5735,
-   "uses": 0,
-   "kb": 223.9,
-   "anchorDensity": 7,
-   "shortPathRatio": 0.017,
-   "primitives": 3,
-   "anchorsSavedByPrimitives": 30,
-   "pathsSavedByPatterns": 0,
-   "editableReduction": {
-    "paths": 0.019,
-    "anchors": 0.102,
-    "kb": 0.1
-   },
-   "notes": []
-  },
-  "semantic": {
-   "pass": false,
-   "perPart": [
-    {
-     "id": "top_handle",
-     "label": "Top carry handle",
-     "kind": "area",
-     "paths": 5,
-     "areaShare": 0.0135,
-     "precision": 0.3077,
-     "recall": 0.0893,
-     "iou": 0.0744,
-     "boundaryF1": -1
-    },
-    {
-     "id": "main_compartment_shell",
-     "label": "Main compartment shell",
-     "kind": "thin",
-     "paths": 0,
-     "areaShare": 0.0029,
-     "precision": 0,
-     "recall": 0,
-     "iou": 0,
-     "boundaryF1": 0
-    },
-    {
-     "id": "left_side_gusset",
-     "label": "Left side gusset",
-     "kind": "area",
-     "paths": 8,
-     "areaShare": 0.0984,
-     "precision": 0.8417,
-     "recall": 0.7364,
-     "iou": 0.6468,
-     "boundaryF1": -1
-    },
-    {
-     "id": "front_lower_panel",
-     "label": "Front lower body panel",
-     "kind": "area",
-     "paths": 8,
-     "areaShare": 0.1149,
-     "precision": 0.8855,
-     "recall": 0.6228,
-     "iou": 0.5764,
-     "boundaryF1": -1
-    },
-    {
-     "id": "front_flap",
-     "label": "Front cover flap",
-     "kind": "area",
-     "paths": 10,
-     "areaShare": 0.1922,
-     "precision": 0.7918,
-     "recall": 0.8449,
-     "iou": 0.6913,
-     "boundaryF1": -1
-    },
-    {
-     "id": "red_trim_bands",
-     "label": "Red decorative trim bands",
-     "kind": "area",
-     "paths": 7,
-     "areaShare": 0.0538,
-     "precision": 0.8313,
-     "recall": 0.5226,
-     "iou": 0.4725,
-     "boundaryF1": -1
-    },
-    {
-     "id": "closure_strap",
-     "label": "Vertical closure strap",
-     "kind": "area",
-     "paths": 9,
-     "areaShare": 0.0401,
-     "precision": 0.2852,
-     "recall": 0.6816,
-     "iou": 0.2517,
-     "boundaryF1": -1
-    },
-    {
-     "id": "clasp_assembly",
-     "label": "Front clasp assembly",
-     "kind": "area",
-     "paths": 7,
-     "areaShare": 0.0142,
-     "precision": 0.7661,
-     "recall": 0.3778,
-     "iou": 0.3388,
-     "boundaryF1": -1
+  "plan": {
+    "category": "bag",
+    "objectNoun": "briefcase",
+    "view": "front-left three-quarter view",
+    "parts": [
+      {
+        "id": "top_handle",
+        "label": "Top carry handle",
+        "description": "Rigid padded handle attached behind the top edge of the briefcase.",
+        "bbox": [
+          0.29,
+          0.05,
+          0.63,
+          0.21
+        ],
+        "z": 0,
+        "occludedBy": [
+          "main_compartment_shell",
+          "front_flap"
+        ],
+        "kind": "component",
+        "confidence": 0.97
+      },
+      {
+        "id": "main_compartment_shell",
+        "label": "Main compartment shell",
+        "description": "Structural black body forming the rear, top, and underlying compartment of the bag.",
+        "bbox": [
+          0.08,
+          0.13,
+          0.91,
+          0.79
+        ],
+        "z": 1,
+        "occludedBy": [
+          "left_side_gusset",
+          "front_lower_panel",
+          "front_flap",
+          "red_trim_bands",
+          "closure_strap"
+        ],
+        "kind": "component",
+        "confidence": 0.91
+      },
+      {
+        "id": "left_side_gusset",
+        "label": "Left side gusset",
+        "description": "Thick sewn side wall defining the depth of the compartment.",
+        "bbox": [
+          0.08,
+          0.18,
+          0.39,
+          0.79
+        ],
+        "z": 2,
+        "occludedBy": [
+          "front_flap",
+          "closure_strap"
+        ],
+        "kind": "component",
+        "confidence": 0.93
+      },
+      {
+        "id": "front_lower_panel",
+        "label": "Front lower body panel",
+        "description": "Black front-facing lower panel beneath the flap.",
+        "bbox": [
+          0.31,
+          0.43,
+          0.91,
+          0.77
+        ],
+        "z": 3,
+        "occludedBy": [
+          "front_flap",
+          "red_trim_bands",
+          "closure_strap",
+          "clasp_assembly"
+        ],
+        "kind": "component",
+        "confidence": 0.94
+      },
+      {
+        "id": "front_flap",
+        "label": "Front cover flap",
+        "description": "Large rounded black flap covering the upper front of the briefcase.",
+        "bbox": [
+          0.2,
+          0.13,
+          0.92,
+          0.57
+        ],
+        "z": 4,
+        "occludedBy": [
+          "red_trim_bands",
+          "closure_strap"
+        ],
+        "kind": "component",
+        "confidence": 0.98
+      },
+      {
+        "id": "red_trim_bands",
+        "label": "Red decorative trim bands",
+        "description": "Pair of narrow red applique bands aligned vertically across the flap and lower front.",
+        "bbox": [
+          0.36,
+          0.18,
+          0.53,
+          0.75
+        ],
+        "z": 5,
+        "occludedBy": [
+          "closure_strap"
+        ],
+        "kind": "component",
+        "confidence": 0.94
+      },
+      {
+        "id": "closure_strap",
+        "label": "Vertical closure strap",
+        "description": "Black leather-like strap descending over the left-front area to secure the flap.",
+        "bbox": [
+          0.29,
+          0.36,
+          0.46,
+          0.72
+        ],
+        "z": 6,
+        "occludedBy": [
+          "clasp_assembly"
+        ],
+        "kind": "component",
+        "confidence": 0.95
+      },
+      {
+        "id": "clasp_assembly",
+        "label": "Front clasp assembly",
+        "description": "Rectangular dark fastening hardware mounted at the lower end of the closure strap.",
+        "bbox": [
+          0.33,
+          0.59,
+          0.45,
+          0.72
+        ],
+        "z": 7,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.96
+      }
+    ],
+    "provenance": {
+      "model": "gpt-5.6",
+      "promptVersion": "v3.parts.v1.0.0",
+      "inputSha256": "8367b5f655f68a6f58808f7931cc08895baecdff5a4b1a1d336180a8707462e2",
+      "createdAt": "2026-08-22T04:52:18.357Z"
     }
-   ],
-   "meanPrecision": 0.5887,
-   "weightedMeanIou": 0.5737,
-   "failingMajorParts": [
-    "red_trim_bands",
-    "closure_strap"
-   ],
-   "misassigned": [
-    "top_handle",
-    "closure_strap"
-   ],
-   "emptyVisibleParts": [],
-   "sharedOnlyParts": [
-    "main_compartment_shell"
-   ],
-   "sharedBoundaries": 4,
-   "aspectRatio": 1.198,
-   "lowConfidenceRoutes": 3,
-   "notes": [
-    "기준 미달 주요 파트 2개: red_trim_bands, closure_strap (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
-    "배분이 의심되는 레이어 2개: top_handle, closure_strap",
-    "공유 경계로만 그려진 파트 1개: main_compartment_shell",
-    "사진↔도면 종횡비 불일치 19.8%",
-    "라우터가 확신하지 못한 성분 3개",
-    "면적 가중 평균 IoU 0.574 < 0.65"
-   ]
   },
-  "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
- },
- "timings": {
-  "S1_preprocess": 7711,
-  "S2_plan": 5,
-  "S3_masks": 1552,
-  "S4_schematic": 276,
-  "S5_evidence": 3111,
-  "S7_export": 16,
-  "S8_qa": 1417
- },
- "correspondence": {
-  "method": "global-similarity",
-  "aspectRatio": 1.1981499662514572,
-  "confident": true,
-  "note": ""
- }
+  "counts": {
+    "GEOMETRIC_PRIMITIVE": 5,
+    "FACE_FILL": 40,
+    "OUTLINE_SHAPE": 28,
+    "REPEATING_PATTERN": 1
+  },
+  "qa": {
+    "fidelity": {
+      "pass": true,
+      "f0": 0.8719,
+      "f1": 0.9084,
+      "f2": 0.912,
+      "lineF1": 0.9926,
+      "lineF2": 0.9963,
+      "textureShare": 0.5882,
+      "inkRatio": 0.999,
+      "chamfer": 0.059,
+      "p95": 0,
+      "detailRecall": 1,
+      "holes": [
+        53,
+        55
+      ],
+      "majorComponents": [
+        2,
+        3
+      ],
+      "notes": [
+        "해프톤이 도면 잉크의 59% — 전체 F@2px 0.912, 그 영역 뺀 선 충실도 0.9963"
+      ]
+    },
+    "editability": {
+      "pass": true,
+      "paths": 74,
+      "subpaths": 171,
+      "maxSubpathsInPath": 49,
+      "objectComplexity": 277,
+      "anchors": 6468,
+      "uses": 32,
+      "kb": 253.8,
+      "anchorDensity": 7.54,
+      "shortPathRatio": 0.012,
+      "primitives": 5,
+      "anchorsSavedByPrimitives": 67,
+      "pathsSavedByPatterns": 31,
+      "editableReduction": {
+        "paths": 0.014,
+        "anchors": 0.118,
+        "kb": 0.111
+      },
+      "notes": []
+    },
+    "semantic": {
+      "pass": false,
+      "perPart": [
+        {
+          "id": "top_handle",
+          "label": "Top carry handle",
+          "kind": "area",
+          "paths": 10,
+          "areaShare": 0.0135,
+          "precision": 0.3634,
+          "recall": 0.1147,
+          "iou": 0.0955,
+          "boundaryF1": -1
+        },
+        {
+          "id": "main_compartment_shell",
+          "label": "Main compartment shell",
+          "kind": "thin",
+          "paths": 0,
+          "areaShare": 0.0029,
+          "precision": 0,
+          "recall": 0,
+          "iou": 0,
+          "boundaryF1": 0
+        },
+        {
+          "id": "left_side_gusset",
+          "label": "Left side gusset",
+          "kind": "area",
+          "paths": 10,
+          "areaShare": 0.0984,
+          "precision": 0.8419,
+          "recall": 0.7379,
+          "iou": 0.6481,
+          "boundaryF1": -1
+        },
+        {
+          "id": "front_lower_panel",
+          "label": "Front lower body panel",
+          "kind": "area",
+          "paths": 8,
+          "areaShare": 0.1149,
+          "precision": 0.8855,
+          "recall": 0.6228,
+          "iou": 0.5764,
+          "boundaryF1": -1
+        },
+        {
+          "id": "front_flap",
+          "label": "Front cover flap",
+          "kind": "area",
+          "paths": 16,
+          "areaShare": 0.1922,
+          "precision": 0.7935,
+          "recall": 0.844,
+          "iou": 0.692,
+          "boundaryF1": -1
+        },
+        {
+          "id": "red_trim_bands",
+          "label": "Red decorative trim bands",
+          "kind": "area",
+          "paths": 7,
+          "areaShare": 0.0538,
+          "precision": 0.8313,
+          "recall": 0.5226,
+          "iou": 0.4725,
+          "boundaryF1": -1
+        },
+        {
+          "id": "closure_strap",
+          "label": "Vertical closure strap",
+          "kind": "area",
+          "paths": 16,
+          "areaShare": 0.0401,
+          "precision": 0.285,
+          "recall": 0.6811,
+          "iou": 0.2515,
+          "boundaryF1": -1
+        },
+        {
+          "id": "clasp_assembly",
+          "label": "Front clasp assembly",
+          "kind": "area",
+          "paths": 9,
+          "areaShare": 0.0142,
+          "precision": 0.76,
+          "recall": 0.3778,
+          "iou": 0.3376,
+          "boundaryF1": -1
+        }
+      ],
+      "meanPrecision": 0.5951,
+      "weightedMeanIou": 0.5747,
+      "failingMajorParts": [
+        "red_trim_bands",
+        "closure_strap"
+      ],
+      "misassigned": [
+        "top_handle",
+        "closure_strap"
+      ],
+      "emptyVisibleParts": [],
+      "sharedOnlyParts": [
+        "main_compartment_shell"
+      ],
+      "sharedBoundaries": 4,
+      "aspectRatio": 1.198,
+      "lowConfidenceRoutes": 4,
+      "notes": [
+        "기준 미달 주요 파트 2개: red_trim_bands, closure_strap (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+        "배분이 의심되는 레이어 2개: top_handle, closure_strap",
+        "공유 경계로만 그려진 파트 1개: main_compartment_shell",
+        "사진↔도면 종횡비 불일치 19.8%",
+        "라우터가 확신하지 못한 성분 4개",
+        "면적 가중 평균 IoU 0.575 < 0.65"
+      ]
+    },
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
+  },
+  "timings": {
+    "S1_preprocess": 5545,
+    "S2_plan": 3,
+    "S3_masks": 2104,
+    "S4_schematic": 557,
+    "S5_evidence": 5023,
+    "S7_export": 36,
+    "S8_qa": 2311
+  },
+  "rescued": {
+    "stitch": [
+      37,
+      3627
+    ],
+    "detail": [
+      14,
+      4204
+    ]
+  },
+  "correspondence": {
+    "method": "global-similarity",
+    "aspectRatio": 1.1981499662514572,
+    "confident": true,
+    "note": ""
+  }
 }

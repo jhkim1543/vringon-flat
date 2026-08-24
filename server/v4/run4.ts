@@ -298,6 +298,9 @@ export async function runV4(
   const report = {
     job: { state: qa.state, canvas: scene.canvas, totalMs: Date.now() - t0, createdAt: new Date().toISOString() },
     options: opts, plan, counts, qa, timings,
+    // 해프톤 삭제에서 구제한 디테일 — [개수, px]. 0이 아니면 그만큼의 스티치·로고가
+    // 질감으로 오인돼 사라질 뻔했다는 뜻이다.
+    rescued: { stitch: evidence.rescuedStitch, detail: evidence.rescuedDetail },
     correspondence: scene.correspondence,
   };
   await fs.writeFile(path.join(jobDir, "qa_v4.json"), JSON.stringify(report, null, 2), "utf8");

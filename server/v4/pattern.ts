@@ -14,12 +14,24 @@
 import type { Pt } from "./types.js";
 import type { ComponentEvidence } from "./evidence.js";
 
-export interface MotifCluster {
+/**
+ * 패턴 후보의 최소 요건. 잉크 성분(ComponentEvidence)뿐 아니라 **선이 감싼 닫힌 면**도
+ * 이 꼴을 만족하면 모티프가 될 수 있다 — 비즈 알·아웃솔 러그·보석 알은 독립된 잉크
+ * 성분이 아니라 면이다. 면을 후보에서 빼면 패턴 검출기가 그것들을 영영 못 본다
+ * (실측: bag_3 터키석 603개가 각각 개별 면으로 나가 한 패스에 서브패스 1,089개).
+ */
+export interface PatternCandidate {
+  area: number;
+  bbox: [number, number, number, number];
+  contour: Pt[];
+}
+
+export interface MotifCluster<T extends PatternCandidate = ComponentEvidence> {
   /** 대표 모티프 (모티프 로컬 좌표, 좌상단 0,0) */
   motif: string;
   motifSize: [number, number];
   /** 이 군집에 속한 성분들 */
-  members: ComponentEvidence[];
+  members: T[];
   instances: { x: number; y: number; scale: number; rotate: number }[];
   /** 대표와 각 구성원의 형상 거리 (0=동일) */
   shapeDeviation: { mean: number; max: number };
@@ -60,7 +72,7 @@ const PROFILE_BINS = 24;
  * 중심에서 윤곽까지의 거리를 각도별로 재고 최대값으로 정규화한 뒤 **정렬**한다.
  * 정렬하면 회전에 불변이 되고, 비즈처럼 방향이 제각각인 모티프도 같은 군집으로 묶인다.
  */
-function descriptor(c: ComponentEvidence): number[] {
+function descriptor(c: PatternCandidate): number[] {
   const pts = c.contour;
   if (pts.length < 4) return new Array(PROFILE_BINS).fill(0);
   let cx = 0, cy = 0;
@@ -87,7 +99,7 @@ function descDistance(a: number[], b: number[]): number {
 }
 
 /** 성분의 마스크를 모티프 로컬 좌표의 폴리곤 패스로 (윤곽 그대로) */
-function motifPath(c: ComponentEvidence): string {
+function motifPath(c: PatternCandidate): string {
   const [x0, y0] = c.bbox;
   const pts = c.contour;
   if (pts.length < 3) return "";
@@ -103,11 +115,11 @@ function motifPath(c: ComponentEvidence): string {
  * 후보는 **작은 성분**뿐이다. 큰 구조선은 아무리 닮아도 모티프로 묶으면 안 된다 —
  * 도면의 정체성이 사라진다.
  */
-export function findPatterns(
-  comps: ComponentEvidence[],
+export function findPatterns<T extends PatternCandidate>(
+  comps: T[],
   canvasArea: number,
   opts: Partial<PatternOptions> = {},
-): MotifCluster[] {
+): MotifCluster<T>[] {
   const o = { ...DEFAULT_PATTERN_OPTIONS, ...opts };
   const cand = comps.filter((c) => c.area <= canvasArea * o.maxAreaShare && c.contour.length >= 6);
   if (cand.length < o.minMembers) return [];
@@ -115,7 +127,7 @@ export function findPatterns(
   const descs = cand.map(descriptor);
   const sizes = cand.map((c) => Math.sqrt(c.area));
   const used = new Uint8Array(cand.length);
-  const clusters: MotifCluster[] = [];
+  const clusters: MotifCluster<T>[] = [];
 
   // 큰 것부터 씨앗으로 삼는다 — 대표가 작으면 디테일이 뭉개진다
   const order = cand.map((_, i) => i).sort((a, b) => cand[b].area - cand[a].area);

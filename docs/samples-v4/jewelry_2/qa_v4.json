@@ -1,358 +1,399 @@
 {
- "job": {
-  "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW",
-  "canvas": {
-   "width": 1388,
-   "height": 2048,
-   "sourceWidth": 694,
-   "sourceHeight": 1024,
-   "supersample": 2
+  "job": {
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW",
+    "canvas": {
+      "width": 1388,
+      "height": 2048,
+      "sourceWidth": 694,
+      "sourceHeight": 1024,
+      "supersample": 2
+    },
+    "totalMs": 17422,
+    "createdAt": "2026-08-24T10:46:19.545Z"
   },
-  "totalMs": 10718,
-  "createdAt": "2026-08-24T07:48:46.549Z"
- },
- "options": {
-  "minParts": 3,
-  "maxParts": 10,
-  "grayscale": true,
-  "workLong": 1400,
-  "vectorLong": 2200,
-  "inkThreshold": 170,
-  "localContrast": 22,
-  "textureMode": "auto",
-  "categoryHint": "jewelry",
-  "schematicFrom": "outputs/v3/v3_jewelry_2_v31/schematics/schematic_4acc4e4fdf53f8ec.png",
-  "upscale": false
- },
- "plan": {
-  "category": "jewelry",
-  "objectNoun": "harp-shaped brooch",
-  "view": "oblique front view",
-  "parts": [
-   {
-    "id": "rear_clasp_hardware",
-    "label": "Rear brooch clasp hardware",
-    "description": "Pin, hinge, clasp, and projecting rear fittings visible along the right side behind the brooch body.",
-    "bbox": [
-     0.63,
-     0.31,
-     0.92,
-     0.77
-    ],
-    "z": 0,
-    "occludedBy": [
-     "outer_curved_spine",
-     "lower_frame_body"
-    ],
-    "kind": "component",
-    "confidence": 0.78
-   },
-   {
-    "id": "upper_tuning_pegs",
-    "label": "Upper tuning pegs",
-    "description": "Dark metal peg-like fittings projecting behind the upper neck plate.",
-    "bbox": [
-     0.29,
-     0.05,
-     0.54,
-     0.19
-    ],
-    "z": 1,
-    "occludedBy": [
-     "upper_neck_plate"
-    ],
-    "kind": "component",
-    "confidence": 0.82
-   },
-   {
-    "id": "string_wire_set",
-    "label": "String wire set",
-    "description": "Multiple thin metal wires spanning the open interior of the harp form.",
-    "bbox": [
-     0.3,
-     0.16,
-     0.58,
-     0.58
-    ],
-    "z": 2,
-    "occludedBy": [
-     "lower_frame_body",
-     "upper_neck_plate",
-     "front_leaf_ornament"
-    ],
-    "kind": "component",
-    "confidence": 0.94
-   },
-   {
-    "id": "outer_curved_spine",
-    "label": "Outer curved spine",
-    "description": "Dark-edged curved structural rail running down the right side of the harp.",
-    "bbox": [
-     0.45,
-     0.2,
-     0.84,
-     0.85
-    ],
-    "z": 3,
-    "occludedBy": [
-     "lower_frame_body",
-     "upper_neck_plate"
-    ],
-    "kind": "component",
-    "confidence": 0.9
-   },
-   {
-    "id": "lower_frame_body",
-    "label": "Lower frame and soundboard",
-    "description": "Large gold-toned lower body with the circular opening and tapered right soundboard.",
-    "bbox": [
-     0.08,
-     0.41,
-     0.78,
-     0.95
-    ],
-    "z": 4,
-    "occludedBy": [
-     "front_leaf_ornament"
-    ],
-    "kind": "component",
-    "confidence": 0.96
-   },
-   {
-    "id": "upper_neck_plate",
-    "label": "Upper neck plate",
-    "description": "Broad gold-toned curved plate crossing the top and joining the outer spine.",
-    "bbox": [
-     0.13,
-     0.09,
-     0.61,
-     0.31
-    ],
-    "z": 5,
-    "occludedBy": [
-     "neck_fasteners"
-    ],
-    "kind": "component",
-    "confidence": 0.95
-   },
-   {
-    "id": "front_leaf_ornament",
-    "label": "Front leaf ornament",
-    "description": "Raised dark-gold leaf-shaped decorative pieces mounted on the front of the lower body.",
-    "bbox": [
-     0.4,
-     0.47,
-     0.6,
-     0.64
-    ],
-    "z": 6,
-    "occludedBy": [],
-    "kind": "component",
-    "confidence": 0.86
-   },
-   {
-    "id": "neck_fasteners",
-    "label": "Neck fasteners",
-    "description": "Round rivet or screw heads securing the upper neck plate.",
-    "bbox": [
-     0.26,
-     0.13,
-     0.44,
-     0.23
-    ],
-    "z": 7,
-    "occludedBy": [],
-    "kind": "component",
-    "confidence": 0.93
-   }
-  ],
-  "provenance": {
-   "model": "gpt-5.6",
-   "promptVersion": "v3.parts.v1.0.0",
-   "inputSha256": "697c72dd900445b4bb00c61e441c76f938a1e1bf60d579842b28fbb9e922cafa",
-   "createdAt": "2026-08-22T04:45:58.352Z"
-  }
- },
- "counts": {
-  "GEOMETRIC_PRIMITIVE": 4,
-  "FACE_FILL": 43,
-  "OUTLINE_SHAPE": 4
- },
- "qa": {
-  "fidelity": {
-   "pass": true,
-   "f0": 0.9486,
-   "f1": 0.9883,
-   "f2": 0.9925,
-   "lineF1": 0.9883,
-   "lineF2": 0.9925,
-   "textureShare": 0,
-   "inkRatio": 1.011,
-   "chamfer": 0.08,
-   "p95": 1,
-   "detailRecall": 1,
-   "holes": [
-    49,
-    49
-   ],
-   "majorComponents": [
-    5,
-    4
-   ],
-   "notes": []
+  "options": {
+    "minParts": 3,
+    "maxParts": 10,
+    "grayscale": true,
+    "workLong": 1400,
+    "vectorLong": 2200,
+    "inkThreshold": 170,
+    "localContrast": 22,
+    "textureMode": "auto",
+    "categoryHint": "jewelry",
+    "schematicFrom": "outputs/v3/v3_jewelry_2_v31/schematics/schematic_4acc4e4fdf53f8ec.png",
+    "upscale": false
   },
-  "editability": {
-   "pass": true,
-   "paths": 51,
-   "subpaths": 104,
-   "maxSubpathsInPath": 39,
-   "objectComplexity": 155,
-   "anchors": 3683,
-   "uses": 0,
-   "kb": 152,
-   "anchorDensity": 4.73,
-   "shortPathRatio": 0.01,
-   "primitives": 4,
-   "anchorsSavedByPrimitives": 193,
-   "pathsSavedByPatterns": 0,
-   "editableReduction": {
-    "paths": 0,
-    "anchors": 0.093,
-    "kb": 0.088
-   },
-   "notes": []
-  },
-  "semantic": {
-   "pass": false,
-   "perPart": [
-    {
-     "id": "rear_clasp_hardware",
-     "label": "Rear brooch clasp hardware",
-     "kind": "area",
-     "paths": 12,
-     "areaShare": 0.0216,
-     "precision": 0.4905,
-     "recall": 0.5411,
-     "iou": 0.3464,
-     "boundaryF1": -1
-    },
-    {
-     "id": "upper_tuning_pegs",
-     "label": "Upper tuning pegs",
-     "kind": "area",
-     "paths": 3,
-     "areaShare": 0.0121,
-     "precision": 0.9898,
-     "recall": 0.6621,
-     "iou": 0.6576,
-     "boundaryF1": -1
-    },
-    {
-     "id": "string_wire_set",
-     "label": "String wire set",
-     "kind": "area",
-     "paths": 1,
-     "areaShare": 0.0261,
-     "precision": 0.6513,
-     "recall": 0.3286,
-     "iou": 0.2794,
-     "boundaryF1": -1
-    },
-    {
-     "id": "outer_curved_spine",
-     "label": "Outer curved spine",
-     "kind": "area",
-     "paths": 2,
-     "areaShare": 0.0241,
-     "precision": 0.7982,
-     "recall": 0.0883,
-     "iou": 0.0864,
-     "boundaryF1": -1
-    },
-    {
-     "id": "lower_frame_body",
-     "label": "Lower frame and soundboard",
-     "kind": "area",
-     "paths": 19,
-     "areaShare": 0.2985,
-     "precision": 0.8981,
-     "recall": 0.8802,
-     "iou": 0.8003,
-     "boundaryF1": -1
-    },
-    {
-     "id": "upper_neck_plate",
-     "label": "Upper neck plate",
-     "kind": "area",
-     "paths": 8,
-     "areaShare": 0.0389,
-     "precision": 0.3308,
-     "recall": 0.869,
-     "iou": 0.315,
-     "boundaryF1": -1
-    },
-    {
-     "id": "front_leaf_ornament",
-     "label": "Front leaf ornament",
-     "kind": "area",
-     "paths": 3,
-     "areaShare": 0.013,
-     "precision": 0.8779,
-     "recall": 0.5981,
-     "iou": 0.5521,
-     "boundaryF1": -1
-    },
-    {
-     "id": "neck_fasteners",
-     "label": "Neck fasteners",
-     "kind": "area",
-     "paths": 3,
-     "areaShare": 0.019,
-     "precision": 0.7304,
-     "recall": 0.0737,
-     "iou": 0.0718,
-     "boundaryF1": -1
+  "plan": {
+    "category": "jewelry",
+    "objectNoun": "harp brooch",
+    "view": "front three-quarter view",
+    "parts": [
+      {
+        "id": "pin_clasp_assembly",
+        "label": "Rear pin and clasp assembly",
+        "description": "Brooch fastening hardware projecting from behind the right side of the harp form.",
+        "bbox": [
+          0.493,
+          0.307,
+          0.695,
+          0.574
+        ],
+        "z": 0,
+        "occludedBy": [
+          "outer_column",
+          "main_body"
+        ],
+        "kind": "component",
+        "confidence": 0.82
+      },
+      {
+        "id": "string_set",
+        "label": "Harp string set",
+        "description": "Three slender metal strings spanning from the upper neck to the lower body.",
+        "bbox": [
+          0.451,
+          0.226,
+          0.557,
+          0.451
+        ],
+        "z": 1,
+        "occludedBy": [
+          "main_body",
+          "top_neck",
+          "leaf_appliques"
+        ],
+        "kind": "component",
+        "confidence": 0.94
+      },
+      {
+        "id": "tuning_tab_set",
+        "label": "Upper tuning tabs",
+        "description": "Pair of oval metal tabs rising behind the upper neck.",
+        "bbox": [
+          0.448,
+          0.157,
+          0.551,
+          0.238
+        ],
+        "z": 2,
+        "occludedBy": [
+          "top_neck"
+        ],
+        "kind": "component",
+        "confidence": 0.88
+      },
+      {
+        "id": "outer_column",
+        "label": "Curved outer column",
+        "description": "Dark-edged curved structural column running from the neck down the right side of the brooch.",
+        "bbox": [
+          0.524,
+          0.251,
+          0.662,
+          0.646
+        ],
+        "z": 3,
+        "occludedBy": [
+          "main_body",
+          "top_neck"
+        ],
+        "kind": "component",
+        "confidence": 0.91
+      },
+      {
+        "id": "main_body",
+        "label": "Main harp body and lower frame",
+        "description": "Gold-tone teardrop-shaped front body with a large oval opening forming the lower harp frame.",
+        "bbox": [
+          0.361,
+          0.365,
+          0.643,
+          0.677
+        ],
+        "z": 4,
+        "occludedBy": [
+          "leaf_appliques",
+          "engraved_flourish"
+        ],
+        "kind": "component",
+        "confidence": 0.97
+      },
+      {
+        "id": "top_neck",
+        "label": "Upper curved neck bar",
+        "description": "Pale metal curved crossbar joining the strings and outer column across the top.",
+        "bbox": [
+          0.381,
+          0.181,
+          0.568,
+          0.307
+        ],
+        "z": 5,
+        "occludedBy": [
+          "neck_rivets"
+        ],
+        "kind": "component",
+        "confidence": 0.96
+      },
+      {
+        "id": "leaf_appliques",
+        "label": "Decorative leaf appliques",
+        "description": "Raised gold-tone leaf ornaments attached to the front of the lower body.",
+        "bbox": [
+          0.362,
+          0.408,
+          0.565,
+          0.524
+        ],
+        "z": 6,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.9
+      },
+      {
+        "id": "neck_rivets",
+        "label": "Neck rivets",
+        "description": "Two round gold-tone fasteners visible on the upper neck bar.",
+        "bbox": [
+          0.436,
+          0.207,
+          0.507,
+          0.261
+        ],
+        "z": 7,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.96
+      },
+      {
+        "id": "engraved_flourish",
+        "label": "Engraved body flourish",
+        "description": "Narrow dark ornamental line engraved or cut into the front face of the main body.",
+        "bbox": [
+          0.568,
+          0.421,
+          0.602,
+          0.616
+        ],
+        "z": 8,
+        "occludedBy": [],
+        "kind": "marking",
+        "confidence": 0.88
+      }
+    ],
+    "provenance": {
+      "model": "gpt-5.6",
+      "promptVersion": "v3.parts.v1.0.0",
+      "inputSha256": "d294358c7a8364664b0e22788259b0dcba030cfaa7b7695b05877c7495abeb4f",
+      "createdAt": "2026-08-24T10:42:28.989Z"
     }
-   ],
-   "meanPrecision": 0.7209,
-   "weightedMeanIou": 0.6276,
-   "failingMajorParts": [
-    "rear_clasp_hardware",
-    "string_wire_set",
-    "outer_curved_spine",
-    "upper_neck_plate"
-   ],
-   "misassigned": [
-    "rear_clasp_hardware",
-    "upper_neck_plate"
-   ],
-   "emptyVisibleParts": [],
-   "sharedOnlyParts": [],
-   "sharedBoundaries": 37,
-   "aspectRatio": 1.007,
-   "lowConfidenceRoutes": 4,
-   "notes": [
-    "기준 미달 주요 파트 4개: rear_clasp_hardware, string_wire_set, outer_curved_spine, upper_neck_plate (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
-    "배분이 의심되는 레이어 2개: rear_clasp_hardware, upper_neck_plate",
-    "라우터가 확신하지 못한 성분 4개",
-    "면적 가중 평균 IoU 0.628 < 0.65"
-   ]
   },
-  "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
- },
- "timings": {
-  "S1_preprocess": 4960,
-  "S2_plan": 4,
-  "S3_masks": 1393,
-  "S4_schematic": 235,
-  "S5_evidence": 2420,
-  "S7_export": 24,
-  "S8_qa": 1606
- },
- "correspondence": {
-  "method": "global-similarity",
-  "aspectRatio": 1.0067506111079532,
-  "confident": true,
-  "note": "도면이 컬러로 생성됨 (채도 10%) — 색면을 그대로 옮긴다"
- }
+  "counts": {
+    "GEOMETRIC_PRIMITIVE": 4,
+    "FACE_FILL": 43,
+    "OUTLINE_SHAPE": 4
+  },
+  "qa": {
+    "fidelity": {
+      "pass": true,
+      "f0": 0.9486,
+      "f1": 0.9883,
+      "f2": 0.9925,
+      "lineF1": 0.9883,
+      "lineF2": 0.9925,
+      "textureShare": 0,
+      "inkRatio": 1.011,
+      "chamfer": 0.08,
+      "p95": 1,
+      "detailRecall": 1,
+      "holes": [
+        49,
+        49
+      ],
+      "majorComponents": [
+        5,
+        4
+      ],
+      "notes": []
+    },
+    "editability": {
+      "pass": true,
+      "paths": 51,
+      "subpaths": 104,
+      "maxSubpathsInPath": 39,
+      "objectComplexity": 155,
+      "anchors": 3683,
+      "uses": 0,
+      "kb": 151.8,
+      "anchorDensity": 4.73,
+      "shortPathRatio": 0.01,
+      "primitives": 4,
+      "anchorsSavedByPrimitives": 193,
+      "pathsSavedByPatterns": 0,
+      "editableReduction": {
+        "paths": 0,
+        "anchors": 0.093,
+        "kb": 0.087
+      },
+      "notes": []
+    },
+    "semantic": {
+      "pass": false,
+      "perPart": [
+        {
+          "id": "pin_clasp_assembly",
+          "label": "Rear pin and clasp assembly",
+          "kind": "area",
+          "paths": 7,
+          "areaShare": 0.2093,
+          "precision": 0.559,
+          "recall": 0.0856,
+          "iou": 0.0802,
+          "boundaryF1": -1
+        },
+        {
+          "id": "string_set",
+          "label": "Harp string set",
+          "kind": "area",
+          "paths": 4,
+          "areaShare": 0.0388,
+          "precision": 0.6721,
+          "recall": 0.2258,
+          "iou": 0.2034,
+          "boundaryF1": -1
+        },
+        {
+          "id": "tuning_tab_set",
+          "label": "Upper tuning tabs",
+          "kind": "area",
+          "paths": 0,
+          "areaShare": 0.0062,
+          "precision": 0,
+          "recall": 0,
+          "iou": 0,
+          "boundaryF1": 0
+        },
+        {
+          "id": "outer_column",
+          "label": "Curved outer column",
+          "kind": "area",
+          "paths": 0,
+          "areaShare": 0.0034,
+          "precision": 0,
+          "recall": 0,
+          "iou": 0,
+          "boundaryF1": 0
+        },
+        {
+          "id": "main_body",
+          "label": "Main harp body and lower frame",
+          "kind": "area",
+          "paths": 31,
+          "areaShare": 0.6065,
+          "precision": 0.8199,
+          "recall": 0.4907,
+          "iou": 0.4429,
+          "boundaryF1": -1
+        },
+        {
+          "id": "top_neck",
+          "label": "Upper curved neck bar",
+          "kind": "area",
+          "paths": 2,
+          "areaShare": 0.0423,
+          "precision": 0.5187,
+          "recall": 0.0151,
+          "iou": 0.0148,
+          "boundaryF1": -1
+        },
+        {
+          "id": "leaf_appliques",
+          "label": "Decorative leaf appliques",
+          "kind": "area",
+          "paths": 5,
+          "areaShare": 0.0653,
+          "precision": 0.6053,
+          "recall": 0.4092,
+          "iou": 0.323,
+          "boundaryF1": -1
+        },
+        {
+          "id": "neck_rivets",
+          "label": "Neck rivets",
+          "kind": "area",
+          "paths": 1,
+          "areaShare": 0.0159,
+          "precision": 0.7214,
+          "recall": 0.0388,
+          "iou": 0.0382,
+          "boundaryF1": -1
+        },
+        {
+          "id": "engraved_flourish",
+          "label": "Engraved body flourish",
+          "kind": "area",
+          "paths": 1,
+          "areaShare": 0.0188,
+          "precision": 1,
+          "recall": 0.0256,
+          "iou": 0.0256,
+          "boundaryF1": -1
+        }
+      ],
+      "meanPrecision": 0.544,
+      "weightedMeanIou": 0.3141,
+      "failingMajorParts": [
+        "pin_clasp_assembly",
+        "string_set",
+        "main_body",
+        "top_neck",
+        "leaf_appliques"
+      ],
+      "misassigned": [],
+      "emptyVisibleParts": [
+        "tuning_tab_set"
+      ],
+      "sharedOnlyParts": [
+        "outer_column"
+      ],
+      "sharedBoundaries": 37,
+      "aspectRatio": 1.604,
+      "lowConfidenceRoutes": 4,
+      "notes": [
+        "기준 미달 주요 파트 5개: pin_clasp_assembly, string_set, main_body, top_neck, leaf_appliques (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+        "패스가 없는 파트 1개: tuning_tab_set",
+        "공유 경계로만 그려진 파트 1개: outer_column",
+        "사진↔도면 종횡비 불일치 60.4%",
+        "라우터가 확신하지 못한 성분 4개",
+        "면적 가중 평균 IoU 0.314 < 0.65"
+      ]
+    },
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
+  },
+  "timings": {
+    "S1_preprocess": 5338,
+    "S2_plan": 3,
+    "S3_masks": 7871,
+    "S4_schematic": 236,
+    "S5_evidence": 2353,
+    "S7_export": 18,
+    "S8_qa": 1529
+  },
+  "rescued": {
+    "stitch": [
+      0,
+      0
+    ],
+    "detail": [
+      0,
+      0
+    ]
+  },
+  "correspondence": {
+    "method": "global-similarity",
+    "aspectRatio": 1.6038246554009583,
+    "confident": true,
+    "note": "도면이 컬러로 생성됨 (채도 10%) — 색면을 그대로 옮긴다"
+  }
 }

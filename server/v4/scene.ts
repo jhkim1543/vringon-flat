@@ -17,6 +17,7 @@ import { area, deltaE2000Rgb, dilate, toHex } from "../v2/raster.js";
 import { extractEvidence, traceContour, type EvidenceField, type ComponentEvidence } from "./evidence.js";
 import { bestFit, type FitResult } from "./primitives.js";
 import { findPatterns, findDashRuns } from "./pattern.js";
+import type { Pt } from "./types.js";
 import { routeComponent, DEFAULT_THRESHOLDS, type RouteThresholds } from "./router.js";
 import type {
   GeometricPrimitive, PartNode, PatternPrimitive, ScenePrimitive,
@@ -210,6 +211,7 @@ export async function buildScene(
     const enclosed = new Uint8Array(N);
     for (let i = 0; i < N; i++) if (!ev.inkFill[i] && !outside[i]) enclosed[i] = 1;
 
+    const epsWork = Math.min(1.6, opts.simplifyPx * ev.supersample);
     const faces = labelComponents(enclosed, W, H, 4, opts.minRegionPx * ev.supersample * ev.supersample);
     const faceTol = Math.min(W, H) * opts.thresholds.primitiveToleranceRatio;
     const faceMember = new Uint8Array(N);
@@ -258,11 +260,63 @@ export async function buildScene(
       return color;
     };
 
+    // ── 면 패턴: 같은 모양의 작은 면 수백 개는 개별 면이 아니라 반복이다 ──
+    //
+    // 프리미티브 적합보다 **먼저** 돈다. 아웃솔 러그·비즈 알이 각각 타원으로 승격되면
+    // 이후 패턴 검출기는 아무것도 못 본다(실측: shoe_3 프리미티브 208개 · bag_3 은
+    // 한 컴파운드 패스에 서브패스 1,089개).
+    const faceInPattern = new Set<number>();
+    {
+      const cands: { idx: number; area: number; bbox: [number, number, number, number]; contour: Pt[] }[] = [];
+      for (let fi = 0; fi < faces.components.length; fi++) {
+        const c = faces.components[fi];
+        if (c.area < opts.minRegionPx * 4 || c.area > N * 0.004) continue;
+        for (let k = 0; k < c.pixels.length; k++) faceMember[c.pixels[k]] = 1;
+        const contour = traceContour(c, W, H, faceMember);
+        for (let k = 0; k < c.pixels.length; k++) faceMember[c.pixels[k]] = 0;
+        if (contour.length < 6) continue;
+        cands.push({ idx: fi, area: c.area, bbox: [c.x0, c.y0, c.x1, c.y1], contour });
+      }
+      for (const cl of findPatterns(cands, N)) {
+        // 인스턴스마다 파트가 다를 수 있다 — 알알이 배정한다
+        const tally = new Map<string, number>();
+        const instances = cl.instances.map((inst, k) => {
+          const at = assignFace(faces.components[cl.members[k].idx].pixels);
+          if (at.id) tally.set(at.id, (tally.get(at.id) ?? 0) + 1);
+          return { ...inst, partId: at.id };
+        });
+        let major: string | undefined, majorN = 0;
+        for (const [id, n] of tally) if (n > majorN) { major = id; majorN = n; }
+        const rep0 = faces.components[cl.members[0].idx];
+        primitives.push({
+          id: nextId("fp"), cls: "REPEATING_PATTERN", paint: "fill",
+          motif: cl.motif, motifSize: cl.motifSize, instances,
+          fill: faceColor(rep0), pathsSaved: cl.pathsSaved,
+          area: cl.members.reduce((a, m) => a + m.area, 0),
+          bbox: [
+            Math.min(...cl.members.map((m) => m.bbox[0])), Math.min(...cl.members.map((m) => m.bbox[1])),
+            Math.max(...cl.members.map((m) => m.bbox[2])), Math.max(...cl.members.map((m) => m.bbox[3])),
+          ],
+          partId: major,
+          route: {
+            chosen: "REPEATING_PATTERN",
+            features: { members: cl.members.length, deviationMean: cl.shapeDeviation.mean, fromFaces: true },
+            why: `닫힌 면 ${cl.members.length}개가 같은 모티프 (형상 편차 평균 ${cl.shapeDeviation.mean})`,
+            confidence: Math.max(0.5, 1 - cl.shapeDeviation.mean * 3),
+          },
+        } as PatternPrimitive);
+        for (const m of cl.members) faceInPattern.add(m.idx);
+      }
+      if (faceInPattern.size) say?.(`면 패턴: ${faceInPattern.size}개 면을 모티프로 압축`);
+    }
+
     // **색 병합은 파트 배정 뒤에.** 먼저 화면 전체에서 같은 색끼리 묶으면 서로 다른 부품의
     // 흰 면들이 하나의 컴파운드 패스가 되고, 그 패스는 결국 파트 하나에만 들어간다 —
     // 가방 몸통·플랩·스트랩이 전부 회색/흰색이라 한 레이어로 몰렸다.
     const groups: { color: string; area: number; mask: Uint8Array; partId?: string; shared: string[] }[] = [];
-    for (const c of faces.components) {
+    for (let fi = 0; fi < faces.components.length; fi++) {
+      const c = faces.components[fi];
+      if (faceInPattern.has(fi)) continue;
       const at = assignFace(c.pixels);
 
       // **원은 성분이 아니라 면에 있다.** 버클 구멍·에어홀·리벳·보석 윤곽은 선이 감싼 닫힌
@@ -311,7 +365,7 @@ export async function buildScene(
     for (let gi = 0; gi < groups.length; gi++) {
       const g = groups[gi];
       const grown = dilate(g.mask, W, H, Math.max(1, Math.round(ev.supersample / 2)));
-      for (const d of await traceMask(grown, W, H, path.join(opts.workDir, `face_${gi}.png`), opts.simplifyPx)) {
+      for (const d of await traceMask(grown, W, H, path.join(opts.workDir, `face_${gi}.png`), epsWork)) {
         primitives.push({
           id: nextId("f"), cls: "FACE_FILL", area: g.area, bbox: [0, 0, W, H], d, fill: g.color,
           partId: g.partId, shared: g.shared.length ? g.shared : undefined,

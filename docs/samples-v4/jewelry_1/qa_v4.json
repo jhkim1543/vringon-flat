@@ -1,270 +1,226 @@
 {
- "job": {
-  "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW",
-  "canvas": {
-   "width": 2048,
-   "height": 1922,
-   "sourceWidth": 1024,
-   "sourceHeight": 961,
-   "supersample": 2
+  "job": {
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW",
+    "canvas": {
+      "width": 2048,
+      "height": 1922,
+      "sourceWidth": 1024,
+      "sourceHeight": 961,
+      "supersample": 2
+    },
+    "totalMs": 13619,
+    "createdAt": "2026-08-24T10:45:59.354Z"
   },
-  "totalMs": 11305,
-  "createdAt": "2026-08-24T07:48:32.906Z"
- },
- "options": {
-  "minParts": 3,
-  "maxParts": 10,
-  "grayscale": true,
-  "workLong": 1400,
-  "vectorLong": 2200,
-  "inkThreshold": 170,
-  "localContrast": 22,
-  "textureMode": "auto",
-  "categoryHint": "jewelry",
-  "schematicFrom": "outputs/v3/v3_jewelry_1_v31/schematics/schematic_322ac5ea05876435.png",
-  "upscale": false
- },
- "plan": {
-  "category": "jewelry",
-  "objectNoun": "hinged hoop earring",
-  "view": "front view, clasp open",
-  "parts": [
-   {
-    "id": "hinge_pivot",
-    "label": "Bottom hinge pivot",
-    "description": "Dark pivot element joining the two hinged hoop halves at the bottom seam.",
-    "bbox": [
-     0.48,
-     0.77,
-     0.57,
-     0.88
-    ],
-    "z": 0,
-    "occludedBy": [
-     "left_hoop_half",
-     "right_hoop_half"
-    ],
-    "kind": "component",
-    "confidence": 0.77
-   },
-   {
-    "id": "left_hoop_half",
-    "label": "Left hoop half",
-    "description": "Curved polished metal half extending from the bottom hinge to the upper-left open end.",
-    "bbox": [
-     0.05,
-     0.06,
-     0.51,
-     0.94
-    ],
-    "z": 1,
-    "occludedBy": [
-     "engraved_pattern"
-    ],
-    "kind": "component",
-    "confidence": 0.94
-   },
-   {
-    "id": "right_hoop_half",
-    "label": "Right hoop half",
-    "description": "Curved polished metal half extending from the bottom hinge to the upper-right clasp end.",
-    "bbox": [
-     0.52,
-     0.06,
-     0.95,
-     0.94
-    ],
-    "z": 2,
-    "occludedBy": [
-     "clasp_insert"
-    ],
-    "kind": "component",
-    "confidence": 0.94
-   },
-   {
-    "id": "clasp_insert",
-    "label": "Clasp insert",
-    "description": "Small dark latch or receiving insert fitted into the upper terminal of the right hoop half.",
-    "bbox": [
-     0.56,
-     0.05,
-     0.63,
-     0.11
-    ],
-    "z": 3,
-    "occludedBy": [],
-    "kind": "component",
-    "confidence": 0.71
-   },
-   {
-    "id": "engraved_pattern",
-    "label": "Engraved side pattern",
-    "description": "Repeated recessed decorative graphics along the outer-facing surface of the left hoop half.",
-    "bbox": [
-     0.05,
-     0.17,
-     0.18,
-     0.79
-    ],
-    "z": 4,
-    "occludedBy": [],
-    "kind": "marking",
-    "confidence": 0.8
-   }
-  ],
-  "provenance": {
-   "model": "gpt-5.6",
-   "promptVersion": "v3.parts.v1.0.0",
-   "inputSha256": "9254493c15b38bf53374ad6b74440a8dc697fbb1e2f50cef7bc2389cb583dc33",
-   "createdAt": "2026-08-22T04:44:37.129Z"
-  }
- },
- "counts": {
-  "GEOMETRIC_PRIMITIVE": 1,
-  "FACE_FILL": 12,
-  "OUTLINE_SHAPE": 1
- },
- "qa": {
-  "fidelity": {
-   "pass": true,
-   "f0": 0.967,
-   "f1": 0.991,
-   "f2": 0.9933,
-   "lineF1": 0.991,
-   "lineF2": 0.9933,
-   "textureShare": 0,
-   "inkRatio": 1.032,
-   "chamfer": 0.084,
-   "p95": 0,
-   "detailRecall": 1,
-   "holes": [
-    12,
-    13
-   ],
-   "majorComponents": [
-    1,
-    1
-   ],
-   "notes": []
+  "options": {
+    "minParts": 3,
+    "maxParts": 10,
+    "grayscale": true,
+    "workLong": 1400,
+    "vectorLong": 2200,
+    "inkThreshold": 170,
+    "localContrast": 22,
+    "textureMode": "auto",
+    "categoryHint": "jewelry",
+    "schematicFrom": "outputs/v3/v3_jewelry_1_v31/schematics/schematic_322ac5ea05876435.png",
+    "upscale": false
   },
-  "editability": {
-   "pass": true,
-   "paths": 14,
-   "subpaths": 27,
-   "maxSubpathsInPath": 14,
-   "objectComplexity": 41,
-   "anchors": 2604,
-   "uses": 0,
-   "kb": 108.8,
-   "anchorDensity": 4.94,
-   "shortPathRatio": 0,
-   "primitives": 1,
-   "anchorsSavedByPrimitives": 10,
-   "pathsSavedByPatterns": 0,
-   "editableReduction": {
-    "paths": 0,
-    "anchors": 0.07,
-    "kb": 0.068
-   },
-   "notes": []
-  },
-  "semantic": {
-   "pass": false,
-   "perPart": [
-    {
-     "id": "hinge_pivot",
-     "label": "Bottom hinge pivot",
-     "kind": "area",
-     "paths": 1,
-     "areaShare": 0.0128,
-     "precision": 0.9909,
-     "recall": 0.2436,
-     "iou": 0.2431,
-     "boundaryF1": -1
-    },
-    {
-     "id": "left_hoop_half",
-     "label": "Left hoop half",
-     "kind": "area",
-     "paths": 3,
-     "areaShare": 0.0808,
-     "precision": 0.4582,
-     "recall": 0.6684,
-     "iou": 0.3733,
-     "boundaryF1": -1
-    },
-    {
-     "id": "right_hoop_half",
-     "label": "Right hoop half",
-     "kind": "area",
-     "paths": 2,
-     "areaShare": 0.0712,
-     "precision": 0.942,
-     "recall": 0.3455,
-     "iou": 0.3383,
-     "boundaryF1": -1
-    },
-    {
-     "id": "clasp_insert",
-     "label": "Clasp insert",
-     "kind": "thin",
-     "paths": 2,
-     "areaShare": 0.0082,
-     "precision": 1,
-     "recall": 0.1014,
-     "iou": 0.1014,
-     "boundaryF1": 0.4033
-    },
-    {
-     "id": "engraved_pattern",
-     "label": "Engraved side pattern",
-     "kind": "area",
-     "paths": 6,
-     "areaShare": 0.0537,
-     "precision": 0.3791,
-     "recall": 0.6389,
-     "iou": 0.3122,
-     "boundaryF1": -1
+  "plan": {
+    "category": "jewelry",
+    "objectNoun": "open band ring",
+    "view": "front view",
+    "parts": [
+      {
+        "id": "ring_body",
+        "label": "Open metal ring body",
+        "description": "Single polished silver-tone open circular band, including both tapered ends and the decorative notch at the lower inner edge.",
+        "bbox": [
+          0.305,
+          0.238,
+          0.724,
+          0.852
+        ],
+        "z": 0,
+        "occludedBy": [
+          "side_engraving",
+          "tip_hallmark"
+        ],
+        "kind": "component",
+        "confidence": 0.97
+      },
+      {
+        "id": "side_engraving",
+        "label": "Engraved side lettering",
+        "description": "Recessed lettering engraved along the outer face of the left side of the ring body.",
+        "bbox": [
+          0.304,
+          0.324,
+          0.378,
+          0.697
+        ],
+        "z": 1,
+        "occludedBy": [],
+        "kind": "marking",
+        "confidence": 0.91
+      },
+      {
+        "id": "tip_hallmark",
+        "label": "Tip hallmark",
+        "description": "Small recessed hallmark or symbol on the front-facing end near the upper opening.",
+        "bbox": [
+          0.548,
+          0.242,
+          0.572,
+          0.282
+        ],
+        "z": 2,
+        "occludedBy": [],
+        "kind": "marking",
+        "confidence": 0.76
+      }
+    ],
+    "provenance": {
+      "model": "gpt-5.6",
+      "promptVersion": "v3.parts.v1.0.0",
+      "inputSha256": "d83e885ee915c282c70eef4b46512ad11f44fc56831a7a6e139c42770fcd8241",
+      "createdAt": "2026-08-24T10:41:39.271Z"
     }
-   ],
-   "meanPrecision": 0.754,
-   "weightedMeanIou": 0.3306,
-   "failingMajorParts": [
-    "left_hoop_half",
-    "right_hoop_half",
-    "engraved_pattern"
-   ],
-   "misassigned": [
-    "left_hoop_half",
-    "engraved_pattern"
-   ],
-   "emptyVisibleParts": [],
-   "sharedOnlyParts": [],
-   "sharedBoundaries": 6,
-   "aspectRatio": 1.01,
-   "lowConfidenceRoutes": 1,
-   "notes": [
-    "기준 미달 주요 파트 3개: left_hoop_half, right_hoop_half, engraved_pattern (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
-    "배분이 의심되는 레이어 2개: left_hoop_half, engraved_pattern",
-    "라우터가 확신하지 못한 성분 1개",
-    "면적 가중 평균 IoU 0.331 < 0.65"
-   ]
   },
-  "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
- },
- "timings": {
-  "S1_preprocess": 5052,
-  "S2_plan": 3,
-  "S3_masks": 712,
-  "S4_schematic": 239,
-  "S5_evidence": 3149,
-  "S7_export": 17,
-  "S8_qa": 2076
- },
- "correspondence": {
-  "method": "global-similarity",
-  "aspectRatio": 1.010476383745117,
-  "confident": true,
-  "note": ""
- }
+  "counts": {
+    "GEOMETRIC_PRIMITIVE": 1,
+    "FACE_FILL": 12,
+    "OUTLINE_SHAPE": 1
+  },
+  "qa": {
+    "fidelity": {
+      "pass": true,
+      "f0": 0.967,
+      "f1": 0.991,
+      "f2": 0.9933,
+      "lineF1": 0.991,
+      "lineF2": 0.9933,
+      "textureShare": 0,
+      "inkRatio": 1.032,
+      "chamfer": 0.084,
+      "p95": 0,
+      "detailRecall": 1,
+      "holes": [
+        12,
+        13
+      ],
+      "majorComponents": [
+        1,
+        1
+      ],
+      "notes": []
+    },
+    "editability": {
+      "pass": true,
+      "paths": 14,
+      "subpaths": 27,
+      "maxSubpathsInPath": 14,
+      "objectComplexity": 41,
+      "anchors": 2603,
+      "uses": 0,
+      "kb": 108.9,
+      "anchorDensity": 4.94,
+      "shortPathRatio": 0,
+      "primitives": 1,
+      "anchorsSavedByPrimitives": 10,
+      "pathsSavedByPatterns": 0,
+      "editableReduction": {
+        "paths": 0,
+        "anchors": 0.069,
+        "kb": 0.068
+      },
+      "notes": []
+    },
+    "semantic": {
+      "pass": false,
+      "perPart": [
+        {
+          "id": "ring_body",
+          "label": "Open metal ring body",
+          "kind": "area",
+          "paths": 12,
+          "areaShare": 0.4489,
+          "precision": 0.5292,
+          "recall": 0.2103,
+          "iou": 0.1772,
+          "boundaryF1": -1
+        },
+        {
+          "id": "side_engraving",
+          "label": "Engraved side lettering",
+          "kind": "area",
+          "paths": 2,
+          "areaShare": 0.1314,
+          "precision": 0.2132,
+          "recall": 0.1126,
+          "iou": 0.0795,
+          "boundaryF1": -1
+        },
+        {
+          "id": "tip_hallmark",
+          "label": "Tip hallmark",
+          "kind": "thin",
+          "paths": 0,
+          "areaShare": 0.001,
+          "precision": 0,
+          "recall": 0,
+          "iou": 0,
+          "boundaryF1": 0
+        }
+      ],
+      "meanPrecision": 0.2475,
+      "weightedMeanIou": 0.1548,
+      "failingMajorParts": [
+        "ring_body",
+        "side_engraving"
+      ],
+      "misassigned": [
+        "side_engraving"
+      ],
+      "emptyVisibleParts": [
+        "tip_hallmark"
+      ],
+      "sharedOnlyParts": [],
+      "sharedBoundaries": 12,
+      "aspectRatio": 1.382,
+      "lowConfidenceRoutes": 1,
+      "notes": [
+        "기준 미달 주요 파트 2개: ring_body, side_engraving (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+        "배분이 의심되는 레이어 1개: side_engraving",
+        "패스가 없는 파트 1개: tip_hallmark",
+        "사진↔도면 종횡비 불일치 38.2%",
+        "라우터가 확신하지 못한 성분 1개",
+        "면적 가중 평균 IoU 0.155 < 0.65"
+      ]
+    },
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
+  },
+  "timings": {
+    "S1_preprocess": 5541,
+    "S2_plan": 4,
+    "S3_masks": 3999,
+    "S4_schematic": 239,
+    "S5_evidence": 2638,
+    "S7_export": 14,
+    "S8_qa": 1133
+  },
+  "rescued": {
+    "stitch": [
+      0,
+      0
+    ],
+    "detail": [
+      0,
+      0
+    ]
+  },
+  "correspondence": {
+    "method": "global-similarity",
+    "aspectRatio": 1.382258064516129,
+    "confident": true,
+    "note": ""
+  }
 }

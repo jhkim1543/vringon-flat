@@ -42,6 +42,7 @@ import { centerlineTrace } from "../vector/centerline.js";
 import { optimizePathData } from "../vector/optimize.js";
 import { assignByCurve, samplePath } from "./pathSample.js";
 import { labelComponents, type Component } from "./label.js";
+import { rescueDetails } from "./detailRescue.js";
 import { area, close, deltaE2000Rgb, dilate, erode, toHex } from "../v2/raster.js";
 
 export type LineMode = "hybrid" | "outline" | "centerline";
@@ -148,6 +149,10 @@ export interface LineVectorResult {
     enclosedRatio: number;
     /** 해프톤으로 판정해 톤 면으로 바꾼 화면 비율 */
     textureRatio: number;
+    /** 해프톤 삭제 직전에 구제한 스티치 대시 (개수 · px) */
+    rescuedStitch: [number, number];
+    /** 크기·구멍으로 구제한 디테일(로고 문자 등) */
+    rescuedDetail: [number, number];
     /** 해프톤이 아닌데도 지워진 얼룩 — 0이어야 한다 */
     speckDroppedOutsideTexture: number;
     /** 질감이 그림을 지배해 톤 치환을 포기했는가 */
@@ -297,6 +302,8 @@ export async function vectorizeByLines(
   // 95.5%가 소실). 이제 **승인된 질감 클러스터 안의 점만** 지운다.
   const texture = new Uint8Array(N);
   let speckDroppedOutsideTexture = 0;
+  let rescuedStitch: [number, number] = [0, 0];
+  let rescuedDetail: [number, number] = [0, 0];
   let textureKept = false;
   let textureAreaShare = 0;
   let textureInkShare = 0;
@@ -363,6 +370,28 @@ export async function vectorizeByLines(
         textureInkShare = inkNow ? n / inkNow : 0;
       }
       void doomedPx;
+
+      // **삭제 직전의 마지막 심문.** 죽을 성분 중 스티치 대시·로고 문자를 살린다.
+      // V4.1 실측: 이 구제 없이는 bag_1 에서 스트랩 스티치와 ORBITEC 문자가
+      // 통째로 사라졌다(누락 1,297곳·3,668px). 국소 점 밀도만으로는 해프톤과
+      // 갈리지 않아, 사슬 방향성·크기·구멍으로 갈라낸다.
+      {
+        const r = rescueDetails(doomed, W, H);
+        if (r.keep.size) {
+          const spared: Component[] = [];
+          for (let i = 0; i < doomed.length; i++) {
+            if (!r.keep.has(i)) { spared.push(doomed[i]); continue; }
+            // 살린 성분은 질감 마스크에서도 뺀다 — QA 가 이 잉크의 손실을
+            // "의도된 질감 치환"으로 눈감아 주면 안 된다.
+            for (let k = 0; k < doomed[i].pixels.length; k++) texture[doomed[i].pixels[k]] = 0;
+          }
+          doomed.length = 0;
+          doomed.push(...spared);
+          rescuedStitch = [r.stitchCount, r.stitchPx];
+          rescuedDetail = [r.detailCount, r.detailPx];
+        }
+      }
+
       const suppress =
         o.textureMode === "tone" ? true :
         o.textureMode === "keep" ? false :
@@ -384,6 +413,11 @@ export async function vectorizeByLines(
   // closing이 가까운 평행선을 붙이고 교차점에 검은 혹을 만든다(실측: 성분 11→7,
   // 골격 끝점 57→27). 두 용도를 분리한다 — 면은 닫은 마스크로, 선은 원본 마스크로.
   const inkFill = close(ink, W, H, Math.max(1, Math.round(supersample / 2)));
+
+  // 단순화 허용오차는 **원본 좌표 기준**이어야 한다. 작업 캔버스는 supersample 배로
+  // 커져 있으므로 그대로 쓰면 원본 기준 0.4px 로 재는 셈 — 필요 이상으로 촘촘한
+  // 앵커가 생긴다 (외부 감사 지적, 실측으로 확인). 상한 1.6 은 과단순화 방지.
+  const epsWork = Math.min(1.6, o.simplifyPx * supersample);
 
   // ── 3) 라인을 장벽으로 flood fill → 닫힌 면 ───────────────
   const outside = new Uint8Array(N);
@@ -464,7 +498,7 @@ export async function vectorizeByLines(
     const g = groups[gi];
     // 면을 살짝 넓혀 선 중심까지 닿게 한다 — 면과 선 사이 틈 방지
     const grown = dilate(g.mask, W, H, Math.max(1, Math.round(supersample / 2)));
-    const traced = await traceMask(grown, W, H, path.join(workDir, `face_${gi}.png`), o.simplifyPx);
+    const traced = await traceMask(grown, W, H, path.join(workDir, `face_${gi}.png`), epsWork);
     if (!traced.length) { dropped++; continue; }
     for (const d of traced) {
       regions.push({ partId: g.partId, d, fill: g.color, stroke: null, strokeWidth: null, area: g.area, kind: "fill" });
@@ -481,7 +515,7 @@ export async function vectorizeByLines(
     await writeMask(ink, W, H, inkPng);
 
     if (o.mode === "outline") {
-      for (const d of await traceMask(ink, W, H, path.join(workDir, "outline.png"), o.simplifyPx)) {
+      for (const d of await traceMask(ink, W, H, path.join(workDir, "outline.png"), epsWork)) {
         strokes.push({ d, fill: "#111111", stroke: null, strokeWidth: null, area: 0, kind: "outline" });
         outlineCount++;
       }
@@ -519,7 +553,7 @@ export async function vectorizeByLines(
           centerlineCount++;
         }
         if (residN > N * 0.00002) {
-          for (const d of await traceMask(residual, W, H, path.join(workDir, "residual.png"), o.simplifyPx)) {
+          for (const d of await traceMask(residual, W, H, path.join(workDir, "residual.png"), epsWork)) {
             strokes.push({ d, fill: "#111111", stroke: null, strokeWidth: null, area: 0, kind: "outline" });
             outlineCount++;
           }
@@ -559,6 +593,8 @@ export async function vectorizeByLines(
       inkRatio: +(area(ink) / N).toFixed(4),
       enclosedRatio: +(enclosedN / N).toFixed(4),
       textureRatio: +(area(texture) / N).toFixed(4),
+      rescuedStitch,
+      rescuedDetail,
       speckDroppedOutsideTexture,
       textureKept,
       textureAreaShare: +textureAreaShare.toFixed(3),

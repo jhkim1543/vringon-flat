@@ -15,53 +15,54 @@
         "supersample": 2
       },
       "counts": {
-        "GEOMETRIC_PRIMITIVE": 3,
+        "GEOMETRIC_PRIMITIVE": 5,
         "FACE_FILL": 40,
-        "OUTLINE_SHAPE": 11
+        "OUTLINE_SHAPE": 28,
+        "REPEATING_PATTERN": 1
       },
       "qa": {
         "fidelity": {
           "pass": true,
-          "f0": 0.859,
-          "f1": 0.8926,
-          "f2": 0.8953,
-          "lineF1": 0.9952,
-          "lineF2": 0.9981,
-          "textureShare": 0.6183,
-          "inkRatio": 1.007,
-          "chamfer": 0.047,
+          "f0": 0.8719,
+          "f1": 0.9084,
+          "f2": 0.912,
+          "lineF1": 0.9926,
+          "lineF2": 0.9963,
+          "textureShare": 0.5882,
+          "inkRatio": 0.999,
+          "chamfer": 0.059,
           "p95": 0,
           "detailRecall": 1,
           "holes": [
             53,
-            51
+            55
           ],
           "majorComponents": [
             2,
             3
           ],
           "notes": [
-            "해프톤이 도면 잉크의 62% — 전체 F@2px 0.8953, 그 영역 뺀 선 충실도 0.9981"
+            "해프톤이 도면 잉크의 59% — 전체 F@2px 0.912, 그 영역 뺀 선 충실도 0.9963"
           ]
         },
         "editability": {
           "pass": true,
-          "paths": 54,
-          "subpaths": 116,
+          "paths": 74,
+          "subpaths": 171,
           "maxSubpathsInPath": 49,
-          "objectComplexity": 170,
-          "anchors": 5735,
-          "uses": 0,
-          "kb": 223.9,
-          "anchorDensity": 7,
-          "shortPathRatio": 0.017,
-          "primitives": 3,
-          "anchorsSavedByPrimitives": 30,
-          "pathsSavedByPatterns": 0,
+          "objectComplexity": 277,
+          "anchors": 6468,
+          "uses": 32,
+          "kb": 253.8,
+          "anchorDensity": 7.54,
+          "shortPathRatio": 0.012,
+          "primitives": 5,
+          "anchorsSavedByPrimitives": 67,
+          "pathsSavedByPatterns": 31,
           "editableReduction": {
-            "paths": 0.019,
-            "anchors": 0.102,
-            "kb": 0.1
+            "paths": 0.014,
+            "anchors": 0.118,
+            "kb": 0.111
           },
           "notes": []
         },
@@ -72,11 +73,11 @@
               "id": "top_handle",
               "label": "Top carry handle",
               "kind": "area",
-              "paths": 5,
+              "paths": 10,
               "areaShare": 0.0135,
-              "precision": 0.3077,
-              "recall": 0.0893,
-              "iou": 0.0744,
+              "precision": 0.3634,
+              "recall": 0.1147,
+              "iou": 0.0955,
               "boundaryF1": -1
             },
             {
@@ -94,11 +95,11 @@
               "id": "left_side_gusset",
               "label": "Left side gusset",
               "kind": "area",
-              "paths": 8,
+              "paths": 10,
               "areaShare": 0.0984,
-              "precision": 0.8417,
-              "recall": 0.7364,
-              "iou": 0.6468,
+              "precision": 0.8419,
+              "recall": 0.7379,
+              "iou": 0.6481,
               "boundaryF1": -1
             },
             {
@@ -116,11 +117,11 @@
               "id": "front_flap",
               "label": "Front cover flap",
               "kind": "area",
-              "paths": 10,
+              "paths": 16,
               "areaShare": 0.1922,
-              "precision": 0.7918,
-              "recall": 0.8449,
-              "iou": 0.6913,
+              "precision": 0.7935,
+              "recall": 0.844,
+              "iou": 0.692,
               "boundaryF1": -1
             },
             {
@@ -138,27 +139,27 @@
               "id": "closure_strap",
               "label": "Vertical closure strap",
               "kind": "area",
-              "paths": 9,
+              "paths": 16,
               "areaShare": 0.0401,
-              "precision": 0.2852,
-              "recall": 0.6816,
-              "iou": 0.2517,
+              "precision": 0.285,
+              "recall": 0.6811,
+              "iou": 0.2515,
               "boundaryF1": -1
             },
             {
               "id": "clasp_assembly",
               "label": "Front clasp assembly",
               "kind": "area",
-              "paths": 7,
+              "paths": 9,
               "areaShare": 0.0142,
-              "precision": 0.7661,
+              "precision": 0.76,
               "recall": 0.3778,
-              "iou": 0.3388,
+              "iou": 0.3376,
               "boundaryF1": -1
             }
           ],
-          "meanPrecision": 0.5887,
-          "weightedMeanIou": 0.5737,
+          "meanPrecision": 0.5951,
+          "weightedMeanIou": 0.5747,
           "failingMajorParts": [
             "red_trim_bands",
             "closure_strap"
@@ -173,26 +174,26 @@
           ],
           "sharedBoundaries": 4,
           "aspectRatio": 1.198,
-          "lowConfidenceRoutes": 3,
+          "lowConfidenceRoutes": 4,
           "notes": [
             "기준 미달 주요 파트 2개: red_trim_bands, closure_strap (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
             "배분이 의심되는 레이어 2개: top_handle, closure_strap",
             "공유 경계로만 그려진 파트 1개: main_compartment_shell",
             "사진↔도면 종횡비 불일치 19.8%",
-            "라우터가 확신하지 못한 성분 3개",
-            "면적 가중 평균 IoU 0.574 < 0.65"
+            "라우터가 확신하지 못한 성분 4개",
+            "면적 가중 평균 IoU 0.575 < 0.65"
           ]
         },
         "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
       },
       "timings": {
-        "S1_preprocess": 7711,
-        "S2_plan": 5,
-        "S3_masks": 1552,
-        "S4_schematic": 276,
-        "S5_evidence": 3111,
-        "S7_export": 16,
-        "S8_qa": 1417
+        "S1_preprocess": 5545,
+        "S2_plan": 3,
+        "S3_masks": 2104,
+        "S4_schematic": 557,
+        "S5_evidence": 5023,
+        "S7_export": 36,
+        "S8_qa": 2311
       },
       "correspondence": {
         "method": "global-similarity",
@@ -314,21 +315,21 @@
           "subpaths": 3602,
           "maxSubpathsInPath": 2738,
           "objectComplexity": 6835,
-          "anchors": 23294,
+          "anchors": 20146,
           "uses": 2602,
-          "kb": 1235.4,
-          "anchorDensity": 16.18,
-          "shortPathRatio": 0.182,
+          "kb": 1130.2,
+          "anchorDensity": 14.27,
+          "shortPathRatio": 0.202,
           "primitives": 522,
           "anchorsSavedByPrimitives": 4106,
           "pathsSavedByPatterns": 2585,
           "editableReduction": {
             "paths": 0.024,
-            "anchors": 0.714,
-            "kb": 0.42
+            "anchors": 0.669,
+            "kb": 0.366
           },
           "notes": [
-            "앵커 밀도 16.2/100px > 12",
+            "앵커 밀도 14.3/100px > 12",
             "한 패스에 서브패스 2738개 — Illustrator 에서 통째로 선택된다"
           ]
         },
@@ -352,9 +353,9 @@
               "kind": "area",
               "paths": 449,
               "areaShare": 0.227,
-              "precision": 0.7241,
-              "recall": 0.9247,
-              "iou": 0.6838,
+              "precision": 0.7227,
+              "recall": 0.9254,
+              "iou": 0.6829,
               "boundaryF1": -1
             },
             {
@@ -391,8 +392,8 @@
               "boundaryF1": -1
             }
           ],
-          "meanPrecision": 0.5532,
-          "weightedMeanIou": 0.5355,
+          "meanPrecision": 0.5529,
+          "weightedMeanIou": 0.5349,
           "failingMajorParts": [
             "metal_frame"
           ],
@@ -411,19 +412,19 @@
             "배분이 의심되는 레이어 1개: metal_frame",
             "공유 경계로만 그려진 파트 1개: chain_handle",
             "라우터가 확신하지 못한 성분 11개",
-            "면적 가중 평균 IoU 0.536 < 0.65"
+            "면적 가중 평균 IoU 0.535 < 0.65"
           ]
         },
         "state": "FIDELITY_REVIEW / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
       },
       "timings": {
-        "S1_preprocess": 5054,
-        "S2_plan": 10,
-        "S3_masks": 2543,
-        "S4_schematic": 285,
-        "S5_evidence": 3197,
+        "S1_preprocess": 5342,
+        "S2_plan": 4,
+        "S3_masks": 2691,
+        "S4_schematic": 306,
+        "S5_evidence": 3541,
         "S7_export": 55,
-        "S8_qa": 1471
+        "S8_qa": 1629
       },
       "correspondence": {
         "method": "global-similarity",
@@ -493,8 +494,9 @@
         "supersample": 2
       },
       "counts": {
-        "GEOMETRIC_PRIMITIVE": 70,
-        "FACE_FILL": 676,
+        "REPEATING_PATTERN": 13,
+        "GEOMETRIC_PRIMITIVE": 32,
+        "FACE_FILL": 320,
         "OUTLINE_SHAPE": 1
       },
       "qa": {
@@ -522,22 +524,22 @@
         },
         "editability": {
           "pass": false,
-          "paths": 747,
-          "subpaths": 1835,
+          "paths": 366,
+          "subpaths": 1454,
           "maxSubpathsInPath": 1089,
-          "objectComplexity": 2582,
-          "anchors": 19487,
-          "uses": 0,
-          "kb": 790.7,
-          "anchorDensity": 10.75,
-          "shortPathRatio": 0.005,
-          "primitives": 70,
-          "anchorsSavedByPrimitives": 913,
-          "pathsSavedByPatterns": 0,
+          "objectComplexity": 2218,
+          "anchors": 16230,
+          "uses": 398,
+          "kb": 651.7,
+          "anchorDensity": 11.67,
+          "shortPathRatio": 0.006,
+          "primitives": 32,
+          "anchorsSavedByPrimitives": 290,
+          "pathsSavedByPatterns": 385,
           "editableReduction": {
             "paths": 0,
-            "anchors": 0.118,
-            "kb": 0.104
+            "anchors": 0.126,
+            "kb": 0.11
           },
           "notes": [
             "한 패스에 서브패스 1089개 — Illustrator 에서 통째로 선택된다"
@@ -550,22 +552,22 @@
               "id": "inner_pouch",
               "label": "Inner pouch body",
               "kind": "area",
-              "paths": 49,
+              "paths": 36,
               "areaShare": 0.0038,
-              "precision": 0.0855,
-              "recall": 0.1195,
-              "iou": 0.0525,
+              "precision": 0.0918,
+              "recall": 0.1154,
+              "iou": 0.0539,
               "boundaryF1": -1
             },
             {
               "id": "chain_strap",
               "label": "Chain shoulder strap",
               "kind": "area",
-              "paths": 34,
+              "paths": 16,
               "areaShare": 0.0356,
-              "precision": 0.8927,
-              "recall": 0.4702,
-              "iou": 0.445,
+              "precision": 0.8914,
+              "recall": 0.4641,
+              "iou": 0.4393,
               "boundaryF1": -1
             },
             {
@@ -574,25 +576,25 @@
               "kind": "area",
               "paths": 19,
               "areaShare": 0.0103,
-              "precision": 0.5917,
-              "recall": 0.159,
-              "iou": 0.1433,
+              "precision": 0.6004,
+              "recall": 0.1476,
+              "iou": 0.1344,
               "boundaryF1": -1
             },
             {
               "id": "turquoise_stone_embellishments",
               "label": "Turquoise stone embellishments",
               "kind": "area",
-              "paths": 645,
+              "paths": 308,
               "areaShare": 0.1856,
-              "precision": 0.8317,
-              "recall": 0.9585,
-              "iou": 0.8028,
+              "precision": 0.8202,
+              "recall": 0.8803,
+              "iou": 0.7379,
               "boundaryF1": -1
             }
           ],
-          "meanPrecision": 0.6004,
-          "weightedMeanIou": 0.7077,
+          "meanPrecision": 0.601,
+          "weightedMeanIou": 0.6553,
           "failingMajorParts": [
             "chain_strap"
           ],
@@ -601,7 +603,7 @@
           ],
           "emptyVisibleParts": [],
           "sharedOnlyParts": [],
-          "sharedBoundaries": 665,
+          "sharedBoundaries": 41,
           "aspectRatio": 1.031,
           "lowConfidenceRoutes": 0,
           "notes": [
@@ -613,13 +615,13 @@
         "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
       },
       "timings": {
-        "S1_preprocess": 5206,
-        "S2_plan": 4,
-        "S3_masks": 5238,
-        "S4_schematic": 792,
-        "S5_evidence": 4138,
-        "S7_export": 79,
-        "S8_qa": 1626
+        "S1_preprocess": 5300,
+        "S2_plan": 3,
+        "S3_masks": 3397,
+        "S4_schematic": 336,
+        "S5_evidence": 2886,
+        "S7_export": 62,
+        "S8_qa": 1374
       },
       "correspondence": {
         "method": "global-similarity",
@@ -649,7 +651,7 @@
           "z": 3
         }
       ],
-      "sharedBoundaries": 665,
+      "sharedBoundaries": 41,
       "v3": {
         "paths": 1342,
         "anchors": 17362,
@@ -717,9 +719,9 @@
           "subpaths": 27,
           "maxSubpathsInPath": 14,
           "objectComplexity": 41,
-          "anchors": 2604,
+          "anchors": 2603,
           "uses": 0,
-          "kb": 108.8,
+          "kb": 108.9,
           "anchorDensity": 4.94,
           "shortPathRatio": 0,
           "primitives": 1,
@@ -727,7 +729,7 @@
           "pathsSavedByPatterns": 0,
           "editableReduction": {
             "paths": 0,
-            "anchors": 0.07,
+            "anchors": 0.069,
             "kb": 0.068
           },
           "notes": []
@@ -736,129 +738,99 @@
           "pass": false,
           "perPart": [
             {
-              "id": "hinge_pivot",
-              "label": "Bottom hinge pivot",
+              "id": "ring_body",
+              "label": "Open metal ring body",
               "kind": "area",
-              "paths": 1,
-              "areaShare": 0.0128,
-              "precision": 0.9909,
-              "recall": 0.2436,
-              "iou": 0.2431,
+              "paths": 12,
+              "areaShare": 0.4489,
+              "precision": 0.5292,
+              "recall": 0.2103,
+              "iou": 0.1772,
               "boundaryF1": -1
             },
             {
-              "id": "left_hoop_half",
-              "label": "Left hoop half",
-              "kind": "area",
-              "paths": 3,
-              "areaShare": 0.0808,
-              "precision": 0.4582,
-              "recall": 0.6684,
-              "iou": 0.3733,
-              "boundaryF1": -1
-            },
-            {
-              "id": "right_hoop_half",
-              "label": "Right hoop half",
+              "id": "side_engraving",
+              "label": "Engraved side lettering",
               "kind": "area",
               "paths": 2,
-              "areaShare": 0.0712,
-              "precision": 0.942,
-              "recall": 0.3455,
-              "iou": 0.3383,
+              "areaShare": 0.1314,
+              "precision": 0.2132,
+              "recall": 0.1126,
+              "iou": 0.0795,
               "boundaryF1": -1
             },
             {
-              "id": "clasp_insert",
-              "label": "Clasp insert",
+              "id": "tip_hallmark",
+              "label": "Tip hallmark",
               "kind": "thin",
-              "paths": 2,
-              "areaShare": 0.0082,
-              "precision": 1,
-              "recall": 0.1014,
-              "iou": 0.1014,
-              "boundaryF1": 0.4033
-            },
-            {
-              "id": "engraved_pattern",
-              "label": "Engraved side pattern",
-              "kind": "area",
-              "paths": 6,
-              "areaShare": 0.0537,
-              "precision": 0.3791,
-              "recall": 0.6389,
-              "iou": 0.3122,
-              "boundaryF1": -1
+              "paths": 0,
+              "areaShare": 0.001,
+              "precision": 0,
+              "recall": 0,
+              "iou": 0,
+              "boundaryF1": 0
             }
           ],
-          "meanPrecision": 0.754,
-          "weightedMeanIou": 0.3306,
+          "meanPrecision": 0.2475,
+          "weightedMeanIou": 0.1548,
           "failingMajorParts": [
-            "left_hoop_half",
-            "right_hoop_half",
-            "engraved_pattern"
+            "ring_body",
+            "side_engraving"
           ],
           "misassigned": [
-            "left_hoop_half",
-            "engraved_pattern"
+            "side_engraving"
           ],
-          "emptyVisibleParts": [],
+          "emptyVisibleParts": [
+            "tip_hallmark"
+          ],
           "sharedOnlyParts": [],
-          "sharedBoundaries": 6,
-          "aspectRatio": 1.01,
+          "sharedBoundaries": 12,
+          "aspectRatio": 1.382,
           "lowConfidenceRoutes": 1,
           "notes": [
-            "기준 미달 주요 파트 3개: left_hoop_half, right_hoop_half, engraved_pattern (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
-            "배분이 의심되는 레이어 2개: left_hoop_half, engraved_pattern",
+            "기준 미달 주요 파트 2개: ring_body, side_engraving (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+            "배분이 의심되는 레이어 1개: side_engraving",
+            "패스가 없는 파트 1개: tip_hallmark",
+            "사진↔도면 종횡비 불일치 38.2%",
             "라우터가 확신하지 못한 성분 1개",
-            "면적 가중 평균 IoU 0.331 < 0.65"
+            "면적 가중 평균 IoU 0.155 < 0.65"
           ]
         },
         "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
       },
       "timings": {
-        "S1_preprocess": 5052,
-        "S2_plan": 3,
-        "S3_masks": 712,
+        "S1_preprocess": 5541,
+        "S2_plan": 4,
+        "S3_masks": 3999,
         "S4_schematic": 239,
-        "S5_evidence": 3149,
-        "S7_export": 17,
-        "S8_qa": 2076
+        "S5_evidence": 2638,
+        "S7_export": 14,
+        "S8_qa": 1133
       },
       "correspondence": {
         "method": "global-similarity",
-        "aspectRatio": 1.010476383745117,
+        "aspectRatio": 1.382258064516129,
         "confident": true,
         "note": ""
       },
       "parts": [
         {
-          "id": "hinge_pivot",
-          "label": "Bottom hinge pivot",
+          "id": "ring_body",
+          "label": "Open metal ring body",
           "z": 0
         },
         {
-          "id": "left_hoop_half",
-          "label": "Left hoop half",
+          "id": "side_engraving",
+          "label": "Engraved side lettering",
           "z": 1
         },
         {
-          "id": "right_hoop_half",
-          "label": "Right hoop half",
+          "id": "tip_hallmark",
+          "label": "Tip hallmark",
           "z": 2
-        },
-        {
-          "id": "clasp_insert",
-          "label": "Clasp insert",
-          "z": 3
-        },
-        {
-          "id": "engraved_pattern",
-          "label": "Engraved side pattern",
-          "z": 4
         }
       ],
-      "sharedBoundaries": 6,
+      "sharedBoundaries": 12,
       "v3": {
         "paths": 82,
         "anchors": 2391,
@@ -928,7 +900,7 @@
           "objectComplexity": 155,
           "anchors": 3683,
           "uses": 0,
-          "kb": 152,
+          "kb": 151.8,
           "anchorDensity": 4.73,
           "shortPathRatio": 0.01,
           "primitives": 4,
@@ -937,7 +909,7 @@
           "editableReduction": {
             "paths": 0,
             "anchors": 0.093,
-            "kb": 0.088
+            "kb": 0.087
           },
           "notes": []
         },
@@ -945,175 +917,195 @@
           "pass": false,
           "perPart": [
             {
-              "id": "rear_clasp_hardware",
-              "label": "Rear brooch clasp hardware",
+              "id": "pin_clasp_assembly",
+              "label": "Rear pin and clasp assembly",
               "kind": "area",
-              "paths": 12,
-              "areaShare": 0.0216,
-              "precision": 0.4905,
-              "recall": 0.5411,
-              "iou": 0.3464,
+              "paths": 7,
+              "areaShare": 0.2093,
+              "precision": 0.559,
+              "recall": 0.0856,
+              "iou": 0.0802,
               "boundaryF1": -1
             },
             {
-              "id": "upper_tuning_pegs",
-              "label": "Upper tuning pegs",
+              "id": "string_set",
+              "label": "Harp string set",
               "kind": "area",
-              "paths": 3,
-              "areaShare": 0.0121,
-              "precision": 0.9898,
-              "recall": 0.6621,
-              "iou": 0.6576,
+              "paths": 4,
+              "areaShare": 0.0388,
+              "precision": 0.6721,
+              "recall": 0.2258,
+              "iou": 0.2034,
               "boundaryF1": -1
             },
             {
-              "id": "string_wire_set",
-              "label": "String wire set",
+              "id": "tuning_tab_set",
+              "label": "Upper tuning tabs",
               "kind": "area",
-              "paths": 1,
-              "areaShare": 0.0261,
-              "precision": 0.6513,
-              "recall": 0.3286,
-              "iou": 0.2794,
+              "paths": 0,
+              "areaShare": 0.0062,
+              "precision": 0,
+              "recall": 0,
+              "iou": 0,
+              "boundaryF1": 0
+            },
+            {
+              "id": "outer_column",
+              "label": "Curved outer column",
+              "kind": "area",
+              "paths": 0,
+              "areaShare": 0.0034,
+              "precision": 0,
+              "recall": 0,
+              "iou": 0,
+              "boundaryF1": 0
+            },
+            {
+              "id": "main_body",
+              "label": "Main harp body and lower frame",
+              "kind": "area",
+              "paths": 31,
+              "areaShare": 0.6065,
+              "precision": 0.8199,
+              "recall": 0.4907,
+              "iou": 0.4429,
               "boundaryF1": -1
             },
             {
-              "id": "outer_curved_spine",
-              "label": "Outer curved spine",
+              "id": "top_neck",
+              "label": "Upper curved neck bar",
               "kind": "area",
               "paths": 2,
-              "areaShare": 0.0241,
-              "precision": 0.7982,
-              "recall": 0.0883,
-              "iou": 0.0864,
+              "areaShare": 0.0423,
+              "precision": 0.5187,
+              "recall": 0.0151,
+              "iou": 0.0148,
               "boundaryF1": -1
             },
             {
-              "id": "lower_frame_body",
-              "label": "Lower frame and soundboard",
+              "id": "leaf_appliques",
+              "label": "Decorative leaf appliques",
               "kind": "area",
-              "paths": 19,
-              "areaShare": 0.2985,
-              "precision": 0.8981,
-              "recall": 0.8802,
-              "iou": 0.8003,
+              "paths": 5,
+              "areaShare": 0.0653,
+              "precision": 0.6053,
+              "recall": 0.4092,
+              "iou": 0.323,
               "boundaryF1": -1
             },
             {
-              "id": "upper_neck_plate",
-              "label": "Upper neck plate",
+              "id": "neck_rivets",
+              "label": "Neck rivets",
               "kind": "area",
-              "paths": 8,
-              "areaShare": 0.0389,
-              "precision": 0.3308,
-              "recall": 0.869,
-              "iou": 0.315,
+              "paths": 1,
+              "areaShare": 0.0159,
+              "precision": 0.7214,
+              "recall": 0.0388,
+              "iou": 0.0382,
               "boundaryF1": -1
             },
             {
-              "id": "front_leaf_ornament",
-              "label": "Front leaf ornament",
+              "id": "engraved_flourish",
+              "label": "Engraved body flourish",
               "kind": "area",
-              "paths": 3,
-              "areaShare": 0.013,
-              "precision": 0.8779,
-              "recall": 0.5981,
-              "iou": 0.5521,
-              "boundaryF1": -1
-            },
-            {
-              "id": "neck_fasteners",
-              "label": "Neck fasteners",
-              "kind": "area",
-              "paths": 3,
-              "areaShare": 0.019,
-              "precision": 0.7304,
-              "recall": 0.0737,
-              "iou": 0.0718,
+              "paths": 1,
+              "areaShare": 0.0188,
+              "precision": 1,
+              "recall": 0.0256,
+              "iou": 0.0256,
               "boundaryF1": -1
             }
           ],
-          "meanPrecision": 0.7209,
-          "weightedMeanIou": 0.6276,
+          "meanPrecision": 0.544,
+          "weightedMeanIou": 0.3141,
           "failingMajorParts": [
-            "rear_clasp_hardware",
-            "string_wire_set",
-            "outer_curved_spine",
-            "upper_neck_plate"
+            "pin_clasp_assembly",
+            "string_set",
+            "main_body",
+            "top_neck",
+            "leaf_appliques"
           ],
-          "misassigned": [
-            "rear_clasp_hardware",
-            "upper_neck_plate"
+          "misassigned": [],
+          "emptyVisibleParts": [
+            "tuning_tab_set"
           ],
-          "emptyVisibleParts": [],
-          "sharedOnlyParts": [],
+          "sharedOnlyParts": [
+            "outer_column"
+          ],
           "sharedBoundaries": 37,
-          "aspectRatio": 1.007,
+          "aspectRatio": 1.604,
           "lowConfidenceRoutes": 4,
           "notes": [
-            "기준 미달 주요 파트 4개: rear_clasp_hardware, string_wire_set, outer_curved_spine, upper_neck_plate (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
-            "배분이 의심되는 레이어 2개: rear_clasp_hardware, upper_neck_plate",
+            "기준 미달 주요 파트 5개: pin_clasp_assembly, string_set, main_body, top_neck, leaf_appliques (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+            "패스가 없는 파트 1개: tuning_tab_set",
+            "공유 경계로만 그려진 파트 1개: outer_column",
+            "사진↔도면 종횡비 불일치 60.4%",
             "라우터가 확신하지 못한 성분 4개",
-            "면적 가중 평균 IoU 0.628 < 0.65"
+            "면적 가중 평균 IoU 0.314 < 0.65"
           ]
         },
         "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
       },
       "timings": {
-        "S1_preprocess": 4960,
-        "S2_plan": 4,
-        "S3_masks": 1393,
-        "S4_schematic": 235,
-        "S5_evidence": 2420,
-        "S7_export": 24,
-        "S8_qa": 1606
+        "S1_preprocess": 5338,
+        "S2_plan": 3,
+        "S3_masks": 7871,
+        "S4_schematic": 236,
+        "S5_evidence": 2353,
+        "S7_export": 18,
+        "S8_qa": 1529
       },
       "correspondence": {
         "method": "global-similarity",
-        "aspectRatio": 1.0067506111079532,
+        "aspectRatio": 1.6038246554009583,
         "confident": true,
         "note": "도면이 컬러로 생성됨 (채도 10%) — 색면을 그대로 옮긴다"
       },
       "parts": [
         {
-          "id": "rear_clasp_hardware",
-          "label": "Rear brooch clasp hardware",
+          "id": "pin_clasp_assembly",
+          "label": "Rear pin and clasp assembly",
           "z": 0
         },
         {
-          "id": "upper_tuning_pegs",
-          "label": "Upper tuning pegs",
+          "id": "string_set",
+          "label": "Harp string set",
           "z": 1
         },
         {
-          "id": "string_wire_set",
-          "label": "String wire set",
+          "id": "tuning_tab_set",
+          "label": "Upper tuning tabs",
           "z": 2
         },
         {
-          "id": "outer_curved_spine",
-          "label": "Outer curved spine",
+          "id": "outer_column",
+          "label": "Curved outer column",
           "z": 3
         },
         {
-          "id": "lower_frame_body",
-          "label": "Lower frame and soundboard",
+          "id": "main_body",
+          "label": "Main harp body and lower frame",
           "z": 4
         },
         {
-          "id": "upper_neck_plate",
-          "label": "Upper neck plate",
+          "id": "top_neck",
+          "label": "Upper curved neck bar",
           "z": 5
         },
         {
-          "id": "front_leaf_ornament",
-          "label": "Front leaf ornament",
+          "id": "leaf_appliques",
+          "label": "Decorative leaf appliques",
           "z": 6
         },
         {
-          "id": "neck_fasteners",
-          "label": "Neck fasteners",
+          "id": "neck_rivets",
+          "label": "Neck rivets",
           "z": 7
+        },
+        {
+          "id": "engraved_flourish",
+          "label": "Engraved body flourish",
+          "z": 8
         }
       ],
       "sharedBoundaries": 37,
@@ -1189,18 +1181,18 @@
           "subpaths": 234,
           "maxSubpathsInPath": 46,
           "objectComplexity": 361,
-          "anchors": 3618,
+          "anchors": 3570,
           "uses": 0,
-          "kb": 145.3,
-          "anchorDensity": 6.63,
+          "kb": 144,
+          "anchorDensity": 6.54,
           "shortPathRatio": 0.026,
           "primitives": 21,
           "anchorsSavedByPrimitives": 161,
           "pathsSavedByPatterns": 0,
           "editableReduction": {
             "paths": 0.228,
-            "anchors": 0.207,
-            "kb": 0.187
+            "anchors": 0.197,
+            "kb": 0.179
           },
           "notes": []
         },
@@ -1208,193 +1200,196 @@
           "pass": false,
           "perPart": [
             {
-              "id": "rear_ring_band",
+              "id": "rear_band",
               "label": "Rear ring band",
               "kind": "area",
               "paths": 2,
-              "areaShare": 0.0246,
-              "precision": 0.7603,
-              "recall": 0.8147,
-              "iou": 0.6482,
+              "areaShare": 0.0337,
+              "precision": 0.8319,
+              "recall": 0.657,
+              "iou": 0.58,
               "boundaryF1": -1
             },
             {
-              "id": "rear_ring_pearl",
-              "label": "Rear ring pearl",
-              "kind": "area",
-              "paths": 22,
-              "areaShare": 0.0274,
-              "precision": 0.9924,
-              "recall": 0.7859,
-              "iou": 0.7812,
-              "boundaryF1": -1
-            },
-            {
-              "id": "rear_ring_setting",
-              "label": "Rear ring setting",
-              "kind": "area",
-              "paths": 1,
-              "areaShare": 0.0087,
-              "precision": 0.2226,
-              "recall": 0.3989,
-              "iou": 0.1667,
-              "boundaryF1": -1
-            },
-            {
-              "id": "center_ring_band",
-              "label": "Center ring band",
-              "kind": "area",
-              "paths": 4,
-              "areaShare": 0.014,
-              "precision": 0.7627,
-              "recall": 0.4418,
-              "iou": 0.3884,
-              "boundaryF1": -1
-            },
-            {
-              "id": "center_ring_gemstone",
-              "label": "Center ring gemstone",
-              "kind": "area",
-              "paths": 52,
-              "areaShare": 0.075,
-              "precision": 0.9346,
-              "recall": 0.9432,
-              "iou": 0.8848,
-              "boundaryF1": -1
-            },
-            {
-              "id": "center_ring_bezel",
-              "label": "Center ring bezel",
-              "kind": "area",
+              "id": "rear_gemstone",
+              "label": "Rear gemstone",
+              "kind": "thin",
               "paths": 0,
-              "areaShare": 0.0115,
+              "areaShare": 0.0022,
               "precision": 0,
               "recall": 0,
               "iou": 0,
               "boundaryF1": 0
             },
             {
-              "id": "front_ring_band",
-              "label": "Front ring band",
+              "id": "rear_bezel",
+              "label": "Rear bezel setting",
+              "kind": "area",
+              "paths": 21,
+              "areaShare": 0.0319,
+              "precision": 0.7228,
+              "recall": 0.8377,
+              "iou": 0.634,
+              "boundaryF1": -1
+            },
+            {
+              "id": "middle_band",
+              "label": "Middle ring band",
               "kind": "area",
               "paths": 6,
-              "areaShare": 0.0411,
-              "precision": 0.5145,
-              "recall": 0.7692,
-              "iou": 0.4457,
+              "areaShare": 0.0218,
+              "precision": 0.5693,
+              "recall": 0.2172,
+              "iou": 0.1865,
               "boundaryF1": -1
             },
             {
-              "id": "front_ring_gemstone",
-              "label": "Front ring gemstone",
+              "id": "middle_gemstone",
+              "label": "Middle gemstone",
               "kind": "area",
-              "paths": 35,
-              "areaShare": 0.0691,
-              "precision": 0.9878,
-              "recall": 0.7998,
-              "iou": 0.792,
+              "paths": 44,
+              "areaShare": 0.0656,
+              "precision": 0.8384,
+              "recall": 0.9329,
+              "iou": 0.7907,
               "boundaryF1": -1
             },
             {
-              "id": "front_ring_bezel",
-              "label": "Front ring bezel",
+              "id": "middle_bezel",
+              "label": "Middle bezel setting",
               "kind": "area",
-              "paths": 5,
-              "areaShare": 0.0167,
-              "precision": 0.241,
-              "recall": 0.7971,
-              "iou": 0.2271,
+              "paths": 3,
+              "areaShare": 0.0284,
+              "precision": 0.6801,
+              "recall": 0.0496,
+              "iou": 0.0484,
+              "boundaryF1": -1
+            },
+            {
+              "id": "front_band",
+              "label": "Front ring band",
+              "kind": "area",
+              "paths": 11,
+              "areaShare": 0.0775,
+              "precision": 0.7377,
+              "recall": 0.6133,
+              "iou": 0.5035,
+              "boundaryF1": -1
+            },
+            {
+              "id": "front_gemstone",
+              "label": "Front gemstone",
+              "kind": "area",
+              "paths": 34,
+              "areaShare": 0.0651,
+              "precision": 0.9103,
+              "recall": 0.784,
+              "iou": 0.7277,
+              "boundaryF1": -1
+            },
+            {
+              "id": "front_bezel",
+              "label": "Front bezel setting",
+              "kind": "area",
+              "paths": 6,
+              "areaShare": 0.042,
+              "precision": 0.299,
+              "recall": 0.4082,
+              "iou": 0.2086,
               "boundaryF1": -1
             }
           ],
-          "meanPrecision": 0.6018,
-          "weightedMeanIou": 0.6506,
+          "meanPrecision": 0.6211,
+          "weightedMeanIou": 0.5221,
           "failingMajorParts": [
-            "front_ring_band"
+            "middle_band",
+            "middle_bezel",
+            "front_bezel"
           ],
           "misassigned": [
-            "rear_ring_setting",
-            "front_ring_bezel"
+            "front_bezel"
           ],
-          "emptyVisibleParts": [],
-          "sharedOnlyParts": [
-            "center_ring_bezel"
+          "emptyVisibleParts": [
+            "rear_gemstone"
           ],
-          "sharedBoundaries": 7,
-          "aspectRatio": 1,
+          "sharedOnlyParts": [],
+          "sharedBoundaries": 12,
+          "aspectRatio": 1.057,
           "lowConfidenceRoutes": 19,
           "notes": [
-            "기준 미달 주요 파트 1개: front_ring_band (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
-            "배분이 의심되는 레이어 2개: rear_ring_setting, front_ring_bezel",
-            "공유 경계로만 그려진 파트 1개: center_ring_bezel",
-            "라우터가 확신하지 못한 성분 19개"
+            "기준 미달 주요 파트 3개: middle_band, middle_bezel, front_bezel (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+            "배분이 의심되는 레이어 1개: front_bezel",
+            "패스가 없는 파트 1개: rear_gemstone",
+            "사진↔도면 종횡비 불일치 5.7%",
+            "라우터가 확신하지 못한 성분 19개",
+            "면적 가중 평균 IoU 0.522 < 0.65"
           ]
         },
         "state": "FIDELITY_REVIEW / EDITABILITY_PASS / SEMANTIC_REVIEW"
       },
       "timings": {
-        "S1_preprocess": 4853,
-        "S2_plan": 3,
-        "S3_masks": 2154,
-        "S4_schematic": 255,
-        "S5_evidence": 2412,
-        "S7_export": 14,
-        "S8_qa": 1321
+        "S1_preprocess": 5722,
+        "S2_plan": 6,
+        "S3_masks": 4480,
+        "S4_schematic": 577,
+        "S5_evidence": 6585,
+        "S7_export": 48,
+        "S8_qa": 2801
       },
       "correspondence": {
         "method": "global-similarity",
-        "aspectRatio": 1.0003705533596838,
+        "aspectRatio": 1.0566916083745643,
         "confident": true,
         "note": "도면이 컬러로 생성됨 (채도 12%) — 색면을 그대로 옮긴다"
       },
       "parts": [
         {
-          "id": "rear_ring_band",
+          "id": "rear_band",
           "label": "Rear ring band",
           "z": 0
         },
         {
-          "id": "rear_ring_pearl",
-          "label": "Rear ring pearl",
+          "id": "rear_gemstone",
+          "label": "Rear gemstone",
           "z": 1
         },
         {
-          "id": "rear_ring_setting",
-          "label": "Rear ring setting",
+          "id": "rear_bezel",
+          "label": "Rear bezel setting",
           "z": 2
         },
         {
-          "id": "center_ring_band",
-          "label": "Center ring band",
+          "id": "middle_band",
+          "label": "Middle ring band",
           "z": 3
         },
         {
-          "id": "center_ring_gemstone",
-          "label": "Center ring gemstone",
+          "id": "middle_gemstone",
+          "label": "Middle gemstone",
           "z": 4
         },
         {
-          "id": "center_ring_bezel",
-          "label": "Center ring bezel",
+          "id": "middle_bezel",
+          "label": "Middle bezel setting",
           "z": 5
         },
         {
-          "id": "front_ring_band",
+          "id": "front_band",
           "label": "Front ring band",
           "z": 6
         },
         {
-          "id": "front_ring_gemstone",
-          "label": "Front ring gemstone",
+          "id": "front_gemstone",
+          "label": "Front gemstone",
           "z": 7
         },
         {
-          "id": "front_ring_bezel",
-          "label": "Front ring bezel",
+          "id": "front_bezel",
+          "label": "Front bezel setting",
           "z": 8
         }
       ],
-      "sharedBoundaries": 7,
+      "sharedBoundaries": 12,
       "v3": {
         "paths": 296,
         "anchors": 3731,
@@ -1429,53 +1424,53 @@
         "supersample": 2
       },
       "counts": {
-        "GEOMETRIC_PRIMITIVE": 26,
+        "GEOMETRIC_PRIMITIVE": 28,
         "FACE_FILL": 75,
         "OUTLINE_SHAPE": 13
       },
       "qa": {
         "fidelity": {
           "pass": true,
-          "f0": 0.8677,
+          "f0": 0.8676,
           "f1": 0.8934,
-          "f2": 0.8946,
-          "lineF1": 0.9978,
-          "lineF2": 0.9992,
-          "textureShare": 0.596,
-          "inkRatio": 1.019,
-          "chamfer": 0.035,
+          "f2": 0.8949,
+          "lineF1": 0.9967,
+          "lineF2": 0.9983,
+          "textureShare": 0.5945,
+          "inkRatio": 1.017,
+          "chamfer": 0.039,
           "p95": 0,
           "detailRecall": 1,
           "holes": [
             111,
-            108
+            109
           ],
           "majorComponents": [
             6,
             6
           ],
           "notes": [
-            "해프톤이 도면 잉크의 60% — 전체 F@2px 0.8946, 그 영역 뺀 선 충실도 0.9992"
+            "해프톤이 도면 잉크의 59% — 전체 F@2px 0.8949, 그 영역 뺀 선 충실도 0.9983"
           ]
         },
         "editability": {
           "pass": true,
-          "paths": 114,
-          "subpaths": 251,
+          "paths": 116,
+          "subpaths": 254,
           "maxSubpathsInPath": 86,
-          "objectComplexity": 365,
+          "objectComplexity": 370,
           "anchors": 11030,
           "uses": 0,
-          "kb": 462.2,
-          "anchorDensity": 7.18,
-          "shortPathRatio": 0.056,
-          "primitives": 26,
-          "anchorsSavedByPrimitives": 413,
+          "kb": 462.3,
+          "anchorDensity": 7.17,
+          "shortPathRatio": 0.055,
+          "primitives": 28,
+          "anchorsSavedByPrimitives": 460,
           "pathsSavedByPatterns": 0,
           "editableReduction": {
             "paths": 0.009,
-            "anchors": 0.106,
-            "kb": 0.101
+            "anchors": 0.104,
+            "kb": 0.099
           },
           "notes": []
         },
@@ -1521,7 +1516,7 @@
               "kind": "area",
               "paths": 17,
               "areaShare": 0.0152,
-              "precision": 0.7528,
+              "precision": 0.7527,
               "recall": 0.4551,
               "iou": 0.3959,
               "boundaryF1": -1
@@ -1530,11 +1525,11 @@
               "id": "main_upper",
               "label": "Main upper",
               "kind": "area",
-              "paths": 33,
+              "paths": 35,
               "areaShare": 0.1575,
-              "precision": 0.5999,
-              "recall": 0.6691,
-              "iou": 0.4626,
+              "precision": 0.5997,
+              "recall": 0.6684,
+              "iou": 0.4622,
               "boundaryF1": -1
             },
             {
@@ -1566,8 +1561,8 @@
               "paths": 1,
               "areaShare": 0.0319,
               "precision": 1,
-              "recall": 0.1246,
-              "iou": 0.1246,
+              "recall": 0.1245,
+              "iou": 0.1245,
               "boundaryF1": -1
             },
             {
@@ -1583,7 +1578,7 @@
             }
           ],
           "meanPrecision": 0.7672,
-          "weightedMeanIou": 0.4057,
+          "weightedMeanIou": 0.4056,
           "failingMajorParts": [
             "rubber_outsole",
             "tongue",
@@ -1610,13 +1605,13 @@
         "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
       },
       "timings": {
-        "S1_preprocess": 3576,
-        "S2_plan": 6,
-        "S3_masks": 8359,
-        "S4_schematic": 624,
-        "S5_evidence": 7526,
-        "S7_export": 45,
-        "S8_qa": 3553
+        "S1_preprocess": 3079,
+        "S2_plan": 5,
+        "S3_masks": 6870,
+        "S4_schematic": 627,
+        "S5_evidence": 7060,
+        "S7_export": 39,
+        "S8_qa": 3370
       },
       "correspondence": {
         "method": "global-similarity",
@@ -1706,53 +1701,54 @@
         "supersample": 2
       },
       "counts": {
-        "GEOMETRIC_PRIMITIVE": 23,
-        "FACE_FILL": 245,
+        "REPEATING_PATTERN": 1,
+        "GEOMETRIC_PRIMITIVE": 24,
+        "FACE_FILL": 221,
         "OUTLINE_SHAPE": 55
       },
       "qa": {
         "fidelity": {
           "pass": true,
           "f0": 0.8733,
-          "f1": 0.9061,
-          "f2": 0.9081,
-          "lineF1": 0.9963,
-          "lineF2": 0.9989,
-          "textureShare": 0.4392,
+          "f1": 0.9062,
+          "f2": 0.9082,
+          "lineF1": 0.996,
+          "lineF2": 0.9988,
+          "textureShare": 0.4386,
           "inkRatio": 1.019,
-          "chamfer": 0.058,
+          "chamfer": 0.059,
           "p95": 0,
           "detailRecall": 1,
           "holes": [
             317,
-            313
+            314
           ],
           "majorComponents": [
             3,
             10
           ],
           "notes": [
-            "해프톤이 도면 잉크의 44% — 전체 F@2px 0.9081, 그 영역 뺀 선 충실도 0.9989"
+            "해프톤이 도면 잉크의 44% — 전체 F@2px 0.9082, 그 영역 뺀 선 충실도 0.9988"
           ]
         },
         "editability": {
           "pass": true,
-          "paths": 323,
-          "subpaths": 748,
+          "paths": 301,
+          "subpaths": 727,
           "maxSubpathsInPath": 153,
-          "objectComplexity": 1071,
-          "anchors": 21212,
-          "uses": 0,
-          "kb": 856.4,
-          "anchorDensity": 8.55,
-          "shortPathRatio": 0.033,
-          "primitives": 23,
-          "anchorsSavedByPrimitives": 267,
-          "pathsSavedByPatterns": 0,
+          "objectComplexity": 1049,
+          "anchors": 20983,
+          "uses": 21,
+          "kb": 842.7,
+          "anchorDensity": 8.6,
+          "shortPathRatio": 0.034,
+          "primitives": 24,
+          "anchorsSavedByPrimitives": 285,
+          "pathsSavedByPatterns": 20,
           "editableReduction": {
-            "paths": 0.012,
-            "anchors": 0.122,
-            "kb": 0.115
+            "paths": 0.013,
+            "anchors": 0.12,
+            "kb": 0.114
           },
           "notes": []
         },
@@ -1760,192 +1756,189 @@
           "pass": false,
           "perPart": [
             {
-              "id": "rubber_outsole",
-              "label": "lugged rubber outsole",
-              "kind": "thin",
+              "id": "rear_shoe_upper",
+              "label": "Rear shoe upper",
+              "kind": "area",
+              "paths": 22,
+              "areaShare": 0.065,
+              "precision": 0.9993,
+              "recall": 0.7724,
+              "iou": 0.772,
+              "boundaryF1": -1
+            },
+            {
+              "id": "rear_shoe_outsole",
+              "label": "Rear shoe outsole",
+              "kind": "area",
+              "paths": 144,
+              "areaShare": 0.1324,
+              "precision": 0.806,
+              "recall": 0.9839,
+              "iou": 0.7956,
+              "boundaryF1": -1
+            },
+            {
+              "id": "foreground_sole_unit",
+              "label": "Foreground sole unit",
+              "kind": "area",
+              "paths": 2,
+              "areaShare": 0.0076,
+              "precision": 0.8417,
+              "recall": 0.1721,
+              "iou": 0.1667,
+              "boundaryF1": -1
+            },
+            {
+              "id": "foreground_mesh_upper",
+              "label": "Foreground mesh upper",
+              "kind": "area",
+              "paths": 10,
+              "areaShare": 0.0092,
+              "precision": 0.9772,
+              "recall": 0.1977,
+              "iou": 0.1968,
+              "boundaryF1": -1
+            },
+            {
+              "id": "padded_collar",
+              "label": "Padded collar and lining",
+              "kind": "area",
               "paths": 1,
-              "areaShare": 0.0028,
-              "precision": 0.8903,
-              "recall": 0.0218,
-              "iou": 0.0218,
-              "boundaryF1": 0.1684
+              "areaShare": 0.0148,
+              "precision": 1,
+              "recall": 0.0007,
+              "iou": 0.0007,
+              "boundaryF1": -1
             },
             {
-              "id": "foam_midsole",
-              "label": "foam midsole",
+              "id": "shoe_tongue",
+              "label": "Shoe tongue",
+              "kind": "area",
+              "paths": 59,
+              "areaShare": 0.0646,
+              "precision": 0.9731,
+              "recall": 0.4696,
+              "iou": 0.4636,
+              "boundaryF1": -1
+            },
+            {
+              "id": "synthetic_support_overlays",
+              "label": "Synthetic support overlays",
+              "kind": "area",
+              "paths": 53,
+              "areaShare": 0.1842,
+              "precision": 0.7182,
+              "recall": 0.9885,
+              "iou": 0.7123,
+              "boundaryF1": -1
+            },
+            {
+              "id": "heel_pull_tab",
+              "label": "Heel pull tab",
               "kind": "area",
               "paths": 2,
-              "areaShare": 0.0058,
-              "precision": 0.7168,
-              "recall": 0.2352,
-              "iou": 0.2152,
+              "areaShare": 0.0057,
+              "precision": 1,
+              "recall": 0.4539,
+              "iou": 0.4539,
               "boundaryF1": -1
             },
             {
-              "id": "mesh_upper",
-              "label": "mesh upper",
+              "id": "orange_laces",
+              "label": "Orange shoelaces",
               "kind": "area",
-              "paths": 66,
-              "areaShare": 0.1322,
-              "precision": 0.675,
-              "recall": 0.6374,
-              "iou": 0.4877,
-              "boundaryF1": -1
-            },
-            {
-              "id": "tongue",
-              "label": "padded tongue",
-              "kind": "area",
-              "paths": 98,
-              "areaShare": 0.12,
-              "precision": 0.8225,
-              "recall": 0.7237,
-              "iou": 0.626,
-              "boundaryF1": -1
-            },
-            {
-              "id": "synthetic_overlays",
-              "label": "synthetic support overlays",
-              "kind": "area",
-              "paths": 60,
-              "areaShare": 0.0642,
-              "precision": 0.5555,
-              "recall": 0.8153,
-              "iou": 0.4934,
-              "boundaryF1": -1
-            },
-            {
-              "id": "heel_pull_tabs",
-              "label": "heel pull tabs",
-              "kind": "area",
-              "paths": 2,
-              "areaShare": 0.0035,
-              "precision": 0.7815,
-              "recall": 0.5538,
-              "iou": 0.4795,
-              "boundaryF1": -1
-            },
-            {
-              "id": "collar_lining",
-              "label": "padded collar lining",
-              "kind": "area",
-              "paths": 5,
-              "areaShare": 0.0322,
-              "precision": 0.8024,
-              "recall": 0.7859,
-              "iou": 0.6584,
-              "boundaryF1": -1
-            },
-            {
-              "id": "laces",
-              "label": "laces",
-              "kind": "area",
-              "paths": 55,
-              "areaShare": 0.0557,
-              "precision": 0.9601,
-              "recall": 0.5414,
-              "iou": 0.5295,
-              "boundaryF1": -1
-            },
-            {
-              "id": "brand_graphics",
-              "label": "brand and side graphics",
-              "kind": "area",
-              "paths": 34,
-              "areaShare": 0.0838,
-              "precision": 0.4862,
-              "recall": 0.7556,
-              "iou": 0.4201,
+              "paths": 13,
+              "areaShare": 0.0219,
+              "precision": 0.7819,
+              "recall": 0.1405,
+              "iou": 0.1352,
               "boundaryF1": -1
             }
           ],
-          "meanPrecision": 0.7434,
-          "weightedMeanIou": 0.5201,
+          "meanPrecision": 0.8997,
+          "weightedMeanIou": 0.6437,
           "failingMajorParts": [
-            "laces",
-            "brand_graphics"
+            "shoe_tongue",
+            "orange_laces"
           ],
-          "misassigned": [
-            "brand_graphics"
-          ],
+          "misassigned": [],
           "emptyVisibleParts": [],
           "sharedOnlyParts": [],
-          "sharedBoundaries": 165,
-          "aspectRatio": 1.002,
+          "sharedBoundaries": 79,
+          "aspectRatio": 1.003,
           "lowConfidenceRoutes": 35,
           "notes": [
-            "기준 미달 주요 파트 2개: laces, brand_graphics (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
-            "배분이 의심되는 레이어 1개: brand_graphics",
+            "기준 미달 주요 파트 2개: shoe_tongue, orange_laces (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
             "사진↔도면 대응 실패 — 파트 배분을 신뢰할 수 없다",
             "라우터가 확신하지 못한 성분 35개",
-            "면적 가중 평균 IoU 0.520 < 0.65"
+            "면적 가중 평균 IoU 0.644 < 0.65"
           ]
         },
         "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
       },
       "timings": {
-        "S1_preprocess": 2788,
+        "S1_preprocess": 3184,
         "S2_plan": 6,
-        "S3_masks": 6669,
-        "S4_schematic": 333,
-        "S5_evidence": 5717,
-        "S7_export": 60,
-        "S8_qa": 2806
+        "S3_masks": 5699,
+        "S4_schematic": 638,
+        "S5_evidence": 5833,
+        "S7_export": 69,
+        "S8_qa": 3694
       },
       "correspondence": {
         "method": "global-similarity",
-        "aspectRatio": 1.0018961841506957,
+        "aspectRatio": 1.0032985982348142,
         "confident": false,
         "note": ""
       },
       "parts": [
         {
-          "id": "rubber_outsole",
-          "label": "lugged rubber outsole",
+          "id": "rear_shoe_upper",
+          "label": "Rear shoe upper",
           "z": 0
         },
         {
-          "id": "foam_midsole",
-          "label": "foam midsole",
+          "id": "rear_shoe_outsole",
+          "label": "Rear shoe outsole",
           "z": 1
         },
         {
-          "id": "mesh_upper",
-          "label": "mesh upper",
+          "id": "foreground_sole_unit",
+          "label": "Foreground sole unit",
           "z": 2
         },
         {
-          "id": "tongue",
-          "label": "padded tongue",
+          "id": "foreground_mesh_upper",
+          "label": "Foreground mesh upper",
           "z": 3
         },
         {
-          "id": "synthetic_overlays",
-          "label": "synthetic support overlays",
+          "id": "padded_collar",
+          "label": "Padded collar and lining",
           "z": 4
         },
         {
-          "id": "heel_pull_tabs",
-          "label": "heel pull tabs",
+          "id": "shoe_tongue",
+          "label": "Shoe tongue",
           "z": 5
         },
         {
-          "id": "collar_lining",
-          "label": "padded collar lining",
+          "id": "synthetic_support_overlays",
+          "label": "Synthetic support overlays",
           "z": 6
         },
         {
-          "id": "laces",
-          "label": "laces",
+          "id": "heel_pull_tab",
+          "label": "Heel pull tab",
           "z": 7
         },
         {
-          "id": "brand_graphics",
-          "label": "brand and side graphics",
+          "id": "orange_laces",
+          "label": "Orange shoelaces",
           "z": 8
         }
       ],
-      "sharedBoundaries": 165,
+      "sharedBoundaries": 79,
       "v3": {
         "paths": 1113,
         "anchors": 18342,
@@ -1980,52 +1973,53 @@
         "supersample": 2
       },
       "counts": {
-        "GEOMETRIC_PRIMITIVE": 208,
-        "FACE_FILL": 497,
-        "OUTLINE_SHAPE": 34
+        "REPEATING_PATTERN": 11,
+        "GEOMETRIC_PRIMITIVE": 125,
+        "FACE_FILL": 325,
+        "OUTLINE_SHAPE": 38
       },
       "qa": {
         "fidelity": {
           "pass": true,
-          "f0": 0.9449,
-          "f1": 0.967,
-          "f2": 0.9679,
-          "lineF1": 0.9987,
-          "lineF2": 0.9997,
-          "textureShare": 0.2525,
-          "inkRatio": 0.995,
-          "chamfer": 0.025,
+          "f0": 0.945,
+          "f1": 0.9672,
+          "f2": 0.9682,
+          "lineF1": 0.9984,
+          "lineF2": 0.9995,
+          "textureShare": 0.2515,
+          "inkRatio": 0.994,
+          "chamfer": 0.027,
           "p95": 0,
           "detailRecall": 1,
           "holes": [
             750,
-            750
+            751
           ],
           "majorComponents": [
             1,
             1
           ],
           "notes": [
-            "해프톤이 도면 잉크의 25% — 전체 F@2px 0.9679, 그 영역 뺀 선 충실도 0.9997"
+            "해프톤이 도면 잉크의 25% — 전체 F@2px 0.9682, 그 영역 뺀 선 충실도 0.9995"
           ]
         },
         "editability": {
           "pass": false,
-          "paths": 739,
-          "subpaths": 1552,
+          "paths": 499,
+          "subpaths": 1313,
           "maxSubpathsInPath": 760,
-          "objectComplexity": 2291,
-          "anchors": 32585,
-          "uses": 0,
-          "kb": 1351.3,
-          "anchorDensity": 8.46,
-          "shortPathRatio": 0.016,
-          "primitives": 208,
-          "anchorsSavedByPrimitives": 2649,
-          "pathsSavedByPatterns": 0,
+          "objectComplexity": 2069,
+          "anchors": 30177,
+          "uses": 257,
+          "kb": 1227.9,
+          "anchorDensity": 8.84,
+          "shortPathRatio": 0.019,
+          "primitives": 125,
+          "anchorsSavedByPrimitives": 1367,
+          "pathsSavedByPatterns": 246,
           "editableReduction": {
-            "paths": 0.005,
-            "anchors": 0.098,
+            "paths": 0.008,
+            "anchors": 0.096,
             "kb": 0.092
           },
           "notes": [
@@ -2039,10 +2033,10 @@
               "id": "tongue",
               "label": "Tongue",
               "kind": "area",
-              "paths": 32,
+              "paths": 31,
               "areaShare": 0.0795,
-              "precision": 0.7952,
-              "recall": 0.2536,
+              "precision": 0.7953,
+              "recall": 0.2535,
               "iou": 0.238,
               "boundaryF1": -1
             },
@@ -2083,11 +2077,11 @@
               "id": "lace_loops",
               "label": "Yellow lace loops",
               "kind": "area",
-              "paths": 54,
+              "paths": 40,
               "areaShare": 0.0658,
-              "precision": 0.5694,
-              "recall": 0.7465,
-              "iou": 0.4771,
+              "precision": 0.5668,
+              "recall": 0.7387,
+              "iou": 0.4721,
               "boundaryF1": -1
             },
             {
@@ -2105,27 +2099,27 @@
               "id": "outsole",
               "label": "Flexible tread outsole",
               "kind": "area",
-              "paths": 338,
+              "paths": 241,
               "areaShare": 0.3412,
-              "precision": 0.8771,
-              "recall": 0.6907,
-              "iou": 0.6298,
+              "precision": 0.8704,
+              "recall": 0.652,
+              "iou": 0.5943,
               "boundaryF1": -1
             },
             {
               "id": "lace_stitching",
               "label": "Yellow lace stitching",
               "kind": "area",
-              "paths": 309,
+              "paths": 193,
               "areaShare": 0.172,
-              "precision": 0.4551,
-              "recall": 0.7911,
-              "iou": 0.4063,
+              "precision": 0.4523,
+              "recall": 0.7827,
+              "iou": 0.4018,
               "boundaryF1": -1
             }
           ],
-          "meanPrecision": 0.3956,
-          "weightedMeanIou": 0.4948,
+          "meanPrecision": 0.3941,
+          "weightedMeanIou": 0.4761,
           "failingMajorParts": [
             "tongue",
             "eyestay_overlay",
@@ -2141,7 +2135,7 @@
             "padded_collar",
             "laces"
           ],
-          "sharedBoundaries": 415,
+          "sharedBoundaries": 302,
           "aspectRatio": 1.006,
           "lowConfidenceRoutes": 28,
           "notes": [
@@ -2150,19 +2144,19 @@
             "공유 경계로만 그려진 파트 3개: mesh_upper, padded_collar, laces",
             "사진↔도면 대응 실패 — 파트 배분을 신뢰할 수 없다",
             "라우터가 확신하지 못한 성분 28개",
-            "면적 가중 평균 IoU 0.495 < 0.65"
+            "면적 가중 평균 IoU 0.476 < 0.65"
           ]
         },
         "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
       },
       "timings": {
-        "S1_preprocess": 4355,
-        "S2_plan": 9,
-        "S3_masks": 8173,
-        "S4_schematic": 478,
-        "S5_evidence": 8675,
-        "S7_export": 96,
-        "S8_qa": 2855
+        "S1_preprocess": 3669,
+        "S2_plan": 14,
+        "S3_masks": 9995,
+        "S4_schematic": 708,
+        "S5_evidence": 12954,
+        "S7_export": 131,
+        "S8_qa": 4808
       },
       "correspondence": {
         "method": "global-similarity",
@@ -2212,7 +2206,7 @@
           "z": 7
         }
       ],
-      "sharedBoundaries": 415,
+      "sharedBoundaries": 302,
       "v3": {
         "paths": 1549,
         "anchors": 28966,

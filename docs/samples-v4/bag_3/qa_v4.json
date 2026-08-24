@@ -1,243 +1,254 @@
 {
- "job": {
-  "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_REVIEW",
-  "canvas": {
-   "width": 1254,
-   "height": 2800,
-   "sourceWidth": 627,
-   "sourceHeight": 1400,
-   "supersample": 2
-  },
-  "totalMs": 17256,
-  "createdAt": "2026-08-24T07:45:48.179Z"
- },
- "options": {
-  "minParts": 3,
-  "maxParts": 10,
-  "grayscale": true,
-  "workLong": 1400,
-  "vectorLong": 2200,
-  "inkThreshold": 170,
-  "localContrast": 22,
-  "textureMode": "auto",
-  "categoryHint": "bag",
-  "schematicFrom": "outputs/v3/v3_bag_3_v31/schematics/schematic_efddc3cda20bb799.png",
-  "upscale": false
- },
- "plan": {
-  "category": "bag",
-  "objectNoun": "drawstring pouch bag",
-  "view": "front view",
-  "parts": [
-   {
-    "id": "inner_pouch",
-    "label": "Inner pouch body",
-    "description": "Soft metallic-gray pouch forming the bag's enclosed body and visible through the open metal lattice.",
-    "bbox": [
-     0.17,
-     0.52,
-     0.85,
-     0.87
-    ],
-    "z": 0,
-    "occludedBy": [
-     "chain_strap",
-     "metal_lattice_shell",
-     "turquoise_stone_embellishments"
-    ],
-    "kind": "component",
-    "confidence": 0.91
-   },
-   {
-    "id": "chain_strap",
-    "label": "Chain shoulder strap",
-    "description": "Long doubled metal chain rising from the gathered top of the bag.",
-    "bbox": [
-     0.46,
-     0,
-     0.57,
-     0.54
-    ],
-    "z": 1,
-    "occludedBy": [
-     "metal_lattice_shell"
-    ],
-    "kind": "component",
-    "confidence": 0.95
-   },
-   {
-    "id": "metal_lattice_shell",
-    "label": "Linked metal outer shell",
-    "description": "Flexible outer cage assembled from dark metal discs and connecting rings, including the gathered upper edge.",
-    "bbox": [
-     0.12,
-     0.5,
-     0.88,
-     0.88
-    ],
-    "z": 2,
-    "occludedBy": [
-     "turquoise_stone_embellishments"
-    ],
-    "kind": "component",
-    "confidence": 0.97
-   },
-   {
-    "id": "turquoise_stone_embellishments",
-    "label": "Turquoise stone embellishments",
-    "description": "Distributed turquoise cabochon ornaments mounted across the front and sides of the metal lattice.",
-    "bbox": [
-     0.17,
-     0.54,
-     0.88,
-     0.87
-    ],
-    "z": 3,
-    "occludedBy": [],
-    "kind": "component",
-    "confidence": 0.94
-   }
-  ],
-  "provenance": {
-   "model": "gpt-5.6",
-   "promptVersion": "v3.parts.v1.0.0",
-   "inputSha256": "7334667183430fe5a0969d519cb1c7a3e302e69584326808618ebe7e15f83362",
-   "createdAt": "2026-08-22T04:43:05.430Z"
-  }
- },
- "counts": {
-  "GEOMETRIC_PRIMITIVE": 70,
-  "FACE_FILL": 676,
-  "OUTLINE_SHAPE": 1
- },
- "qa": {
-  "fidelity": {
-   "pass": true,
-   "f0": 0.9643,
-   "f1": 0.9996,
-   "f2": 1,
-   "lineF1": 0.9996,
-   "lineF2": 1,
-   "textureShare": 0,
-   "inkRatio": 1.007,
-   "chamfer": 0.036,
-   "p95": 0,
-   "detailRecall": 1,
-   "holes": [
-    1075,
-    1060
-   ],
-   "majorComponents": [
-    1,
-    1
-   ],
-   "notes": []
-  },
-  "editability": {
-   "pass": false,
-   "paths": 747,
-   "subpaths": 1835,
-   "maxSubpathsInPath": 1089,
-   "objectComplexity": 2582,
-   "anchors": 19487,
-   "uses": 0,
-   "kb": 790.7,
-   "anchorDensity": 10.75,
-   "shortPathRatio": 0.005,
-   "primitives": 70,
-   "anchorsSavedByPrimitives": 913,
-   "pathsSavedByPatterns": 0,
-   "editableReduction": {
-    "paths": 0,
-    "anchors": 0.118,
-    "kb": 0.104
-   },
-   "notes": [
-    "한 패스에 서브패스 1089개 — Illustrator 에서 통째로 선택된다"
-   ]
-  },
-  "semantic": {
-   "pass": false,
-   "perPart": [
-    {
-     "id": "inner_pouch",
-     "label": "Inner pouch body",
-     "kind": "area",
-     "paths": 49,
-     "areaShare": 0.0038,
-     "precision": 0.0855,
-     "recall": 0.1195,
-     "iou": 0.0525,
-     "boundaryF1": -1
+  "job": {
+    "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_REVIEW",
+    "canvas": {
+      "width": 1254,
+      "height": 2800,
+      "sourceWidth": 627,
+      "sourceHeight": 1400,
+      "supersample": 2
     },
-    {
-     "id": "chain_strap",
-     "label": "Chain shoulder strap",
-     "kind": "area",
-     "paths": 34,
-     "areaShare": 0.0356,
-     "precision": 0.8927,
-     "recall": 0.4702,
-     "iou": 0.445,
-     "boundaryF1": -1
-    },
-    {
-     "id": "metal_lattice_shell",
-     "label": "Linked metal outer shell",
-     "kind": "area",
-     "paths": 19,
-     "areaShare": 0.0103,
-     "precision": 0.5917,
-     "recall": 0.159,
-     "iou": 0.1433,
-     "boundaryF1": -1
-    },
-    {
-     "id": "turquoise_stone_embellishments",
-     "label": "Turquoise stone embellishments",
-     "kind": "area",
-     "paths": 645,
-     "areaShare": 0.1856,
-     "precision": 0.8317,
-     "recall": 0.9585,
-     "iou": 0.8028,
-     "boundaryF1": -1
+    "totalMs": 13519,
+    "createdAt": "2026-08-24T10:45:42.963Z"
+  },
+  "options": {
+    "minParts": 3,
+    "maxParts": 10,
+    "grayscale": true,
+    "workLong": 1400,
+    "vectorLong": 2200,
+    "inkThreshold": 170,
+    "localContrast": 22,
+    "textureMode": "auto",
+    "categoryHint": "bag",
+    "schematicFrom": "outputs/v3/v3_bag_3_v31/schematics/schematic_efddc3cda20bb799.png",
+    "upscale": false
+  },
+  "plan": {
+    "category": "bag",
+    "objectNoun": "drawstring pouch bag",
+    "view": "front view",
+    "parts": [
+      {
+        "id": "inner_pouch",
+        "label": "Inner pouch body",
+        "description": "Soft metallic-gray pouch forming the bag's enclosed body and visible through the open metal lattice.",
+        "bbox": [
+          0.17,
+          0.52,
+          0.85,
+          0.87
+        ],
+        "z": 0,
+        "occludedBy": [
+          "chain_strap",
+          "metal_lattice_shell",
+          "turquoise_stone_embellishments"
+        ],
+        "kind": "component",
+        "confidence": 0.91
+      },
+      {
+        "id": "chain_strap",
+        "label": "Chain shoulder strap",
+        "description": "Long doubled metal chain rising from the gathered top of the bag.",
+        "bbox": [
+          0.46,
+          0,
+          0.57,
+          0.54
+        ],
+        "z": 1,
+        "occludedBy": [
+          "metal_lattice_shell"
+        ],
+        "kind": "component",
+        "confidence": 0.95
+      },
+      {
+        "id": "metal_lattice_shell",
+        "label": "Linked metal outer shell",
+        "description": "Flexible outer cage assembled from dark metal discs and connecting rings, including the gathered upper edge.",
+        "bbox": [
+          0.12,
+          0.5,
+          0.88,
+          0.88
+        ],
+        "z": 2,
+        "occludedBy": [
+          "turquoise_stone_embellishments"
+        ],
+        "kind": "component",
+        "confidence": 0.97
+      },
+      {
+        "id": "turquoise_stone_embellishments",
+        "label": "Turquoise stone embellishments",
+        "description": "Distributed turquoise cabochon ornaments mounted across the front and sides of the metal lattice.",
+        "bbox": [
+          0.17,
+          0.54,
+          0.88,
+          0.87
+        ],
+        "z": 3,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.94
+      }
+    ],
+    "provenance": {
+      "model": "gpt-5.6",
+      "promptVersion": "v3.parts.v1.0.0",
+      "inputSha256": "7334667183430fe5a0969d519cb1c7a3e302e69584326808618ebe7e15f83362",
+      "createdAt": "2026-08-22T04:43:05.430Z"
     }
-   ],
-   "meanPrecision": 0.6004,
-   "weightedMeanIou": 0.7077,
-   "failingMajorParts": [
-    "chain_strap"
-   ],
-   "misassigned": [
-    "inner_pouch"
-   ],
-   "emptyVisibleParts": [],
-   "sharedOnlyParts": [],
-   "sharedBoundaries": 665,
-   "aspectRatio": 1.031,
-   "lowConfidenceRoutes": 0,
-   "notes": [
-    "기준 미달 주요 파트 1개: chain_strap (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
-    "배분이 의심되는 레이어 1개: inner_pouch",
-    "사진↔도면 종횡비 불일치 3.1%"
-   ]
   },
-  "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
- },
- "timings": {
-  "S1_preprocess": 5206,
-  "S2_plan": 4,
-  "S3_masks": 5238,
-  "S4_schematic": 792,
-  "S5_evidence": 4138,
-  "S7_export": 79,
-  "S8_qa": 1626
- },
- "correspondence": {
-  "method": "global-similarity",
-  "aspectRatio": 1.0314516129032258,
-  "confident": true,
-  "note": ""
- }
+  "counts": {
+    "REPEATING_PATTERN": 13,
+    "GEOMETRIC_PRIMITIVE": 32,
+    "FACE_FILL": 320,
+    "OUTLINE_SHAPE": 1
+  },
+  "qa": {
+    "fidelity": {
+      "pass": true,
+      "f0": 0.9643,
+      "f1": 0.9996,
+      "f2": 1,
+      "lineF1": 0.9996,
+      "lineF2": 1,
+      "textureShare": 0,
+      "inkRatio": 1.007,
+      "chamfer": 0.036,
+      "p95": 0,
+      "detailRecall": 1,
+      "holes": [
+        1075,
+        1060
+      ],
+      "majorComponents": [
+        1,
+        1
+      ],
+      "notes": []
+    },
+    "editability": {
+      "pass": false,
+      "paths": 366,
+      "subpaths": 1454,
+      "maxSubpathsInPath": 1089,
+      "objectComplexity": 2218,
+      "anchors": 16230,
+      "uses": 398,
+      "kb": 651.7,
+      "anchorDensity": 11.67,
+      "shortPathRatio": 0.006,
+      "primitives": 32,
+      "anchorsSavedByPrimitives": 290,
+      "pathsSavedByPatterns": 385,
+      "editableReduction": {
+        "paths": 0,
+        "anchors": 0.126,
+        "kb": 0.11
+      },
+      "notes": [
+        "한 패스에 서브패스 1089개 — Illustrator 에서 통째로 선택된다"
+      ]
+    },
+    "semantic": {
+      "pass": false,
+      "perPart": [
+        {
+          "id": "inner_pouch",
+          "label": "Inner pouch body",
+          "kind": "area",
+          "paths": 36,
+          "areaShare": 0.0038,
+          "precision": 0.0918,
+          "recall": 0.1154,
+          "iou": 0.0539,
+          "boundaryF1": -1
+        },
+        {
+          "id": "chain_strap",
+          "label": "Chain shoulder strap",
+          "kind": "area",
+          "paths": 16,
+          "areaShare": 0.0356,
+          "precision": 0.8914,
+          "recall": 0.4641,
+          "iou": 0.4393,
+          "boundaryF1": -1
+        },
+        {
+          "id": "metal_lattice_shell",
+          "label": "Linked metal outer shell",
+          "kind": "area",
+          "paths": 19,
+          "areaShare": 0.0103,
+          "precision": 0.6004,
+          "recall": 0.1476,
+          "iou": 0.1344,
+          "boundaryF1": -1
+        },
+        {
+          "id": "turquoise_stone_embellishments",
+          "label": "Turquoise stone embellishments",
+          "kind": "area",
+          "paths": 308,
+          "areaShare": 0.1856,
+          "precision": 0.8202,
+          "recall": 0.8803,
+          "iou": 0.7379,
+          "boundaryF1": -1
+        }
+      ],
+      "meanPrecision": 0.601,
+      "weightedMeanIou": 0.6553,
+      "failingMajorParts": [
+        "chain_strap"
+      ],
+      "misassigned": [
+        "inner_pouch"
+      ],
+      "emptyVisibleParts": [],
+      "sharedOnlyParts": [],
+      "sharedBoundaries": 41,
+      "aspectRatio": 1.031,
+      "lowConfidenceRoutes": 0,
+      "notes": [
+        "기준 미달 주요 파트 1개: chain_strap (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+        "배분이 의심되는 레이어 1개: inner_pouch",
+        "사진↔도면 종횡비 불일치 3.1%"
+      ]
+    },
+    "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
+  },
+  "timings": {
+    "S1_preprocess": 5300,
+    "S2_plan": 3,
+    "S3_masks": 3397,
+    "S4_schematic": 336,
+    "S5_evidence": 2886,
+    "S7_export": 62,
+    "S8_qa": 1374
+  },
+  "rescued": {
+    "stitch": [
+      0,
+      0
+    ],
+    "detail": [
+      0,
+      0
+    ]
+  },
+  "correspondence": {
+    "method": "global-similarity",
+    "aspectRatio": 1.0314516129032258,
+    "confident": true,
+    "note": ""
+  }
 }

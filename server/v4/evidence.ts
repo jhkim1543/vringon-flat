@@ -14,6 +14,7 @@
 import sharp from "sharp";
 import { skeletonize, crossingNumber } from "../vector/centerline.js";
 import { labelComponents, type Component } from "../v3/label.js";
+import { rescueDetails } from "../v3/detailRescue.js";
 import { area, close, dilate, erode } from "../v2/raster.js";
 import type { Pt } from "./types.js";
 
@@ -59,6 +60,9 @@ export interface EvidenceField {
   inkFill: Uint8Array;
   /** 해프톤으로 판정한 영역 */
   texture: Uint8Array;
+  /** 해프톤 삭제 직전에 구제한 것 — [스티치 대시 수, px] · [디테일(로고 등) 수, px] */
+  rescuedStitch: [number, number];
+  rescuedDetail: [number, number];
   /** 질감이 그림을 지배해 톤 치환을 포기했는가 */
   textureKept: boolean;
   /** 원본 픽셀 (색 샘플링용) */
@@ -268,6 +272,8 @@ export async function extractEvidence(
   // ── 해프톤 → 톤 (V3와 같은 규칙) ─────────────────────────
   const texture = new Uint8Array(N);
   let textureKept = false;
+  let rescuedStitch: [number, number] = [0, 0];
+  let rescuedDetail: [number, number] = [0, 0];
   {
     const dot = Math.max(2, Math.round(Math.min(W, H) * 0.008));
     const speck = new Uint8Array(N);
@@ -295,11 +301,26 @@ export async function extractEvidence(
       const share = inkNow ? inkInTexture / inkNow : 0;
       const suppress = o.textureMode === "tone" ? true : o.textureMode === "keep" ? false : share < 0.75;
       if (suppress) {
+        const doomed: Component[] = [];
         for (const c of specks) {
           let inside = 0;
           for (let k = 0; k < c.pixels.length; k++) if (accepted[c.pixels[k]]) inside++;
-          if (inside >= c.pixels.length * 0.6) for (let k = 0; k < c.pixels.length; k++) ink[c.pixels[k]] = 0;
+          if (inside >= c.pixels.length * 0.6) doomed.push(c);
         }
+        // **삭제 직전의 마지막 심문.** 해프톤 클러스터에 삼켜진 성분 중 스티치 대시
+        // (길쭉 + 장축 방향 사슬)와 로고 문자(크기·구멍)를 살린다. V4.1 실측:
+        // 이 구제 없이 bag_1 스트랩 스티치와 ORBITEC 문자가 통째로 사라졌다.
+        const r = rescueDetails(doomed, W, H);
+        for (let i = 0; i < doomed.length; i++) {
+          if (r.keep.has(i)) {
+            // 살린 잉크는 질감 마스크에서도 뺀다 — QA 가 이 영역의 손실을 눈감으면 안 된다
+            for (let k = 0; k < doomed[i].pixels.length; k++) texture[doomed[i].pixels[k]] = 0;
+          } else {
+            for (let k = 0; k < doomed[i].pixels.length; k++) ink[doomed[i].pixels[k]] = 0;
+          }
+        }
+        rescuedStitch = [r.stitchCount, r.stitchPx];
+        rescuedDetail = [r.detailCount, r.detailPx];
       } else {
         texture.fill(0);
         textureKept = true;
@@ -377,7 +398,7 @@ export async function extractEvidence(
 
   return {
     width: W, height: H, supersample, sourceWidth: srcW, sourceHeight: srcH,
-    ink, inkFill, texture, textureKept,
+    ink, inkFill, texture, textureKept, rescuedStitch, rescuedDetail,
     rgb: data, channels: ch, lineWidthLimit,
     components,
   };

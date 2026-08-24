@@ -120,6 +120,13 @@ export type GeometricPrimitive = BasePrimitive & {
 
 export interface PatternPrimitive extends BasePrimitive {
   cls: "REPEATING_PATTERN";
+  /**
+   * 모티프의 출처. "ink"는 잉크 성분(비즈 윤곽·대시)이라 선 충실도 QA에 포함되고,
+   * "fill"은 선이 감싼 닫힌 면(돌 내부·러그 내부)이라 FACE_FILL 과 같은 규칙으로
+   * 잉크 QA에서 제외된다 — 이걸 구분하지 않으면 흰 면이 QA에서 검정 잉크가 되어
+   * bag_3 F@2 가 1.000 → 0.867 로 무너진다(실측).
+   */
+  paint?: "ink" | "fill";
   /** 모티프 하나의 패스 (모티프 로컬 좌표) */
   motif: string;
   motifSize: [number, number];
