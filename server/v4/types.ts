@@ -93,28 +93,41 @@ export interface ShapePrimitive extends BasePrimitive {
 
 export type GeometryKind = "circle" | "ellipse" | "line" | "roundedRect";
 
-export interface GeometricPrimitive extends BasePrimitive {
+/**
+ * 기하 프리미티브. **칠하는 방식이 두 가지다.**
+ *
+ * 선 성분에서 온 것은 stroke 로, **닫힌 면에서 온 것은 fill** 로 그려야 한다.
+ * 이걸 하나로 뭉쳐 두면 면에서 온 프리미티브가 `stroke-width` 를 못 정해
+ * 0 으로 나가고 **화면에서 사라진다** — 실측: bag_3 70/70, shoe_3 208/208,
+ * jewelry_1 1/1, bag_1 3/3 이 stroke-width="0" 으로 출고돼 보이지 않았다.
+ * 구멍 수가 줄고 파트 recall 이 떨어지는 원인이었다.
+ */
+export type GeometricPrimitive = BasePrimitive & {
   cls: "GEOMETRIC_PRIMITIVE";
   kind: GeometryKind;
   /** 파라미터 — kind 에 따라 다르다 */
   params: Record<string, number>;
   /** 렌더용 패스 (파라미터에서 생성) */
   d: string;
-  stroke: string;
-  width: number;
   /** 자유형 베지어 대비 앵커 절감분 */
   anchorsSaved: number;
   /** 적합 잔차 (px) */
   residual: { rms: number; max: number };
-}
+} & (
+  | { paint: "stroke"; stroke: string; width: number }
+  | { paint: "fill"; fill: string }
+);
 
 export interface PatternPrimitive extends BasePrimitive {
   cls: "REPEATING_PATTERN";
   /** 모티프 하나의 패스 (모티프 로컬 좌표) */
   motif: string;
   motifSize: [number, number];
-  /** 인스턴스 배치 */
-  instances: { x: number; y: number; scale: number; rotate: number }[];
+  /**
+   * 인스턴스 배치. **파트는 인스턴스마다 다르다** — 하나의 메시·체인이 여러 파트 경계를
+   * 넘나들면 군집 전체를 한 파트에 몰아넣을 수 없다. export 가 파트별로 나눠 낸다.
+   */
+  instances: { x: number; y: number; scale: number; rotate: number; partId?: string }[];
   fill: string;
   /** 개별 패스로 뒀을 때 대비 절감분 */
   pathsSaved: number;

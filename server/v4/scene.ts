@@ -189,6 +189,8 @@ export async function buildScene(
   }
 
   const primitives: ScenePrimitive[] = [];
+  /** 픽셀별 최전면 파트 — 면 배정에서 만들어 패턴 배정에도 쓴다 */
+  let facePartAt: Int16Array | null = null;
 
   // ── 닫힌 면 ──────────────────────────────────────────────
   {
@@ -209,29 +211,77 @@ export async function buildScene(
     for (let i = 0; i < N; i++) if (!ev.inkFill[i] && !outside[i]) enclosed[i] = 1;
 
     const faces = labelComponents(enclosed, W, H, 4, opts.minRegionPx * ev.supersample * ev.supersample);
-    const groups: { color: string; area: number; mask: Uint8Array }[] = [];
     const faceTol = Math.min(W, H) * opts.thresholds.primitiveToleranceRatio;
     const faceMember = new Uint8Array(N);
+
+    // 파트 조회를 O(1)로. 픽셀마다 **가장 앞** 파트를 적어 둔다.
+    let partAt: Int16Array | null = null;
+    if (opts.parts?.length) {
+      partAt = new Int16Array(N).fill(-1);
+      for (let pi = 0; pi < opts.parts.length; pi++) {
+        const m = opts.parts[pi].mask;
+        for (let i = 0; i < N; i++) if (m[i]) partAt[i] = pi;
+      }
+    }
+
+    /**
+     * 면을 파트에 배정한다. **면적 겹침**으로 재야 한다 — 경계 좌표 표본은 선에는 맞지만
+     * 면에는 맞지 않는다. 두 파트의 점수가 비슷하면 한쪽에 강제로 몰지 않고 공유로 표시한다.
+     */
+    const assignFace = (pixels: Int32Array): { id?: string; shared: string[] } => {
+      if (!opts.parts?.length || !partAt) return { shared: [] };
+      const tally = new Int32Array(opts.parts.length);
+      for (let k = 0; k < pixels.length; k++) {
+        const q2 = partAt[pixels[k]];
+        if (q2 >= 0) tally[q2]++;
+      }
+      let best = -1, bestN = 0, second = 0;
+      for (let q2 = 0; q2 < tally.length; q2++) {
+        if (tally[q2] > bestN) { second = bestN; bestN = tally[q2]; best = q2; }
+        else if (tally[q2] > second) second = tally[q2];
+      }
+      if (best < 0) return { id: opts.parts[0].id, shared: [] };
+      const shared: string[] = [];
+      if (bestN && second >= bestN * 0.75) {
+        for (let q2 = 0; q2 < tally.length; q2++) {
+          if (q2 !== best && tally[q2] >= bestN * 0.75) shared.push(opts.parts[q2].id);
+        }
+      }
+      return { id: opts.parts[best].id, shared };
+    };
+
+    const faceColor = (c: { pixels: Int32Array; area: number }): string => {
+      let color = opts.sampleFill ? dominantOf(colorData, colorCh, c.pixels) : "#ffffff";
+      let tex = 0;
+      for (let k = 0; k < c.pixels.length; k++) if (ev.texture[c.pixels[k]]) tex++;
+      if (tex > c.area * 0.35) color = tone(color, 0.14 + 0.1 * (tex / c.area));
+      return color;
+    };
+
+    // **색 병합은 파트 배정 뒤에.** 먼저 화면 전체에서 같은 색끼리 묶으면 서로 다른 부품의
+    // 흰 면들이 하나의 컴파운드 패스가 되고, 그 패스는 결국 파트 하나에만 들어간다 —
+    // 가방 몸통·플랩·스트랩이 전부 회색/흰색이라 한 레이어로 몰렸다.
+    const groups: { color: string; area: number; mask: Uint8Array; partId?: string; shared: string[] }[] = [];
     for (const c of faces.components) {
+      const at = assignFace(c.pixels);
+
       // **원은 성분이 아니라 면에 있다.** 버클 구멍·에어홀·리벳·보석 윤곽은 선이 감싼 닫힌
-      // 면이지 독립된 잉크 성분이 아니다. 성분에서만 찾으면 프리미티브가 0개로 나온다
-      // (실측: jewelry_1 은 잉크 성분이 1개뿐이라 아무것도 승격되지 않았다).
+      // 면이지 독립된 잉크 성분이 아니다(실측: jewelry_1 은 잉크 성분이 1개뿐이다).
       if (c.area >= opts.minRegionPx * 4) {
         for (let k = 0; k < c.pixels.length; k++) faceMember[c.pixels[k]] = 1;
         const contour = traceContour(c, W, H, faceMember);
         for (let k = 0; k < c.pixels.length; k++) faceMember[c.pixels[k]] = 0;
         const fit = bestFit(contour, { tolerance: faceTol, closed: true });
         if (fit) {
-          let color = opts.sampleFill ? dominantOf(colorData, colorCh, c.pixels) : "#ffffff";
-          let tex = 0;
-          for (let k = 0; k < c.pixels.length; k++) if (ev.texture[c.pixels[k]]) tex++;
-          if (tex > c.area * 0.35) color = tone(color, 0.14 + 0.1 * (tex / c.area));
           primitives.push({
             id: nextId("gf"), cls: "GEOMETRIC_PRIMITIVE", kind: fit.kind, params: fit.params,
-            d: fit.d, stroke: color, width: 0,
+            // 면에서 온 프리미티브는 **fill** 이다. stroke 로 내면 굵기가 없어 사라진다.
+            paint: "fill", fill: faceColor(c),
+            d: fit.d,
             anchorsSaved: Math.max(0, Math.round(contour.length / 3) - fit.anchors),
             residual: { rms: fit.rms, max: fit.max },
             area: c.area, bbox: [c.x0, c.y0, c.x1, c.y1],
+            partId: at.id, shared: at.shared.length ? at.shared : undefined,
             route: {
               chosen: "GEOMETRIC_PRIMITIVE",
               features: { area: c.area, fitMax: fit.max, contourPts: contour.length },
@@ -242,31 +292,39 @@ export async function buildScene(
           continue;
         }
       }
-      let color = opts.sampleFill ? dominantOf(colorData, colorCh, c.pixels) : "#ffffff";
-      let tex = 0;
-      for (let k = 0; k < c.pixels.length; k++) if (ev.texture[c.pixels[k]]) tex++;
-      if (tex > c.area * 0.35) color = tone(color, 0.14 + 0.1 * (tex / c.area));
-      const hit = groups.find((g) => colorClose(g.color, color, opts.colorMergeDeltaE));
+
+      const color = faceColor(c);
+      // 같은 **파트 안에서** 같은 색끼리만 묶는다
+      const hit = groups.find((g) => g.partId === at.id && colorClose(g.color, color, opts.colorMergeDeltaE));
       if (hit) {
         for (let k = 0; k < c.pixels.length; k++) hit.mask[c.pixels[k]] = 1;
         hit.area += c.area;
+        for (const id of at.shared) if (!hit.shared.includes(id)) hit.shared.push(id);
       } else {
         const m = new Uint8Array(N);
         for (let k = 0; k < c.pixels.length; k++) m[c.pixels[k]] = 1;
-        groups.push({ color, area: c.area, mask: m });
+        groups.push({ color, area: c.area, mask: m, partId: at.id, shared: [...at.shared] });
       }
     }
-    groups.sort((a, b) => b.area - a.area);
+
+    groups.sort((x, y) => y.area - x.area);
     for (let gi = 0; gi < groups.length; gi++) {
       const g = groups[gi];
       const grown = dilate(g.mask, W, H, Math.max(1, Math.round(ev.supersample / 2)));
       for (const d of await traceMask(grown, W, H, path.join(opts.workDir, `face_${gi}.png`), opts.simplifyPx)) {
         primitives.push({
           id: nextId("f"), cls: "FACE_FILL", area: g.area, bbox: [0, 0, W, H], d, fill: g.color,
-          route: { chosen: "FACE_FILL", features: { area: g.area }, why: "선이 감싼 닫힌 면", confidence: 0.9 },
+          partId: g.partId, shared: g.shared.length ? g.shared : undefined,
+          route: {
+            chosen: "FACE_FILL",
+            features: { area: g.area, sharedWith: g.shared.length },
+            why: "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+            confidence: g.shared.length ? 0.6 : 0.9,
+          },
         } as ShapePrimitive);
       }
     }
+    facePartAt = partAt;
     say?.(`면 ${primitives.length}개 (색 묶음 ${groups.length})`);
   }
 
@@ -301,7 +359,9 @@ export async function buildScene(
       geometric.push({ ev: c, fit });
       primitives.push({
         id: nextId("g"), cls: "GEOMETRIC_PRIMITIVE", kind: fit.kind, params: fit.params,
-        d: fit.d, stroke: "#111111", width: Math.max(1, c.widthMedian),
+        // 선 성분에서 온 것은 stroke. 굵기는 그 성분의 실측 중앙값.
+        paint: "stroke", stroke: "#111111", width: Math.max(1, c.widthMedian),
+        d: fit.d,
         anchorsSaved: Math.max(0, Math.round(c.contour.length / 3) - fit.anchors),
         residual: { rms: fit.rms, max: fit.max },
         area: c.area, bbox: c.bbox, route,
@@ -419,6 +479,12 @@ export async function buildScene(
   const sharedBoundaries: SharedBoundary[] = [];
   if (opts.parts?.length) {
     for (const p of primitives) {
+      // 면과 면-프리미티브는 위에서 **면적 겹침**으로 이미 배정했다. 곡선 표본으로 다시
+      // 배정하면 면에 맞지 않는 기준으로 덮어쓰게 된다.
+      if (p.cls === "FACE_FILL" || (p.cls === "GEOMETRIC_PRIMITIVE" && (p as GeometricPrimitive).paint === "fill")) {
+        if (p.shared?.length) sharedBoundaries.push({ primitiveId: p.id, between: [p.partId!, ...p.shared].filter(Boolean) });
+        continue;
+      }
       const d = (p as { d?: string }).d;
       if (!d) continue;
       const a = assignByCurve(d, opts.parts, W, H);
@@ -429,18 +495,30 @@ export async function buildScene(
       }
     }
     // 패턴은 인스턴스 중심으로 배분한다
+    // 패턴은 **인스턴스마다** 파트가 다르다. 하나의 메시·체인이 여러 파트 경계를 넘나들면
+    // 군집 전체를 한 파트에 몰아넣을 수 없다 — 그러면 그 파트를 껐을 때 남의 메시까지 사라진다.
     for (const p of primitives) {
       if (p.cls !== "REPEATING_PATTERN") continue;
       const pat = p as PatternPrimitive;
       const tally = new Map<string, number>();
       for (const inst of pat.instances) {
-        const x = Math.round(inst.x + pat.motifSize[0] / 2), y = Math.round(inst.y + pat.motifSize[1] / 2);
+        const x = Math.round(inst.x + (pat.motifSize[0] * inst.scale) / 2);
+        const y = Math.round(inst.y + (pat.motifSize[1] * inst.scale) / 2);
         if (x < 0 || y < 0 || x >= W || y >= H) continue;
-        for (const part of opts.parts) if (part.mask[y * W + x]) tally.set(part.id, (tally.get(part.id) ?? 0) + 1);
+        const pi = facePartAt ? facePartAt[y * W + x] : -1;
+        if (pi >= 0) {
+          inst.partId = opts.parts[pi].id;
+          tally.set(inst.partId, (tally.get(inst.partId) ?? 0) + 1);
+        }
       }
       let best = "", bestN = 0;
       for (const [id, n] of tally) if (n > bestN) { bestN = n; best = id; }
       if (best) p.partId = best;
+      const spread = [...tally.keys()].filter((id) => id !== best && (tally.get(id) ?? 0) >= pat.instances.length * 0.1);
+      if (spread.length) {
+        p.shared = spread;
+        sharedBoundaries.push({ primitiveId: p.id, between: [best, ...spread] });
+      }
     }
   }
 

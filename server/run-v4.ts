@@ -82,7 +82,8 @@ console.log();
 console.log("=== 편집성 gate ===");
 const e = r.qa.editability;
 console.log(`  ${e.pass ? "PASS" : "REVIEW"}`);
-console.log(`  fidelity      패스 ${e.paths} · 앵커 ${e.anchors} · use ${e.uses} · ${e.kb}KB`);
+console.log(`  fidelity      패스 ${e.paths} · 서브패스 ${e.subpaths} · 앵커 ${e.anchors} · use ${e.uses} · ${e.kb}KB`);
+console.log(`  객체 복잡도   ${e.objectComplexity}  (한 패스 최대 서브패스 ${e.maxSubpathsInPath})`);
 console.log(`  editable 절감  패스 ${(e.editableReduction.paths * 100).toFixed(0)}% · 앵커 ${(e.editableReduction.anchors * 100).toFixed(0)}% · 용량 ${(e.editableReduction.kb * 100).toFixed(0)}%`);
 console.log(`  앵커 밀도     ${e.anchorDensity}/100px   짧은 패스 ${(e.shortPathRatio * 100).toFixed(0)}%`);
 console.log(`  프리미티브    ${e.primitives}개 (앵커 ${e.anchorsSavedByPrimitives} 절감)`);
@@ -93,12 +94,17 @@ console.log();
 console.log("=== 의미 gate ===");
 const s = r.qa.semantic;
 console.log(`  ${s.pass ? "PASS" : "REVIEW"}`);
-console.log(`  파트 배분     평균 precision ${s.meanPrecision}`);
+console.log(`  파트 배분     평균 precision ${s.meanPrecision} · 면적가중 IoU ${s.weightedMeanIou}`);
+if (s.failingMajorParts.length) console.log(`  기준 미달 주요 파트  ${s.failingMajorParts.join(", ")}`);
 console.log(`  공유 경계     ${s.sharedBoundaries}개`);
 console.log(`  종횡비 불일치  ${s.aspectRatio}`);
 for (const p of s.perPart) {
   const fmt = (v: number) => (v < 0 ? "  —  " : v.toFixed(3));
-  console.log(`    ${p.id.padEnd(24)} path ${String(p.paths).padStart(4)}  prec ${fmt(p.precision)}  recall ${fmt(p.recall)}  IoU ${fmt(p.iou)}`);
+  console.log(
+    `    ${p.id.padEnd(24)} ${p.kind === "thin" ? "선" : "면"} ${(p.areaShare * 100).toFixed(1).padStart(5)}%` +
+    `  path ${String(p.paths).padStart(4)}  prec ${fmt(p.precision)}  recall ${fmt(p.recall)}  IoU ${fmt(p.iou)}` +
+    (p.kind === "thin" ? `  F1 ${fmt(p.boundaryF1)}` : ""),
+  );
 }
 for (const n of s.notes) console.log(`  ! ${n}`);
 

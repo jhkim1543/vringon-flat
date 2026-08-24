@@ -37,37 +37,79 @@ function defsFor(prims: ScenePrimitive[]): string {
   return `\n  <defs>\n${body}\n  </defs>`;
 }
 
-function tagOf(p: ScenePrimitive, sharedAttr = true): string {
-  const shared = sharedAttr && p.shared?.length ? ` data-shared="${p.shared.join(" ")}"` : "";
+/**
+ * **정본 렌더러.** export 와 QA 가 각자 렌더 코드를 가지면 "최종 SVG 에는 보이는데 QA 에는
+ * 안 보임"(또는 그 반대)이 생긴다. 실제로 그랬다 — QA 는 패턴을 `d` 로만 찾아 아예 못 그렸고,
+ * 모든 기하 프리미티브를 stroke 로 그려 면 프리미티브를 놓쳤다.
+ *
+ * mode:
+ *   "paint"  실제 색으로 (export)
+ *   "ink"    전부 검정으로 (QA — 잉크 마스크를 뽑기 위해)
+ */
+export function renderPrimitive(
+  p: ScenePrimitive,
+  opts: { mode?: "paint" | "ink"; sharedAttr?: boolean; indent?: string } = {},
+): string {
+  const mode = opts.mode ?? "paint";
+  const ind = opts.indent ?? "    ";
+  const shared = (opts.sharedAttr ?? true) && p.shared?.length ? ` data-shared="${p.shared.join(" ")}"` : "";
   const cls = ` data-cls="${p.cls}"`;
+  const ink = (c: string) => (mode === "ink" ? "#000000" : c);
+
   switch (p.cls) {
     case "STRUCTURAL_STROKE":
     case "DASH_OR_STITCH": {
-      const s = p as StrokePrimitive;
-      const dash = s.dashArray ? ` stroke-dasharray="${s.dashArray}"` : "";
-      return `    <path d="${s.d}" fill="none" stroke="${s.color}" stroke-width="${s.width}" ` +
+      const st = p as StrokePrimitive;
+      const dash = st.dashArray ? ` stroke-dasharray="${st.dashArray}"` : "";
+      return `${ind}<path d="${st.d}" fill="none" stroke="${ink(st.color)}" stroke-width="${st.width}" ` +
         `stroke-linecap="round" stroke-linejoin="round"${dash}${cls}${shared}/>`;
     }
     case "GEOMETRIC_PRIMITIVE": {
       const g = p as GeometricPrimitive;
-      return `    <path d="${g.d}" fill="none" stroke="${g.stroke}" stroke-width="${g.width}" ` +
-        `stroke-linecap="round" stroke-linejoin="round"${cls} data-kind="${g.kind}" ` +
-        `data-params="${esc(JSON.stringify(g.params))}"${shared}/>`;
+      const meta = `${cls} data-kind="${g.kind}" data-paint="${g.paint}" data-params="${esc(JSON.stringify(g.params))}"${shared}`;
+      // 면에서 온 프리미티브는 fill 로 그려야 한다. stroke 로 그리면 width 가 없어 사라진다.
+      if (g.paint === "fill") {
+        return `${ind}<path d="${g.d}" fill="${ink(g.fill)}" fill-rule="evenodd"${meta}/>`;
+      }
+      return `${ind}<path d="${g.d}" fill="none" stroke="${ink(g.stroke)}" stroke-width="${g.width}" ` +
+        `stroke-linecap="round" stroke-linejoin="round"${meta}/>`;
     }
     case "REPEATING_PATTERN": {
       const t = p as PatternPrimitive;
+      // QA 에서는 <use> 를 못 쓸 수 있으므로(별도 SVG 로 잘라 낼 때 defs 가 없다)
+      // ink 모드에서는 모티프를 인스턴스마다 펼쳐 그린다.
+      if (mode === "ink") {
+        const body = t.instances.map((i) =>
+          `${ind}  <g transform="translate(${i.x} ${i.y})${i.rotate ? ` rotate(${i.rotate})` : ""}${i.scale !== 1 ? ` scale(${i.scale})` : ""}">` +
+          `<path d="${t.motif}" fill="#000000" fill-rule="evenodd"/></g>`).join("\n");
+        return `${ind}<g${cls}>\n${body}\n${ind}</g>`;
+      }
       const uses = t.instances.map((i) =>
-        `      <use xlink:href="#motif-${t.id}" x="0" y="0" ` +
+        `${ind}  <use xlink:href="#motif-${t.id}" x="0" y="0" ` +
         `width="${t.motifSize[0]}" height="${t.motifSize[1]}" ` +
-        `transform="translate(${i.x} ${i.y})${i.scale !== 1 ? ` scale(${i.scale})` : ""}"/>`,
-      ).join("\n");
-      return `    <g${cls} data-instances="${t.instances.length}"${shared}>\n${uses}\n    </g>`;
+        `transform="translate(${i.x} ${i.y})${i.rotate ? ` rotate(${i.rotate})` : ""}${i.scale !== 1 ? ` scale(${i.scale})` : ""}"` +
+        `${i.partId ? ` data-part="${i.partId}"` : ""}/>`).join("\n");
+      return `${ind}<g${cls} data-instances="${t.instances.length}"${shared}>\n${uses}\n${ind}</g>`;
     }
     default: {
-      const s = p as ShapePrimitive;
-      return `    <path d="${s.d}" fill="${s.fill}" fill-rule="evenodd"${cls}${shared}/>`;
+      const sh = p as ShapePrimitive;
+      return `${ind}<path d="${sh.d}" fill="${ink(sh.fill)}" fill-rule="evenodd"${cls}${shared}/>`;
     }
   }
+}
+
+/** 프리미티브들을 독립 SVG 하나로 (QA·파트별 렌더용) */
+export function renderStandalone(
+  prims: ScenePrimitive[], W: number, H: number, mode: "paint" | "ink" = "ink",
+): string {
+  return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" ` +
+    `viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">` +
+    [...prims].sort(drawOrder).map((p) => renderPrimitive(p, { mode, sharedAttr: false, indent: "" })).join("") +
+    `</svg>`;
+}
+
+function tagOf(p: ScenePrimitive, sharedAttr = true): string {
+  return renderPrimitive(p, { sharedAttr });
 }
 
 /** 그리는 순서 — 면이 먼저, 그 위에 선 */
