@@ -105,7 +105,7 @@
   "partId": "front_bezel",
   "area": 28393,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -115,7 +115,7 @@
   "partId": "middle_band",
   "area": 14391,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -125,7 +125,7 @@
   "partId": "middle_band",
   "area": 14391,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -152,7 +152,7 @@
  {
   "id": "fg",
   "cls": "FACE_FILL",
-  "partId": "middle_gemstone",
+  "partId": "middle_band",
   "area": 1390,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
@@ -222,7 +222,7 @@
  {
   "id": "gn",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "front_band",
+  "partId": "middle_gemstone",
   "area": 13,
   "why": "line 적합 잔차 max 0.62px (허용 2.3px) — 앵커 2개로 표현",
   "confidence": 0.866,
@@ -272,7 +272,7 @@
  {
   "id": "gs",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "front_gemstone",
+  "partId": "front_bezel",
   "area": 57,
   "why": "line 적합 잔차 max 1.56px (허용 2.3px) — 앵커 2개로 표현",
   "confidence": 0.664,
@@ -342,7 +342,7 @@
  {
   "id": "gz",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "middle_bezel",
+  "partId": "middle_gemstone",
   "area": 21,
   "why": "line 적합 잔차 max 0px (허용 2.3px) — 앵커 2개로 표현",
   "confidence": 0.98,
@@ -352,7 +352,7 @@
  {
   "id": "g10",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "front_bezel",
+  "partId": "front_gemstone",
   "area": 24,
   "why": "circle 적합 잔차 max 0.6px (허용 2.3px) — 앵커 4개로 표현",
   "confidence": 0.871,
@@ -472,7 +472,7 @@
  {
   "id": "o1c",
   "cls": "OUTLINE_SHAPE",
-  "partId": "middle_band",
+  "partId": "rear_bezel",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,
@@ -552,7 +552,7 @@
  {
   "id": "o1k",
   "cls": "OUTLINE_SHAPE",
-  "partId": "middle_band",
+  "partId": "front_band",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,
@@ -662,7 +662,7 @@
  {
   "id": "o1v",
   "cls": "OUTLINE_SHAPE",
-  "partId": "front_gemstone",
+  "partId": "front_bezel",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,
@@ -842,7 +842,7 @@
  {
   "id": "o2d",
   "cls": "OUTLINE_SHAPE",
-  "partId": "front_band",
+  "partId": "middle_gemstone",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,
@@ -922,7 +922,7 @@
  {
   "id": "o2l",
   "cls": "OUTLINE_SHAPE",
-  "partId": "front_band",
+  "partId": "middle_bezel",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,
@@ -1052,7 +1052,7 @@
  {
   "id": "o2y",
   "cls": "OUTLINE_SHAPE",
-  "partId": "front_bezel",
+  "partId": "front_gemstone",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,
@@ -1082,7 +1082,7 @@
  {
   "id": "o31",
   "cls": "OUTLINE_SHAPE",
-  "partId": "front_bezel",
+  "partId": "front_gemstone",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,

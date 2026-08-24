@@ -15,7 +15,7 @@
   "partId": "ring_body",
   "area": 670800,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -25,7 +25,7 @@
   "partId": "ring_body",
   "area": 670800,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -35,7 +35,7 @@
   "partId": "ring_body",
   "area": 670800,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -45,7 +45,7 @@
   "partId": "ring_body",
   "area": 670800,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -55,7 +55,7 @@
   "partId": "ring_body",
   "area": 670800,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -65,7 +65,7 @@
   "partId": "ring_body",
   "area": 670800,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -75,7 +75,7 @@
   "partId": "ring_body",
   "area": 670800,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -85,7 +85,7 @@
   "partId": "ring_body",
   "area": 670800,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -95,7 +95,7 @@
   "partId": "ring_body",
   "area": 670800,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -105,7 +105,7 @@
   "partId": "ring_body",
   "area": 670800,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -115,7 +115,7 @@
   "partId": "ring_body",
   "area": 670800,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -132,7 +132,7 @@
  {
   "id": "oe",
   "cls": "OUTLINE_SHAPE",
-  "partId": "side_engraving",
+  "partId": "ring_body",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,

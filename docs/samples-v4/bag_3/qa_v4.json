@@ -8,8 +8,8 @@
       "sourceHeight": 1400,
       "supersample": 2
     },
-    "totalMs": 13519,
-    "createdAt": "2026-08-24T10:45:42.963Z"
+    "totalMs": 19042,
+    "createdAt": "2026-08-24T12:26:53.235Z"
   },
   "options": {
     "minParts": 3,
@@ -20,6 +20,7 @@
     "inkThreshold": 170,
     "localContrast": 22,
     "textureMode": "auto",
+    "segMode": "schematic",
     "categoryHint": "bag",
     "schematicFrom": "outputs/v3/v3_bag_3_v31/schematics/schematic_efddc3cda20bb799.png",
     "upscale": false
@@ -142,7 +143,7 @@
       "objectComplexity": 2218,
       "anchors": 16230,
       "uses": 398,
-      "kb": 651.7,
+      "kb": 650.1,
       "anchorDensity": 11.67,
       "shortPathRatio": 0.006,
       "primitives": 32,
@@ -163,50 +164,50 @@
         {
           "id": "inner_pouch",
           "label": "Inner pouch body",
-          "kind": "area",
-          "paths": 36,
-          "areaShare": 0.0038,
-          "precision": 0.0918,
-          "recall": 0.1154,
-          "iou": 0.0539,
-          "boundaryF1": -1
+          "kind": "thin",
+          "paths": 42,
+          "areaShare": 0.0015,
+          "precision": 0.0536,
+          "recall": 0.0899,
+          "iou": 0.0348,
+          "boundaryF1": 0.0944
         },
         {
           "id": "chain_strap",
           "label": "Chain shoulder strap",
           "kind": "area",
           "paths": 16,
-          "areaShare": 0.0356,
-          "precision": 0.8914,
-          "recall": 0.4641,
-          "iou": 0.4393,
+          "areaShare": 0.0359,
+          "precision": 0.996,
+          "recall": 0.5127,
+          "iou": 0.5117,
           "boundaryF1": -1
         },
         {
           "id": "metal_lattice_shell",
           "label": "Linked metal outer shell",
-          "kind": "area",
-          "paths": 19,
-          "areaShare": 0.0103,
-          "precision": 0.6004,
-          "recall": 0.1476,
-          "iou": 0.1344,
-          "boundaryF1": -1
+          "kind": "thin",
+          "paths": 15,
+          "areaShare": 0.0062,
+          "precision": 1,
+          "recall": 0.1823,
+          "iou": 0.1823,
+          "boundaryF1": 0.7683
         },
         {
           "id": "turquoise_stone_embellishments",
           "label": "Turquoise stone embellishments",
           "kind": "area",
-          "paths": 308,
-          "areaShare": 0.1856,
-          "precision": 0.8202,
-          "recall": 0.8803,
-          "iou": 0.7379,
+          "paths": 305,
+          "areaShare": 0.1808,
+          "precision": 0.828,
+          "recall": 0.9086,
+          "iou": 0.7643,
           "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.601,
-      "weightedMeanIou": 0.6553,
+      "meanPrecision": 0.7194,
+      "weightedMeanIou": 0.7029,
       "failingMajorParts": [
         "chain_strap"
       ],
@@ -215,7 +216,7 @@
       ],
       "emptyVisibleParts": [],
       "sharedOnlyParts": [],
-      "sharedBoundaries": 41,
+      "sharedBoundaries": 1,
       "aspectRatio": 1.031,
       "lowConfidenceRoutes": 0,
       "notes": [
@@ -227,13 +228,13 @@
     "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
   },
   "timings": {
-    "S1_preprocess": 5300,
-    "S2_plan": 3,
-    "S3_masks": 3397,
-    "S4_schematic": 336,
-    "S5_evidence": 2886,
-    "S7_export": 62,
-    "S8_qa": 1374
+    "S1_preprocess": 5722,
+    "S2_plan": 6,
+    "S3_masks": 4598,
+    "S4_schematic": 1137,
+    "S5_evidence": 4079,
+    "S7_export": 71,
+    "S8_qa": 3178
   },
   "rescued": {
     "stitch": [
@@ -244,6 +245,12 @@
       0,
       0
     ]
+  },
+  "maskSource": {
+    "inner_pouch": "photo-warp (표결 2/4 미달)",
+    "chain_strap": "photo-warp (표결 2/4 미달)",
+    "metal_lattice_shell": "photo-warp (표결 2/4 미달)",
+    "turquoise_stone_embellishments": "photo-warp (표결 2/4 미달)"
   },
   "correspondence": {
     "method": "global-similarity",

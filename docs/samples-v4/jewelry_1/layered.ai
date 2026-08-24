@@ -1181,20 +1181,6 @@ EMC
 /OC /oc3 BDC
 /OC /oc4 BDC
 q
-1 1 1 rg
-352.09 1511.81 m
-352.09 1515.43 355.03 1518.37 358.66 1518.37 c
-362.28 1518.37 365.22 1515.43 365.22 1511.81 c
-365.22 1508.18 362.28 1505.24 358.66 1505.24 c
-355.03 1505.24 352.09 1508.18 352.09 1511.81 c
-h
-f*
-Q
-EMC
-EMC
-/OC /oc5 BDC
-/OC /oc6 BDC
-q
 0.07 0.07 0.07 rg
 1232.58 1817.19 m
 1235.31 1817.19 1238.04 1817.19 1240.76 1817.21 c
@@ -2692,6 +2678,20 @@ f*
 Q
 EMC
 EMC
+/OC /oc5 BDC
+/OC /oc6 BDC
+q
+1 1 1 rg
+352.09 1511.81 m
+352.09 1515.43 355.03 1518.37 358.66 1518.37 c
+362.28 1518.37 365.22 1515.43 365.22 1511.81 c
+365.22 1508.18 362.28 1505.24 358.66 1505.24 c
+355.03 1505.24 352.09 1508.18 352.09 1511.81 c
+h
+f*
+Q
+EMC
+EMC
 endstream
 endobj
 5 0 obj
@@ -2704,16 +2704,16 @@ endobj
 << /Type /OCG /Name (Engraved side lettering) >>
 endobj
 8 0 obj
-<< /Type /OCG /Name (PRIMITIVES) >>
+<< /Type /OCG /Name (OUTLINES) >>
 endobj
 9 0 obj
 << /Type /OCG /Name (Open metal ring body) >>
 endobj
 10 0 obj
-<< /Type /OCG /Name (SHARED_BOUNDARIES) >>
+<< /Type /OCG /Name (PRIMITIVES) >>
 endobj
 11 0 obj
-<< /Type /OCG /Name (Engraved side lettering) >>
+<< /Type /OCG /Name (Open metal ring body) >>
 endobj
 xref
 0 12
@@ -2726,11 +2726,11 @@ xref
 0000115481 00000 n 
 0000115542 00000 n 
 0000115606 00000 n 
-0000115657 00000 n 
-0000115718 00000 n 
-0000115777 00000 n 
+0000115655 00000 n 
+0000115716 00000 n 
+0000115768 00000 n 
 trailer
 << /Size 12 /Root 1 0 R >>
 startxref
-115842
+115830
 %%EOF

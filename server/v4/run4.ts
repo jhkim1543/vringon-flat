@@ -25,6 +25,9 @@ import { isolateProduct, cropToSubject } from "../pipeline/prepare.js";
 import { planParts, type PartPlan } from "../v3/partPlan.js";
 import { generateSchematic, activeBackend, normalizeCategory, type SchematicResult } from "../v3/schematicClient.js";
 import { detectSubject, similarityFit, warpMask } from "../v3/subject.js";
+import { segmentSchematic, snapMasksToFaces, type SegHint } from "./segSchematic.js";
+import { inkMask } from "../v3/metrics.js";
+import { config } from "../config.js";
 import { buildVisibleMasks } from "../v2/masks.js";
 import { area } from "../v2/raster.js";
 import type { LayerManifest, ManifestLayer } from "../v2/schema.js";
@@ -50,6 +53,12 @@ export interface V4Options {
   inkThreshold: number;
   localContrast: number;
   textureMode: "auto" | "tone" | "keep";
+  /**
+   * 파트 마스크 출처. "schematic"(기본)은 도면을 Gemini 로 직접 segment 하고 warp 는
+   * 위치 힌트로만 쓴다. "photo"는 예전 방식(사진 마스크 warp) — 회귀 비교용.
+   * Gemini 키가 없으면 자동으로 photo 로 떨어진다.
+   */
+  segMode: "schematic" | "photo";
   /** 기존 도면 재사용 (백엔드 없이 검증) */
   schematicFrom?: string;
   upscale?: boolean;
@@ -64,6 +73,7 @@ export const DEFAULT_V4_OPTIONS: V4Options = {
   inkThreshold: 170,
   localContrast: 22,
   textureMode: "auto",
+  segMode: "schematic",
 };
 
 export interface V4Result {
@@ -226,11 +236,103 @@ export async function runV4(
     w: sketchSubject.box.w * supersample, h: sketchSubject.box.h * supersample,
   });
   const ordered = [...plan.parts].sort((a, b) => a.z - b.z);
-  const partMasks = ordered
+  const warped = ordered
     .map((p) => ({ id: p.id, mask: vm.masks.get(p.id) }))
     .filter((x): x is { id: string; mask: Uint8Array } => !!x.mask && area(x.mask) > 0)
     .map((pm) => ({ id: pm.id, mask: warpMask(pm.mask, W, H, VW, VH, fit) }))
     .filter((pm) => area(pm.mask) > 0);
+
+  // ── Phase B: 도면 직접 segmentation ──────────────────────
+  //
+  // warp 된 사진 마스크는 위치는 대강 맞지만 경계가 원리적으로 안 맞는다(도면은 모델이
+  // 다시 그린 그림 — bag_1 종횡비 19.8% 불일치). 그래서 역할을 나눈다:
+  // warp 마스크의 bbox 는 Gemini 에게 주는 **위치 힌트**, 실제 경계는 **도면에서 직접**.
+  let partMasks = warped;
+  const maskSource: Record<string, string> = {};
+  for (const pm of warped) maskSource[pm.id] = "photo-warp";
+  if (opts.segMode === "schematic" && config.geminiKey) {
+    try {
+      const hints: SegHint[] = warped.map((pm) => {
+        let x0 = VW, y0 = VH, x1 = 0, y1 = 0;
+        for (let y = 0; y < VH; y++) {
+          for (let x = 0; x < VW; x++) {
+            if (!pm.mask[y * VW + x]) continue;
+            if (x < x0) x0 = x; if (x > x1) x1 = x;
+            if (y < y0) y0 = y; if (y > y1) y1 = y;
+          }
+        }
+        return {
+          id: pm.id,
+          box: [
+            Math.round((y0 / VH) * 1000), Math.round((x0 / VW) * 1000),
+            Math.round((y1 / VH) * 1000), Math.round((x1 / VW) * 1000),
+          ] as [number, number, number, number],
+        };
+      });
+      const seg = await segmentSchematic(raw, plan, hints, masksDir, (m) => say("SEGMENTING", m));
+      // 도면 해상도 → 작업 캔버스(supersample 배)
+      const up = (m: Uint8Array): Uint8Array => {
+        if (seg.width === VW && seg.height === VH) return m;
+        const out = new Uint8Array(VW * VH);
+        for (let y = 0; y < VH; y++) {
+          const sy = Math.min(seg.height - 1, Math.floor((y / VH) * seg.height));
+          for (let x = 0; x < VW; x++) {
+            const sx = Math.min(seg.width - 1, Math.floor((x / VW) * seg.width));
+            out[y * VW + x] = m[sy * seg.width + sx];
+          }
+        }
+        return out;
+      };
+      const byId = new Map(seg.parts.map((sp) => [sp.id, up(sp.mask)]));
+      // 파트별 선택: Gemini 마스크가 있고 warp 와 자리가 겹치면(IoU ≥ 0.1) 채택.
+      // 자리가 아예 다르면 모델이 엉뚱한 곳을 잡은 것이므로 warp 를 유지한다.
+      const blended: { id: string; mask: Uint8Array }[] = [];
+      for (const pm of warped) {
+        const g = byId.get(pm.id);
+        if (!g) { blended.push(pm); continue; }
+        let inter = 0, uni = 0;
+        for (let i = 0; i < g.length; i++) {
+          const a = g[i], b = pm.mask[i];
+          if (a && b) inter++;
+          if (a || b) uni++;
+        }
+        const iou = uni ? inter / uni : 0;
+        if (iou >= 0.1) { blended.push({ id: pm.id, mask: g }); maskSource[pm.id] = "gemini-schematic"; }
+        else { blended.push(pm); maskSource[pm.id] = `photo-warp (gemini 불일치 IoU ${iou.toFixed(2)})`; }
+      }
+      // warp 가 아예 없던 파트도 Gemini 가 찾았으면 쓴다
+      for (const sp of seg.parts) {
+        if (!blended.some((b) => b.id === sp.id)) {
+          blended.push({ id: sp.id, mask: up(sp.mask) });
+          maskSource[sp.id] = "gemini-schematic (warp 없음)";
+        }
+      }
+      const zOf = new Map(ordered.map((o2, i) => [o2.id, i]));
+      blended.sort((a2, b2) => (zOf.get(a2.id) ?? 99) - (zOf.get(b2.id) ?? 99));
+      for (const n of seg.notes) say("SEGMENTING", "! " + n);
+
+      // **혼용 금지.** Gemini 마스크와 warp 마스크는 좌표 정합이 다르다 — 절반씩 섞으면
+      // 이웃 파트끼리 기준이 어긋나 배분이 무너진다(실측: bag_3 가중 IoU 0.708 → 0.435,
+      // jewelry_3 0.651 → 0.588). 채택률 80% 이상일 때만 통째로 쓰고, 아니면 전부 warp.
+      const nGem = Object.values(maskSource).filter((v) => v.startsWith("gemini")).length;
+      if (nGem >= blended.length * 0.8) {
+        partMasks = blended;
+        say("SEGMENTING", `도면 직접 seg 채택: ${nGem}/${blended.length} 파트가 Gemini 마스크`);
+      } else {
+        for (const k of Object.keys(maskSource)) maskSource[k] = `photo-warp (표결 ${nGem}/${blended.length} 미달)`;
+        say("SEGMENTING", `도면 seg 기각 (${nGem}/${blended.length} < 80%) — warp 마스크로 통일`);
+      }
+    } catch (e) {
+      say("SEGMENTING", `도면 seg 실패 — warp 마스크로 진행: ${(e as Error).message.slice(0, 80)}`);
+    }
+    // **면 스냅은 마스크 출처와 무관하게 항상.** warp 마스크도 닫힌 면 단위로 스냅하면
+    // 경계가 도면 선으로 정리된다(실측: shoe_3 는 Gemini 2/8 뿐인데도 스냅만으로
+    // 가중 IoU 0.495 → 0.628). 경계는 도면에 이미 그려져 있다 — 그걸 쓰는 것뿐이다.
+    {
+      const inkV = await inkMask(raw, VW, VH, opts.inkThreshold);
+      partMasks = snapMasksToFaces(partMasks, inkV.data, VW, VH);
+    }
+  }
   mark("S4_schematic", ts);
 
   // ── S5~S6 증거 · 라우팅 ──────────────────────────────────
@@ -252,8 +354,9 @@ export async function runV4(
     parts: partMasks,
     partNodes,
   }, (m) => say("ROUTING", m));
+  const usedGemini = Object.values(maskSource).some((v) => v.startsWith("gemini"));
   scene.correspondence = {
-    method: "global-similarity",
+    method: usedGemini ? "schematic-direct-seg" : "global-similarity",
     aspectRatio: fit.aspectRatio,
     confident: photoSubject.confident && sketchSubject.confident,
     note: corrNote,
@@ -301,6 +404,7 @@ export async function runV4(
     // 해프톤 삭제에서 구제한 디테일 — [개수, px]. 0이 아니면 그만큼의 스티치·로고가
     // 질감으로 오인돼 사라질 뻔했다는 뜻이다.
     rescued: { stitch: evidence.rescuedStitch, detail: evidence.rescuedDetail },
+    maskSource,
     correspondence: scene.correspondence,
   };
   await fs.writeFile(path.join(jobDir, "qa_v4.json"), JSON.stringify(report, null, 2), "utf8");

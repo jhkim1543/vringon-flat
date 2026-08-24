@@ -8,8 +8,8 @@
       "sourceHeight": 1098,
       "supersample": 2
     },
-    "totalMs": 21119,
-    "createdAt": "2026-08-24T10:44:05.680Z"
+    "totalMs": 37494,
+    "createdAt": "2026-08-24T12:24:30.837Z"
   },
   "options": {
     "minParts": 3,
@@ -20,6 +20,7 @@
     "inkThreshold": 170,
     "localContrast": 22,
     "textureMode": "auto",
+    "segMode": "schematic",
     "categoryHint": "shoe",
     "schematicFrom": "outputs/v3/v3_shoe_1_v31/schematics/schematic_8ec87125d4c4e609.png",
     "upscale": false
@@ -227,7 +228,7 @@
       "objectComplexity": 370,
       "anchors": 11030,
       "uses": 0,
-      "kb": 462.3,
+      "kb": 462,
       "anchorDensity": 7.17,
       "shortPathRatio": 0.055,
       "primitives": 28,
@@ -236,7 +237,7 @@
       "editableReduction": {
         "paths": 0.009,
         "anchors": 0.104,
-        "kb": 0.099
+        "kb": 0.1
       },
       "notes": []
     },
@@ -246,138 +247,134 @@
         {
           "id": "rubber_outsole",
           "label": "Rubber outsole",
-          "kind": "area",
-          "paths": 2,
-          "areaShare": 0.023,
-          "precision": 0.6702,
-          "recall": 0.1301,
-          "iou": 0.1223,
-          "boundaryF1": -1
+          "kind": "thin",
+          "paths": 3,
+          "areaShare": 0.0154,
+          "precision": 0.9756,
+          "recall": 0.1339,
+          "iou": 0.1335,
+          "boundaryF1": 0.7771
         },
         {
           "id": "cushioned_midsole",
           "label": "Cushioned midsole",
           "kind": "area",
-          "paths": 12,
-          "areaShare": 0.0922,
-          "precision": 0.7682,
-          "recall": 0.8077,
-          "iou": 0.6494,
+          "paths": 16,
+          "areaShare": 0.1153,
+          "precision": 0.9954,
+          "recall": 0.8907,
+          "iou": 0.8871,
           "boundaryF1": -1
         },
         {
           "id": "tongue",
           "label": "Tongue",
-          "kind": "area",
-          "paths": 12,
-          "areaShare": 0.0316,
-          "precision": 0.9999,
-          "recall": 0.2888,
-          "iou": 0.2888,
-          "boundaryF1": -1
+          "kind": "thin",
+          "paths": 0,
+          "areaShare": 0.003,
+          "precision": 0,
+          "recall": 0,
+          "iou": 0,
+          "boundaryF1": 0
         },
         {
           "id": "eyelet_underlay",
           "label": "Eyelet underlay",
-          "kind": "area",
-          "paths": 17,
-          "areaShare": 0.0152,
-          "precision": 0.7527,
-          "recall": 0.4551,
-          "iou": 0.3959,
-          "boundaryF1": -1
+          "kind": "thin",
+          "paths": 0,
+          "areaShare": 0.0026,
+          "precision": 0,
+          "recall": 0,
+          "iou": 0,
+          "boundaryF1": 0
         },
         {
           "id": "main_upper",
           "label": "Main upper",
           "kind": "area",
-          "paths": 35,
-          "areaShare": 0.1575,
-          "precision": 0.5997,
-          "recall": 0.6684,
-          "iou": 0.4622,
+          "paths": 70,
+          "areaShare": 0.2272,
+          "precision": 0.8873,
+          "recall": 0.9605,
+          "iou": 0.8561,
           "boundaryF1": -1
         },
         {
           "id": "heel_overlay",
           "label": "Heel reinforcement overlay",
-          "kind": "area",
-          "paths": 8,
-          "areaShare": 0.0326,
-          "precision": 0.9982,
-          "recall": 0.3511,
-          "iou": 0.3509,
-          "boundaryF1": -1
+          "kind": "thin",
+          "paths": 6,
+          "areaShare": 0.0172,
+          "precision": 1,
+          "recall": 0.4242,
+          "iou": 0.4242,
+          "boundaryF1": 0.8898
         },
         {
           "id": "laces",
           "label": "Laces",
-          "kind": "area",
-          "paths": 6,
-          "areaShare": 0.0517,
-          "precision": 0.1625,
-          "recall": 0.2305,
-          "iou": 0.1054,
-          "boundaryF1": -1
+          "kind": "thin",
+          "paths": 0,
+          "areaShare": 0.0014,
+          "precision": 0,
+          "recall": 0,
+          "iou": 0,
+          "boundaryF1": 0
         },
         {
           "id": "swoosh_logo",
           "label": "Swoosh logo",
-          "kind": "area",
+          "kind": "thin",
           "paths": 1,
-          "areaShare": 0.0319,
+          "areaShare": 0.0113,
           "precision": 1,
-          "recall": 0.1245,
-          "iou": 0.1245,
-          "boundaryF1": -1
+          "recall": 0.1445,
+          "iou": 0.1445,
+          "boundaryF1": 0.7184
         },
         {
           "id": "airmax_badge",
           "label": "AIRMAX badge",
-          "kind": "area",
-          "paths": 23,
-          "areaShare": 0.016,
-          "precision": 0.9535,
-          "recall": 0.7589,
-          "iou": 0.7318,
-          "boundaryF1": -1
+          "kind": "thin",
+          "paths": 20,
+          "areaShare": 0.0117,
+          "precision": 0.9501,
+          "recall": 0.6534,
+          "iou": 0.6317,
+          "boundaryF1": 0.9244
         }
       ],
-      "meanPrecision": 0.7672,
-      "weightedMeanIou": 0.4056,
-      "failingMajorParts": [
-        "rubber_outsole",
-        "tongue",
-        "heel_overlay",
-        "laces",
-        "swoosh_logo"
-      ],
-      "misassigned": [
+      "meanPrecision": 0.6454,
+      "weightedMeanIou": 0.778,
+      "failingMajorParts": [],
+      "misassigned": [],
+      "emptyVisibleParts": [
         "laces"
       ],
-      "emptyVisibleParts": [],
-      "sharedOnlyParts": [],
-      "sharedBoundaries": 16,
+      "sharedOnlyParts": [
+        "tongue",
+        "eyelet_underlay"
+      ],
+      "sharedBoundaries": 0,
       "aspectRatio": 1.052,
       "lowConfidenceRoutes": 7,
       "notes": [
-        "기준 미달 주요 파트 5개: rubber_outsole, tongue, heel_overlay, laces, swoosh_logo (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
-        "배분이 의심되는 레이어 1개: laces",
+        "패스가 없는 파트 1개: laces",
+        "공유 경계로만 그려진 파트 2개: tongue, eyelet_underlay",
         "사진↔도면 종횡비 불일치 5.2%",
-        "라우터가 확신하지 못한 성분 7개",
-        "면적 가중 평균 IoU 0.406 < 0.65"
+        "라우터가 확신하지 못한 성분 7개"
       ]
     },
     "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
   },
   "timings": {
-    "S1_preprocess": 3079,
-    "S2_plan": 5,
-    "S3_masks": 6870,
-    "S4_schematic": 627,
-    "S5_evidence": 7060,
-    "S7_export": 39,
-    "S8_qa": 3370
+    "S1_preprocess": 4037,
+    "S2_plan": 11,
+    "S3_masks": 11340,
+    "S4_schematic": 2519,
+    "S5_evidence": 12028,
+    "S7_export": 59,
+    "S8_qa": 7400
   },
   "rescued": {
     "stitch": [
@@ -389,8 +386,19 @@
       967
     ]
   },
+  "maskSource": {
+    "rubber_outsole": "gemini-schematic",
+    "cushioned_midsole": "gemini-schematic",
+    "tongue": "gemini-schematic",
+    "eyelet_underlay": "gemini-schematic",
+    "main_upper": "gemini-schematic",
+    "heel_overlay": "gemini-schematic",
+    "laces": "gemini-schematic",
+    "swoosh_logo": "photo-warp (gemini 불일치 IoU 0.00)",
+    "airmax_badge": "gemini-schematic"
+  },
   "correspondence": {
-    "method": "global-similarity",
+    "method": "schematic-direct-seg",
     "aspectRatio": 1.0519794727545186,
     "confident": true,
     "note": ""

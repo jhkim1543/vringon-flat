@@ -8,8 +8,8 @@
       "sourceHeight": 464,
       "supersample": 2
     },
-    "totalMs": 20290,
-    "createdAt": "2026-08-24T10:46:42.678Z"
+    "totalMs": 18555,
+    "createdAt": "2026-08-24T12:28:20.660Z"
   },
   "options": {
     "minParts": 3,
@@ -20,6 +20,7 @@
     "inkThreshold": 170,
     "localContrast": 22,
     "textureMode": "auto",
+    "segMode": "schematic",
     "categoryHint": "jewelry",
     "schematicFrom": "outputs/v3/v3_jewelry_3_v31/schematics/schematic_28f3bf7b81fb0812.png",
     "upscale": false
@@ -231,7 +232,7 @@
       "objectComplexity": 361,
       "anchors": 3570,
       "uses": 0,
-      "kb": 144,
+      "kb": 143.8,
       "anchorDensity": 6.54,
       "shortPathRatio": 0.026,
       "primitives": 21,
@@ -252,10 +253,10 @@
           "label": "Rear ring band",
           "kind": "area",
           "paths": 2,
-          "areaShare": 0.0337,
-          "precision": 0.8319,
-          "recall": 0.657,
-          "iou": 0.58,
+          "areaShare": 0.0311,
+          "precision": 0.9872,
+          "recall": 0.8358,
+          "iou": 0.8268,
           "boundaryF1": -1
         },
         {
@@ -263,7 +264,7 @@
           "label": "Rear gemstone",
           "kind": "thin",
           "paths": 0,
-          "areaShare": 0.0022,
+          "areaShare": 0.0005,
           "precision": 0,
           "recall": 0,
           "iou": 0,
@@ -273,33 +274,33 @@
           "id": "rear_bezel",
           "label": "Rear bezel setting",
           "kind": "area",
-          "paths": 21,
-          "areaShare": 0.0319,
-          "precision": 0.7228,
-          "recall": 0.8377,
-          "iou": 0.634,
+          "paths": 22,
+          "areaShare": 0.0274,
+          "precision": 0.7325,
+          "recall": 0.9776,
+          "iou": 0.7205,
           "boundaryF1": -1
         },
         {
           "id": "middle_band",
           "label": "Middle ring band",
           "kind": "area",
-          "paths": 6,
-          "areaShare": 0.0218,
-          "precision": 0.5693,
-          "recall": 0.2172,
-          "iou": 0.1865,
+          "paths": 5,
+          "areaShare": 0.0125,
+          "precision": 0.8354,
+          "recall": 0.5687,
+          "iou": 0.5114,
           "boundaryF1": -1
         },
         {
           "id": "middle_gemstone",
           "label": "Middle gemstone",
           "kind": "area",
-          "paths": 44,
-          "areaShare": 0.0656,
-          "precision": 0.8384,
-          "recall": 0.9329,
-          "iou": 0.7907,
+          "paths": 46,
+          "areaShare": 0.0594,
+          "precision": 0.7888,
+          "recall": 0.9428,
+          "iou": 0.7527,
           "boundaryF1": -1
         },
         {
@@ -307,50 +308,49 @@
           "label": "Middle bezel setting",
           "kind": "area",
           "paths": 3,
-          "areaShare": 0.0284,
-          "precision": 0.6801,
-          "recall": 0.0496,
-          "iou": 0.0484,
+          "areaShare": 0.0223,
+          "precision": 0.7189,
+          "recall": 0.064,
+          "iou": 0.0625,
           "boundaryF1": -1
         },
         {
           "id": "front_band",
           "label": "Front ring band",
           "kind": "area",
-          "paths": 11,
-          "areaShare": 0.0775,
-          "precision": 0.7377,
-          "recall": 0.6133,
-          "iou": 0.5035,
+          "paths": 9,
+          "areaShare": 0.0748,
+          "precision": 0.9814,
+          "recall": 0.8354,
+          "iou": 0.8225,
           "boundaryF1": -1
         },
         {
           "id": "front_gemstone",
           "label": "Front gemstone",
           "kind": "area",
-          "paths": 34,
-          "areaShare": 0.0651,
-          "precision": 0.9103,
-          "recall": 0.784,
-          "iou": 0.7277,
+          "paths": 35,
+          "areaShare": 0.0601,
+          "precision": 0.9968,
+          "recall": 0.9185,
+          "iou": 0.9158,
           "boundaryF1": -1
         },
         {
           "id": "front_bezel",
           "label": "Front bezel setting",
           "kind": "area",
-          "paths": 6,
-          "areaShare": 0.042,
-          "precision": 0.299,
-          "recall": 0.4082,
-          "iou": 0.2086,
+          "paths": 5,
+          "areaShare": 0.0243,
+          "precision": 0.4232,
+          "recall": 0.9555,
+          "iou": 0.415,
           "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.6211,
-      "weightedMeanIou": 0.5221,
+      "meanPrecision": 0.7182,
+      "weightedMeanIou": 0.7189,
       "failingMajorParts": [
-        "middle_band",
         "middle_bezel",
         "front_bezel"
       ],
@@ -361,28 +361,27 @@
         "rear_gemstone"
       ],
       "sharedOnlyParts": [],
-      "sharedBoundaries": 12,
+      "sharedBoundaries": 7,
       "aspectRatio": 1.057,
       "lowConfidenceRoutes": 19,
       "notes": [
-        "기준 미달 주요 파트 3개: middle_band, middle_bezel, front_bezel (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+        "기준 미달 주요 파트 2개: middle_bezel, front_bezel (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
         "배분이 의심되는 레이어 1개: front_bezel",
         "패스가 없는 파트 1개: rear_gemstone",
         "사진↔도면 종횡비 불일치 5.7%",
-        "라우터가 확신하지 못한 성분 19개",
-        "면적 가중 평균 IoU 0.522 < 0.65"
+        "라우터가 확신하지 못한 성분 19개"
       ]
     },
     "state": "FIDELITY_REVIEW / EDITABILITY_PASS / SEMANTIC_REVIEW"
   },
   "timings": {
-    "S1_preprocess": 5722,
-    "S2_plan": 6,
-    "S3_masks": 4480,
-    "S4_schematic": 577,
-    "S5_evidence": 6585,
-    "S7_export": 48,
-    "S8_qa": 2801
+    "S1_preprocess": 6200,
+    "S2_plan": 8,
+    "S3_masks": 4595,
+    "S4_schematic": 1328,
+    "S5_evidence": 4482,
+    "S7_export": 55,
+    "S8_qa": 1824
   },
   "rescued": {
     "stitch": [
@@ -393,6 +392,17 @@
       0,
       0
     ]
+  },
+  "maskSource": {
+    "rear_band": "photo-warp (표결 7/9 미달)",
+    "rear_gemstone": "photo-warp (표결 7/9 미달)",
+    "rear_bezel": "photo-warp (표결 7/9 미달)",
+    "middle_band": "photo-warp (표결 7/9 미달)",
+    "middle_gemstone": "photo-warp (표결 7/9 미달)",
+    "middle_bezel": "photo-warp (표결 7/9 미달)",
+    "front_band": "photo-warp (표결 7/9 미달)",
+    "front_gemstone": "photo-warp (표결 7/9 미달)",
+    "front_bezel": "photo-warp (표결 7/9 미달)"
   },
   "correspondence": {
     "method": "global-similarity",

@@ -4,24 +4,15 @@
  "samples": [
   {
    "name": "shoe_1",
-   "layers": 4,
-   "sublayers": 23,
+   "layers": 3,
+   "sublayers": 13,
    "tree": [
-    {
-     "name": "SHARED_BOUNDARIES",
-     "parts": [
-      "Laces",
-      "Main upper"
-     ]
-    },
     {
      "name": "PRIMITIVES",
      "parts": [
       "AIRMAX badge",
       "Heel reinforcement overlay",
       "Main upper",
-      "Eyelet underlay",
-      "Tongue",
       "Cushioned midsole"
      ]
     },
@@ -29,10 +20,7 @@
      "name": "OUTLINES",
      "parts": [
       "AIRMAX badge",
-      "Heel reinforcement overlay",
       "Main upper",
-      "Eyelet underlay",
-      "Tongue",
       "Cushioned midsole"
      ]
     },
@@ -41,11 +29,8 @@
      "parts": [
       "AIRMAX badge",
       "Swoosh logo",
-      "Laces",
       "Heel reinforcement overlay",
       "Main upper",
-      "Eyelet underlay",
-      "Tongue",
       "Cushioned midsole",
       "Rubber outsole"
      ]
@@ -57,9 +42,9 @@
    "painted": 116,
    "subpaths": 254,
    "outsideLeaf": 0,
-   "iou": 0.9825,
-   "onlyAi": 1440,
-   "onlySvg": 853,
+   "iou": 0.9852,
+   "onlyAi": 1295,
+   "onlySvg": 655,
    "refEnds": 1086,
    "aiEnds": 136,
    "refComponents": 311,
@@ -77,7 +62,7 @@
   {
    "name": "shoe_2",
    "layers": 4,
-   "sublayers": 25,
+   "sublayers": 23,
    "tree": [
     {
      "name": "SHARED_BOUNDARIES",
@@ -105,8 +90,6 @@
      "parts": [
       "Orange shoelaces",
       "Synthetic support overlays",
-      "Shoe tongue",
-      "Padded collar and lining",
       "Rear shoe outsole",
       "Rear shoe upper"
      ]
@@ -132,8 +115,8 @@
    "subpaths": 747,
    "outsideLeaf": 0,
    "iou": 0.9641,
-   "onlyAi": 2952,
-   "onlySvg": 2960,
+   "onlyAi": 2949,
+   "onlySvg": 2969,
    "refEnds": 1922,
    "aiEnds": 298,
    "refComponents": 268,
@@ -151,7 +134,7 @@
   {
    "name": "shoe_3",
    "layers": 5,
-   "sublayers": 20,
+   "sublayers": 19,
    "tree": [
     {
      "name": "SHARED_BOUNDARIES",
@@ -176,8 +159,7 @@
      "parts": [
       "Yellow lace stitching",
       "Flexible tread outsole",
-      "Yellow lace loops",
-      "Tongue"
+      "Yellow lace loops"
      ]
     },
     {
@@ -202,8 +184,8 @@
    "looseOcg": 0,
    "depth": 2,
    "balanced": true,
-   "painted": 745,
-   "subpaths": 1559,
+   "painted": 744,
+   "subpaths": 1558,
    "outsideLeaf": 0,
    "iou": 0.9782,
    "onlyAi": 5281,
@@ -224,14 +206,15 @@
   },
   {
    "name": "bag_1",
-   "layers": 5,
-   "sublayers": 22,
+   "layers": 4,
+   "sublayers": 17,
    "tree": [
     {
      "name": "SHARED_BOUNDARIES",
      "parts": [
-      "Front clasp assembly",
-      "Vertical closure strap"
+      "Vertical closure strap",
+      "Front cover flap",
+      "Left side gusset"
      ]
     },
     {
@@ -247,19 +230,8 @@
      "parts": [
       "Front clasp assembly",
       "Vertical closure strap",
-      "Red decorative trim bands",
       "Front cover flap",
-      "Front lower body panel",
-      "Left side gusset",
-      "Top carry handle"
-     ]
-    },
-    {
-     "name": "PATTERNS",
-     "parts": [
-      "Front cover flap",
-      "Left side gusset",
-      "Top carry handle"
+      "Front lower body panel"
      ]
     },
     {
@@ -281,9 +253,9 @@
    "painted": 105,
    "subpaths": 202,
    "outsideLeaf": 0,
-   "iou": 0.9846,
-   "onlyAi": 646,
-   "onlySvg": 893,
+   "iou": 0.985,
+   "onlyAi": 651,
+   "onlySvg": 848,
    "refEnds": 1395,
    "aiEnds": 185,
    "refComponents": 280,
@@ -301,7 +273,7 @@
   {
    "name": "bag_2",
    "layers": 5,
-   "sublayers": 14,
+   "sublayers": 11,
    "tree": [
     {
      "name": "SHARED_BOUNDARIES",
@@ -314,7 +286,6 @@
      "name": "PRIMITIVES",
      "parts": [
       "Floral metal ornament",
-      "Closure clasp",
       "Metal purse frame",
       "Beaded pouch body"
      ]
@@ -322,8 +293,6 @@
     {
      "name": "OUTLINES",
      "parts": [
-      "Floral metal ornament",
-      "Metal purse frame",
       "Beaded pouch body"
      ]
     },
@@ -346,11 +315,11 @@
    "looseOcg": 0,
    "depth": 2,
    "balanced": true,
-   "painted": 3216,
-   "subpaths": 6187,
+   "painted": 3213,
+   "subpaths": 6184,
    "outsideLeaf": 0,
-   "iou": 0.924,
-   "onlyAi": 2186,
+   "iou": 0.9235,
+   "onlyAi": 2240,
    "onlySvg": 6507,
    "refEnds": 4785,
    "aiEnds": 6499,
@@ -441,13 +410,13 @@
    "sublayers": 4,
    "tree": [
     {
-     "name": "SHARED_BOUNDARIES",
+     "name": "PRIMITIVES",
      "parts": [
-      "Engraved side lettering"
+      "Open metal ring body"
      ]
     },
     {
-     "name": "PRIMITIVES",
+     "name": "OUTLINES",
      "parts": [
       "Open metal ring body"
      ]
@@ -467,7 +436,7 @@
    "subpaths": 27,
    "outsideLeaf": 0,
    "iou": 0.989,
-   "onlyAi": 1052,
+   "onlyAi": 1046,
    "onlySvg": 354,
    "refEnds": 27,
    "aiEnds": 14,
@@ -485,18 +454,13 @@
   },
   {
    "name": "jewelry_2",
-   "layers": 4,
+   "layers": 3,
    "sublayers": 10,
    "tree": [
     {
-     "name": "SHARED_BOUNDARIES",
-     "parts": [
-      "Upper curved neck bar"
-     ]
-    },
-    {
      "name": "PRIMITIVES",
      "parts": [
+      "Upper curved neck bar",
       "Main harp body and lower frame",
       "Rear pin and clasp assembly"
      ]
@@ -525,9 +489,9 @@
    "painted": 51,
    "subpaths": 104,
    "outsideLeaf": 0,
-   "iou": 0.9795,
-   "onlyAi": 986,
-   "onlySvg": 1009,
+   "iou": 0.9789,
+   "onlyAi": 982,
+   "onlySvg": 1073,
    "refEnds": 1,
    "aiEnds": 1,
    "refComponents": 5,
@@ -545,7 +509,7 @@
   {
    "name": "jewelry_3",
    "layers": 5,
-   "sublayers": 26,
+   "sublayers": 24,
    "tree": [
     {
      "name": "SHARED_BOUNDARIES",
@@ -568,7 +532,6 @@
      "parts": [
       "Front bezel setting",
       "Front gemstone",
-      "Front ring band",
       "Middle gemstone",
       "Middle ring band",
       "Rear bezel setting"
@@ -582,7 +545,6 @@
       "Front ring band",
       "Middle bezel setting",
       "Middle gemstone",
-      "Middle ring band",
       "Rear bezel setting"
      ]
     },

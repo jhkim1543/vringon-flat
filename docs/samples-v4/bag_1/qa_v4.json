@@ -8,8 +8,8 @@
       "sourceHeight": 1024,
       "supersample": 2
     },
-    "totalMs": 15695,
-    "createdAt": "2026-08-24T10:47:38.690Z"
+    "totalMs": 17914,
+    "createdAt": "2026-08-24T12:26:05.857Z"
   },
   "options": {
     "minParts": 3,
@@ -20,6 +20,7 @@
     "inkThreshold": 170,
     "localContrast": 22,
     "textureMode": "auto",
+    "segMode": "schematic",
     "categoryHint": "bag",
     "schematicFrom": "outputs/v3/v3_bag_1_v31/schematics/schematic_f21ced2fd547961e.png",
     "upscale": false
@@ -220,7 +221,7 @@
       "objectComplexity": 277,
       "anchors": 6468,
       "uses": 32,
-      "kb": 253.8,
+      "kb": 253.7,
       "anchorDensity": 7.54,
       "shortPathRatio": 0.012,
       "primitives": 5,
@@ -239,20 +240,20 @@
         {
           "id": "top_handle",
           "label": "Top carry handle",
-          "kind": "area",
-          "paths": 10,
-          "areaShare": 0.0135,
-          "precision": 0.3634,
-          "recall": 0.1147,
-          "iou": 0.0955,
-          "boundaryF1": -1
+          "kind": "thin",
+          "paths": 4,
+          "areaShare": 0.0003,
+          "precision": 0.0451,
+          "recall": 0.1282,
+          "iou": 0.0345,
+          "boundaryF1": 0.0584
         },
         {
           "id": "main_compartment_shell",
           "label": "Main compartment shell",
           "kind": "thin",
           "paths": 0,
-          "areaShare": 0.0029,
+          "areaShare": 0.0008,
           "precision": 0,
           "recall": 0,
           "iou": 0,
@@ -263,72 +264,71 @@
           "label": "Left side gusset",
           "kind": "area",
           "paths": 10,
-          "areaShare": 0.0984,
-          "precision": 0.8419,
-          "recall": 0.7379,
-          "iou": 0.6481,
+          "areaShare": 0.1063,
+          "precision": 0.999,
+          "recall": 0.7889,
+          "iou": 0.7883,
           "boundaryF1": -1
         },
         {
           "id": "front_lower_panel",
           "label": "Front lower body panel",
           "kind": "area",
-          "paths": 8,
-          "areaShare": 0.1149,
-          "precision": 0.8855,
-          "recall": 0.6228,
-          "iou": 0.5764,
+          "paths": 9,
+          "areaShare": 0.1047,
+          "precision": 0.9979,
+          "recall": 0.821,
+          "iou": 0.8196,
           "boundaryF1": -1
         },
         {
           "id": "front_flap",
           "label": "Front cover flap",
           "kind": "area",
-          "paths": 16,
-          "areaShare": 0.1922,
-          "precision": 0.7935,
-          "recall": 0.844,
-          "iou": 0.692,
+          "paths": 25,
+          "areaShare": 0.2384,
+          "precision": 0.9896,
+          "recall": 0.9023,
+          "iou": 0.8938,
           "boundaryF1": -1
         },
         {
           "id": "red_trim_bands",
           "label": "Red decorative trim bands",
-          "kind": "area",
-          "paths": 7,
-          "areaShare": 0.0538,
-          "precision": 0.8313,
-          "recall": 0.5226,
-          "iou": 0.4725,
-          "boundaryF1": -1
+          "kind": "thin",
+          "paths": 4,
+          "areaShare": 0.0156,
+          "precision": 1,
+          "recall": 0.2528,
+          "iou": 0.2528,
+          "boundaryF1": 0.8288
         },
         {
           "id": "closure_strap",
           "label": "Vertical closure strap",
           "kind": "area",
-          "paths": 16,
-          "areaShare": 0.0401,
-          "precision": 0.285,
-          "recall": 0.6811,
-          "iou": 0.2515,
+          "paths": 21,
+          "areaShare": 0.0416,
+          "precision": 0.4053,
+          "recall": 0.9414,
+          "iou": 0.3953,
           "boundaryF1": -1
         },
         {
           "id": "clasp_assembly",
           "label": "Front clasp assembly",
-          "kind": "area",
-          "paths": 9,
-          "areaShare": 0.0142,
-          "precision": 0.76,
-          "recall": 0.3778,
-          "iou": 0.3376,
-          "boundaryF1": -1
+          "kind": "thin",
+          "paths": 2,
+          "areaShare": 0.0037,
+          "precision": 1,
+          "recall": 0.4142,
+          "iou": 0.4142,
+          "boundaryF1": 0.9209
         }
       ],
-      "meanPrecision": 0.5951,
-      "weightedMeanIou": 0.5747,
+      "meanPrecision": 0.6796,
+      "weightedMeanIou": 0.7912,
       "failingMajorParts": [
-        "red_trim_bands",
         "closure_strap"
       ],
       "misassigned": [
@@ -339,28 +339,27 @@
       "sharedOnlyParts": [
         "main_compartment_shell"
       ],
-      "sharedBoundaries": 4,
+      "sharedBoundaries": 3,
       "aspectRatio": 1.198,
       "lowConfidenceRoutes": 4,
       "notes": [
-        "기준 미달 주요 파트 2개: red_trim_bands, closure_strap (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+        "기준 미달 주요 파트 1개: closure_strap (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
         "배분이 의심되는 레이어 2개: top_handle, closure_strap",
         "공유 경계로만 그려진 파트 1개: main_compartment_shell",
         "사진↔도면 종횡비 불일치 19.8%",
-        "라우터가 확신하지 못한 성분 4개",
-        "면적 가중 평균 IoU 0.575 < 0.65"
+        "라우터가 확신하지 못한 성분 4개"
       ]
     },
     "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
   },
   "timings": {
-    "S1_preprocess": 5545,
-    "S2_plan": 3,
-    "S3_masks": 2104,
-    "S4_schematic": 557,
-    "S5_evidence": 5023,
-    "S7_export": 36,
-    "S8_qa": 2311
+    "S1_preprocess": 5872,
+    "S2_plan": 4,
+    "S3_masks": 2068,
+    "S4_schematic": 1282,
+    "S5_evidence": 5144,
+    "S7_export": 37,
+    "S8_qa": 3388
   },
   "rescued": {
     "stitch": [
@@ -372,8 +371,18 @@
       4204
     ]
   },
+  "maskSource": {
+    "top_handle": "gemini-schematic",
+    "main_compartment_shell": "photo-warp (gemini 불일치 IoU 0.00)",
+    "left_side_gusset": "gemini-schematic",
+    "front_lower_panel": "gemini-schematic",
+    "front_flap": "gemini-schematic",
+    "red_trim_bands": "gemini-schematic",
+    "closure_strap": "gemini-schematic",
+    "clasp_assembly": "gemini-schematic"
+  },
   "correspondence": {
-    "method": "global-similarity",
+    "method": "schematic-direct-seg",
     "aspectRatio": 1.1981499662514572,
     "confident": true,
     "note": ""

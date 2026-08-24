@@ -8,8 +8,8 @@
       "sourceHeight": 1059,
       "supersample": 2
     },
-    "totalMs": 32535,
-    "createdAt": "2026-08-24T10:48:23.828Z"
+    "totalMs": 37378,
+    "createdAt": "2026-08-24T12:25:43.646Z"
   },
   "options": {
     "minParts": 3,
@@ -20,6 +20,7 @@
     "inkThreshold": 170,
     "localContrast": 22,
     "textureMode": "auto",
+    "segMode": "schematic",
     "categoryHint": "shoe",
     "schematicFrom": "outputs/v3/v3_shoe_3_v31/schematics/schematic_6c3d8cb982723136.png",
     "upscale": false
@@ -187,7 +188,7 @@
   "counts": {
     "REPEATING_PATTERN": 11,
     "GEOMETRIC_PRIMITIVE": 125,
-    "FACE_FILL": 325,
+    "FACE_FILL": 324,
     "OUTLINE_SHAPE": 38
   },
   "qa": {
@@ -217,13 +218,13 @@
     },
     "editability": {
       "pass": false,
-      "paths": 499,
-      "subpaths": 1313,
+      "paths": 498,
+      "subpaths": 1312,
       "maxSubpathsInPath": 760,
-      "objectComplexity": 2069,
-      "anchors": 30177,
+      "objectComplexity": 2067,
+      "anchors": 30170,
       "uses": 257,
-      "kb": 1227.9,
+      "kb": 1218.3,
       "anchorDensity": 8.84,
       "shortPathRatio": 0.019,
       "primitives": 125,
@@ -232,7 +233,7 @@
       "editableReduction": {
         "paths": 0.008,
         "anchors": 0.096,
-        "kb": 0.092
+        "kb": 0.093
       },
       "notes": [
         "한 패스에 서브패스 760개 — Illustrator 에서 통째로 선택된다"
@@ -244,20 +245,20 @@
         {
           "id": "tongue",
           "label": "Tongue",
-          "kind": "area",
-          "paths": 31,
-          "areaShare": 0.0795,
-          "precision": 0.7953,
-          "recall": 0.2535,
-          "iou": 0.238,
-          "boundaryF1": -1
+          "kind": "thin",
+          "paths": 28,
+          "areaShare": 0.0369,
+          "precision": 1,
+          "recall": 0.3116,
+          "iou": 0.3116,
+          "boundaryF1": 0.8772
         },
         {
           "id": "mesh_upper",
           "label": "Mesh upper",
-          "kind": "area",
+          "kind": "thin",
           "paths": 0,
-          "areaShare": 0.0063,
+          "areaShare": 0.0027,
           "precision": 0,
           "recall": 0,
           "iou": 0,
@@ -268,7 +269,7 @@
           "label": "Padded collar",
           "kind": "thin",
           "paths": 0,
-          "areaShare": 0.0021,
+          "areaShare": 0.0017,
           "precision": 0,
           "recall": 0,
           "iou": 0,
@@ -278,22 +279,22 @@
           "id": "eyestay_overlay",
           "label": "Eyestay overlay",
           "kind": "area",
-          "paths": 6,
-          "areaShare": 0.0377,
-          "precision": 0.4681,
-          "recall": 0.6723,
-          "iou": 0.3811,
+          "paths": 5,
+          "areaShare": 0.0534,
+          "precision": 0.9796,
+          "recall": 0.8597,
+          "iou": 0.8446,
           "boundaryF1": -1
         },
         {
           "id": "lace_loops",
           "label": "Yellow lace loops",
           "kind": "area",
-          "paths": 40,
-          "areaShare": 0.0658,
-          "precision": 0.5668,
-          "recall": 0.7387,
-          "iou": 0.4721,
+          "paths": 41,
+          "areaShare": 0.0968,
+          "precision": 0.9993,
+          "recall": 0.8673,
+          "iou": 0.8668,
           "boundaryF1": -1
         },
         {
@@ -301,7 +302,7 @@
           "label": "Laces",
           "kind": "thin",
           "paths": 0,
-          "areaShare": 0.0016,
+          "areaShare": 0.0004,
           "precision": 0,
           "recall": 0,
           "iou": 0,
@@ -311,34 +312,29 @@
           "id": "outsole",
           "label": "Flexible tread outsole",
           "kind": "area",
-          "paths": 241,
-          "areaShare": 0.3412,
-          "precision": 0.8704,
-          "recall": 0.652,
-          "iou": 0.5943,
+          "paths": 243,
+          "areaShare": 0.3627,
+          "precision": 0.9976,
+          "recall": 0.6937,
+          "iou": 0.6925,
           "boundaryF1": -1
         },
         {
           "id": "lace_stitching",
           "label": "Yellow lace stitching",
           "kind": "area",
-          "paths": 193,
-          "areaShare": 0.172,
-          "precision": 0.4523,
-          "recall": 0.7827,
-          "iou": 0.4018,
+          "paths": 194,
+          "areaShare": 0.1479,
+          "precision": 0.48,
+          "recall": 0.9575,
+          "iou": 0.47,
           "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.3941,
-      "weightedMeanIou": 0.4761,
-      "failingMajorParts": [
-        "tongue",
-        "eyestay_overlay",
-        "lace_stitching"
-      ],
+      "meanPrecision": 0.5571,
+      "weightedMeanIou": 0.6565,
+      "failingMajorParts": [],
       "misassigned": [
-        "eyestay_overlay",
         "lace_stitching"
       ],
       "emptyVisibleParts": [],
@@ -347,28 +343,26 @@
         "padded_collar",
         "laces"
       ],
-      "sharedBoundaries": 302,
+      "sharedBoundaries": 12,
       "aspectRatio": 1.006,
       "lowConfidenceRoutes": 28,
       "notes": [
-        "기준 미달 주요 파트 3개: tongue, eyestay_overlay, lace_stitching (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
-        "배분이 의심되는 레이어 2개: eyestay_overlay, lace_stitching",
+        "배분이 의심되는 레이어 1개: lace_stitching",
         "공유 경계로만 그려진 파트 3개: mesh_upper, padded_collar, laces",
         "사진↔도면 대응 실패 — 파트 배분을 신뢰할 수 없다",
-        "라우터가 확신하지 못한 성분 28개",
-        "면적 가중 평균 IoU 0.476 < 0.65"
+        "라우터가 확신하지 못한 성분 28개"
       ]
     },
     "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
   },
   "timings": {
-    "S1_preprocess": 3669,
-    "S2_plan": 14,
-    "S3_masks": 9995,
-    "S4_schematic": 708,
-    "S5_evidence": 12954,
-    "S7_export": 131,
-    "S8_qa": 4808
+    "S1_preprocess": 3683,
+    "S2_plan": 9,
+    "S3_masks": 12931,
+    "S4_schematic": 1910,
+    "S5_evidence": 12806,
+    "S7_export": 129,
+    "S8_qa": 5646
   },
   "rescued": {
     "stitch": [
@@ -379,6 +373,16 @@
       1,
       946
     ]
+  },
+  "maskSource": {
+    "tongue": "photo-warp (표결 2/8 미달)",
+    "mesh_upper": "photo-warp (표결 2/8 미달)",
+    "padded_collar": "photo-warp (표결 2/8 미달)",
+    "eyestay_overlay": "photo-warp (표결 2/8 미달)",
+    "lace_loops": "photo-warp (표결 2/8 미달)",
+    "laces": "photo-warp (표결 2/8 미달)",
+    "outsole": "photo-warp (표결 2/8 미달)",
+    "lace_stitching": "photo-warp (표결 2/8 미달)"
   },
   "correspondence": {
     "method": "global-similarity",

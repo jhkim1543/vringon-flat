@@ -164,7 +164,7 @@ export interface VectorScene {
   sharedBoundaries: SharedBoundary[];
   /** 사진↔도면 대응의 품질 — global similarity 만 쓰므로 근사다 */
   correspondence: {
-    method: "global-similarity" | "dense" | "none";
+    method: "global-similarity" | "schematic-direct-seg" | "dense" | "none";
     aspectRatio: number;
     confident: boolean;
     note: string;

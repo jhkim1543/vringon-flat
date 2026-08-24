@@ -53,7 +53,7 @@
           "objectComplexity": 277,
           "anchors": 6468,
           "uses": 32,
-          "kb": 253.8,
+          "kb": 253.7,
           "anchorDensity": 7.54,
           "shortPathRatio": 0.012,
           "primitives": 5,
@@ -72,20 +72,20 @@
             {
               "id": "top_handle",
               "label": "Top carry handle",
-              "kind": "area",
-              "paths": 10,
-              "areaShare": 0.0135,
-              "precision": 0.3634,
-              "recall": 0.1147,
-              "iou": 0.0955,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 4,
+              "areaShare": 0.0003,
+              "precision": 0.0451,
+              "recall": 0.1282,
+              "iou": 0.0345,
+              "boundaryF1": 0.0584
             },
             {
               "id": "main_compartment_shell",
               "label": "Main compartment shell",
               "kind": "thin",
               "paths": 0,
-              "areaShare": 0.0029,
+              "areaShare": 0.0008,
               "precision": 0,
               "recall": 0,
               "iou": 0,
@@ -96,72 +96,71 @@
               "label": "Left side gusset",
               "kind": "area",
               "paths": 10,
-              "areaShare": 0.0984,
-              "precision": 0.8419,
-              "recall": 0.7379,
-              "iou": 0.6481,
+              "areaShare": 0.1063,
+              "precision": 0.999,
+              "recall": 0.7889,
+              "iou": 0.7883,
               "boundaryF1": -1
             },
             {
               "id": "front_lower_panel",
               "label": "Front lower body panel",
               "kind": "area",
-              "paths": 8,
-              "areaShare": 0.1149,
-              "precision": 0.8855,
-              "recall": 0.6228,
-              "iou": 0.5764,
+              "paths": 9,
+              "areaShare": 0.1047,
+              "precision": 0.9979,
+              "recall": 0.821,
+              "iou": 0.8196,
               "boundaryF1": -1
             },
             {
               "id": "front_flap",
               "label": "Front cover flap",
               "kind": "area",
-              "paths": 16,
-              "areaShare": 0.1922,
-              "precision": 0.7935,
-              "recall": 0.844,
-              "iou": 0.692,
+              "paths": 25,
+              "areaShare": 0.2384,
+              "precision": 0.9896,
+              "recall": 0.9023,
+              "iou": 0.8938,
               "boundaryF1": -1
             },
             {
               "id": "red_trim_bands",
               "label": "Red decorative trim bands",
-              "kind": "area",
-              "paths": 7,
-              "areaShare": 0.0538,
-              "precision": 0.8313,
-              "recall": 0.5226,
-              "iou": 0.4725,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 4,
+              "areaShare": 0.0156,
+              "precision": 1,
+              "recall": 0.2528,
+              "iou": 0.2528,
+              "boundaryF1": 0.8288
             },
             {
               "id": "closure_strap",
               "label": "Vertical closure strap",
               "kind": "area",
-              "paths": 16,
-              "areaShare": 0.0401,
-              "precision": 0.285,
-              "recall": 0.6811,
-              "iou": 0.2515,
+              "paths": 21,
+              "areaShare": 0.0416,
+              "precision": 0.4053,
+              "recall": 0.9414,
+              "iou": 0.3953,
               "boundaryF1": -1
             },
             {
               "id": "clasp_assembly",
               "label": "Front clasp assembly",
-              "kind": "area",
-              "paths": 9,
-              "areaShare": 0.0142,
-              "precision": 0.76,
-              "recall": 0.3778,
-              "iou": 0.3376,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 2,
+              "areaShare": 0.0037,
+              "precision": 1,
+              "recall": 0.4142,
+              "iou": 0.4142,
+              "boundaryF1": 0.9209
             }
           ],
-          "meanPrecision": 0.5951,
-          "weightedMeanIou": 0.5747,
+          "meanPrecision": 0.6796,
+          "weightedMeanIou": 0.7912,
           "failingMajorParts": [
-            "red_trim_bands",
             "closure_strap"
           ],
           "misassigned": [
@@ -172,31 +171,30 @@
           "sharedOnlyParts": [
             "main_compartment_shell"
           ],
-          "sharedBoundaries": 4,
+          "sharedBoundaries": 3,
           "aspectRatio": 1.198,
           "lowConfidenceRoutes": 4,
           "notes": [
-            "기준 미달 주요 파트 2개: red_trim_bands, closure_strap (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+            "기준 미달 주요 파트 1개: closure_strap (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
             "배분이 의심되는 레이어 2개: top_handle, closure_strap",
             "공유 경계로만 그려진 파트 1개: main_compartment_shell",
             "사진↔도면 종횡비 불일치 19.8%",
-            "라우터가 확신하지 못한 성분 4개",
-            "면적 가중 평균 IoU 0.575 < 0.65"
+            "라우터가 확신하지 못한 성분 4개"
           ]
         },
         "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
       },
       "timings": {
-        "S1_preprocess": 5545,
-        "S2_plan": 3,
-        "S3_masks": 2104,
-        "S4_schematic": 557,
-        "S5_evidence": 5023,
-        "S7_export": 36,
-        "S8_qa": 2311
+        "S1_preprocess": 5872,
+        "S2_plan": 4,
+        "S3_masks": 2068,
+        "S4_schematic": 1282,
+        "S5_evidence": 5144,
+        "S7_export": 37,
+        "S8_qa": 3388
       },
       "correspondence": {
-        "method": "global-similarity",
+        "method": "schematic-direct-seg",
         "aspectRatio": 1.1981499662514572,
         "confident": true,
         "note": ""
@@ -243,7 +241,7 @@
           "z": 7
         }
       ],
-      "sharedBoundaries": 4,
+      "sharedBoundaries": 3,
       "v3": {
         "paths": 224,
         "anchors": 4929,
@@ -279,7 +277,7 @@
       },
       "counts": {
         "GEOMETRIC_PRIMITIVE": 522,
-        "FACE_FILL": 24,
+        "FACE_FILL": 21,
         "OUTLINE_SHAPE": 68,
         "REPEATING_PATTERN": 17
       },
@@ -311,13 +309,13 @@
         },
         "editability": {
           "pass": false,
-          "paths": 631,
-          "subpaths": 3602,
-          "maxSubpathsInPath": 2738,
-          "objectComplexity": 6835,
-          "anchors": 20146,
+          "paths": 628,
+          "subpaths": 3599,
+          "maxSubpathsInPath": 2739,
+          "objectComplexity": 6829,
+          "anchors": 20128,
           "uses": 2602,
-          "kb": 1130.2,
+          "kb": 1115.3,
           "anchorDensity": 14.27,
           "shortPathRatio": 0.202,
           "primitives": 522,
@@ -325,12 +323,12 @@
           "pathsSavedByPatterns": 2585,
           "editableReduction": {
             "paths": 0.024,
-            "anchors": 0.669,
-            "kb": 0.366
+            "anchors": 0.67,
+            "kb": 0.371
           },
           "notes": [
             "앵커 밀도 14.3/100px > 12",
-            "한 패스에 서브패스 2738개 — Illustrator 에서 통째로 선택된다"
+            "한 패스에 서브패스 2739개 — Illustrator 에서 통째로 선택된다"
           ]
         },
         "semantic": {
@@ -341,7 +339,7 @@
               "label": "Chain handle",
               "kind": "thin",
               "paths": 0,
-              "areaShare": 0.01,
+              "areaShare": 0.0006,
               "precision": 0,
               "recall": 0,
               "iou": 0,
@@ -351,83 +349,79 @@
               "id": "bag_body",
               "label": "Beaded pouch body",
               "kind": "area",
-              "paths": 449,
-              "areaShare": 0.227,
-              "precision": 0.7227,
-              "recall": 0.9254,
-              "iou": 0.6829,
+              "paths": 594,
+              "areaShare": 0.3689,
+              "precision": 1,
+              "recall": 0.9367,
+              "iou": 0.9366,
               "boundaryF1": -1
             },
             {
               "id": "metal_frame",
               "label": "Metal purse frame",
-              "kind": "area",
-              "paths": 113,
-              "areaShare": 0.0813,
-              "precision": 0.2973,
-              "recall": 0.4437,
-              "iou": 0.2166,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 43,
+              "areaShare": 0.0377,
+              "precision": 0.6827,
+              "recall": 0.4443,
+              "iou": 0.3682,
+              "boundaryF1": 0.8068
             },
             {
               "id": "closure_clasp",
               "label": "Closure clasp",
-              "kind": "area",
-              "paths": 1,
-              "areaShare": 0.0024,
-              "precision": 1,
-              "recall": 0.0258,
-              "iou": 0.0258,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 0,
+              "areaShare": 0.0001,
+              "precision": 0,
+              "recall": 0,
+              "iou": 0,
+              "boundaryF1": 0
             },
             {
               "id": "floral_ornament",
               "label": "Floral metal ornament",
-              "kind": "area",
-              "paths": 85,
-              "areaShare": 0.01,
-              "precision": 0.7446,
-              "recall": 0.492,
-              "iou": 0.4209,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 7,
+              "areaShare": 0.0028,
+              "precision": 1,
+              "recall": 0.3609,
+              "iou": 0.3609,
+              "boundaryF1": 0.9514
             }
           ],
-          "meanPrecision": 0.5529,
-          "weightedMeanIou": 0.5349,
-          "failingMajorParts": [
-            "metal_frame"
+          "meanPrecision": 0.5365,
+          "weightedMeanIou": 0.8788,
+          "failingMajorParts": [],
+          "misassigned": [],
+          "emptyVisibleParts": [
+            "closure_clasp"
           ],
-          "misassigned": [
-            "metal_frame"
-          ],
-          "emptyVisibleParts": [],
           "sharedOnlyParts": [
             "chain_handle"
           ],
-          "sharedBoundaries": 28,
+          "sharedBoundaries": 8,
           "aspectRatio": 1.015,
           "lowConfidenceRoutes": 11,
           "notes": [
-            "기준 미달 주요 파트 1개: metal_frame (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
-            "배분이 의심되는 레이어 1개: metal_frame",
+            "패스가 없는 파트 1개: closure_clasp",
             "공유 경계로만 그려진 파트 1개: chain_handle",
-            "라우터가 확신하지 못한 성분 11개",
-            "면적 가중 평균 IoU 0.535 < 0.65"
+            "라우터가 확신하지 못한 성분 11개"
           ]
         },
         "state": "FIDELITY_REVIEW / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
       },
       "timings": {
-        "S1_preprocess": 5342,
-        "S2_plan": 4,
-        "S3_masks": 2691,
-        "S4_schematic": 306,
-        "S5_evidence": 3541,
-        "S7_export": 55,
-        "S8_qa": 1629
+        "S1_preprocess": 5767,
+        "S2_plan": 6,
+        "S3_masks": 3867,
+        "S4_schematic": 1267,
+        "S5_evidence": 5337,
+        "S7_export": 89,
+        "S8_qa": 3120
       },
       "correspondence": {
-        "method": "global-similarity",
+        "method": "schematic-direct-seg",
         "aspectRatio": 1.0154628381473387,
         "confident": true,
         "note": ""
@@ -459,7 +453,7 @@
           "z": 4
         }
       ],
-      "sharedBoundaries": 28,
+      "sharedBoundaries": 8,
       "v3": {
         "paths": 3537,
         "anchors": 36161,
@@ -530,7 +524,7 @@
           "objectComplexity": 2218,
           "anchors": 16230,
           "uses": 398,
-          "kb": 651.7,
+          "kb": 650.1,
           "anchorDensity": 11.67,
           "shortPathRatio": 0.006,
           "primitives": 32,
@@ -551,50 +545,50 @@
             {
               "id": "inner_pouch",
               "label": "Inner pouch body",
-              "kind": "area",
-              "paths": 36,
-              "areaShare": 0.0038,
-              "precision": 0.0918,
-              "recall": 0.1154,
-              "iou": 0.0539,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 42,
+              "areaShare": 0.0015,
+              "precision": 0.0536,
+              "recall": 0.0899,
+              "iou": 0.0348,
+              "boundaryF1": 0.0944
             },
             {
               "id": "chain_strap",
               "label": "Chain shoulder strap",
               "kind": "area",
               "paths": 16,
-              "areaShare": 0.0356,
-              "precision": 0.8914,
-              "recall": 0.4641,
-              "iou": 0.4393,
+              "areaShare": 0.0359,
+              "precision": 0.996,
+              "recall": 0.5127,
+              "iou": 0.5117,
               "boundaryF1": -1
             },
             {
               "id": "metal_lattice_shell",
               "label": "Linked metal outer shell",
-              "kind": "area",
-              "paths": 19,
-              "areaShare": 0.0103,
-              "precision": 0.6004,
-              "recall": 0.1476,
-              "iou": 0.1344,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 15,
+              "areaShare": 0.0062,
+              "precision": 1,
+              "recall": 0.1823,
+              "iou": 0.1823,
+              "boundaryF1": 0.7683
             },
             {
               "id": "turquoise_stone_embellishments",
               "label": "Turquoise stone embellishments",
               "kind": "area",
-              "paths": 308,
-              "areaShare": 0.1856,
-              "precision": 0.8202,
-              "recall": 0.8803,
-              "iou": 0.7379,
+              "paths": 305,
+              "areaShare": 0.1808,
+              "precision": 0.828,
+              "recall": 0.9086,
+              "iou": 0.7643,
               "boundaryF1": -1
             }
           ],
-          "meanPrecision": 0.601,
-          "weightedMeanIou": 0.6553,
+          "meanPrecision": 0.7194,
+          "weightedMeanIou": 0.7029,
           "failingMajorParts": [
             "chain_strap"
           ],
@@ -603,7 +597,7 @@
           ],
           "emptyVisibleParts": [],
           "sharedOnlyParts": [],
-          "sharedBoundaries": 41,
+          "sharedBoundaries": 1,
           "aspectRatio": 1.031,
           "lowConfidenceRoutes": 0,
           "notes": [
@@ -615,13 +609,13 @@
         "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
       },
       "timings": {
-        "S1_preprocess": 5300,
-        "S2_plan": 3,
-        "S3_masks": 3397,
-        "S4_schematic": 336,
-        "S5_evidence": 2886,
-        "S7_export": 62,
-        "S8_qa": 1374
+        "S1_preprocess": 5722,
+        "S2_plan": 6,
+        "S3_masks": 4598,
+        "S4_schematic": 1137,
+        "S5_evidence": 4079,
+        "S7_export": 71,
+        "S8_qa": 3178
       },
       "correspondence": {
         "method": "global-similarity",
@@ -651,7 +645,7 @@
           "z": 3
         }
       ],
-      "sharedBoundaries": 41,
+      "sharedBoundaries": 1,
       "v3": {
         "paths": 1342,
         "anchors": 17362,
@@ -721,7 +715,7 @@
           "objectComplexity": 41,
           "anchors": 2603,
           "uses": 0,
-          "kb": 108.9,
+          "kb": 108.6,
           "anchorDensity": 4.94,
           "shortPathRatio": 0,
           "primitives": 1,
@@ -741,71 +735,63 @@
               "id": "ring_body",
               "label": "Open metal ring body",
               "kind": "area",
-              "paths": 12,
-              "areaShare": 0.4489,
-              "precision": 0.5292,
-              "recall": 0.2103,
-              "iou": 0.1772,
+              "paths": 13,
+              "areaShare": 0.2044,
+              "precision": 0.8771,
+              "recall": 0.9887,
+              "iou": 0.8684,
               "boundaryF1": -1
             },
             {
               "id": "side_engraving",
               "label": "Engraved side lettering",
-              "kind": "area",
-              "paths": 2,
-              "areaShare": 0.1314,
-              "precision": 0.2132,
-              "recall": 0.1126,
-              "iou": 0.0795,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 1,
+              "areaShare": 0.0147,
+              "precision": 1,
+              "recall": 0.0119,
+              "iou": 0.0119,
+              "boundaryF1": 0.1218
             },
             {
               "id": "tip_hallmark",
               "label": "Tip hallmark",
-              "kind": "thin",
+              "kind": "area",
               "paths": 0,
-              "areaShare": 0.001,
+              "areaShare": 0,
               "precision": 0,
               "recall": 0,
               "iou": 0,
               "boundaryF1": 0
             }
           ],
-          "meanPrecision": 0.2475,
-          "weightedMeanIou": 0.1548,
-          "failingMajorParts": [
-            "ring_body",
-            "side_engraving"
-          ],
-          "misassigned": [
-            "side_engraving"
-          ],
+          "meanPrecision": 0.6257,
+          "weightedMeanIou": 0.8109,
+          "failingMajorParts": [],
+          "misassigned": [],
           "emptyVisibleParts": [
             "tip_hallmark"
           ],
           "sharedOnlyParts": [],
-          "sharedBoundaries": 12,
+          "sharedBoundaries": 0,
           "aspectRatio": 1.382,
           "lowConfidenceRoutes": 1,
           "notes": [
-            "기준 미달 주요 파트 2개: ring_body, side_engraving (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
-            "배분이 의심되는 레이어 1개: side_engraving",
             "패스가 없는 파트 1개: tip_hallmark",
             "사진↔도면 종횡비 불일치 38.2%",
-            "라우터가 확신하지 못한 성분 1개",
-            "면적 가중 평균 IoU 0.155 < 0.65"
+            "라우터가 확신하지 못한 성분 1개"
           ]
         },
         "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
       },
       "timings": {
-        "S1_preprocess": 5541,
-        "S2_plan": 4,
-        "S3_masks": 3999,
-        "S4_schematic": 239,
-        "S5_evidence": 2638,
-        "S7_export": 14,
-        "S8_qa": 1133
+        "S1_preprocess": 5810,
+        "S2_plan": 6,
+        "S3_masks": 7179,
+        "S4_schematic": 1233,
+        "S5_evidence": 5044,
+        "S7_export": 26,
+        "S8_qa": 2615
       },
       "correspondence": {
         "method": "global-similarity",
@@ -830,7 +816,7 @@
           "z": 2
         }
       ],
-      "sharedBoundaries": 12,
+      "sharedBoundaries": 0,
       "v3": {
         "paths": 82,
         "anchors": 2391,
@@ -900,7 +886,7 @@
           "objectComplexity": 155,
           "anchors": 3683,
           "uses": 0,
-          "kb": 151.8,
+          "kb": 150.3,
           "anchorDensity": 4.73,
           "shortPathRatio": 0.01,
           "primitives": 4,
@@ -909,7 +895,7 @@
           "editableReduction": {
             "paths": 0,
             "anchors": 0.093,
-            "kb": 0.087
+            "kb": 0.088
           },
           "notes": []
         },
@@ -919,23 +905,23 @@
             {
               "id": "pin_clasp_assembly",
               "label": "Rear pin and clasp assembly",
-              "kind": "area",
-              "paths": 7,
-              "areaShare": 0.2093,
-              "precision": 0.559,
-              "recall": 0.0856,
-              "iou": 0.0802,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 6,
+              "areaShare": 0.0205,
+              "precision": 1,
+              "recall": 0.3167,
+              "iou": 0.3167,
+              "boundaryF1": 0.8414
             },
             {
               "id": "string_set",
               "label": "Harp string set",
               "kind": "area",
               "paths": 4,
-              "areaShare": 0.0388,
-              "precision": 0.6721,
-              "recall": 0.2258,
-              "iou": 0.2034,
+              "areaShare": 0.016,
+              "precision": 0.9809,
+              "recall": 0.7727,
+              "iou": 0.7612,
               "boundaryF1": -1
             },
             {
@@ -943,7 +929,7 @@
               "label": "Upper tuning tabs",
               "kind": "area",
               "paths": 0,
-              "areaShare": 0.0062,
+              "areaShare": 0,
               "precision": 0,
               "recall": 0,
               "iou": 0,
@@ -952,9 +938,9 @@
             {
               "id": "outer_column",
               "label": "Curved outer column",
-              "kind": "area",
+              "kind": "thin",
               "paths": 0,
-              "areaShare": 0.0034,
+              "areaShare": 0.0002,
               "precision": 0,
               "recall": 0,
               "iou": 0,
@@ -964,67 +950,61 @@
               "id": "main_body",
               "label": "Main harp body and lower frame",
               "kind": "area",
-              "paths": 31,
-              "areaShare": 0.6065,
-              "precision": 0.8199,
-              "recall": 0.4907,
-              "iou": 0.4429,
+              "paths": 32,
+              "areaShare": 0.3498,
+              "precision": 0.9344,
+              "recall": 0.9911,
+              "iou": 0.9266,
               "boundaryF1": -1
             },
             {
               "id": "top_neck",
               "label": "Upper curved neck bar",
-              "kind": "area",
-              "paths": 2,
-              "areaShare": 0.0423,
-              "precision": 0.5187,
-              "recall": 0.0151,
-              "iou": 0.0148,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 1,
+              "areaShare": 0.0036,
+              "precision": 1,
+              "recall": 0.0811,
+              "iou": 0.0811,
+              "boundaryF1": 0.427
             },
             {
               "id": "leaf_appliques",
               "label": "Decorative leaf appliques",
               "kind": "area",
-              "paths": 5,
-              "areaShare": 0.0653,
-              "precision": 0.6053,
-              "recall": 0.4092,
-              "iou": 0.323,
+              "paths": 6,
+              "areaShare": 0.0544,
+              "precision": 0.9848,
+              "recall": 0.9046,
+              "iou": 0.8922,
               "boundaryF1": -1
             },
             {
               "id": "neck_rivets",
               "label": "Neck rivets",
-              "kind": "area",
+              "kind": "thin",
               "paths": 1,
-              "areaShare": 0.0159,
-              "precision": 0.7214,
-              "recall": 0.0388,
-              "iou": 0.0382,
-              "boundaryF1": -1
+              "areaShare": 0.0017,
+              "precision": 1,
+              "recall": 0.2298,
+              "iou": 0.2298,
+              "boundaryF1": 0.8809
             },
             {
               "id": "engraved_flourish",
               "label": "Engraved body flourish",
-              "kind": "area",
+              "kind": "thin",
               "paths": 1,
-              "areaShare": 0.0188,
+              "areaShare": 0.0028,
               "precision": 1,
-              "recall": 0.0256,
-              "iou": 0.0256,
-              "boundaryF1": -1
+              "recall": 0.0629,
+              "iou": 0.0629,
+              "boundaryF1": 0.4942
             }
           ],
-          "meanPrecision": 0.544,
-          "weightedMeanIou": 0.3141,
-          "failingMajorParts": [
-            "pin_clasp_assembly",
-            "string_set",
-            "main_body",
-            "top_neck",
-            "leaf_appliques"
-          ],
+          "meanPrecision": 0.7667,
+          "weightedMeanIou": 0.8735,
+          "failingMajorParts": [],
           "misassigned": [],
           "emptyVisibleParts": [
             "tuning_tab_set"
@@ -1032,28 +1012,26 @@
           "sharedOnlyParts": [
             "outer_column"
           ],
-          "sharedBoundaries": 37,
+          "sharedBoundaries": 0,
           "aspectRatio": 1.604,
           "lowConfidenceRoutes": 4,
           "notes": [
-            "기준 미달 주요 파트 5개: pin_clasp_assembly, string_set, main_body, top_neck, leaf_appliques (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
             "패스가 없는 파트 1개: tuning_tab_set",
             "공유 경계로만 그려진 파트 1개: outer_column",
             "사진↔도면 종횡비 불일치 60.4%",
-            "라우터가 확신하지 못한 성분 4개",
-            "면적 가중 평균 IoU 0.314 < 0.65"
+            "라우터가 확신하지 못한 성분 4개"
           ]
         },
         "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
       },
       "timings": {
-        "S1_preprocess": 5338,
-        "S2_plan": 3,
-        "S3_masks": 7871,
-        "S4_schematic": 236,
-        "S5_evidence": 2353,
-        "S7_export": 18,
-        "S8_qa": 1529
+        "S1_preprocess": 5939,
+        "S2_plan": 8,
+        "S3_masks": 16911,
+        "S4_schematic": 1455,
+        "S5_evidence": 4578,
+        "S7_export": 40,
+        "S8_qa": 4355
       },
       "correspondence": {
         "method": "global-similarity",
@@ -1108,7 +1086,7 @@
           "z": 8
         }
       ],
-      "sharedBoundaries": 37,
+      "sharedBoundaries": 0,
       "v3": {
         "paths": 172,
         "anchors": 2910,
@@ -1183,7 +1161,7 @@
           "objectComplexity": 361,
           "anchors": 3570,
           "uses": 0,
-          "kb": 144,
+          "kb": 143.8,
           "anchorDensity": 6.54,
           "shortPathRatio": 0.026,
           "primitives": 21,
@@ -1204,10 +1182,10 @@
               "label": "Rear ring band",
               "kind": "area",
               "paths": 2,
-              "areaShare": 0.0337,
-              "precision": 0.8319,
-              "recall": 0.657,
-              "iou": 0.58,
+              "areaShare": 0.0311,
+              "precision": 0.9872,
+              "recall": 0.8358,
+              "iou": 0.8268,
               "boundaryF1": -1
             },
             {
@@ -1215,7 +1193,7 @@
               "label": "Rear gemstone",
               "kind": "thin",
               "paths": 0,
-              "areaShare": 0.0022,
+              "areaShare": 0.0005,
               "precision": 0,
               "recall": 0,
               "iou": 0,
@@ -1225,33 +1203,33 @@
               "id": "rear_bezel",
               "label": "Rear bezel setting",
               "kind": "area",
-              "paths": 21,
-              "areaShare": 0.0319,
-              "precision": 0.7228,
-              "recall": 0.8377,
-              "iou": 0.634,
+              "paths": 22,
+              "areaShare": 0.0274,
+              "precision": 0.7325,
+              "recall": 0.9776,
+              "iou": 0.7205,
               "boundaryF1": -1
             },
             {
               "id": "middle_band",
               "label": "Middle ring band",
               "kind": "area",
-              "paths": 6,
-              "areaShare": 0.0218,
-              "precision": 0.5693,
-              "recall": 0.2172,
-              "iou": 0.1865,
+              "paths": 5,
+              "areaShare": 0.0125,
+              "precision": 0.8354,
+              "recall": 0.5687,
+              "iou": 0.5114,
               "boundaryF1": -1
             },
             {
               "id": "middle_gemstone",
               "label": "Middle gemstone",
               "kind": "area",
-              "paths": 44,
-              "areaShare": 0.0656,
-              "precision": 0.8384,
-              "recall": 0.9329,
-              "iou": 0.7907,
+              "paths": 46,
+              "areaShare": 0.0594,
+              "precision": 0.7888,
+              "recall": 0.9428,
+              "iou": 0.7527,
               "boundaryF1": -1
             },
             {
@@ -1259,50 +1237,49 @@
               "label": "Middle bezel setting",
               "kind": "area",
               "paths": 3,
-              "areaShare": 0.0284,
-              "precision": 0.6801,
-              "recall": 0.0496,
-              "iou": 0.0484,
+              "areaShare": 0.0223,
+              "precision": 0.7189,
+              "recall": 0.064,
+              "iou": 0.0625,
               "boundaryF1": -1
             },
             {
               "id": "front_band",
               "label": "Front ring band",
               "kind": "area",
-              "paths": 11,
-              "areaShare": 0.0775,
-              "precision": 0.7377,
-              "recall": 0.6133,
-              "iou": 0.5035,
+              "paths": 9,
+              "areaShare": 0.0748,
+              "precision": 0.9814,
+              "recall": 0.8354,
+              "iou": 0.8225,
               "boundaryF1": -1
             },
             {
               "id": "front_gemstone",
               "label": "Front gemstone",
               "kind": "area",
-              "paths": 34,
-              "areaShare": 0.0651,
-              "precision": 0.9103,
-              "recall": 0.784,
-              "iou": 0.7277,
+              "paths": 35,
+              "areaShare": 0.0601,
+              "precision": 0.9968,
+              "recall": 0.9185,
+              "iou": 0.9158,
               "boundaryF1": -1
             },
             {
               "id": "front_bezel",
               "label": "Front bezel setting",
               "kind": "area",
-              "paths": 6,
-              "areaShare": 0.042,
-              "precision": 0.299,
-              "recall": 0.4082,
-              "iou": 0.2086,
+              "paths": 5,
+              "areaShare": 0.0243,
+              "precision": 0.4232,
+              "recall": 0.9555,
+              "iou": 0.415,
               "boundaryF1": -1
             }
           ],
-          "meanPrecision": 0.6211,
-          "weightedMeanIou": 0.5221,
+          "meanPrecision": 0.7182,
+          "weightedMeanIou": 0.7189,
           "failingMajorParts": [
-            "middle_band",
             "middle_bezel",
             "front_bezel"
           ],
@@ -1313,28 +1290,27 @@
             "rear_gemstone"
           ],
           "sharedOnlyParts": [],
-          "sharedBoundaries": 12,
+          "sharedBoundaries": 7,
           "aspectRatio": 1.057,
           "lowConfidenceRoutes": 19,
           "notes": [
-            "기준 미달 주요 파트 3개: middle_band, middle_bezel, front_bezel (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+            "기준 미달 주요 파트 2개: middle_bezel, front_bezel (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
             "배분이 의심되는 레이어 1개: front_bezel",
             "패스가 없는 파트 1개: rear_gemstone",
             "사진↔도면 종횡비 불일치 5.7%",
-            "라우터가 확신하지 못한 성분 19개",
-            "면적 가중 평균 IoU 0.522 < 0.65"
+            "라우터가 확신하지 못한 성분 19개"
           ]
         },
         "state": "FIDELITY_REVIEW / EDITABILITY_PASS / SEMANTIC_REVIEW"
       },
       "timings": {
-        "S1_preprocess": 5722,
-        "S2_plan": 6,
-        "S3_masks": 4480,
-        "S4_schematic": 577,
-        "S5_evidence": 6585,
-        "S7_export": 48,
-        "S8_qa": 2801
+        "S1_preprocess": 6200,
+        "S2_plan": 8,
+        "S3_masks": 4595,
+        "S4_schematic": 1328,
+        "S5_evidence": 4482,
+        "S7_export": 55,
+        "S8_qa": 1824
       },
       "correspondence": {
         "method": "global-similarity",
@@ -1389,7 +1365,7 @@
           "z": 8
         }
       ],
-      "sharedBoundaries": 12,
+      "sharedBoundaries": 7,
       "v3": {
         "paths": 296,
         "anchors": 3731,
@@ -1461,7 +1437,7 @@
           "objectComplexity": 370,
           "anchors": 11030,
           "uses": 0,
-          "kb": 462.3,
+          "kb": 462,
           "anchorDensity": 7.17,
           "shortPathRatio": 0.055,
           "primitives": 28,
@@ -1470,7 +1446,7 @@
           "editableReduction": {
             "paths": 0.009,
             "anchors": 0.104,
-            "kb": 0.099
+            "kb": 0.1
           },
           "notes": []
         },
@@ -1480,141 +1456,137 @@
             {
               "id": "rubber_outsole",
               "label": "Rubber outsole",
-              "kind": "area",
-              "paths": 2,
-              "areaShare": 0.023,
-              "precision": 0.6702,
-              "recall": 0.1301,
-              "iou": 0.1223,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 3,
+              "areaShare": 0.0154,
+              "precision": 0.9756,
+              "recall": 0.1339,
+              "iou": 0.1335,
+              "boundaryF1": 0.7771
             },
             {
               "id": "cushioned_midsole",
               "label": "Cushioned midsole",
               "kind": "area",
-              "paths": 12,
-              "areaShare": 0.0922,
-              "precision": 0.7682,
-              "recall": 0.8077,
-              "iou": 0.6494,
+              "paths": 16,
+              "areaShare": 0.1153,
+              "precision": 0.9954,
+              "recall": 0.8907,
+              "iou": 0.8871,
               "boundaryF1": -1
             },
             {
               "id": "tongue",
               "label": "Tongue",
-              "kind": "area",
-              "paths": 12,
-              "areaShare": 0.0316,
-              "precision": 0.9999,
-              "recall": 0.2888,
-              "iou": 0.2888,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 0,
+              "areaShare": 0.003,
+              "precision": 0,
+              "recall": 0,
+              "iou": 0,
+              "boundaryF1": 0
             },
             {
               "id": "eyelet_underlay",
               "label": "Eyelet underlay",
-              "kind": "area",
-              "paths": 17,
-              "areaShare": 0.0152,
-              "precision": 0.7527,
-              "recall": 0.4551,
-              "iou": 0.3959,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 0,
+              "areaShare": 0.0026,
+              "precision": 0,
+              "recall": 0,
+              "iou": 0,
+              "boundaryF1": 0
             },
             {
               "id": "main_upper",
               "label": "Main upper",
               "kind": "area",
-              "paths": 35,
-              "areaShare": 0.1575,
-              "precision": 0.5997,
-              "recall": 0.6684,
-              "iou": 0.4622,
+              "paths": 70,
+              "areaShare": 0.2272,
+              "precision": 0.8873,
+              "recall": 0.9605,
+              "iou": 0.8561,
               "boundaryF1": -1
             },
             {
               "id": "heel_overlay",
               "label": "Heel reinforcement overlay",
-              "kind": "area",
-              "paths": 8,
-              "areaShare": 0.0326,
-              "precision": 0.9982,
-              "recall": 0.3511,
-              "iou": 0.3509,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 6,
+              "areaShare": 0.0172,
+              "precision": 1,
+              "recall": 0.4242,
+              "iou": 0.4242,
+              "boundaryF1": 0.8898
             },
             {
               "id": "laces",
               "label": "Laces",
-              "kind": "area",
-              "paths": 6,
-              "areaShare": 0.0517,
-              "precision": 0.1625,
-              "recall": 0.2305,
-              "iou": 0.1054,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 0,
+              "areaShare": 0.0014,
+              "precision": 0,
+              "recall": 0,
+              "iou": 0,
+              "boundaryF1": 0
             },
             {
               "id": "swoosh_logo",
               "label": "Swoosh logo",
-              "kind": "area",
+              "kind": "thin",
               "paths": 1,
-              "areaShare": 0.0319,
+              "areaShare": 0.0113,
               "precision": 1,
-              "recall": 0.1245,
-              "iou": 0.1245,
-              "boundaryF1": -1
+              "recall": 0.1445,
+              "iou": 0.1445,
+              "boundaryF1": 0.7184
             },
             {
               "id": "airmax_badge",
               "label": "AIRMAX badge",
-              "kind": "area",
-              "paths": 23,
-              "areaShare": 0.016,
-              "precision": 0.9535,
-              "recall": 0.7589,
-              "iou": 0.7318,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 20,
+              "areaShare": 0.0117,
+              "precision": 0.9501,
+              "recall": 0.6534,
+              "iou": 0.6317,
+              "boundaryF1": 0.9244
             }
           ],
-          "meanPrecision": 0.7672,
-          "weightedMeanIou": 0.4056,
-          "failingMajorParts": [
-            "rubber_outsole",
-            "tongue",
-            "heel_overlay",
-            "laces",
-            "swoosh_logo"
-          ],
-          "misassigned": [
+          "meanPrecision": 0.6454,
+          "weightedMeanIou": 0.778,
+          "failingMajorParts": [],
+          "misassigned": [],
+          "emptyVisibleParts": [
             "laces"
           ],
-          "emptyVisibleParts": [],
-          "sharedOnlyParts": [],
-          "sharedBoundaries": 16,
+          "sharedOnlyParts": [
+            "tongue",
+            "eyelet_underlay"
+          ],
+          "sharedBoundaries": 0,
           "aspectRatio": 1.052,
           "lowConfidenceRoutes": 7,
           "notes": [
-            "기준 미달 주요 파트 5개: rubber_outsole, tongue, heel_overlay, laces, swoosh_logo (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
-            "배분이 의심되는 레이어 1개: laces",
+            "패스가 없는 파트 1개: laces",
+            "공유 경계로만 그려진 파트 2개: tongue, eyelet_underlay",
             "사진↔도면 종횡비 불일치 5.2%",
-            "라우터가 확신하지 못한 성분 7개",
-            "면적 가중 평균 IoU 0.406 < 0.65"
+            "라우터가 확신하지 못한 성분 7개"
           ]
         },
         "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
       },
       "timings": {
-        "S1_preprocess": 3079,
-        "S2_plan": 5,
-        "S3_masks": 6870,
-        "S4_schematic": 627,
-        "S5_evidence": 7060,
-        "S7_export": 39,
-        "S8_qa": 3370
+        "S1_preprocess": 4037,
+        "S2_plan": 11,
+        "S3_masks": 11340,
+        "S4_schematic": 2519,
+        "S5_evidence": 12028,
+        "S7_export": 59,
+        "S8_qa": 7400
       },
       "correspondence": {
-        "method": "global-similarity",
+        "method": "schematic-direct-seg",
         "aspectRatio": 1.0519794727545186,
         "confident": true,
         "note": ""
@@ -1666,7 +1638,7 @@
           "z": 8
         }
       ],
-      "sharedBoundaries": 16,
+      "sharedBoundaries": 0,
       "v3": {
         "paths": 423,
         "anchors": 9545,
@@ -1739,7 +1711,7 @@
           "objectComplexity": 1049,
           "anchors": 20983,
           "uses": 21,
-          "kb": 842.7,
+          "kb": 840.8,
           "anchorDensity": 8.6,
           "shortPathRatio": 0.034,
           "primitives": 24,
@@ -1760,10 +1732,10 @@
               "label": "Rear shoe upper",
               "kind": "area",
               "paths": 22,
-              "areaShare": 0.065,
+              "areaShare": 0.0646,
               "precision": 0.9993,
-              "recall": 0.7724,
-              "iou": 0.772,
+              "recall": 0.7767,
+              "iou": 0.7762,
               "boundaryF1": -1
             },
             {
@@ -1771,65 +1743,65 @@
               "label": "Rear shoe outsole",
               "kind": "area",
               "paths": 144,
-              "areaShare": 0.1324,
-              "precision": 0.806,
-              "recall": 0.9839,
-              "iou": 0.7956,
+              "areaShare": 0.1381,
+              "precision": 0.848,
+              "recall": 0.9848,
+              "iou": 0.8371,
               "boundaryF1": -1
             },
             {
               "id": "foreground_sole_unit",
               "label": "Foreground sole unit",
-              "kind": "area",
+              "kind": "thin",
               "paths": 2,
-              "areaShare": 0.0076,
-              "precision": 0.8417,
-              "recall": 0.1721,
-              "iou": 0.1667,
-              "boundaryF1": -1
+              "areaShare": 0.0044,
+              "precision": 1,
+              "recall": 0.1871,
+              "iou": 0.1871,
+              "boundaryF1": 0.7478
             },
             {
               "id": "foreground_mesh_upper",
               "label": "Foreground mesh upper",
-              "kind": "area",
+              "kind": "thin",
               "paths": 10,
-              "areaShare": 0.0092,
-              "precision": 0.9772,
-              "recall": 0.1977,
-              "iou": 0.1968,
-              "boundaryF1": -1
+              "areaShare": 0.0053,
+              "precision": 1,
+              "recall": 0.1909,
+              "iou": 0.1909,
+              "boundaryF1": 0.8197
             },
             {
               "id": "padded_collar",
               "label": "Padded collar and lining",
-              "kind": "area",
-              "paths": 1,
-              "areaShare": 0.0148,
-              "precision": 1,
-              "recall": 0.0007,
-              "iou": 0.0007,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 0,
+              "areaShare": 0.0036,
+              "precision": 0,
+              "recall": 0,
+              "iou": 0,
+              "boundaryF1": 0
             },
             {
               "id": "shoe_tongue",
               "label": "Shoe tongue",
               "kind": "area",
-              "paths": 59,
-              "areaShare": 0.0646,
-              "precision": 0.9731,
-              "recall": 0.4696,
-              "iou": 0.4636,
+              "paths": 53,
+              "areaShare": 0.0512,
+              "precision": 0.9999,
+              "recall": 0.5563,
+              "iou": 0.5563,
               "boundaryF1": -1
             },
             {
               "id": "synthetic_support_overlays",
               "label": "Synthetic support overlays",
               "kind": "area",
-              "paths": 53,
-              "areaShare": 0.1842,
-              "precision": 0.7182,
-              "recall": 0.9885,
-              "iou": 0.7123,
+              "paths": 61,
+              "areaShare": 0.219,
+              "precision": 0.8819,
+              "recall": 0.9928,
+              "iou": 0.8762,
               "boundaryF1": -1
             },
             {
@@ -1837,53 +1809,51 @@
               "label": "Heel pull tab",
               "kind": "area",
               "paths": 2,
-              "areaShare": 0.0057,
+              "areaShare": 0.005,
               "precision": 1,
-              "recall": 0.4539,
-              "iou": 0.4539,
+              "recall": 0.4951,
+              "iou": 0.4951,
               "boundaryF1": -1
             },
             {
               "id": "orange_laces",
               "label": "Orange shoelaces",
-              "kind": "area",
-              "paths": 13,
-              "areaShare": 0.0219,
-              "precision": 0.7819,
-              "recall": 0.1405,
-              "iou": 0.1352,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 12,
+              "areaShare": 0.0099,
+              "precision": 0.9984,
+              "recall": 0.1721,
+              "iou": 0.1721,
+              "boundaryF1": 0.7038
             }
           ],
-          "meanPrecision": 0.8997,
-          "weightedMeanIou": 0.6437,
-          "failingMajorParts": [
-            "shoe_tongue",
-            "orange_laces"
-          ],
+          "meanPrecision": 0.8586,
+          "weightedMeanIou": 0.7825,
+          "failingMajorParts": [],
           "misassigned": [],
           "emptyVisibleParts": [],
-          "sharedOnlyParts": [],
-          "sharedBoundaries": 79,
+          "sharedOnlyParts": [
+            "padded_collar"
+          ],
+          "sharedBoundaries": 8,
           "aspectRatio": 1.003,
           "lowConfidenceRoutes": 35,
           "notes": [
-            "기준 미달 주요 파트 2개: shoe_tongue, orange_laces (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+            "공유 경계로만 그려진 파트 1개: padded_collar",
             "사진↔도면 대응 실패 — 파트 배분을 신뢰할 수 없다",
-            "라우터가 확신하지 못한 성분 35개",
-            "면적 가중 평균 IoU 0.644 < 0.65"
+            "라우터가 확신하지 못한 성분 35개"
           ]
         },
         "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
       },
       "timings": {
-        "S1_preprocess": 3184,
-        "S2_plan": 6,
-        "S3_masks": 5699,
-        "S4_schematic": 638,
-        "S5_evidence": 5833,
-        "S7_export": 69,
-        "S8_qa": 3694
+        "S1_preprocess": 3452,
+        "S2_plan": 7,
+        "S3_masks": 7549,
+        "S4_schematic": 1904,
+        "S5_evidence": 8517,
+        "S7_export": 90,
+        "S8_qa": 5330
       },
       "correspondence": {
         "method": "global-similarity",
@@ -1938,7 +1908,7 @@
           "z": 8
         }
       ],
-      "sharedBoundaries": 79,
+      "sharedBoundaries": 8,
       "v3": {
         "paths": 1113,
         "anchors": 18342,
@@ -1975,7 +1945,7 @@
       "counts": {
         "REPEATING_PATTERN": 11,
         "GEOMETRIC_PRIMITIVE": 125,
-        "FACE_FILL": 325,
+        "FACE_FILL": 324,
         "OUTLINE_SHAPE": 38
       },
       "qa": {
@@ -2005,13 +1975,13 @@
         },
         "editability": {
           "pass": false,
-          "paths": 499,
-          "subpaths": 1313,
+          "paths": 498,
+          "subpaths": 1312,
           "maxSubpathsInPath": 760,
-          "objectComplexity": 2069,
-          "anchors": 30177,
+          "objectComplexity": 2067,
+          "anchors": 30170,
           "uses": 257,
-          "kb": 1227.9,
+          "kb": 1218.3,
           "anchorDensity": 8.84,
           "shortPathRatio": 0.019,
           "primitives": 125,
@@ -2020,7 +1990,7 @@
           "editableReduction": {
             "paths": 0.008,
             "anchors": 0.096,
-            "kb": 0.092
+            "kb": 0.093
           },
           "notes": [
             "한 패스에 서브패스 760개 — Illustrator 에서 통째로 선택된다"
@@ -2032,20 +2002,20 @@
             {
               "id": "tongue",
               "label": "Tongue",
-              "kind": "area",
-              "paths": 31,
-              "areaShare": 0.0795,
-              "precision": 0.7953,
-              "recall": 0.2535,
-              "iou": 0.238,
-              "boundaryF1": -1
+              "kind": "thin",
+              "paths": 28,
+              "areaShare": 0.0369,
+              "precision": 1,
+              "recall": 0.3116,
+              "iou": 0.3116,
+              "boundaryF1": 0.8772
             },
             {
               "id": "mesh_upper",
               "label": "Mesh upper",
-              "kind": "area",
+              "kind": "thin",
               "paths": 0,
-              "areaShare": 0.0063,
+              "areaShare": 0.0027,
               "precision": 0,
               "recall": 0,
               "iou": 0,
@@ -2056,7 +2026,7 @@
               "label": "Padded collar",
               "kind": "thin",
               "paths": 0,
-              "areaShare": 0.0021,
+              "areaShare": 0.0017,
               "precision": 0,
               "recall": 0,
               "iou": 0,
@@ -2066,22 +2036,22 @@
               "id": "eyestay_overlay",
               "label": "Eyestay overlay",
               "kind": "area",
-              "paths": 6,
-              "areaShare": 0.0377,
-              "precision": 0.4681,
-              "recall": 0.6723,
-              "iou": 0.3811,
+              "paths": 5,
+              "areaShare": 0.0534,
+              "precision": 0.9796,
+              "recall": 0.8597,
+              "iou": 0.8446,
               "boundaryF1": -1
             },
             {
               "id": "lace_loops",
               "label": "Yellow lace loops",
               "kind": "area",
-              "paths": 40,
-              "areaShare": 0.0658,
-              "precision": 0.5668,
-              "recall": 0.7387,
-              "iou": 0.4721,
+              "paths": 41,
+              "areaShare": 0.0968,
+              "precision": 0.9993,
+              "recall": 0.8673,
+              "iou": 0.8668,
               "boundaryF1": -1
             },
             {
@@ -2089,7 +2059,7 @@
               "label": "Laces",
               "kind": "thin",
               "paths": 0,
-              "areaShare": 0.0016,
+              "areaShare": 0.0004,
               "precision": 0,
               "recall": 0,
               "iou": 0,
@@ -2099,34 +2069,29 @@
               "id": "outsole",
               "label": "Flexible tread outsole",
               "kind": "area",
-              "paths": 241,
-              "areaShare": 0.3412,
-              "precision": 0.8704,
-              "recall": 0.652,
-              "iou": 0.5943,
+              "paths": 243,
+              "areaShare": 0.3627,
+              "precision": 0.9976,
+              "recall": 0.6937,
+              "iou": 0.6925,
               "boundaryF1": -1
             },
             {
               "id": "lace_stitching",
               "label": "Yellow lace stitching",
               "kind": "area",
-              "paths": 193,
-              "areaShare": 0.172,
-              "precision": 0.4523,
-              "recall": 0.7827,
-              "iou": 0.4018,
+              "paths": 194,
+              "areaShare": 0.1479,
+              "precision": 0.48,
+              "recall": 0.9575,
+              "iou": 0.47,
               "boundaryF1": -1
             }
           ],
-          "meanPrecision": 0.3941,
-          "weightedMeanIou": 0.4761,
-          "failingMajorParts": [
-            "tongue",
-            "eyestay_overlay",
-            "lace_stitching"
-          ],
+          "meanPrecision": 0.5571,
+          "weightedMeanIou": 0.6565,
+          "failingMajorParts": [],
           "misassigned": [
-            "eyestay_overlay",
             "lace_stitching"
           ],
           "emptyVisibleParts": [],
@@ -2135,28 +2100,26 @@
             "padded_collar",
             "laces"
           ],
-          "sharedBoundaries": 302,
+          "sharedBoundaries": 12,
           "aspectRatio": 1.006,
           "lowConfidenceRoutes": 28,
           "notes": [
-            "기준 미달 주요 파트 3개: tongue, eyestay_overlay, lace_stitching (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
-            "배분이 의심되는 레이어 2개: eyestay_overlay, lace_stitching",
+            "배분이 의심되는 레이어 1개: lace_stitching",
             "공유 경계로만 그려진 파트 3개: mesh_upper, padded_collar, laces",
             "사진↔도면 대응 실패 — 파트 배분을 신뢰할 수 없다",
-            "라우터가 확신하지 못한 성분 28개",
-            "면적 가중 평균 IoU 0.476 < 0.65"
+            "라우터가 확신하지 못한 성분 28개"
           ]
         },
         "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
       },
       "timings": {
-        "S1_preprocess": 3669,
-        "S2_plan": 14,
-        "S3_masks": 9995,
-        "S4_schematic": 708,
-        "S5_evidence": 12954,
-        "S7_export": 131,
-        "S8_qa": 4808
+        "S1_preprocess": 3683,
+        "S2_plan": 9,
+        "S3_masks": 12931,
+        "S4_schematic": 1910,
+        "S5_evidence": 12806,
+        "S7_export": 129,
+        "S8_qa": 5646
       },
       "correspondence": {
         "method": "global-similarity",
@@ -2206,7 +2169,7 @@
           "z": 7
         }
       ],
-      "sharedBoundaries": 302,
+      "sharedBoundaries": 12,
       "v3": {
         "paths": 1549,
         "anchors": 28966,

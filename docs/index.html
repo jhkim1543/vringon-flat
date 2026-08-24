@@ -135,7 +135,7 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
     </div>
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-tab="gallery">결과 갤러리</button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="v4">V4.2 · Semantic Topology</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="v4">V4.3 · Semantic Topology</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="v3">V3.2 · VRINGON 도면</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="v2">V2 · 레이어 SVG</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="run">직접 실행</button>
@@ -160,8 +160,8 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
 
 <!-- ─────────── V4 Semantic Topology ─────────── -->
 <section id="v4" hidden>
-  <h2>V4.2 — Semantic Topology Vectorizer
-    <span style="font-size:14px;font-weight:400;color:var(--dim)">· 2026-08-24 · 외부 딥리서치 Phase A 반영</span></h2>
+  <h2>V4.3 — Semantic Topology Vectorizer
+    <span style="font-size:14px;font-weight:400;color:var(--dim)">· 2026-08-24 · 도면 직접 segmentation (Phase B 1단계)</span></h2>
   <p class="sub">
     V3까지는 잉크 전체를 한 방식으로 훑고 SVG 하나를 만들었습니다. V4는 <b>성분마다 표현을 먼저
     정하고</b>, 같은 장면(<code>VectorScene</code>)에서 목적별로 다른 SVG를 굽습니다.
@@ -208,6 +208,33 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
   <p class="sub" style="margin-top:8px">
     패스가 크게 줄면서 <b>정확 일치(F@0px)는 오히려 올랐습니다</b>. 앵커 총량은 거의 같습니다 —
     줄어든 것은 <b>객체 수</b>이지 형상 정보가 아니라는 뜻입니다.
+  </p>
+
+  <h3>V4.3 — 레이어의 천장을 건드렸습니다</h3>
+  <p class="sub">
+    의미 gate 0/9 의 천장은 warp 된 사진 마스크였습니다(bag_1 사진↔도면 종횡비 19.8% 불일치).
+    V4.3 은 <b>도면 자체를 segment 합니다</b> — Gemini 2.5 Flash 폴리곤 + 위치 힌트(warp bbox) +
+    <b>면 스냅</b>(선이 감싼 면을 원자 단위로, 겹치면 z 최상위 파트 소유). Gemini 와 warp 마스크는
+    좌표 정합이 달라 <b>절반씩 섞으면 무너집니다</b>(bag_3 실측 0.708→0.435) — 채택률 80% 이상일
+    때만 통째로 쓰고, 면 스냅은 출처와 무관하게 항상 적용합니다.
+  </p>
+  <div style="overflow-x:auto"><table>
+    <tr><th>샘플</th><th class="num">면적가중 IoU (V4.2→V4.3)</th><th class="num">기준 미달 주요 파트</th><th>마스크 출처</th></tr>
+    <tr><td>shoe_1</td><td class="num">0.406 → <b>0.778</b></td><td class="num">5 → <b>0</b></td><td>Gemini 8/9</td></tr>
+    <tr><td>shoe_2</td><td class="num">0.520 → <b>0.782</b></td><td class="num">2 → <b>0</b></td><td>warp + 면 스냅</td></tr>
+    <tr><td>shoe_3</td><td class="num">0.495 → <b>0.656</b></td><td class="num">3 → <b>0</b></td><td>warp + 면 스냅</td></tr>
+    <tr><td>bag_1</td><td class="num">0.574 → <b>0.791</b></td><td class="num">2 → 1</td><td>Gemini 7/8</td></tr>
+    <tr><td>bag_2</td><td class="num">0.535 → <b>0.879</b></td><td class="num">1 → <b>0</b></td><td>Gemini 4/5</td></tr>
+    <tr><td>bag_3</td><td class="num">0.708 → 0.703</td><td class="num">1 → 1</td><td>warp + 면 스냅</td></tr>
+    <tr><td>jewelry_1</td><td class="num">0.331 → <b>0.811</b></td><td class="num">3 → <b>0</b></td><td>warp + 면 스냅</td></tr>
+    <tr><td>jewelry_2</td><td class="num">0.628 → <b>0.874</b></td><td class="num">4 → <b>0</b></td><td>warp + 면 스냅</td></tr>
+    <tr><td>jewelry_3</td><td class="num">0.651 → 0.719</td><td class="num">1 → 2</td><td>warp + 면 스냅</td></tr>
+    <tr style="background:var(--panel-2)"><td><b>평균·합계</b></td><td class="num"><b>0.539 → 0.777</b></td><td class="num"><b>22 → 4</b></td><td></td></tr>
+  </table></div>
+  <p class="sub">
+    충실도는 어느 샘플에서도 변하지 않았습니다(마스크는 배분에만 관여합니다). 의미 gate 가 아직
+    REVIEW 인 이유는 셋입니다 — 작은 파트(laces·각인)의 기하가 큰 컴파운드 패스에 흡수되는
+    라우팅 문제(P1), GPT 계획의 파트 누락(bag_1 어깨끈), 그리고 SAM 3 정교화 부재(FAL 키 대기).
   </p>
 
   <h3>V4.2 — 외부 딥리서치에서 채택한 것</h3>

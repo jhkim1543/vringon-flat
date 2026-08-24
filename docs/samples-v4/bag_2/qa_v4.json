@@ -8,8 +8,8 @@
       "sourceHeight": 1024,
       "supersample": 2
     },
-    "totalMs": 13753,
-    "createdAt": "2026-08-24T10:45:26.891Z"
+    "totalMs": 19765,
+    "createdAt": "2026-08-24T12:26:29.955Z"
   },
   "options": {
     "minParts": 3,
@@ -20,6 +20,7 @@
     "inkThreshold": 170,
     "localContrast": 22,
     "textureMode": "auto",
+    "segMode": "schematic",
     "categoryHint": "bag",
     "schematicFrom": "outputs/v3/v3_bag_2_v31/schematics/schematic_bf1fc0a71a70d0eb.png",
     "upscale": false
@@ -123,7 +124,7 @@
   },
   "counts": {
     "GEOMETRIC_PRIMITIVE": 522,
-    "FACE_FILL": 24,
+    "FACE_FILL": 21,
     "OUTLINE_SHAPE": 68,
     "REPEATING_PATTERN": 17
   },
@@ -155,13 +156,13 @@
     },
     "editability": {
       "pass": false,
-      "paths": 631,
-      "subpaths": 3602,
-      "maxSubpathsInPath": 2738,
-      "objectComplexity": 6835,
-      "anchors": 20146,
+      "paths": 628,
+      "subpaths": 3599,
+      "maxSubpathsInPath": 2739,
+      "objectComplexity": 6829,
+      "anchors": 20128,
       "uses": 2602,
-      "kb": 1130.2,
+      "kb": 1115.3,
       "anchorDensity": 14.27,
       "shortPathRatio": 0.202,
       "primitives": 522,
@@ -169,12 +170,12 @@
       "pathsSavedByPatterns": 2585,
       "editableReduction": {
         "paths": 0.024,
-        "anchors": 0.669,
-        "kb": 0.366
+        "anchors": 0.67,
+        "kb": 0.371
       },
       "notes": [
         "앵커 밀도 14.3/100px > 12",
-        "한 패스에 서브패스 2738개 — Illustrator 에서 통째로 선택된다"
+        "한 패스에 서브패스 2739개 — Illustrator 에서 통째로 선택된다"
       ]
     },
     "semantic": {
@@ -185,7 +186,7 @@
           "label": "Chain handle",
           "kind": "thin",
           "paths": 0,
-          "areaShare": 0.01,
+          "areaShare": 0.0006,
           "precision": 0,
           "recall": 0,
           "iou": 0,
@@ -195,80 +196,76 @@
           "id": "bag_body",
           "label": "Beaded pouch body",
           "kind": "area",
-          "paths": 449,
-          "areaShare": 0.227,
-          "precision": 0.7227,
-          "recall": 0.9254,
-          "iou": 0.6829,
+          "paths": 594,
+          "areaShare": 0.3689,
+          "precision": 1,
+          "recall": 0.9367,
+          "iou": 0.9366,
           "boundaryF1": -1
         },
         {
           "id": "metal_frame",
           "label": "Metal purse frame",
-          "kind": "area",
-          "paths": 113,
-          "areaShare": 0.0813,
-          "precision": 0.2973,
-          "recall": 0.4437,
-          "iou": 0.2166,
-          "boundaryF1": -1
+          "kind": "thin",
+          "paths": 43,
+          "areaShare": 0.0377,
+          "precision": 0.6827,
+          "recall": 0.4443,
+          "iou": 0.3682,
+          "boundaryF1": 0.8068
         },
         {
           "id": "closure_clasp",
           "label": "Closure clasp",
-          "kind": "area",
-          "paths": 1,
-          "areaShare": 0.0024,
-          "precision": 1,
-          "recall": 0.0258,
-          "iou": 0.0258,
-          "boundaryF1": -1
+          "kind": "thin",
+          "paths": 0,
+          "areaShare": 0.0001,
+          "precision": 0,
+          "recall": 0,
+          "iou": 0,
+          "boundaryF1": 0
         },
         {
           "id": "floral_ornament",
           "label": "Floral metal ornament",
-          "kind": "area",
-          "paths": 85,
-          "areaShare": 0.01,
-          "precision": 0.7446,
-          "recall": 0.492,
-          "iou": 0.4209,
-          "boundaryF1": -1
+          "kind": "thin",
+          "paths": 7,
+          "areaShare": 0.0028,
+          "precision": 1,
+          "recall": 0.3609,
+          "iou": 0.3609,
+          "boundaryF1": 0.9514
         }
       ],
-      "meanPrecision": 0.5529,
-      "weightedMeanIou": 0.5349,
-      "failingMajorParts": [
-        "metal_frame"
+      "meanPrecision": 0.5365,
+      "weightedMeanIou": 0.8788,
+      "failingMajorParts": [],
+      "misassigned": [],
+      "emptyVisibleParts": [
+        "closure_clasp"
       ],
-      "misassigned": [
-        "metal_frame"
-      ],
-      "emptyVisibleParts": [],
       "sharedOnlyParts": [
         "chain_handle"
       ],
-      "sharedBoundaries": 28,
+      "sharedBoundaries": 8,
       "aspectRatio": 1.015,
       "lowConfidenceRoutes": 11,
       "notes": [
-        "기준 미달 주요 파트 1개: metal_frame (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
-        "배분이 의심되는 레이어 1개: metal_frame",
+        "패스가 없는 파트 1개: closure_clasp",
         "공유 경계로만 그려진 파트 1개: chain_handle",
-        "라우터가 확신하지 못한 성분 11개",
-        "면적 가중 평균 IoU 0.535 < 0.65"
+        "라우터가 확신하지 못한 성분 11개"
       ]
     },
     "state": "FIDELITY_REVIEW / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
   },
   "timings": {
-    "S1_preprocess": 5342,
-    "S2_plan": 4,
-    "S3_masks": 2691,
-    "S4_schematic": 306,
-    "S5_evidence": 3541,
-    "S7_export": 55,
-    "S8_qa": 1629
+    "S1_preprocess": 5767,
+    "S2_plan": 6,
+    "S3_masks": 3867,
+    "S4_schematic": 1267,
+    "S5_evidence": 5337,
+    "S7_export": 89,
+    "S8_qa": 3120
   },
   "rescued": {
     "stitch": [
@@ -280,8 +277,15 @@
       0
     ]
   },
+  "maskSource": {
+    "chain_handle": "photo-warp (gemini 불일치 IoU 0.01)",
+    "bag_body": "gemini-schematic",
+    "metal_frame": "gemini-schematic",
+    "closure_clasp": "gemini-schematic",
+    "floral_ornament": "gemini-schematic"
+  },
   "correspondence": {
-    "method": "global-similarity",
+    "method": "schematic-direct-seg",
     "aspectRatio": 1.0154628381473387,
     "confident": true,
     "note": ""

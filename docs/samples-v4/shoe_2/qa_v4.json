@@ -8,8 +8,8 @@
       "sourceHeight": 786,
       "supersample": 2
     },
-    "totalMs": 19237,
-    "createdAt": "2026-08-24T10:44:27.585Z"
+    "totalMs": 27024,
+    "createdAt": "2026-08-24T12:25:02.202Z"
   },
   "options": {
     "minParts": 3,
@@ -20,6 +20,7 @@
     "inkThreshold": 170,
     "localContrast": 22,
     "textureMode": "auto",
+    "segMode": "schematic",
     "categoryHint": "shoe",
     "schematicFrom": "outputs/v3/v3_shoe_2_v31/schematics/schematic_cc8c7d6a5d317075.png",
     "upscale": false
@@ -230,7 +231,7 @@
       "objectComplexity": 1049,
       "anchors": 20983,
       "uses": 21,
-      "kb": 842.7,
+      "kb": 840.8,
       "anchorDensity": 8.6,
       "shortPathRatio": 0.034,
       "primitives": 24,
@@ -251,10 +252,10 @@
           "label": "Rear shoe upper",
           "kind": "area",
           "paths": 22,
-          "areaShare": 0.065,
+          "areaShare": 0.0646,
           "precision": 0.9993,
-          "recall": 0.7724,
-          "iou": 0.772,
+          "recall": 0.7767,
+          "iou": 0.7762,
           "boundaryF1": -1
         },
         {
@@ -262,65 +263,65 @@
           "label": "Rear shoe outsole",
           "kind": "area",
           "paths": 144,
-          "areaShare": 0.1324,
-          "precision": 0.806,
-          "recall": 0.9839,
-          "iou": 0.7956,
+          "areaShare": 0.1381,
+          "precision": 0.848,
+          "recall": 0.9848,
+          "iou": 0.8371,
           "boundaryF1": -1
         },
         {
           "id": "foreground_sole_unit",
           "label": "Foreground sole unit",
-          "kind": "area",
+          "kind": "thin",
           "paths": 2,
-          "areaShare": 0.0076,
-          "precision": 0.8417,
-          "recall": 0.1721,
-          "iou": 0.1667,
-          "boundaryF1": -1
+          "areaShare": 0.0044,
+          "precision": 1,
+          "recall": 0.1871,
+          "iou": 0.1871,
+          "boundaryF1": 0.7478
         },
         {
           "id": "foreground_mesh_upper",
           "label": "Foreground mesh upper",
-          "kind": "area",
+          "kind": "thin",
           "paths": 10,
-          "areaShare": 0.0092,
-          "precision": 0.9772,
-          "recall": 0.1977,
-          "iou": 0.1968,
-          "boundaryF1": -1
+          "areaShare": 0.0053,
+          "precision": 1,
+          "recall": 0.1909,
+          "iou": 0.1909,
+          "boundaryF1": 0.8197
         },
         {
           "id": "padded_collar",
           "label": "Padded collar and lining",
-          "kind": "area",
-          "paths": 1,
-          "areaShare": 0.0148,
-          "precision": 1,
-          "recall": 0.0007,
-          "iou": 0.0007,
-          "boundaryF1": -1
+          "kind": "thin",
+          "paths": 0,
+          "areaShare": 0.0036,
+          "precision": 0,
+          "recall": 0,
+          "iou": 0,
+          "boundaryF1": 0
         },
         {
           "id": "shoe_tongue",
           "label": "Shoe tongue",
           "kind": "area",
-          "paths": 59,
-          "areaShare": 0.0646,
-          "precision": 0.9731,
-          "recall": 0.4696,
-          "iou": 0.4636,
+          "paths": 53,
+          "areaShare": 0.0512,
+          "precision": 0.9999,
+          "recall": 0.5563,
+          "iou": 0.5563,
           "boundaryF1": -1
         },
         {
           "id": "synthetic_support_overlays",
           "label": "Synthetic support overlays",
           "kind": "area",
-          "paths": 53,
-          "areaShare": 0.1842,
-          "precision": 0.7182,
-          "recall": 0.9885,
-          "iou": 0.7123,
+          "paths": 61,
+          "areaShare": 0.219,
+          "precision": 0.8819,
+          "recall": 0.9928,
+          "iou": 0.8762,
           "boundaryF1": -1
         },
         {
@@ -328,53 +329,51 @@
           "label": "Heel pull tab",
           "kind": "area",
           "paths": 2,
-          "areaShare": 0.0057,
+          "areaShare": 0.005,
           "precision": 1,
-          "recall": 0.4539,
-          "iou": 0.4539,
+          "recall": 0.4951,
+          "iou": 0.4951,
           "boundaryF1": -1
         },
         {
           "id": "orange_laces",
           "label": "Orange shoelaces",
-          "kind": "area",
-          "paths": 13,
-          "areaShare": 0.0219,
-          "precision": 0.7819,
-          "recall": 0.1405,
-          "iou": 0.1352,
-          "boundaryF1": -1
+          "kind": "thin",
+          "paths": 12,
+          "areaShare": 0.0099,
+          "precision": 0.9984,
+          "recall": 0.1721,
+          "iou": 0.1721,
+          "boundaryF1": 0.7038
         }
       ],
-      "meanPrecision": 0.8997,
-      "weightedMeanIou": 0.6437,
-      "failingMajorParts": [
-        "shoe_tongue",
-        "orange_laces"
-      ],
+      "meanPrecision": 0.8586,
+      "weightedMeanIou": 0.7825,
+      "failingMajorParts": [],
       "misassigned": [],
       "emptyVisibleParts": [],
-      "sharedOnlyParts": [],
-      "sharedBoundaries": 79,
+      "sharedOnlyParts": [
+        "padded_collar"
+      ],
+      "sharedBoundaries": 8,
       "aspectRatio": 1.003,
       "lowConfidenceRoutes": 35,
       "notes": [
-        "기준 미달 주요 파트 2개: shoe_tongue, orange_laces (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+        "공유 경계로만 그려진 파트 1개: padded_collar",
         "사진↔도면 대응 실패 — 파트 배분을 신뢰할 수 없다",
-        "라우터가 확신하지 못한 성분 35개",
-        "면적 가중 평균 IoU 0.644 < 0.65"
+        "라우터가 확신하지 못한 성분 35개"
       ]
     },
     "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
   },
   "timings": {
-    "S1_preprocess": 3184,
-    "S2_plan": 6,
-    "S3_masks": 5699,
-    "S4_schematic": 638,
-    "S5_evidence": 5833,
-    "S7_export": 69,
-    "S8_qa": 3694
+    "S1_preprocess": 3452,
+    "S2_plan": 7,
+    "S3_masks": 7549,
+    "S4_schematic": 1904,
+    "S5_evidence": 8517,
+    "S7_export": 90,
+    "S8_qa": 5330
   },
   "rescued": {
     "stitch": [
@@ -385,6 +384,17 @@
       1,
       508
     ]
+  },
+  "maskSource": {
+    "rear_shoe_upper": "photo-warp (표결 6/9 미달)",
+    "rear_shoe_outsole": "photo-warp (표결 6/9 미달)",
+    "foreground_sole_unit": "photo-warp (표결 6/9 미달)",
+    "foreground_mesh_upper": "photo-warp (표결 6/9 미달)",
+    "padded_collar": "photo-warp (표결 6/9 미달)",
+    "shoe_tongue": "photo-warp (표결 6/9 미달)",
+    "synthetic_support_overlays": "photo-warp (표결 6/9 미달)",
+    "heel_pull_tab": "photo-warp (표결 6/9 미달)",
+    "orange_laces": "photo-warp (표결 6/9 미달)"
   },
   "correspondence": {
     "method": "global-similarity",

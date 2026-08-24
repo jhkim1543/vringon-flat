@@ -2,7 +2,7 @@
  {
   "id": "gf1",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "closure_clasp",
+  "partId": "floral_ornament",
   "area": 253,
   "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.4px, 허용 4.4px)",
   "confidence": 0.839816933638444,
@@ -62,7 +62,7 @@
  {
   "id": "gf7",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 190,
   "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 4.4px)",
   "confidence": 0.6567505720823799,
@@ -73,7 +73,7 @@
   "id": "f8",
   "cls": "FACE_FILL",
   "partId": "bag_body",
-  "area": 871241,
+  "area": 1119990,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
@@ -82,20 +82,20 @@
  {
   "id": "f9",
   "cls": "FACE_FILL",
-  "partId": "metal_frame",
-  "area": 310292,
+  "partId": "bag_body",
+  "area": 1119990,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
  {
   "id": "fa",
   "cls": "FACE_FILL",
-  "partId": "metal_frame",
-  "area": 310292,
+  "partId": "bag_body",
+  "area": 1119990,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -103,9 +103,9 @@
   "id": "fb",
   "cls": "FACE_FILL",
   "partId": "metal_frame",
-  "area": 310292,
+  "area": 74352,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -113,9 +113,9 @@
   "id": "fc",
   "cls": "FACE_FILL",
   "partId": "metal_frame",
-  "area": 310292,
+  "area": 74352,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -123,9 +123,9 @@
   "id": "fd",
   "cls": "FACE_FILL",
   "partId": "metal_frame",
-  "area": 310292,
+  "area": 74352,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -133,9 +133,9 @@
   "id": "fe",
   "cls": "FACE_FILL",
   "partId": "metal_frame",
-  "area": 310292,
+  "area": 74352,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -143,9 +143,9 @@
   "id": "ff",
   "cls": "FACE_FILL",
   "partId": "metal_frame",
-  "area": 310292,
+  "area": 74352,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -153,9 +153,9 @@
   "id": "fg",
   "cls": "FACE_FILL",
   "partId": "metal_frame",
-  "area": 310292,
+  "area": 74352,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -163,9 +163,9 @@
   "id": "fh",
   "cls": "FACE_FILL",
   "partId": "metal_frame",
-  "area": 310292,
+  "area": 74352,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -173,9 +173,9 @@
   "id": "fi",
   "cls": "FACE_FILL",
   "partId": "metal_frame",
-  "area": 310292,
+  "area": 74352,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -183,9 +183,9 @@
   "id": "fj",
   "cls": "FACE_FILL",
   "partId": "metal_frame",
-  "area": 310292,
+  "area": 74352,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -193,9 +193,9 @@
   "id": "fk",
   "cls": "FACE_FILL",
   "partId": "metal_frame",
-  "area": 310292,
+  "area": 74352,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -203,9 +203,9 @@
   "id": "fl",
   "cls": "FACE_FILL",
   "partId": "metal_frame",
-  "area": 310292,
+  "area": 74352,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -213,9 +213,9 @@
   "id": "fm",
   "cls": "FACE_FILL",
   "partId": "metal_frame",
-  "area": 310292,
+  "area": 74352,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -223,9 +223,9 @@
   "id": "fn",
   "cls": "FACE_FILL",
   "partId": "metal_frame",
-  "area": 310292,
+  "area": 74352,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -233,9 +233,9 @@
   "id": "fo",
   "cls": "FACE_FILL",
   "partId": "metal_frame",
-  "area": 310292,
+  "area": 74352,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.6,
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
@@ -243,7 +243,7 @@
   "id": "fp",
   "cls": "FACE_FILL",
   "partId": "floral_ornament",
-  "area": 17385,
+  "area": 4576,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
@@ -253,7 +253,7 @@
   "id": "fq",
   "cls": "FACE_FILL",
   "partId": "floral_ornament",
-  "area": 17385,
+  "area": 4576,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
@@ -263,7 +263,7 @@
   "id": "fr",
   "cls": "FACE_FILL",
   "partId": "floral_ornament",
-  "area": 17385,
+  "area": 4576,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
@@ -273,46 +273,16 @@
   "id": "fs",
   "cls": "FACE_FILL",
   "partId": "floral_ornament",
-  "area": 17385,
+  "area": 4576,
   "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
  },
  {
-  "id": "ft",
-  "cls": "FACE_FILL",
-  "partId": "floral_ornament",
-  "area": 17385,
-  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.9,
-  "kind": null,
-  "instances": null
- },
- {
-  "id": "fu",
-  "cls": "FACE_FILL",
-  "partId": "floral_ornament",
-  "area": 17385,
-  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.9,
-  "kind": null,
-  "instances": null
- },
- {
-  "id": "fv",
-  "cls": "FACE_FILL",
-  "partId": "floral_ornament",
-  "area": 17385,
-  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
-  "confidence": 0.9,
-  "kind": null,
-  "instances": null
- },
- {
-  "id": "gw",
+  "id": "gt",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 19,
   "why": "line 적합 잔차 max 0.75px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.914,
@@ -320,9 +290,9 @@
   "instances": null
  },
  {
-  "id": "gx",
+  "id": "gu",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "floral_ornament",
+  "partId": "metal_frame",
   "area": 30,
   "why": "line 적합 잔차 max 1.2px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.863,
@@ -330,7 +300,7 @@
   "instances": null
  },
  {
-  "id": "gy",
+  "id": "gv",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "metal_frame",
   "area": 16,
@@ -340,9 +310,9 @@
   "instances": null
  },
  {
-  "id": "gz",
+  "id": "gw",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 52,
   "why": "line 적합 잔차 max 1.68px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.808,
@@ -350,9 +320,9 @@
   "instances": null
  },
  {
-  "id": "g10",
+  "id": "gx",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 17,
   "why": "line 적합 잔차 max 1.57px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.82,
@@ -360,7 +330,7 @@
   "instances": null
  },
  {
-  "id": "g11",
+  "id": "gy",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "metal_frame",
   "area": 13,
@@ -370,9 +340,9 @@
   "instances": null
  },
  {
-  "id": "g12",
+  "id": "gz",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 13,
   "why": "line 적합 잔차 max 1.11px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.873,
@@ -380,9 +350,9 @@
   "instances": null
  },
  {
-  "id": "g13",
+  "id": "g10",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 17,
   "why": "line 적합 잔차 max 1.22px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.86,
@@ -390,9 +360,9 @@
   "instances": null
  },
  {
-  "id": "g14",
+  "id": "g11",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 15,
   "why": "line 적합 잔차 max 0.74px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.915,
@@ -400,9 +370,9 @@
   "instances": null
  },
  {
-  "id": "g15",
+  "id": "g12",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 71,
   "why": "line 적합 잔차 max 2.05px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.765,
@@ -410,7 +380,7 @@
   "instances": null
  },
  {
-  "id": "g16",
+  "id": "g13",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "metal_frame",
   "area": 73,
@@ -420,9 +390,9 @@
   "instances": null
  },
  {
-  "id": "g17",
+  "id": "g14",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 76,
   "why": "line 적합 잔차 max 1.27px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.855,
@@ -430,7 +400,7 @@
   "instances": null
  },
  {
-  "id": "g18",
+  "id": "g15",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "metal_frame",
   "area": 34,
@@ -440,9 +410,9 @@
   "instances": null
  },
  {
-  "id": "g19",
+  "id": "g16",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 31,
   "why": "line 적합 잔차 max 1.36px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.844,
@@ -450,9 +420,9 @@
   "instances": null
  },
  {
-  "id": "g1a",
+  "id": "g17",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 40,
   "why": "line 적합 잔차 max 1.72px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.803,
@@ -460,7 +430,7 @@
   "instances": null
  },
  {
-  "id": "g1b",
+  "id": "g18",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "metal_frame",
   "area": 39,
@@ -470,9 +440,9 @@
   "instances": null
  },
  {
-  "id": "g1c",
+  "id": "g19",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 34,
   "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.886,
@@ -480,9 +450,9 @@
   "instances": null
  },
  {
-  "id": "g1d",
+  "id": "g1a",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "floral_ornament",
+  "partId": "bag_body",
   "area": 14,
   "why": "line 적합 잔차 max 0.74px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.915,
@@ -490,9 +460,9 @@
   "instances": null
  },
  {
-  "id": "g1e",
+  "id": "g1b",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 13,
   "why": "line 적합 잔차 max 0.74px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.915,
@@ -500,9 +470,9 @@
   "instances": null
  },
  {
-  "id": "g1f",
+  "id": "g1c",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 42,
   "why": "line 적합 잔차 max 1.61px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.816,
@@ -510,9 +480,9 @@
   "instances": null
  },
  {
-  "id": "g1g",
+  "id": "g1d",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 73,
   "why": "line 적합 잔차 max 1.61px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.816,
@@ -520,7 +490,7 @@
   "instances": null
  },
  {
-  "id": "g1h",
+  "id": "g1e",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "metal_frame",
   "area": 33,
@@ -530,9 +500,9 @@
   "instances": null
  },
  {
-  "id": "g1i",
+  "id": "g1f",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 72,
   "why": "line 적합 잔차 max 1.68px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.808,
@@ -540,9 +510,9 @@
   "instances": null
  },
  {
-  "id": "g1j",
+  "id": "g1g",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 40,
   "why": "line 적합 잔차 max 1.75px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.8,
@@ -550,9 +520,9 @@
   "instances": null
  },
  {
-  "id": "g1k",
+  "id": "g1h",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 33,
   "why": "line 적합 잔차 max 1.24px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.858,
@@ -560,9 +530,9 @@
   "instances": null
  },
  {
-  "id": "g1l",
+  "id": "g1i",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 14,
   "why": "line 적합 잔차 max 0.57px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.935,
@@ -570,9 +540,9 @@
   "instances": null
  },
  {
-  "id": "g1m",
+  "id": "g1j",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 37,
   "why": "line 적합 잔차 max 1.11px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.873,
@@ -580,9 +550,9 @@
   "instances": null
  },
  {
-  "id": "g1n",
+  "id": "g1k",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 39,
   "why": "line 적합 잔차 max 1.65px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.811,
@@ -590,9 +560,9 @@
   "instances": null
  },
  {
-  "id": "g1o",
+  "id": "g1l",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 28,
   "why": "line 적합 잔차 max 1.5px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.828,
@@ -600,9 +570,9 @@
   "instances": null
  },
  {
-  "id": "g1p",
+  "id": "g1m",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 46,
   "why": "line 적합 잔차 max 2.08px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.762,
@@ -610,9 +580,9 @@
   "instances": null
  },
  {
-  "id": "g1q",
+  "id": "g1n",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 27,
   "why": "line 적합 잔차 max 1.27px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.855,
@@ -620,9 +590,9 @@
   "instances": null
  },
  {
-  "id": "g1r",
+  "id": "g1o",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 14,
   "why": "line 적합 잔차 max 1.14px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.87,
@@ -630,9 +600,9 @@
   "instances": null
  },
  {
-  "id": "g1s",
+  "id": "g1p",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 39,
   "why": "line 적합 잔차 max 1.19px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.864,
@@ -640,9 +610,9 @@
   "instances": null
  },
  {
-  "id": "g1t",
+  "id": "g1q",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 72,
   "why": "line 적합 잔차 max 1.83px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.791,
@@ -650,9 +620,9 @@
   "instances": null
  },
  {
-  "id": "g1u",
+  "id": "g1r",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 75,
   "why": "line 적합 잔차 max 1.77px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.797,
@@ -660,9 +630,9 @@
   "instances": null
  },
  {
-  "id": "g1v",
+  "id": "g1s",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 32,
   "why": "line 적합 잔차 max 1.31px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.85,
@@ -670,9 +640,9 @@
   "instances": null
  },
  {
-  "id": "g1w",
+  "id": "g1t",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 20,
   "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.886,
@@ -680,9 +650,9 @@
   "instances": null
  },
  {
-  "id": "g1x",
+  "id": "g1u",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 38,
   "why": "line 적합 잔차 max 1.12px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.872,
@@ -690,9 +660,9 @@
   "instances": null
  },
  {
-  "id": "g1y",
+  "id": "g1v",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 41,
   "why": "line 적합 잔차 max 1.21px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.862,
@@ -700,9 +670,9 @@
   "instances": null
  },
  {
-  "id": "g1z",
+  "id": "g1w",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 40,
   "why": "line 적합 잔차 max 1.15px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.868,
@@ -710,9 +680,9 @@
   "instances": null
  },
  {
-  "id": "g20",
+  "id": "g1x",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 24,
   "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.886,
@@ -720,7 +690,7 @@
   "instances": null
  },
  {
-  "id": "g21",
+  "id": "g1y",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "metal_frame",
   "area": 29,
@@ -730,7 +700,7 @@
   "instances": null
  },
  {
-  "id": "g22",
+  "id": "g1z",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "metal_frame",
   "area": 22,
@@ -740,9 +710,9 @@
   "instances": null
  },
  {
-  "id": "g23",
+  "id": "g20",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 34,
   "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.886,
@@ -750,9 +720,9 @@
   "instances": null
  },
  {
-  "id": "g24",
+  "id": "g21",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 22,
   "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.886,
@@ -760,9 +730,9 @@
   "instances": null
  },
  {
-  "id": "g25",
+  "id": "g22",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 71,
   "why": "line 적합 잔차 max 1.76px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.799,
@@ -770,9 +740,9 @@
   "instances": null
  },
  {
-  "id": "g26",
+  "id": "g23",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 70,
   "why": "line 적합 잔차 max 1.55px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.823,
@@ -780,9 +750,9 @@
   "instances": null
  },
  {
-  "id": "g27",
+  "id": "g24",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 30,
   "why": "line 적합 잔차 max 1.15px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.868,
@@ -790,9 +760,9 @@
   "instances": null
  },
  {
-  "id": "g28",
+  "id": "g25",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 33,
   "why": "line 적합 잔차 max 1.63px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.814,
@@ -800,9 +770,9 @@
   "instances": null
  },
  {
-  "id": "g29",
+  "id": "g26",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 31,
   "why": "line 적합 잔차 max 1.52px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.826,
@@ -810,9 +780,9 @@
   "instances": null
  },
  {
-  "id": "g2a",
+  "id": "g27",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 14,
   "why": "line 적합 잔차 max 1.28px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.854,
@@ -820,9 +790,9 @@
   "instances": null
  },
  {
-  "id": "g2b",
+  "id": "g28",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 70,
   "why": "line 적합 잔차 max 1.58px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.819,
@@ -830,9 +800,9 @@
   "instances": null
  },
  {
-  "id": "g2c",
+  "id": "g29",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 39,
   "why": "line 적합 잔차 max 1.31px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.85,
@@ -840,9 +810,9 @@
   "instances": null
  },
  {
-  "id": "g2d",
+  "id": "g2a",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 32,
   "why": "line 적합 잔차 max 1.1px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.874,
@@ -850,9 +820,9 @@
   "instances": null
  },
  {
-  "id": "g2e",
+  "id": "g2b",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 33,
   "why": "line 적합 잔차 max 1.67px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.809,
@@ -860,9 +830,9 @@
   "instances": null
  },
  {
-  "id": "g2f",
+  "id": "g2c",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 43,
   "why": "line 적합 잔차 max 1.2px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.863,
@@ -870,9 +840,9 @@
   "instances": null
  },
  {
-  "id": "g2g",
+  "id": "g2d",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 22,
   "why": "line 적합 잔차 max 1.51px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.827,
@@ -880,9 +850,9 @@
   "instances": null
  },
  {
-  "id": "g2h",
+  "id": "g2e",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 18,
   "why": "line 적합 잔차 max 1.18px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.865,
@@ -890,9 +860,9 @@
   "instances": null
  },
  {
-  "id": "g2i",
+  "id": "g2f",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 21,
   "why": "line 적합 잔차 max 1.33px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.848,
@@ -900,9 +870,9 @@
   "instances": null
  },
  {
-  "id": "g2j",
+  "id": "g2g",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 114,
   "why": "line 적합 잔차 max 2.26px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.741,
@@ -910,9 +880,9 @@
   "instances": null
  },
  {
-  "id": "g2k",
+  "id": "g2h",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 13,
   "why": "line 적합 잔차 max 0px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.98,
@@ -920,9 +890,9 @@
   "instances": null
  },
  {
-  "id": "g2l",
+  "id": "g2i",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 28,
   "why": "line 적합 잔차 max 1.21px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.862,
@@ -930,9 +900,9 @@
   "instances": null
  },
  {
-  "id": "g2m",
+  "id": "g2j",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 26,
   "why": "line 적합 잔차 max 1.64px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.812,
@@ -940,9 +910,9 @@
   "instances": null
  },
  {
-  "id": "g2n",
+  "id": "g2k",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 70,
   "why": "line 적합 잔차 max 1.72px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.803,
@@ -950,9 +920,9 @@
   "instances": null
  },
  {
-  "id": "g2o",
+  "id": "g2l",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 34,
   "why": "line 적합 잔차 max 1.13px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.871,
@@ -960,9 +930,9 @@
   "instances": null
  },
  {
-  "id": "g2p",
+  "id": "g2m",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 72,
   "why": "line 적합 잔차 max 1.56px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.822,
@@ -970,9 +940,9 @@
   "instances": null
  },
  {
-  "id": "g2q",
+  "id": "g2n",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 74,
   "why": "line 적합 잔차 max 1.76px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.799,
@@ -980,9 +950,9 @@
   "instances": null
  },
  {
-  "id": "g2r",
+  "id": "g2o",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 33,
   "why": "line 적합 잔차 max 1.06px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.879,
@@ -990,9 +960,9 @@
   "instances": null
  },
  {
-  "id": "g2s",
+  "id": "g2p",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 96,
   "why": "line 적합 잔차 max 1.75px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.8,
@@ -1000,9 +970,9 @@
   "instances": null
  },
  {
-  "id": "g2t",
+  "id": "g2q",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 20,
   "why": "line 적합 잔차 max 1.25px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.857,
@@ -1010,9 +980,9 @@
   "instances": null
  },
  {
-  "id": "g2u",
+  "id": "g2r",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "metal_frame",
+  "partId": "bag_body",
   "area": 35,
   "why": "line 적합 잔차 max 1.17px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.866,
@@ -1020,7 +990,7 @@
   "instances": null
  },
  {
-  "id": "g2v",
+  "id": "g2s",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 87,
@@ -1030,7 +1000,7 @@
   "instances": null
  },
  {
-  "id": "g2w",
+  "id": "g2t",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 25,
@@ -1040,7 +1010,7 @@
   "instances": null
  },
  {
-  "id": "g2x",
+  "id": "g2u",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 34,
@@ -1050,7 +1020,7 @@
   "instances": null
  },
  {
-  "id": "g2y",
+  "id": "g2v",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 38,
@@ -1060,7 +1030,7 @@
   "instances": null
  },
  {
-  "id": "g2z",
+  "id": "g2w",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -1070,7 +1040,7 @@
   "instances": null
  },
  {
-  "id": "g30",
+  "id": "g2x",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -1080,7 +1050,7 @@
   "instances": null
  },
  {
-  "id": "g31",
+  "id": "g2y",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 72,
@@ -1090,7 +1060,7 @@
   "instances": null
  },
  {
-  "id": "g32",
+  "id": "g2z",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 74,
@@ -1100,7 +1070,7 @@
   "instances": null
  },
  {
-  "id": "g33",
+  "id": "g30",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 72,
@@ -1110,7 +1080,7 @@
   "instances": null
  },
  {
-  "id": "g34",
+  "id": "g31",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 44,
@@ -1120,7 +1090,7 @@
   "instances": null
  },
  {
-  "id": "g35",
+  "id": "g32",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 78,
@@ -1130,7 +1100,7 @@
   "instances": null
  },
  {
-  "id": "g36",
+  "id": "g33",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 14,
@@ -1140,7 +1110,7 @@
   "instances": null
  },
  {
-  "id": "g37",
+  "id": "g34",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 27,
@@ -1150,7 +1120,7 @@
   "instances": null
  },
  {
-  "id": "g38",
+  "id": "g35",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 74,
@@ -1160,7 +1130,7 @@
   "instances": null
  },
  {
-  "id": "g39",
+  "id": "g36",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 39,
@@ -1170,7 +1140,7 @@
   "instances": null
  },
  {
-  "id": "g3a",
+  "id": "g37",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 29,
@@ -1180,7 +1150,7 @@
   "instances": null
  },
  {
-  "id": "g3b",
+  "id": "g38",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 35,
@@ -1190,7 +1160,7 @@
   "instances": null
  },
  {
-  "id": "g3c",
+  "id": "g39",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 32,
@@ -1200,7 +1170,7 @@
   "instances": null
  },
  {
-  "id": "g3d",
+  "id": "g3a",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 79,
@@ -1210,7 +1180,7 @@
   "instances": null
  },
  {
-  "id": "g3e",
+  "id": "g3b",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 32,
@@ -1220,7 +1190,7 @@
   "instances": null
  },
  {
-  "id": "g3f",
+  "id": "g3c",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 69,
@@ -1230,10 +1200,40 @@
   "instances": null
  },
  {
-  "id": "g3g",
+  "id": "g3d",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 34,
+  "why": "line 적합 잔차 max 1.21px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.862,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3e",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 2.22px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.746,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3f",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 36,
+  "why": "line 적합 잔차 max 1.13px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.871,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3g",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 23,
   "why": "line 적합 잔차 max 1.21px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.862,
   "kind": "line",
@@ -1243,36 +1243,6 @@
   "id": "g3h",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
-  "area": 71,
-  "why": "line 적합 잔차 max 2.22px (허용 4.4px) — 앵커 2개로 표현",
-  "confidence": 0.746,
-  "kind": "line",
-  "instances": null
- },
- {
-  "id": "g3i",
-  "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "bag_body",
-  "area": 36,
-  "why": "line 적합 잔차 max 1.13px (허용 4.4px) — 앵커 2개로 표현",
-  "confidence": 0.871,
-  "kind": "line",
-  "instances": null
- },
- {
-  "id": "g3j",
-  "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "bag_body",
-  "area": 23,
-  "why": "line 적합 잔차 max 1.21px (허용 4.4px) — 앵커 2개로 표현",
-  "confidence": 0.862,
-  "kind": "line",
-  "instances": null
- },
- {
-  "id": "g3k",
-  "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "bag_body",
   "area": 34,
   "why": "line 적합 잔차 max 1.16px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.867,
@@ -1280,7 +1250,7 @@
   "instances": null
  },
  {
-  "id": "g3l",
+  "id": "g3i",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 20,
@@ -1290,7 +1260,7 @@
   "instances": null
  },
  {
-  "id": "g3m",
+  "id": "g3j",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 73,
@@ -1300,7 +1270,7 @@
   "instances": null
  },
  {
-  "id": "g3n",
+  "id": "g3k",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 30,
@@ -1310,7 +1280,7 @@
   "instances": null
  },
  {
-  "id": "g3o",
+  "id": "g3l",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 23,
@@ -1320,7 +1290,7 @@
   "instances": null
  },
  {
-  "id": "g3p",
+  "id": "g3m",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 34,
@@ -1330,7 +1300,7 @@
   "instances": null
  },
  {
-  "id": "g3q",
+  "id": "g3n",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 34,
@@ -1340,7 +1310,7 @@
   "instances": null
  },
  {
-  "id": "g3r",
+  "id": "g3o",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -1350,7 +1320,7 @@
   "instances": null
  },
  {
-  "id": "g3s",
+  "id": "g3p",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 72,
@@ -1360,7 +1330,7 @@
   "instances": null
  },
  {
-  "id": "g3t",
+  "id": "g3q",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 35,
@@ -1370,7 +1340,7 @@
   "instances": null
  },
  {
-  "id": "g3u",
+  "id": "g3r",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 31,
@@ -1380,7 +1350,7 @@
   "instances": null
  },
  {
-  "id": "g3v",
+  "id": "g3s",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 39,
@@ -1390,7 +1360,7 @@
   "instances": null
  },
  {
-  "id": "g3w",
+  "id": "g3t",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 72,
@@ -1400,7 +1370,7 @@
   "instances": null
  },
  {
-  "id": "g3x",
+  "id": "g3u",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -1410,7 +1380,7 @@
   "instances": null
  },
  {
-  "id": "g3y",
+  "id": "g3v",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 30,
@@ -1420,7 +1390,7 @@
   "instances": null
  },
  {
-  "id": "g3z",
+  "id": "g3w",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 32,
@@ -1430,7 +1400,7 @@
   "instances": null
  },
  {
-  "id": "g40",
+  "id": "g3x",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -1440,7 +1410,7 @@
   "instances": null
  },
  {
-  "id": "g41",
+  "id": "g3y",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 23,
@@ -1450,7 +1420,7 @@
   "instances": null
  },
  {
-  "id": "g42",
+  "id": "g3z",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -1460,7 +1430,7 @@
   "instances": null
  },
  {
-  "id": "g43",
+  "id": "g40",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 76,
@@ -1470,7 +1440,7 @@
   "instances": null
  },
  {
-  "id": "g44",
+  "id": "g41",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 35,
@@ -1480,7 +1450,7 @@
   "instances": null
  },
  {
-  "id": "g45",
+  "id": "g42",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 26,
@@ -1490,7 +1460,7 @@
   "instances": null
  },
  {
-  "id": "g46",
+  "id": "g43",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 32,
@@ -1500,7 +1470,7 @@
   "instances": null
  },
  {
-  "id": "g47",
+  "id": "g44",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 34,
@@ -1510,7 +1480,7 @@
   "instances": null
  },
  {
-  "id": "g48",
+  "id": "g45",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 75,
@@ -1520,7 +1490,7 @@
   "instances": null
  },
  {
-  "id": "g49",
+  "id": "g46",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 12,
@@ -1530,7 +1500,7 @@
   "instances": null
  },
  {
-  "id": "g4a",
+  "id": "g47",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -1540,7 +1510,7 @@
   "instances": null
  },
  {
-  "id": "g4b",
+  "id": "g48",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 35,
@@ -1550,7 +1520,7 @@
   "instances": null
  },
  {
-  "id": "g4c",
+  "id": "g49",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 52,
@@ -1560,7 +1530,7 @@
   "instances": null
  },
  {
-  "id": "g4d",
+  "id": "g4a",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 33,
@@ -1570,7 +1540,7 @@
   "instances": null
  },
  {
-  "id": "g4e",
+  "id": "g4b",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 20,
@@ -1580,7 +1550,7 @@
   "instances": null
  },
  {
-  "id": "g4f",
+  "id": "g4c",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 76,
@@ -1590,7 +1560,7 @@
   "instances": null
  },
  {
-  "id": "g4g",
+  "id": "g4d",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -1600,7 +1570,7 @@
   "instances": null
  },
  {
-  "id": "g4h",
+  "id": "g4e",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 73,
@@ -1610,7 +1580,7 @@
   "instances": null
  },
  {
-  "id": "g4i",
+  "id": "g4f",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -1620,7 +1590,7 @@
   "instances": null
  },
  {
-  "id": "g4j",
+  "id": "g4g",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 16,
@@ -1630,7 +1600,7 @@
   "instances": null
  },
  {
-  "id": "g4k",
+  "id": "g4h",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 17,
@@ -1640,7 +1610,7 @@
   "instances": null
  },
  {
-  "id": "g4l",
+  "id": "g4i",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -1650,7 +1620,7 @@
   "instances": null
  },
  {
-  "id": "g4m",
+  "id": "g4j",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -1660,7 +1630,7 @@
   "instances": null
  },
  {
-  "id": "g4n",
+  "id": "g4k",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 16,
@@ -1670,7 +1640,7 @@
   "instances": null
  },
  {
-  "id": "g4o",
+  "id": "g4l",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 17,
@@ -1680,7 +1650,7 @@
   "instances": null
  },
  {
-  "id": "g4p",
+  "id": "g4m",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 12,
@@ -1690,7 +1660,7 @@
   "instances": null
  },
  {
-  "id": "g4q",
+  "id": "g4n",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 82,
@@ -1700,7 +1670,7 @@
   "instances": null
  },
  {
-  "id": "g4r",
+  "id": "g4o",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 36,
@@ -1710,7 +1680,7 @@
   "instances": null
  },
  {
-  "id": "g4s",
+  "id": "g4p",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 40,
@@ -1720,7 +1690,7 @@
   "instances": null
  },
  {
-  "id": "g4t",
+  "id": "g4q",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 40,
@@ -1730,7 +1700,7 @@
   "instances": null
  },
  {
-  "id": "g4u",
+  "id": "g4r",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 15,
@@ -1740,7 +1710,7 @@
   "instances": null
  },
  {
-  "id": "g4v",
+  "id": "g4s",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 40,
@@ -1750,7 +1720,7 @@
   "instances": null
  },
  {
-  "id": "g4w",
+  "id": "g4t",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 30,
@@ -1760,7 +1730,7 @@
   "instances": null
  },
  {
-  "id": "g4x",
+  "id": "g4u",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -1770,7 +1740,7 @@
   "instances": null
  },
  {
-  "id": "g4y",
+  "id": "g4v",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 40,
@@ -1780,7 +1750,7 @@
   "instances": null
  },
  {
-  "id": "g4z",
+  "id": "g4w",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 79,
@@ -1790,7 +1760,7 @@
   "instances": null
  },
  {
-  "id": "g50",
+  "id": "g4x",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -1800,7 +1770,7 @@
   "instances": null
  },
  {
-  "id": "g51",
+  "id": "g4y",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 51,
@@ -1810,7 +1780,7 @@
   "instances": null
  },
  {
-  "id": "g52",
+  "id": "g4z",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 88,
@@ -1820,7 +1790,7 @@
   "instances": null
  },
  {
-  "id": "g53",
+  "id": "g50",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 44,
@@ -1830,7 +1800,7 @@
   "instances": null
  },
  {
-  "id": "g54",
+  "id": "g51",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 72,
@@ -1840,7 +1810,7 @@
   "instances": null
  },
  {
-  "id": "g55",
+  "id": "g52",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 72,
@@ -1850,7 +1820,7 @@
   "instances": null
  },
  {
-  "id": "g56",
+  "id": "g53",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 37,
@@ -1860,7 +1830,7 @@
   "instances": null
  },
  {
-  "id": "g57",
+  "id": "g54",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 26,
@@ -1870,7 +1840,7 @@
   "instances": null
  },
  {
-  "id": "g58",
+  "id": "g55",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 16,
@@ -1880,7 +1850,7 @@
   "instances": null
  },
  {
-  "id": "g59",
+  "id": "g56",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 73,
@@ -1890,7 +1860,7 @@
   "instances": null
  },
  {
-  "id": "g5a",
+  "id": "g57",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 17,
@@ -1900,7 +1870,7 @@
   "instances": null
  },
  {
-  "id": "g5b",
+  "id": "g58",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 24,
@@ -1910,7 +1880,7 @@
   "instances": null
  },
  {
-  "id": "g5c",
+  "id": "g59",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 13,
@@ -1920,7 +1890,7 @@
   "instances": null
  },
  {
-  "id": "g5d",
+  "id": "g5a",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -1930,7 +1900,7 @@
   "instances": null
  },
  {
-  "id": "g5e",
+  "id": "g5b",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 24,
@@ -1940,7 +1910,7 @@
   "instances": null
  },
  {
-  "id": "g5f",
+  "id": "g5c",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -1950,7 +1920,7 @@
   "instances": null
  },
  {
-  "id": "g5g",
+  "id": "g5d",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 17,
@@ -1960,7 +1930,7 @@
   "instances": null
  },
  {
-  "id": "g5h",
+  "id": "g5e",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 39,
@@ -1970,7 +1940,7 @@
   "instances": null
  },
  {
-  "id": "g5i",
+  "id": "g5f",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 40,
@@ -1980,7 +1950,7 @@
   "instances": null
  },
  {
-  "id": "g5j",
+  "id": "g5g",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -1990,7 +1960,7 @@
   "instances": null
  },
  {
-  "id": "g5k",
+  "id": "g5h",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 16,
@@ -2000,7 +1970,7 @@
   "instances": null
  },
  {
-  "id": "g5l",
+  "id": "g5i",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 33,
@@ -2010,7 +1980,7 @@
   "instances": null
  },
  {
-  "id": "g5m",
+  "id": "g5j",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 33,
@@ -2020,7 +1990,7 @@
   "instances": null
  },
  {
-  "id": "g5n",
+  "id": "g5k",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 27,
@@ -2030,7 +2000,7 @@
   "instances": null
  },
  {
-  "id": "g5o",
+  "id": "g5l",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 35,
@@ -2040,7 +2010,7 @@
   "instances": null
  },
  {
-  "id": "g5p",
+  "id": "g5m",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 41,
@@ -2050,7 +2020,7 @@
   "instances": null
  },
  {
-  "id": "g5q",
+  "id": "g5n",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 37,
@@ -2060,7 +2030,7 @@
   "instances": null
  },
  {
-  "id": "g5r",
+  "id": "g5o",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -2070,7 +2040,7 @@
   "instances": null
  },
  {
-  "id": "g5s",
+  "id": "g5p",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -2080,7 +2050,7 @@
   "instances": null
  },
  {
-  "id": "g5t",
+  "id": "g5q",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 30,
@@ -2090,7 +2060,7 @@
   "instances": null
  },
  {
-  "id": "g5u",
+  "id": "g5r",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 76,
@@ -2100,7 +2070,7 @@
   "instances": null
  },
  {
-  "id": "g5v",
+  "id": "g5s",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -2110,7 +2080,7 @@
   "instances": null
  },
  {
-  "id": "g5w",
+  "id": "g5t",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -2120,7 +2090,7 @@
   "instances": null
  },
  {
-  "id": "g5x",
+  "id": "g5u",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 23,
@@ -2130,7 +2100,7 @@
   "instances": null
  },
  {
-  "id": "g5y",
+  "id": "g5v",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 72,
@@ -2140,7 +2110,7 @@
   "instances": null
  },
  {
-  "id": "g5z",
+  "id": "g5w",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 73,
@@ -2150,7 +2120,7 @@
   "instances": null
  },
  {
-  "id": "g60",
+  "id": "g5x",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -2160,7 +2130,7 @@
   "instances": null
  },
  {
-  "id": "g61",
+  "id": "g5y",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 22,
@@ -2170,7 +2140,7 @@
   "instances": null
  },
  {
-  "id": "g62",
+  "id": "g5z",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -2180,7 +2150,7 @@
   "instances": null
  },
  {
-  "id": "g63",
+  "id": "g60",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 13,
@@ -2190,7 +2160,7 @@
   "instances": null
  },
  {
-  "id": "g64",
+  "id": "g61",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 31,
@@ -2200,7 +2170,7 @@
   "instances": null
  },
  {
-  "id": "g65",
+  "id": "g62",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 72,
@@ -2210,7 +2180,7 @@
   "instances": null
  },
  {
-  "id": "g66",
+  "id": "g63",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 77,
@@ -2220,7 +2190,7 @@
   "instances": null
  },
  {
-  "id": "g67",
+  "id": "g64",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 34,
@@ -2230,7 +2200,7 @@
   "instances": null
  },
  {
-  "id": "g68",
+  "id": "g65",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 22,
@@ -2240,7 +2210,7 @@
   "instances": null
  },
  {
-  "id": "g69",
+  "id": "g66",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 38,
@@ -2250,7 +2220,7 @@
   "instances": null
  },
  {
-  "id": "g6a",
+  "id": "g67",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 76,
@@ -2260,7 +2230,7 @@
   "instances": null
  },
  {
-  "id": "g6b",
+  "id": "g68",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 74,
@@ -2270,7 +2240,7 @@
   "instances": null
  },
  {
-  "id": "g6c",
+  "id": "g69",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 40,
@@ -2280,7 +2250,7 @@
   "instances": null
  },
  {
-  "id": "g6d",
+  "id": "g6a",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 41,
@@ -2290,7 +2260,7 @@
   "instances": null
  },
  {
-  "id": "g6e",
+  "id": "g6b",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 98,
@@ -2300,7 +2270,7 @@
   "instances": null
  },
  {
-  "id": "g6f",
+  "id": "g6c",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 12,
@@ -2310,7 +2280,7 @@
   "instances": null
  },
  {
-  "id": "g6g",
+  "id": "g6d",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 16,
@@ -2320,7 +2290,7 @@
   "instances": null
  },
  {
-  "id": "g6h",
+  "id": "g6e",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 34,
@@ -2330,7 +2300,7 @@
   "instances": null
  },
  {
-  "id": "g6i",
+  "id": "g6f",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 54,
@@ -2340,7 +2310,7 @@
   "instances": null
  },
  {
-  "id": "g6j",
+  "id": "g6g",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -2350,7 +2320,7 @@
   "instances": null
  },
  {
-  "id": "g6k",
+  "id": "g6h",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 31,
@@ -2360,7 +2330,7 @@
   "instances": null
  },
  {
-  "id": "g6l",
+  "id": "g6i",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 72,
@@ -2370,7 +2340,7 @@
   "instances": null
  },
  {
-  "id": "g6m",
+  "id": "g6j",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 34,
@@ -2380,7 +2350,7 @@
   "instances": null
  },
  {
-  "id": "g6n",
+  "id": "g6k",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 19,
@@ -2390,7 +2360,7 @@
   "instances": null
  },
  {
-  "id": "g6o",
+  "id": "g6l",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -2400,7 +2370,7 @@
   "instances": null
  },
  {
-  "id": "g6p",
+  "id": "g6m",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 26,
@@ -2410,7 +2380,7 @@
   "instances": null
  },
  {
-  "id": "g6q",
+  "id": "g6n",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 46,
@@ -2420,7 +2390,7 @@
   "instances": null
  },
  {
-  "id": "g6r",
+  "id": "g6o",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -2430,7 +2400,7 @@
   "instances": null
  },
  {
-  "id": "g6s",
+  "id": "g6p",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 12,
@@ -2440,7 +2410,7 @@
   "instances": null
  },
  {
-  "id": "g6t",
+  "id": "g6q",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 76,
@@ -2450,7 +2420,7 @@
   "instances": null
  },
  {
-  "id": "g6u",
+  "id": "g6r",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -2460,7 +2430,7 @@
   "instances": null
  },
  {
-  "id": "g6v",
+  "id": "g6s",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 15,
@@ -2470,7 +2440,7 @@
   "instances": null
  },
  {
-  "id": "g6w",
+  "id": "g6t",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 39,
@@ -2480,7 +2450,7 @@
   "instances": null
  },
  {
-  "id": "g6x",
+  "id": "g6u",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 72,
@@ -2490,7 +2460,7 @@
   "instances": null
  },
  {
-  "id": "g6y",
+  "id": "g6v",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -2500,7 +2470,7 @@
   "instances": null
  },
  {
-  "id": "g6z",
+  "id": "g6w",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 73,
@@ -2510,7 +2480,7 @@
   "instances": null
  },
  {
-  "id": "g70",
+  "id": "g6x",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 84,
@@ -2520,7 +2490,7 @@
   "instances": null
  },
  {
-  "id": "g71",
+  "id": "g6y",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 73,
@@ -2530,7 +2500,7 @@
   "instances": null
  },
  {
-  "id": "g72",
+  "id": "g6z",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -2540,7 +2510,7 @@
   "instances": null
  },
  {
-  "id": "g73",
+  "id": "g70",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 72,
@@ -2550,7 +2520,7 @@
   "instances": null
  },
  {
-  "id": "g74",
+  "id": "g71",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 17,
@@ -2560,7 +2530,7 @@
   "instances": null
  },
  {
-  "id": "g75",
+  "id": "g72",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 72,
@@ -2570,7 +2540,7 @@
   "instances": null
  },
  {
-  "id": "g76",
+  "id": "g73",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 40,
@@ -2580,7 +2550,7 @@
   "instances": null
  },
  {
-  "id": "g77",
+  "id": "g74",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 16,
@@ -2590,7 +2560,7 @@
   "instances": null
  },
  {
-  "id": "g78",
+  "id": "g75",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 39,
@@ -2600,7 +2570,7 @@
   "instances": null
  },
  {
-  "id": "g79",
+  "id": "g76",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 34,
@@ -2610,7 +2580,7 @@
   "instances": null
  },
  {
-  "id": "g7a",
+  "id": "g77",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 82,
@@ -2620,7 +2590,7 @@
   "instances": null
  },
  {
-  "id": "g7b",
+  "id": "g78",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -2630,7 +2600,7 @@
   "instances": null
  },
  {
-  "id": "g7c",
+  "id": "g79",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -2640,7 +2610,7 @@
   "instances": null
  },
  {
-  "id": "g7d",
+  "id": "g7a",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 39,
@@ -2650,7 +2620,7 @@
   "instances": null
  },
  {
-  "id": "g7e",
+  "id": "g7b",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 35,
@@ -2660,7 +2630,7 @@
   "instances": null
  },
  {
-  "id": "g7f",
+  "id": "g7c",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 14,
@@ -2670,7 +2640,7 @@
   "instances": null
  },
  {
-  "id": "g7g",
+  "id": "g7d",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 32,
@@ -2680,12 +2650,42 @@
   "instances": null
  },
  {
-  "id": "g7h",
+  "id": "g7e",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 43,
   "why": "line 적합 잔차 max 1.73px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.802,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7f",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 73,
+  "why": "line 적합 잔차 max 1.63px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.814,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7g",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 24,
+  "why": "line 적합 잔차 max 1.91px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.781,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7h",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 1.65px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.811,
   "kind": "line",
   "instances": null
  },
@@ -2703,36 +2703,6 @@
   "id": "g7j",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
-  "area": 24,
-  "why": "line 적합 잔차 max 1.91px (허용 4.4px) — 앵커 2개로 표현",
-  "confidence": 0.781,
-  "kind": "line",
-  "instances": null
- },
- {
-  "id": "g7k",
-  "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "bag_body",
-  "area": 70,
-  "why": "line 적합 잔차 max 1.65px (허용 4.4px) — 앵커 2개로 표현",
-  "confidence": 0.811,
-  "kind": "line",
-  "instances": null
- },
- {
-  "id": "g7l",
-  "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "bag_body",
-  "area": 73,
-  "why": "line 적합 잔차 max 1.63px (허용 4.4px) — 앵커 2개로 표현",
-  "confidence": 0.814,
-  "kind": "line",
-  "instances": null
- },
- {
-  "id": "g7m",
-  "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "bag_body",
   "area": 22,
   "why": "line 적합 잔차 max 1.17px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.866,
@@ -2740,7 +2710,7 @@
   "instances": null
  },
  {
-  "id": "g7n",
+  "id": "g7k",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 36,
@@ -2750,7 +2720,7 @@
   "instances": null
  },
  {
-  "id": "g7o",
+  "id": "g7l",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 35,
@@ -2760,7 +2730,7 @@
   "instances": null
  },
  {
-  "id": "g7p",
+  "id": "g7m",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -2770,7 +2740,7 @@
   "instances": null
  },
  {
-  "id": "g7q",
+  "id": "g7n",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 99,
@@ -2780,7 +2750,7 @@
   "instances": null
  },
  {
-  "id": "g7r",
+  "id": "g7o",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 41,
@@ -2790,7 +2760,7 @@
   "instances": null
  },
  {
-  "id": "g7s",
+  "id": "g7p",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 30,
@@ -2800,7 +2770,7 @@
   "instances": null
  },
  {
-  "id": "g7t",
+  "id": "g7q",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 31,
@@ -2810,7 +2780,7 @@
   "instances": null
  },
  {
-  "id": "g7u",
+  "id": "g7r",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -2820,7 +2790,7 @@
   "instances": null
  },
  {
-  "id": "g7v",
+  "id": "g7s",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 37,
@@ -2830,7 +2800,7 @@
   "instances": null
  },
  {
-  "id": "g7w",
+  "id": "g7t",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 21,
@@ -2840,7 +2810,7 @@
   "instances": null
  },
  {
-  "id": "g7x",
+  "id": "g7u",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 35,
@@ -2850,7 +2820,7 @@
   "instances": null
  },
  {
-  "id": "g7y",
+  "id": "g7v",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 38,
@@ -2860,7 +2830,7 @@
   "instances": null
  },
  {
-  "id": "g7z",
+  "id": "g7w",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 33,
@@ -2870,7 +2840,7 @@
   "instances": null
  },
  {
-  "id": "g80",
+  "id": "g7x",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 30,
@@ -2880,7 +2850,7 @@
   "instances": null
  },
  {
-  "id": "g81",
+  "id": "g7y",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 31,
@@ -2890,7 +2860,7 @@
   "instances": null
  },
  {
-  "id": "g82",
+  "id": "g7z",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 37,
@@ -2900,7 +2870,7 @@
   "instances": null
  },
  {
-  "id": "g83",
+  "id": "g80",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 25,
@@ -2910,7 +2880,7 @@
   "instances": null
  },
  {
-  "id": "g84",
+  "id": "g81",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 22,
@@ -2920,7 +2890,7 @@
   "instances": null
  },
  {
-  "id": "g85",
+  "id": "g82",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 37,
@@ -2930,7 +2900,7 @@
   "instances": null
  },
  {
-  "id": "g86",
+  "id": "g83",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 36,
@@ -2940,7 +2910,7 @@
   "instances": null
  },
  {
-  "id": "g87",
+  "id": "g84",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -2950,7 +2920,7 @@
   "instances": null
  },
  {
-  "id": "g88",
+  "id": "g85",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 39,
@@ -2960,7 +2930,7 @@
   "instances": null
  },
  {
-  "id": "g89",
+  "id": "g86",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 73,
@@ -2970,7 +2940,7 @@
   "instances": null
  },
  {
-  "id": "g8a",
+  "id": "g87",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 45,
@@ -2980,7 +2950,7 @@
   "instances": null
  },
  {
-  "id": "g8b",
+  "id": "g88",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 37,
@@ -2990,7 +2960,7 @@
   "instances": null
  },
  {
-  "id": "g8c",
+  "id": "g89",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 38,
@@ -3000,7 +2970,7 @@
   "instances": null
  },
  {
-  "id": "g8d",
+  "id": "g8a",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 35,
@@ -3010,7 +2980,7 @@
   "instances": null
  },
  {
-  "id": "g8e",
+  "id": "g8b",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 39,
@@ -3020,7 +2990,7 @@
   "instances": null
  },
  {
-  "id": "g8f",
+  "id": "g8c",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -3030,7 +3000,7 @@
   "instances": null
  },
  {
-  "id": "g8g",
+  "id": "g8d",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 41,
@@ -3040,7 +3010,7 @@
   "instances": null
  },
  {
-  "id": "g8h",
+  "id": "g8e",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 28,
@@ -3050,7 +3020,7 @@
   "instances": null
  },
  {
-  "id": "g8i",
+  "id": "g8f",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 18,
@@ -3060,7 +3030,7 @@
   "instances": null
  },
  {
-  "id": "g8j",
+  "id": "g8g",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 37,
@@ -3070,7 +3040,7 @@
   "instances": null
  },
  {
-  "id": "g8k",
+  "id": "g8h",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 30,
@@ -3080,7 +3050,7 @@
   "instances": null
  },
  {
-  "id": "g8l",
+  "id": "g8i",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 14,
@@ -3090,7 +3060,7 @@
   "instances": null
  },
  {
-  "id": "g8m",
+  "id": "g8j",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 33,
@@ -3100,7 +3070,7 @@
   "instances": null
  },
  {
-  "id": "g8n",
+  "id": "g8k",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 36,
@@ -3110,7 +3080,7 @@
   "instances": null
  },
  {
-  "id": "g8o",
+  "id": "g8l",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -3120,7 +3090,7 @@
   "instances": null
  },
  {
-  "id": "g8p",
+  "id": "g8m",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 36,
@@ -3130,7 +3100,7 @@
   "instances": null
  },
  {
-  "id": "g8q",
+  "id": "g8n",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 29,
@@ -3140,7 +3110,7 @@
   "instances": null
  },
  {
-  "id": "g8r",
+  "id": "g8o",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 34,
@@ -3150,7 +3120,7 @@
   "instances": null
  },
  {
-  "id": "g8s",
+  "id": "g8p",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 32,
@@ -3160,7 +3130,7 @@
   "instances": null
  },
  {
-  "id": "g8t",
+  "id": "g8q",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 14,
@@ -3170,7 +3140,7 @@
   "instances": null
  },
  {
-  "id": "g8u",
+  "id": "g8r",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 37,
@@ -3180,7 +3150,7 @@
   "instances": null
  },
  {
-  "id": "g8v",
+  "id": "g8s",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 73,
@@ -3190,7 +3160,7 @@
   "instances": null
  },
  {
-  "id": "g8w",
+  "id": "g8t",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 75,
@@ -3200,7 +3170,7 @@
   "instances": null
  },
  {
-  "id": "g8x",
+  "id": "g8u",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 73,
@@ -3210,7 +3180,7 @@
   "instances": null
  },
  {
-  "id": "g8y",
+  "id": "g8v",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 30,
@@ -3220,7 +3190,7 @@
   "instances": null
  },
  {
-  "id": "g8z",
+  "id": "g8w",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 16,
@@ -3230,7 +3200,7 @@
   "instances": null
  },
  {
-  "id": "g90",
+  "id": "g8x",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 31,
@@ -3240,7 +3210,7 @@
   "instances": null
  },
  {
-  "id": "g91",
+  "id": "g8y",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 37,
@@ -3250,7 +3220,7 @@
   "instances": null
  },
  {
-  "id": "g92",
+  "id": "g8z",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 76,
@@ -3260,7 +3230,7 @@
   "instances": null
  },
  {
-  "id": "g93",
+  "id": "g90",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 73,
@@ -3270,7 +3240,7 @@
   "instances": null
  },
  {
-  "id": "g94",
+  "id": "g91",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 38,
@@ -3280,7 +3250,7 @@
   "instances": null
  },
  {
-  "id": "g95",
+  "id": "g92",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 12,
@@ -3290,7 +3260,7 @@
   "instances": null
  },
  {
-  "id": "g96",
+  "id": "g93",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 23,
@@ -3300,7 +3270,7 @@
   "instances": null
  },
  {
-  "id": "g97",
+  "id": "g94",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 31,
@@ -3310,7 +3280,7 @@
   "instances": null
  },
  {
-  "id": "g98",
+  "id": "g95",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -3320,7 +3290,7 @@
   "instances": null
  },
  {
-  "id": "g99",
+  "id": "g96",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 35,
@@ -3330,7 +3300,7 @@
   "instances": null
  },
  {
-  "id": "g9a",
+  "id": "g97",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 37,
@@ -3340,7 +3310,7 @@
   "instances": null
  },
  {
-  "id": "g9b",
+  "id": "g98",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 75,
@@ -3350,7 +3320,7 @@
   "instances": null
  },
  {
-  "id": "g9c",
+  "id": "g99",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 84,
@@ -3360,7 +3330,7 @@
   "instances": null
  },
  {
-  "id": "g9d",
+  "id": "g9a",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 76,
@@ -3370,7 +3340,7 @@
   "instances": null
  },
  {
-  "id": "g9e",
+  "id": "g9b",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 28,
@@ -3380,7 +3350,7 @@
   "instances": null
  },
  {
-  "id": "g9f",
+  "id": "g9c",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -3390,7 +3360,7 @@
   "instances": null
  },
  {
-  "id": "g9g",
+  "id": "g9d",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 18,
@@ -3400,7 +3370,7 @@
   "instances": null
  },
  {
-  "id": "g9h",
+  "id": "g9e",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 23,
@@ -3410,7 +3380,7 @@
   "instances": null
  },
  {
-  "id": "g9i",
+  "id": "g9f",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 36,
@@ -3420,7 +3390,7 @@
   "instances": null
  },
  {
-  "id": "g9j",
+  "id": "g9g",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 30,
@@ -3430,7 +3400,7 @@
   "instances": null
  },
  {
-  "id": "g9k",
+  "id": "g9h",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 20,
@@ -3440,7 +3410,7 @@
   "instances": null
  },
  {
-  "id": "g9l",
+  "id": "g9i",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 72,
@@ -3450,7 +3420,7 @@
   "instances": null
  },
  {
-  "id": "g9m",
+  "id": "g9j",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 36,
@@ -3460,7 +3430,7 @@
   "instances": null
  },
  {
-  "id": "g9n",
+  "id": "g9k",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 39,
@@ -3470,7 +3440,7 @@
   "instances": null
  },
  {
-  "id": "g9o",
+  "id": "g9l",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 76,
@@ -3480,7 +3450,7 @@
   "instances": null
  },
  {
-  "id": "g9p",
+  "id": "g9m",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 14,
@@ -3490,7 +3460,7 @@
   "instances": null
  },
  {
-  "id": "g9q",
+  "id": "g9n",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 98,
@@ -3500,7 +3470,7 @@
   "instances": null
  },
  {
-  "id": "g9r",
+  "id": "g9o",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 36,
@@ -3510,7 +3480,7 @@
   "instances": null
  },
  {
-  "id": "g9s",
+  "id": "g9p",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 17,
@@ -3520,7 +3490,7 @@
   "instances": null
  },
  {
-  "id": "g9t",
+  "id": "g9q",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 34,
@@ -3530,7 +3500,7 @@
   "instances": null
  },
  {
-  "id": "g9u",
+  "id": "g9r",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 40,
@@ -3540,7 +3510,7 @@
   "instances": null
  },
  {
-  "id": "g9v",
+  "id": "g9s",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 16,
@@ -3550,7 +3520,7 @@
   "instances": null
  },
  {
-  "id": "g9w",
+  "id": "g9t",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 30,
@@ -3560,7 +3530,7 @@
   "instances": null
  },
  {
-  "id": "g9x",
+  "id": "g9u",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 73,
@@ -3570,7 +3540,7 @@
   "instances": null
  },
  {
-  "id": "g9y",
+  "id": "g9v",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 33,
@@ -3580,7 +3550,7 @@
   "instances": null
  },
  {
-  "id": "g9z",
+  "id": "g9w",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 40,
@@ -3590,7 +3560,7 @@
   "instances": null
  },
  {
-  "id": "ga0",
+  "id": "g9x",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 18,
@@ -3600,7 +3570,7 @@
   "instances": null
  },
  {
-  "id": "ga1",
+  "id": "g9y",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 13,
@@ -3610,7 +3580,7 @@
   "instances": null
  },
  {
-  "id": "ga2",
+  "id": "g9z",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 73,
@@ -3620,7 +3590,7 @@
   "instances": null
  },
  {
-  "id": "ga3",
+  "id": "ga0",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 29,
@@ -3630,7 +3600,7 @@
   "instances": null
  },
  {
-  "id": "ga4",
+  "id": "ga1",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 29,
@@ -3640,7 +3610,7 @@
   "instances": null
  },
  {
-  "id": "ga5",
+  "id": "ga2",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 41,
@@ -3650,7 +3620,7 @@
   "instances": null
  },
  {
-  "id": "ga6",
+  "id": "ga3",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 35,
@@ -3660,7 +3630,7 @@
   "instances": null
  },
  {
-  "id": "ga7",
+  "id": "ga4",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 15,
@@ -3670,7 +3640,7 @@
   "instances": null
  },
  {
-  "id": "ga8",
+  "id": "ga5",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 38,
@@ -3680,7 +3650,7 @@
   "instances": null
  },
  {
-  "id": "ga9",
+  "id": "ga6",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 41,
@@ -3690,7 +3660,7 @@
   "instances": null
  },
  {
-  "id": "gaa",
+  "id": "ga7",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 34,
@@ -3700,7 +3670,7 @@
   "instances": null
  },
  {
-  "id": "gab",
+  "id": "ga8",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 23,
@@ -3710,7 +3680,7 @@
   "instances": null
  },
  {
-  "id": "gac",
+  "id": "ga9",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 37,
@@ -3720,7 +3690,7 @@
   "instances": null
  },
  {
-  "id": "gad",
+  "id": "gaa",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 74,
@@ -3730,7 +3700,7 @@
   "instances": null
  },
  {
-  "id": "gae",
+  "id": "gab",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 15,
@@ -3740,7 +3710,7 @@
   "instances": null
  },
  {
-  "id": "gaf",
+  "id": "gac",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 90,
@@ -3750,7 +3720,7 @@
   "instances": null
  },
  {
-  "id": "gag",
+  "id": "gad",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 70,
@@ -3760,7 +3730,7 @@
   "instances": null
  },
  {
-  "id": "gah",
+  "id": "gae",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 31,
@@ -3770,7 +3740,7 @@
   "instances": null
  },
  {
-  "id": "gai",
+  "id": "gaf",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 31,
@@ -3780,7 +3750,7 @@
   "instances": null
  },
  {
-  "id": "gaj",
+  "id": "gag",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 35,
@@ -3790,7 +3760,7 @@
   "instances": null
  },
  {
-  "id": "gak",
+  "id": "gah",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 25,
@@ -3800,7 +3770,7 @@
   "instances": null
  },
  {
-  "id": "gal",
+  "id": "gai",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 23,
@@ -3810,7 +3780,7 @@
   "instances": null
  },
  {
-  "id": "gam",
+  "id": "gaj",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 16,
@@ -3820,7 +3790,7 @@
   "instances": null
  },
  {
-  "id": "gan",
+  "id": "gak",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 34,
@@ -3830,7 +3800,7 @@
   "instances": null
  },
  {
-  "id": "gao",
+  "id": "gal",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 40,
@@ -3840,7 +3810,7 @@
   "instances": null
  },
  {
-  "id": "gap",
+  "id": "gam",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 42,
@@ -3850,7 +3820,7 @@
   "instances": null
  },
  {
-  "id": "gaq",
+  "id": "gan",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 74,
@@ -3860,7 +3830,7 @@
   "instances": null
  },
  {
-  "id": "gar",
+  "id": "gao",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 28,
@@ -3870,7 +3840,7 @@
   "instances": null
  },
  {
-  "id": "gas",
+  "id": "gap",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 25,
@@ -3880,7 +3850,7 @@
   "instances": null
  },
  {
-  "id": "gat",
+  "id": "gaq",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 20,
@@ -3890,7 +3860,7 @@
   "instances": null
  },
  {
-  "id": "gau",
+  "id": "gar",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 39,
@@ -3900,7 +3870,7 @@
   "instances": null
  },
  {
-  "id": "gav",
+  "id": "gas",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 26,
@@ -3910,7 +3880,7 @@
   "instances": null
  },
  {
-  "id": "gaw",
+  "id": "gat",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 75,
@@ -3920,7 +3890,7 @@
   "instances": null
  },
  {
-  "id": "gax",
+  "id": "gau",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 77,
@@ -3930,7 +3900,7 @@
   "instances": null
  },
  {
-  "id": "gay",
+  "id": "gav",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 13,
@@ -3940,7 +3910,7 @@
   "instances": null
  },
  {
-  "id": "gaz",
+  "id": "gaw",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 40,
@@ -3950,7 +3920,7 @@
   "instances": null
  },
  {
-  "id": "gb0",
+  "id": "gax",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 71,
@@ -3960,7 +3930,7 @@
   "instances": null
  },
  {
-  "id": "gb1",
+  "id": "gay",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 40,
@@ -3970,7 +3940,7 @@
   "instances": null
  },
  {
-  "id": "gb2",
+  "id": "gaz",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 36,
@@ -3980,7 +3950,7 @@
   "instances": null
  },
  {
-  "id": "gb3",
+  "id": "gb0",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 13,
@@ -3990,12 +3960,42 @@
   "instances": null
  },
  {
-  "id": "gb4",
+  "id": "gb1",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "bag_body",
   "area": 32,
   "why": "line 적합 잔차 max 1.17px (허용 4.4px) — 앵커 2개로 표현",
   "confidence": 0.866,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gb2",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 24,
+  "why": "roundedRect 적합 잔차 max 1px (허용 4.4px) — 앵커 8개로 표현",
+  "confidence": 0.886,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gb3",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 33,
+  "why": "line 적합 잔차 max 1.24px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.858,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gb4",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 21,
+  "why": "line 적합 잔차 max 1.19px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.864,
   "kind": "line",
   "instances": null
  }
