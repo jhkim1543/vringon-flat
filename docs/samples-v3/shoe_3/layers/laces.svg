@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
      viewBox="0 0 2800 2118" width="2800" height="2118">
-<g id="layer-laces" inkscape:label="Laces" data-z="5" data-kind="component" data-regions="0" data-strokes="2">
-      <path d="M1203 470C1200.36 470.33 1197.72 470.66 1195 471C1198.07 469.14 1199.6 468.79 1203 470Z" fill="#111111" fill-rule="evenodd"/>
-      <path d="M1185 473C1185.99 473.33 1186.98 473.66 1188 474C1186.02 474.33 1184.04 474.66 1182 475C1182.99 474.34 1183.98 473.68 1185 473Z" fill="#111111" fill-rule="evenodd"/>
+<g id="layer-laces" inkscape:label="Laces" data-z="5" data-kind="component" data-regions="0" data-strokes="1">
+      <path d="M1188 400C1189 403 1189 403 1188.34 404.75C1187.97 405.38 1187.61 406 1187.23 406.65C1186.84 407.35 1186.44 408.04 1186.04 408.76C1185.61 409.48 1185.19 410.2 1184.75 410.94C1184.34 411.65 1183.93 412.37 1183.51 413.11C1181.52 416.56 1179.51 419.89 1177 423C1178.12 414.31 1183.04 406.99 1188 400Z" fill="#111111" fill-rule="evenodd"/>
     </g>
 </svg>

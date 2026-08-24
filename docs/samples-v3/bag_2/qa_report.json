@@ -9,8 +9,8 @@
       "width": 1748,
       "height": 2048
     },
-    "totalMs": 31052,
-    "createdAt": "2026-08-22T05:16:10.184Z"
+    "totalMs": 27068,
+    "createdAt": "2026-08-24T01:24:34.343Z"
   },
   "options": {
     "minParts": 3,
@@ -129,7 +129,7 @@
       "z": 0,
       "regions": 0,
       "strokes": 3,
-      "nodes": 527,
+      "nodes": 465,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -143,8 +143,8 @@
       "label": "Beaded pouch body",
       "z": 1,
       "regions": 1,
-      "strokes": 2528,
-      "nodes": 27628,
+      "strokes": 2525,
+      "nodes": 27609,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -158,8 +158,8 @@
       "label": "Metal purse frame",
       "z": 2,
       "regions": 19,
-      "strokes": 532,
-      "nodes": 5107,
+      "strokes": 517,
+      "nodes": 5229,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -188,8 +188,8 @@
       "label": "Floral metal ornament",
       "z": 4,
       "regions": 9,
-      "strokes": 489,
-      "nodes": 3031,
+      "strokes": 461,
+      "nodes": 2839,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -201,16 +201,16 @@
   ],
   "qa": {
     "pass": true,
-    "silhouetteIou": 0.9971,
-    "boundaryF": 0.9449,
-    "rawF0": 0.6643,
-    "rawF1": 0.895,
-    "rawF2": 0.9449,
-    "lineF1": 0.895,
-    "lineF2": 0.9449,
+    "silhouetteIou": 0.9976,
+    "boundaryF": 0.9463,
+    "rawF0": 0.6694,
+    "rawF1": 0.8963,
+    "rawF2": 0.9463,
+    "lineF1": 0.8963,
+    "lineF2": 0.9463,
     "textureShare": 0,
-    "inkRatio": 1.823,
-    "chamfer": 0.707,
+    "inkRatio": 1.878,
+    "chamfer": 0.698,
     "p95": 3.41,
     "detailRecall": 0.9972,
     "majorComponents": [
@@ -223,46 +223,69 @@
       {
         "id": "chain_handle",
         "paths": 3,
-        "coverage": 0.9985
+        "coverage": 0.9985,
+        "precision": 0.7329,
+        "recall": 0.0798,
+        "iou": 0.0775
       },
       {
         "id": "bag_body",
-        "paths": 2529,
-        "coverage": 0.9985
+        "paths": 2526,
+        "coverage": 0.9985,
+        "precision": 0.7647,
+        "recall": 0.906,
+        "iou": 0.7085
       },
       {
         "id": "metal_frame",
-        "paths": 551,
-        "coverage": 0.9985
+        "paths": 536,
+        "coverage": 0.9985,
+        "precision": 0.3852,
+        "recall": 0.4555,
+        "iou": 0.2638
       },
       {
         "id": "closure_clasp",
         "paths": 2,
-        "coverage": 0.9985
+        "coverage": 0.9985,
+        "precision": 1,
+        "recall": 0.0285,
+        "iou": 0.0285
       },
       {
         "id": "floral_ornament",
-        "paths": 498,
-        "coverage": 0.9985
+        "paths": 470,
+        "coverage": 0.9985,
+        "precision": 0.3671,
+        "recall": 0.4957,
+        "iou": 0.2673
       }
     ],
+    "partPrecision": 0.65,
+    "misassignedParts": [
+      "metal_frame",
+      "floral_ornament"
+    ],
     "emptyVisibleParts": [],
+    "sharedOnlyParts": [],
     "invalidPaths": 0,
-    "totalPaths": 3583,
-    "totalNodes": 36312,
-    "fileKb": 1616.3,
+    "totalPaths": 3537,
+    "totalNodes": 36161,
+    "fileKb": 1608.3,
     "notes": [
-      "선이 원본보다 82% 굵다"
+      "선이 원본보다 88% 굵다",
+      "파트 배분이 의심되는 레이어 2개: metal_frame, floral_ornament (precision < 0.5)",
+      "파트 배분 정확도 평균 65% — 사진↔도면 대응이 어긋났을 수 있다"
     ]
   },
   "timings": {
-    "S1_preprocess": 6453,
-    "S2_plan": 12,
-    "S3_masks": 6279,
-    "S5_schematic_whole": 9,
-    "S5_schematic": 504,
-    "S6_vectorize": 12777,
-    "S7_assemble": 25,
-    "S8_qa": 4143
+    "S1_preprocess": 6786,
+    "S2_plan": 13,
+    "S3_masks": 4870,
+    "S5_schematic_whole": 24,
+    "S5_schematic": 426,
+    "S6_vectorize": 8344,
+    "S7_assemble": 13,
+    "S8_qa": 5904
   }
 }

@@ -218,6 +218,27 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
       <b>베지어 제어점</b>까지 좌표로 썼습니다. 제어점은 곡선 위에 없습니다.</li>
   </ul>
 
+  <h4>2차 — 선 굵기 상한 한 줄 (2026-08-22 저녁)</h4>
+  <div class="note">
+    <b>모든 구조선이 같은 굵기로, 그것도 실제보다 얇게 출고되고 있었습니다.</b>
+    <code>centerline.ts</code> 의 <code>Math.min(6, …)</code> 는 centerline 이 원본 해상도에서
+    돌던 시절의 값입니다. V3 는 도면을 2~4배로 키운 캔버스에서 추적하므로 실효 상한이
+    원본 기준 1.5~3px 이 됐고, 실측 <b>centerline 1,854개 중 1,745개(94.1%)가 정확히 6 에</b>
+    붙어 있었습니다. stroke 가 잉크를 덜 덮으니 남은 잉크를 outline 이 전부 떠맡아 패스가 폭증했습니다.
+  </div>
+  <p class="sub">
+    상한을 선/면을 가르는 기준(<code>min(W,H)×0.012</code>)으로 바꾼 결과 —
+    9종 합계 패스 <b>12,289 → 8,738 (−29%)</b>, 노드 <b>156,502 → 105,337 (−33%)</b>,
+    파일 <b>7.03MB → 5.52MB (−21%)</b>. 충실도는 손해가 아니라 이득 쪽입니다:
+    정확 일치 F@0px 평균 <b>0.811 → 0.839</b>, 선 일치 F@2px 0.976 → 0.975 로 사실상 동률.
+  </p>
+  <p class="sub">
+    함께 확인한 것: 기획서가 지목한 <b>“centerline + outline 이중 표현”은 실측으로 성립하지 않습니다</b> —
+    두 래스터의 겹침이 <code>|C∩O|/|C| = 0.000~0.006</code> 이고, 순수 fringe 를 제거해도 충실도가
+    소수 4자리까지 그대로입니다. residual 을 <code>ink ∧ ¬dilate(covered,1)</code> 로 정의하므로
+    구조적으로 겹칠 수가 없습니다. 진짜 원인은 굵기 상한 하나였습니다.
+  </p>
+
   <h4>9종 실측 (기준 = 사용자가 보는 도면)</h4>
   <div style="overflow-x:auto"><table id="v3fix">
     <tr><th>샘플</th><th class="num">이전 F@2px</th><th class="num">현재 F@2px</th>
@@ -228,6 +249,15 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
     의도이므로 전체 지표에 넣으면 "선이 빠졌다"로 집계돼 진짜 결함이 묻힙니다.
     jewelry_3은 도면 자체가 보석을 사진처럼 그라데이션으로 그려 보내 이진 추적의 한계에
     걸립니다 — QA가 <code>NEEDS_REVIEW</code>로 표시합니다.
+  </p>
+
+  <h4>파트 배분은 이제 실제로 측정합니다</h4>
+  <p class="sub">
+    <code>perPart.coverage</code> 가 전역 통계의 복제여서 파트마다 값이 전부 같았습니다
+    (bag_1 8개 파트가 전부 <code>0.9996</code>). 이제 파트 레이어를 하나씩 따로 래스터화해
+    그 파트의 마스크와 대조합니다 — 위 표의 <b>배분 precision</b> 열입니다.
+    실측 평균 0.65~0.89 이고, 사진과 생성 도면은 원래 정합되지 않으므로 1 이 될 수는 없습니다.
+    다만 이제 그 오차를 숨기지 않습니다.
   </p>
 
   <h4>아직 남은 것</h4>
@@ -839,6 +869,15 @@ fetch("samples-v3/index.json").then(r => r.json()).then(d => {
   if (c) c.innerHTML = `<p class="sub">V3 샘플을 불러오지 못했습니다: ${e.message}</p>`;
 });
 
+// 파트별 실측값 조회 — -1 은 잴 수 없었다는 뜻(전역값을 복제하지 않는다)
+function pp(sample, id, key) {
+  const row = (sample.qa.perPart || []).find(x => x.id === id);
+  if (!row || row[key] === undefined || row[key] < 0) return "—";
+  const v = row[key];
+  const warn = key === "precision" && v < 0.5;
+  return warn ? `<span style="color:var(--warn)">${v.toFixed(2)}</span>` : v.toFixed(2);
+}
+
 async function openV3(i) {
   const s = V3.samples[i];
   const host = document.getElementById("v3detail");
@@ -856,6 +895,7 @@ async function openV3(i) {
         ${kpi((q.lineF1 ?? q.rawF1) >= 0.90, `F@1px ${(q.lineF1 ?? q.rawF1).toFixed(3)}`)}
         ${kpi(q.detailRecall >= 0.9, `작은 디테일 ${(q.detailRecall * 100).toFixed(0)}%`)}
         ${kpi(Math.abs((q.inkRatio ?? 1) - 1) <= 0.25, `선 굵기 ${q.inkRatio}×`)}
+        ${kpi((q.partPrecision ?? 1) >= 0.7, `파트 배분 ${((q.partPrecision ?? 1) * 100).toFixed(0)}%`)}
         ${kpi(q.invalidPaths === 0, `invalid ${q.invalidPaths}`)}
         <span class="badge">패스 ${q.totalPaths.toLocaleString()} · ${q.fileKb} KB</span>
         <span class="badge ${s.state === "SUCCEEDED" ? "ok" : "warn"}">${s.state}</span>
@@ -884,6 +924,7 @@ async function openV3(i) {
       <div style="overflow-x:auto"><table id="v3layers">
         <tr><th>표시</th><th class="num">z</th><th>구성품</th><th>종류</th>
             <th class="num">면</th><th class="num">선</th><th class="num">노드</th>
+            <th class="num">배분<br>precision</th><th class="num">영역<br>recall</th>
             <th class="num">신뢰도</th><th>가려짐</th><th>파일</th></tr>
       </table></div>
     </div>
@@ -939,6 +980,8 @@ async function openV3(i) {
       <td class="num">${L.regions}</td>
       <td class="num">${L.strokes}</td>
       <td class="num">${L.nodes}</td>
+      <td class="num">${pp(s, L.id, "precision")}</td>
+      <td class="num">${pp(s, L.id, "recall")}</td>
       <td class="num">${L.confidence}</td>
       <td style="color:var(--dim);font-size:12px">${L.occludedBy.length ? L.occludedBy.join(", ") : "—"}</td>
       <td>${L.file ? `<a class="btn" style="padding:3px 8px;font-size:11.5px" href="${L.file}" download>SVG</a>` : "<span style='color:var(--dim);font-size:12px'>빈 레이어</span>"}</td></tr>`);

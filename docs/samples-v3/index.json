@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22",
+  "generatedAt": "2026-08-24",
   "samples": [
     {
       "id": "bag_1",
@@ -34,8 +34,8 @@
             "front_flap"
           ],
           "regions": 5,
-          "strokes": 6,
-          "nodes": 123,
+          "strokes": 2,
+          "nodes": 115,
           "file": "samples-v3/bag_1/layers/top_handle.svg"
         },
         {
@@ -52,9 +52,8 @@
             "closure_strap"
           ],
           "regions": 0,
-          "strokes": 1,
-          "nodes": 4,
-          "file": "samples-v3/bag_1/layers/main_compartment_shell.svg"
+          "strokes": 0,
+          "nodes": 0
         },
         {
           "id": "left_side_gusset",
@@ -67,8 +66,8 @@
             "closure_strap"
           ],
           "regions": 8,
-          "strokes": 85,
-          "nodes": 1520,
+          "strokes": 61,
+          "nodes": 1344,
           "file": "samples-v3/bag_1/layers/left_side_gusset.svg"
         },
         {
@@ -84,8 +83,8 @@
             "clasp_assembly"
           ],
           "regions": 7,
-          "strokes": 55,
-          "nodes": 804,
+          "strokes": 9,
+          "nodes": 868,
           "file": "samples-v3/bag_1/layers/front_lower_panel.svg"
         },
         {
@@ -99,8 +98,8 @@
             "closure_strap"
           ],
           "regions": 9,
-          "strokes": 68,
-          "nodes": 2177,
+          "strokes": 23,
+          "nodes": 930,
           "file": "samples-v3/bag_1/layers/front_flap.svg"
         },
         {
@@ -113,8 +112,8 @@
             "closure_strap"
           ],
           "regions": 6,
-          "strokes": 31,
-          "nodes": 644,
+          "strokes": 17,
+          "nodes": 549,
           "file": "samples-v3/bag_1/layers/red_trim_bands.svg"
         },
         {
@@ -127,8 +126,8 @@
             "clasp_assembly"
           ],
           "regions": 5,
-          "strokes": 33,
-          "nodes": 567,
+          "strokes": 27,
+          "nodes": 538,
           "file": "samples-v3/bag_1/layers/closure_strap.svg"
         },
         {
@@ -139,92 +138,125 @@
           "confidence": 0.96,
           "occludedBy": [],
           "regions": 3,
-          "strokes": 84,
-          "nodes": 823,
+          "strokes": 42,
+          "nodes": 585,
           "file": "samples-v3/bag_1/layers/clasp_assembly.svg"
         }
       ],
       "qa": {
         "pass": true,
-        "silhouetteIou": 0.9989,
-        "boundaryF": 0.8979,
-        "rawF0": 0.7941,
-        "rawF1": 0.8862,
-        "rawF2": 0.8979,
-        "lineF1": 0.9885,
-        "lineF2": 0.9993,
+        "silhouetteIou": 0.9976,
+        "boundaryF": 0.8969,
+        "rawF0": 0.8162,
+        "rawF1": 0.8838,
+        "rawF2": 0.8969,
+        "lineF1": 0.9826,
+        "lineF2": 0.9972,
         "textureShare": 0.6183,
-        "inkRatio": 1.015,
-        "chamfer": 0.12,
+        "inkRatio": 1.084,
+        "chamfer": 0.107,
         "p95": 1,
         "detailRecall": 1,
         "majorComponents": [
           2,
-          4
+          5
         ],
         "aspectRatio": 1.198,
         "partCoverage": 0.9996,
         "perPart": [
           {
             "id": "top_handle",
-            "paths": 11,
-            "coverage": 0.9996
+            "paths": 7,
+            "coverage": 0.9996,
+            "precision": 0.3718,
+            "recall": 0.0846,
+            "iou": 0.074
           },
           {
             "id": "main_compartment_shell",
-            "paths": 1,
-            "coverage": 0.9996
+            "paths": 0,
+            "coverage": 0,
+            "precision": -1,
+            "recall": -1,
+            "iou": -1
           },
           {
             "id": "left_side_gusset",
-            "paths": 93,
-            "coverage": 0.9996
+            "paths": 69,
+            "coverage": 0.9996,
+            "precision": 0.9067,
+            "recall": 0.745,
+            "iou": 0.692
           },
           {
             "id": "front_lower_panel",
-            "paths": 62,
-            "coverage": 0.9996
+            "paths": 16,
+            "coverage": 0.9996,
+            "precision": 0.8574,
+            "recall": 0.6396,
+            "iou": 0.5781
           },
           {
             "id": "front_flap",
-            "paths": 77,
-            "coverage": 0.9996
+            "paths": 32,
+            "coverage": 0.9996,
+            "precision": 0.8366,
+            "recall": 0.8464,
+            "iou": 0.7263
           },
           {
             "id": "red_trim_bands",
-            "paths": 37,
-            "coverage": 0.9996
+            "paths": 23,
+            "coverage": 0.9996,
+            "precision": 0.8661,
+            "recall": 0.5314,
+            "iou": 0.4911
           },
           {
             "id": "closure_strap",
-            "paths": 38,
-            "coverage": 0.9996
+            "paths": 32,
+            "coverage": 0.9996,
+            "precision": 0.7703,
+            "recall": 0.5724,
+            "iou": 0.489
           },
           {
             "id": "clasp_assembly",
-            "paths": 87,
-            "coverage": 0.9996
+            "paths": 45,
+            "coverage": 0.9996,
+            "precision": 0.6036,
+            "recall": 0.4516,
+            "iou": 0.3483
           }
         ],
+        "partPrecision": 0.7446,
+        "misassignedParts": [
+          "top_handle"
+        ],
         "emptyVisibleParts": [],
+        "sharedOnlyParts": [
+          "main_compartment_shell"
+        ],
         "invalidPaths": 0,
-        "totalPaths": 406,
-        "totalNodes": 6662,
-        "fileKb": 284.8,
+        "totalPaths": 224,
+        "totalNodes": 4929,
+        "fileKb": 206.6,
         "notes": [
           "사진↔도면 종횡비 불일치 19.8% — 파트 배분 정확도에만 영향 (도면은 왜곡하지 않는다)",
-          "해프톤 질감을 톤 면으로 치환 — 화면의 24.1%, 도면 잉크의 62%. 전체 F@2px 0.898, 이 영역을 뺀 선 충실도 0.999"
+          "파트 배분이 의심되는 레이어 1개: top_handle (precision < 0.5)",
+          "자기 패스 없이 공유 경계로만 그려진 파트 1개: main_compartment_shell",
+          "해프톤 질감을 톤 면으로 치환 — 화면의 24.1%, 도면 잉크의 62%. 전체 F@2px 0.897, 이 영역을 뺀 선 충실도 0.997"
         ]
       },
       "timings": {
-        "S1_preprocess": 6181,
-        "S2_plan": 8,
-        "S3_masks": 2686,
-        "S5_schematic_whole": 8,
-        "S5_schematic": 524,
-        "S6_vectorize": 8871,
-        "S7_assemble": 20,
-        "S8_qa": 2289
+        "S1_preprocess": 10802,
+        "S2_plan": 5,
+        "S3_masks": 2768,
+        "S5_schematic_whole": 13,
+        "S5_schematic": 493,
+        "S6_vectorize": 8584,
+        "S7_assemble": 5,
+        "S8_qa": 5322
       },
       "files": {
         "svg": "samples-v3/bag_1/layered.svg",
@@ -236,8 +268,8 @@
       "color": {
         "svg": "samples-v3/bag_1/layered_color.svg",
         "schematic": "samples-v3/bag_1/schematic_color.jpg",
-        "paths": 406,
-        "kb": 284.8
+        "paths": 224,
+        "kb": 206.7
       }
     },
     {
@@ -274,7 +306,7 @@
           ],
           "regions": 0,
           "strokes": 3,
-          "nodes": 527,
+          "nodes": 465,
           "file": "samples-v3/bag_2/layers/chain_handle.svg"
         },
         {
@@ -288,8 +320,8 @@
             "floral_ornament"
           ],
           "regions": 1,
-          "strokes": 2528,
-          "nodes": 27628,
+          "strokes": 2525,
+          "nodes": 27609,
           "file": "samples-v3/bag_2/layers/bag_body.svg"
         },
         {
@@ -303,8 +335,8 @@
             "floral_ornament"
           ],
           "regions": 19,
-          "strokes": 532,
-          "nodes": 5107,
+          "strokes": 517,
+          "nodes": 5229,
           "file": "samples-v3/bag_2/layers/metal_frame.svg"
         },
         {
@@ -327,23 +359,23 @@
           "confidence": 0.98,
           "occludedBy": [],
           "regions": 9,
-          "strokes": 489,
-          "nodes": 3031,
+          "strokes": 461,
+          "nodes": 2839,
           "file": "samples-v3/bag_2/layers/floral_ornament.svg"
         }
       ],
       "qa": {
         "pass": true,
-        "silhouetteIou": 0.9971,
-        "boundaryF": 0.9449,
-        "rawF0": 0.6643,
-        "rawF1": 0.895,
-        "rawF2": 0.9449,
-        "lineF1": 0.895,
-        "lineF2": 0.9449,
+        "silhouetteIou": 0.9976,
+        "boundaryF": 0.9463,
+        "rawF0": 0.6694,
+        "rawF1": 0.8963,
+        "rawF2": 0.9463,
+        "lineF1": 0.8963,
+        "lineF2": 0.9463,
         "textureShare": 0,
-        "inkRatio": 1.823,
-        "chamfer": 0.707,
+        "inkRatio": 1.878,
+        "chamfer": 0.698,
         "p95": 3.41,
         "detailRecall": 0.9972,
         "majorComponents": [
@@ -356,47 +388,70 @@
           {
             "id": "chain_handle",
             "paths": 3,
-            "coverage": 0.9985
+            "coverage": 0.9985,
+            "precision": 0.7329,
+            "recall": 0.0798,
+            "iou": 0.0775
           },
           {
             "id": "bag_body",
-            "paths": 2529,
-            "coverage": 0.9985
+            "paths": 2526,
+            "coverage": 0.9985,
+            "precision": 0.7647,
+            "recall": 0.906,
+            "iou": 0.7085
           },
           {
             "id": "metal_frame",
-            "paths": 551,
-            "coverage": 0.9985
+            "paths": 536,
+            "coverage": 0.9985,
+            "precision": 0.3852,
+            "recall": 0.4555,
+            "iou": 0.2638
           },
           {
             "id": "closure_clasp",
             "paths": 2,
-            "coverage": 0.9985
+            "coverage": 0.9985,
+            "precision": 1,
+            "recall": 0.0285,
+            "iou": 0.0285
           },
           {
             "id": "floral_ornament",
-            "paths": 498,
-            "coverage": 0.9985
+            "paths": 470,
+            "coverage": 0.9985,
+            "precision": 0.3671,
+            "recall": 0.4957,
+            "iou": 0.2673
           }
         ],
+        "partPrecision": 0.65,
+        "misassignedParts": [
+          "metal_frame",
+          "floral_ornament"
+        ],
         "emptyVisibleParts": [],
+        "sharedOnlyParts": [],
         "invalidPaths": 0,
-        "totalPaths": 3583,
-        "totalNodes": 36312,
-        "fileKb": 1616.3,
+        "totalPaths": 3537,
+        "totalNodes": 36161,
+        "fileKb": 1608.3,
         "notes": [
-          "선이 원본보다 82% 굵다"
+          "선이 원본보다 88% 굵다",
+          "파트 배분이 의심되는 레이어 2개: metal_frame, floral_ornament (precision < 0.5)",
+          "파트 배분 정확도 평균 65% — 사진↔도면 대응이 어긋났을 수 있다"
         ]
       },
       "timings": {
-        "S1_preprocess": 6453,
-        "S2_plan": 12,
-        "S3_masks": 6279,
-        "S5_schematic_whole": 9,
-        "S5_schematic": 504,
-        "S6_vectorize": 12777,
-        "S7_assemble": 25,
-        "S8_qa": 4143
+        "S1_preprocess": 6786,
+        "S2_plan": 13,
+        "S3_masks": 4870,
+        "S5_schematic_whole": 24,
+        "S5_schematic": 426,
+        "S6_vectorize": 8344,
+        "S7_assemble": 13,
+        "S8_qa": 5904
       },
       "files": {
         "svg": "samples-v3/bag_2/layered.svg",
@@ -440,8 +495,8 @@
             "turquoise_stone_embellishments"
           ],
           "regions": 49,
-          "strokes": 6,
-          "nodes": 452,
+          "strokes": 0,
+          "nodes": 433,
           "file": "samples-v3/bag_3/layers/inner_pouch.svg"
         },
         {
@@ -454,8 +509,8 @@
             "metal_lattice_shell"
           ],
           "regions": 34,
-          "strokes": 57,
-          "nodes": 1735,
+          "strokes": 51,
+          "nodes": 1711,
           "file": "samples-v3/bag_3/layers/chain_strap.svg"
         },
         {
@@ -468,8 +523,8 @@
             "turquoise_stone_embellishments"
           ],
           "regions": 19,
-          "strokes": 32,
-          "nodes": 612,
+          "strokes": 12,
+          "nodes": 368,
           "file": "samples-v3/bag_3/layers/metal_lattice_shell.svg"
         },
         {
@@ -480,23 +535,23 @@
           "confidence": 0.94,
           "occludedBy": [],
           "regions": 644,
-          "strokes": 795,
-          "nodes": 15502,
+          "strokes": 533,
+          "nodes": 14850,
           "file": "samples-v3/bag_3/layers/turquoise_stone_embellishments.svg"
         }
       ],
       "qa": {
         "pass": true,
-        "silhouetteIou": 0.995,
-        "boundaryF": 0.9986,
-        "rawF0": 0.891,
-        "rawF1": 0.9827,
-        "rawF2": 0.9986,
-        "lineF1": 0.9827,
-        "lineF2": 0.9986,
+        "silhouetteIou": 0.996,
+        "boundaryF": 0.9974,
+        "rawF0": 0.9012,
+        "rawF1": 0.9819,
+        "rawF2": 0.9974,
+        "lineF1": 0.9819,
+        "lineF2": 0.9974,
         "textureShare": 0,
-        "inkRatio": 1.043,
-        "chamfer": 0.122,
+        "inkRatio": 1.099,
+        "chamfer": 0.114,
         "p95": 1,
         "detailRecall": 1,
         "majorComponents": [
@@ -508,43 +563,61 @@
         "perPart": [
           {
             "id": "inner_pouch",
-            "paths": 55,
-            "coverage": 0.9578
+            "paths": 49,
+            "coverage": 0.9578,
+            "precision": 0.0935,
+            "recall": 0.0704,
+            "iou": 0.0418
           },
           {
             "id": "chain_strap",
-            "paths": 91,
-            "coverage": 0.9578
+            "paths": 85,
+            "coverage": 0.9578,
+            "precision": 0.9468,
+            "recall": 0.6618,
+            "iou": 0.638
           },
           {
             "id": "metal_lattice_shell",
-            "paths": 51,
-            "coverage": 0.9578
+            "paths": 31,
+            "coverage": 0.9578,
+            "precision": 0.8562,
+            "recall": 0.2309,
+            "iou": 0.2223
           },
           {
             "id": "turquoise_stone_embellishments",
-            "paths": 1439,
-            "coverage": 0.9578
+            "paths": 1177,
+            "coverage": 0.9578,
+            "precision": 0.93,
+            "recall": 0.919,
+            "iou": 0.8595
           }
         ],
+        "partPrecision": 0.7066,
+        "misassignedParts": [
+          "inner_pouch"
+        ],
         "emptyVisibleParts": [],
+        "sharedOnlyParts": [],
         "invalidPaths": 0,
-        "totalPaths": 1636,
-        "totalNodes": 18301,
-        "fileKb": 840.5,
+        "totalPaths": 1342,
+        "totalNodes": 17362,
+        "fileKb": 782.3,
         "notes": [
-          "사진↔도면 종횡비 불일치 3.1% — 파트 배분 정확도에만 영향 (도면은 왜곡하지 않는다)"
+          "사진↔도면 종횡비 불일치 3.1% — 파트 배분 정확도에만 영향 (도면은 왜곡하지 않는다)",
+          "파트 배분이 의심되는 레이어 1개: inner_pouch (precision < 0.5)"
         ]
       },
       "timings": {
-        "S1_preprocess": 6152,
-        "S2_plan": 11,
-        "S3_masks": 6618,
-        "S5_schematic_whole": 26,
-        "S5_schematic": 477,
-        "S6_vectorize": 6841,
-        "S7_assemble": 10,
-        "S8_qa": 2390
+        "S1_preprocess": 6287,
+        "S2_plan": 17,
+        "S3_masks": 6056,
+        "S5_schematic_whole": 10,
+        "S5_schematic": 417,
+        "S6_vectorize": 6917,
+        "S7_assemble": 9,
+        "S8_qa": 4786
       },
       "files": {
         "svg": "samples-v3/bag_3/layered.svg",
@@ -588,7 +661,7 @@
           ],
           "regions": 1,
           "strokes": 5,
-          "nodes": 79,
+          "nodes": 69,
           "file": "samples-v3/jewelry_1/layers/hinge_pivot.svg"
         },
         {
@@ -601,8 +674,8 @@
             "engraved_pattern"
           ],
           "regions": 3,
-          "strokes": 68,
-          "nodes": 1222,
+          "strokes": 14,
+          "nodes": 580,
           "file": "samples-v3/jewelry_1/layers/left_hoop_half.svg"
         },
         {
@@ -615,8 +688,8 @@
             "clasp_insert"
           ],
           "regions": 2,
-          "strokes": 73,
-          "nodes": 1106,
+          "strokes": 8,
+          "nodes": 360,
           "file": "samples-v3/jewelry_1/layers/right_hoop_half.svg"
         },
         {
@@ -627,8 +700,8 @@
           "confidence": 0.71,
           "occludedBy": [],
           "regions": 2,
-          "strokes": 13,
-          "nodes": 373,
+          "strokes": 7,
+          "nodes": 166,
           "file": "samples-v3/jewelry_1/layers/clasp_insert.svg"
         },
         {
@@ -639,23 +712,23 @@
           "confidence": 0.8,
           "occludedBy": [],
           "regions": 5,
-          "strokes": 63,
-          "nodes": 2254,
+          "strokes": 35,
+          "nodes": 1216,
           "file": "samples-v3/jewelry_1/layers/engraved_pattern.svg"
         }
       ],
       "qa": {
         "pass": true,
-        "silhouetteIou": 0.9969,
-        "boundaryF": 0.9909,
-        "rawF0": 0.8912,
-        "rawF1": 0.9814,
-        "rawF2": 0.9909,
-        "lineF1": 0.9814,
-        "lineF2": 0.9909,
+        "silhouetteIou": 0.9906,
+        "boundaryF": 0.9861,
+        "rawF0": 0.9273,
+        "rawF1": 0.9718,
+        "rawF2": 0.9861,
+        "lineF1": 0.9718,
+        "lineF2": 0.9861,
         "textureShare": 0,
-        "inkRatio": 0.964,
-        "chamfer": 0.172,
+        "inkRatio": 1.096,
+        "chamfer": 0.151,
         "p95": 1,
         "detailRecall": 1,
         "majorComponents": [
@@ -668,45 +741,63 @@
           {
             "id": "hinge_pivot",
             "paths": 6,
-            "coverage": 0.9999
+            "coverage": 0.9999,
+            "precision": 1,
+            "recall": 0.2922,
+            "iou": 0.2922
           },
           {
             "id": "left_hoop_half",
-            "paths": 71,
-            "coverage": 0.9999
+            "paths": 17,
+            "coverage": 0.9999,
+            "precision": 0.5193,
+            "recall": 0.5902,
+            "iou": 0.3817
           },
           {
             "id": "right_hoop_half",
-            "paths": 75,
-            "coverage": 0.9999
+            "paths": 10,
+            "coverage": 0.9999,
+            "precision": 0.9414,
+            "recall": 0.3993,
+            "iou": 0.3896
           },
           {
             "id": "clasp_insert",
-            "paths": 15,
-            "coverage": 0.9999
+            "paths": 9,
+            "coverage": 0.9999,
+            "precision": 0.9991,
+            "recall": 0.2908,
+            "iou": 0.2907
           },
           {
             "id": "engraved_pattern",
-            "paths": 68,
-            "coverage": 0.9999
+            "paths": 40,
+            "coverage": 0.9999,
+            "precision": 0.5573,
+            "recall": 0.5574,
+            "iou": 0.3863
           }
         ],
+        "partPrecision": 0.8034,
+        "misassignedParts": [],
         "emptyVisibleParts": [],
+        "sharedOnlyParts": [],
         "invalidPaths": 0,
-        "totalPaths": 235,
-        "totalNodes": 5034,
-        "fileKb": 223.2,
+        "totalPaths": 82,
+        "totalNodes": 2391,
+        "fileKb": 104.1,
         "notes": []
       },
       "timings": {
-        "S1_preprocess": 6642,
-        "S2_plan": 13,
-        "S3_masks": 2951,
-        "S5_schematic_whole": 16,
-        "S5_schematic": 532,
-        "S6_vectorize": 10589,
-        "S7_assemble": 9,
-        "S8_qa": 2653
+        "S1_preprocess": 6238,
+        "S2_plan": 12,
+        "S3_masks": 1638,
+        "S5_schematic_whole": 7,
+        "S5_schematic": 411,
+        "S6_vectorize": 6788,
+        "S7_assemble": 5,
+        "S8_qa": 6154
       },
       "files": {
         "svg": "samples-v3/jewelry_1/layered.svg",
@@ -749,8 +840,8 @@
             "lower_frame_body"
           ],
           "regions": 12,
-          "strokes": 64,
-          "nodes": 639,
+          "strokes": 15,
+          "nodes": 385,
           "file": "samples-v3/jewelry_2/layers/rear_clasp_hardware.svg"
         },
         {
@@ -763,8 +854,8 @@
             "upper_neck_plate"
           ],
           "regions": 3,
-          "strokes": 16,
-          "nodes": 167,
+          "strokes": 7,
+          "nodes": 96,
           "file": "samples-v3/jewelry_2/layers/upper_tuning_pegs.svg"
         },
         {
@@ -779,8 +870,8 @@
             "front_leaf_ornament"
           ],
           "regions": 1,
-          "strokes": 35,
-          "nodes": 250,
+          "strokes": 2,
+          "nodes": 68,
           "file": "samples-v3/jewelry_2/layers/string_wire_set.svg"
         },
         {
@@ -794,8 +885,8 @@
             "upper_neck_plate"
           ],
           "regions": 2,
-          "strokes": 29,
-          "nodes": 207,
+          "strokes": 5,
+          "nodes": 118,
           "file": "samples-v3/jewelry_2/layers/outer_curved_spine.svg"
         },
         {
@@ -808,8 +899,8 @@
             "front_leaf_ornament"
           ],
           "regions": 17,
-          "strokes": 222,
-          "nodes": 2610,
+          "strokes": 62,
+          "nodes": 1539,
           "file": "samples-v3/jewelry_2/layers/lower_frame_body.svg"
         },
         {
@@ -822,8 +913,8 @@
             "neck_fasteners"
           ],
           "regions": 7,
-          "strokes": 70,
-          "nodes": 758,
+          "strokes": 14,
+          "nodes": 439,
           "file": "samples-v3/jewelry_2/layers/upper_neck_plate.svg"
         },
         {
@@ -834,8 +925,8 @@
           "confidence": 0.86,
           "occludedBy": [],
           "regions": 2,
-          "strokes": 16,
-          "nodes": 154,
+          "strokes": 9,
+          "nodes": 143,
           "file": "samples-v3/jewelry_2/layers/front_leaf_ornament.svg"
         },
         {
@@ -846,91 +937,118 @@
           "confidence": 0.93,
           "occludedBy": [],
           "regions": 2,
-          "strokes": 44,
-          "nodes": 289,
+          "strokes": 12,
+          "nodes": 122,
           "file": "samples-v3/jewelry_2/layers/neck_fasteners.svg"
         }
       ],
       "qa": {
         "pass": true,
-        "silhouetteIou": 0.9947,
-        "boundaryF": 0.9936,
-        "rawF0": 0.8572,
-        "rawF1": 0.9681,
-        "rawF2": 0.9936,
-        "lineF1": 0.9681,
-        "lineF2": 0.9936,
+        "silhouetteIou": 0.996,
+        "boundaryF": 0.9973,
+        "rawF0": 0.9104,
+        "rawF1": 0.9772,
+        "rawF2": 0.9973,
+        "lineF1": 0.9772,
+        "lineF2": 0.9973,
         "textureShare": 0,
-        "inkRatio": 0.834,
-        "chamfer": 0.17,
+        "inkRatio": 1.072,
+        "chamfer": 0.109,
         "p95": 1,
         "detailRecall": 1,
         "majorComponents": [
           5,
-          5
+          4
         ],
         "aspectRatio": 1.007,
         "partCoverage": 0.9999,
         "perPart": [
           {
             "id": "rear_clasp_hardware",
-            "paths": 76,
-            "coverage": 0.9999
+            "paths": 27,
+            "coverage": 0.9999,
+            "precision": 0.6214,
+            "recall": 0.5299,
+            "iou": 0.4006
           },
           {
             "id": "upper_tuning_pegs",
-            "paths": 19,
-            "coverage": 0.9999
+            "paths": 10,
+            "coverage": 0.9999,
+            "precision": 0.9872,
+            "recall": 0.563,
+            "iou": 0.5589
           },
           {
             "id": "string_wire_set",
-            "paths": 36,
-            "coverage": 0.9999
+            "paths": 3,
+            "coverage": 0.9999,
+            "precision": 0.6788,
+            "recall": 0.2683,
+            "iou": 0.2381
           },
           {
             "id": "outer_curved_spine",
-            "paths": 31,
-            "coverage": 0.9999
+            "paths": 7,
+            "coverage": 0.9999,
+            "precision": 0.907,
+            "recall": 0.1669,
+            "iou": 0.1641
           },
           {
             "id": "lower_frame_body",
-            "paths": 239,
-            "coverage": 0.9999
+            "paths": 79,
+            "coverage": 0.9999,
+            "precision": 0.9077,
+            "recall": 0.873,
+            "iou": 0.8019
           },
           {
             "id": "upper_neck_plate",
-            "paths": 77,
-            "coverage": 0.9999
+            "paths": 21,
+            "coverage": 0.9999,
+            "precision": 0.6684,
+            "recall": 0.6967,
+            "iou": 0.5178
           },
           {
             "id": "front_leaf_ornament",
-            "paths": 18,
-            "coverage": 0.9999
+            "paths": 11,
+            "coverage": 0.9999,
+            "precision": 0.8799,
+            "recall": 0.427,
+            "iou": 0.4035
           },
           {
             "id": "neck_fasteners",
-            "paths": 46,
-            "coverage": 0.9999
+            "paths": 14,
+            "coverage": 0.9999,
+            "precision": 0.9204,
+            "recall": 0.1946,
+            "iou": 0.1914
           }
         ],
+        "partPrecision": 0.8214,
+        "misassignedParts": [],
         "emptyVisibleParts": [],
+        "sharedOnlyParts": [],
         "invalidPaths": 0,
-        "totalPaths": 542,
-        "totalNodes": 5074,
-        "fileKb": 234.8,
+        "totalPaths": 172,
+        "totalNodes": 2910,
+        "fileKb": 131.5,
         "notes": [
           "도면이 컬러로 생성됨 (채도 화면의 10%) — 색면을 그대로 옮긴다"
         ]
       },
       "timings": {
-        "S1_preprocess": 5973,
-        "S2_plan": 12,
-        "S3_masks": 3413,
-        "S5_schematic_whole": 16,
-        "S5_schematic": 463,
-        "S6_vectorize": 7064,
-        "S7_assemble": 8,
-        "S8_qa": 1877
+        "S1_preprocess": 6267,
+        "S2_plan": 9,
+        "S3_masks": 2921,
+        "S5_schematic_whole": 7,
+        "S5_schematic": 432,
+        "S6_vectorize": 6323,
+        "S7_assemble": 5,
+        "S8_qa": 5403
       },
       "files": {
         "svg": "samples-v3/jewelry_2/layered.svg",
@@ -972,8 +1090,8 @@
             "rear_ring_setting"
           ],
           "regions": 2,
-          "strokes": 30,
-          "nodes": 270,
+          "strokes": 9,
+          "nodes": 170,
           "file": "samples-v3/jewelry_3/layers/rear_ring_band.svg"
         },
         {
@@ -986,8 +1104,8 @@
             "rear_ring_setting"
           ],
           "regions": 2,
-          "strokes": 50,
-          "nodes": 655,
+          "strokes": 40,
+          "nodes": 576,
           "file": "samples-v3/jewelry_3/layers/rear_ring_pearl.svg"
         },
         {
@@ -998,8 +1116,8 @@
           "confidence": 0.82,
           "occludedBy": [],
           "regions": 0,
-          "strokes": 22,
-          "nodes": 140,
+          "strokes": 11,
+          "nodes": 82,
           "file": "samples-v3/jewelry_3/layers/rear_ring_setting.svg"
         },
         {
@@ -1013,8 +1131,8 @@
             "front_ring_band"
           ],
           "regions": 2,
-          "strokes": 28,
-          "nodes": 203,
+          "strokes": 10,
+          "nodes": 131,
           "file": "samples-v3/jewelry_3/layers/center_ring_band.svg"
         },
         {
@@ -1027,8 +1145,8 @@
             "center_ring_bezel"
           ],
           "regions": 3,
-          "strokes": 109,
-          "nodes": 1707,
+          "strokes": 88,
+          "nodes": 1589,
           "file": "samples-v3/jewelry_3/layers/center_ring_gemstone.svg"
         },
         {
@@ -1039,8 +1157,8 @@
           "confidence": 0.97,
           "occludedBy": [],
           "regions": 0,
-          "strokes": 29,
-          "nodes": 198,
+          "strokes": 10,
+          "nodes": 99,
           "file": "samples-v3/jewelry_3/layers/center_ring_bezel.svg"
         },
         {
@@ -1053,8 +1171,8 @@
             "front_ring_bezel"
           ],
           "regions": 5,
-          "strokes": 64,
-          "nodes": 704,
+          "strokes": 29,
+          "nodes": 451,
           "file": "samples-v3/jewelry_3/layers/front_ring_band.svg"
         },
         {
@@ -1067,8 +1185,8 @@
             "front_ring_bezel"
           ],
           "regions": 1,
-          "strokes": 56,
-          "nodes": 392,
+          "strokes": 52,
+          "nodes": 374,
           "file": "samples-v3/jewelry_3/layers/front_ring_gemstone.svg"
         },
         {
@@ -1079,98 +1197,127 @@
           "confidence": 0.97,
           "occludedBy": [],
           "regions": 1,
-          "strokes": 63,
-          "nodes": 439,
+          "strokes": 31,
+          "nodes": 259,
           "file": "samples-v3/jewelry_3/layers/front_ring_bezel.svg"
         }
       ],
       "qa": {
         "pass": false,
-        "silhouetteIou": 0.9913,
-        "boundaryF": 0.8636,
-        "rawF0": 0.7425,
-        "rawF1": 0.8375,
-        "rawF2": 0.8636,
-        "lineF1": 0.841,
-        "lineF2": 0.8671,
+        "silhouetteIou": 0.9936,
+        "boundaryF": 0.8661,
+        "rawF0": 0.7735,
+        "rawF1": 0.8424,
+        "rawF2": 0.8661,
+        "lineF1": 0.8459,
+        "lineF2": 0.8696,
         "textureShare": 0.0102,
-        "inkRatio": 0.756,
-        "chamfer": 2.237,
-        "p95": 15,
+        "inkRatio": 0.866,
+        "chamfer": 2.084,
+        "p95": 14.31,
         "detailRecall": 1,
         "majorComponents": [
           8,
-          15
+          16
         ],
         "aspectRatio": 1,
         "partCoverage": 0.999,
         "perPart": [
           {
             "id": "rear_ring_band",
-            "paths": 32,
-            "coverage": 0.999
+            "paths": 11,
+            "coverage": 0.999,
+            "precision": 0.8067,
+            "recall": 0.7842,
+            "iou": 0.6602
           },
           {
             "id": "rear_ring_pearl",
-            "paths": 52,
-            "coverage": 0.999
+            "paths": 42,
+            "coverage": 0.999,
+            "precision": 0.9968,
+            "recall": 0.7647,
+            "iou": 0.7628
           },
           {
             "id": "rear_ring_setting",
-            "paths": 22,
-            "coverage": 0.999
+            "paths": 11,
+            "coverage": 0.999,
+            "precision": 0.5024,
+            "recall": 0.2297,
+            "iou": 0.1871
           },
           {
             "id": "center_ring_band",
-            "paths": 30,
-            "coverage": 0.999
+            "paths": 12,
+            "coverage": 0.999,
+            "precision": 0.804,
+            "recall": 0.473,
+            "iou": 0.4241
           },
           {
             "id": "center_ring_gemstone",
-            "paths": 112,
-            "coverage": 0.999
+            "paths": 91,
+            "coverage": 0.999,
+            "precision": 0.966,
+            "recall": 0.9013,
+            "iou": 0.8737
           },
           {
             "id": "center_ring_bezel",
-            "paths": 29,
-            "coverage": 0.999
+            "paths": 10,
+            "coverage": 0.999,
+            "precision": 0.6001,
+            "recall": 0.2286,
+            "iou": 0.1984
           },
           {
             "id": "front_ring_band",
-            "paths": 69,
-            "coverage": 0.999
+            "paths": 34,
+            "coverage": 0.999,
+            "precision": 0.6519,
+            "recall": 0.8562,
+            "iou": 0.5876
           },
           {
             "id": "front_ring_gemstone",
-            "paths": 57,
-            "coverage": 0.999
+            "paths": 53,
+            "coverage": 0.999,
+            "precision": 0.9945,
+            "recall": 0.7847,
+            "iou": 0.7813
           },
           {
             "id": "front_ring_bezel",
-            "paths": 64,
-            "coverage": 0.999
+            "paths": 32,
+            "coverage": 0.999,
+            "precision": 0.6562,
+            "recall": 0.5794,
+            "iou": 0.4445
           }
         ],
+        "partPrecision": 0.7754,
+        "misassignedParts": [],
         "emptyVisibleParts": [],
+        "sharedOnlyParts": [],
         "invalidPaths": 0,
-        "totalPaths": 467,
-        "totalNodes": 4708,
-        "fileKb": 210.1,
+        "totalPaths": 296,
+        "totalNodes": 3731,
+        "fileKb": 164.4,
         "notes": [
-          "도면 대비 선 일치 F@2px 0.867 (F@1px 0.841)",
-          "선이 원본보다 24% 얇거나 빠졌다",
+          "도면 대비 선 일치 F@2px 0.870 (F@1px 0.846)",
           "도면이 컬러로 생성됨 (채도 화면의 12%) — 색면을 그대로 옮긴다"
         ]
       },
       "timings": {
-        "S1_preprocess": 5822,
-        "S2_plan": 15,
-        "S3_masks": 5239,
-        "S5_schematic_whole": 15,
-        "S5_schematic": 582,
-        "S6_vectorize": 8418,
-        "S7_assemble": 9,
-        "S8_qa": 2051
+        "S1_preprocess": 5882,
+        "S2_plan": 7,
+        "S3_masks": 4290,
+        "S5_schematic_whole": 13,
+        "S5_schematic": 414,
+        "S6_vectorize": 5113,
+        "S7_assemble": 5,
+        "S8_qa": 4122
       },
       "files": {
         "svg": "samples-v3/jewelry_3/layered.svg",
@@ -1212,8 +1359,8 @@
             "cushioned_midsole"
           ],
           "regions": 2,
-          "strokes": 39,
-          "nodes": 402,
+          "strokes": 2,
+          "nodes": 184,
           "file": "samples-v3/shoe_1/layers/rubber_outsole.svg"
         },
         {
@@ -1226,8 +1373,8 @@
             "main_upper"
           ],
           "regions": 9,
-          "strokes": 149,
-          "nodes": 2022,
+          "strokes": 38,
+          "nodes": 1044,
           "file": "samples-v3/shoe_1/layers/cushioned_midsole.svg"
         },
         {
@@ -1241,8 +1388,8 @@
             "laces"
           ],
           "regions": 10,
-          "strokes": 36,
-          "nodes": 623,
+          "strokes": 21,
+          "nodes": 628,
           "file": "samples-v3/shoe_1/layers/tongue.svg"
         },
         {
@@ -1256,8 +1403,8 @@
             "laces"
           ],
           "regions": 16,
-          "strokes": 36,
-          "nodes": 750,
+          "strokes": 14,
+          "nodes": 437,
           "file": "samples-v3/shoe_1/layers/eyelet_underlay.svg"
         },
         {
@@ -1273,8 +1420,8 @@
             "laces"
           ],
           "regions": 23,
-          "strokes": 223,
-          "nodes": 6245,
+          "strokes": 101,
+          "nodes": 3570,
           "file": "samples-v3/shoe_1/layers/main_upper.svg"
         },
         {
@@ -1285,8 +1432,8 @@
           "confidence": 0.9,
           "occludedBy": [],
           "regions": 7,
-          "strokes": 80,
-          "nodes": 1331,
+          "strokes": 66,
+          "nodes": 1192,
           "file": "samples-v3/shoe_1/layers/heel_overlay.svg"
         },
         {
@@ -1297,8 +1444,8 @@
           "confidence": 0.97,
           "occludedBy": [],
           "regions": 5,
-          "strokes": 101,
-          "nodes": 1034,
+          "strokes": 39,
+          "nodes": 1057,
           "file": "samples-v3/shoe_1/layers/laces.svg"
         },
         {
@@ -1311,8 +1458,8 @@
             "laces"
           ],
           "regions": 1,
-          "strokes": 75,
-          "nodes": 1531,
+          "strokes": 16,
+          "nodes": 498,
           "file": "samples-v3/shoe_1/layers/swoosh_logo.svg"
         },
         {
@@ -1323,97 +1470,127 @@
           "confidence": 0.98,
           "occludedBy": [],
           "regions": 22,
-          "strokes": 56,
-          "nodes": 1160,
+          "strokes": 31,
+          "nodes": 935,
           "file": "samples-v3/shoe_1/layers/airmax_badge.svg"
         }
       ],
       "qa": {
         "pass": true,
-        "silhouetteIou": 0.9991,
-        "boundaryF": 0.8943,
-        "rawF0": 0.7889,
-        "rawF1": 0.8829,
-        "rawF2": 0.8943,
-        "lineF1": 0.9874,
-        "lineF2": 0.998,
+        "silhouetteIou": 0.9979,
+        "boundaryF": 0.8918,
+        "rawF0": 0.8306,
+        "rawF1": 0.8804,
+        "rawF2": 0.8918,
+        "lineF1": 0.9813,
+        "lineF2": 0.9944,
         "textureShare": 0.596,
-        "inkRatio": 0.929,
-        "chamfer": 0.128,
+        "inkRatio": 1.072,
+        "chamfer": 0.101,
         "p95": 1,
         "detailRecall": 1,
         "majorComponents": [
           6,
-          6
+          8
         ],
         "aspectRatio": 1.052,
         "partCoverage": 0.9995,
         "perPart": [
           {
             "id": "rubber_outsole",
-            "paths": 41,
-            "coverage": 0.9995
+            "paths": 4,
+            "coverage": 0.9995,
+            "precision": 0.7687,
+            "recall": 0.1016,
+            "iou": 0.0986
           },
           {
             "id": "cushioned_midsole",
-            "paths": 158,
-            "coverage": 0.9995
+            "paths": 47,
+            "coverage": 0.9995,
+            "precision": 0.8255,
+            "recall": 0.8053,
+            "iou": 0.6882
           },
           {
             "id": "tongue",
-            "paths": 46,
-            "coverage": 0.9995
+            "paths": 31,
+            "coverage": 0.9995,
+            "precision": 0.9945,
+            "recall": 0.3296,
+            "iou": 0.329
           },
           {
             "id": "eyelet_underlay",
-            "paths": 52,
-            "coverage": 0.9995
+            "paths": 30,
+            "coverage": 0.9995,
+            "precision": 0.8604,
+            "recall": 0.49,
+            "iou": 0.4539
           },
           {
             "id": "main_upper",
-            "paths": 246,
-            "coverage": 0.9995
+            "paths": 124,
+            "coverage": 0.9995,
+            "precision": 0.6868,
+            "recall": 0.697,
+            "iou": 0.5289
           },
           {
             "id": "heel_overlay",
-            "paths": 87,
-            "coverage": 0.9995
+            "paths": 73,
+            "coverage": 0.9995,
+            "precision": 0.9846,
+            "recall": 0.4702,
+            "iou": 0.4668
           },
           {
             "id": "laces",
-            "paths": 106,
-            "coverage": 0.9995
+            "paths": 44,
+            "coverage": 0.9995,
+            "precision": 0.6921,
+            "recall": 0.2073,
+            "iou": 0.1898
           },
           {
             "id": "swoosh_logo",
-            "paths": 76,
-            "coverage": 0.9995
+            "paths": 17,
+            "coverage": 0.9995,
+            "precision": 0.8844,
+            "recall": 0.2142,
+            "iou": 0.2083
           },
           {
             "id": "airmax_badge",
-            "paths": 78,
-            "coverage": 0.9995
+            "paths": 53,
+            "coverage": 0.9995,
+            "precision": 0.9821,
+            "recall": 0.5929,
+            "iou": 0.5866
           }
         ],
+        "partPrecision": 0.8532,
+        "misassignedParts": [],
         "emptyVisibleParts": [],
+        "sharedOnlyParts": [],
         "invalidPaths": 0,
-        "totalPaths": 890,
-        "totalNodes": 15098,
-        "fileKb": 684.4,
+        "totalPaths": 423,
+        "totalNodes": 9545,
+        "fileKb": 427.4,
         "notes": [
           "사진↔도면 종횡비 불일치 5.2% — 파트 배분 정확도에만 영향 (도면은 왜곡하지 않는다)",
-          "해프톤 질감을 톤 면으로 치환 — 화면의 20.1%, 도면 잉크의 60%. 전체 F@2px 0.894, 이 영역을 뺀 선 충실도 0.998"
+          "해프톤 질감을 톤 면으로 치환 — 화면의 20.1%, 도면 잉크의 60%. 전체 F@2px 0.892, 이 영역을 뺀 선 충실도 0.994"
         ]
       },
       "timings": {
-        "S1_preprocess": 9207,
-        "S2_plan": 15,
-        "S3_masks": 15581,
-        "S5_schematic_whole": 15,
-        "S5_schematic": 1021,
-        "S6_vectorize": 18256,
-        "S7_assemble": 9,
-        "S8_qa": 3846
+        "S1_preprocess": 7278,
+        "S2_plan": 22,
+        "S3_masks": 12308,
+        "S5_schematic_whole": 21,
+        "S5_schematic": 1179,
+        "S6_vectorize": 14605,
+        "S7_assemble": 7,
+        "S8_qa": 19514
       },
       "files": {
         "svg": "samples-v3/shoe_1/layered.svg",
@@ -1455,8 +1632,8 @@
             "foam_midsole"
           ],
           "regions": 1,
-          "strokes": 9,
-          "nodes": 69,
+          "strokes": 6,
+          "nodes": 81,
           "file": "samples-v3/shoe_2/layers/rubber_outsole.svg"
         },
         {
@@ -1470,8 +1647,8 @@
             "synthetic_overlays"
           ],
           "regions": 2,
-          "strokes": 12,
-          "nodes": 138,
+          "strokes": 4,
+          "nodes": 77,
           "file": "samples-v3/shoe_2/layers/foam_midsole.svg"
         },
         {
@@ -1487,8 +1664,8 @@
             "laces"
           ],
           "regions": 51,
-          "strokes": 348,
-          "nodes": 4813,
+          "strokes": 180,
+          "nodes": 4002,
           "file": "samples-v3/shoe_2/layers/mesh_upper.svg"
         },
         {
@@ -1502,8 +1679,8 @@
             "laces"
           ],
           "regions": 75,
-          "strokes": 395,
-          "nodes": 5654,
+          "strokes": 237,
+          "nodes": 4903,
           "file": "samples-v3/shoe_2/layers/tongue.svg"
         },
         {
@@ -1517,8 +1694,8 @@
             "brand_graphics"
           ],
           "regions": 55,
-          "strokes": 231,
-          "nodes": 3756,
+          "strokes": 147,
+          "nodes": 2937,
           "file": "samples-v3/shoe_2/layers/synthetic_overlays.svg"
         },
         {
@@ -1529,8 +1706,8 @@
           "confidence": 0.95,
           "occludedBy": [],
           "regions": 2,
-          "strokes": 7,
-          "nodes": 98,
+          "strokes": 6,
+          "nodes": 70,
           "file": "samples-v3/shoe_2/layers/heel_pull_tabs.svg"
         },
         {
@@ -1541,8 +1718,8 @@
           "confidence": 0.97,
           "occludedBy": [],
           "regions": 4,
-          "strokes": 37,
-          "nodes": 902,
+          "strokes": 27,
+          "nodes": 562,
           "file": "samples-v3/shoe_2/layers/collar_lining.svg"
         },
         {
@@ -1553,8 +1730,8 @@
           "confidence": 0.99,
           "occludedBy": [],
           "regions": 54,
-          "strokes": 235,
-          "nodes": 3729,
+          "strokes": 94,
+          "nodes": 2586,
           "file": "samples-v3/shoe_2/layers/laces.svg"
         },
         {
@@ -1565,23 +1742,23 @@
           "confidence": 0.96,
           "occludedBy": [],
           "regions": 15,
-          "strokes": 269,
-          "nodes": 3720,
+          "strokes": 153,
+          "nodes": 3124,
           "file": "samples-v3/shoe_2/layers/brand_graphics.svg"
         }
       ],
       "qa": {
         "pass": true,
-        "silhouetteIou": 0.9978,
-        "boundaryF": 0.9064,
-        "rawF0": 0.7978,
-        "rawF1": 0.8903,
-        "rawF2": 0.9064,
-        "lineF1": 0.9812,
-        "lineF2": 0.9974,
+        "silhouetteIou": 0.9966,
+        "boundaryF": 0.9043,
+        "rawF0": 0.8218,
+        "rawF1": 0.8878,
+        "rawF2": 0.9043,
+        "lineF1": 0.9765,
+        "lineF2": 0.9948,
         "textureShare": 0.4392,
-        "inkRatio": 0.942,
-        "chamfer": 0.152,
+        "inkRatio": 1.089,
+        "chamfer": 0.153,
         "p95": 1,
         "detailRecall": 1,
         "majorComponents": [
@@ -1593,69 +1770,99 @@
         "perPart": [
           {
             "id": "rubber_outsole",
-            "paths": 10,
-            "coverage": 0.9972
+            "paths": 7,
+            "coverage": 0.9972,
+            "precision": 0.9555,
+            "recall": 0.0934,
+            "iou": 0.093
           },
           {
             "id": "foam_midsole",
-            "paths": 14,
-            "coverage": 0.9972
+            "paths": 6,
+            "coverage": 0.9972,
+            "precision": 0.9421,
+            "recall": 0.2568,
+            "iou": 0.2528
           },
           {
             "id": "mesh_upper",
-            "paths": 399,
-            "coverage": 0.9972
+            "paths": 231,
+            "coverage": 0.9972,
+            "precision": 0.7582,
+            "recall": 0.6929,
+            "iou": 0.5675
           },
           {
             "id": "tongue",
-            "paths": 470,
-            "coverage": 0.9972
+            "paths": 312,
+            "coverage": 0.9972,
+            "precision": 0.8598,
+            "recall": 0.7939,
+            "iou": 0.7028
           },
           {
             "id": "synthetic_overlays",
-            "paths": 286,
-            "coverage": 0.9972
+            "paths": 202,
+            "coverage": 0.9972,
+            "precision": 0.884,
+            "recall": 0.7416,
+            "iou": 0.6758
           },
           {
             "id": "heel_pull_tabs",
-            "paths": 9,
-            "coverage": 0.9972
+            "paths": 8,
+            "coverage": 0.9972,
+            "precision": 0.9526,
+            "recall": 0.5626,
+            "iou": 0.5473
           },
           {
             "id": "collar_lining",
-            "paths": 41,
-            "coverage": 0.9972
+            "paths": 31,
+            "coverage": 0.9972,
+            "precision": 0.85,
+            "recall": 0.7999,
+            "iou": 0.7009
           },
           {
             "id": "laces",
-            "paths": 289,
-            "coverage": 0.9972
+            "paths": 148,
+            "coverage": 0.9972,
+            "precision": 0.9627,
+            "recall": 0.7004,
+            "iou": 0.6818
           },
           {
             "id": "brand_graphics",
-            "paths": 284,
-            "coverage": 0.9972
+            "paths": 168,
+            "coverage": 0.9972,
+            "precision": 0.8297,
+            "recall": 0.7225,
+            "iou": 0.6292
           }
         ],
+        "partPrecision": 0.8883,
+        "misassignedParts": [],
         "emptyVisibleParts": [],
+        "sharedOnlyParts": [],
         "invalidPaths": 0,
-        "totalPaths": 1802,
-        "totalNodes": 22879,
-        "fileKb": 1038.4,
+        "totalPaths": 1113,
+        "totalNodes": 18342,
+        "fileKb": 813.7,
         "notes": [
           "피사체 검출 실패 — 캔버스 중심 정렬로 대체 (사진 97% · 도면 98%)",
-          "해프톤 질감을 톤 면으로 치환 — 화면의 20.7%, 도면 잉크의 44%. 전체 F@2px 0.906, 이 영역을 뺀 선 충실도 0.997"
+          "해프톤 질감을 톤 면으로 치환 — 화면의 20.7%, 도면 잉크의 44%. 전체 F@2px 0.904, 이 영역을 뺀 선 충실도 0.995"
         ]
       },
       "timings": {
-        "S1_preprocess": 6389,
-        "S2_plan": 18,
-        "S3_masks": 19451,
-        "S5_schematic_whole": 32,
-        "S5_schematic": 1099,
-        "S6_vectorize": 21945,
-        "S7_assemble": 16,
-        "S8_qa": 4792
+        "S1_preprocess": 6010,
+        "S2_plan": 17,
+        "S3_masks": 11396,
+        "S5_schematic_whole": 10,
+        "S5_schematic": 566,
+        "S6_vectorize": 12340,
+        "S7_assemble": 9,
+        "S8_qa": 12670
       },
       "files": {
         "svg": "samples-v3/shoe_2/layered.svg",
@@ -1701,8 +1908,8 @@
             "outsole"
           ],
           "regions": 30,
-          "strokes": 117,
-          "nodes": 1618,
+          "strokes": 46,
+          "nodes": 1126,
           "file": "samples-v3/shoe_3/layers/tongue.svg"
         },
         {
@@ -1720,7 +1927,7 @@
           ],
           "regions": 0,
           "strokes": 6,
-          "nodes": 28,
+          "nodes": 71,
           "file": "samples-v3/shoe_3/layers/mesh_upper.svg"
         },
         {
@@ -1734,9 +1941,8 @@
             "outsole"
           ],
           "regions": 0,
-          "strokes": 3,
-          "nodes": 13,
-          "file": "samples-v3/shoe_3/layers/padded_collar.svg"
+          "strokes": 0,
+          "nodes": 0
         },
         {
           "id": "eyestay_overlay",
@@ -1750,8 +1956,8 @@
             "outsole"
           ],
           "regions": 6,
-          "strokes": 53,
-          "nodes": 1172,
+          "strokes": 30,
+          "nodes": 891,
           "file": "samples-v3/shoe_3/layers/eyestay_overlay.svg"
         },
         {
@@ -1765,8 +1971,8 @@
             "outsole"
           ],
           "regions": 51,
-          "strokes": 88,
-          "nodes": 2119,
+          "strokes": 65,
+          "nodes": 2081,
           "file": "samples-v3/shoe_3/layers/lace_loops.svg"
         },
         {
@@ -1780,8 +1986,8 @@
             "outsole"
           ],
           "regions": 0,
-          "strokes": 2,
-          "nodes": 5,
+          "strokes": 1,
+          "nodes": 7,
           "file": "samples-v3/shoe_3/layers/laces.svg"
         },
         {
@@ -1792,8 +1998,8 @@
           "confidence": 0.98,
           "occludedBy": [],
           "regions": 322,
-          "strokes": 1338,
-          "nodes": 24492,
+          "strokes": 479,
+          "nodes": 15959,
           "file": "samples-v3/shoe_3/layers/outsole.svg"
         },
         {
@@ -1806,92 +2012,122 @@
             "outsole"
           ],
           "regions": 293,
-          "strokes": 419,
-          "nodes": 12976,
+          "strokes": 220,
+          "nodes": 8831,
           "file": "samples-v3/shoe_3/layers/lace_stitching.svg"
         }
       ],
       "qa": {
         "pass": true,
-        "silhouetteIou": 0.9995,
-        "boundaryF": 0.9663,
-        "rawF0": 0.8686,
-        "rawF1": 0.9552,
-        "rawF2": 0.9663,
-        "lineF1": 0.9866,
-        "lineF2": 0.9981,
+        "silhouetteIou": 0.9988,
+        "boundaryF": 0.9643,
+        "rawF0": 0.9019,
+        "rawF1": 0.9525,
+        "rawF2": 0.9643,
+        "lineF1": 0.9834,
+        "lineF2": 0.9959,
         "textureShare": 0.2525,
-        "inkRatio": 0.928,
-        "chamfer": 0.112,
+        "inkRatio": 1.072,
+        "chamfer": 0.088,
         "p95": 1,
         "detailRecall": 1,
         "majorComponents": [
           1,
-          3
+          1
         ],
         "aspectRatio": 1.006,
         "partCoverage": 0.9985,
         "perPart": [
           {
             "id": "tongue",
-            "paths": 147,
-            "coverage": 0.9985
+            "paths": 76,
+            "coverage": 0.9985,
+            "precision": 0.8844,
+            "recall": 0.2804,
+            "iou": 0.2705
           },
           {
             "id": "mesh_upper",
             "paths": 6,
-            "coverage": 0.9985
+            "coverage": 0.9985,
+            "precision": 1,
+            "recall": 0.11,
+            "iou": 0.11
           },
           {
             "id": "padded_collar",
-            "paths": 3,
-            "coverage": 0.9985
+            "paths": 0,
+            "coverage": 0,
+            "precision": -1,
+            "recall": -1,
+            "iou": -1
           },
           {
             "id": "eyestay_overlay",
-            "paths": 59,
-            "coverage": 0.9985
+            "paths": 36,
+            "coverage": 0.9985,
+            "precision": 0.5725,
+            "recall": 0.7221,
+            "iou": 0.4691
           },
           {
             "id": "lace_loops",
-            "paths": 139,
-            "coverage": 0.9985
+            "paths": 116,
+            "coverage": 0.9985,
+            "precision": 0.6409,
+            "recall": 0.8212,
+            "iou": 0.5624
           },
           {
             "id": "laces",
-            "paths": 2,
-            "coverage": 0.9985
+            "paths": 1,
+            "coverage": 0.9985,
+            "precision": 1,
+            "recall": 0.0027,
+            "iou": 0.0027
           },
           {
             "id": "outsole",
-            "paths": 1660,
-            "coverage": 0.9985
+            "paths": 801,
+            "coverage": 0.9985,
+            "precision": 0.8922,
+            "recall": 0.8828,
+            "iou": 0.7978
           },
           {
             "id": "lace_stitching",
-            "paths": 712,
-            "coverage": 0.9985
+            "paths": 513,
+            "coverage": 0.9985,
+            "precision": 0.9557,
+            "recall": 0.7453,
+            "iou": 0.7204
           }
         ],
+        "partPrecision": 0.8494,
+        "misassignedParts": [],
         "emptyVisibleParts": [],
+        "sharedOnlyParts": [
+          "padded_collar"
+        ],
         "invalidPaths": 0,
-        "totalPaths": 2728,
-        "totalNodes": 42423,
-        "fileKb": 1893.7,
+        "totalPaths": 1549,
+        "totalNodes": 28966,
+        "fileKb": 1280.4,
         "notes": [
           "피사체 검출 실패 — 캔버스 중심 정렬로 대체 (사진 98% · 도면 98%)",
-          "해프톤 질감을 톤 면으로 치환 — 화면의 19.5%, 도면 잉크의 25%. 전체 F@2px 0.966, 이 영역을 뺀 선 충실도 0.998"
+          "자기 패스 없이 공유 경계로만 그려진 파트 1개: padded_collar",
+          "해프톤 질감을 톤 면으로 치환 — 화면의 19.5%, 도면 잉크의 25%. 전체 F@2px 0.964, 이 영역을 뺀 선 충실도 0.996"
         ]
       },
       "timings": {
-        "S1_preprocess": 7246,
-        "S2_plan": 14,
-        "S3_masks": 20674,
-        "S5_schematic_whole": 13,
-        "S5_schematic": 888,
-        "S6_vectorize": 26823,
-        "S7_assemble": 19,
-        "S8_qa": 16394
+        "S1_preprocess": 8981,
+        "S2_plan": 22,
+        "S3_masks": 13256,
+        "S5_schematic_whole": 21,
+        "S5_schematic": 667,
+        "S6_vectorize": 14191,
+        "S7_assemble": 20,
+        "S8_qa": 10248
       },
       "files": {
         "svg": "samples-v3/shoe_3/layered.svg",

@@ -9,8 +9,8 @@
       "width": 2048,
       "height": 928
     },
-    "totalMs": 22463,
-    "createdAt": "2026-08-22T05:17:31.882Z"
+    "totalMs": 20064,
+    "createdAt": "2026-08-24T01:26:26.823Z"
   },
   "options": {
     "minParts": 3,
@@ -192,8 +192,8 @@
       "label": "Rear ring band",
       "z": 0,
       "regions": 2,
-      "strokes": 30,
-      "nodes": 270,
+      "strokes": 9,
+      "nodes": 170,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -207,8 +207,8 @@
       "label": "Rear ring pearl",
       "z": 1,
       "regions": 2,
-      "strokes": 50,
-      "nodes": 655,
+      "strokes": 40,
+      "nodes": 576,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -222,8 +222,8 @@
       "label": "Rear ring setting",
       "z": 2,
       "regions": 0,
-      "strokes": 22,
-      "nodes": 140,
+      "strokes": 11,
+      "nodes": 82,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -237,8 +237,8 @@
       "label": "Center ring band",
       "z": 3,
       "regions": 2,
-      "strokes": 28,
-      "nodes": 203,
+      "strokes": 10,
+      "nodes": 131,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -252,8 +252,8 @@
       "label": "Center ring gemstone",
       "z": 4,
       "regions": 3,
-      "strokes": 109,
-      "nodes": 1707,
+      "strokes": 88,
+      "nodes": 1589,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -267,8 +267,8 @@
       "label": "Center ring bezel",
       "z": 5,
       "regions": 0,
-      "strokes": 29,
-      "nodes": 198,
+      "strokes": 10,
+      "nodes": 99,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -282,8 +282,8 @@
       "label": "Front ring band",
       "z": 6,
       "regions": 5,
-      "strokes": 64,
-      "nodes": 704,
+      "strokes": 29,
+      "nodes": 451,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -297,8 +297,8 @@
       "label": "Front ring gemstone",
       "z": 7,
       "regions": 1,
-      "strokes": 56,
-      "nodes": 392,
+      "strokes": 52,
+      "nodes": 374,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -312,8 +312,8 @@
       "label": "Front ring bezel",
       "z": 8,
       "regions": 1,
-      "strokes": 63,
-      "nodes": 439,
+      "strokes": 31,
+      "nodes": 259,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -325,90 +325,119 @@
   ],
   "qa": {
     "pass": false,
-    "silhouetteIou": 0.9913,
-    "boundaryF": 0.8636,
-    "rawF0": 0.7425,
-    "rawF1": 0.8375,
-    "rawF2": 0.8636,
-    "lineF1": 0.841,
-    "lineF2": 0.8671,
+    "silhouetteIou": 0.9936,
+    "boundaryF": 0.8661,
+    "rawF0": 0.7735,
+    "rawF1": 0.8424,
+    "rawF2": 0.8661,
+    "lineF1": 0.8459,
+    "lineF2": 0.8696,
     "textureShare": 0.0102,
-    "inkRatio": 0.756,
-    "chamfer": 2.237,
-    "p95": 15,
+    "inkRatio": 0.866,
+    "chamfer": 2.084,
+    "p95": 14.31,
     "detailRecall": 1,
     "majorComponents": [
       8,
-      15
+      16
     ],
     "aspectRatio": 1,
     "partCoverage": 0.999,
     "perPart": [
       {
         "id": "rear_ring_band",
-        "paths": 32,
-        "coverage": 0.999
+        "paths": 11,
+        "coverage": 0.999,
+        "precision": 0.8067,
+        "recall": 0.7842,
+        "iou": 0.6602
       },
       {
         "id": "rear_ring_pearl",
-        "paths": 52,
-        "coverage": 0.999
+        "paths": 42,
+        "coverage": 0.999,
+        "precision": 0.9968,
+        "recall": 0.7647,
+        "iou": 0.7628
       },
       {
         "id": "rear_ring_setting",
-        "paths": 22,
-        "coverage": 0.999
+        "paths": 11,
+        "coverage": 0.999,
+        "precision": 0.5024,
+        "recall": 0.2297,
+        "iou": 0.1871
       },
       {
         "id": "center_ring_band",
-        "paths": 30,
-        "coverage": 0.999
+        "paths": 12,
+        "coverage": 0.999,
+        "precision": 0.804,
+        "recall": 0.473,
+        "iou": 0.4241
       },
       {
         "id": "center_ring_gemstone",
-        "paths": 112,
-        "coverage": 0.999
+        "paths": 91,
+        "coverage": 0.999,
+        "precision": 0.966,
+        "recall": 0.9013,
+        "iou": 0.8737
       },
       {
         "id": "center_ring_bezel",
-        "paths": 29,
-        "coverage": 0.999
+        "paths": 10,
+        "coverage": 0.999,
+        "precision": 0.6001,
+        "recall": 0.2286,
+        "iou": 0.1984
       },
       {
         "id": "front_ring_band",
-        "paths": 69,
-        "coverage": 0.999
+        "paths": 34,
+        "coverage": 0.999,
+        "precision": 0.6519,
+        "recall": 0.8562,
+        "iou": 0.5876
       },
       {
         "id": "front_ring_gemstone",
-        "paths": 57,
-        "coverage": 0.999
+        "paths": 53,
+        "coverage": 0.999,
+        "precision": 0.9945,
+        "recall": 0.7847,
+        "iou": 0.7813
       },
       {
         "id": "front_ring_bezel",
-        "paths": 64,
-        "coverage": 0.999
+        "paths": 32,
+        "coverage": 0.999,
+        "precision": 0.6562,
+        "recall": 0.5794,
+        "iou": 0.4445
       }
     ],
+    "partPrecision": 0.7754,
+    "misassignedParts": [],
     "emptyVisibleParts": [],
+    "sharedOnlyParts": [],
     "invalidPaths": 0,
-    "totalPaths": 467,
-    "totalNodes": 4708,
-    "fileKb": 210.1,
+    "totalPaths": 296,
+    "totalNodes": 3731,
+    "fileKb": 164.4,
     "notes": [
-      "도면 대비 선 일치 F@2px 0.867 (F@1px 0.841)",
-      "선이 원본보다 24% 얇거나 빠졌다",
+      "도면 대비 선 일치 F@2px 0.870 (F@1px 0.846)",
       "도면이 컬러로 생성됨 (채도 화면의 12%) — 색면을 그대로 옮긴다"
     ]
   },
   "timings": {
-    "S1_preprocess": 5822,
-    "S2_plan": 15,
-    "S3_masks": 5239,
-    "S5_schematic_whole": 15,
-    "S5_schematic": 582,
-    "S6_vectorize": 8418,
-    "S7_assemble": 9,
-    "S8_qa": 2051
+    "S1_preprocess": 5882,
+    "S2_plan": 7,
+    "S3_masks": 4290,
+    "S5_schematic_whole": 13,
+    "S5_schematic": 414,
+    "S6_vectorize": 5113,
+    "S7_assemble": 5,
+    "S8_qa": 4122
   }
 }

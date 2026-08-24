@@ -9,8 +9,8 @@
       "width": 1254,
       "height": 2800
     },
-    "totalMs": 23131,
-    "createdAt": "2026-08-22T05:15:01.126Z"
+    "totalMs": 25036,
+    "createdAt": "2026-08-24T01:25:03.532Z"
   },
   "options": {
     "minParts": 3,
@@ -112,8 +112,8 @@
       "label": "Inner pouch body",
       "z": 0,
       "regions": 49,
-      "strokes": 6,
-      "nodes": 452,
+      "strokes": 0,
+      "nodes": 433,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -127,8 +127,8 @@
       "label": "Chain shoulder strap",
       "z": 1,
       "regions": 34,
-      "strokes": 57,
-      "nodes": 1735,
+      "strokes": 51,
+      "nodes": 1711,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -142,8 +142,8 @@
       "label": "Linked metal outer shell",
       "z": 2,
       "regions": 19,
-      "strokes": 32,
-      "nodes": 612,
+      "strokes": 12,
+      "nodes": 368,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -157,8 +157,8 @@
       "label": "Turquoise stone embellishments",
       "z": 3,
       "regions": 644,
-      "strokes": 795,
-      "nodes": 15502,
+      "strokes": 533,
+      "nodes": 14850,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -170,16 +170,16 @@
   ],
   "qa": {
     "pass": true,
-    "silhouetteIou": 0.995,
-    "boundaryF": 0.9986,
-    "rawF0": 0.891,
-    "rawF1": 0.9827,
-    "rawF2": 0.9986,
-    "lineF1": 0.9827,
-    "lineF2": 0.9986,
+    "silhouetteIou": 0.996,
+    "boundaryF": 0.9974,
+    "rawF0": 0.9012,
+    "rawF1": 0.9819,
+    "rawF2": 0.9974,
+    "lineF1": 0.9819,
+    "lineF2": 0.9974,
     "textureShare": 0,
-    "inkRatio": 1.043,
-    "chamfer": 0.122,
+    "inkRatio": 1.099,
+    "chamfer": 0.114,
     "p95": 1,
     "detailRecall": 1,
     "majorComponents": [
@@ -191,42 +191,60 @@
     "perPart": [
       {
         "id": "inner_pouch",
-        "paths": 55,
-        "coverage": 0.9578
+        "paths": 49,
+        "coverage": 0.9578,
+        "precision": 0.0935,
+        "recall": 0.0704,
+        "iou": 0.0418
       },
       {
         "id": "chain_strap",
-        "paths": 91,
-        "coverage": 0.9578
+        "paths": 85,
+        "coverage": 0.9578,
+        "precision": 0.9468,
+        "recall": 0.6618,
+        "iou": 0.638
       },
       {
         "id": "metal_lattice_shell",
-        "paths": 51,
-        "coverage": 0.9578
+        "paths": 31,
+        "coverage": 0.9578,
+        "precision": 0.8562,
+        "recall": 0.2309,
+        "iou": 0.2223
       },
       {
         "id": "turquoise_stone_embellishments",
-        "paths": 1439,
-        "coverage": 0.9578
+        "paths": 1177,
+        "coverage": 0.9578,
+        "precision": 0.93,
+        "recall": 0.919,
+        "iou": 0.8595
       }
     ],
+    "partPrecision": 0.7066,
+    "misassignedParts": [
+      "inner_pouch"
+    ],
     "emptyVisibleParts": [],
+    "sharedOnlyParts": [],
     "invalidPaths": 0,
-    "totalPaths": 1636,
-    "totalNodes": 18301,
-    "fileKb": 840.5,
+    "totalPaths": 1342,
+    "totalNodes": 17362,
+    "fileKb": 782.3,
     "notes": [
-      "사진↔도면 종횡비 불일치 3.1% — 파트 배분 정확도에만 영향 (도면은 왜곡하지 않는다)"
+      "사진↔도면 종횡비 불일치 3.1% — 파트 배분 정확도에만 영향 (도면은 왜곡하지 않는다)",
+      "파트 배분이 의심되는 레이어 1개: inner_pouch (precision < 0.5)"
     ]
   },
   "timings": {
-    "S1_preprocess": 6152,
-    "S2_plan": 11,
-    "S3_masks": 6618,
-    "S5_schematic_whole": 26,
-    "S5_schematic": 477,
-    "S6_vectorize": 6841,
-    "S7_assemble": 10,
-    "S8_qa": 2390
+    "S1_preprocess": 6287,
+    "S2_plan": 17,
+    "S3_masks": 6056,
+    "S5_schematic_whole": 10,
+    "S5_schematic": 417,
+    "S6_vectorize": 6917,
+    "S7_assemble": 9,
+    "S8_qa": 4786
   }
 }

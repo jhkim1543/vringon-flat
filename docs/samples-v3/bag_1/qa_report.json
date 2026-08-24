@@ -9,8 +9,8 @@
       "width": 1438,
       "height": 2048
     },
-    "totalMs": 20887,
-    "createdAt": "2026-08-22T05:15:34.574Z"
+    "totalMs": 28225,
+    "createdAt": "2026-08-24T01:24:03.240Z"
   },
   "options": {
     "minParts": 3,
@@ -188,8 +188,8 @@
       "label": "Top carry handle",
       "z": 0,
       "regions": 5,
-      "strokes": 6,
-      "nodes": 123,
+      "strokes": 2,
+      "nodes": 115,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -203,8 +203,8 @@
       "label": "Main compartment shell",
       "z": 1,
       "regions": 0,
-      "strokes": 1,
-      "nodes": 4,
+      "strokes": 0,
+      "nodes": 0,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -218,8 +218,8 @@
       "label": "Left side gusset",
       "z": 2,
       "regions": 8,
-      "strokes": 85,
-      "nodes": 1520,
+      "strokes": 61,
+      "nodes": 1344,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -233,8 +233,8 @@
       "label": "Front lower body panel",
       "z": 3,
       "regions": 7,
-      "strokes": 55,
-      "nodes": 804,
+      "strokes": 9,
+      "nodes": 868,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -248,8 +248,8 @@
       "label": "Front cover flap",
       "z": 4,
       "regions": 9,
-      "strokes": 68,
-      "nodes": 2177,
+      "strokes": 23,
+      "nodes": 930,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -263,8 +263,8 @@
       "label": "Red decorative trim bands",
       "z": 5,
       "regions": 6,
-      "strokes": 31,
-      "nodes": 644,
+      "strokes": 17,
+      "nodes": 549,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -278,8 +278,8 @@
       "label": "Vertical closure strap",
       "z": 6,
       "regions": 5,
-      "strokes": 33,
-      "nodes": 567,
+      "strokes": 27,
+      "nodes": 538,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -293,8 +293,8 @@
       "label": "Front clasp assembly",
       "z": 7,
       "regions": 3,
-      "strokes": 84,
-      "nodes": 823,
+      "strokes": 42,
+      "nodes": 585,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this bag to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -306,84 +306,117 @@
   ],
   "qa": {
     "pass": true,
-    "silhouetteIou": 0.9989,
-    "boundaryF": 0.8979,
-    "rawF0": 0.7941,
-    "rawF1": 0.8862,
-    "rawF2": 0.8979,
-    "lineF1": 0.9885,
-    "lineF2": 0.9993,
+    "silhouetteIou": 0.9976,
+    "boundaryF": 0.8969,
+    "rawF0": 0.8162,
+    "rawF1": 0.8838,
+    "rawF2": 0.8969,
+    "lineF1": 0.9826,
+    "lineF2": 0.9972,
     "textureShare": 0.6183,
-    "inkRatio": 1.015,
-    "chamfer": 0.12,
+    "inkRatio": 1.084,
+    "chamfer": 0.107,
     "p95": 1,
     "detailRecall": 1,
     "majorComponents": [
       2,
-      4
+      5
     ],
     "aspectRatio": 1.198,
     "partCoverage": 0.9996,
     "perPart": [
       {
         "id": "top_handle",
-        "paths": 11,
-        "coverage": 0.9996
+        "paths": 7,
+        "coverage": 0.9996,
+        "precision": 0.3718,
+        "recall": 0.0846,
+        "iou": 0.074
       },
       {
         "id": "main_compartment_shell",
-        "paths": 1,
-        "coverage": 0.9996
+        "paths": 0,
+        "coverage": 0,
+        "precision": -1,
+        "recall": -1,
+        "iou": -1
       },
       {
         "id": "left_side_gusset",
-        "paths": 93,
-        "coverage": 0.9996
+        "paths": 69,
+        "coverage": 0.9996,
+        "precision": 0.9067,
+        "recall": 0.745,
+        "iou": 0.692
       },
       {
         "id": "front_lower_panel",
-        "paths": 62,
-        "coverage": 0.9996
+        "paths": 16,
+        "coverage": 0.9996,
+        "precision": 0.8574,
+        "recall": 0.6396,
+        "iou": 0.5781
       },
       {
         "id": "front_flap",
-        "paths": 77,
-        "coverage": 0.9996
+        "paths": 32,
+        "coverage": 0.9996,
+        "precision": 0.8366,
+        "recall": 0.8464,
+        "iou": 0.7263
       },
       {
         "id": "red_trim_bands",
-        "paths": 37,
-        "coverage": 0.9996
+        "paths": 23,
+        "coverage": 0.9996,
+        "precision": 0.8661,
+        "recall": 0.5314,
+        "iou": 0.4911
       },
       {
         "id": "closure_strap",
-        "paths": 38,
-        "coverage": 0.9996
+        "paths": 32,
+        "coverage": 0.9996,
+        "precision": 0.7703,
+        "recall": 0.5724,
+        "iou": 0.489
       },
       {
         "id": "clasp_assembly",
-        "paths": 87,
-        "coverage": 0.9996
+        "paths": 45,
+        "coverage": 0.9996,
+        "precision": 0.6036,
+        "recall": 0.4516,
+        "iou": 0.3483
       }
     ],
+    "partPrecision": 0.7446,
+    "misassignedParts": [
+      "top_handle"
+    ],
     "emptyVisibleParts": [],
+    "sharedOnlyParts": [
+      "main_compartment_shell"
+    ],
     "invalidPaths": 0,
-    "totalPaths": 406,
-    "totalNodes": 6662,
-    "fileKb": 284.8,
+    "totalPaths": 224,
+    "totalNodes": 4929,
+    "fileKb": 206.6,
     "notes": [
       "사진↔도면 종횡비 불일치 19.8% — 파트 배분 정확도에만 영향 (도면은 왜곡하지 않는다)",
-      "해프톤 질감을 톤 면으로 치환 — 화면의 24.1%, 도면 잉크의 62%. 전체 F@2px 0.898, 이 영역을 뺀 선 충실도 0.999"
+      "파트 배분이 의심되는 레이어 1개: top_handle (precision < 0.5)",
+      "자기 패스 없이 공유 경계로만 그려진 파트 1개: main_compartment_shell",
+      "해프톤 질감을 톤 면으로 치환 — 화면의 24.1%, 도면 잉크의 62%. 전체 F@2px 0.897, 이 영역을 뺀 선 충실도 0.997"
     ]
   },
   "timings": {
-    "S1_preprocess": 6181,
-    "S2_plan": 8,
-    "S3_masks": 2686,
-    "S5_schematic_whole": 8,
-    "S5_schematic": 524,
-    "S6_vectorize": 8871,
-    "S7_assemble": 20,
-    "S8_qa": 2289
+    "S1_preprocess": 10802,
+    "S2_plan": 5,
+    "S3_masks": 2768,
+    "S5_schematic_whole": 13,
+    "S5_schematic": 493,
+    "S6_vectorize": 8584,
+    "S7_assemble": 5,
+    "S8_qa": 5322
   }
 }

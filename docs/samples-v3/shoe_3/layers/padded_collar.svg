@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-     viewBox="0 0 2800 2118" width="2800" height="2118">
-<g id="layer-padded_collar" inkscape:label="Padded collar" data-z="2" data-kind="component" data-regions="0" data-strokes="3">
-      <path d="M2743 574C2752.27 577.09 2750.62 594.96 2755.25 600.75C2762.14 609.36 2769 628.54 2769 640" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M2769 640C2770.72 641.72 2769.37 638.58 2770.75 641C2772.79 644.57 2772.5 650.99 2773 655C2773.31 657.47 2774.89 659.71 2775.75 662C2777.8 667.48 2778.26 676.09 2779 682C2779.4 685.2 2781 687.62 2781 691C2781 693.83 2782.74 703.27 2781.75 705C2780.75 706.75 2767.55 706 2765 706" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M2760 703C2760.33 703 2760.66 703 2761 703C2761 704.98 2761 706.96 2761 709C2760.67 709 2760.34 709 2760 709C2760 707.02 2760 705.04 2760 703Z" fill="#111111" fill-rule="evenodd"/>
-    </g>
-</svg>

@@ -9,8 +9,8 @@
       "width": 1388,
       "height": 2048
     },
-    "totalMs": 19252,
-    "createdAt": "2026-08-22T05:17:03.802Z"
+    "totalMs": 21633,
+    "createdAt": "2026-08-24T01:26:03.106Z"
   },
   "options": {
     "minParts": 3,
@@ -180,8 +180,8 @@
       "label": "Rear brooch clasp hardware",
       "z": 0,
       "regions": 12,
-      "strokes": 64,
-      "nodes": 639,
+      "strokes": 15,
+      "nodes": 385,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -195,8 +195,8 @@
       "label": "Upper tuning pegs",
       "z": 1,
       "regions": 3,
-      "strokes": 16,
-      "nodes": 167,
+      "strokes": 7,
+      "nodes": 96,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -210,8 +210,8 @@
       "label": "String wire set",
       "z": 2,
       "regions": 1,
-      "strokes": 35,
-      "nodes": 250,
+      "strokes": 2,
+      "nodes": 68,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -225,8 +225,8 @@
       "label": "Outer curved spine",
       "z": 3,
       "regions": 2,
-      "strokes": 29,
-      "nodes": 207,
+      "strokes": 5,
+      "nodes": 118,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -240,8 +240,8 @@
       "label": "Lower frame and soundboard",
       "z": 4,
       "regions": 17,
-      "strokes": 222,
-      "nodes": 2610,
+      "strokes": 62,
+      "nodes": 1539,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -255,8 +255,8 @@
       "label": "Upper neck plate",
       "z": 5,
       "regions": 7,
-      "strokes": 70,
-      "nodes": 758,
+      "strokes": 14,
+      "nodes": 439,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -270,8 +270,8 @@
       "label": "Front leaf ornament",
       "z": 6,
       "regions": 2,
-      "strokes": 16,
-      "nodes": 154,
+      "strokes": 9,
+      "nodes": 143,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -285,8 +285,8 @@
       "label": "Neck fasteners",
       "z": 7,
       "regions": 2,
-      "strokes": 44,
-      "nodes": 289,
+      "strokes": 12,
+      "nodes": 122,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -298,83 +298,110 @@
   ],
   "qa": {
     "pass": true,
-    "silhouetteIou": 0.9947,
-    "boundaryF": 0.9936,
-    "rawF0": 0.8572,
-    "rawF1": 0.9681,
-    "rawF2": 0.9936,
-    "lineF1": 0.9681,
-    "lineF2": 0.9936,
+    "silhouetteIou": 0.996,
+    "boundaryF": 0.9973,
+    "rawF0": 0.9104,
+    "rawF1": 0.9772,
+    "rawF2": 0.9973,
+    "lineF1": 0.9772,
+    "lineF2": 0.9973,
     "textureShare": 0,
-    "inkRatio": 0.834,
-    "chamfer": 0.17,
+    "inkRatio": 1.072,
+    "chamfer": 0.109,
     "p95": 1,
     "detailRecall": 1,
     "majorComponents": [
       5,
-      5
+      4
     ],
     "aspectRatio": 1.007,
     "partCoverage": 0.9999,
     "perPart": [
       {
         "id": "rear_clasp_hardware",
-        "paths": 76,
-        "coverage": 0.9999
+        "paths": 27,
+        "coverage": 0.9999,
+        "precision": 0.6214,
+        "recall": 0.5299,
+        "iou": 0.4006
       },
       {
         "id": "upper_tuning_pegs",
-        "paths": 19,
-        "coverage": 0.9999
+        "paths": 10,
+        "coverage": 0.9999,
+        "precision": 0.9872,
+        "recall": 0.563,
+        "iou": 0.5589
       },
       {
         "id": "string_wire_set",
-        "paths": 36,
-        "coverage": 0.9999
+        "paths": 3,
+        "coverage": 0.9999,
+        "precision": 0.6788,
+        "recall": 0.2683,
+        "iou": 0.2381
       },
       {
         "id": "outer_curved_spine",
-        "paths": 31,
-        "coverage": 0.9999
+        "paths": 7,
+        "coverage": 0.9999,
+        "precision": 0.907,
+        "recall": 0.1669,
+        "iou": 0.1641
       },
       {
         "id": "lower_frame_body",
-        "paths": 239,
-        "coverage": 0.9999
+        "paths": 79,
+        "coverage": 0.9999,
+        "precision": 0.9077,
+        "recall": 0.873,
+        "iou": 0.8019
       },
       {
         "id": "upper_neck_plate",
-        "paths": 77,
-        "coverage": 0.9999
+        "paths": 21,
+        "coverage": 0.9999,
+        "precision": 0.6684,
+        "recall": 0.6967,
+        "iou": 0.5178
       },
       {
         "id": "front_leaf_ornament",
-        "paths": 18,
-        "coverage": 0.9999
+        "paths": 11,
+        "coverage": 0.9999,
+        "precision": 0.8799,
+        "recall": 0.427,
+        "iou": 0.4035
       },
       {
         "id": "neck_fasteners",
-        "paths": 46,
-        "coverage": 0.9999
+        "paths": 14,
+        "coverage": 0.9999,
+        "precision": 0.9204,
+        "recall": 0.1946,
+        "iou": 0.1914
       }
     ],
+    "partPrecision": 0.8214,
+    "misassignedParts": [],
     "emptyVisibleParts": [],
+    "sharedOnlyParts": [],
     "invalidPaths": 0,
-    "totalPaths": 542,
-    "totalNodes": 5074,
-    "fileKb": 234.8,
+    "totalPaths": 172,
+    "totalNodes": 2910,
+    "fileKb": 131.5,
     "notes": [
       "도면이 컬러로 생성됨 (채도 화면의 10%) — 색면을 그대로 옮긴다"
     ]
   },
   "timings": {
-    "S1_preprocess": 5973,
-    "S2_plan": 12,
-    "S3_masks": 3413,
-    "S5_schematic_whole": 16,
-    "S5_schematic": 463,
-    "S6_vectorize": 7064,
-    "S7_assemble": 8,
-    "S8_qa": 1877
+    "S1_preprocess": 6267,
+    "S2_plan": 9,
+    "S3_masks": 2921,
+    "S5_schematic_whole": 7,
+    "S5_schematic": 432,
+    "S6_vectorize": 6323,
+    "S7_assemble": 5,
+    "S8_qa": 5403
   }
 }

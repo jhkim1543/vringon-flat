@@ -36,6 +36,17 @@ export interface CenterlineOptions {
   /** 선 패스 상한 — Illustrator 편집성을 위한 예산 (기본 600) */
   maxPaths?: number;
   /**
+   * 선 굵기 상한(px, **입력 이미지 좌표계**). 기본 6.
+   *
+   * 이 값은 centerlineTrace 가 원본 해상도에서 돌던 시절에 정해졌다. V3 는 도면을 2~4배로
+   * 키운 작업 캔버스에서 추적하므로 그대로 두면 실효 상한이 원본 기준 1.5~3px 이 된다.
+   * 실측: 9종 centerline 1,854개 중 1,745개(94.1%)가 정확히 6 에 붙어 있었다 —
+   * 사실상 **모든 구조선이 같은 굵기로, 그것도 실제보다 얇게** 출고되고 있었다.
+   * 그 결과 stroke 가 잉크를 덜 덮어 residual 이 부풀고 outline 패스가 폭증했다.
+   * 호출부가 자기 좌표계에 맞는 값을 넘겨야 한다.
+   */
+  maxWidth?: number;
+  /**
    * 잉크 판정 임계 (기본 170 = 어두운 선 전용).
    * 컬러 파트(금색 프레임 등)를 스트로크로 추출할 때는 250을 줘서
    * "흰 배경이 아닌 모든 픽셀"을 잉크로 본다.
@@ -181,7 +192,7 @@ export async function centerlineTrace(
       d: segsToPathD(segs, isClosed(chain)),
       fill: null,
       stroke: opts.color,
-      strokeWidth: chainWidth(chain, dist, W),
+      strokeWidth: chainWidth(chain, dist, W, opts.maxWidth ?? 6),
       vectorizer: "vtracer",
     });
   }
@@ -208,7 +219,7 @@ function onFillEdge(
 }
 
 /** 체인 위 거리변환 값의 중앙값 × 2 = 그 선의 굵기 */
-function chainWidth(chain: Pt[], dist: Float32Array, W: number): number {
+function chainWidth(chain: Pt[], dist: Float32Array, W: number, maxWidth: number): number {
   const vals: number[] = [];
   for (const [x, y] of chain) {
     const v = dist[y * W + x];
@@ -217,7 +228,9 @@ function chainWidth(chain: Pt[], dist: Float32Array, W: number): number {
   if (!vals.length) return 1;
   vals.sort((a, b) => a - b);
   const med = vals[vals.length >> 1];
-  return Math.max(0.5, Math.min(6, Math.round(med * 2 * 4) / 4));
+  // 중앙값을 쓴다. p90 을 쓰면 교차부의 굵은 지점이 체인 전체를 부풀린다
+  // (실측: F@2px 0.9396 → 0.9090, precision@2 0.9115).
+  return Math.max(0.5, Math.min(maxWidth, Math.round(med * 2 * 4) / 4));
 }
 
 /** 2-pass 체임퍼 거리변환 — 각 잉크 픽셀에서 배경까지의 거리 */

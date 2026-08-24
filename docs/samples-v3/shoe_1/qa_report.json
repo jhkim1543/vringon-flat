@@ -9,8 +9,8 @@
       "width": 2800,
       "height": 2196
     },
-    "totalMs": 48492,
-    "createdAt": "2026-08-22T05:12:14.999Z"
+    "totalMs": 55251,
+    "createdAt": "2026-08-24T01:20:06.727Z"
   },
   "options": {
     "minParts": 3,
@@ -196,8 +196,8 @@
       "label": "Rubber outsole",
       "z": 0,
       "regions": 2,
-      "strokes": 39,
-      "nodes": 402,
+      "strokes": 2,
+      "nodes": 184,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -211,8 +211,8 @@
       "label": "Cushioned midsole",
       "z": 1,
       "regions": 9,
-      "strokes": 149,
-      "nodes": 2022,
+      "strokes": 38,
+      "nodes": 1044,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -226,8 +226,8 @@
       "label": "Tongue",
       "z": 2,
       "regions": 10,
-      "strokes": 36,
-      "nodes": 623,
+      "strokes": 21,
+      "nodes": 628,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -241,8 +241,8 @@
       "label": "Eyelet underlay",
       "z": 3,
       "regions": 16,
-      "strokes": 36,
-      "nodes": 750,
+      "strokes": 14,
+      "nodes": 437,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -256,8 +256,8 @@
       "label": "Main upper",
       "z": 4,
       "regions": 23,
-      "strokes": 223,
-      "nodes": 6245,
+      "strokes": 101,
+      "nodes": 3570,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -271,8 +271,8 @@
       "label": "Heel reinforcement overlay",
       "z": 5,
       "regions": 7,
-      "strokes": 80,
-      "nodes": 1331,
+      "strokes": 66,
+      "nodes": 1192,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -286,8 +286,8 @@
       "label": "Laces",
       "z": 6,
       "regions": 5,
-      "strokes": 101,
-      "nodes": 1034,
+      "strokes": 39,
+      "nodes": 1057,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -301,8 +301,8 @@
       "label": "Swoosh logo",
       "z": 7,
       "regions": 1,
-      "strokes": 75,
-      "nodes": 1531,
+      "strokes": 16,
+      "nodes": 498,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -316,8 +316,8 @@
       "label": "AIRMAX badge",
       "z": 8,
       "regions": 22,
-      "strokes": 56,
-      "nodes": 1160,
+      "strokes": 31,
+      "nodes": 935,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -329,89 +329,119 @@
   ],
   "qa": {
     "pass": true,
-    "silhouetteIou": 0.9991,
-    "boundaryF": 0.8943,
-    "rawF0": 0.7889,
-    "rawF1": 0.8829,
-    "rawF2": 0.8943,
-    "lineF1": 0.9874,
-    "lineF2": 0.998,
+    "silhouetteIou": 0.9979,
+    "boundaryF": 0.8918,
+    "rawF0": 0.8306,
+    "rawF1": 0.8804,
+    "rawF2": 0.8918,
+    "lineF1": 0.9813,
+    "lineF2": 0.9944,
     "textureShare": 0.596,
-    "inkRatio": 0.929,
-    "chamfer": 0.128,
+    "inkRatio": 1.072,
+    "chamfer": 0.101,
     "p95": 1,
     "detailRecall": 1,
     "majorComponents": [
       6,
-      6
+      8
     ],
     "aspectRatio": 1.052,
     "partCoverage": 0.9995,
     "perPart": [
       {
         "id": "rubber_outsole",
-        "paths": 41,
-        "coverage": 0.9995
+        "paths": 4,
+        "coverage": 0.9995,
+        "precision": 0.7687,
+        "recall": 0.1016,
+        "iou": 0.0986
       },
       {
         "id": "cushioned_midsole",
-        "paths": 158,
-        "coverage": 0.9995
+        "paths": 47,
+        "coverage": 0.9995,
+        "precision": 0.8255,
+        "recall": 0.8053,
+        "iou": 0.6882
       },
       {
         "id": "tongue",
-        "paths": 46,
-        "coverage": 0.9995
+        "paths": 31,
+        "coverage": 0.9995,
+        "precision": 0.9945,
+        "recall": 0.3296,
+        "iou": 0.329
       },
       {
         "id": "eyelet_underlay",
-        "paths": 52,
-        "coverage": 0.9995
+        "paths": 30,
+        "coverage": 0.9995,
+        "precision": 0.8604,
+        "recall": 0.49,
+        "iou": 0.4539
       },
       {
         "id": "main_upper",
-        "paths": 246,
-        "coverage": 0.9995
+        "paths": 124,
+        "coverage": 0.9995,
+        "precision": 0.6868,
+        "recall": 0.697,
+        "iou": 0.5289
       },
       {
         "id": "heel_overlay",
-        "paths": 87,
-        "coverage": 0.9995
+        "paths": 73,
+        "coverage": 0.9995,
+        "precision": 0.9846,
+        "recall": 0.4702,
+        "iou": 0.4668
       },
       {
         "id": "laces",
-        "paths": 106,
-        "coverage": 0.9995
+        "paths": 44,
+        "coverage": 0.9995,
+        "precision": 0.6921,
+        "recall": 0.2073,
+        "iou": 0.1898
       },
       {
         "id": "swoosh_logo",
-        "paths": 76,
-        "coverage": 0.9995
+        "paths": 17,
+        "coverage": 0.9995,
+        "precision": 0.8844,
+        "recall": 0.2142,
+        "iou": 0.2083
       },
       {
         "id": "airmax_badge",
-        "paths": 78,
-        "coverage": 0.9995
+        "paths": 53,
+        "coverage": 0.9995,
+        "precision": 0.9821,
+        "recall": 0.5929,
+        "iou": 0.5866
       }
     ],
+    "partPrecision": 0.8532,
+    "misassignedParts": [],
     "emptyVisibleParts": [],
+    "sharedOnlyParts": [],
     "invalidPaths": 0,
-    "totalPaths": 890,
-    "totalNodes": 15098,
-    "fileKb": 684.4,
+    "totalPaths": 423,
+    "totalNodes": 9545,
+    "fileKb": 427.4,
     "notes": [
       "사진↔도면 종횡비 불일치 5.2% — 파트 배분 정확도에만 영향 (도면은 왜곡하지 않는다)",
-      "해프톤 질감을 톤 면으로 치환 — 화면의 20.1%, 도면 잉크의 60%. 전체 F@2px 0.894, 이 영역을 뺀 선 충실도 0.998"
+      "해프톤 질감을 톤 면으로 치환 — 화면의 20.1%, 도면 잉크의 60%. 전체 F@2px 0.892, 이 영역을 뺀 선 충실도 0.994"
     ]
   },
   "timings": {
-    "S1_preprocess": 9207,
-    "S2_plan": 15,
-    "S3_masks": 15581,
-    "S5_schematic_whole": 15,
-    "S5_schematic": 1021,
-    "S6_vectorize": 18256,
-    "S7_assemble": 9,
-    "S8_qa": 3846
+    "S1_preprocess": 7278,
+    "S2_plan": 22,
+    "S3_masks": 12308,
+    "S5_schematic_whole": 21,
+    "S5_schematic": 1179,
+    "S6_vectorize": 14605,
+    "S7_assemble": 7,
+    "S8_qa": 19514
   }
 }

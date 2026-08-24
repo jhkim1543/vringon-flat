@@ -492,6 +492,10 @@ export async function vectorizeByLines(
         inkThreshold: 128,
         minLength: minLen,
         maxPaths: o.maxStrokes,
+        // 기본 상한 6 은 원본 해상도 기준 값이다. 우리는 확대 캔버스에서 추적하므로
+        // 그대로 두면 모든 선이 상한에 눌린다. 선/면을 가르는 기준과 같은 값을 쓴다 —
+        // 이보다 두꺼우면 애초에 선이 아니라 면이다.
+        maxWidth: lineWidthLimit,
       });
 
       if (o.mode === "centerline") {

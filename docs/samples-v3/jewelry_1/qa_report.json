@@ -9,8 +9,8 @@
       "width": 2048,
       "height": 1922
     },
-    "totalMs": 23736,
-    "createdAt": "2026-08-22T05:16:39.120Z"
+    "totalMs": 21485,
+    "createdAt": "2026-08-24T01:25:28.900Z"
   },
   "options": {
     "minParts": 3,
@@ -127,7 +127,7 @@
       "z": 0,
       "regions": 1,
       "strokes": 5,
-      "nodes": 79,
+      "nodes": 69,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -141,8 +141,8 @@
       "label": "Left hoop half",
       "z": 1,
       "regions": 3,
-      "strokes": 68,
-      "nodes": 1222,
+      "strokes": 14,
+      "nodes": 580,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -156,8 +156,8 @@
       "label": "Right hoop half",
       "z": 2,
       "regions": 2,
-      "strokes": 73,
-      "nodes": 1106,
+      "strokes": 8,
+      "nodes": 360,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -171,8 +171,8 @@
       "label": "Clasp insert",
       "z": 3,
       "regions": 2,
-      "strokes": 13,
-      "nodes": 373,
+      "strokes": 7,
+      "nodes": 166,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -186,8 +186,8 @@
       "label": "Engraved side pattern",
       "z": 4,
       "regions": 5,
-      "strokes": 63,
-      "nodes": 2254,
+      "strokes": 35,
+      "nodes": 1216,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this ornament to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -199,16 +199,16 @@
   ],
   "qa": {
     "pass": true,
-    "silhouetteIou": 0.9969,
-    "boundaryF": 0.9909,
-    "rawF0": 0.8912,
-    "rawF1": 0.9814,
-    "rawF2": 0.9909,
-    "lineF1": 0.9814,
-    "lineF2": 0.9909,
+    "silhouetteIou": 0.9906,
+    "boundaryF": 0.9861,
+    "rawF0": 0.9273,
+    "rawF1": 0.9718,
+    "rawF2": 0.9861,
+    "lineF1": 0.9718,
+    "lineF2": 0.9861,
     "textureShare": 0,
-    "inkRatio": 0.964,
-    "chamfer": 0.172,
+    "inkRatio": 1.096,
+    "chamfer": 0.151,
     "p95": 1,
     "detailRecall": 1,
     "majorComponents": [
@@ -221,44 +221,62 @@
       {
         "id": "hinge_pivot",
         "paths": 6,
-        "coverage": 0.9999
+        "coverage": 0.9999,
+        "precision": 1,
+        "recall": 0.2922,
+        "iou": 0.2922
       },
       {
         "id": "left_hoop_half",
-        "paths": 71,
-        "coverage": 0.9999
+        "paths": 17,
+        "coverage": 0.9999,
+        "precision": 0.5193,
+        "recall": 0.5902,
+        "iou": 0.3817
       },
       {
         "id": "right_hoop_half",
-        "paths": 75,
-        "coverage": 0.9999
+        "paths": 10,
+        "coverage": 0.9999,
+        "precision": 0.9414,
+        "recall": 0.3993,
+        "iou": 0.3896
       },
       {
         "id": "clasp_insert",
-        "paths": 15,
-        "coverage": 0.9999
+        "paths": 9,
+        "coverage": 0.9999,
+        "precision": 0.9991,
+        "recall": 0.2908,
+        "iou": 0.2907
       },
       {
         "id": "engraved_pattern",
-        "paths": 68,
-        "coverage": 0.9999
+        "paths": 40,
+        "coverage": 0.9999,
+        "precision": 0.5573,
+        "recall": 0.5574,
+        "iou": 0.3863
       }
     ],
+    "partPrecision": 0.8034,
+    "misassignedParts": [],
     "emptyVisibleParts": [],
+    "sharedOnlyParts": [],
     "invalidPaths": 0,
-    "totalPaths": 235,
-    "totalNodes": 5034,
-    "fileKb": 223.2,
+    "totalPaths": 82,
+    "totalNodes": 2391,
+    "fileKb": 104.1,
     "notes": []
   },
   "timings": {
-    "S1_preprocess": 6642,
-    "S2_plan": 13,
-    "S3_masks": 2951,
-    "S5_schematic_whole": 16,
-    "S5_schematic": 532,
-    "S6_vectorize": 10589,
-    "S7_assemble": 9,
-    "S8_qa": 2653
+    "S1_preprocess": 6238,
+    "S2_plan": 12,
+    "S3_masks": 1638,
+    "S5_schematic_whole": 7,
+    "S5_schematic": 411,
+    "S6_vectorize": 6788,
+    "S7_assemble": 5,
+    "S8_qa": 6154
   }
 }

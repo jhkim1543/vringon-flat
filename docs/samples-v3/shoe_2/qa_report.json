@@ -9,8 +9,8 @@
       "width": 2800,
       "height": 1572
     },
-    "totalMs": 54541,
-    "createdAt": "2026-08-22T05:13:14.629Z"
+    "totalMs": 43472,
+    "createdAt": "2026-08-24T01:20:51.939Z"
   },
   "options": {
     "minParts": 3,
@@ -195,8 +195,8 @@
       "label": "lugged rubber outsole",
       "z": 0,
       "regions": 1,
-      "strokes": 9,
-      "nodes": 69,
+      "strokes": 6,
+      "nodes": 81,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -210,8 +210,8 @@
       "label": "foam midsole",
       "z": 1,
       "regions": 2,
-      "strokes": 12,
-      "nodes": 138,
+      "strokes": 4,
+      "nodes": 77,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -225,8 +225,8 @@
       "label": "mesh upper",
       "z": 2,
       "regions": 51,
-      "strokes": 348,
-      "nodes": 4813,
+      "strokes": 180,
+      "nodes": 4002,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -240,8 +240,8 @@
       "label": "padded tongue",
       "z": 3,
       "regions": 75,
-      "strokes": 395,
-      "nodes": 5654,
+      "strokes": 237,
+      "nodes": 4903,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -255,8 +255,8 @@
       "label": "synthetic support overlays",
       "z": 4,
       "regions": 55,
-      "strokes": 231,
-      "nodes": 3756,
+      "strokes": 147,
+      "nodes": 2937,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -270,8 +270,8 @@
       "label": "heel pull tabs",
       "z": 5,
       "regions": 2,
-      "strokes": 7,
-      "nodes": 98,
+      "strokes": 6,
+      "nodes": 70,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -285,8 +285,8 @@
       "label": "padded collar lining",
       "z": 6,
       "regions": 4,
-      "strokes": 37,
-      "nodes": 902,
+      "strokes": 27,
+      "nodes": 562,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -300,8 +300,8 @@
       "label": "laces",
       "z": 7,
       "regions": 54,
-      "strokes": 235,
-      "nodes": 3729,
+      "strokes": 94,
+      "nodes": 2586,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -315,8 +315,8 @@
       "label": "brand and side graphics",
       "z": 8,
       "regions": 15,
-      "strokes": 269,
-      "nodes": 3720,
+      "strokes": 153,
+      "nodes": 3124,
       "schematic": {
         "backend": "replicate",
         "prompt": "convert this shoe to a schematic, preserve the exact same viewpoint and orientation as the input photo",
@@ -328,16 +328,16 @@
   ],
   "qa": {
     "pass": true,
-    "silhouetteIou": 0.9978,
-    "boundaryF": 0.9064,
-    "rawF0": 0.7978,
-    "rawF1": 0.8903,
-    "rawF2": 0.9064,
-    "lineF1": 0.9812,
-    "lineF2": 0.9974,
+    "silhouetteIou": 0.9966,
+    "boundaryF": 0.9043,
+    "rawF0": 0.8218,
+    "rawF1": 0.8878,
+    "rawF2": 0.9043,
+    "lineF1": 0.9765,
+    "lineF2": 0.9948,
     "textureShare": 0.4392,
-    "inkRatio": 0.942,
-    "chamfer": 0.152,
+    "inkRatio": 1.089,
+    "chamfer": 0.153,
     "p95": 1,
     "detailRecall": 1,
     "majorComponents": [
@@ -349,68 +349,98 @@
     "perPart": [
       {
         "id": "rubber_outsole",
-        "paths": 10,
-        "coverage": 0.9972
+        "paths": 7,
+        "coverage": 0.9972,
+        "precision": 0.9555,
+        "recall": 0.0934,
+        "iou": 0.093
       },
       {
         "id": "foam_midsole",
-        "paths": 14,
-        "coverage": 0.9972
+        "paths": 6,
+        "coverage": 0.9972,
+        "precision": 0.9421,
+        "recall": 0.2568,
+        "iou": 0.2528
       },
       {
         "id": "mesh_upper",
-        "paths": 399,
-        "coverage": 0.9972
+        "paths": 231,
+        "coverage": 0.9972,
+        "precision": 0.7582,
+        "recall": 0.6929,
+        "iou": 0.5675
       },
       {
         "id": "tongue",
-        "paths": 470,
-        "coverage": 0.9972
+        "paths": 312,
+        "coverage": 0.9972,
+        "precision": 0.8598,
+        "recall": 0.7939,
+        "iou": 0.7028
       },
       {
         "id": "synthetic_overlays",
-        "paths": 286,
-        "coverage": 0.9972
+        "paths": 202,
+        "coverage": 0.9972,
+        "precision": 0.884,
+        "recall": 0.7416,
+        "iou": 0.6758
       },
       {
         "id": "heel_pull_tabs",
-        "paths": 9,
-        "coverage": 0.9972
+        "paths": 8,
+        "coverage": 0.9972,
+        "precision": 0.9526,
+        "recall": 0.5626,
+        "iou": 0.5473
       },
       {
         "id": "collar_lining",
-        "paths": 41,
-        "coverage": 0.9972
+        "paths": 31,
+        "coverage": 0.9972,
+        "precision": 0.85,
+        "recall": 0.7999,
+        "iou": 0.7009
       },
       {
         "id": "laces",
-        "paths": 289,
-        "coverage": 0.9972
+        "paths": 148,
+        "coverage": 0.9972,
+        "precision": 0.9627,
+        "recall": 0.7004,
+        "iou": 0.6818
       },
       {
         "id": "brand_graphics",
-        "paths": 284,
-        "coverage": 0.9972
+        "paths": 168,
+        "coverage": 0.9972,
+        "precision": 0.8297,
+        "recall": 0.7225,
+        "iou": 0.6292
       }
     ],
+    "partPrecision": 0.8883,
+    "misassignedParts": [],
     "emptyVisibleParts": [],
+    "sharedOnlyParts": [],
     "invalidPaths": 0,
-    "totalPaths": 1802,
-    "totalNodes": 22879,
-    "fileKb": 1038.4,
+    "totalPaths": 1113,
+    "totalNodes": 18342,
+    "fileKb": 813.7,
     "notes": [
       "피사체 검출 실패 — 캔버스 중심 정렬로 대체 (사진 97% · 도면 98%)",
-      "해프톤 질감을 톤 면으로 치환 — 화면의 20.7%, 도면 잉크의 44%. 전체 F@2px 0.906, 이 영역을 뺀 선 충실도 0.997"
+      "해프톤 질감을 톤 면으로 치환 — 화면의 20.7%, 도면 잉크의 44%. 전체 F@2px 0.904, 이 영역을 뺀 선 충실도 0.995"
     ]
   },
   "timings": {
-    "S1_preprocess": 6389,
-    "S2_plan": 18,
-    "S3_masks": 19451,
-    "S5_schematic_whole": 32,
-    "S5_schematic": 1099,
-    "S6_vectorize": 21945,
-    "S7_assemble": 16,
-    "S8_qa": 4792
+    "S1_preprocess": 6010,
+    "S2_plan": 17,
+    "S3_masks": 11396,
+    "S5_schematic_whole": 10,
+    "S5_schematic": 566,
+    "S6_vectorize": 12340,
+    "S7_assemble": 9,
+    "S8_qa": 12670
   }
 }

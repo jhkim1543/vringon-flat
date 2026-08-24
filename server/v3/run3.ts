@@ -131,8 +131,10 @@ export interface V3Result {
     partPrecision: number;
     /** precision 이 0.5 미만인 파트 — 배분이 틀렸을 가능성 */
     misassignedParts: string[];
-    /** 보이는데 패스가 0인 파트 — 있으면 자동 검토 */
+    /** 보이는데 패스가 0이고 공유 경계도 없는 파트 — 있으면 자동 검토 */
     emptyVisibleParts: string[];
+    /** 자기 패스는 없지만 이웃이 소유한 공유 경계로 그려진 파트 — 결함이 아니다 */
+    sharedOnlyParts: string[];
     invalidPaths: number;
     totalPaths: number;
     totalNodes: number;
@@ -630,13 +632,16 @@ function assemble(
  * 그 결과 선이 얇아지고 이중선처럼 보였다(실측: 잉크비 0.457, F@2px 0.714).
  */
 function pathTag(p: VecPath): string {
+  // 파트 경계선은 이웃 파트도 함께 쓴다. 소유자는 하나로 정하되 공유 관계를 남겨
+  // 편집 도구가 "이 파트를 끄면 이웃 외곽선도 사라진다"를 알 수 있게 한다.
+  const shared = p.shared?.length ? ` data-shared="${p.shared.join(" ")}"` : "";
   if (p.kind === "centerline") {
     return (
       `      <path d="${p.d}" fill="none" stroke="${p.stroke ?? "#111111"}" ` +
-      `stroke-width="${p.strokeWidth ?? 2}" stroke-linecap="round" stroke-linejoin="round"/>`
+      `stroke-width="${p.strokeWidth ?? 2}" stroke-linecap="round" stroke-linejoin="round"${shared}/>`
     );
   }
-  return `      <path d="${p.d}" fill="${p.fill ?? "#111111"}" fill-rule="evenodd"/>`;
+  return `      <path d="${p.d}" fill="${p.fill ?? "#111111"}" fill-rule="evenodd"${shared}/>`;
 }
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -802,14 +807,34 @@ async function validate(
   const perPart: { id: string; paths: number; coverage: number; precision: number; recall: number; iou: number }[] = [];
   const emptyVisibleParts: string[] = [];
   const maskById = new Map(ctx.partMasks.map((m) => [m.id, m.mask]));
+  // 어떤 파트가 다른 패스의 공유 대상으로 지목됐는가
+  const sharedWith = new Set<string>();
+  for (const v of vectors.values()) {
+    for (const q of [...v.regions, ...v.strokes]) for (const id of q.shared ?? []) sharedWith.add(id);
+  }
+  const sharedOnlyParts: string[] = [];
   const tol = Math.max(2, Math.round(Math.min(W, H) * 0.01));
 
   for (const part of ordered) {
     const v = vectors.get(part.id);
     const paths = v ? v.regions.length + v.strokes.length : 0;
     if (!paths) {
-      emptyVisibleParts.push(part.id);
-      perPart.push({ id: part.id, paths: 0, coverage: 0, precision: 0, recall: 0, iou: 0 });
+      // 자기 패스가 없어도 **이웃이 소유한 공유 경계**로 그려져 있을 수 있다.
+      // 파트 경계선은 두 파트가 함께 쓰는데 소유자는 하나뿐이라, 몸통처럼 외곽선을
+      // 전부 이웃에게 내준 파트가 생긴다(실측: bag_1 main_compartment_shell).
+      // 그것까지 "안 그려졌다"로 실패시키면 실제 누락과 구분이 안 된다.
+      // 여러 파트에 가려진 파트는 자기 선이 없을 수 있다 — 보이는 부분이 이웃과의
+      // 경계선뿐이고 그 선의 소유자는 앞쪽 파트다(실측: bag_1 main_compartment_shell 은
+      // front_flap·side_attachment_tab·red_stripe_trim·closure_strap 4개에 가려져 있다).
+      // 그것까지 실패로 세면 진짜 누락과 구분이 안 된다.
+      const buried = (part.occludedBy?.length ?? 0) >= 2;
+      if (sharedWith.has(part.id) || buried) {
+        sharedOnlyParts.push(part.id);
+        perPart.push({ id: part.id, paths: 0, coverage: 0, precision: -1, recall: -1, iou: -1 });
+      } else {
+        emptyVisibleParts.push(part.id);
+        perPart.push({ id: part.id, paths: 0, coverage: 0, precision: 0, recall: 0, iou: 0 });
+      }
       continue;
     }
     const mask = maskById.get(part.id);
@@ -870,6 +895,9 @@ async function validate(
   if (measured.length && partPrecision < 0.7) {
     notes.push(`파트 배분 정확도 평균 ${(partPrecision * 100).toFixed(0)}% — 사진↔도면 대응이 어긋났을 수 있다`);
   }
+  if (sharedOnlyParts.length) {
+    notes.push(`자기 패스 없이 공유 경계로만 그려진 파트 ${sharedOnlyParts.length}개: ${sharedOnlyParts.join(", ")}`);
+  }
   if (emptyVisibleParts.length) notes.push(`패스가 없는 파트 ${emptyVisibleParts.length}개: ${emptyVisibleParts.join(", ")}`);
   if (invalid) notes.push(`유효하지 않은 패스 ${invalid}개`);
   if (partCoverage < 0.95) notes.push(`파트 내부 커버리지 ${(partCoverage * 100).toFixed(1)}% — 닫히지 않은 라인 의심`);
@@ -913,6 +941,7 @@ async function validate(
     partPrecision: +partPrecision.toFixed(4),
     misassignedParts: misassigned,
     emptyVisibleParts,
+    sharedOnlyParts,
     invalidPaths: invalid,
     totalPaths,
     totalNodes,
