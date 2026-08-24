@@ -12,7 +12,7 @@
  {
   "id": "gf2",
   "cls": "GEOMETRIC_PRIMITIVE",
-  "partId": "clasp_assembly",
+  "partId": "top_handle",
   "area": 138,
   "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.76px, 허용 3.6px)",
   "confidence": 0.6161335187760779,
@@ -33,8 +33,8 @@
   "id": "f4",
   "cls": "FACE_FILL",
   "partId": "front_flap",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "area": 591928,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -43,8 +43,8 @@
   "id": "f5",
   "cls": "FACE_FILL",
   "partId": "front_flap",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "area": 591928,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -52,9 +52,9 @@
  {
   "id": "f6",
   "cls": "FACE_FILL",
-  "partId": "red_trim_bands",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "front_flap",
+  "area": 591928,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -63,8 +63,8 @@
   "id": "f7",
   "cls": "FACE_FILL",
   "partId": "front_flap",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "area": 591928,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -72,9 +72,9 @@
  {
   "id": "f8",
   "cls": "FACE_FILL",
-  "partId": "red_trim_bands",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "front_flap",
+  "area": 591928,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -83,8 +83,8 @@
   "id": "f9",
   "cls": "FACE_FILL",
   "partId": "front_flap",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "area": 591928,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -93,8 +93,8 @@
   "id": "fa",
   "cls": "FACE_FILL",
   "partId": "front_flap",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "area": 591928,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -102,9 +102,9 @@
  {
   "id": "fb",
   "cls": "FACE_FILL",
-  "partId": "red_trim_bands",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "front_flap",
+  "area": 591928,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -112,9 +112,9 @@
  {
   "id": "fc",
   "cls": "FACE_FILL",
-  "partId": "red_trim_bands",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "front_lower_panel",
+  "area": 208081,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -122,9 +122,9 @@
  {
   "id": "fd",
   "cls": "FACE_FILL",
-  "partId": "closure_strap",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "front_lower_panel",
+  "area": 208081,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -132,9 +132,9 @@
  {
   "id": "fe",
   "cls": "FACE_FILL",
-  "partId": "closure_strap",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "front_lower_panel",
+  "area": 208081,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -142,9 +142,9 @@
  {
   "id": "ff",
   "cls": "FACE_FILL",
-  "partId": "closure_strap",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "left_side_gusset",
+  "area": 147019,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -152,9 +152,9 @@
  {
   "id": "fg",
   "cls": "FACE_FILL",
-  "partId": "closure_strap",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "left_side_gusset",
+  "area": 147019,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -163,8 +163,8 @@
   "id": "fh",
   "cls": "FACE_FILL",
   "partId": "left_side_gusset",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "area": 147019,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -173,8 +173,8 @@
   "id": "fi",
   "cls": "FACE_FILL",
   "partId": "left_side_gusset",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "area": 147019,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -183,8 +183,8 @@
   "id": "fj",
   "cls": "FACE_FILL",
   "partId": "left_side_gusset",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "area": 147019,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -192,9 +192,9 @@
  {
   "id": "fk",
   "cls": "FACE_FILL",
-  "partId": "closure_strap",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "left_side_gusset",
+  "area": 91842,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -203,8 +203,8 @@
   "id": "fl",
   "cls": "FACE_FILL",
   "partId": "left_side_gusset",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "area": 91842,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -213,8 +213,8 @@
   "id": "fm",
   "cls": "FACE_FILL",
   "partId": "left_side_gusset",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "area": 91842,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -222,9 +222,9 @@
  {
   "id": "fn",
   "cls": "FACE_FILL",
-  "partId": "left_side_gusset",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "closure_strap",
+  "area": 90288,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -232,9 +232,9 @@
  {
   "id": "fo",
   "cls": "FACE_FILL",
-  "partId": "clasp_assembly",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "closure_strap",
+  "area": 90288,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -242,9 +242,9 @@
  {
   "id": "fp",
   "cls": "FACE_FILL",
-  "partId": "left_side_gusset",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "closure_strap",
+  "area": 90288,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -252,9 +252,9 @@
  {
   "id": "fq",
   "cls": "FACE_FILL",
-  "partId": "clasp_assembly",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "closure_strap",
+  "area": 90288,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -262,9 +262,9 @@
  {
   "id": "fr",
   "cls": "FACE_FILL",
-  "partId": "front_lower_panel",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "red_trim_bands",
+  "area": 87677,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -272,9 +272,9 @@
  {
   "id": "fs",
   "cls": "FACE_FILL",
-  "partId": "clasp_assembly",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "red_trim_bands",
+  "area": 87677,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -282,9 +282,9 @@
  {
   "id": "ft",
   "cls": "FACE_FILL",
-  "partId": "clasp_assembly",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "red_trim_bands",
+  "area": 87677,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -293,8 +293,8 @@
   "id": "fu",
   "cls": "FACE_FILL",
   "partId": "red_trim_bands",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "area": 87677,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -303,8 +303,8 @@
   "id": "fv",
   "cls": "FACE_FILL",
   "partId": "red_trim_bands",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "area": 87677,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -312,9 +312,9 @@
  {
   "id": "fw",
   "cls": "FACE_FILL",
-  "partId": "closure_strap",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "red_trim_bands",
+  "area": 87677,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -322,9 +322,9 @@
  {
   "id": "fx",
   "cls": "FACE_FILL",
-  "partId": "clasp_assembly",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "front_lower_panel",
+  "area": 23471,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -332,9 +332,9 @@
  {
   "id": "fy",
   "cls": "FACE_FILL",
-  "partId": "clasp_assembly",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "front_lower_panel",
+  "area": 23471,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -342,9 +342,9 @@
  {
   "id": "fz",
   "cls": "FACE_FILL",
-  "partId": "closure_strap",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "front_lower_panel",
+  "area": 23471,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -352,9 +352,9 @@
  {
   "id": "f10",
   "cls": "FACE_FILL",
-  "partId": "clasp_assembly",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "front_lower_panel",
+  "area": 23471,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -362,9 +362,9 @@
  {
   "id": "f11",
   "cls": "FACE_FILL",
-  "partId": "clasp_assembly",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "top_handle",
+  "area": 8807,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -372,9 +372,9 @@
  {
   "id": "f12",
   "cls": "FACE_FILL",
-  "partId": "front_lower_panel",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "top_handle",
+  "area": 8807,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -382,9 +382,9 @@
  {
   "id": "f13",
   "cls": "FACE_FILL",
-  "partId": "red_trim_bands",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "top_handle",
+  "area": 8807,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -392,9 +392,9 @@
  {
   "id": "f14",
   "cls": "FACE_FILL",
-  "partId": "front_lower_panel",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "top_handle",
+  "area": 8807,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -402,37 +402,37 @@
  {
   "id": "f15",
   "cls": "FACE_FILL",
-  "partId": "front_lower_panel",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "clasp_assembly",
+  "area": 8143,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
  {
   "id": "f16",
   "cls": "FACE_FILL",
-  "partId": "front_lower_panel",
-  "area": 1263410,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "clasp_assembly",
+  "area": 8143,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
  {
-  "id": "o17",
-  "cls": "OUTLINE_SHAPE",
-  "partId": "closure_strap",
-  "area": 0,
-  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
-  "confidence": 0.85,
+  "id": "f17",
+  "cls": "FACE_FILL",
+  "partId": "clasp_assembly",
+  "area": 6154,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.9,
   "kind": null,
   "instances": null
  },
  {
   "id": "o18",
   "cls": "OUTLINE_SHAPE",
-  "partId": "front_flap",
+  "partId": "closure_strap",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,
@@ -442,7 +442,7 @@
  {
   "id": "o19",
   "cls": "OUTLINE_SHAPE",
-  "partId": "clasp_assembly",
+  "partId": "front_flap",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,
@@ -452,7 +452,7 @@
  {
   "id": "o1a",
   "cls": "OUTLINE_SHAPE",
-  "partId": "closure_strap",
+  "partId": "clasp_assembly",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,
@@ -462,7 +462,7 @@
  {
   "id": "o1b",
   "cls": "OUTLINE_SHAPE",
-  "partId": "clasp_assembly",
+  "partId": "closure_strap",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,
@@ -472,7 +472,7 @@
  {
   "id": "o1c",
   "cls": "OUTLINE_SHAPE",
-  "partId": "closure_strap",
+  "partId": "clasp_assembly",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,
@@ -492,7 +492,7 @@
  {
   "id": "o1e",
   "cls": "OUTLINE_SHAPE",
-  "partId": "clasp_assembly",
+  "partId": "closure_strap",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,
@@ -512,7 +512,7 @@
  {
   "id": "o1g",
   "cls": "OUTLINE_SHAPE",
-  "partId": "red_trim_bands",
+  "partId": "clasp_assembly",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,
@@ -521,6 +521,16 @@
  },
  {
   "id": "o1h",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "red_trim_bands",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "o1i",
   "cls": "OUTLINE_SHAPE",
   "partId": "front_lower_panel",
   "area": 0,

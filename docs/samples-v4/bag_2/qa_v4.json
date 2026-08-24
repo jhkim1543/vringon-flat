@@ -8,8 +8,8 @@
       "sourceHeight": 1024,
       "supersample": 2
     },
-    "totalMs": 19196,
-    "createdAt": "2026-08-24T03:28:12.580Z"
+    "totalMs": 12802,
+    "createdAt": "2026-08-24T07:47:40.057Z"
   },
   "options": {
     "minParts": 3,
@@ -123,21 +123,21 @@
   },
   "counts": {
     "GEOMETRIC_PRIMITIVE": 522,
-    "FACE_FILL": 19,
+    "FACE_FILL": 24,
     "OUTLINE_SHAPE": 68,
     "REPEATING_PATTERN": 17
   },
   "qa": {
     "fidelity": {
       "pass": false,
-      "f0": 0.7449,
-      "f1": 0.8994,
-      "f2": 0.937,
-      "lineF1": 0.8994,
-      "lineF2": 0.937,
+      "f0": 0.7448,
+      "f1": 0.8992,
+      "f2": 0.9368,
+      "lineF1": 0.8992,
+      "lineF2": 0.9368,
       "textureShare": 0,
-      "inkRatio": 1.511,
-      "chamfer": 0.604,
+      "inkRatio": 1.518,
+      "chamfer": 0.605,
       "p95": 3.41,
       "detailRecall": 0.9768,
       "holes": [
@@ -149,29 +149,32 @@
         1
       ],
       "notes": [
-        "선 일치 F@2px 0.937 < 0.95",
-        "선 굵기 1.511× (1.0 이 원본)"
+        "선 일치 F@2px 0.9368 < 0.95",
+        "선 굵기 1.518× (1.0 이 원본)"
       ]
     },
     "editability": {
       "pass": false,
-      "paths": 626,
-      "anchors": 23274,
+      "paths": 631,
+      "subpaths": 3657,
+      "maxSubpathsInPath": 2738,
+      "objectComplexity": 6890,
+      "anchors": 23294,
       "uses": 2602,
-      "kb": 1176.9,
-      "anchorDensity": 17.19,
-      "shortPathRatio": 0.55,
+      "kb": 1235.4,
+      "anchorDensity": 16.18,
+      "shortPathRatio": 0.182,
       "primitives": 522,
       "anchorsSavedByPrimitives": 4106,
       "pathsSavedByPatterns": 2585,
       "editableReduction": {
         "paths": 0.024,
         "anchors": 0.714,
-        "kb": 0.44
+        "kb": 0.42
       },
       "notes": [
-        "앵커 밀도 17.2/100px > 12",
-        "짧은 패스 55% — 파편화 의심"
+        "앵커 밀도 16.2/100px > 12",
+        "한 패스에 서브패스 2738개 — Illustrator 에서 통째로 선택된다"
       ]
     },
     "semantic": {
@@ -179,68 +182,93 @@
       "perPart": [
         {
           "id": "chain_handle",
+          "label": "Chain handle",
+          "kind": "thin",
           "paths": 0,
-          "precision": -1,
-          "recall": -1,
-          "iou": -1
+          "areaShare": 0.01,
+          "precision": 0,
+          "recall": 0,
+          "iou": 0,
+          "boundaryF1": 0
         },
         {
           "id": "bag_body",
-          "paths": 448,
-          "precision": 0.7511,
-          "recall": 0.868,
-          "iou": 0.6741
+          "label": "Beaded pouch body",
+          "kind": "area",
+          "paths": 449,
+          "areaShare": 0.227,
+          "precision": 0.7241,
+          "recall": 0.9247,
+          "iou": 0.6838,
+          "boundaryF1": -1
         },
         {
           "id": "metal_frame",
-          "paths": 90,
-          "precision": 0.2956,
-          "recall": 0.3526,
-          "iou": 0.1916
+          "label": "Metal purse frame",
+          "kind": "area",
+          "paths": 113,
+          "areaShare": 0.0813,
+          "precision": 0.2973,
+          "recall": 0.4437,
+          "iou": 0.2166,
+          "boundaryF1": -1
         },
         {
           "id": "closure_clasp",
+          "label": "Closure clasp",
+          "kind": "area",
           "paths": 1,
-          "precision": 0,
-          "recall": 0,
-          "iou": 0
+          "areaShare": 0.0024,
+          "precision": 1,
+          "recall": 0.0258,
+          "iou": 0.0258,
+          "boundaryF1": -1
         },
         {
           "id": "floral_ornament",
-          "paths": 87,
-          "precision": 0.7917,
-          "recall": 0.5372,
-          "iou": 0.4707
+          "label": "Floral metal ornament",
+          "kind": "area",
+          "paths": 85,
+          "areaShare": 0.01,
+          "precision": 0.7446,
+          "recall": 0.492,
+          "iou": 0.4209,
+          "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.4596,
+      "meanPrecision": 0.5532,
+      "weightedMeanIou": 0.5355,
+      "failingMajorParts": [
+        "metal_frame"
+      ],
       "misassigned": [
-        "metal_frame",
-        "closure_clasp"
+        "metal_frame"
       ],
       "emptyVisibleParts": [],
       "sharedOnlyParts": [
         "chain_handle"
       ],
-      "sharedBoundaries": 2,
+      "sharedBoundaries": 28,
       "aspectRatio": 1.015,
       "lowConfidenceRoutes": 11,
       "notes": [
-        "배분이 의심되는 레이어 2개: metal_frame, closure_clasp",
+        "기준 미달 주요 파트 1개: metal_frame (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+        "배분이 의심되는 레이어 1개: metal_frame",
         "공유 경계로만 그려진 파트 1개: chain_handle",
-        "라우터가 확신하지 못한 성분 11개"
+        "라우터가 확신하지 못한 성분 11개",
+        "면적 가중 평균 IoU 0.536 < 0.65"
       ]
     },
     "state": "FIDELITY_REVIEW / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
   },
   "timings": {
-    "S1_preprocess": 5603,
-    "S2_plan": 4,
-    "S3_masks": 3344,
-    "S4_schematic": 479,
-    "S5_evidence": 5757,
-    "S7_export": 102,
-    "S8_qa": 3445
+    "S1_preprocess": 5054,
+    "S2_plan": 10,
+    "S3_masks": 2543,
+    "S4_schematic": 285,
+    "S5_evidence": 3197,
+    "S7_export": 55,
+    "S8_qa": 1471
   },
   "correspondence": {
     "method": "global-similarity",

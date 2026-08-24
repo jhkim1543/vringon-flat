@@ -12,9 +12,9 @@
  {
   "id": "f2",
   "cls": "FACE_FILL",
-  "partId": "clasp_insert",
-  "area": 672020,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "left_hoop_half",
+  "area": 462290,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -22,9 +22,9 @@
  {
   "id": "f3",
   "cls": "FACE_FILL",
-  "partId": "engraved_pattern",
-  "area": 672020,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "left_hoop_half",
+  "area": 462290,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -32,9 +32,9 @@
  {
   "id": "f4",
   "cls": "FACE_FILL",
-  "partId": "engraved_pattern",
-  "area": 672020,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "right_hoop_half",
+  "area": 100004,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -42,9 +42,9 @@
  {
   "id": "f5",
   "cls": "FACE_FILL",
-  "partId": "clasp_insert",
-  "area": 672020,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "right_hoop_half",
+  "area": 100004,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -52,10 +52,10 @@
  {
   "id": "f6",
   "cls": "FACE_FILL",
-  "partId": "right_hoop_half",
-  "area": 672020,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "engraved_pattern",
+  "area": 92709,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
@@ -63,9 +63,9 @@
   "id": "f7",
   "cls": "FACE_FILL",
   "partId": "engraved_pattern",
-  "area": 672020,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "area": 92709,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
@@ -73,9 +73,9 @@
   "id": "f8",
   "cls": "FACE_FILL",
   "partId": "engraved_pattern",
-  "area": 672020,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "area": 92709,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
@@ -83,19 +83,19 @@
   "id": "f9",
   "cls": "FACE_FILL",
   "partId": "engraved_pattern",
-  "area": 672020,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "area": 92709,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
  {
   "id": "fa",
   "cls": "FACE_FILL",
-  "partId": "right_hoop_half",
-  "area": 672020,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "engraved_pattern",
+  "area": 92709,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
@@ -103,8 +103,8 @@
   "id": "fb",
   "cls": "FACE_FILL",
   "partId": "hinge_pivot",
-  "area": 672020,
-  "why": "선이 감싼 닫힌 면",
+  "area": 12085,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -112,9 +112,9 @@
  {
   "id": "fc",
   "cls": "FACE_FILL",
-  "partId": "left_hoop_half",
-  "area": 672020,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "clasp_insert",
+  "area": 4932,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -122,9 +122,9 @@
  {
   "id": "fd",
   "cls": "FACE_FILL",
-  "partId": "engraved_pattern",
-  "area": 672020,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "clasp_insert",
+  "area": 4932,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null

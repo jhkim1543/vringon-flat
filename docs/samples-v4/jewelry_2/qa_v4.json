@@ -8,8 +8,8 @@
       "sourceHeight": 1024,
       "supersample": 2
     },
-    "totalMs": 15015,
-    "createdAt": "2026-08-24T03:30:58.547Z"
+    "totalMs": 10718,
+    "createdAt": "2026-08-24T07:48:46.549Z"
   },
   "options": {
     "minParts": 3,
@@ -181,14 +181,14 @@
   "qa": {
     "fidelity": {
       "pass": true,
-      "f0": 0.9478,
-      "f1": 0.9884,
+      "f0": 0.9486,
+      "f1": 0.9883,
       "f2": 0.9925,
-      "lineF1": 0.9884,
+      "lineF1": 0.9883,
       "lineF2": 0.9925,
       "textureShare": 0,
-      "inkRatio": 1.007,
-      "chamfer": 0.081,
+      "inkRatio": 1.011,
+      "chamfer": 0.08,
       "p95": 1,
       "detailRecall": 1,
       "holes": [
@@ -204,18 +204,21 @@
     "editability": {
       "pass": true,
       "paths": 51,
+      "subpaths": 116,
+      "maxSubpathsInPath": 39,
+      "objectComplexity": 167,
       "anchors": 3683,
       "uses": 0,
-      "kb": 150.9,
-      "anchorDensity": 4.66,
-      "shortPathRatio": 0,
+      "kb": 152,
+      "anchorDensity": 4.73,
+      "shortPathRatio": 0.01,
       "primitives": 4,
       "anchorsSavedByPrimitives": 193,
       "pathsSavedByPatterns": 0,
       "editableReduction": {
         "paths": 0,
         "anchors": 0.093,
-        "kb": 0.087
+        "kb": 0.088
       },
       "notes": []
     },
@@ -224,89 +227,127 @@
       "perPart": [
         {
           "id": "rear_clasp_hardware",
-          "paths": 10,
-          "precision": 1,
-          "recall": 0.1226,
-          "iou": 0.1226
+          "label": "Rear brooch clasp hardware",
+          "kind": "area",
+          "paths": 12,
+          "areaShare": 0.0216,
+          "precision": 0.4905,
+          "recall": 0.5411,
+          "iou": 0.3464,
+          "boundaryF1": -1
         },
         {
           "id": "upper_tuning_pegs",
+          "label": "Upper tuning pegs",
+          "kind": "area",
           "paths": 3,
-          "precision": 1,
-          "recall": 0.4287,
-          "iou": 0.4287
+          "areaShare": 0.0121,
+          "precision": 0.9898,
+          "recall": 0.6621,
+          "iou": 0.6576,
+          "boundaryF1": -1
         },
         {
           "id": "string_wire_set",
-          "paths": 0,
-          "precision": -1,
-          "recall": -1,
-          "iou": -1
+          "label": "String wire set",
+          "kind": "area",
+          "paths": 1,
+          "areaShare": 0.0261,
+          "precision": 0.6513,
+          "recall": 0.3286,
+          "iou": 0.2794,
+          "boundaryF1": -1
         },
         {
           "id": "outer_curved_spine",
-          "paths": 1,
-          "precision": 0,
-          "recall": 0,
-          "iou": 0
+          "label": "Outer curved spine",
+          "kind": "area",
+          "paths": 2,
+          "areaShare": 0.0241,
+          "precision": 0.7982,
+          "recall": 0.0883,
+          "iou": 0.0864,
+          "boundaryF1": -1
         },
         {
           "id": "lower_frame_body",
+          "label": "Lower frame and soundboard",
+          "kind": "area",
           "paths": 19,
-          "precision": 0.881,
-          "recall": 0.8423,
-          "iou": 0.7562
+          "areaShare": 0.2985,
+          "precision": 0.8981,
+          "recall": 0.8802,
+          "iou": 0.8003,
+          "boundaryF1": -1
         },
         {
           "id": "upper_neck_plate",
-          "paths": 6,
-          "precision": 0.3243,
-          "recall": 0.4133,
-          "iou": 0.2221
+          "label": "Upper neck plate",
+          "kind": "area",
+          "paths": 8,
+          "areaShare": 0.0389,
+          "precision": 0.3308,
+          "recall": 0.869,
+          "iou": 0.315,
+          "boundaryF1": -1
         },
         {
           "id": "front_leaf_ornament",
-          "paths": 6,
-          "precision": 0.7358,
-          "recall": 0.5445,
-          "iou": 0.4555
+          "label": "Front leaf ornament",
+          "kind": "area",
+          "paths": 3,
+          "areaShare": 0.013,
+          "precision": 0.8779,
+          "recall": 0.5981,
+          "iou": 0.5521,
+          "boundaryF1": -1
         },
         {
           "id": "neck_fasteners",
-          "paths": 6,
-          "precision": 0.5261,
-          "recall": 0.6949,
-          "iou": 0.4274
+          "label": "Neck fasteners",
+          "kind": "area",
+          "paths": 3,
+          "areaShare": 0.019,
+          "precision": 0.7304,
+          "recall": 0.0737,
+          "iou": 0.0718,
+          "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.6382,
-      "misassigned": [
+      "meanPrecision": 0.7209,
+      "weightedMeanIou": 0.6276,
+      "failingMajorParts": [
+        "rear_clasp_hardware",
+        "string_wire_set",
         "outer_curved_spine",
         "upper_neck_plate"
       ],
-      "emptyVisibleParts": [],
-      "sharedOnlyParts": [
-        "string_wire_set"
+      "misassigned": [
+        "rear_clasp_hardware",
+        "upper_neck_plate"
       ],
-      "sharedBoundaries": 17,
+      "emptyVisibleParts": [],
+      "sharedOnlyParts": [],
+      "sharedBoundaries": 37,
       "aspectRatio": 1.007,
       "lowConfidenceRoutes": 4,
       "notes": [
-        "배분이 의심되는 레이어 2개: outer_curved_spine, upper_neck_plate",
-        "공유 경계로만 그려진 파트 1개: string_wire_set",
-        "라우터가 확신하지 못한 성분 4개"
+        "기준 미달 주요 파트 4개: rear_clasp_hardware, string_wire_set, outer_curved_spine, upper_neck_plate (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+        "배분이 의심되는 레이어 2개: rear_clasp_hardware, upper_neck_plate",
+        "라우터가 확신하지 못한 성분 4개",
+        "면적 가중 평균 IoU 0.628 < 0.65"
       ]
     },
     "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
   },
   "timings": {
-    "S1_preprocess": 5616,
-    "S2_plan": 7,
-    "S3_masks": 2926,
-    "S4_schematic": 356,
-    "S5_evidence": 2446,
-    "S7_export": 32,
-    "S8_qa": 3511
+    "S1_preprocess": 4960,
+    "S2_plan": 4,
+    "S3_masks": 1393,
+    "S4_schematic": 235,
+    "S5_evidence": 2420,
+    "S7_export": 24,
+    "S8_qa": 1606
   },
   "correspondence": {
     "method": "global-similarity",

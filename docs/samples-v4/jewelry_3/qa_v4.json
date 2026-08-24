@@ -1,6 +1,6 @@
 {
   "job": {
-    "state": "FIDELITY_REVIEW / EDITABILITY_PASS / SEMANTIC_PASS",
+    "state": "FIDELITY_REVIEW / EDITABILITY_PASS / SEMANTIC_REVIEW",
     "canvas": {
       "width": 2048,
       "height": 928,
@@ -8,8 +8,8 @@
       "sourceHeight": 464,
       "supersample": 2
     },
-    "totalMs": 13420,
-    "createdAt": "2026-08-24T03:27:50.849Z"
+    "totalMs": 11061,
+    "createdAt": "2026-08-24T07:49:00.257Z"
   },
   "options": {
     "minParts": 3,
@@ -194,13 +194,13 @@
   "qa": {
     "fidelity": {
       "pass": false,
-      "f0": 0.8015,
-      "f1": 0.8472,
+      "f0": 0.8016,
+      "f1": 0.8471,
       "f2": 0.8615,
-      "lineF1": 0.8508,
+      "lineF1": 0.8507,
       "lineF2": 0.865,
       "textureShare": 0.0102,
-      "inkRatio": 0.874,
+      "inkRatio": 0.877,
       "chamfer": 2.12,
       "p95": 15,
       "detailRecall": 1,
@@ -221,116 +221,160 @@
     "editability": {
       "pass": true,
       "paths": 127,
+      "subpaths": 237,
+      "maxSubpathsInPath": 46,
+      "objectComplexity": 364,
       "anchors": 3618,
       "uses": 0,
-      "kb": 145.1,
-      "anchorDensity": 5.74,
-      "shortPathRatio": 0.039,
+      "kb": 145.3,
+      "anchorDensity": 6.63,
+      "shortPathRatio": 0.026,
       "primitives": 21,
       "anchorsSavedByPrimitives": 161,
       "pathsSavedByPatterns": 0,
       "editableReduction": {
         "paths": 0.228,
         "anchors": 0.207,
-        "kb": 0.188
+        "kb": 0.187
       },
       "notes": []
     },
     "semantic": {
-      "pass": true,
+      "pass": false,
       "perPart": [
         {
           "id": "rear_ring_band",
-          "paths": 0,
-          "precision": -1,
-          "recall": -1,
-          "iou": -1
+          "label": "Rear ring band",
+          "kind": "area",
+          "paths": 2,
+          "areaShare": 0.0246,
+          "precision": 0.7603,
+          "recall": 0.8147,
+          "iou": 0.6482,
+          "boundaryF1": -1
         },
         {
           "id": "rear_ring_pearl",
+          "label": "Rear ring pearl",
+          "kind": "area",
           "paths": 22,
-          "precision": 1,
-          "recall": 0.6856,
-          "iou": 0.6856
+          "areaShare": 0.0274,
+          "precision": 0.9924,
+          "recall": 0.7859,
+          "iou": 0.7812,
+          "boundaryF1": -1
         },
         {
           "id": "rear_ring_setting",
-          "paths": 3,
-          "precision": 0.2929,
-          "recall": 0.7617,
-          "iou": 0.2683
+          "label": "Rear ring setting",
+          "kind": "area",
+          "paths": 1,
+          "areaShare": 0.0087,
+          "precision": 0.2226,
+          "recall": 0.3989,
+          "iou": 0.1667,
+          "boundaryF1": -1
         },
         {
           "id": "center_ring_band",
-          "paths": 3,
-          "precision": 0.9546,
-          "recall": 0.2582,
-          "iou": 0.255
+          "label": "Center ring band",
+          "kind": "area",
+          "paths": 4,
+          "areaShare": 0.014,
+          "precision": 0.7627,
+          "recall": 0.4418,
+          "iou": 0.3884,
+          "boundaryF1": -1
         },
         {
           "id": "center_ring_gemstone",
-          "paths": 51,
-          "precision": 0.9676,
-          "recall": 0.8842,
-          "iou": 0.8587
+          "label": "Center ring gemstone",
+          "kind": "area",
+          "paths": 52,
+          "areaShare": 0.075,
+          "precision": 0.9346,
+          "recall": 0.9432,
+          "iou": 0.8848,
+          "boundaryF1": -1
         },
         {
           "id": "center_ring_bezel",
-          "paths": 2,
-          "precision": 0.5327,
-          "recall": 0.0921,
-          "iou": 0.0852
+          "label": "Center ring bezel",
+          "kind": "area",
+          "paths": 0,
+          "areaShare": 0.0115,
+          "precision": 0,
+          "recall": 0,
+          "iou": 0,
+          "boundaryF1": 0
         },
         {
           "id": "front_ring_band",
-          "paths": 5,
-          "precision": 0.6019,
-          "recall": 0.6368,
-          "iou": 0.4481
+          "label": "Front ring band",
+          "kind": "area",
+          "paths": 6,
+          "areaShare": 0.0411,
+          "precision": 0.5145,
+          "recall": 0.7692,
+          "iou": 0.4457,
+          "boundaryF1": -1
         },
         {
           "id": "front_ring_gemstone",
+          "label": "Front ring gemstone",
+          "kind": "area",
           "paths": 35,
-          "precision": 1,
-          "recall": 0.7396,
-          "iou": 0.7396
+          "areaShare": 0.0691,
+          "precision": 0.9878,
+          "recall": 0.7998,
+          "iou": 0.792,
+          "boundaryF1": -1
         },
         {
           "id": "front_ring_bezel",
-          "paths": 6,
-          "precision": 0.3259,
-          "recall": 0.673,
-          "iou": 0.2813
+          "label": "Front ring bezel",
+          "kind": "area",
+          "paths": 5,
+          "areaShare": 0.0167,
+          "precision": 0.241,
+          "recall": 0.7971,
+          "iou": 0.2271,
+          "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.7094,
+      "meanPrecision": 0.6018,
+      "weightedMeanIou": 0.6506,
+      "failingMajorParts": [
+        "front_ring_band"
+      ],
       "misassigned": [
         "rear_ring_setting",
         "front_ring_bezel"
       ],
       "emptyVisibleParts": [],
       "sharedOnlyParts": [
-        "rear_ring_band"
+        "center_ring_bezel"
       ],
-      "sharedBoundaries": 10,
+      "sharedBoundaries": 7,
       "aspectRatio": 1,
       "lowConfidenceRoutes": 19,
       "notes": [
+        "기준 미달 주요 파트 1개: front_ring_band (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
         "배분이 의심되는 레이어 2개: rear_ring_setting, front_ring_bezel",
-        "공유 경계로만 그려진 파트 1개: rear_ring_band",
+        "공유 경계로만 그려진 파트 1개: center_ring_bezel",
         "라우터가 확신하지 못한 성분 19개"
       ]
     },
-    "state": "FIDELITY_REVIEW / EDITABILITY_PASS / SEMANTIC_PASS"
+    "state": "FIDELITY_REVIEW / EDITABILITY_PASS / SEMANTIC_REVIEW"
   },
   "timings": {
-    "S1_preprocess": 5264,
-    "S2_plan": 5,
-    "S3_masks": 3185,
-    "S4_schematic": 430,
-    "S5_evidence": 2706,
-    "S7_export": 17,
-    "S8_qa": 1761
+    "S1_preprocess": 4853,
+    "S2_plan": 3,
+    "S3_masks": 2154,
+    "S4_schematic": 255,
+    "S5_evidence": 2412,
+    "S7_export": 14,
+    "S8_qa": 1321
   },
   "correspondence": {
     "method": "global-similarity",

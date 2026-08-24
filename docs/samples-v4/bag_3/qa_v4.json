@@ -1,6 +1,6 @@
 {
   "job": {
-    "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_PASS",
+    "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_REVIEW",
     "canvas": {
       "width": 1254,
       "height": 2800,
@@ -8,8 +8,8 @@
       "sourceHeight": 1400,
       "supersample": 2
     },
-    "totalMs": 17902,
-    "createdAt": "2026-08-24T03:30:24.211Z"
+    "totalMs": 17256,
+    "createdAt": "2026-08-24T07:45:48.179Z"
   },
   "options": {
     "minParts": 3,
@@ -113,13 +113,13 @@
   "qa": {
     "fidelity": {
       "pass": true,
-      "f0": 0.9639,
+      "f0": 0.9643,
       "f1": 0.9996,
       "f2": 1,
       "lineF1": 0.9996,
       "lineF2": 1,
       "textureShare": 0,
-      "inkRatio": 1.002,
+      "inkRatio": 1.007,
       "chamfer": 0.036,
       "p95": 0,
       "detailRecall": 1,
@@ -136,76 +136,103 @@
     "editability": {
       "pass": false,
       "paths": 747,
+      "subpaths": 2518,
+      "maxSubpathsInPath": 1089,
+      "objectComplexity": 3265,
       "anchors": 19487,
       "uses": 0,
-      "kb": 771.4,
-      "anchorDensity": 14.67,
-      "shortPathRatio": 0,
+      "kb": 790.7,
+      "anchorDensity": 10.75,
+      "shortPathRatio": 0.005,
       "primitives": 70,
       "anchorsSavedByPrimitives": 913,
       "pathsSavedByPatterns": 0,
       "editableReduction": {
         "paths": 0,
         "anchors": 0.118,
-        "kb": 0.106
+        "kb": 0.104
       },
       "notes": [
-        "앵커 밀도 14.7/100px > 12"
+        "한 패스에 서브패스 1089개 — Illustrator 에서 통째로 선택된다"
       ]
     },
     "semantic": {
-      "pass": true,
+      "pass": false,
       "perPart": [
         {
           "id": "inner_pouch",
-          "paths": 1,
-          "precision": 1,
-          "recall": 0.0294,
-          "iou": 0.0294
+          "label": "Inner pouch body",
+          "kind": "area",
+          "paths": 49,
+          "areaShare": 0.0038,
+          "precision": 0.0855,
+          "recall": 0.1195,
+          "iou": 0.0525,
+          "boundaryF1": -1
         },
         {
           "id": "chain_strap",
-          "paths": 33,
-          "precision": 0.9118,
-          "recall": 0.3472,
-          "iou": 0.3359
+          "label": "Chain shoulder strap",
+          "kind": "area",
+          "paths": 34,
+          "areaShare": 0.0356,
+          "precision": 0.8927,
+          "recall": 0.4702,
+          "iou": 0.445,
+          "boundaryF1": -1
         },
         {
           "id": "metal_lattice_shell",
-          "paths": 16,
-          "precision": 0.7373,
-          "recall": 0.1088,
-          "iou": 0.1047
+          "label": "Linked metal outer shell",
+          "kind": "area",
+          "paths": 19,
+          "areaShare": 0.0103,
+          "precision": 0.5917,
+          "recall": 0.159,
+          "iou": 0.1433,
+          "boundaryF1": -1
         },
         {
           "id": "turquoise_stone_embellishments",
-          "paths": 697,
-          "precision": 0.8434,
-          "recall": 0.9024,
-          "iou": 0.7729
+          "label": "Turquoise stone embellishments",
+          "kind": "area",
+          "paths": 645,
+          "areaShare": 0.1856,
+          "precision": 0.8317,
+          "recall": 0.9585,
+          "iou": 0.8028,
+          "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.8731,
-      "misassigned": [],
+      "meanPrecision": 0.6004,
+      "weightedMeanIou": 0.7077,
+      "failingMajorParts": [
+        "chain_strap"
+      ],
+      "misassigned": [
+        "inner_pouch"
+      ],
       "emptyVisibleParts": [],
       "sharedOnlyParts": [],
-      "sharedBoundaries": 14,
+      "sharedBoundaries": 665,
       "aspectRatio": 1.031,
       "lowConfidenceRoutes": 0,
       "notes": [
-        "사진↔도면 종횡비 불일치 3.1% — 배분 정확도에만 영향"
+        "기준 미달 주요 파트 1개: chain_strap (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+        "배분이 의심되는 레이어 1개: inner_pouch",
+        "사진↔도면 종횡비 불일치 3.1%"
       ]
     },
-    "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_PASS"
+    "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
   },
   "timings": {
-    "S1_preprocess": 5726,
-    "S2_plan": 3,
-    "S3_masks": 4460,
-    "S4_schematic": 459,
-    "S5_evidence": 4020,
-    "S7_export": 58,
-    "S8_qa": 2919
+    "S1_preprocess": 5206,
+    "S2_plan": 4,
+    "S3_masks": 5238,
+    "S4_schematic": 792,
+    "S5_evidence": 4138,
+    "S7_export": 79,
+    "S8_qa": 1626
   },
   "correspondence": {
     "method": "global-similarity",

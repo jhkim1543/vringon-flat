@@ -1,6 +1,6 @@
 {
   "job": {
-    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS",
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW",
     "canvas": {
       "width": 2800,
       "height": 1572,
@@ -8,8 +8,8 @@
       "sourceHeight": 786,
       "supersample": 2
     },
-    "totalMs": 23106,
-    "createdAt": "2026-08-24T03:27:33.687Z"
+    "totalMs": 18493,
+    "createdAt": "2026-08-24T07:47:07.999Z"
   },
   "options": {
     "minParts": 3,
@@ -190,25 +190,25 @@
   },
   "counts": {
     "GEOMETRIC_PRIMITIVE": 23,
-    "FACE_FILL": 242,
+    "FACE_FILL": 245,
     "OUTLINE_SHAPE": 55
   },
   "qa": {
     "fidelity": {
       "pass": true,
-      "f0": 0.8727,
+      "f0": 0.8733,
       "f1": 0.9061,
       "f2": 0.9081,
-      "lineF1": 0.9964,
+      "lineF1": 0.9963,
       "lineF2": 0.9989,
       "textureShare": 0.4392,
-      "inkRatio": 1.015,
+      "inkRatio": 1.019,
       "chamfer": 0.058,
       "p95": 0,
       "detailRecall": 1,
       "holes": [
         317,
-        314
+        313
       ],
       "majorComponents": [
         3,
@@ -220,12 +220,15 @@
     },
     "editability": {
       "pass": true,
-      "paths": 320,
-      "anchors": 21206,
+      "paths": 323,
+      "subpaths": 867,
+      "maxSubpathsInPath": 153,
+      "objectComplexity": 1190,
+      "anchors": 21212,
       "uses": 0,
-      "kb": 853,
-      "anchorDensity": 8.37,
-      "shortPathRatio": 0.022,
+      "kb": 856.4,
+      "anchorDensity": 8.55,
+      "shortPathRatio": 0.033,
       "primitives": 23,
       "anchorsSavedByPrimitives": 267,
       "pathsSavedByPatterns": 0,
@@ -237,99 +240,140 @@
       "notes": []
     },
     "semantic": {
-      "pass": true,
+      "pass": false,
       "perPart": [
         {
           "id": "rubber_outsole",
-          "paths": 0,
-          "precision": -1,
-          "recall": -1,
-          "iou": -1
+          "label": "lugged rubber outsole",
+          "kind": "thin",
+          "paths": 1,
+          "areaShare": 0.0028,
+          "precision": 0.8903,
+          "recall": 0.0218,
+          "iou": 0.0218,
+          "boundaryF1": 0.1684
         },
         {
           "id": "foam_midsole",
+          "label": "foam midsole",
+          "kind": "area",
           "paths": 2,
-          "precision": 0.9216,
-          "recall": 0.1856,
-          "iou": 0.1827
+          "areaShare": 0.0058,
+          "precision": 0.7168,
+          "recall": 0.2352,
+          "iou": 0.2152,
+          "boundaryF1": -1
         },
         {
           "id": "mesh_upper",
-          "paths": 56,
-          "precision": 0.981,
-          "recall": 0.2053,
-          "iou": 0.2044
+          "label": "mesh upper",
+          "kind": "area",
+          "paths": 66,
+          "areaShare": 0.1322,
+          "precision": 0.675,
+          "recall": 0.6374,
+          "iou": 0.4877,
+          "boundaryF1": -1
         },
         {
           "id": "tongue",
-          "paths": 94,
-          "precision": 0.759,
-          "recall": 0.6847,
-          "iou": 0.5624
+          "label": "padded tongue",
+          "kind": "area",
+          "paths": 98,
+          "areaShare": 0.12,
+          "precision": 0.8225,
+          "recall": 0.7237,
+          "iou": 0.626,
+          "boundaryF1": -1
         },
         {
           "id": "synthetic_overlays",
-          "paths": 68,
-          "precision": 0.5051,
-          "recall": 0.8146,
-          "iou": 0.453
+          "label": "synthetic support overlays",
+          "kind": "area",
+          "paths": 60,
+          "areaShare": 0.0642,
+          "precision": 0.5555,
+          "recall": 0.8153,
+          "iou": 0.4934,
+          "boundaryF1": -1
         },
         {
           "id": "heel_pull_tabs",
-          "paths": 1,
-          "precision": 1,
-          "recall": 0.1783,
-          "iou": 0.1783
+          "label": "heel pull tabs",
+          "kind": "area",
+          "paths": 2,
+          "areaShare": 0.0035,
+          "precision": 0.7815,
+          "recall": 0.5538,
+          "iou": 0.4795,
+          "boundaryF1": -1
         },
         {
           "id": "collar_lining",
-          "paths": 6,
-          "precision": 0.8578,
-          "recall": 0.0873,
-          "iou": 0.086
+          "label": "padded collar lining",
+          "kind": "area",
+          "paths": 5,
+          "areaShare": 0.0322,
+          "precision": 0.8024,
+          "recall": 0.7859,
+          "iou": 0.6584,
+          "boundaryF1": -1
         },
         {
           "id": "laces",
-          "paths": 56,
-          "precision": 0.9428,
-          "recall": 0.4494,
-          "iou": 0.4375
+          "label": "laces",
+          "kind": "area",
+          "paths": 55,
+          "areaShare": 0.0557,
+          "precision": 0.9601,
+          "recall": 0.5414,
+          "iou": 0.5295,
+          "boundaryF1": -1
         },
         {
           "id": "brand_graphics",
-          "paths": 37,
-          "precision": 0.4347,
-          "recall": 0.9302,
-          "iou": 0.421
+          "label": "brand and side graphics",
+          "kind": "area",
+          "paths": 34,
+          "areaShare": 0.0838,
+          "precision": 0.4862,
+          "recall": 0.7556,
+          "iou": 0.4201,
+          "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.8003,
+      "meanPrecision": 0.7434,
+      "weightedMeanIou": 0.5201,
+      "failingMajorParts": [
+        "laces",
+        "brand_graphics"
+      ],
       "misassigned": [
         "brand_graphics"
       ],
       "emptyVisibleParts": [],
-      "sharedOnlyParts": [
-        "rubber_outsole"
-      ],
-      "sharedBoundaries": 22,
+      "sharedOnlyParts": [],
+      "sharedBoundaries": 165,
       "aspectRatio": 1.002,
       "lowConfidenceRoutes": 35,
       "notes": [
+        "기준 미달 주요 파트 2개: laces, brand_graphics (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
         "배분이 의심되는 레이어 1개: brand_graphics",
-        "공유 경계로만 그려진 파트 1개: rubber_outsole",
-        "라우터가 확신하지 못한 성분 35개"
+        "사진↔도면 대응 실패 — 파트 배분을 신뢰할 수 없다",
+        "라우터가 확신하지 못한 성분 35개",
+        "면적 가중 평균 IoU 0.520 < 0.65"
       ]
     },
-    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
   },
   "timings": {
-    "S1_preprocess": 2850,
-    "S2_plan": 4,
-    "S3_masks": 7620,
-    "S4_schematic": 416,
-    "S5_evidence": 6627,
-    "S7_export": 96,
-    "S8_qa": 5355
+    "S1_preprocess": 2788,
+    "S2_plan": 6,
+    "S3_masks": 6669,
+    "S4_schematic": 333,
+    "S5_evidence": 5717,
+    "S7_export": 60,
+    "S8_qa": 2806
   },
   "correspondence": {
     "method": "global-similarity",

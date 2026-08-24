@@ -1,6 +1,6 @@
 {
   "job": {
-    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS",
+    "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_REVIEW",
     "canvas": {
       "width": 2800,
       "height": 2118,
@@ -8,8 +8,8 @@
       "sourceHeight": 1059,
       "supersample": 2
     },
-    "totalMs": 31991,
-    "createdAt": "2026-08-24T03:29:44.454Z"
+    "totalMs": 24820,
+    "createdAt": "2026-08-24T07:48:19.064Z"
   },
   "options": {
     "minParts": 3,
@@ -192,14 +192,14 @@
   "qa": {
     "fidelity": {
       "pass": true,
-      "f0": 0.9443,
-      "f1": 0.9671,
+      "f0": 0.9449,
+      "f1": 0.967,
       "f2": 0.9679,
       "lineF1": 0.9987,
       "lineF2": 0.9997,
       "textureShare": 0.2525,
-      "inkRatio": 0.992,
-      "chamfer": 0.026,
+      "inkRatio": 0.995,
+      "chamfer": 0.025,
       "p95": 0,
       "detailRecall": 1,
       "holes": [
@@ -215,13 +215,16 @@
       ]
     },
     "editability": {
-      "pass": true,
+      "pass": false,
       "paths": 739,
-      "anchors": 32579,
+      "subpaths": 1552,
+      "maxSubpathsInPath": 760,
+      "objectComplexity": 2291,
+      "anchors": 32585,
       "uses": 0,
-      "kb": 1346.8,
-      "anchorDensity": 9.06,
-      "shortPathRatio": 0.001,
+      "kb": 1351.3,
+      "anchorDensity": 8.46,
+      "shortPathRatio": 0.016,
       "primitives": 208,
       "anchorsSavedByPrimitives": 2649,
       "pathsSavedByPatterns": 0,
@@ -230,70 +233,111 @@
         "anchors": 0.098,
         "kb": 0.092
       },
-      "notes": []
+      "notes": [
+        "한 패스에 서브패스 760개 — Illustrator 에서 통째로 선택된다"
+      ]
     },
     "semantic": {
-      "pass": true,
+      "pass": false,
       "perPart": [
         {
           "id": "tongue",
-          "paths": 19,
-          "precision": 0.9414,
-          "recall": 0.1072,
-          "iou": 0.1065
+          "label": "Tongue",
+          "kind": "area",
+          "paths": 32,
+          "areaShare": 0.0795,
+          "precision": 0.7952,
+          "recall": 0.2536,
+          "iou": 0.238,
+          "boundaryF1": -1
         },
         {
           "id": "mesh_upper",
+          "label": "Mesh upper",
+          "kind": "area",
           "paths": 0,
-          "precision": -1,
-          "recall": -1,
-          "iou": -1
+          "areaShare": 0.0063,
+          "precision": 0,
+          "recall": 0,
+          "iou": 0,
+          "boundaryF1": 0
         },
         {
           "id": "padded_collar",
+          "label": "Padded collar",
+          "kind": "thin",
           "paths": 0,
-          "precision": -1,
-          "recall": -1,
-          "iou": -1
+          "areaShare": 0.0021,
+          "precision": 0,
+          "recall": 0,
+          "iou": 0,
+          "boundaryF1": 0
         },
         {
           "id": "eyestay_overlay",
-          "paths": 7,
-          "precision": 0.5293,
-          "recall": 0.5699,
-          "iou": 0.3782
+          "label": "Eyestay overlay",
+          "kind": "area",
+          "paths": 6,
+          "areaShare": 0.0377,
+          "precision": 0.4681,
+          "recall": 0.6723,
+          "iou": 0.3811,
+          "boundaryF1": -1
         },
         {
           "id": "lace_loops",
-          "paths": 56,
-          "precision": 0.7995,
-          "recall": 0.3469,
-          "iou": 0.3192
+          "label": "Yellow lace loops",
+          "kind": "area",
+          "paths": 54,
+          "areaShare": 0.0658,
+          "precision": 0.5694,
+          "recall": 0.7465,
+          "iou": 0.4771,
+          "boundaryF1": -1
         },
         {
           "id": "laces",
+          "label": "Laces",
+          "kind": "thin",
           "paths": 0,
-          "precision": -1,
-          "recall": -1,
-          "iou": -1
+          "areaShare": 0.0016,
+          "precision": 0,
+          "recall": 0,
+          "iou": 0,
+          "boundaryF1": 0
         },
         {
           "id": "outsole",
-          "paths": 337,
-          "precision": 0.8749,
-          "recall": 0.6417,
-          "iou": 0.5878
+          "label": "Flexible tread outsole",
+          "kind": "area",
+          "paths": 338,
+          "areaShare": 0.3412,
+          "precision": 0.8771,
+          "recall": 0.6907,
+          "iou": 0.6298,
+          "boundaryF1": -1
         },
         {
           "id": "lace_stitching",
-          "paths": 320,
-          "precision": 0.4588,
-          "recall": 0.8543,
-          "iou": 0.4255
+          "label": "Yellow lace stitching",
+          "kind": "area",
+          "paths": 309,
+          "areaShare": 0.172,
+          "precision": 0.4551,
+          "recall": 0.7911,
+          "iou": 0.4063,
+          "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.7208,
+      "meanPrecision": 0.3956,
+      "weightedMeanIou": 0.4948,
+      "failingMajorParts": [
+        "tongue",
+        "eyestay_overlay",
+        "lace_stitching"
+      ],
       "misassigned": [
+        "eyestay_overlay",
         "lace_stitching"
       ],
       "emptyVisibleParts": [],
@@ -302,25 +346,28 @@
         "padded_collar",
         "laces"
       ],
-      "sharedBoundaries": 32,
+      "sharedBoundaries": 415,
       "aspectRatio": 1.006,
       "lowConfidenceRoutes": 28,
       "notes": [
-        "배분이 의심되는 레이어 1개: lace_stitching",
+        "기준 미달 주요 파트 3개: tongue, eyestay_overlay, lace_stitching (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+        "배분이 의심되는 레이어 2개: eyestay_overlay, lace_stitching",
         "공유 경계로만 그려진 파트 3개: mesh_upper, padded_collar, laces",
-        "라우터가 확신하지 못한 성분 28개"
+        "사진↔도면 대응 실패 — 파트 배분을 신뢰할 수 없다",
+        "라우터가 확신하지 못한 성분 28개",
+        "면적 가중 평균 IoU 0.495 < 0.65"
       ]
     },
-    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
+    "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
   },
   "timings": {
-    "S1_preprocess": 3562,
-    "S2_plan": 4,
-    "S3_masks": 11560,
-    "S4_schematic": 642,
-    "S5_evidence": 10159,
-    "S7_export": 151,
-    "S8_qa": 5711
+    "S1_preprocess": 4355,
+    "S2_plan": 9,
+    "S3_masks": 8173,
+    "S4_schematic": 478,
+    "S5_evidence": 8675,
+    "S7_export": 96,
+    "S8_qa": 2855
   },
   "correspondence": {
     "method": "global-similarity",

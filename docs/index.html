@@ -135,7 +135,7 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
     </div>
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-tab="gallery">결과 갤러리</button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="v4">V4 · Semantic Topology</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="v4">V4.1 · Semantic Topology</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="v3">V3.2 · VRINGON 도면</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="v2">V2 · 레이어 SVG</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="run">직접 실행</button>
@@ -160,8 +160,8 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
 
 <!-- ─────────── V4 Semantic Topology ─────────── -->
 <section id="v4" hidden>
-  <h2>V4 — Semantic Topology Vectorizer
-    <span style="font-size:14px;font-weight:400;color:var(--dim)">· 2026-08-24</span></h2>
+  <h2>V4.1 — Semantic Topology Vectorizer
+    <span style="font-size:14px;font-weight:400;color:var(--dim)">· 2026-08-24 · 외부 감사 P0 반영</span></h2>
   <p class="sub">
     V3까지는 잉크 전체를 한 방식으로 훑고 SVG 하나를 만들었습니다. V4는 <b>성분마다 표현을 먼저
     정하고</b>, 같은 장면(<code>VectorScene</code>)에서 목적별로 다른 SVG를 굽습니다.
@@ -199,15 +199,49 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
 
   <h3>V3.2 → V4 실측</h3>
   <div style="overflow-x:auto"><table id="v4cmp">
-    <tr><th>샘플</th><th class="num">V3.2 패스</th><th class="num">V4 패스</th>
-        <th class="num">V3.2 F@0</th><th class="num">V4 F@0</th>
-        <th class="num">V3.2 선F@2</th><th class="num">V4 선F@2</th>
+    <tr><th>샘플</th><th class="num">V3.2 패스</th><th class="num">V4.1 패스</th>
+        <th class="num">서브패스</th><th class="num">한 패스 최대</th>
+        <th class="num">V3.2 F@0</th><th class="num">V4.1 F@0</th>
+        <th class="num">V3.2 선F@2</th><th class="num">V4.1 선F@2</th>
         <th class="num">프리미티브</th><th class="num">패턴 절감</th><th>게이트</th></tr>
   </table></div>
   <p class="sub" style="margin-top:8px">
     패스가 크게 줄면서 <b>정확 일치(F@0px)는 오히려 올랐습니다</b>. 앵커 총량은 거의 같습니다 —
     줄어든 것은 <b>객체 수</b>이지 형상 정보가 아니라는 뜻입니다.
   </p>
+
+  <h3>외부 감사에서 드러난 것 — V4.1 에서 고쳤습니다</h3>
+  <div class="note" style="border-left-color:var(--warn)">
+    <b>가장 큰 것은 실제 렌더링 버그였습니다.</b> 닫힌 면에 적합한 기하 프리미티브를
+    <code>fill="none" stroke-width="0"</code> 으로 내보내 <b>화면에 아예 없었습니다.</b>
+    9종 합 329개 — bag_3 70/70, shoe_3 208/208, jewelry_1 1/1 이 전부 보이지 않았습니다.
+    구멍이 줄고 파트 recall 이 떨어지던 원인입니다.
+  </div>
+  <ul>
+    <li><b>프리미티브 칠하기를 둘로 나눴습니다.</b> 선에서 온 것은 stroke, <b>면에서 온 것은 fill</b>.
+      QA 에 “굵기 0이면 invalid” 불변식을 넣었습니다. 수정 후 9종 전부 0개,
+      shoe_3 구멍이 750→750 으로 정확히 일치합니다.</li>
+    <li><b>면을 파트에 배정한 뒤에 색을 병합합니다.</b> 화면 전체에서 같은 색끼리 먼저 묶으니
+      서로 다른 부품의 흰 면이 한 컴파운드 패스가 되고, 그 패스가 결국 파트 하나에만
+      들어갔습니다 — 가방 몸통·플랩·스트랩이 모두 회색이라 한 레이어로 몰렸습니다.
+      배정도 경계 좌표 표본이 아니라 <b>면적 겹침</b>으로 합니다.</li>
+    <li><b>의미 gate 를 다시 썼습니다.</b> 예전 조건은 평균 precision 과 빈 파트 유무뿐이라
+      recall·IoU·대응 신뢰도를 안 봤고, 패스가 0인 파트는 평균에서 빠져 <b>큰 파트가 통째로
+      사라져도 점수가 올라갔습니다</b>. 이제 면 파트와 얇은 선 파트를 나눠 재고(끈·체인·각인을
+      면 IoU 로 재면 구조적으로 낮습니다), 면적 가중 IoU·주요 파트 최소치·대응 신뢰도를
+      모두 봅니다. 허용오차도 면 0.1% / 선 0.6% 로 나눴습니다.</li>
+    <li><b>export 와 QA 가 같은 렌더러를 씁니다.</b> QA 가 패턴을 <code>d</code> 로만 찾아 아예
+      못 그렸고, 모든 기하 프리미티브를 stroke 로 그려 면 프리미티브를 놓쳤습니다.</li>
+    <li><b>편집성을 서브패스로 셉니다.</b> <code>&lt;path&gt;</code> 요소만 세면 컴파운드 패스가
+      1개로 집계됩니다 — bag_3 은 패스 747 이지만 <b>서브패스 2,518, 한 패스에 1,089개</b>입니다.
+      길이도 서브패스마다 따로 재야 합니다(이어 붙이면 존재하지 않는 도약이 더해져 앵커 밀도가
+      낮아집니다).</li>
+  </ul>
+  <div class="note">
+    <b>그 결과 의미 gate 는 9종 모두 REVIEW 입니다.</b> 이전 5/9 PASS 는 거짓이었습니다.
+    파트 레이어 ownership 은 아직 신뢰할 수 없고, 그것을 이제 QA 가 숨기지 않습니다 —
+    기준 미달 파트를 이름으로 지목합니다.
+  </div>
 
   <h3>임계는 손실을 재고 정했습니다</h3>
   <ul>
@@ -221,6 +255,20 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
       제자리를 벗어납니다(주얼리 도면 구멍 38 → 24). 직선성 2% 이내만 승격합니다.</li>
     <li><b>구조선</b>은 stroke가 그 잉크를 다 설명한다는 보장이 없어 <b>사후 검산</b>을 합니다 —
       실제로 그려 보고 안 덮인 잉크만 윤곽으로 보탭니다.</li>
+  </ul>
+
+  <h3>아직 남은 것 — 감사가 지적한 P1</h3>
+  <ul>
+    <li><b>라우팅 단위가 connected component 라 너무 큽니다.</b> 제품 선화는 외곽·seam·끈·로고가
+      서로 닿아 하나의 거대한 성분이 되므로 폭 변동과 교차가 커지고, 결국 전체가 outline 으로
+      갑니다. 그래서 9종에서 구조적 centerline 이 거의 생성되지 않습니다. junction 을 축약한
+      <b>graph edge 단위</b>로 라우팅해야 합니다.</li>
+    <li><b>junction continuity 를 전역으로 풀지 않습니다.</b> 체인을 독립적으로 피팅하므로 같은
+      교차점에서 시작한 두 곡선이 미세하게 다른 좌표로 끝날 수 있습니다.</li>
+    <li><b>가변 폭이 없습니다.</b> stroke 굵기가 체인당 상수 하나입니다.</li>
+    <li><b>곡선 스티치를 못 잡습니다.</b> 직선성 2% 이내만 dash 로 승격합니다.</li>
+    <li><b>패턴 인스턴스 회전이 0 고정입니다.</b> 서술자는 회전 불변이라 군집은 잘 찾지만,
+      배치할 때 각도를 복원하지 않습니다.</li>
   </ul>
 
   <h3>아직 없는 것</h3>
@@ -925,17 +973,17 @@ fetch("samples-v4/index.json").then(r => r.json()).then(d => {
       <img src="${s.files.schematic || s.files.input}" alt="${s.name}" loading="lazy">
       <div class="meta">
         <div class="t">${s.categoryLabel} · ${s.name}</div>
-        <div class="d">패스 ${s.qa.editability.paths.toLocaleString()} · 선F@2 ${s.qa.fidelity.lineF2.toFixed(3)}</div>
+        <div class="d">패스 ${s.qa.editability.paths.toLocaleString()} · 서브패스 ${s.qa.editability.subpaths.toLocaleString()} · 선F@2 ${s.qa.fidelity.lineF2.toFixed(3)}</div>
       </div>
     </button>`).join("");
   c.querySelectorAll(".card").forEach(x => x.onclick = () => openV4(+x.dataset.i));
 
   const t = document.getElementById("v4cmp");
-  let a = { p3: 0, p4: 0, f03: 0, f04: 0, s3: 0, s4: 0 };
+  let a = { p3: 0, p4: 0, sp: 0, f03: 0, f04: 0, s3: 0, s4: 0 };
   for (const s of d.samples) {
     const v3 = s.v3, q = s.qa;
     if (!v3) continue;
-    a.p3 += v3.paths; a.p4 += q.editability.paths;
+    a.p3 += v3.paths; a.p4 += q.editability.paths; a.sp += q.editability.subpaths;
     a.f03 += v3.f0; a.f04 += q.fidelity.f0;
     a.s3 += v3.lineF2; a.s4 += q.fidelity.lineF2;
     const g = s.state.replace(/FIDELITY_/, `F`).replace(/EDITABILITY_/, `E`).replace(/SEMANTIC_/, `S`)
@@ -945,6 +993,8 @@ fetch("samples-v4/index.json").then(r => r.json()).then(d => {
       <td>${s.name}</td>
       <td class="num" style="color:var(--dim)">${v3.paths.toLocaleString()}</td>
       <td class="num"><b>${q.editability.paths.toLocaleString()}</b></td>
+      <td class="num">${q.editability.subpaths.toLocaleString()}</td>
+      <td class="num"${q.editability.maxSubpathsInPath > 200 ? ` style="color:var(--warn)"` : ""}>${q.editability.maxSubpathsInPath.toLocaleString()}</td>
       <td class="num" style="color:var(--dim)">${v3.f0.toFixed(3)}</td>
       <td class="num"><b>${up(v3.f0, q.fidelity.f0)}</b></td>
       <td class="num" style="color:var(--dim)">${v3.lineF2.toFixed(3)}</td>
@@ -958,11 +1008,17 @@ fetch("samples-v4/index.json").then(r => r.json()).then(d => {
     <td><b>합계·평균</b></td>
     <td class="num" style="color:var(--dim)">${a.p3.toLocaleString()}</td>
     <td class="num"><b>${a.p4.toLocaleString()}</b> <span style="color:var(--dim);font-size:11.5px">${Math.round((1 - a.p4 / a.p3) * 100)}%↓</span></td>
+    <td class="num"><b>${a.sp.toLocaleString()}</b></td>
+    <td class="num"></td>
     <td class="num" style="color:var(--dim)">${(a.f03 / n).toFixed(3)}</td>
     <td class="num"><b>${(a.f04 / n).toFixed(3)}</b></td>
     <td class="num" style="color:var(--dim)">${(a.s3 / n).toFixed(3)}</td>
     <td class="num"><b>${(a.s4 / n).toFixed(3)}</b></td>
     <td class="num"></td><td class="num"></td><td></td></tr>`);
+  t.insertAdjacentHTML("beforeend", `<tr><td colspan="12" style="color:var(--dim);font-size:12.5px;line-height:1.7">
+    <b>패스 수만 보면 편집성을 과대평가합니다.</b> 하나의 <code>&lt;path&gt;</code> 안에 <code>M…Z</code> 가 수백 개 들어갑니다 —
+    bag_2 는 패스 631 개 안에 서브패스 3,657 개(한 패스에 최대 2,738 개)를 숨기고 있습니다. V4.1 부터 QA 가 둘 다 냅니다.
+    </td></tr>`);
   openV4(0);
 }).catch(e => {
   const c = document.getElementById("v4cards");
@@ -990,7 +1046,7 @@ async function openV4(i) {
         ${gate(q.fidelity, `충실도`)} ${gate(q.editability, `편집성`)} ${gate(q.semantic, `의미`)}
         ${kpi(q.fidelity.lineF2 >= 0.95, `선 일치 F@2px ${q.fidelity.lineF2.toFixed(3)}`)}
         ${kpi(q.fidelity.detailRecall >= 0.9, `작은 디테일 ${(q.fidelity.detailRecall * 100).toFixed(0)}%`)}
-        <span class="badge">패스 ${q.editability.paths.toLocaleString()} · 앵커 ${q.editability.anchors.toLocaleString()} · ${q.editability.kb}KB</span>
+        <span class="badge">패스 ${q.editability.paths.toLocaleString()} · 서브패스 ${q.editability.subpaths.toLocaleString()} · 앵커 ${q.editability.anchors.toLocaleString()} · ${q.editability.kb}KB</span>
       </div>
     </div>
     <div class="stage3">
@@ -1025,10 +1081,25 @@ async function openV4(i) {
         ${q.fidelity.textureShare > 0.01 ? ` · 해프톤 ${(q.fidelity.textureShare * 100).toFixed(0)}% 제외 시 F@2 ${q.fidelity.lineF2}` : ""}<br>
         선 굵기 ${q.fidelity.inkRatio}× · 거리 평균 ${q.fidelity.chamfer}px · p95 ${q.fidelity.p95}px ·
         구멍 ${q.fidelity.holes[0]} → ${q.fidelity.holes[1]} · 큰 성분 ${q.fidelity.majorComponents[0]} → ${q.fidelity.majorComponents[1]}<br>
-        <b>편집성</b> — 앵커 밀도 ${q.editability.anchorDensity}/100px · 짧은 패스 ${(q.editability.shortPathRatio * 100).toFixed(0)}% · use ${q.editability.uses}<br>
-        <b>의미</b> — 파트 배분 평균 precision ${q.semantic.meanPrecision} · 공유 경계 ${q.semantic.sharedBoundaries}개 ·
-        종횡비 불일치 ${q.semantic.aspectRatio}
+        <b>편집성</b> — 패스 ${q.editability.paths.toLocaleString()} · <b>서브패스 ${q.editability.subpaths.toLocaleString()}</b>
+        (한 패스 최대 ${q.editability.maxSubpathsInPath.toLocaleString()}) · 객체 복잡도 ${q.editability.objectComplexity.toLocaleString()} ·
+        앵커 밀도 ${q.editability.anchorDensity}/100px · 짧은 서브패스 ${(q.editability.shortPathRatio * 100).toFixed(0)}% · use ${q.editability.uses}<br>
+        <b>의미</b> — 평균 precision ${q.semantic.meanPrecision} · <b>면적 가중 IoU ${q.semantic.weightedMeanIou}</b> ·
+        공유 경계 ${q.semantic.sharedBoundaries}개 · 종횡비 불일치 ${q.semantic.aspectRatio}
+        ${q.semantic.failingMajorParts && q.semantic.failingMajorParts.length ? `<br><span style="color:var(--warn)">기준 미달 주요 파트 — ${q.semantic.failingMajorParts.map(x => `<code>${x}</code>`).join(", ")}</span>` : ""}
       </div>
+      ${q.semantic.perPart && q.semantic.perPart[0] && q.semantic.perPart[0].kind ? `<div style="overflow-x:auto;margin-top:10px"><table>
+        <tr><th>파트</th><th>종류</th><th class="num">면적</th><th class="num">패스</th><th class="num">precision</th><th class="num">recall</th><th class="num">IoU</th><th class="num">경계 F1</th></tr>
+        ${q.semantic.perPart.map(p => {
+          const f = (v) => (v < 0 ? "—" : v.toFixed(3));
+          const bad = p.areaShare >= 0.02 && (p.kind === "thin" ? p.boundaryF1 < 0.8 : (p.paths === 0 || p.recall < 0.55 || p.iou < 0.45));
+          return `<tr${bad ? ` style="color:var(--warn)"` : ""}>
+            <td><code>${p.id}</code></td><td>${p.kind === "thin" ? "선" : "면"}</td>
+            <td class="num">${(p.areaShare * 100).toFixed(1)}%</td><td class="num">${p.paths}</td>
+            <td class="num">${f(p.precision)}</td><td class="num">${f(p.recall)}</td>
+            <td class="num">${f(p.iou)}</td><td class="num">${f(p.boundaryF1)}</td></tr>`;
+        }).join("")}
+      </table></div>` : ""}
       <div style="margin-top:8px">${[...q.fidelity.notes, ...q.editability.notes, ...q.semantic.notes].map(n => `<div style="font-size:12.5px;margin-bottom:4px">· ${n}</div>`).join("")}</div>
     </div>
     <div class="dl">

@@ -12,9 +12,9 @@
  {
   "id": "f2",
   "cls": "FACE_FILL",
-  "partId": "rear_ring_setting",
-  "area": 441611,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "center_ring_gemstone",
+  "area": 110489,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -22,9 +22,9 @@
  {
   "id": "f3",
   "cls": "FACE_FILL",
-  "partId": "rear_ring_setting",
-  "area": 441611,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "front_ring_band",
+  "area": 105650,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -32,9 +32,9 @@
  {
   "id": "f4",
   "cls": "FACE_FILL",
-  "partId": "rear_ring_pearl",
-  "area": 441611,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "front_ring_band",
+  "area": 105650,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -42,9 +42,9 @@
  {
   "id": "f5",
   "cls": "FACE_FILL",
-  "partId": "rear_ring_pearl",
-  "area": 441611,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "front_ring_band",
+  "area": 105650,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -52,9 +52,9 @@
  {
   "id": "f6",
   "cls": "FACE_FILL",
-  "partId": "center_ring_bezel",
-  "area": 441611,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "front_ring_gemstone",
+  "area": 104102,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -62,9 +62,9 @@
  {
   "id": "f7",
   "cls": "FACE_FILL",
-  "partId": "center_ring_gemstone",
-  "area": 441611,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "rear_ring_band",
+  "area": 45600,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -72,9 +72,9 @@
  {
   "id": "f8",
   "cls": "FACE_FILL",
-  "partId": "front_ring_band",
-  "area": 441611,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "rear_ring_band",
+  "area": 45600,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -82,9 +82,9 @@
  {
   "id": "f9",
   "cls": "FACE_FILL",
-  "partId": "center_ring_band",
-  "area": 441611,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "rear_ring_pearl",
+  "area": 32986,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -92,9 +92,9 @@
  {
   "id": "fa",
   "cls": "FACE_FILL",
-  "partId": "front_ring_band",
-  "area": 441611,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "rear_ring_pearl",
+  "area": 32986,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -102,39 +102,39 @@
  {
   "id": "fb",
   "cls": "FACE_FILL",
-  "partId": "front_ring_band",
-  "area": 441611,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "front_ring_bezel",
+  "area": 28393,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
  {
   "id": "fc",
   "cls": "FACE_FILL",
-  "partId": "front_ring_bezel",
-  "area": 441611,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "center_ring_band",
+  "area": 14391,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
  {
   "id": "fd",
   "cls": "FACE_FILL",
-  "partId": "front_ring_gemstone",
-  "area": 441611,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "center_ring_band",
+  "area": 14391,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
  {
   "id": "fe",
   "cls": "FACE_FILL",
-  "partId": "center_ring_bezel",
-  "area": 7318,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "front_ring_band",
+  "area": 5928,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -143,8 +143,8 @@
   "id": "ff",
   "cls": "FACE_FILL",
   "partId": "front_ring_band",
-  "area": 7318,
-  "why": "선이 감싼 닫힌 면",
+  "area": 5928,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -152,9 +152,9 @@
  {
   "id": "fg",
   "cls": "FACE_FILL",
-  "partId": "front_ring_bezel",
-  "area": 7318,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "center_ring_gemstone",
+  "area": 1390,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null

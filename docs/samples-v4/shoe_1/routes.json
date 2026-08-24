@@ -212,9 +212,9 @@
  {
   "id": "fm",
   "cls": "FACE_FILL",
-  "partId": "tongue",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "cushioned_midsole",
+  "area": 566734,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -222,9 +222,9 @@
  {
   "id": "fn",
   "cls": "FACE_FILL",
-  "partId": "tongue",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "cushioned_midsole",
+  "area": 566734,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -232,9 +232,9 @@
  {
   "id": "fo",
   "cls": "FACE_FILL",
-  "partId": "tongue",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "cushioned_midsole",
+  "area": 566734,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -242,9 +242,9 @@
  {
   "id": "fp",
   "cls": "FACE_FILL",
-  "partId": "tongue",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "cushioned_midsole",
+  "area": 566734,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -252,9 +252,9 @@
  {
   "id": "fq",
   "cls": "FACE_FILL",
-  "partId": "tongue",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "cushioned_midsole",
+  "area": 566734,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -262,9 +262,9 @@
  {
   "id": "fr",
   "cls": "FACE_FILL",
-  "partId": "tongue",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "cushioned_midsole",
+  "area": 566734,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -272,9 +272,9 @@
  {
   "id": "fs",
   "cls": "FACE_FILL",
-  "partId": "tongue",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "cushioned_midsole",
+  "area": 566734,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -282,9 +282,9 @@
  {
   "id": "ft",
   "cls": "FACE_FILL",
-  "partId": "tongue",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "cushioned_midsole",
+  "area": 566734,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -292,9 +292,9 @@
  {
   "id": "fu",
   "cls": "FACE_FILL",
-  "partId": "tongue",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "cushioned_midsole",
+  "area": 566734,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -303,8 +303,8 @@
   "id": "fv",
   "cls": "FACE_FILL",
   "partId": "main_upper",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "area": 566373,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -312,9 +312,9 @@
  {
   "id": "fw",
   "cls": "FACE_FILL",
-  "partId": "tongue",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "main_upper",
+  "area": 566373,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -323,8 +323,8 @@
   "id": "fx",
   "cls": "FACE_FILL",
   "partId": "main_upper",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "area": 566373,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -332,9 +332,9 @@
  {
   "id": "fy",
   "cls": "FACE_FILL",
-  "partId": "heel_overlay",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "main_upper",
+  "area": 566373,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -342,9 +342,9 @@
  {
   "id": "fz",
   "cls": "FACE_FILL",
-  "partId": "heel_overlay",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "main_upper",
+  "area": 566373,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -352,10 +352,10 @@
  {
   "id": "f10",
   "cls": "FACE_FILL",
-  "partId": "heel_overlay",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "main_upper",
+  "area": 467237,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
@@ -363,109 +363,109 @@
   "id": "f11",
   "cls": "FACE_FILL",
   "partId": "main_upper",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "area": 467237,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
  {
   "id": "f12",
   "cls": "FACE_FILL",
-  "partId": "airmax_badge",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "main_upper",
+  "area": 467237,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
  {
   "id": "f13",
   "cls": "FACE_FILL",
-  "partId": "heel_overlay",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "main_upper",
+  "area": 467237,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
  {
   "id": "f14",
   "cls": "FACE_FILL",
-  "partId": "heel_overlay",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "main_upper",
+  "area": 467237,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
  {
   "id": "f15",
   "cls": "FACE_FILL",
-  "partId": "laces",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "main_upper",
+  "area": 467237,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
  {
   "id": "f16",
   "cls": "FACE_FILL",
-  "partId": "airmax_badge",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "main_upper",
+  "area": 467237,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
  {
   "id": "f17",
   "cls": "FACE_FILL",
-  "partId": "airmax_badge",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "main_upper",
+  "area": 467237,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
  {
   "id": "f18",
   "cls": "FACE_FILL",
-  "partId": "airmax_badge",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "main_upper",
+  "area": 467237,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
  {
   "id": "f19",
   "cls": "FACE_FILL",
-  "partId": "airmax_badge",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "main_upper",
+  "area": 467237,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
  {
   "id": "f1a",
   "cls": "FACE_FILL",
-  "partId": "laces",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "main_upper",
+  "area": 467237,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
  {
   "id": "f1b",
   "cls": "FACE_FILL",
-  "partId": "airmax_badge",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "main_upper",
+  "area": 467237,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
@@ -473,28 +473,28 @@
   "id": "f1c",
   "cls": "FACE_FILL",
   "partId": "main_upper",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "area": 467237,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
  {
   "id": "f1d",
   "cls": "FACE_FILL",
-  "partId": "cushioned_midsole",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
+  "partId": "main_upper",
+  "area": 467237,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
+  "confidence": 0.6,
   "kind": null,
   "instances": null
  },
  {
   "id": "f1e",
   "cls": "FACE_FILL",
-  "partId": "laces",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "heel_overlay",
+  "area": 56038,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -502,9 +502,9 @@
  {
   "id": "f1f",
   "cls": "FACE_FILL",
-  "partId": "laces",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "heel_overlay",
+  "area": 56038,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -512,9 +512,9 @@
  {
   "id": "f1g",
   "cls": "FACE_FILL",
-  "partId": "cushioned_midsole",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "heel_overlay",
+  "area": 56038,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -522,9 +522,9 @@
  {
   "id": "f1h",
   "cls": "FACE_FILL",
-  "partId": "cushioned_midsole",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "heel_overlay",
+  "area": 56038,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -532,9 +532,9 @@
  {
   "id": "f1i",
   "cls": "FACE_FILL",
-  "partId": "cushioned_midsole",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "heel_overlay",
+  "area": 56038,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -542,9 +542,9 @@
  {
   "id": "f1j",
   "cls": "FACE_FILL",
-  "partId": "cushioned_midsole",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "heel_overlay",
+  "area": 56038,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -552,9 +552,9 @@
  {
   "id": "f1k",
   "cls": "FACE_FILL",
-  "partId": "cushioned_midsole",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "tongue",
+  "area": 50145,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -562,9 +562,9 @@
  {
   "id": "f1l",
   "cls": "FACE_FILL",
-  "partId": "cushioned_midsole",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "tongue",
+  "area": 50145,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -572,9 +572,9 @@
  {
   "id": "f1m",
   "cls": "FACE_FILL",
-  "partId": "cushioned_midsole",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "tongue",
+  "area": 50145,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -582,9 +582,9 @@
  {
   "id": "f1n",
   "cls": "FACE_FILL",
-  "partId": "cushioned_midsole",
-  "area": 1287421,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "tongue",
+  "area": 50145,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -592,9 +592,9 @@
  {
   "id": "f1o",
   "cls": "FACE_FILL",
-  "partId": "main_upper",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "tongue",
+  "area": 50145,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -602,9 +602,9 @@
  {
   "id": "f1p",
   "cls": "FACE_FILL",
-  "partId": "main_upper",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "tongue",
+  "area": 50145,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -612,9 +612,9 @@
  {
   "id": "f1q",
   "cls": "FACE_FILL",
-  "partId": "main_upper",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "tongue",
+  "area": 50145,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -622,9 +622,9 @@
  {
   "id": "f1r",
   "cls": "FACE_FILL",
-  "partId": "swoosh_logo",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "tongue",
+  "area": 50145,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -632,9 +632,9 @@
  {
   "id": "f1s",
   "cls": "FACE_FILL",
-  "partId": "swoosh_logo",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "tongue",
+  "area": 50145,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -642,9 +642,9 @@
  {
   "id": "f1t",
   "cls": "FACE_FILL",
-  "partId": "laces",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "tongue",
+  "area": 50145,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -652,9 +652,9 @@
  {
   "id": "f1u",
   "cls": "FACE_FILL",
-  "partId": "swoosh_logo",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "eyelet_underlay",
+  "area": 49841,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -662,9 +662,9 @@
  {
   "id": "f1v",
   "cls": "FACE_FILL",
-  "partId": "laces",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "eyelet_underlay",
+  "area": 49841,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -672,9 +672,9 @@
  {
   "id": "f1w",
   "cls": "FACE_FILL",
-  "partId": "laces",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "eyelet_underlay",
+  "area": 49841,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -682,9 +682,9 @@
  {
   "id": "f1x",
   "cls": "FACE_FILL",
-  "partId": "laces",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "eyelet_underlay",
+  "area": 49841,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -693,8 +693,8 @@
   "id": "f1y",
   "cls": "FACE_FILL",
   "partId": "eyelet_underlay",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "area": 49841,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -703,8 +703,8 @@
   "id": "f1z",
   "cls": "FACE_FILL",
   "partId": "eyelet_underlay",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "area": 49841,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -713,8 +713,8 @@
   "id": "f20",
   "cls": "FACE_FILL",
   "partId": "eyelet_underlay",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "area": 49841,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -722,9 +722,9 @@
  {
   "id": "f21",
   "cls": "FACE_FILL",
-  "partId": "main_upper",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "eyelet_underlay",
+  "area": 49841,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -732,9 +732,9 @@
  {
   "id": "f22",
   "cls": "FACE_FILL",
-  "partId": "laces",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "eyelet_underlay",
+  "area": 49841,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -743,8 +743,8 @@
   "id": "f23",
   "cls": "FACE_FILL",
   "partId": "eyelet_underlay",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "area": 49841,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -752,9 +752,9 @@
  {
   "id": "f24",
   "cls": "FACE_FILL",
-  "partId": "main_upper",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "eyelet_underlay",
+  "area": 49841,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -762,9 +762,9 @@
  {
   "id": "f25",
   "cls": "FACE_FILL",
-  "partId": "main_upper",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "eyelet_underlay",
+  "area": 49841,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -772,9 +772,9 @@
  {
   "id": "f26",
   "cls": "FACE_FILL",
-  "partId": "eyelet_underlay",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "laces",
+  "area": 45083,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -783,8 +783,8 @@
   "id": "f27",
   "cls": "FACE_FILL",
   "partId": "laces",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "area": 45083,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -793,8 +793,8 @@
   "id": "f28",
   "cls": "FACE_FILL",
   "partId": "laces",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "area": 45083,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -802,9 +802,9 @@
  {
   "id": "f29",
   "cls": "FACE_FILL",
-  "partId": "main_upper",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "laces",
+  "area": 45083,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -812,9 +812,9 @@
  {
   "id": "f2a",
   "cls": "FACE_FILL",
-  "partId": "eyelet_underlay",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "laces",
+  "area": 45083,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -822,9 +822,9 @@
  {
   "id": "f2b",
   "cls": "FACE_FILL",
-  "partId": "laces",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "airmax_badge",
+  "area": 23946,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -832,9 +832,9 @@
  {
   "id": "f2c",
   "cls": "FACE_FILL",
-  "partId": "eyelet_underlay",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "airmax_badge",
+  "area": 23946,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -842,9 +842,9 @@
  {
   "id": "f2d",
   "cls": "FACE_FILL",
-  "partId": "main_upper",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "airmax_badge",
+  "area": 23946,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -852,9 +852,9 @@
  {
   "id": "f2e",
   "cls": "FACE_FILL",
-  "partId": "eyelet_underlay",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "airmax_badge",
+  "area": 23946,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -862,9 +862,9 @@
  {
   "id": "f2f",
   "cls": "FACE_FILL",
-  "partId": "eyelet_underlay",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "airmax_badge",
+  "area": 23946,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -872,9 +872,9 @@
  {
   "id": "f2g",
   "cls": "FACE_FILL",
-  "partId": "swoosh_logo",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "airmax_badge",
+  "area": 23946,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -882,9 +882,9 @@
  {
   "id": "f2h",
   "cls": "FACE_FILL",
-  "partId": "eyelet_underlay",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "airmax_badge",
+  "area": 23946,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -892,9 +892,9 @@
  {
   "id": "f2i",
   "cls": "FACE_FILL",
-  "partId": "heel_overlay",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "airmax_badge",
+  "area": 23946,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -902,9 +902,9 @@
  {
   "id": "f2j",
   "cls": "FACE_FILL",
-  "partId": "heel_overlay",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "airmax_badge",
+  "area": 23946,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -912,9 +912,9 @@
  {
   "id": "f2k",
   "cls": "FACE_FILL",
-  "partId": "airmax_badge",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "rubber_outsole",
+  "area": 22931,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -922,9 +922,9 @@
  {
   "id": "f2l",
   "cls": "FACE_FILL",
-  "partId": "airmax_badge",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "rubber_outsole",
+  "area": 22931,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -932,9 +932,9 @@
  {
   "id": "f2m",
   "cls": "FACE_FILL",
-  "partId": "airmax_badge",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "partId": "swoosh_logo",
+  "area": 22593,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -943,8 +943,8 @@
   "id": "f2n",
   "cls": "FACE_FILL",
   "partId": "airmax_badge",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "area": 10213,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
@@ -953,24 +953,14 @@
   "id": "f2o",
   "cls": "FACE_FILL",
   "partId": "airmax_badge",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
+  "area": 10213,
+  "why": "선이 감싼 닫힌 면 (파트 배정 후 같은 파트 안에서만 색 병합)",
   "confidence": 0.9,
   "kind": null,
   "instances": null
  },
  {
-  "id": "f2p",
-  "cls": "FACE_FILL",
-  "partId": "airmax_badge",
-  "area": 593713,
-  "why": "선이 감싼 닫힌 면",
-  "confidence": 0.9,
-  "kind": null,
-  "instances": null
- },
- {
-  "id": "g2q",
+  "id": "g2p",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "main_upper",
   "area": 233,
@@ -980,7 +970,7 @@
   "instances": null
  },
  {
-  "id": "g2r",
+  "id": "g2q",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "main_upper",
   "area": 209,
@@ -990,7 +980,7 @@
   "instances": null
  },
  {
-  "id": "g2s",
+  "id": "g2r",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "main_upper",
   "area": 215,
@@ -1000,7 +990,7 @@
   "instances": null
  },
  {
-  "id": "g2t",
+  "id": "g2s",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "main_upper",
   "area": 177,
@@ -1010,7 +1000,7 @@
   "instances": null
  },
  {
-  "id": "g2u",
+  "id": "g2t",
   "cls": "GEOMETRIC_PRIMITIVE",
   "partId": "cushioned_midsole",
   "area": 14,
@@ -1020,7 +1010,7 @@
   "instances": null
  },
  {
-  "id": "o2v",
+  "id": "o2u",
   "cls": "OUTLINE_SHAPE",
   "partId": "laces",
   "area": 0,
@@ -1030,7 +1020,7 @@
   "instances": null
  },
  {
-  "id": "o2w",
+  "id": "o2v",
   "cls": "OUTLINE_SHAPE",
   "partId": "tongue",
   "area": 0,
@@ -1040,7 +1030,7 @@
   "instances": null
  },
  {
-  "id": "o2x",
+  "id": "o2w",
   "cls": "OUTLINE_SHAPE",
   "partId": "main_upper",
   "area": 0,
@@ -1050,9 +1040,19 @@
   "instances": null
  },
  {
-  "id": "o2y",
+  "id": "o2x",
   "cls": "OUTLINE_SHAPE",
   "partId": "eyelet_underlay",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "o2y",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "main_upper",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,
@@ -1082,7 +1082,7 @@
  {
   "id": "o31",
   "cls": "OUTLINE_SHAPE",
-  "partId": "main_upper",
+  "partId": "heel_overlay",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,
@@ -1092,7 +1092,7 @@
  {
   "id": "o32",
   "cls": "OUTLINE_SHAPE",
-  "partId": "heel_overlay",
+  "partId": "airmax_badge",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,
@@ -1102,7 +1102,7 @@
  {
   "id": "o33",
   "cls": "OUTLINE_SHAPE",
-  "partId": "airmax_badge",
+  "partId": "main_upper",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
   "confidence": 0.85,
@@ -1122,16 +1122,6 @@
  {
   "id": "o35",
   "cls": "OUTLINE_SHAPE",
-  "partId": "main_upper",
-  "area": 0,
-  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
-  "confidence": 0.85,
-  "kind": null,
-  "instances": null
- },
- {
-  "id": "o36",
-  "cls": "OUTLINE_SHAPE",
   "partId": "cushioned_midsole",
   "area": 0,
   "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
@@ -1140,7 +1130,7 @@
   "instances": null
  },
  {
-  "id": "o37",
+  "id": "o36",
   "cls": "OUTLINE_SHAPE",
   "partId": "cushioned_midsole",
   "area": 0,
