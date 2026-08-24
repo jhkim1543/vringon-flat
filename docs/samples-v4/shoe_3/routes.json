@@ -1,0 +1,4002 @@
+[
+ {
+  "id": "gf1",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "outsole",
+  "area": 895,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4px, 허용 5.3px)",
+  "confidence": 0.6222851746931066,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "outsole",
+  "area": 105,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 275,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.3px)",
+  "confidence": 0.9055712936732767,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 234,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.3px)",
+  "confidence": 0.9055712936732767,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf5",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 279,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf6",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 170,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.3px)",
+  "confidence": 0.9055712936732767,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf7",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 263,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf8",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 103,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 0.8px, 허용 5.3px)",
+  "confidence": 0.9244570349386213,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf9",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 250,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.33px, 허용 5.3px)",
+  "confidence": 0.7799811142587346,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfa",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 257,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.96px, 허용 5.3px)",
+  "confidence": 0.720491029272899,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfb",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 233,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.97px, 허용 5.3px)",
+  "confidence": 0.8139754485363551,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfc",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 229,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.04px, 허용 5.3px)",
+  "confidence": 0.8073654390934843,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfd",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 221,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.94px, 허용 5.3px)",
+  "confidence": 0.8168083097261567,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfe",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 196,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gff",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 201,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.68px, 허용 5.3px)",
+  "confidence": 0.7469310670443814,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfg",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 154,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfh",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 166,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfi",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 237,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4px, 허용 5.3px)",
+  "confidence": 0.6222851746931066,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfj",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 258,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4px, 허용 5.3px)",
+  "confidence": 0.6222851746931066,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfk",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 141,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfl",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 294,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4px, 허용 5.3px)",
+  "confidence": 0.6222851746931066,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfm",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 343,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3.53px, 허용 5.3px)",
+  "confidence": 0.6666666666666667,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfn",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 410,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3.76px, 허용 5.3px)",
+  "confidence": 0.6449480642115204,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfo",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 368,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.53px, 허용 5.3px)",
+  "confidence": 0.76109537299339,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfp",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 186,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfq",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 405,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfr",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 413,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfs",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 449,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.98px, 허용 5.3px)",
+  "confidence": 0.7186024551463646,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gft",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 200,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfu",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 103,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfv",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 446,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.98px, 허용 5.3px)",
+  "confidence": 0.7186024551463646,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfw",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 141,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.51px, 허용 5.3px)",
+  "confidence": 0.7629839471199245,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gfx",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 448,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3.29px, 허용 5.3px)",
+  "confidence": 0.6893295561850803,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfy",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 195,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfz",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 159,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4px, 허용 5.3px)",
+  "confidence": 0.6222851746931066,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf10",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 417,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4.61px, 허용 5.3px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf11",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 131,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf12",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 217,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.73px, 허용 5.3px)",
+  "confidence": 0.7422096317280453,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf13",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 148,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf14",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 131,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf15",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 123,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf16",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 247,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 4.04px, 허용 5.3px)",
+  "confidence": 0.6185080264400378,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf17",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 212,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf18",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 255,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 3.12px, 허용 5.3px)",
+  "confidence": 0.7053824362606231,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf19",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 213,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.91px, 허용 5.3px)",
+  "confidence": 0.8196411709159585,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1a",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 206,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1b",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 215,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1c",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 164,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1d",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 137,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1e",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 128,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4px, 허용 5.3px)",
+  "confidence": 0.6222851746931066,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1f",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 214,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.66px, 허용 5.3px)",
+  "confidence": 0.8432483474976393,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1g",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 103,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.17px, 허용 5.3px)",
+  "confidence": 0.7950897072710104,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1h",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 250,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1i",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 217,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4px, 허용 5.3px)",
+  "confidence": 0.6222851746931066,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1j",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 110,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.3px)",
+  "confidence": 0.9055712936732767,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1k",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 323,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4px, 허용 5.3px)",
+  "confidence": 0.6222851746931066,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1l",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 273,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3.53px, 허용 5.3px)",
+  "confidence": 0.6666666666666667,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1m",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 307,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4px, 허용 5.3px)",
+  "confidence": 0.6222851746931066,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1n",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 117,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4px, 허용 5.3px)",
+  "confidence": 0.6222851746931066,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1o",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 232,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1p",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 269,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.3px)",
+  "confidence": 0.9055712936732767,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1q",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 253,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4px, 허용 5.3px)",
+  "confidence": 0.6222851746931066,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1r",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 262,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.22px, 허용 5.3px)",
+  "confidence": 0.7903682719546742,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1s",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 180,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.35px, 허용 5.3px)",
+  "confidence": 0.8725212464589235,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1t",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 210,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4px, 허용 5.3px)",
+  "confidence": 0.6222851746931066,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1u",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 268,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.22px, 허용 5.3px)",
+  "confidence": 0.7903682719546742,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1v",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 222,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1w",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 208,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1x",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 149,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1y",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 182,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.5px, 허용 5.3px)",
+  "confidence": 0.858356940509915,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1z",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 200,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.87px, 허용 5.3px)",
+  "confidence": 0.8234183191690274,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf20",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 287,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf21",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 244,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.2px, 허용 5.3px)",
+  "confidence": 0.7922568460812087,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf22",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 352,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3.9px, 허용 5.3px)",
+  "confidence": 0.631728045325779,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf23",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 192,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.25px, 허용 5.3px)",
+  "confidence": 0.7875354107648725,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf24",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 247,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.97px, 허용 5.3px)",
+  "confidence": 0.7195467422096318,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf25",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 183,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.12px, 허용 5.3px)",
+  "confidence": 0.8942398489140698,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf26",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 400,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 3.32px, 허용 5.3px)",
+  "confidence": 0.6864966949952787,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf27",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 149,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 1.42px, 허용 5.3px)",
+  "confidence": 0.8659112370160529,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf28",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 255,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.97px, 허용 5.3px)",
+  "confidence": 0.7195467422096318,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf29",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 193,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 1.58px, 허용 5.3px)",
+  "confidence": 0.8508026440037771,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf2a",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 242,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.53px, 허용 5.3px)",
+  "confidence": 0.76109537299339,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2b",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 211,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 1.76px, 허용 5.3px)",
+  "confidence": 0.833805476864967,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf2c",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 173,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.76px, 허용 5.3px)",
+  "confidence": 0.833805476864967,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2d",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 267,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.76px, 허용 5.3px)",
+  "confidence": 0.7393767705382437,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2e",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 204,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.6px, 허용 5.3px)",
+  "confidence": 0.8489140698772426,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2f",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 457,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 3.13px, 허용 5.3px)",
+  "confidence": 0.7044381491973559,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf2g",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 274,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.83px, 허용 5.3px)",
+  "confidence": 0.8271954674220963,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2h",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 158,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.4px, 허용 5.3px)",
+  "confidence": 0.8677998111425873,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2i",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 270,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2j",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 209,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 1.91px, 허용 5.3px)",
+  "confidence": 0.8196411709159585,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf2k",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 500,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.78px, 허용 5.3px)",
+  "confidence": 0.7374881964117092,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf2l",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 119,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.09px, 허용 5.3px)",
+  "confidence": 0.8970727101038716,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2m",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 243,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.92px, 허용 5.3px)",
+  "confidence": 0.8186968838526912,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2n",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 204,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.3px)",
+  "confidence": 0.9055712936732767,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2o",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 265,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.98px, 허용 5.3px)",
+  "confidence": 0.8130311614730878,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2p",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 435,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 3.48px, 허용 5.3px)",
+  "confidence": 0.6713881019830028,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf2q",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 209,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 1.72px, 허용 5.3px)",
+  "confidence": 0.8375826251180358,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf2r",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 300,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.97px, 허용 5.3px)",
+  "confidence": 0.7195467422096318,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf2s",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 198,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.2px, 허용 5.3px)",
+  "confidence": 0.886685552407932,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2t",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 384,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.99px, 허용 5.3px)",
+  "confidence": 0.7176581680830972,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf2u",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 252,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.55px, 허용 5.3px)",
+  "confidence": 0.7592067988668556,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2v",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 203,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 1.45px, 허용 5.3px)",
+  "confidence": 0.8630783758262512,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf2w",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 133,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2x",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 240,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.98px, 허용 5.3px)",
+  "confidence": 0.8130311614730878,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2y",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 194,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.3px)",
+  "confidence": 0.9055712936732767,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2z",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 202,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.97px, 허용 5.3px)",
+  "confidence": 0.8139754485363551,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf30",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 236,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 1.92px, 허용 5.3px)",
+  "confidence": 0.8186968838526912,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf31",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 153,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf32",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 142,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.3px)",
+  "confidence": 0.9055712936732767,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf33",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 192,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf34",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 320,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 3.06px, 허용 5.3px)",
+  "confidence": 0.7110481586402266,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf35",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 181,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf36",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 205,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf37",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 155,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.77px, 허용 5.3px)",
+  "confidence": 0.8328611898016998,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf38",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 169,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 1.6px, 허용 5.3px)",
+  "confidence": 0.8489140698772426,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf39",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 127,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3a",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 291,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.8px, 허용 5.3px)",
+  "confidence": 0.7355996222851747,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3b",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 440,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3.96px, 허용 5.3px)",
+  "confidence": 0.6260623229461757,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3c",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 184,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3d",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 147,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 3.06px, 허용 5.3px)",
+  "confidence": 0.7110481586402266,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf3e",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 302,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.43px, 허용 5.3px)",
+  "confidence": 0.7705382436260623,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf3f",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 200,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.2px, 허용 5.3px)",
+  "confidence": 0.7922568460812087,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3g",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 310,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.7px, 허용 5.3px)",
+  "confidence": 0.745042492917847,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf3h",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 175,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.39px, 허용 5.3px)",
+  "confidence": 0.7743153918791312,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3i",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 338,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.91px, 허용 5.3px)",
+  "confidence": 0.725212464589235,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf3j",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 203,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.76px, 허용 5.3px)",
+  "confidence": 0.7393767705382437,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3k",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 430,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3.46px, 허용 5.3px)",
+  "confidence": 0.6732766761095372,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3l",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 116,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3.59px, 허용 5.3px)",
+  "confidence": 0.6610009442870632,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3m",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 261,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.35px, 허용 5.3px)",
+  "confidence": 0.7780925401322002,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf3n",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "tongue",
+  "area": 138,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.58px, 허용 5.3px)",
+  "confidence": 0.7563739376770539,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3o",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 247,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3.69px, 허용 5.3px)",
+  "confidence": 0.6515580736543909,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3p",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 194,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 1.84px, 허용 5.3px)",
+  "confidence": 0.826251180358829,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf3q",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 404,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4.35px, 허용 5.3px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3r",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 282,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.78px, 허용 5.3px)",
+  "confidence": 0.7374881964117092,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf3s",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 137,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 1.62px, 허용 5.3px)",
+  "confidence": 0.8470254957507082,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf3t",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 269,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3.53px, 허용 5.3px)",
+  "confidence": 0.6666666666666667,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3u",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 272,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3.76px, 허용 5.3px)",
+  "confidence": 0.6449480642115204,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3v",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 131,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.28px, 허용 5.3px)",
+  "confidence": 0.8791312559017941,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3w",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 191,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 1.8px, 허용 5.3px)",
+  "confidence": 0.830028328611898,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf3x",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 343,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3.61px, 허용 5.3px)",
+  "confidence": 0.6591123701605288,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3y",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "tongue",
+  "area": 176,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.96px, 허용 5.3px)",
+  "confidence": 0.8149197355996223,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3z",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 142,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.33px, 허용 5.3px)",
+  "confidence": 0.874409820585458,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf40",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 104,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 1.58px, 허용 5.3px)",
+  "confidence": 0.8508026440037771,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf41",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 275,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.8px, 허용 5.3px)",
+  "confidence": 0.830028328611898,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf42",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 165,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.21px, 허용 5.3px)",
+  "confidence": 0.8857412653446648,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf43",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 325,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4px, 허용 5.3px)",
+  "confidence": 0.6222851746931066,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf44",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 276,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.65px, 허용 5.3px)",
+  "confidence": 0.8441926345609065,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf45",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "tongue",
+  "area": 222,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.01px, 허용 5.3px)",
+  "confidence": 0.8101983002832861,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf46",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 316,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf47",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "tongue",
+  "area": 259,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf48",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 294,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf49",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 211,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.97px, 허용 5.3px)",
+  "confidence": 0.8139754485363551,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4a",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 269,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4b",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 170,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.69px, 허용 5.3px)",
+  "confidence": 0.7459867799811142,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4c",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 214,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.3px)",
+  "confidence": 0.9055712936732767,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4d",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 240,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4e",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_stitching",
+  "area": 168,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.05px, 허용 5.3px)",
+  "confidence": 0.8064211520302171,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf4f",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 132,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.53px, 허용 5.3px)",
+  "confidence": 0.76109537299339,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4g",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 249,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.3px)",
+  "confidence": 0.9055712936732767,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4h",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 133,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4i",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 200,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4j",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "outsole",
+  "area": 142,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 3.09px, 허용 5.3px)",
+  "confidence": 0.708215297450425,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf4k",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 794,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4l",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 337,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4m",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 721,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4px, 허용 5.3px)",
+  "confidence": 0.6222851746931066,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4n",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 188,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 3.15px, 허용 5.3px)",
+  "confidence": 0.7025495750708215,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf4o",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 942,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.3px)",
+  "confidence": 0.9055712936732767,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4p",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 920,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3.29px, 허용 5.3px)",
+  "confidence": 0.6893295561850803,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4q",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 776,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.76px, 허용 5.3px)",
+  "confidence": 0.7393767705382437,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4r",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 163,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.84px, 허용 5.3px)",
+  "confidence": 0.826251180358829,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4s",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 684,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.93px, 허용 5.3px)",
+  "confidence": 0.7233238904627006,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4t",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 555,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3.46px, 허용 5.3px)",
+  "confidence": 0.6732766761095372,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4u",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "outsole",
+  "area": 259,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4v",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 676,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4w",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 789,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.68px, 허용 5.3px)",
+  "confidence": 0.7469310670443814,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4x",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 581,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3.2px, 허용 5.3px)",
+  "confidence": 0.6978281397544853,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4y",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 662,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.28px, 허용 5.3px)",
+  "confidence": 0.7847025495750708,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4z",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 768,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.3px)",
+  "confidence": 0.9055712936732767,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf50",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 743,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.04px, 허용 5.3px)",
+  "confidence": 0.9017941454202077,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf51",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 769,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.3px)",
+  "confidence": 0.9055712936732767,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf52",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "tongue",
+  "area": 497,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4px, 허용 5.3px)",
+  "confidence": 0.6222851746931066,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf53",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 101,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf54",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 139,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 3.43px, 허용 5.3px)",
+  "confidence": 0.676109537299339,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf55",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 405,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf56",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 355,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.38px, 허용 5.3px)",
+  "confidence": 0.7752596789423984,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf57",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 446,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.94px, 허용 5.3px)",
+  "confidence": 0.7223796033994334,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf58",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 275,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.48px, 허용 5.3px)",
+  "confidence": 0.7658168083097261,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf59",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 291,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.69px, 허용 5.3px)",
+  "confidence": 0.7459867799811142,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf5a",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 406,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.46px, 허용 5.3px)",
+  "confidence": 0.7677053824362606,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf5b",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "tongue",
+  "area": 205,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.84px, 허용 5.3px)",
+  "confidence": 0.7318224740321058,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf5c",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 271,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.73px, 허용 5.3px)",
+  "confidence": 0.7422096317280453,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf5d",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 121,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 1.17px, 허용 5.3px)",
+  "confidence": 0.8895184135977338,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf5e",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "tongue",
+  "area": 118,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf5f",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 356,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.68px, 허용 5.3px)",
+  "confidence": 0.7469310670443814,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf5g",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "tongue",
+  "area": 341,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3.95px, 허용 5.3px)",
+  "confidence": 0.6270066100094429,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf5h",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "tongue",
+  "area": 300,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf5i",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "outsole",
+  "area": 219,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.3px)",
+  "confidence": 0.71671388101983,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf5j",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "outsole",
+  "area": 394,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 3.29px, 허용 5.3px)",
+  "confidence": 0.6893295561850803,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf5k",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "outsole",
+  "area": 402,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.5px, 허용 5.3px)",
+  "confidence": 0.7639282341831917,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf5l",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "outsole",
+  "area": 431,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.85px, 허용 5.3px)",
+  "confidence": 0.7308781869688386,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf5m",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "tongue",
+  "area": 194,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.3px)",
+  "confidence": 0.9055712936732767,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf5n",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "outsole",
+  "area": 143,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 5px, 허용 5.3px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf5o",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 292,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf5p",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 322,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.3px)",
+  "confidence": 0.9055712936732767,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf5q",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "lace_loops",
+  "area": 404,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf5r",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "outsole",
+  "area": 129,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 3.25px, 허용 5.3px)",
+  "confidence": 0.6931067044381491,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf5s",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "outsole",
+  "area": 116,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.3px)",
+  "confidence": 0.8111425873465533,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "f5t",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5u",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5v",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5w",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5x",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5y",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5z",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f60",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f61",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f62",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f63",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f64",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f65",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f66",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f67",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f68",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f69",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6a",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6b",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6c",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6d",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6e",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6f",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6g",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6h",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6i",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6j",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6k",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6l",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6m",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6n",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6o",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6p",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6q",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6r",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6s",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6t",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6u",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6v",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6w",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6x",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6y",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6z",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f70",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f71",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f72",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f73",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f74",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f75",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f76",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f77",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f78",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f79",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7a",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7b",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7c",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7d",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7e",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7f",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7g",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7h",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7i",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7j",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7k",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7l",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7m",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7n",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7o",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7p",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7q",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7r",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7s",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7t",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7u",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7v",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7w",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7x",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7y",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7z",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f80",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f81",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f82",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f83",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f84",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f85",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f86",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f87",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f88",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f89",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8a",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8b",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8c",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8d",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8e",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8f",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8g",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8h",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8i",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8j",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8k",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8l",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8m",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8n",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8o",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8p",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8q",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8r",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8s",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8t",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8u",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8v",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8w",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8x",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8y",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8z",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f90",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f91",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f92",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f93",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f94",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f95",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f96",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f97",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f98",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f99",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9a",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9b",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9c",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9d",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9e",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9f",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9g",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9h",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9i",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9j",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9k",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9l",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9m",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9n",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9o",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9p",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9q",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9r",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9s",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9t",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9u",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9v",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9w",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9x",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9y",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9z",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa0",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa1",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa2",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa3",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa4",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa5",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa6",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa7",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa8",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa9",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "faa",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fab",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fac",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fad",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fae",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "faf",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fag",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fah",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fai",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "faj",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fak",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fal",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fam",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fan",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fao",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fap",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "faq",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "far",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fas",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fat",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fau",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fav",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "faw",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fax",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fay",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "faz",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fb0",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fb1",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fb2",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fb3",
+  "cls": "FACE_FILL",
+  "partId": "lace_stitching",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fb4",
+  "cls": "FACE_FILL",
+  "partId": "outsole",
+  "area": 2126713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ }
+]

@@ -1,0 +1,142 @@
+[
+ {
+  "id": "gf1",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "left_hoop_half",
+  "area": 136,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 3.12px, 허용 4.8px)",
+  "confidence": 0.6753381893860562,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "f2",
+  "cls": "FACE_FILL",
+  "partId": "clasp_insert",
+  "area": 672020,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3",
+  "cls": "FACE_FILL",
+  "partId": "engraved_pattern",
+  "area": 672020,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4",
+  "cls": "FACE_FILL",
+  "partId": "engraved_pattern",
+  "area": 672020,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5",
+  "cls": "FACE_FILL",
+  "partId": "clasp_insert",
+  "area": 672020,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6",
+  "cls": "FACE_FILL",
+  "partId": "right_hoop_half",
+  "area": 672020,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7",
+  "cls": "FACE_FILL",
+  "partId": "engraved_pattern",
+  "area": 672020,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8",
+  "cls": "FACE_FILL",
+  "partId": "engraved_pattern",
+  "area": 672020,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9",
+  "cls": "FACE_FILL",
+  "partId": "engraved_pattern",
+  "area": 672020,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa",
+  "cls": "FACE_FILL",
+  "partId": "right_hoop_half",
+  "area": 672020,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fb",
+  "cls": "FACE_FILL",
+  "partId": "hinge_pivot",
+  "area": 672020,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fc",
+  "cls": "FACE_FILL",
+  "partId": "left_hoop_half",
+  "area": 672020,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fd",
+  "cls": "FACE_FILL",
+  "partId": "engraved_pattern",
+  "area": 672020,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "oe",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "engraved_pattern",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ }
+]

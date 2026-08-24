@@ -1,0 +1,4002 @@
+[
+ {
+  "id": "gf1",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 96,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 98,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 106,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 102,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf5",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 103,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf6",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 109,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf7",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 110,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf8",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 114,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf9",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 114,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfa",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 109,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfb",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 114,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfc",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 102,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfd",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 99,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfe",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 114,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gff",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 107,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfg",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 104,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfh",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 104,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfi",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 101,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfj",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 105,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfk",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 100,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfl",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 97,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfm",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 97,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfn",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "chain_strap",
+  "area": 99,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfo",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_lattice_shell",
+  "area": 96,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfp",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 220,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfq",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 104,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfr",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 276,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.69px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfs",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 137,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.45px, 허용 3.1px)",
+  "confidence": 0.7687400318979267,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gft",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 215,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfu",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 104,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.62px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gfv",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 287,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfw",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 328,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfx",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 186,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfy",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 193,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.32px, 허용 3.1px)",
+  "confidence": 0.6299840510366826,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gfz",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 693,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.22px, 허용 3.1px)",
+  "confidence": 0.6459330143540669,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf10",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 169,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.08px, 허용 3.1px)",
+  "confidence": 0.6682615629984051,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf11",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 188,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.95px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf12",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 1456,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.36px, 허용 3.1px)",
+  "confidence": 0.6236044657097289,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf13",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 133,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.29px, 허용 3.1px)",
+  "confidence": 0.7942583732057417,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf14",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 167,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf15",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 143,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.38px, 허용 3.1px)",
+  "confidence": 0.6204146730462521,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf16",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 724,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.31px, 허용 3.1px)",
+  "confidence": 0.631578947368421,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf17",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 1491,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.14px, 허용 3.1px)",
+  "confidence": 0.6586921850079746,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf18",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 847,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.31px, 허용 3.1px)",
+  "confidence": 0.631578947368421,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf19",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 1491,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.78px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf1a",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 130,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.43px, 허용 3.1px)",
+  "confidence": 0.6124401913875598,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1b",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 1643,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.84px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf1c",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 141,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.96px, 허용 3.1px)",
+  "confidence": 0.6874003189792663,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1d",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 1483,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1e",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 1521,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.71px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf1f",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 1632,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1g",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 124,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.17px, 허용 3.1px)",
+  "confidence": 0.6539074960127592,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1h",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 1354,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.4px, 허용 3.1px)",
+  "confidence": 0.6172248803827751,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf1i",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 141,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1j",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 153,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 3.1px)",
+  "confidence": 0.8405103668261563,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1k",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 155,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 3.1px)",
+  "confidence": 0.8405103668261563,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1l",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 157,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1m",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 115,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.71px, 허용 3.1px)",
+  "confidence": 0.7272727272727273,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1n",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 147,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1o",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 195,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1p",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 169,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 3.1px)",
+  "confidence": 0.8405103668261563,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1q",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 123,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.4px, 허용 3.1px)",
+  "confidence": 0.7767145135566189,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1r",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 100,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 3.1px)",
+  "confidence": 0.8405103668261563,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1s",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 166,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 3.1px)",
+  "confidence": 0.8405103668261563,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1t",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 106,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1u",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 167,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 1.93px, 허용 3.1px)",
+  "confidence": 0.6921850079744817,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gf1v",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 138,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.58px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1w",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 425,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.76px, 허용 3.1px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1x",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 102,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 3.1px)",
+  "confidence": 0.6810207336523126,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf1y",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 239,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.88px, 허용 3.1px)",
+  "confidence": 0.7001594896331739,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "f1z",
+  "cls": "FACE_FILL",
+  "partId": "chain_strap",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f20",
+  "cls": "FACE_FILL",
+  "partId": "chain_strap",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f21",
+  "cls": "FACE_FILL",
+  "partId": "chain_strap",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f22",
+  "cls": "FACE_FILL",
+  "partId": "chain_strap",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f23",
+  "cls": "FACE_FILL",
+  "partId": "chain_strap",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f24",
+  "cls": "FACE_FILL",
+  "partId": "chain_strap",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f25",
+  "cls": "FACE_FILL",
+  "partId": "chain_strap",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f26",
+  "cls": "FACE_FILL",
+  "partId": "chain_strap",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f27",
+  "cls": "FACE_FILL",
+  "partId": "chain_strap",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f28",
+  "cls": "FACE_FILL",
+  "partId": "chain_strap",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f29",
+  "cls": "FACE_FILL",
+  "partId": "metal_lattice_shell",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2a",
+  "cls": "FACE_FILL",
+  "partId": "metal_lattice_shell",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2b",
+  "cls": "FACE_FILL",
+  "partId": "inner_pouch",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2c",
+  "cls": "FACE_FILL",
+  "partId": "metal_lattice_shell",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2d",
+  "cls": "FACE_FILL",
+  "partId": "metal_lattice_shell",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2e",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2f",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2g",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2h",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2i",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2j",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2k",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2l",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2m",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2n",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2o",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2p",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2q",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2r",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2s",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2t",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2u",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2v",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2w",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2x",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2y",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2z",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f30",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f31",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f32",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f33",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f34",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f35",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f36",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f37",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f38",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f39",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3a",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3b",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3c",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3d",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3e",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3f",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3g",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3h",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3i",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3j",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3k",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3l",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3m",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3n",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3o",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3p",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3q",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3r",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3s",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3t",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3u",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3v",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3w",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3x",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3y",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f3z",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f40",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f41",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f42",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f43",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f44",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f45",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f46",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f47",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f48",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f49",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4a",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4b",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4c",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4d",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4e",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4f",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4g",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4h",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4i",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4j",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4k",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4l",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4m",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4n",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4o",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4p",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4q",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4r",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4s",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4t",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4u",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4v",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4w",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4x",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4y",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f4z",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f50",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f51",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f52",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f53",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f54",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f55",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f56",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f57",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f58",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f59",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5a",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5b",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5c",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5d",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5e",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5f",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5g",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5h",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5i",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5j",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5k",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5l",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5m",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5n",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5o",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5p",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5q",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5r",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5s",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5t",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5u",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5v",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5w",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5x",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5y",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5z",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f60",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f61",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f62",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f63",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f64",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f65",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f66",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f67",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f68",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f69",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6a",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6b",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6c",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6d",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6e",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6f",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6g",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6h",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6i",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6j",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6k",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6l",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6m",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6n",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6o",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6p",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6q",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6r",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6s",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6t",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6u",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6v",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6w",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6x",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6y",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6z",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f70",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f71",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f72",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f73",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f74",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f75",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f76",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f77",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f78",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f79",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7a",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7b",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7c",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7d",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7e",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7f",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7g",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7h",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7i",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7j",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7k",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7l",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7m",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7n",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7o",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7p",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7q",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7r",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7s",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7t",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7u",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7v",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7w",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7x",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7y",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7z",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f80",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f81",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f82",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f83",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f84",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f85",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f86",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f87",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f88",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f89",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8a",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8b",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8c",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8d",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8e",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8f",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8g",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8h",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8i",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8j",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8k",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8l",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8m",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8n",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8o",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8p",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8q",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8r",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8s",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8t",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8u",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8v",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8w",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8x",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8y",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8z",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f90",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f91",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f92",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f93",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f94",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f95",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f96",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f97",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f98",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f99",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9a",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9b",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9c",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9d",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9e",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9f",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9g",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9h",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9i",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9j",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9k",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9l",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9m",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9n",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9o",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9p",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9q",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9r",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9s",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9t",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9u",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9v",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9w",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9x",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9y",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9z",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa0",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa1",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa2",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa3",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa4",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa5",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa6",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa7",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa8",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa9",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "faa",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fab",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fac",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fad",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fae",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "faf",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fag",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fah",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fai",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "faj",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fak",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fal",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fam",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fan",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fao",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fap",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "faq",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "far",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fas",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fat",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fau",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fav",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "faw",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fax",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fay",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "faz",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fb0",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fb1",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fb2",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fb3",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fb4",
+  "cls": "FACE_FILL",
+  "partId": "turquoise_stone_embellishments",
+  "area": 403000,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ }
+]

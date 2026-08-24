@@ -1,0 +1,344 @@
+{
+  "job": {
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW",
+    "canvas": {
+      "width": 2800,
+      "height": 2196,
+      "sourceWidth": 1400,
+      "sourceHeight": 1098,
+      "supersample": 2
+    },
+    "totalMs": 30482,
+    "createdAt": "2026-08-24T03:29:09.565Z"
+  },
+  "options": {
+    "minParts": 3,
+    "maxParts": 10,
+    "grayscale": true,
+    "workLong": 1400,
+    "vectorLong": 2200,
+    "inkThreshold": 170,
+    "localContrast": 22,
+    "textureMode": "auto",
+    "categoryHint": "shoe",
+    "schematicFrom": "outputs/v3/v3_shoe_1_v31/schematics/schematic_8ec87125d4c4e609.png",
+    "upscale": false
+  },
+  "plan": {
+    "category": "shoe",
+    "objectNoun": "sneaker",
+    "view": "left lateral side view",
+    "parts": [
+      {
+        "id": "rubber_outsole",
+        "label": "Rubber outsole",
+        "description": "Black tread layer running along the bottom edge of the shoe.",
+        "bbox": [
+          0.08,
+          0.72,
+          0.93,
+          0.88
+        ],
+        "z": 0,
+        "occludedBy": [
+          "cushioned_midsole"
+        ],
+        "kind": "component",
+        "confidence": 0.91
+      },
+      {
+        "id": "cushioned_midsole",
+        "label": "Cushioned midsole",
+        "description": "White and pink sculpted cushioning platform with a visible heel air window.",
+        "bbox": [
+          0.07,
+          0.62,
+          0.93,
+          0.86
+        ],
+        "z": 1,
+        "occludedBy": [
+          "main_upper"
+        ],
+        "kind": "component",
+        "confidence": 0.96
+      },
+      {
+        "id": "tongue",
+        "label": "Tongue",
+        "description": "Padded black tongue rising behind the eyestay, with a pink accent along its face.",
+        "bbox": [
+          0.4,
+          0.16,
+          0.61,
+          0.48
+        ],
+        "z": 2,
+        "occludedBy": [
+          "main_upper",
+          "laces"
+        ],
+        "kind": "component",
+        "confidence": 0.95
+      },
+      {
+        "id": "eyelet_underlay",
+        "label": "Eyelet underlay",
+        "description": "Pink ribbed panel exposed beneath the upper around the forefoot lace openings.",
+        "bbox": [
+          0.58,
+          0.38,
+          0.72,
+          0.52
+        ],
+        "z": 3,
+        "occludedBy": [
+          "main_upper",
+          "laces"
+        ],
+        "kind": "component",
+        "confidence": 0.84
+      },
+      {
+        "id": "main_upper",
+        "label": "Main upper",
+        "description": "Black textile and synthetic body forming the toe box, quarters, collar, and eyestay.",
+        "bbox": [
+          0.07,
+          0.27,
+          0.94,
+          0.69
+        ],
+        "z": 4,
+        "occludedBy": [
+          "heel_overlay",
+          "swoosh_logo",
+          "airmax_badge",
+          "laces"
+        ],
+        "kind": "component",
+        "confidence": 0.97
+      },
+      {
+        "id": "heel_overlay",
+        "label": "Heel reinforcement overlay",
+        "description": "Pink ribbed reinforcement panel wrapping the rear heel area.",
+        "bbox": [
+          0.06,
+          0.33,
+          0.18,
+          0.59
+        ],
+        "z": 5,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.9
+      },
+      {
+        "id": "laces",
+        "label": "Laces",
+        "description": "Black laces threaded through the eyestay, including the long loose hanging end.",
+        "bbox": [
+          0.49,
+          0.34,
+          0.73,
+          0.77
+        ],
+        "z": 6,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.97
+      },
+      {
+        "id": "swoosh_logo",
+        "label": "Swoosh logo",
+        "description": "Pink swoosh-shaped lateral logo applied across the quarter.",
+        "bbox": [
+          0.23,
+          0.46,
+          0.62,
+          0.59
+        ],
+        "z": 7,
+        "occludedBy": [
+          "laces"
+        ],
+        "kind": "marking",
+        "confidence": 0.98
+      },
+      {
+        "id": "airmax_badge",
+        "label": "AIRMAX badge",
+        "description": "Pink oval AIRMAX graphic on the lateral rear quarter.",
+        "bbox": [
+          0.29,
+          0.56,
+          0.5,
+          0.66
+        ],
+        "z": 8,
+        "occludedBy": [],
+        "kind": "marking",
+        "confidence": 0.98
+      }
+    ],
+    "provenance": {
+      "model": "gpt-5.6",
+      "promptVersion": "v3.parts.v1.0.0",
+      "inputSha256": "25a6f354b2dd27ebdefdf7d78d3f304a36089678d8c59449d7ac612dd57f43ce",
+      "createdAt": "2026-08-22T04:35:54.181Z"
+    }
+  },
+  "counts": {
+    "GEOMETRIC_PRIMITIVE": 26,
+    "FACE_FILL": 76,
+    "OUTLINE_SHAPE": 13
+  },
+  "qa": {
+    "fidelity": {
+      "pass": true,
+      "f0": 0.8672,
+      "f1": 0.8934,
+      "f2": 0.8947,
+      "lineF1": 0.9979,
+      "lineF2": 0.9992,
+      "textureShare": 0.596,
+      "inkRatio": 1.016,
+      "chamfer": 0.035,
+      "p95": 0,
+      "detailRecall": 1,
+      "holes": [
+        111,
+        108
+      ],
+      "majorComponents": [
+        6,
+        6
+      ],
+      "notes": [
+        "해프톤이 도면 잉크의 60% — 전체 F@2px 0.8947, 그 영역 뺀 선 충실도 0.9992"
+      ]
+    },
+    "editability": {
+      "pass": true,
+      "paths": 115,
+      "anchors": 11032,
+      "uses": 0,
+      "kb": 463.2,
+      "anchorDensity": 7,
+      "shortPathRatio": 0.026,
+      "primitives": 26,
+      "anchorsSavedByPrimitives": 413,
+      "pathsSavedByPatterns": 0,
+      "editableReduction": {
+        "paths": 0.009,
+        "anchors": 0.106,
+        "kb": 0.101
+      },
+      "notes": []
+    },
+    "semantic": {
+      "pass": false,
+      "perPart": [
+        {
+          "id": "rubber_outsole",
+          "paths": 0,
+          "precision": -1,
+          "recall": -1,
+          "iou": -1
+        },
+        {
+          "id": "cushioned_midsole",
+          "paths": 12,
+          "precision": 0.9169,
+          "recall": 0.3518,
+          "iou": 0.341
+        },
+        {
+          "id": "tongue",
+          "paths": 12,
+          "precision": 1,
+          "recall": 0.2349,
+          "iou": 0.2349
+        },
+        {
+          "id": "eyelet_underlay",
+          "paths": 15,
+          "precision": 0.9829,
+          "recall": 0.1749,
+          "iou": 0.1744
+        },
+        {
+          "id": "main_upper",
+          "paths": 26,
+          "precision": 0.5334,
+          "recall": 0.216,
+          "iou": 0.1816
+        },
+        {
+          "id": "heel_overlay",
+          "paths": 9,
+          "precision": 1,
+          "recall": 0.2939,
+          "iou": 0.2939
+        },
+        {
+          "id": "laces",
+          "paths": 13,
+          "precision": 0.285,
+          "recall": 0.5985,
+          "iou": 0.2393
+        },
+        {
+          "id": "swoosh_logo",
+          "paths": 4,
+          "precision": 0.3117,
+          "recall": 0.3726,
+          "iou": 0.2044
+        },
+        {
+          "id": "airmax_badge",
+          "paths": 24,
+          "precision": 0.3052,
+          "recall": 0.9423,
+          "iou": 0.2996
+        }
+      ],
+      "meanPrecision": 0.6669,
+      "misassigned": [
+        "laces",
+        "swoosh_logo",
+        "airmax_badge"
+      ],
+      "emptyVisibleParts": [],
+      "sharedOnlyParts": [
+        "rubber_outsole"
+      ],
+      "sharedBoundaries": 17,
+      "aspectRatio": 1.052,
+      "lowConfidenceRoutes": 7,
+      "notes": [
+        "배분이 의심되는 레이어 3개: laces, swoosh_logo, airmax_badge",
+        "공유 경계로만 그려진 파트 1개: rubber_outsole",
+        "사진↔도면 종횡비 불일치 5.2% — 배분 정확도에만 영향",
+        "라우터가 확신하지 못한 성분 7개"
+      ]
+    },
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
+  },
+  "timings": {
+    "S1_preprocess": 3519,
+    "S2_plan": 6,
+    "S3_masks": 9243,
+    "S4_schematic": 820,
+    "S5_evidence": 7691,
+    "S7_export": 41,
+    "S8_qa": 9035
+  },
+  "correspondence": {
+    "method": "global-similarity",
+    "aspectRatio": 1.0519794727545186,
+    "confident": true,
+    "note": ""
+  }
+}

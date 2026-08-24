@@ -269,7 +269,7 @@ function distanceTransform(ink: Uint8Array, W: number, H: number): Float32Array 
 }
 
 // ── Zhang-Suen 세선화 ────────────────────────────────────────
-function skeletonize(src: Uint8Array, W: number, H: number): Uint8Array {
+export function skeletonize(src: Uint8Array, W: number, H: number): Uint8Array {
   const img = Uint8Array.from(src);
   const at = (x: number, y: number) =>
     x < 0 || y < 0 || x >= W || y >= H ? 0 : img[y * W + x];
@@ -337,7 +337,7 @@ function neighbors(skel: Uint8Array, W: number, H: number, x: number, y: number)
  * 잘게 끊긴다(실측: 323패스/629앵커). 이웃 시퀀스의 0→1 전이 수를 세면
  * 끝점=1, 정상=2, 분기=3+ 로 올바르게 나온다.
  */
-function crossingNumber(skel: Uint8Array, W: number, H: number, x: number, y: number): number {
+export function crossingNumber(skel: Uint8Array, W: number, H: number, x: number, y: number): number {
   const at = (dx: number, dy: number) => {
     const nx = x + dx, ny = y + dy;
     return nx < 0 || ny < 0 || nx >= W || ny >= H ? 0 : skel[ny * W + nx];

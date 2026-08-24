@@ -1,0 +1,1152 @@
+[
+ {
+  "id": "gf1",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "tongue",
+  "area": 266,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.5px)",
+  "confidence": 0.726775956284153,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "main_upper",
+  "area": 437,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.4px, 허용 5.5px)",
+  "confidence": 0.7814207650273224,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "main_upper",
+  "area": 212,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3.92px, 허용 5.5px)",
+  "confidence": 0.6429872495446266,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "eyelet_underlay",
+  "area": 215,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.5px)",
+  "confidence": 0.726775956284153,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf5",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "heel_overlay",
+  "area": 188,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.5px)",
+  "confidence": 0.726775956284153,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf6",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "eyelet_underlay",
+  "area": 586,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.33px, 허용 5.5px)",
+  "confidence": 0.7877959927140255,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf7",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "eyelet_underlay",
+  "area": 514,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3.46px, 허용 5.5px)",
+  "confidence": 0.6848816029143898,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf8",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "main_upper",
+  "area": 199,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4px, 허용 5.5px)",
+  "confidence": 0.6357012750455373,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf9",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "eyelet_underlay",
+  "area": 144,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.92px, 허용 5.5px)",
+  "confidence": 0.825136612021858,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfa",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "main_upper",
+  "area": 96,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.5px)",
+  "confidence": 0.726775956284153,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfb",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "airmax_badge",
+  "area": 127,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.61px, 허용 5.5px)",
+  "confidence": 0.7622950819672132,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gfc",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "airmax_badge",
+  "area": 119,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 5.5px)",
+  "confidence": 0.726775956284153,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfd",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "airmax_badge",
+  "area": 266,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4px, 허용 5.5px)",
+  "confidence": 0.6357012750455373,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfe",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "airmax_badge",
+  "area": 180,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.5px)",
+  "confidence": 0.8178506375227687,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gff",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "airmax_badge",
+  "area": 250,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 4px, 허용 5.5px)",
+  "confidence": 0.6357012750455373,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfg",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "airmax_badge",
+  "area": 183,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.5px)",
+  "confidence": 0.9089253187613844,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfh",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "airmax_badge",
+  "area": 103,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.5px)",
+  "confidence": 0.9089253187613844,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfi",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "airmax_badge",
+  "area": 214,
+  "why": "닫힌 면이 circle 에 적합 (잔차 max 2.81px, 허용 5.5px)",
+  "confidence": 0.74408014571949,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "gfj",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "airmax_badge",
+  "area": 122,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 5.5px)",
+  "confidence": 0.8178506375227687,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfk",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "airmax_badge",
+  "area": 170,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.5px)",
+  "confidence": 0.9089253187613844,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gfl",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "airmax_badge",
+  "area": 135,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 5.5px)",
+  "confidence": 0.9089253187613844,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "fm",
+  "cls": "FACE_FILL",
+  "partId": "tongue",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fn",
+  "cls": "FACE_FILL",
+  "partId": "tongue",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fo",
+  "cls": "FACE_FILL",
+  "partId": "tongue",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fp",
+  "cls": "FACE_FILL",
+  "partId": "tongue",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fq",
+  "cls": "FACE_FILL",
+  "partId": "tongue",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fr",
+  "cls": "FACE_FILL",
+  "partId": "tongue",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fs",
+  "cls": "FACE_FILL",
+  "partId": "tongue",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "ft",
+  "cls": "FACE_FILL",
+  "partId": "tongue",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fu",
+  "cls": "FACE_FILL",
+  "partId": "tongue",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fv",
+  "cls": "FACE_FILL",
+  "partId": "main_upper",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fw",
+  "cls": "FACE_FILL",
+  "partId": "tongue",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fx",
+  "cls": "FACE_FILL",
+  "partId": "main_upper",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fy",
+  "cls": "FACE_FILL",
+  "partId": "heel_overlay",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fz",
+  "cls": "FACE_FILL",
+  "partId": "heel_overlay",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f10",
+  "cls": "FACE_FILL",
+  "partId": "heel_overlay",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f11",
+  "cls": "FACE_FILL",
+  "partId": "main_upper",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f12",
+  "cls": "FACE_FILL",
+  "partId": "airmax_badge",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f13",
+  "cls": "FACE_FILL",
+  "partId": "heel_overlay",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f14",
+  "cls": "FACE_FILL",
+  "partId": "heel_overlay",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f15",
+  "cls": "FACE_FILL",
+  "partId": "laces",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f16",
+  "cls": "FACE_FILL",
+  "partId": "airmax_badge",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f17",
+  "cls": "FACE_FILL",
+  "partId": "airmax_badge",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f18",
+  "cls": "FACE_FILL",
+  "partId": "airmax_badge",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f19",
+  "cls": "FACE_FILL",
+  "partId": "airmax_badge",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1a",
+  "cls": "FACE_FILL",
+  "partId": "laces",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1b",
+  "cls": "FACE_FILL",
+  "partId": "airmax_badge",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1c",
+  "cls": "FACE_FILL",
+  "partId": "main_upper",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1d",
+  "cls": "FACE_FILL",
+  "partId": "cushioned_midsole",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1e",
+  "cls": "FACE_FILL",
+  "partId": "laces",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1f",
+  "cls": "FACE_FILL",
+  "partId": "laces",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1g",
+  "cls": "FACE_FILL",
+  "partId": "cushioned_midsole",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1h",
+  "cls": "FACE_FILL",
+  "partId": "cushioned_midsole",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1i",
+  "cls": "FACE_FILL",
+  "partId": "cushioned_midsole",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1j",
+  "cls": "FACE_FILL",
+  "partId": "cushioned_midsole",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1k",
+  "cls": "FACE_FILL",
+  "partId": "cushioned_midsole",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1l",
+  "cls": "FACE_FILL",
+  "partId": "cushioned_midsole",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1m",
+  "cls": "FACE_FILL",
+  "partId": "cushioned_midsole",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1n",
+  "cls": "FACE_FILL",
+  "partId": "cushioned_midsole",
+  "area": 1287421,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1o",
+  "cls": "FACE_FILL",
+  "partId": "main_upper",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1p",
+  "cls": "FACE_FILL",
+  "partId": "main_upper",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1q",
+  "cls": "FACE_FILL",
+  "partId": "main_upper",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1r",
+  "cls": "FACE_FILL",
+  "partId": "swoosh_logo",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1s",
+  "cls": "FACE_FILL",
+  "partId": "swoosh_logo",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1t",
+  "cls": "FACE_FILL",
+  "partId": "laces",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1u",
+  "cls": "FACE_FILL",
+  "partId": "swoosh_logo",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1v",
+  "cls": "FACE_FILL",
+  "partId": "laces",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1w",
+  "cls": "FACE_FILL",
+  "partId": "laces",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1x",
+  "cls": "FACE_FILL",
+  "partId": "laces",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1y",
+  "cls": "FACE_FILL",
+  "partId": "eyelet_underlay",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1z",
+  "cls": "FACE_FILL",
+  "partId": "eyelet_underlay",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f20",
+  "cls": "FACE_FILL",
+  "partId": "eyelet_underlay",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f21",
+  "cls": "FACE_FILL",
+  "partId": "main_upper",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f22",
+  "cls": "FACE_FILL",
+  "partId": "laces",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f23",
+  "cls": "FACE_FILL",
+  "partId": "eyelet_underlay",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f24",
+  "cls": "FACE_FILL",
+  "partId": "main_upper",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f25",
+  "cls": "FACE_FILL",
+  "partId": "main_upper",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f26",
+  "cls": "FACE_FILL",
+  "partId": "eyelet_underlay",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f27",
+  "cls": "FACE_FILL",
+  "partId": "laces",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f28",
+  "cls": "FACE_FILL",
+  "partId": "laces",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f29",
+  "cls": "FACE_FILL",
+  "partId": "main_upper",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2a",
+  "cls": "FACE_FILL",
+  "partId": "eyelet_underlay",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2b",
+  "cls": "FACE_FILL",
+  "partId": "laces",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2c",
+  "cls": "FACE_FILL",
+  "partId": "eyelet_underlay",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2d",
+  "cls": "FACE_FILL",
+  "partId": "main_upper",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2e",
+  "cls": "FACE_FILL",
+  "partId": "eyelet_underlay",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2f",
+  "cls": "FACE_FILL",
+  "partId": "eyelet_underlay",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2g",
+  "cls": "FACE_FILL",
+  "partId": "swoosh_logo",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2h",
+  "cls": "FACE_FILL",
+  "partId": "eyelet_underlay",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2i",
+  "cls": "FACE_FILL",
+  "partId": "heel_overlay",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2j",
+  "cls": "FACE_FILL",
+  "partId": "heel_overlay",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2k",
+  "cls": "FACE_FILL",
+  "partId": "airmax_badge",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2l",
+  "cls": "FACE_FILL",
+  "partId": "airmax_badge",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2m",
+  "cls": "FACE_FILL",
+  "partId": "airmax_badge",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2n",
+  "cls": "FACE_FILL",
+  "partId": "airmax_badge",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2o",
+  "cls": "FACE_FILL",
+  "partId": "airmax_badge",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f2p",
+  "cls": "FACE_FILL",
+  "partId": "airmax_badge",
+  "area": 593713,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "g2q",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "main_upper",
+  "area": 233,
+  "why": "line 적합 잔차 max 1.64px (허용 5.5px) — 앵커 2개로 표현",
+  "confidence": 0.851,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2r",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "main_upper",
+  "area": 209,
+  "why": "line 적합 잔차 max 0px (허용 5.5px) — 앵커 2개로 표현",
+  "confidence": 0.98,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2s",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "main_upper",
+  "area": 215,
+  "why": "line 적합 잔차 max 1.53px (허용 5.5px) — 앵커 2개로 표현",
+  "confidence": 0.861,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2t",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "main_upper",
+  "area": 177,
+  "why": "line 적합 잔차 max 1.69px (허용 5.5px) — 앵커 2개로 표현",
+  "confidence": 0.846,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2u",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "cushioned_midsole",
+  "area": 14,
+  "why": "line 적합 잔차 max 0.64px (허용 5.5px) — 앵커 2개로 표현",
+  "confidence": 0.942,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "o2v",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "laces",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "o2w",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "tongue",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "o2x",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "main_upper",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "o2y",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "eyelet_underlay",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "o2z",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "main_upper",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "o30",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "main_upper",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "o31",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "main_upper",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "o32",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "heel_overlay",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "o33",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "airmax_badge",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "o34",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "main_upper",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "o35",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "main_upper",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "o36",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "cushioned_midsole",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "o37",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "cushioned_midsole",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ }
+]

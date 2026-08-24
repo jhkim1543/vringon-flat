@@ -1,0 +1,1871 @@
+{
+  "generatedAt": "2026-08-24",
+  "samples": [
+    {
+      "id": "bag_1",
+      "name": "bag_1",
+      "category": "bag",
+      "categoryLabel": "가방",
+      "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW",
+      "canvas": {
+        "width": 1438,
+        "height": 2048,
+        "sourceWidth": 719,
+        "sourceHeight": 1024,
+        "supersample": 2
+      },
+      "counts": {
+        "GEOMETRIC_PRIMITIVE": 3,
+        "FACE_FILL": 39,
+        "OUTLINE_SHAPE": 11
+      },
+      "qa": {
+        "fidelity": {
+          "pass": true,
+          "f0": 0.8582,
+          "f1": 0.8927,
+          "f2": 0.8952,
+          "lineF1": 0.9953,
+          "lineF2": 0.9981,
+          "textureShare": 0.6183,
+          "inkRatio": 1.003,
+          "chamfer": 0.047,
+          "p95": 0,
+          "detailRecall": 1,
+          "holes": [
+            53,
+            51
+          ],
+          "majorComponents": [
+            2,
+            3
+          ],
+          "notes": [
+            "해프톤이 도면 잉크의 62% — 전체 F@2px 0.8952, 그 영역 뺀 선 충실도 0.9981"
+          ]
+        },
+        "editability": {
+          "pass": true,
+          "paths": 53,
+          "anchors": 5736,
+          "uses": 0,
+          "kb": 224.2,
+          "anchorDensity": 7.38,
+          "shortPathRatio": 0,
+          "primitives": 3,
+          "anchorsSavedByPrimitives": 30,
+          "pathsSavedByPatterns": 0,
+          "editableReduction": {
+            "paths": 0.019,
+            "anchors": 0.103,
+            "kb": 0.099
+          },
+          "notes": []
+        },
+        "semantic": {
+          "pass": false,
+          "perPart": [
+            {
+              "id": "top_handle",
+              "paths": 0,
+              "precision": -1,
+              "recall": -1,
+              "iou": -1
+            },
+            {
+              "id": "main_compartment_shell",
+              "paths": 0,
+              "precision": -1,
+              "recall": -1,
+              "iou": -1
+            },
+            {
+              "id": "left_side_gusset",
+              "paths": 7,
+              "precision": 0.9236,
+              "recall": 0.697,
+              "iou": 0.659
+            },
+            {
+              "id": "front_lower_panel",
+              "paths": 6,
+              "precision": 0.9517,
+              "recall": 0.5365,
+              "iou": 0.5222
+            },
+            {
+              "id": "front_flap",
+              "paths": 7,
+              "precision": 0.8363,
+              "recall": 0.045,
+              "iou": 0.0446
+            },
+            {
+              "id": "red_trim_bands",
+              "paths": 8,
+              "precision": 0.1643,
+              "recall": 0.4133,
+              "iou": 0.1332
+            },
+            {
+              "id": "closure_strap",
+              "paths": 12,
+              "precision": 0.2971,
+              "recall": 0.914,
+              "iou": 0.289
+            },
+            {
+              "id": "clasp_assembly",
+              "paths": 13,
+              "precision": 0.5219,
+              "recall": 0.4216,
+              "iou": 0.3041
+            }
+          ],
+          "meanPrecision": 0.6158,
+          "misassigned": [
+            "red_trim_bands",
+            "closure_strap"
+          ],
+          "emptyVisibleParts": [],
+          "sharedOnlyParts": [
+            "top_handle",
+            "main_compartment_shell"
+          ],
+          "sharedBoundaries": 12,
+          "aspectRatio": 1.198,
+          "lowConfidenceRoutes": 3,
+          "notes": [
+            "배분이 의심되는 레이어 2개: red_trim_bands, closure_strap",
+            "공유 경계로만 그려진 파트 2개: top_handle, main_compartment_shell",
+            "사진↔도면 종횡비 불일치 19.8% — 배분 정확도에만 영향",
+            "라우터가 확신하지 못한 성분 3개"
+          ]
+        },
+        "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
+      },
+      "timings": {
+        "S1_preprocess": 7158,
+        "S2_plan": 4,
+        "S3_masks": 2208,
+        "S4_schematic": 441,
+        "S5_evidence": 3719,
+        "S7_export": 34,
+        "S8_qa": 2958
+      },
+      "correspondence": {
+        "method": "global-similarity",
+        "aspectRatio": 1.1981499662514572,
+        "confident": true,
+        "note": ""
+      },
+      "parts": [
+        {
+          "id": "top_handle",
+          "label": "Top carry handle",
+          "z": 0
+        },
+        {
+          "id": "main_compartment_shell",
+          "label": "Main compartment shell",
+          "z": 1
+        },
+        {
+          "id": "left_side_gusset",
+          "label": "Left side gusset",
+          "z": 2
+        },
+        {
+          "id": "front_lower_panel",
+          "label": "Front lower body panel",
+          "z": 3
+        },
+        {
+          "id": "front_flap",
+          "label": "Front cover flap",
+          "z": 4
+        },
+        {
+          "id": "red_trim_bands",
+          "label": "Red decorative trim bands",
+          "z": 5
+        },
+        {
+          "id": "closure_strap",
+          "label": "Vertical closure strap",
+          "z": 6
+        },
+        {
+          "id": "clasp_assembly",
+          "label": "Front clasp assembly",
+          "z": 7
+        }
+      ],
+      "sharedBoundaries": 12,
+      "v3": {
+        "paths": 224,
+        "anchors": 4929,
+        "f0": 0.8162,
+        "lineF2": 0.9972,
+        "kb": 206.6,
+        "svg": "samples-v4/bag_1/v3.svg"
+      },
+      "files": {
+        "fidelity": "samples-v4/bag_1/fidelity.svg",
+        "editable": "samples-v4/bag_1/editable.svg",
+        "production": "samples-v4/bag_1/production.svg",
+        "routes": "samples-v4/bag_1/routes.json",
+        "qa": "samples-v4/bag_1/qa_v4.json",
+        "input": "samples-v4/bag_1/input.jpg",
+        "schematic": "samples-v4/bag_1/schematic.jpg"
+      }
+    },
+    {
+      "id": "bag_2",
+      "name": "bag_2",
+      "category": "bag",
+      "categoryLabel": "가방",
+      "state": "FIDELITY_REVIEW / EDITABILITY_REVIEW / SEMANTIC_REVIEW",
+      "canvas": {
+        "width": 1748,
+        "height": 2048,
+        "sourceWidth": 874,
+        "sourceHeight": 1024,
+        "supersample": 2
+      },
+      "counts": {
+        "GEOMETRIC_PRIMITIVE": 522,
+        "FACE_FILL": 19,
+        "OUTLINE_SHAPE": 68,
+        "REPEATING_PATTERN": 17
+      },
+      "qa": {
+        "fidelity": {
+          "pass": false,
+          "f0": 0.7449,
+          "f1": 0.8994,
+          "f2": 0.937,
+          "lineF1": 0.8994,
+          "lineF2": 0.937,
+          "textureShare": 0,
+          "inkRatio": 1.511,
+          "chamfer": 0.604,
+          "p95": 3.41,
+          "detailRecall": 0.9768,
+          "holes": [
+            182,
+            160
+          ],
+          "majorComponents": [
+            1,
+            1
+          ],
+          "notes": [
+            "선 일치 F@2px 0.937 < 0.95",
+            "선 굵기 1.511× (1.0 이 원본)"
+          ]
+        },
+        "editability": {
+          "pass": false,
+          "paths": 626,
+          "anchors": 23274,
+          "uses": 2602,
+          "kb": 1176.9,
+          "anchorDensity": 17.19,
+          "shortPathRatio": 0.55,
+          "primitives": 522,
+          "anchorsSavedByPrimitives": 4106,
+          "pathsSavedByPatterns": 2585,
+          "editableReduction": {
+            "paths": 0.024,
+            "anchors": 0.714,
+            "kb": 0.44
+          },
+          "notes": [
+            "앵커 밀도 17.2/100px > 12",
+            "짧은 패스 55% — 파편화 의심"
+          ]
+        },
+        "semantic": {
+          "pass": false,
+          "perPart": [
+            {
+              "id": "chain_handle",
+              "paths": 0,
+              "precision": -1,
+              "recall": -1,
+              "iou": -1
+            },
+            {
+              "id": "bag_body",
+              "paths": 448,
+              "precision": 0.7511,
+              "recall": 0.868,
+              "iou": 0.6741
+            },
+            {
+              "id": "metal_frame",
+              "paths": 90,
+              "precision": 0.2956,
+              "recall": 0.3526,
+              "iou": 0.1916
+            },
+            {
+              "id": "closure_clasp",
+              "paths": 1,
+              "precision": 0,
+              "recall": 0,
+              "iou": 0
+            },
+            {
+              "id": "floral_ornament",
+              "paths": 87,
+              "precision": 0.7917,
+              "recall": 0.5372,
+              "iou": 0.4707
+            }
+          ],
+          "meanPrecision": 0.4596,
+          "misassigned": [
+            "metal_frame",
+            "closure_clasp"
+          ],
+          "emptyVisibleParts": [],
+          "sharedOnlyParts": [
+            "chain_handle"
+          ],
+          "sharedBoundaries": 2,
+          "aspectRatio": 1.015,
+          "lowConfidenceRoutes": 11,
+          "notes": [
+            "배분이 의심되는 레이어 2개: metal_frame, closure_clasp",
+            "공유 경계로만 그려진 파트 1개: chain_handle",
+            "라우터가 확신하지 못한 성분 11개"
+          ]
+        },
+        "state": "FIDELITY_REVIEW / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
+      },
+      "timings": {
+        "S1_preprocess": 5603,
+        "S2_plan": 4,
+        "S3_masks": 3344,
+        "S4_schematic": 479,
+        "S5_evidence": 5757,
+        "S7_export": 102,
+        "S8_qa": 3445
+      },
+      "correspondence": {
+        "method": "global-similarity",
+        "aspectRatio": 1.0154628381473387,
+        "confident": true,
+        "note": ""
+      },
+      "parts": [
+        {
+          "id": "chain_handle",
+          "label": "Chain handle",
+          "z": 0
+        },
+        {
+          "id": "bag_body",
+          "label": "Beaded pouch body",
+          "z": 1
+        },
+        {
+          "id": "metal_frame",
+          "label": "Metal purse frame",
+          "z": 2
+        },
+        {
+          "id": "closure_clasp",
+          "label": "Closure clasp",
+          "z": 3
+        },
+        {
+          "id": "floral_ornament",
+          "label": "Floral metal ornament",
+          "z": 4
+        }
+      ],
+      "sharedBoundaries": 2,
+      "v3": {
+        "paths": 3537,
+        "anchors": 36161,
+        "f0": 0.6694,
+        "lineF2": 0.9463,
+        "kb": 1608.3,
+        "svg": "samples-v4/bag_2/v3.svg"
+      },
+      "files": {
+        "fidelity": "samples-v4/bag_2/fidelity.svg",
+        "editable": "samples-v4/bag_2/editable.svg",
+        "production": "samples-v4/bag_2/production.svg",
+        "routes": "samples-v4/bag_2/routes.json",
+        "qa": "samples-v4/bag_2/qa_v4.json",
+        "input": "samples-v4/bag_2/input.jpg",
+        "schematic": "samples-v4/bag_2/schematic.jpg"
+      }
+    },
+    {
+      "id": "bag_3",
+      "name": "bag_3",
+      "category": "bag",
+      "categoryLabel": "가방",
+      "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_PASS",
+      "canvas": {
+        "width": 1254,
+        "height": 2800,
+        "sourceWidth": 627,
+        "sourceHeight": 1400,
+        "supersample": 2
+      },
+      "counts": {
+        "GEOMETRIC_PRIMITIVE": 70,
+        "FACE_FILL": 676,
+        "OUTLINE_SHAPE": 1
+      },
+      "qa": {
+        "fidelity": {
+          "pass": true,
+          "f0": 0.9639,
+          "f1": 0.9996,
+          "f2": 1,
+          "lineF1": 0.9996,
+          "lineF2": 1,
+          "textureShare": 0,
+          "inkRatio": 1.002,
+          "chamfer": 0.036,
+          "p95": 0,
+          "detailRecall": 1,
+          "holes": [
+            1075,
+            1060
+          ],
+          "majorComponents": [
+            1,
+            1
+          ],
+          "notes": []
+        },
+        "editability": {
+          "pass": false,
+          "paths": 747,
+          "anchors": 19487,
+          "uses": 0,
+          "kb": 771.4,
+          "anchorDensity": 14.67,
+          "shortPathRatio": 0,
+          "primitives": 70,
+          "anchorsSavedByPrimitives": 913,
+          "pathsSavedByPatterns": 0,
+          "editableReduction": {
+            "paths": 0,
+            "anchors": 0.118,
+            "kb": 0.106
+          },
+          "notes": [
+            "앵커 밀도 14.7/100px > 12"
+          ]
+        },
+        "semantic": {
+          "pass": true,
+          "perPart": [
+            {
+              "id": "inner_pouch",
+              "paths": 1,
+              "precision": 1,
+              "recall": 0.0294,
+              "iou": 0.0294
+            },
+            {
+              "id": "chain_strap",
+              "paths": 33,
+              "precision": 0.9118,
+              "recall": 0.3472,
+              "iou": 0.3359
+            },
+            {
+              "id": "metal_lattice_shell",
+              "paths": 16,
+              "precision": 0.7373,
+              "recall": 0.1088,
+              "iou": 0.1047
+            },
+            {
+              "id": "turquoise_stone_embellishments",
+              "paths": 697,
+              "precision": 0.8434,
+              "recall": 0.9024,
+              "iou": 0.7729
+            }
+          ],
+          "meanPrecision": 0.8731,
+          "misassigned": [],
+          "emptyVisibleParts": [],
+          "sharedOnlyParts": [],
+          "sharedBoundaries": 14,
+          "aspectRatio": 1.031,
+          "lowConfidenceRoutes": 0,
+          "notes": [
+            "사진↔도면 종횡비 불일치 3.1% — 배분 정확도에만 영향"
+          ]
+        },
+        "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_PASS"
+      },
+      "timings": {
+        "S1_preprocess": 5726,
+        "S2_plan": 3,
+        "S3_masks": 4460,
+        "S4_schematic": 459,
+        "S5_evidence": 4020,
+        "S7_export": 58,
+        "S8_qa": 2919
+      },
+      "correspondence": {
+        "method": "global-similarity",
+        "aspectRatio": 1.0314516129032258,
+        "confident": true,
+        "note": ""
+      },
+      "parts": [
+        {
+          "id": "inner_pouch",
+          "label": "Inner pouch body",
+          "z": 0
+        },
+        {
+          "id": "chain_strap",
+          "label": "Chain shoulder strap",
+          "z": 1
+        },
+        {
+          "id": "metal_lattice_shell",
+          "label": "Linked metal outer shell",
+          "z": 2
+        },
+        {
+          "id": "turquoise_stone_embellishments",
+          "label": "Turquoise stone embellishments",
+          "z": 3
+        }
+      ],
+      "sharedBoundaries": 14,
+      "v3": {
+        "paths": 1342,
+        "anchors": 17362,
+        "f0": 0.9012,
+        "lineF2": 0.9974,
+        "kb": 782.3,
+        "svg": "samples-v4/bag_3/v3.svg"
+      },
+      "files": {
+        "fidelity": "samples-v4/bag_3/fidelity.svg",
+        "editable": "samples-v4/bag_3/editable.svg",
+        "production": "samples-v4/bag_3/production.svg",
+        "routes": "samples-v4/bag_3/routes.json",
+        "qa": "samples-v4/bag_3/qa_v4.json",
+        "input": "samples-v4/bag_3/input.jpg",
+        "schematic": "samples-v4/bag_3/schematic.jpg"
+      }
+    },
+    {
+      "id": "jewelry_1",
+      "name": "jewelry_1",
+      "category": "jewelry",
+      "categoryLabel": "주얼리",
+      "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS",
+      "canvas": {
+        "width": 2048,
+        "height": 1922,
+        "sourceWidth": 1024,
+        "sourceHeight": 961,
+        "supersample": 2
+      },
+      "counts": {
+        "GEOMETRIC_PRIMITIVE": 1,
+        "FACE_FILL": 12,
+        "OUTLINE_SHAPE": 1
+      },
+      "qa": {
+        "fidelity": {
+          "pass": true,
+          "f0": 0.9669,
+          "f1": 0.9911,
+          "f2": 0.9933,
+          "lineF1": 0.9911,
+          "lineF2": 0.9933,
+          "textureShare": 0,
+          "inkRatio": 1.03,
+          "chamfer": 0.084,
+          "p95": 0,
+          "detailRecall": 1,
+          "holes": [
+            12,
+            13
+          ],
+          "majorComponents": [
+            1,
+            1
+          ],
+          "notes": []
+        },
+        "editability": {
+          "pass": true,
+          "paths": 14,
+          "anchors": 2604,
+          "uses": 0,
+          "kb": 108.7,
+          "anchorDensity": 4.85,
+          "shortPathRatio": 0,
+          "primitives": 1,
+          "anchorsSavedByPrimitives": 10,
+          "pathsSavedByPatterns": 0,
+          "editableReduction": {
+            "paths": 0,
+            "anchors": 0.07,
+            "kb": 0.068
+          },
+          "notes": []
+        },
+        "semantic": {
+          "pass": true,
+          "perPart": [
+            {
+              "id": "hinge_pivot",
+              "paths": 1,
+              "precision": 1,
+              "recall": 0.1728,
+              "iou": 0.1728
+            },
+            {
+              "id": "left_hoop_half",
+              "paths": 2,
+              "precision": 1,
+              "recall": 0.0259,
+              "iou": 0.0259
+            },
+            {
+              "id": "right_hoop_half",
+              "paths": 2,
+              "precision": 0.9555,
+              "recall": 0.2786,
+              "iou": 0.275
+            },
+            {
+              "id": "clasp_insert",
+              "paths": 2,
+              "precision": 1,
+              "recall": 0.082,
+              "iou": 0.082
+            },
+            {
+              "id": "engraved_pattern",
+              "paths": 7,
+              "precision": 0.2795,
+              "recall": 0.8389,
+              "iou": 0.2653
+            }
+          ],
+          "meanPrecision": 0.847,
+          "misassigned": [
+            "engraved_pattern"
+          ],
+          "emptyVisibleParts": [],
+          "sharedOnlyParts": [],
+          "sharedBoundaries": 2,
+          "aspectRatio": 1.01,
+          "lowConfidenceRoutes": 1,
+          "notes": [
+            "배분이 의심되는 레이어 1개: engraved_pattern",
+            "라우터가 확신하지 못한 성분 1개"
+          ]
+        },
+        "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
+      },
+      "timings": {
+        "S1_preprocess": 5386,
+        "S2_plan": 4,
+        "S3_masks": 1300,
+        "S4_schematic": 204,
+        "S5_evidence": 3445,
+        "S7_export": 13,
+        "S8_qa": 2595
+      },
+      "correspondence": {
+        "method": "global-similarity",
+        "aspectRatio": 1.010476383745117,
+        "confident": true,
+        "note": ""
+      },
+      "parts": [
+        {
+          "id": "hinge_pivot",
+          "label": "Bottom hinge pivot",
+          "z": 0
+        },
+        {
+          "id": "left_hoop_half",
+          "label": "Left hoop half",
+          "z": 1
+        },
+        {
+          "id": "right_hoop_half",
+          "label": "Right hoop half",
+          "z": 2
+        },
+        {
+          "id": "clasp_insert",
+          "label": "Clasp insert",
+          "z": 3
+        },
+        {
+          "id": "engraved_pattern",
+          "label": "Engraved side pattern",
+          "z": 4
+        }
+      ],
+      "sharedBoundaries": 2,
+      "v3": {
+        "paths": 82,
+        "anchors": 2391,
+        "f0": 0.9273,
+        "lineF2": 0.9861,
+        "kb": 104.1,
+        "svg": "samples-v4/jewelry_1/v3.svg"
+      },
+      "files": {
+        "fidelity": "samples-v4/jewelry_1/fidelity.svg",
+        "editable": "samples-v4/jewelry_1/editable.svg",
+        "production": "samples-v4/jewelry_1/production.svg",
+        "routes": "samples-v4/jewelry_1/routes.json",
+        "qa": "samples-v4/jewelry_1/qa_v4.json",
+        "input": "samples-v4/jewelry_1/input.jpg",
+        "schematic": "samples-v4/jewelry_1/schematic.jpg"
+      }
+    },
+    {
+      "id": "jewelry_2",
+      "name": "jewelry_2",
+      "category": "jewelry",
+      "categoryLabel": "주얼리",
+      "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW",
+      "canvas": {
+        "width": 1388,
+        "height": 2048,
+        "sourceWidth": 694,
+        "sourceHeight": 1024,
+        "supersample": 2
+      },
+      "counts": {
+        "GEOMETRIC_PRIMITIVE": 4,
+        "FACE_FILL": 43,
+        "OUTLINE_SHAPE": 4
+      },
+      "qa": {
+        "fidelity": {
+          "pass": true,
+          "f0": 0.9478,
+          "f1": 0.9884,
+          "f2": 0.9925,
+          "lineF1": 0.9884,
+          "lineF2": 0.9925,
+          "textureShare": 0,
+          "inkRatio": 1.007,
+          "chamfer": 0.081,
+          "p95": 1,
+          "detailRecall": 1,
+          "holes": [
+            49,
+            49
+          ],
+          "majorComponents": [
+            5,
+            4
+          ],
+          "notes": []
+        },
+        "editability": {
+          "pass": true,
+          "paths": 51,
+          "anchors": 3683,
+          "uses": 0,
+          "kb": 150.9,
+          "anchorDensity": 4.66,
+          "shortPathRatio": 0,
+          "primitives": 4,
+          "anchorsSavedByPrimitives": 193,
+          "pathsSavedByPatterns": 0,
+          "editableReduction": {
+            "paths": 0,
+            "anchors": 0.093,
+            "kb": 0.087
+          },
+          "notes": []
+        },
+        "semantic": {
+          "pass": false,
+          "perPart": [
+            {
+              "id": "rear_clasp_hardware",
+              "paths": 10,
+              "precision": 1,
+              "recall": 0.1226,
+              "iou": 0.1226
+            },
+            {
+              "id": "upper_tuning_pegs",
+              "paths": 3,
+              "precision": 1,
+              "recall": 0.4287,
+              "iou": 0.4287
+            },
+            {
+              "id": "string_wire_set",
+              "paths": 0,
+              "precision": -1,
+              "recall": -1,
+              "iou": -1
+            },
+            {
+              "id": "outer_curved_spine",
+              "paths": 1,
+              "precision": 0,
+              "recall": 0,
+              "iou": 0
+            },
+            {
+              "id": "lower_frame_body",
+              "paths": 19,
+              "precision": 0.881,
+              "recall": 0.8423,
+              "iou": 0.7562
+            },
+            {
+              "id": "upper_neck_plate",
+              "paths": 6,
+              "precision": 0.3243,
+              "recall": 0.4133,
+              "iou": 0.2221
+            },
+            {
+              "id": "front_leaf_ornament",
+              "paths": 6,
+              "precision": 0.7358,
+              "recall": 0.5445,
+              "iou": 0.4555
+            },
+            {
+              "id": "neck_fasteners",
+              "paths": 6,
+              "precision": 0.5261,
+              "recall": 0.6949,
+              "iou": 0.4274
+            }
+          ],
+          "meanPrecision": 0.6382,
+          "misassigned": [
+            "outer_curved_spine",
+            "upper_neck_plate"
+          ],
+          "emptyVisibleParts": [],
+          "sharedOnlyParts": [
+            "string_wire_set"
+          ],
+          "sharedBoundaries": 17,
+          "aspectRatio": 1.007,
+          "lowConfidenceRoutes": 4,
+          "notes": [
+            "배분이 의심되는 레이어 2개: outer_curved_spine, upper_neck_plate",
+            "공유 경계로만 그려진 파트 1개: string_wire_set",
+            "라우터가 확신하지 못한 성분 4개"
+          ]
+        },
+        "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
+      },
+      "timings": {
+        "S1_preprocess": 5616,
+        "S2_plan": 7,
+        "S3_masks": 2926,
+        "S4_schematic": 356,
+        "S5_evidence": 2446,
+        "S7_export": 32,
+        "S8_qa": 3511
+      },
+      "correspondence": {
+        "method": "global-similarity",
+        "aspectRatio": 1.0067506111079532,
+        "confident": true,
+        "note": "도면이 컬러로 생성됨 (채도 10%) — 색면을 그대로 옮긴다"
+      },
+      "parts": [
+        {
+          "id": "rear_clasp_hardware",
+          "label": "Rear brooch clasp hardware",
+          "z": 0
+        },
+        {
+          "id": "upper_tuning_pegs",
+          "label": "Upper tuning pegs",
+          "z": 1
+        },
+        {
+          "id": "string_wire_set",
+          "label": "String wire set",
+          "z": 2
+        },
+        {
+          "id": "outer_curved_spine",
+          "label": "Outer curved spine",
+          "z": 3
+        },
+        {
+          "id": "lower_frame_body",
+          "label": "Lower frame and soundboard",
+          "z": 4
+        },
+        {
+          "id": "upper_neck_plate",
+          "label": "Upper neck plate",
+          "z": 5
+        },
+        {
+          "id": "front_leaf_ornament",
+          "label": "Front leaf ornament",
+          "z": 6
+        },
+        {
+          "id": "neck_fasteners",
+          "label": "Neck fasteners",
+          "z": 7
+        }
+      ],
+      "sharedBoundaries": 17,
+      "v3": {
+        "paths": 172,
+        "anchors": 2910,
+        "f0": 0.9104,
+        "lineF2": 0.9973,
+        "kb": 131.5,
+        "svg": "samples-v4/jewelry_2/v3.svg"
+      },
+      "files": {
+        "fidelity": "samples-v4/jewelry_2/fidelity.svg",
+        "editable": "samples-v4/jewelry_2/editable.svg",
+        "production": "samples-v4/jewelry_2/production.svg",
+        "routes": "samples-v4/jewelry_2/routes.json",
+        "qa": "samples-v4/jewelry_2/qa_v4.json",
+        "input": "samples-v4/jewelry_2/input.jpg",
+        "schematic": "samples-v4/jewelry_2/schematic.jpg"
+      }
+    },
+    {
+      "id": "jewelry_3",
+      "name": "jewelry_3",
+      "category": "jewelry",
+      "categoryLabel": "주얼리",
+      "state": "FIDELITY_REVIEW / EDITABILITY_PASS / SEMANTIC_PASS",
+      "canvas": {
+        "width": 2048,
+        "height": 928,
+        "sourceWidth": 1024,
+        "sourceHeight": 464,
+        "supersample": 2
+      },
+      "counts": {
+        "GEOMETRIC_PRIMITIVE": 21,
+        "FACE_FILL": 15,
+        "STRUCTURAL_STROKE": 1,
+        "OUTLINE_SHAPE": 90
+      },
+      "qa": {
+        "fidelity": {
+          "pass": false,
+          "f0": 0.8015,
+          "f1": 0.8472,
+          "f2": 0.8615,
+          "lineF1": 0.8508,
+          "lineF2": 0.865,
+          "textureShare": 0.0102,
+          "inkRatio": 0.874,
+          "chamfer": 2.12,
+          "p95": 15,
+          "detailRecall": 1,
+          "holes": [
+            38,
+            25
+          ],
+          "majorComponents": [
+            8,
+            17
+          ],
+          "notes": [
+            "선 일치 F@2px 0.865 < 0.95",
+            "구멍 수 38 → 25 (15% 이상 차이)",
+            "해프톤이 도면 잉크의 1% — 전체 F@2px 0.8615, 그 영역 뺀 선 충실도 0.865"
+          ]
+        },
+        "editability": {
+          "pass": true,
+          "paths": 127,
+          "anchors": 3618,
+          "uses": 0,
+          "kb": 145.1,
+          "anchorDensity": 5.74,
+          "shortPathRatio": 0.039,
+          "primitives": 21,
+          "anchorsSavedByPrimitives": 161,
+          "pathsSavedByPatterns": 0,
+          "editableReduction": {
+            "paths": 0.228,
+            "anchors": 0.207,
+            "kb": 0.188
+          },
+          "notes": []
+        },
+        "semantic": {
+          "pass": true,
+          "perPart": [
+            {
+              "id": "rear_ring_band",
+              "paths": 0,
+              "precision": -1,
+              "recall": -1,
+              "iou": -1
+            },
+            {
+              "id": "rear_ring_pearl",
+              "paths": 22,
+              "precision": 1,
+              "recall": 0.6856,
+              "iou": 0.6856
+            },
+            {
+              "id": "rear_ring_setting",
+              "paths": 3,
+              "precision": 0.2929,
+              "recall": 0.7617,
+              "iou": 0.2683
+            },
+            {
+              "id": "center_ring_band",
+              "paths": 3,
+              "precision": 0.9546,
+              "recall": 0.2582,
+              "iou": 0.255
+            },
+            {
+              "id": "center_ring_gemstone",
+              "paths": 51,
+              "precision": 0.9676,
+              "recall": 0.8842,
+              "iou": 0.8587
+            },
+            {
+              "id": "center_ring_bezel",
+              "paths": 2,
+              "precision": 0.5327,
+              "recall": 0.0921,
+              "iou": 0.0852
+            },
+            {
+              "id": "front_ring_band",
+              "paths": 5,
+              "precision": 0.6019,
+              "recall": 0.6368,
+              "iou": 0.4481
+            },
+            {
+              "id": "front_ring_gemstone",
+              "paths": 35,
+              "precision": 1,
+              "recall": 0.7396,
+              "iou": 0.7396
+            },
+            {
+              "id": "front_ring_bezel",
+              "paths": 6,
+              "precision": 0.3259,
+              "recall": 0.673,
+              "iou": 0.2813
+            }
+          ],
+          "meanPrecision": 0.7094,
+          "misassigned": [
+            "rear_ring_setting",
+            "front_ring_bezel"
+          ],
+          "emptyVisibleParts": [],
+          "sharedOnlyParts": [
+            "rear_ring_band"
+          ],
+          "sharedBoundaries": 10,
+          "aspectRatio": 1,
+          "lowConfidenceRoutes": 19,
+          "notes": [
+            "배분이 의심되는 레이어 2개: rear_ring_setting, front_ring_bezel",
+            "공유 경계로만 그려진 파트 1개: rear_ring_band",
+            "라우터가 확신하지 못한 성분 19개"
+          ]
+        },
+        "state": "FIDELITY_REVIEW / EDITABILITY_PASS / SEMANTIC_PASS"
+      },
+      "timings": {
+        "S1_preprocess": 5264,
+        "S2_plan": 5,
+        "S3_masks": 3185,
+        "S4_schematic": 430,
+        "S5_evidence": 2706,
+        "S7_export": 17,
+        "S8_qa": 1761
+      },
+      "correspondence": {
+        "method": "global-similarity",
+        "aspectRatio": 1.0003705533596838,
+        "confident": true,
+        "note": "도면이 컬러로 생성됨 (채도 12%) — 색면을 그대로 옮긴다"
+      },
+      "parts": [
+        {
+          "id": "rear_ring_band",
+          "label": "Rear ring band",
+          "z": 0
+        },
+        {
+          "id": "rear_ring_pearl",
+          "label": "Rear ring pearl",
+          "z": 1
+        },
+        {
+          "id": "rear_ring_setting",
+          "label": "Rear ring setting",
+          "z": 2
+        },
+        {
+          "id": "center_ring_band",
+          "label": "Center ring band",
+          "z": 3
+        },
+        {
+          "id": "center_ring_gemstone",
+          "label": "Center ring gemstone",
+          "z": 4
+        },
+        {
+          "id": "center_ring_bezel",
+          "label": "Center ring bezel",
+          "z": 5
+        },
+        {
+          "id": "front_ring_band",
+          "label": "Front ring band",
+          "z": 6
+        },
+        {
+          "id": "front_ring_gemstone",
+          "label": "Front ring gemstone",
+          "z": 7
+        },
+        {
+          "id": "front_ring_bezel",
+          "label": "Front ring bezel",
+          "z": 8
+        }
+      ],
+      "sharedBoundaries": 10,
+      "v3": {
+        "paths": 296,
+        "anchors": 3731,
+        "f0": 0.7735,
+        "lineF2": 0.8696,
+        "kb": 164.4,
+        "svg": "samples-v4/jewelry_3/v3.svg"
+      },
+      "files": {
+        "fidelity": "samples-v4/jewelry_3/fidelity.svg",
+        "editable": "samples-v4/jewelry_3/editable.svg",
+        "production": "samples-v4/jewelry_3/production.svg",
+        "routes": "samples-v4/jewelry_3/routes.json",
+        "qa": "samples-v4/jewelry_3/qa_v4.json",
+        "input": "samples-v4/jewelry_3/input.jpg",
+        "schematic": "samples-v4/jewelry_3/schematic.jpg"
+      }
+    },
+    {
+      "id": "shoe_1",
+      "name": "shoe_1",
+      "category": "shoe",
+      "categoryLabel": "신발",
+      "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW",
+      "canvas": {
+        "width": 2800,
+        "height": 2196,
+        "sourceWidth": 1400,
+        "sourceHeight": 1098,
+        "supersample": 2
+      },
+      "counts": {
+        "GEOMETRIC_PRIMITIVE": 26,
+        "FACE_FILL": 76,
+        "OUTLINE_SHAPE": 13
+      },
+      "qa": {
+        "fidelity": {
+          "pass": true,
+          "f0": 0.8672,
+          "f1": 0.8934,
+          "f2": 0.8947,
+          "lineF1": 0.9979,
+          "lineF2": 0.9992,
+          "textureShare": 0.596,
+          "inkRatio": 1.016,
+          "chamfer": 0.035,
+          "p95": 0,
+          "detailRecall": 1,
+          "holes": [
+            111,
+            108
+          ],
+          "majorComponents": [
+            6,
+            6
+          ],
+          "notes": [
+            "해프톤이 도면 잉크의 60% — 전체 F@2px 0.8947, 그 영역 뺀 선 충실도 0.9992"
+          ]
+        },
+        "editability": {
+          "pass": true,
+          "paths": 115,
+          "anchors": 11032,
+          "uses": 0,
+          "kb": 463.2,
+          "anchorDensity": 7,
+          "shortPathRatio": 0.026,
+          "primitives": 26,
+          "anchorsSavedByPrimitives": 413,
+          "pathsSavedByPatterns": 0,
+          "editableReduction": {
+            "paths": 0.009,
+            "anchors": 0.106,
+            "kb": 0.101
+          },
+          "notes": []
+        },
+        "semantic": {
+          "pass": false,
+          "perPart": [
+            {
+              "id": "rubber_outsole",
+              "paths": 0,
+              "precision": -1,
+              "recall": -1,
+              "iou": -1
+            },
+            {
+              "id": "cushioned_midsole",
+              "paths": 12,
+              "precision": 0.9169,
+              "recall": 0.3518,
+              "iou": 0.341
+            },
+            {
+              "id": "tongue",
+              "paths": 12,
+              "precision": 1,
+              "recall": 0.2349,
+              "iou": 0.2349
+            },
+            {
+              "id": "eyelet_underlay",
+              "paths": 15,
+              "precision": 0.9829,
+              "recall": 0.1749,
+              "iou": 0.1744
+            },
+            {
+              "id": "main_upper",
+              "paths": 26,
+              "precision": 0.5334,
+              "recall": 0.216,
+              "iou": 0.1816
+            },
+            {
+              "id": "heel_overlay",
+              "paths": 9,
+              "precision": 1,
+              "recall": 0.2939,
+              "iou": 0.2939
+            },
+            {
+              "id": "laces",
+              "paths": 13,
+              "precision": 0.285,
+              "recall": 0.5985,
+              "iou": 0.2393
+            },
+            {
+              "id": "swoosh_logo",
+              "paths": 4,
+              "precision": 0.3117,
+              "recall": 0.3726,
+              "iou": 0.2044
+            },
+            {
+              "id": "airmax_badge",
+              "paths": 24,
+              "precision": 0.3052,
+              "recall": 0.9423,
+              "iou": 0.2996
+            }
+          ],
+          "meanPrecision": 0.6669,
+          "misassigned": [
+            "laces",
+            "swoosh_logo",
+            "airmax_badge"
+          ],
+          "emptyVisibleParts": [],
+          "sharedOnlyParts": [
+            "rubber_outsole"
+          ],
+          "sharedBoundaries": 17,
+          "aspectRatio": 1.052,
+          "lowConfidenceRoutes": 7,
+          "notes": [
+            "배분이 의심되는 레이어 3개: laces, swoosh_logo, airmax_badge",
+            "공유 경계로만 그려진 파트 1개: rubber_outsole",
+            "사진↔도면 종횡비 불일치 5.2% — 배분 정확도에만 영향",
+            "라우터가 확신하지 못한 성분 7개"
+          ]
+        },
+        "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
+      },
+      "timings": {
+        "S1_preprocess": 3519,
+        "S2_plan": 6,
+        "S3_masks": 9243,
+        "S4_schematic": 820,
+        "S5_evidence": 7691,
+        "S7_export": 41,
+        "S8_qa": 9035
+      },
+      "correspondence": {
+        "method": "global-similarity",
+        "aspectRatio": 1.0519794727545186,
+        "confident": true,
+        "note": ""
+      },
+      "parts": [
+        {
+          "id": "rubber_outsole",
+          "label": "Rubber outsole",
+          "z": 0
+        },
+        {
+          "id": "cushioned_midsole",
+          "label": "Cushioned midsole",
+          "z": 1
+        },
+        {
+          "id": "tongue",
+          "label": "Tongue",
+          "z": 2
+        },
+        {
+          "id": "eyelet_underlay",
+          "label": "Eyelet underlay",
+          "z": 3
+        },
+        {
+          "id": "main_upper",
+          "label": "Main upper",
+          "z": 4
+        },
+        {
+          "id": "heel_overlay",
+          "label": "Heel reinforcement overlay",
+          "z": 5
+        },
+        {
+          "id": "laces",
+          "label": "Laces",
+          "z": 6
+        },
+        {
+          "id": "swoosh_logo",
+          "label": "Swoosh logo",
+          "z": 7
+        },
+        {
+          "id": "airmax_badge",
+          "label": "AIRMAX badge",
+          "z": 8
+        }
+      ],
+      "sharedBoundaries": 17,
+      "v3": {
+        "paths": 423,
+        "anchors": 9545,
+        "f0": 0.8306,
+        "lineF2": 0.9944,
+        "kb": 427.4,
+        "svg": "samples-v4/shoe_1/v3.svg"
+      },
+      "files": {
+        "fidelity": "samples-v4/shoe_1/fidelity.svg",
+        "editable": "samples-v4/shoe_1/editable.svg",
+        "production": "samples-v4/shoe_1/production.svg",
+        "routes": "samples-v4/shoe_1/routes.json",
+        "qa": "samples-v4/shoe_1/qa_v4.json",
+        "input": "samples-v4/shoe_1/input.jpg",
+        "schematic": "samples-v4/shoe_1/schematic.jpg"
+      }
+    },
+    {
+      "id": "shoe_2",
+      "name": "shoe_2",
+      "category": "shoe",
+      "categoryLabel": "신발",
+      "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS",
+      "canvas": {
+        "width": 2800,
+        "height": 1572,
+        "sourceWidth": 1400,
+        "sourceHeight": 786,
+        "supersample": 2
+      },
+      "counts": {
+        "GEOMETRIC_PRIMITIVE": 23,
+        "FACE_FILL": 242,
+        "OUTLINE_SHAPE": 55
+      },
+      "qa": {
+        "fidelity": {
+          "pass": true,
+          "f0": 0.8727,
+          "f1": 0.9061,
+          "f2": 0.9081,
+          "lineF1": 0.9964,
+          "lineF2": 0.9989,
+          "textureShare": 0.4392,
+          "inkRatio": 1.015,
+          "chamfer": 0.058,
+          "p95": 0,
+          "detailRecall": 1,
+          "holes": [
+            317,
+            314
+          ],
+          "majorComponents": [
+            3,
+            10
+          ],
+          "notes": [
+            "해프톤이 도면 잉크의 44% — 전체 F@2px 0.9081, 그 영역 뺀 선 충실도 0.9989"
+          ]
+        },
+        "editability": {
+          "pass": true,
+          "paths": 320,
+          "anchors": 21206,
+          "uses": 0,
+          "kb": 853,
+          "anchorDensity": 8.37,
+          "shortPathRatio": 0.022,
+          "primitives": 23,
+          "anchorsSavedByPrimitives": 267,
+          "pathsSavedByPatterns": 0,
+          "editableReduction": {
+            "paths": 0.012,
+            "anchors": 0.122,
+            "kb": 0.115
+          },
+          "notes": []
+        },
+        "semantic": {
+          "pass": true,
+          "perPart": [
+            {
+              "id": "rubber_outsole",
+              "paths": 0,
+              "precision": -1,
+              "recall": -1,
+              "iou": -1
+            },
+            {
+              "id": "foam_midsole",
+              "paths": 2,
+              "precision": 0.9216,
+              "recall": 0.1856,
+              "iou": 0.1827
+            },
+            {
+              "id": "mesh_upper",
+              "paths": 56,
+              "precision": 0.981,
+              "recall": 0.2053,
+              "iou": 0.2044
+            },
+            {
+              "id": "tongue",
+              "paths": 94,
+              "precision": 0.759,
+              "recall": 0.6847,
+              "iou": 0.5624
+            },
+            {
+              "id": "synthetic_overlays",
+              "paths": 68,
+              "precision": 0.5051,
+              "recall": 0.8146,
+              "iou": 0.453
+            },
+            {
+              "id": "heel_pull_tabs",
+              "paths": 1,
+              "precision": 1,
+              "recall": 0.1783,
+              "iou": 0.1783
+            },
+            {
+              "id": "collar_lining",
+              "paths": 6,
+              "precision": 0.8578,
+              "recall": 0.0873,
+              "iou": 0.086
+            },
+            {
+              "id": "laces",
+              "paths": 56,
+              "precision": 0.9428,
+              "recall": 0.4494,
+              "iou": 0.4375
+            },
+            {
+              "id": "brand_graphics",
+              "paths": 37,
+              "precision": 0.4347,
+              "recall": 0.9302,
+              "iou": 0.421
+            }
+          ],
+          "meanPrecision": 0.8003,
+          "misassigned": [
+            "brand_graphics"
+          ],
+          "emptyVisibleParts": [],
+          "sharedOnlyParts": [
+            "rubber_outsole"
+          ],
+          "sharedBoundaries": 22,
+          "aspectRatio": 1.002,
+          "lowConfidenceRoutes": 35,
+          "notes": [
+            "배분이 의심되는 레이어 1개: brand_graphics",
+            "공유 경계로만 그려진 파트 1개: rubber_outsole",
+            "라우터가 확신하지 못한 성분 35개"
+          ]
+        },
+        "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
+      },
+      "timings": {
+        "S1_preprocess": 2850,
+        "S2_plan": 4,
+        "S3_masks": 7620,
+        "S4_schematic": 416,
+        "S5_evidence": 6627,
+        "S7_export": 96,
+        "S8_qa": 5355
+      },
+      "correspondence": {
+        "method": "global-similarity",
+        "aspectRatio": 1.0018961841506957,
+        "confident": false,
+        "note": ""
+      },
+      "parts": [
+        {
+          "id": "rubber_outsole",
+          "label": "lugged rubber outsole",
+          "z": 0
+        },
+        {
+          "id": "foam_midsole",
+          "label": "foam midsole",
+          "z": 1
+        },
+        {
+          "id": "mesh_upper",
+          "label": "mesh upper",
+          "z": 2
+        },
+        {
+          "id": "tongue",
+          "label": "padded tongue",
+          "z": 3
+        },
+        {
+          "id": "synthetic_overlays",
+          "label": "synthetic support overlays",
+          "z": 4
+        },
+        {
+          "id": "heel_pull_tabs",
+          "label": "heel pull tabs",
+          "z": 5
+        },
+        {
+          "id": "collar_lining",
+          "label": "padded collar lining",
+          "z": 6
+        },
+        {
+          "id": "laces",
+          "label": "laces",
+          "z": 7
+        },
+        {
+          "id": "brand_graphics",
+          "label": "brand and side graphics",
+          "z": 8
+        }
+      ],
+      "sharedBoundaries": 22,
+      "v3": {
+        "paths": 1113,
+        "anchors": 18342,
+        "f0": 0.8218,
+        "lineF2": 0.9948,
+        "kb": 813.7,
+        "svg": "samples-v4/shoe_2/v3.svg"
+      },
+      "files": {
+        "fidelity": "samples-v4/shoe_2/fidelity.svg",
+        "editable": "samples-v4/shoe_2/editable.svg",
+        "production": "samples-v4/shoe_2/production.svg",
+        "routes": "samples-v4/shoe_2/routes.json",
+        "qa": "samples-v4/shoe_2/qa_v4.json",
+        "input": "samples-v4/shoe_2/input.jpg",
+        "schematic": "samples-v4/shoe_2/schematic.jpg"
+      }
+    },
+    {
+      "id": "shoe_3",
+      "name": "shoe_3",
+      "category": "shoe",
+      "categoryLabel": "신발",
+      "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS",
+      "canvas": {
+        "width": 2800,
+        "height": 2118,
+        "sourceWidth": 1400,
+        "sourceHeight": 1059,
+        "supersample": 2
+      },
+      "counts": {
+        "GEOMETRIC_PRIMITIVE": 208,
+        "FACE_FILL": 497,
+        "OUTLINE_SHAPE": 34
+      },
+      "qa": {
+        "fidelity": {
+          "pass": true,
+          "f0": 0.9443,
+          "f1": 0.9671,
+          "f2": 0.9679,
+          "lineF1": 0.9987,
+          "lineF2": 0.9997,
+          "textureShare": 0.2525,
+          "inkRatio": 0.992,
+          "chamfer": 0.026,
+          "p95": 0,
+          "detailRecall": 1,
+          "holes": [
+            750,
+            750
+          ],
+          "majorComponents": [
+            1,
+            1
+          ],
+          "notes": [
+            "해프톤이 도면 잉크의 25% — 전체 F@2px 0.9679, 그 영역 뺀 선 충실도 0.9997"
+          ]
+        },
+        "editability": {
+          "pass": true,
+          "paths": 739,
+          "anchors": 32579,
+          "uses": 0,
+          "kb": 1346.8,
+          "anchorDensity": 9.06,
+          "shortPathRatio": 0.001,
+          "primitives": 208,
+          "anchorsSavedByPrimitives": 2649,
+          "pathsSavedByPatterns": 0,
+          "editableReduction": {
+            "paths": 0.005,
+            "anchors": 0.098,
+            "kb": 0.092
+          },
+          "notes": []
+        },
+        "semantic": {
+          "pass": true,
+          "perPart": [
+            {
+              "id": "tongue",
+              "paths": 19,
+              "precision": 0.9414,
+              "recall": 0.1072,
+              "iou": 0.1065
+            },
+            {
+              "id": "mesh_upper",
+              "paths": 0,
+              "precision": -1,
+              "recall": -1,
+              "iou": -1
+            },
+            {
+              "id": "padded_collar",
+              "paths": 0,
+              "precision": -1,
+              "recall": -1,
+              "iou": -1
+            },
+            {
+              "id": "eyestay_overlay",
+              "paths": 7,
+              "precision": 0.5293,
+              "recall": 0.5699,
+              "iou": 0.3782
+            },
+            {
+              "id": "lace_loops",
+              "paths": 56,
+              "precision": 0.7995,
+              "recall": 0.3469,
+              "iou": 0.3192
+            },
+            {
+              "id": "laces",
+              "paths": 0,
+              "precision": -1,
+              "recall": -1,
+              "iou": -1
+            },
+            {
+              "id": "outsole",
+              "paths": 337,
+              "precision": 0.8749,
+              "recall": 0.6417,
+              "iou": 0.5878
+            },
+            {
+              "id": "lace_stitching",
+              "paths": 320,
+              "precision": 0.4588,
+              "recall": 0.8543,
+              "iou": 0.4255
+            }
+          ],
+          "meanPrecision": 0.7208,
+          "misassigned": [
+            "lace_stitching"
+          ],
+          "emptyVisibleParts": [],
+          "sharedOnlyParts": [
+            "mesh_upper",
+            "padded_collar",
+            "laces"
+          ],
+          "sharedBoundaries": 32,
+          "aspectRatio": 1.006,
+          "lowConfidenceRoutes": 28,
+          "notes": [
+            "배분이 의심되는 레이어 1개: lace_stitching",
+            "공유 경계로만 그려진 파트 3개: mesh_upper, padded_collar, laces",
+            "라우터가 확신하지 못한 성분 28개"
+          ]
+        },
+        "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
+      },
+      "timings": {
+        "S1_preprocess": 3562,
+        "S2_plan": 4,
+        "S3_masks": 11560,
+        "S4_schematic": 642,
+        "S5_evidence": 10159,
+        "S7_export": 151,
+        "S8_qa": 5711
+      },
+      "correspondence": {
+        "method": "global-similarity",
+        "aspectRatio": 1.006474820143885,
+        "confident": false,
+        "note": ""
+      },
+      "parts": [
+        {
+          "id": "tongue",
+          "label": "Tongue",
+          "z": 0
+        },
+        {
+          "id": "mesh_upper",
+          "label": "Mesh upper",
+          "z": 1
+        },
+        {
+          "id": "padded_collar",
+          "label": "Padded collar",
+          "z": 2
+        },
+        {
+          "id": "eyestay_overlay",
+          "label": "Eyestay overlay",
+          "z": 3
+        },
+        {
+          "id": "lace_loops",
+          "label": "Yellow lace loops",
+          "z": 4
+        },
+        {
+          "id": "laces",
+          "label": "Laces",
+          "z": 5
+        },
+        {
+          "id": "outsole",
+          "label": "Flexible tread outsole",
+          "z": 6
+        },
+        {
+          "id": "lace_stitching",
+          "label": "Yellow lace stitching",
+          "z": 7
+        }
+      ],
+      "sharedBoundaries": 32,
+      "v3": {
+        "paths": 1549,
+        "anchors": 28966,
+        "f0": 0.9019,
+        "lineF2": 0.9959,
+        "kb": 1280.4,
+        "svg": "samples-v4/shoe_3/v3.svg"
+      },
+      "files": {
+        "fidelity": "samples-v4/shoe_3/fidelity.svg",
+        "editable": "samples-v4/shoe_3/editable.svg",
+        "production": "samples-v4/shoe_3/production.svg",
+        "routes": "samples-v4/shoe_3/routes.json",
+        "qa": "samples-v4/shoe_3/qa_v4.json",
+        "input": "samples-v4/shoe_3/input.jpg",
+        "schematic": "samples-v4/shoe_3/schematic.jpg"
+      }
+    }
+  ]
+}

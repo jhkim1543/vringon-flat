@@ -1,0 +1,4002 @@
+[
+ {
+  "id": "gf1",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "closure_clasp",
+  "area": 253,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.4px, 허용 4.4px)",
+  "confidence": 0.839816933638444,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 128,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 4.4px)",
+  "confidence": 0.6567505720823799,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 119,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1px, 허용 4.4px)",
+  "confidence": 0.88558352402746,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf4",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "floral_ornament",
+  "area": 282,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.34px, 허용 4.4px)",
+  "confidence": 0.7322654462242564,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf5",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "floral_ornament",
+  "area": 306,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 4.4px)",
+  "confidence": 0.77116704805492,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf6",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 135,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2px, 허용 4.4px)",
+  "confidence": 0.77116704805492,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf7",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 190,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 3px, 허용 4.4px)",
+  "confidence": 0.6567505720823799,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "f8",
+  "cls": "FACE_FILL",
+  "partId": "metal_frame",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9",
+  "cls": "FACE_FILL",
+  "partId": "metal_frame",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa",
+  "cls": "FACE_FILL",
+  "partId": "floral_ornament",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fb",
+  "cls": "FACE_FILL",
+  "partId": "metal_frame",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fc",
+  "cls": "FACE_FILL",
+  "partId": "metal_frame",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fd",
+  "cls": "FACE_FILL",
+  "partId": "floral_ornament",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fe",
+  "cls": "FACE_FILL",
+  "partId": "floral_ornament",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "ff",
+  "cls": "FACE_FILL",
+  "partId": "floral_ornament",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fg",
+  "cls": "FACE_FILL",
+  "partId": "floral_ornament",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fh",
+  "cls": "FACE_FILL",
+  "partId": "floral_ornament",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fi",
+  "cls": "FACE_FILL",
+  "partId": "metal_frame",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fj",
+  "cls": "FACE_FILL",
+  "partId": "bag_body",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fk",
+  "cls": "FACE_FILL",
+  "partId": "metal_frame",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fl",
+  "cls": "FACE_FILL",
+  "partId": "floral_ornament",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fm",
+  "cls": "FACE_FILL",
+  "partId": "metal_frame",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fn",
+  "cls": "FACE_FILL",
+  "partId": "metal_frame",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fo",
+  "cls": "FACE_FILL",
+  "partId": "floral_ornament",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fp",
+  "cls": "FACE_FILL",
+  "partId": "floral_ornament",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fq",
+  "cls": "FACE_FILL",
+  "partId": "metal_frame",
+  "area": 1198918,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "gr",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 19,
+  "why": "line 적합 잔차 max 0.75px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.914,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gs",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "floral_ornament",
+  "area": 30,
+  "why": "line 적합 잔차 max 1.2px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.863,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gt",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 16,
+  "why": "line 적합 잔차 max 0.71px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.919,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gu",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 52,
+  "why": "line 적합 잔차 max 1.68px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.808,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gv",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 17,
+  "why": "line 적합 잔차 max 1.57px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.82,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gw",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 13,
+  "why": "line 적합 잔차 max 0px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.98,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gx",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 13,
+  "why": "line 적합 잔차 max 1.11px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.873,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gy",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 17,
+  "why": "line 적합 잔차 max 1.22px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.86,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gz",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 15,
+  "why": "line 적합 잔차 max 0.74px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.915,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g10",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 71,
+  "why": "line 적합 잔차 max 2.05px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.765,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g11",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 73,
+  "why": "line 적합 잔차 max 2.05px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.765,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g12",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 76,
+  "why": "line 적합 잔차 max 1.27px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.855,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g13",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 34,
+  "why": "line 적합 잔차 max 1.75px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.8,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g14",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 31,
+  "why": "line 적합 잔차 max 1.36px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.844,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g15",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 40,
+  "why": "line 적합 잔차 max 1.72px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.803,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g16",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 39,
+  "why": "line 적합 잔차 max 1.26px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.856,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g17",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 34,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g18",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "floral_ornament",
+  "area": 14,
+  "why": "line 적합 잔차 max 0.74px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.915,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g19",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 13,
+  "why": "line 적합 잔차 max 0.74px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.915,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1a",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 42,
+  "why": "line 적합 잔차 max 1.61px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.816,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1b",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 73,
+  "why": "line 적합 잔차 max 1.61px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.816,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1c",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 33,
+  "why": "line 적합 잔차 max 1.14px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.87,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1d",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 72,
+  "why": "line 적합 잔차 max 1.68px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.808,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1e",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 40,
+  "why": "line 적합 잔차 max 1.75px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.8,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1f",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 33,
+  "why": "line 적합 잔차 max 1.24px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.858,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1g",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 14,
+  "why": "line 적합 잔차 max 0.57px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.935,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1h",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 37,
+  "why": "line 적합 잔차 max 1.11px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.873,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1i",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 39,
+  "why": "line 적합 잔차 max 1.65px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.811,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1j",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 28,
+  "why": "line 적합 잔차 max 1.5px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.828,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1k",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 46,
+  "why": "line 적합 잔차 max 2.08px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.762,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1l",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 27,
+  "why": "line 적합 잔차 max 1.27px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.855,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1m",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 14,
+  "why": "line 적합 잔차 max 1.14px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.87,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1n",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 39,
+  "why": "line 적합 잔차 max 1.19px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.864,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1o",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 72,
+  "why": "line 적합 잔차 max 1.83px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.791,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1p",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 75,
+  "why": "line 적합 잔차 max 1.77px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.797,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1q",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 32,
+  "why": "line 적합 잔차 max 1.31px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.85,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1r",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 20,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1s",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 38,
+  "why": "line 적합 잔차 max 1.12px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.872,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1t",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 41,
+  "why": "line 적합 잔차 max 1.21px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.862,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1u",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 40,
+  "why": "line 적합 잔차 max 1.15px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.868,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1v",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 24,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1w",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 29,
+  "why": "line 적합 잔차 max 1.12px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.872,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1x",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 22,
+  "why": "line 적합 잔차 max 1.16px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.867,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1y",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 34,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g1z",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 22,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g20",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 71,
+  "why": "line 적합 잔차 max 1.76px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.799,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g21",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 70,
+  "why": "line 적합 잔차 max 1.55px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.823,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g22",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 30,
+  "why": "line 적합 잔차 max 1.15px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.868,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g23",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 33,
+  "why": "line 적합 잔차 max 1.63px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.814,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g24",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 31,
+  "why": "line 적합 잔차 max 1.52px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.826,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g25",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 14,
+  "why": "line 적합 잔차 max 1.28px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.854,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g26",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 70,
+  "why": "line 적합 잔차 max 1.58px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.819,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g27",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 39,
+  "why": "line 적합 잔차 max 1.31px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.85,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g28",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 32,
+  "why": "line 적합 잔차 max 1.1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.874,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g29",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 33,
+  "why": "line 적합 잔차 max 1.67px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.809,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2a",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 43,
+  "why": "line 적합 잔차 max 1.2px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.863,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2b",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 22,
+  "why": "line 적합 잔차 max 1.51px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.827,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2c",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 18,
+  "why": "line 적합 잔차 max 1.18px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.865,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2d",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 21,
+  "why": "line 적합 잔차 max 1.33px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.848,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2e",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 114,
+  "why": "line 적합 잔차 max 2.26px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.741,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2f",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 13,
+  "why": "line 적합 잔차 max 0px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.98,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2g",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 28,
+  "why": "line 적합 잔차 max 1.21px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.862,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2h",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 26,
+  "why": "line 적합 잔차 max 1.64px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.812,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2i",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 70,
+  "why": "line 적합 잔차 max 1.72px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.803,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2j",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 34,
+  "why": "line 적합 잔차 max 1.13px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.871,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2k",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 72,
+  "why": "line 적합 잔차 max 1.56px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.822,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2l",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 74,
+  "why": "line 적합 잔차 max 1.76px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.799,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2m",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 33,
+  "why": "line 적합 잔차 max 1.06px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.879,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2n",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 96,
+  "why": "line 적합 잔차 max 1.75px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.8,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2o",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 20,
+  "why": "line 적합 잔차 max 1.25px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.857,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2p",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "metal_frame",
+  "area": 35,
+  "why": "line 적합 잔차 max 1.17px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.866,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2q",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 87,
+  "why": "line 적합 잔차 max 2.09px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.761,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2r",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 25,
+  "why": "line 적합 잔차 max 1.6px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.817,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2s",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 34,
+  "why": "line 적합 잔차 max 1.08px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.876,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2t",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 38,
+  "why": "line 적합 잔차 max 1.76px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.799,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2u",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 1.81px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.793,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2v",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 2.17px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.752,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2w",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 72,
+  "why": "line 적합 잔차 max 1.72px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.803,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2x",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 74,
+  "why": "line 적합 잔차 max 2.11px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.759,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2y",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 72,
+  "why": "line 적합 잔차 max 1.59px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.818,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g2z",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 44,
+  "why": "line 적합 잔차 max 1.53px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.825,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g30",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 78,
+  "why": "line 적합 잔차 max 1.75px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.8,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g31",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 14,
+  "why": "line 적합 잔차 max 0.65px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.926,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g32",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 27,
+  "why": "line 적합 잔차 max 1.16px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.867,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g33",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 74,
+  "why": "line 적합 잔차 max 1.81px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.793,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g34",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 39,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g35",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 29,
+  "why": "line 적합 잔차 max 1.44px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.835,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g36",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 35,
+  "why": "line 적합 잔차 max 1.21px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.862,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g37",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 32,
+  "why": "line 적합 잔차 max 1.27px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.855,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g38",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 79,
+  "why": "line 적합 잔차 max 1.5px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.828,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g39",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 32,
+  "why": "line 적합 잔차 max 1.17px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.866,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3a",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 69,
+  "why": "line 적합 잔차 max 1.85px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.788,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3b",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 34,
+  "why": "line 적합 잔차 max 1.21px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.862,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3c",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 2.22px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.746,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3d",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 36,
+  "why": "line 적합 잔차 max 1.13px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.871,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3e",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 23,
+  "why": "line 적합 잔차 max 1.21px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.862,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3f",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 34,
+  "why": "line 적합 잔차 max 1.16px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.867,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3g",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 20,
+  "why": "line 적합 잔차 max 0.69px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.921,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3h",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 73,
+  "why": "line 적합 잔차 max 1.72px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.803,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3i",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 30,
+  "why": "line 적합 잔차 max 1.32px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.849,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3j",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 23,
+  "why": "line 적합 잔차 max 1.13px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.871,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3k",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 34,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3l",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 34,
+  "why": "line 적합 잔차 max 1.64px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.812,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3m",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 2.05px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.765,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3n",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 72,
+  "why": "line 적합 잔차 max 1.87px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.786,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3o",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 35,
+  "why": "line 적합 잔차 max 1.64px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.812,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3p",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 31,
+  "why": "line 적합 잔차 max 1.09px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.875,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3q",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 39,
+  "why": "line 적합 잔차 max 1.16px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.867,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3r",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 72,
+  "why": "line 적합 잔차 max 1.63px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.814,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3s",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 1.82px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.792,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3t",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 30,
+  "why": "line 적합 잔차 max 1.09px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.875,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3u",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 32,
+  "why": "line 적합 잔차 max 1.17px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.866,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3v",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 1.78px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.796,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3w",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 23,
+  "why": "line 적합 잔차 max 1.53px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.825,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3x",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 1.99px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.772,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3y",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 76,
+  "why": "line 적합 잔차 max 1.94px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.778,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g3z",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 35,
+  "why": "line 적합 잔차 max 1.2px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.863,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g40",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 26,
+  "why": "line 적합 잔차 max 1.2px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.863,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g41",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 32,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g42",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 34,
+  "why": "line 적합 잔차 max 1.3px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.851,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g43",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 75,
+  "why": "line 적합 잔차 max 2.56px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.707,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g44",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 12,
+  "why": "line 적합 잔차 max 0px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.98,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g45",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 1.9px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.783,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g46",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 35,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g47",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 52,
+  "why": "line 적합 잔차 max 1.7px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.805,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g48",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 33,
+  "why": "line 적합 잔차 max 1.24px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.858,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g49",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 20,
+  "why": "line 적합 잔차 max 0.92px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.895,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4a",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 76,
+  "why": "line 적합 잔차 max 1.8px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.794,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4b",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 2.12px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.757,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4c",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 73,
+  "why": "line 적합 잔차 max 1.78px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.796,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4d",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 1.68px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.808,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4e",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 16,
+  "why": "line 적합 잔차 max 0px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.98,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4f",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 17,
+  "why": "line 적합 잔차 max 0.74px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.915,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4g",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 2.02px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.769,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4h",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 1.55px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.823,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4i",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 16,
+  "why": "line 적합 잔차 max 0.74px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.915,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4j",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 17,
+  "why": "line 적합 잔차 max 0.85px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.903,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4k",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 12,
+  "why": "line 적합 잔차 max 0px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.98,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4l",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 82,
+  "why": "line 적합 잔차 max 1.83px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.791,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4m",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 36,
+  "why": "line 적합 잔차 max 1.79px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.795,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4n",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 40,
+  "why": "line 적합 잔차 max 1.65px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.811,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4o",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 40,
+  "why": "line 적합 잔차 max 1.25px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.857,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4p",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 15,
+  "why": "line 적합 잔차 max 0px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.98,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4q",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 40,
+  "why": "line 적합 잔차 max 1.17px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.866,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4r",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 30,
+  "why": "line 적합 잔차 max 1.11px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.873,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4s",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 1.66px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.81,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4t",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 40,
+  "why": "line 적합 잔차 max 1.07px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.878,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4u",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 79,
+  "why": "line 적합 잔차 max 1.75px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.8,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4v",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 1.65px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.811,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4w",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 51,
+  "why": "line 적합 잔차 max 1.97px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.775,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4x",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 88,
+  "why": "line 적합 잔차 max 2.17px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.752,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4y",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 44,
+  "why": "line 적합 잔차 max 1.72px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.803,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g4z",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 72,
+  "why": "line 적합 잔차 max 1.63px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.814,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g50",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 72,
+  "why": "line 적합 잔차 max 1.5px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.828,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g51",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 37,
+  "why": "line 적합 잔차 max 1.26px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.856,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g52",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 26,
+  "why": "line 적합 잔차 max 1.26px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.856,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g53",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 16,
+  "why": "line 적합 잔차 max 0.8px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.908,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g54",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 73,
+  "why": "line 적합 잔차 max 1.58px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.819,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g55",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 17,
+  "why": "line 적합 잔차 max 1.28px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.854,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g56",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 24,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g57",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 13,
+  "why": "line 적합 잔차 max 0.74px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.915,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g58",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 1.73px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.802,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g59",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 24,
+  "why": "line 적합 잔차 max 1.78px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.796,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5a",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 1.71px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.804,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5b",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 17,
+  "why": "line 적합 잔차 max 1.83px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.791,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5c",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 39,
+  "why": "line 적합 잔차 max 1.21px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.862,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5d",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 40,
+  "why": "line 적합 잔차 max 1.17px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.866,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5e",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 1.58px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.819,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5f",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 16,
+  "why": "line 적합 잔차 max 1.27px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.855,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5g",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 33,
+  "why": "line 적합 잔차 max 2.04px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.767,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5h",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 33,
+  "why": "line 적합 잔차 max 1.21px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.862,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5i",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 27,
+  "why": "line 적합 잔차 max 1.13px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.871,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5j",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 35,
+  "why": "line 적합 잔차 max 1.13px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.871,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5k",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 41,
+  "why": "line 적합 잔차 max 1.72px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.803,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5l",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 37,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5m",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 1.64px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.812,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5n",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 1.79px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.795,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5o",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 30,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5p",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 76,
+  "why": "line 적합 잔차 max 1.77px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.797,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5q",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 1.75px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.8,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5r",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 1.73px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.802,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5s",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 23,
+  "why": "line 적합 잔차 max 1.13px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.871,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5t",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 72,
+  "why": "line 적합 잔차 max 2.47px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.717,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5u",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 73,
+  "why": "line 적합 잔차 max 1.74px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.801,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5v",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 1.64px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.812,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5w",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 22,
+  "why": "line 적합 잔차 max 1.25px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.857,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5x",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 2.09px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.761,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5y",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 13,
+  "why": "line 적합 잔차 max 0px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.98,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g5z",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 31,
+  "why": "line 적합 잔차 max 1.12px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.872,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g60",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 72,
+  "why": "line 적합 잔차 max 1.5px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.828,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g61",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 77,
+  "why": "roundedRect 적합 잔차 max 2px (허용 4.4px) — 앵커 8개로 표현",
+  "confidence": 0.771,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "g62",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 34,
+  "why": "line 적합 잔차 max 1.95px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.777,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g63",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 22,
+  "why": "line 적합 잔차 max 1.14px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.87,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g64",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 38,
+  "why": "line 적합 잔차 max 1.12px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.872,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g65",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 76,
+  "why": "line 적합 잔차 max 1.5px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.828,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g66",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 74,
+  "why": "line 적합 잔차 max 1.64px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.812,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g67",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 40,
+  "why": "line 적합 잔차 max 1.27px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.855,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g68",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 41,
+  "why": "line 적합 잔차 max 1.1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.874,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g69",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 98,
+  "why": "line 적합 잔차 max 0px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.98,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6a",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 12,
+  "why": "line 적합 잔차 max 0px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.98,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6b",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 16,
+  "why": "line 적합 잔차 max 0.74px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.915,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6c",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 34,
+  "why": "line 적합 잔차 max 1.24px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.858,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6d",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 54,
+  "why": "line 적합 잔차 max 1.72px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.803,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6e",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 1.58px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.819,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6f",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 31,
+  "why": "line 적합 잔차 max 1.2px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.863,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6g",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 72,
+  "why": "line 적합 잔차 max 1.69px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.807,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6h",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 34,
+  "why": "line 적합 잔차 max 1.12px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.872,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6i",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 19,
+  "why": "line 적합 잔차 max 0.74px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.915,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6j",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 1.64px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.812,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6k",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 26,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6l",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 46,
+  "why": "line 적합 잔차 max 1.55px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.823,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6m",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 2.11px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.759,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6n",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 12,
+  "why": "line 적합 잔차 max 0.81px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.907,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6o",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 76,
+  "why": "line 적합 잔차 max 1.59px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.818,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6p",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 1.18px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.865,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6q",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 15,
+  "why": "line 적합 잔차 max 1.75px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.8,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6r",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 39,
+  "why": "line 적합 잔차 max 1.25px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.857,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6s",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 72,
+  "why": "line 적합 잔차 max 2.06px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.764,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6t",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 1.58px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.819,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6u",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 73,
+  "why": "line 적합 잔차 max 2.22px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.746,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6v",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 84,
+  "why": "line 적합 잔차 max 1.67px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.809,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6w",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 73,
+  "why": "line 적합 잔차 max 1.63px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.814,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6x",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 1.75px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.8,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6y",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 72,
+  "why": "line 적합 잔차 max 1.6px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.817,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g6z",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 17,
+  "why": "line 적합 잔차 max 1.5px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.828,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g70",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 72,
+  "why": "line 적합 잔차 max 2.17px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.752,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g71",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 40,
+  "why": "line 적합 잔차 max 1.59px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.818,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g72",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 16,
+  "why": "line 적합 잔차 max 1.5px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.828,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g73",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 39,
+  "why": "line 적합 잔차 max 1.74px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.801,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g74",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 34,
+  "why": "line 적합 잔차 max 1.73px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.802,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g75",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 82,
+  "why": "line 적합 잔차 max 1.99px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.772,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g76",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 2.09px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.761,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g77",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 1.72px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.803,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g78",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 39,
+  "why": "line 적합 잔차 max 1.88px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.785,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g79",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 35,
+  "why": "line 적합 잔차 max 1.87px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.786,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7a",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 14,
+  "why": "line 적합 잔차 max 1.85px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.788,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7b",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 32,
+  "why": "line 적합 잔차 max 1.26px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.856,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7c",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 43,
+  "why": "line 적합 잔차 max 1.73px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.802,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7d",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 73,
+  "why": "line 적합 잔차 max 1.63px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.814,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7e",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 24,
+  "why": "line 적합 잔차 max 1.91px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.781,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7f",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 1.65px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.811,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7g",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 73,
+  "why": "line 적합 잔차 max 1.63px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.814,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7h",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 22,
+  "why": "line 적합 잔차 max 1.17px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.866,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7i",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 36,
+  "why": "line 적합 잔차 max 1.13px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.871,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7j",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 35,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7k",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 1.6px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.817,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7l",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 99,
+  "why": "roundedRect 적합 잔차 max 3px (허용 4.4px) — 앵커 8개로 표현",
+  "confidence": 0.657,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "g7m",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 41,
+  "why": "line 적합 잔차 max 1.61px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.816,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7n",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 30,
+  "why": "line 적합 잔차 max 1.72px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.803,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7o",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 31,
+  "why": "line 적합 잔차 max 1.5px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.828,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7p",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 1.68px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.808,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7q",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 37,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7r",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 21,
+  "why": "line 적합 잔차 max 1.14px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.87,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7s",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 35,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7t",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 38,
+  "why": "line 적합 잔차 max 1.12px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.872,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7u",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 33,
+  "why": "line 적합 잔차 max 1.24px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.858,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7v",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 30,
+  "why": "line 적합 잔차 max 1.81px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.793,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7w",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 31,
+  "why": "line 적합 잔차 max 1.8px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.794,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7x",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 37,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7y",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 25,
+  "why": "line 적합 잔차 max 1.22px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.86,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g7z",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 22,
+  "why": "line 적합 잔차 max 1.31px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.85,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g80",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 37,
+  "why": "line 적합 잔차 max 1.79px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.795,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g81",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 36,
+  "why": "line 적합 잔차 max 1.56px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.822,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g82",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 1.1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.874,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g83",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 39,
+  "why": "line 적합 잔차 max 1.16px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.867,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g84",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 73,
+  "why": "line 적합 잔차 max 1.75px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.8,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g85",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 45,
+  "why": "line 적합 잔차 max 1.41px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.839,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g86",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 37,
+  "why": "line 적합 잔차 max 1.11px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.873,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g87",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 38,
+  "why": "line 적합 잔차 max 1.84px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.789,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g88",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 35,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g89",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 39,
+  "why": "line 적합 잔차 max 1.21px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.862,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8a",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 1.58px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.819,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8b",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 41,
+  "why": "line 적합 잔차 max 1.69px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.807,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8c",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 28,
+  "why": "line 적합 잔차 max 1.38px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.842,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8d",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 18,
+  "why": "line 적합 잔차 max 1.45px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.834,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8e",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 37,
+  "why": "line 적합 잔차 max 1.11px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.873,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8f",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 30,
+  "why": "line 적합 잔차 max 1.54px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.824,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8g",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 14,
+  "why": "line 적합 잔차 max 1.09px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.875,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8h",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 33,
+  "why": "line 적합 잔차 max 1.69px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.807,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8i",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 36,
+  "why": "line 적합 잔차 max 1.67px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.809,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8j",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 1.64px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.812,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8k",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 36,
+  "why": "line 적합 잔차 max 1.08px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.876,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8l",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 29,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8m",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 34,
+  "why": "line 적합 잔차 max 1.16px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.867,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8n",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 32,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8o",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 14,
+  "why": "line 적합 잔차 max 0px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.98,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8p",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 37,
+  "why": "line 적합 잔차 max 1.84px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.789,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8q",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 73,
+  "why": "line 적합 잔차 max 2.11px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.759,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8r",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 75,
+  "why": "line 적합 잔차 max 1.69px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.807,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8s",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 73,
+  "why": "line 적합 잔차 max 1.76px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.799,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8t",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 30,
+  "why": "line 적합 잔차 max 1.15px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.868,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8u",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 16,
+  "why": "line 적합 잔차 max 0.8px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.908,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8v",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 31,
+  "why": "line 적합 잔차 max 1.22px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.86,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8w",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 37,
+  "why": "line 적합 잔차 max 1.8px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.794,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8x",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 76,
+  "why": "line 적합 잔차 max 1.68px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.808,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8y",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 73,
+  "why": "line 적합 잔차 max 1.63px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.814,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g8z",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 38,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g90",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 12,
+  "why": "line 적합 잔차 max 1.39px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.841,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g91",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 23,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g92",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 31,
+  "why": "line 적합 잔차 max 1.22px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.86,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g93",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 2.03px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.768,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g94",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 35,
+  "why": "line 적합 잔차 max 1.09px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.875,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g95",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 37,
+  "why": "line 적합 잔차 max 1.11px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.873,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g96",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 75,
+  "why": "line 적합 잔차 max 1.68px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.808,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g97",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 84,
+  "why": "line 적합 잔차 max 1.5px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.828,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g98",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 76,
+  "why": "line 적합 잔차 max 1.7px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.805,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g99",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 28,
+  "why": "line 적합 잔차 max 1.71px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.804,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9a",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 1.65px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.811,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9b",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 18,
+  "why": "line 적합 잔차 max 1.09px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.875,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9c",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 23,
+  "why": "line 적합 잔차 max 1.13px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.871,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9d",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 36,
+  "why": "line 적합 잔차 max 1.08px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.876,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9e",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 30,
+  "why": "line 적합 잔차 max 1.37px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.843,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9f",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 20,
+  "why": "circle 적합 잔차 max 0.59px (허용 4.4px) — 앵커 4개로 표현",
+  "confidence": 0.932,
+  "kind": "circle",
+  "instances": null
+ },
+ {
+  "id": "g9g",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 72,
+  "why": "line 적합 잔차 max 1.67px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.809,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9h",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 36,
+  "why": "line 적합 잔차 max 1.13px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.871,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9i",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 39,
+  "why": "line 적합 잔차 max 2.09px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.761,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9j",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 76,
+  "why": "line 적합 잔차 max 2.06px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.764,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9k",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 14,
+  "why": "line 적합 잔차 max 0px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.98,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9l",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 98,
+  "why": "roundedRect 적합 잔차 max 0.48px (허용 4.4px) — 앵커 8개로 표현",
+  "confidence": 0.945,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "g9m",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 36,
+  "why": "line 적합 잔차 max 1.08px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.876,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9n",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 17,
+  "why": "line 적합 잔차 max 1.22px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.86,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9o",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 34,
+  "why": "line 적합 잔차 max 1.08px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.876,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9p",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 40,
+  "why": "line 적합 잔차 max 1.07px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.878,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9q",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 16,
+  "why": "line 적합 잔차 max 0.85px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.903,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9r",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 30,
+  "why": "line 적합 잔차 max 1.12px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.872,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9s",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 73,
+  "why": "line 적합 잔차 max 1.63px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.814,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9t",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 33,
+  "why": "line 적합 잔차 max 1.14px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.87,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9u",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 40,
+  "why": "line 적합 잔차 max 1.25px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.857,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9v",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 18,
+  "why": "line 적합 잔차 max 1.06px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.879,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9w",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 13,
+  "why": "line 적합 잔차 max 1.23px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.859,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9x",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 73,
+  "why": "line 적합 잔차 max 1.65px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.811,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9y",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 29,
+  "why": "line 적합 잔차 max 1.53px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.825,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "g9z",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 29,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "ga0",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 41,
+  "why": "line 적합 잔차 max 1.18px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.865,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "ga1",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 35,
+  "why": "line 적합 잔차 max 1.24px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.858,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "ga2",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 15,
+  "why": "line 적합 잔차 max 0px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.98,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "ga3",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 38,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "ga4",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 41,
+  "why": "line 적합 잔차 max 1.09px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.875,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "ga5",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 34,
+  "why": "line 적합 잔차 max 1.9px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.783,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "ga6",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 23,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "ga7",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 37,
+  "why": "line 적합 잔차 max 1.11px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.873,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "ga8",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 74,
+  "why": "line 적합 잔차 max 1.55px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.823,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "ga9",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 15,
+  "why": "line 적합 잔차 max 0.75px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.914,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gaa",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 90,
+  "why": "roundedRect 적합 잔차 max 1.79px (허용 4.4px) — 앵커 8개로 표현",
+  "confidence": 0.795,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gab",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 70,
+  "why": "line 적합 잔차 max 2.24px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.744,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gac",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 31,
+  "why": "line 적합 잔차 max 1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.886,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gad",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 31,
+  "why": "line 적합 잔차 max 1.31px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.85,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gae",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 35,
+  "why": "line 적합 잔차 max 1.83px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.791,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gaf",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 25,
+  "why": "line 적합 잔차 max 1.23px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.859,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gag",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 23,
+  "why": "line 적합 잔차 max 1.27px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.855,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gah",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 16,
+  "why": "line 적합 잔차 max 0.74px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.915,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gai",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 34,
+  "why": "line 적합 잔차 max 1.19px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.864,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gaj",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 40,
+  "why": "line 적합 잔차 max 1.2px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.863,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gak",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 42,
+  "why": "line 적합 잔차 max 1.7px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.805,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gal",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 74,
+  "why": "line 적합 잔차 max 1.64px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.812,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gam",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 28,
+  "why": "line 적합 잔차 max 1.66px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.81,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gan",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 25,
+  "why": "line 적합 잔차 max 1.33px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.848,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gao",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 20,
+  "why": "line 적합 잔차 max 1.18px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.865,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gap",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 39,
+  "why": "line 적합 잔차 max 1.23px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.859,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gaq",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 26,
+  "why": "line 적합 잔차 max 1.8px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.794,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gar",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 75,
+  "why": "line 적합 잔차 max 2.1px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.76,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gas",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 77,
+  "why": "line 적합 잔차 max 1.65px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.811,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gat",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 13,
+  "why": "line 적합 잔차 max 0.74px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.915,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gau",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 40,
+  "why": "line 적합 잔차 max 1.07px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.878,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gav",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 71,
+  "why": "line 적합 잔차 max 1.94px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.778,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gaw",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 40,
+  "why": "line 적합 잔차 max 1.17px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.866,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gax",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 36,
+  "why": "line 적합 잔차 max 1.08px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.876,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gay",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 13,
+  "why": "line 적합 잔차 max 0px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.98,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gaz",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 32,
+  "why": "line 적합 잔차 max 1.17px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.866,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gb0",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 24,
+  "why": "roundedRect 적합 잔차 max 1px (허용 4.4px) — 앵커 8개로 표현",
+  "confidence": 0.886,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gb1",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 33,
+  "why": "line 적합 잔차 max 1.24px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.858,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gb2",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 21,
+  "why": "line 적합 잔차 max 1.19px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.864,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gb3",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 25,
+  "why": "line 적합 잔차 max 1.79px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.795,
+  "kind": "line",
+  "instances": null
+ },
+ {
+  "id": "gb4",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "bag_body",
+  "area": 73,
+  "why": "line 적합 잔차 max 1.78px (허용 4.4px) — 앵커 2개로 표현",
+  "confidence": 0.796,
+  "kind": "line",
+  "instances": null
+ }
+]

@@ -1,0 +1,340 @@
+{
+  "job": {
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS",
+    "canvas": {
+      "width": 2800,
+      "height": 1572,
+      "sourceWidth": 1400,
+      "sourceHeight": 786,
+      "supersample": 2
+    },
+    "totalMs": 23106,
+    "createdAt": "2026-08-24T03:27:33.687Z"
+  },
+  "options": {
+    "minParts": 3,
+    "maxParts": 10,
+    "grayscale": true,
+    "workLong": 1400,
+    "vectorLong": 2200,
+    "inkThreshold": 170,
+    "localContrast": 22,
+    "textureMode": "auto",
+    "categoryHint": "shoe",
+    "schematicFrom": "outputs/v3/v3_shoe_2_v31/schematics/schematic_cc8c7d6a5d317075.png",
+    "upscale": false
+  },
+  "plan": {
+    "category": "shoe",
+    "objectNoun": "pair of trail running shoes",
+    "view": "composite outsole and lateral three-quarter views",
+    "parts": [
+      {
+        "id": "rubber_outsole",
+        "label": "lugged rubber outsole",
+        "description": "Orange molded traction outsole repeated on both shoes, prominently facing the camera on the upper shoe.",
+        "bbox": [
+          0.007,
+          0.142,
+          0.929,
+          0.992
+        ],
+        "z": 0,
+        "occludedBy": [
+          "foam_midsole"
+        ],
+        "kind": "component",
+        "confidence": 0.99
+      },
+      {
+        "id": "foam_midsole",
+        "label": "foam midsole",
+        "description": "Gray cushioned midsole layer between the upper and orange outsole on both shoes.",
+        "bbox": [
+          0.021,
+          0.108,
+          0.925,
+          0.968
+        ],
+        "z": 1,
+        "occludedBy": [
+          "mesh_upper",
+          "synthetic_overlays"
+        ],
+        "kind": "component",
+        "confidence": 0.96
+      },
+      {
+        "id": "mesh_upper",
+        "label": "mesh upper",
+        "description": "Dark navy breathable textile forming the toe, quarter, and heel body of both shoes.",
+        "bbox": [
+          0.194,
+          0.025,
+          0.955,
+          0.901
+        ],
+        "z": 2,
+        "occludedBy": [
+          "tongue",
+          "synthetic_overlays",
+          "collar_lining",
+          "laces"
+        ],
+        "kind": "component",
+        "confidence": 0.98
+      },
+      {
+        "id": "tongue",
+        "label": "padded tongue",
+        "description": "Dark textile tongue beneath the orange lacing on the foreground shoe, with a small portion visible on the upper shoe.",
+        "bbox": [
+          0.303,
+          0.012,
+          0.746,
+          0.666
+        ],
+        "z": 3,
+        "occludedBy": [
+          "synthetic_overlays",
+          "laces"
+        ],
+        "kind": "component",
+        "confidence": 0.93
+      },
+      {
+        "id": "synthetic_overlays",
+        "label": "synthetic support overlays",
+        "description": "Light gray and dark navy bonded or stitched panels around the toe, eyestay, sides, and heel.",
+        "bbox": [
+          0.021,
+          0.047,
+          0.957,
+          0.935
+        ],
+        "z": 4,
+        "occludedBy": [
+          "laces",
+          "brand_graphics"
+        ],
+        "kind": "component",
+        "confidence": 0.97
+      },
+      {
+        "id": "heel_pull_tabs",
+        "label": "heel pull tabs",
+        "description": "Orange woven pull loops attached at the rear of the shoes.",
+        "bbox": [
+          0.322,
+          0.008,
+          0.995,
+          0.545
+        ],
+        "z": 5,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.95
+      },
+      {
+        "id": "collar_lining",
+        "label": "padded collar lining",
+        "description": "Gray textured textile lining around the foreground shoe opening.",
+        "bbox": [
+          0.62,
+          0.414,
+          0.958,
+          0.676
+        ],
+        "z": 6,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.97
+      },
+      {
+        "id": "laces",
+        "label": "laces",
+        "description": "Bright orange woven laces crossing the tongue and passing through the eyestay openings.",
+        "bbox": [
+          0.474,
+          0.354,
+          0.752,
+          0.718
+        ],
+        "z": 7,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.99
+      },
+      {
+        "id": "brand_graphics",
+        "label": "brand and side graphics",
+        "description": "Printed MERRELL wordmark, orange side stripe, and dark geometric decorative graphics on the synthetic overlays.",
+        "bbox": [
+          0.587,
+          0.574,
+          0.918,
+          0.823
+        ],
+        "z": 8,
+        "occludedBy": [],
+        "kind": "marking",
+        "confidence": 0.96
+      }
+    ],
+    "provenance": {
+      "model": "gpt-5.6",
+      "promptVersion": "v3.parts.v1.0.0",
+      "inputSha256": "a78a53f1aa6161360fa39c266250b61afcbd7e7687987ef3c3b7c35611486090",
+      "createdAt": "2026-08-22T04:37:50.818Z"
+    }
+  },
+  "counts": {
+    "GEOMETRIC_PRIMITIVE": 23,
+    "FACE_FILL": 242,
+    "OUTLINE_SHAPE": 55
+  },
+  "qa": {
+    "fidelity": {
+      "pass": true,
+      "f0": 0.8727,
+      "f1": 0.9061,
+      "f2": 0.9081,
+      "lineF1": 0.9964,
+      "lineF2": 0.9989,
+      "textureShare": 0.4392,
+      "inkRatio": 1.015,
+      "chamfer": 0.058,
+      "p95": 0,
+      "detailRecall": 1,
+      "holes": [
+        317,
+        314
+      ],
+      "majorComponents": [
+        3,
+        10
+      ],
+      "notes": [
+        "해프톤이 도면 잉크의 44% — 전체 F@2px 0.9081, 그 영역 뺀 선 충실도 0.9989"
+      ]
+    },
+    "editability": {
+      "pass": true,
+      "paths": 320,
+      "anchors": 21206,
+      "uses": 0,
+      "kb": 853,
+      "anchorDensity": 8.37,
+      "shortPathRatio": 0.022,
+      "primitives": 23,
+      "anchorsSavedByPrimitives": 267,
+      "pathsSavedByPatterns": 0,
+      "editableReduction": {
+        "paths": 0.012,
+        "anchors": 0.122,
+        "kb": 0.115
+      },
+      "notes": []
+    },
+    "semantic": {
+      "pass": true,
+      "perPart": [
+        {
+          "id": "rubber_outsole",
+          "paths": 0,
+          "precision": -1,
+          "recall": -1,
+          "iou": -1
+        },
+        {
+          "id": "foam_midsole",
+          "paths": 2,
+          "precision": 0.9216,
+          "recall": 0.1856,
+          "iou": 0.1827
+        },
+        {
+          "id": "mesh_upper",
+          "paths": 56,
+          "precision": 0.981,
+          "recall": 0.2053,
+          "iou": 0.2044
+        },
+        {
+          "id": "tongue",
+          "paths": 94,
+          "precision": 0.759,
+          "recall": 0.6847,
+          "iou": 0.5624
+        },
+        {
+          "id": "synthetic_overlays",
+          "paths": 68,
+          "precision": 0.5051,
+          "recall": 0.8146,
+          "iou": 0.453
+        },
+        {
+          "id": "heel_pull_tabs",
+          "paths": 1,
+          "precision": 1,
+          "recall": 0.1783,
+          "iou": 0.1783
+        },
+        {
+          "id": "collar_lining",
+          "paths": 6,
+          "precision": 0.8578,
+          "recall": 0.0873,
+          "iou": 0.086
+        },
+        {
+          "id": "laces",
+          "paths": 56,
+          "precision": 0.9428,
+          "recall": 0.4494,
+          "iou": 0.4375
+        },
+        {
+          "id": "brand_graphics",
+          "paths": 37,
+          "precision": 0.4347,
+          "recall": 0.9302,
+          "iou": 0.421
+        }
+      ],
+      "meanPrecision": 0.8003,
+      "misassigned": [
+        "brand_graphics"
+      ],
+      "emptyVisibleParts": [],
+      "sharedOnlyParts": [
+        "rubber_outsole"
+      ],
+      "sharedBoundaries": 22,
+      "aspectRatio": 1.002,
+      "lowConfidenceRoutes": 35,
+      "notes": [
+        "배분이 의심되는 레이어 1개: brand_graphics",
+        "공유 경계로만 그려진 파트 1개: rubber_outsole",
+        "라우터가 확신하지 못한 성분 35개"
+      ]
+    },
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
+  },
+  "timings": {
+    "S1_preprocess": 2850,
+    "S2_plan": 4,
+    "S3_masks": 7620,
+    "S4_schematic": 416,
+    "S5_evidence": 6627,
+    "S7_export": 96,
+    "S8_qa": 5355
+  },
+  "correspondence": {
+    "method": "global-similarity",
+    "aspectRatio": 1.0018961841506957,
+    "confident": false,
+    "note": ""
+  }
+}

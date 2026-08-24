@@ -1,0 +1,238 @@
+{
+  "job": {
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS",
+    "canvas": {
+      "width": 2048,
+      "height": 1922,
+      "sourceWidth": 1024,
+      "sourceHeight": 961,
+      "supersample": 2
+    },
+    "totalMs": 12999,
+    "createdAt": "2026-08-24T03:30:40.612Z"
+  },
+  "options": {
+    "minParts": 3,
+    "maxParts": 10,
+    "grayscale": true,
+    "workLong": 1400,
+    "vectorLong": 2200,
+    "inkThreshold": 170,
+    "localContrast": 22,
+    "textureMode": "auto",
+    "categoryHint": "jewelry",
+    "schematicFrom": "outputs/v3/v3_jewelry_1_v31/schematics/schematic_322ac5ea05876435.png",
+    "upscale": false
+  },
+  "plan": {
+    "category": "jewelry",
+    "objectNoun": "hinged hoop earring",
+    "view": "front view, clasp open",
+    "parts": [
+      {
+        "id": "hinge_pivot",
+        "label": "Bottom hinge pivot",
+        "description": "Dark pivot element joining the two hinged hoop halves at the bottom seam.",
+        "bbox": [
+          0.48,
+          0.77,
+          0.57,
+          0.88
+        ],
+        "z": 0,
+        "occludedBy": [
+          "left_hoop_half",
+          "right_hoop_half"
+        ],
+        "kind": "component",
+        "confidence": 0.77
+      },
+      {
+        "id": "left_hoop_half",
+        "label": "Left hoop half",
+        "description": "Curved polished metal half extending from the bottom hinge to the upper-left open end.",
+        "bbox": [
+          0.05,
+          0.06,
+          0.51,
+          0.94
+        ],
+        "z": 1,
+        "occludedBy": [
+          "engraved_pattern"
+        ],
+        "kind": "component",
+        "confidence": 0.94
+      },
+      {
+        "id": "right_hoop_half",
+        "label": "Right hoop half",
+        "description": "Curved polished metal half extending from the bottom hinge to the upper-right clasp end.",
+        "bbox": [
+          0.52,
+          0.06,
+          0.95,
+          0.94
+        ],
+        "z": 2,
+        "occludedBy": [
+          "clasp_insert"
+        ],
+        "kind": "component",
+        "confidence": 0.94
+      },
+      {
+        "id": "clasp_insert",
+        "label": "Clasp insert",
+        "description": "Small dark latch or receiving insert fitted into the upper terminal of the right hoop half.",
+        "bbox": [
+          0.56,
+          0.05,
+          0.63,
+          0.11
+        ],
+        "z": 3,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.71
+      },
+      {
+        "id": "engraved_pattern",
+        "label": "Engraved side pattern",
+        "description": "Repeated recessed decorative graphics along the outer-facing surface of the left hoop half.",
+        "bbox": [
+          0.05,
+          0.17,
+          0.18,
+          0.79
+        ],
+        "z": 4,
+        "occludedBy": [],
+        "kind": "marking",
+        "confidence": 0.8
+      }
+    ],
+    "provenance": {
+      "model": "gpt-5.6",
+      "promptVersion": "v3.parts.v1.0.0",
+      "inputSha256": "9254493c15b38bf53374ad6b74440a8dc697fbb1e2f50cef7bc2389cb583dc33",
+      "createdAt": "2026-08-22T04:44:37.129Z"
+    }
+  },
+  "counts": {
+    "GEOMETRIC_PRIMITIVE": 1,
+    "FACE_FILL": 12,
+    "OUTLINE_SHAPE": 1
+  },
+  "qa": {
+    "fidelity": {
+      "pass": true,
+      "f0": 0.9669,
+      "f1": 0.9911,
+      "f2": 0.9933,
+      "lineF1": 0.9911,
+      "lineF2": 0.9933,
+      "textureShare": 0,
+      "inkRatio": 1.03,
+      "chamfer": 0.084,
+      "p95": 0,
+      "detailRecall": 1,
+      "holes": [
+        12,
+        13
+      ],
+      "majorComponents": [
+        1,
+        1
+      ],
+      "notes": []
+    },
+    "editability": {
+      "pass": true,
+      "paths": 14,
+      "anchors": 2604,
+      "uses": 0,
+      "kb": 108.7,
+      "anchorDensity": 4.85,
+      "shortPathRatio": 0,
+      "primitives": 1,
+      "anchorsSavedByPrimitives": 10,
+      "pathsSavedByPatterns": 0,
+      "editableReduction": {
+        "paths": 0,
+        "anchors": 0.07,
+        "kb": 0.068
+      },
+      "notes": []
+    },
+    "semantic": {
+      "pass": true,
+      "perPart": [
+        {
+          "id": "hinge_pivot",
+          "paths": 1,
+          "precision": 1,
+          "recall": 0.1728,
+          "iou": 0.1728
+        },
+        {
+          "id": "left_hoop_half",
+          "paths": 2,
+          "precision": 1,
+          "recall": 0.0259,
+          "iou": 0.0259
+        },
+        {
+          "id": "right_hoop_half",
+          "paths": 2,
+          "precision": 0.9555,
+          "recall": 0.2786,
+          "iou": 0.275
+        },
+        {
+          "id": "clasp_insert",
+          "paths": 2,
+          "precision": 1,
+          "recall": 0.082,
+          "iou": 0.082
+        },
+        {
+          "id": "engraved_pattern",
+          "paths": 7,
+          "precision": 0.2795,
+          "recall": 0.8389,
+          "iou": 0.2653
+        }
+      ],
+      "meanPrecision": 0.847,
+      "misassigned": [
+        "engraved_pattern"
+      ],
+      "emptyVisibleParts": [],
+      "sharedOnlyParts": [],
+      "sharedBoundaries": 2,
+      "aspectRatio": 1.01,
+      "lowConfidenceRoutes": 1,
+      "notes": [
+        "배분이 의심되는 레이어 1개: engraved_pattern",
+        "라우터가 확신하지 못한 성분 1개"
+      ]
+    },
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
+  },
+  "timings": {
+    "S1_preprocess": 5386,
+    "S2_plan": 4,
+    "S3_masks": 1300,
+    "S4_schematic": 204,
+    "S5_evidence": 3445,
+    "S7_export": 13,
+    "S8_qa": 2595
+  },
+  "correspondence": {
+    "method": "global-similarity",
+    "aspectRatio": 1.010476383745117,
+    "confident": true,
+    "note": ""
+  }
+}

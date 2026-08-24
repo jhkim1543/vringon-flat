@@ -1,0 +1,512 @@
+[
+ {
+  "id": "gf1",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "neck_fasteners",
+  "area": 1962,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.19px, 허용 3.5px)",
+  "confidence": 0.6844380403458213,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf2",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "neck_fasteners",
+  "area": 2023,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 1.53px, 허용 3.5px)",
+  "confidence": 0.7795389048991355,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "gf3",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "outer_curved_spine",
+  "area": 3620,
+  "why": "닫힌 면이 roundedRect 에 적합 (잔차 max 2.83px, 허용 3.5px)",
+  "confidence": 0.6,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "f4",
+  "cls": "FACE_FILL",
+  "partId": "upper_tuning_pegs",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f5",
+  "cls": "FACE_FILL",
+  "partId": "upper_tuning_pegs",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f6",
+  "cls": "FACE_FILL",
+  "partId": "neck_fasteners",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f7",
+  "cls": "FACE_FILL",
+  "partId": "neck_fasteners",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f8",
+  "cls": "FACE_FILL",
+  "partId": "upper_neck_plate",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f9",
+  "cls": "FACE_FILL",
+  "partId": "upper_tuning_pegs",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fa",
+  "cls": "FACE_FILL",
+  "partId": "neck_fasteners",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fb",
+  "cls": "FACE_FILL",
+  "partId": "upper_neck_plate",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fc",
+  "cls": "FACE_FILL",
+  "partId": "upper_neck_plate",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fd",
+  "cls": "FACE_FILL",
+  "partId": "upper_neck_plate",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fe",
+  "cls": "FACE_FILL",
+  "partId": "upper_neck_plate",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "ff",
+  "cls": "FACE_FILL",
+  "partId": "front_leaf_ornament",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fg",
+  "cls": "FACE_FILL",
+  "partId": "lower_frame_body",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fh",
+  "cls": "FACE_FILL",
+  "partId": "lower_frame_body",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fi",
+  "cls": "FACE_FILL",
+  "partId": "lower_frame_body",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fj",
+  "cls": "FACE_FILL",
+  "partId": "lower_frame_body",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fk",
+  "cls": "FACE_FILL",
+  "partId": "lower_frame_body",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fl",
+  "cls": "FACE_FILL",
+  "partId": "lower_frame_body",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fm",
+  "cls": "FACE_FILL",
+  "partId": "lower_frame_body",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fn",
+  "cls": "FACE_FILL",
+  "partId": "lower_frame_body",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fo",
+  "cls": "FACE_FILL",
+  "partId": "rear_clasp_hardware",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fp",
+  "cls": "FACE_FILL",
+  "partId": "rear_clasp_hardware",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fq",
+  "cls": "FACE_FILL",
+  "partId": "front_leaf_ornament",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fr",
+  "cls": "FACE_FILL",
+  "partId": "front_leaf_ornament",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fs",
+  "cls": "FACE_FILL",
+  "partId": "front_leaf_ornament",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "ft",
+  "cls": "FACE_FILL",
+  "partId": "lower_frame_body",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fu",
+  "cls": "FACE_FILL",
+  "partId": "front_leaf_ornament",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fv",
+  "cls": "FACE_FILL",
+  "partId": "lower_frame_body",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fw",
+  "cls": "FACE_FILL",
+  "partId": "rear_clasp_hardware",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fx",
+  "cls": "FACE_FILL",
+  "partId": "lower_frame_body",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fy",
+  "cls": "FACE_FILL",
+  "partId": "lower_frame_body",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "fz",
+  "cls": "FACE_FILL",
+  "partId": "lower_frame_body",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f10",
+  "cls": "FACE_FILL",
+  "partId": "lower_frame_body",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f11",
+  "cls": "FACE_FILL",
+  "partId": "lower_frame_body",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f12",
+  "cls": "FACE_FILL",
+  "partId": "lower_frame_body",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f13",
+  "cls": "FACE_FILL",
+  "partId": "lower_frame_body",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f14",
+  "cls": "FACE_FILL",
+  "partId": "rear_clasp_hardware",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f15",
+  "cls": "FACE_FILL",
+  "partId": "rear_clasp_hardware",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f16",
+  "cls": "FACE_FILL",
+  "partId": "rear_clasp_hardware",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f17",
+  "cls": "FACE_FILL",
+  "partId": "rear_clasp_hardware",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f18",
+  "cls": "FACE_FILL",
+  "partId": "rear_clasp_hardware",
+  "area": 1056279,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f19",
+  "cls": "FACE_FILL",
+  "partId": "rear_clasp_hardware",
+  "area": 2101,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "f1a",
+  "cls": "FACE_FILL",
+  "partId": "rear_clasp_hardware",
+  "area": 2101,
+  "why": "선이 감싼 닫힌 면",
+  "confidence": 0.9,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "g1b",
+  "cls": "GEOMETRIC_PRIMITIVE",
+  "partId": "neck_fasteners",
+  "area": 1855,
+  "why": "roundedRect 적합 잔차 max 2.16px (허용 3.5px) — 앵커 8개로 표현",
+  "confidence": 0.689,
+  "kind": "roundedRect",
+  "instances": null
+ },
+ {
+  "id": "o1c",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "upper_neck_plate",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "o1d",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "front_leaf_ornament",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "o1e",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "lower_frame_body",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "o1f",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "lower_frame_body",
+  "area": 0,
+  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ }
+]

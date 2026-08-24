@@ -135,6 +135,7 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
     </div>
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-tab="gallery">결과 갤러리</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="v4">V4 · Semantic Topology</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="v3">V3.2 · VRINGON 도면</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="v2">V2 · 레이어 SVG</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="run">직접 실행</button>
@@ -157,13 +158,88 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
   <div class="detail" id="detail" hidden></div>
 </section>
 
+<!-- ─────────── V4 Semantic Topology ─────────── -->
+<section id="v4" hidden>
+  <h2>V4 — Semantic Topology Vectorizer
+    <span style="font-size:14px;font-weight:400;color:var(--dim)">· 2026-08-24</span></h2>
+  <p class="sub">
+    V3까지는 잉크 전체를 한 방식으로 훑고 SVG 하나를 만들었습니다. V4는 <b>성분마다 표현을 먼저
+    정하고</b>, 같은 장면(<code>VectorScene</code>)에서 목적별로 다른 SVG를 굽습니다.
+  </p>
+
+  <div class="note">
+    <b>충실도와 편집성을 한 파일에 동시에 요구하지 않습니다.</b>
+    둘은 반대 방향입니다 — 충실도를 올리면 패스가 늘고, 패스를 줄이면 디테일이 깎입니다.
+    V4는 그 둘을 파일이 아니라 <b>표현 단계</b>에서 가릅니다.
+    <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+      <span class="badge">fidelity.svg — 도면과 최대한 같아 보이는 것</span>
+      <span class="badge">editable.svg — 적은 패스·앵커</span>
+      <span class="badge">production.svg — 기능 레이어 + 파트 + 공유 경계</span>
+    </div>
+  </div>
+
+  <h3>한 성분에는 한 표현만</h3>
+  <p class="sub">
+    성분마다 폭 평균/변동계수 · 골격 길이 · 끝점 · 분기 밀도 · 구멍 · 채움률 · 프리미티브 적합
+    잔차를 재고, 아래 중 <b>하나만</b> 고릅니다. 왜 그렇게 골랐는지도 SVG에
+    <code>data-cls</code>로, 장면에는 근거 문장으로 남습니다.
+  </p>
+  <div class="pipe">
+    <div class="st"><b>STRUCTURAL_STROKE</b>굵기 안정 · 교차 적은 긴 선 → centerline</div>
+    <div class="st"><b>GEOMETRIC_PRIMITIVE</b>원·타원·직선·둥근사각 → 파라미터</div>
+    <div class="st"><b>REPEATING_PATTERN</b>반복 모티프 → symbol + use</div>
+    <div class="st"><b>DASH_OR_STITCH</b>점선 → carrier + dasharray</div>
+    <div class="st"><b>OUTLINE_SHAPE</b>나머지 → 채워진 윤곽</div>
+    <div class="st"><b>FACE_FILL / TEXTURE_TONE</b>닫힌 면 · 해프톤 톤</div>
+  </div>
+
+  <h3>샘플 9종</h3>
+  <div class="grid" id="v4cards"></div>
+  <div class="detail" id="v4detail" hidden></div>
+
+  <h3>V3.2 → V4 실측</h3>
+  <div style="overflow-x:auto"><table id="v4cmp">
+    <tr><th>샘플</th><th class="num">V3.2 패스</th><th class="num">V4 패스</th>
+        <th class="num">V3.2 F@0</th><th class="num">V4 F@0</th>
+        <th class="num">V3.2 선F@2</th><th class="num">V4 선F@2</th>
+        <th class="num">프리미티브</th><th class="num">패턴 절감</th><th>게이트</th></tr>
+  </table></div>
+  <p class="sub" style="margin-top:8px">
+    패스가 크게 줄면서 <b>정확 일치(F@0px)는 오히려 올랐습니다</b>. 앵커 총량은 거의 같습니다 —
+    줄어든 것은 <b>객체 수</b>이지 형상 정보가 아니라는 뜻입니다.
+  </p>
+
+  <h3>임계는 손실을 재고 정했습니다</h3>
+  <ul>
+    <li><b>프리미티브</b>는 최대 잔차만 보면 안 됩니다. 대부분 어긋나는데 한 점만 우연히 가까운
+      적합도 통과합니다 — 신발 도면에서 351개가 타원으로 승격돼 선 충실도가 0.996 → 0.962로
+      떨어졌습니다. 평균(rms)도 함께 보고 허용치를 캔버스 최소변의 0.25%로 조였습니다.</li>
+    <li><b>패턴</b>은 압축률만 보고하면 안 됩니다. 형상 편차를 0.18까지 허용했더니 작은 성분
+      보존율이 1.00 → 0.75, 구멍이 317 → 271로 떨어졌습니다. 0.05로 조여 <b>정말 같은 것만</b>
+      묶습니다. 그래도 비즈 메시 가방은 2,585패스를 줄입니다.</li>
+    <li><b>점선</b>은 곧지 않으면 <code>dasharray</code>로 바꿀 수 없습니다. 억지로 바꾸면 점이
+      제자리를 벗어납니다(주얼리 도면 구멍 38 → 24). 직선성 2% 이내만 승격합니다.</li>
+    <li><b>구조선</b>은 stroke가 그 잉크를 다 설명한다는 보장이 없어 <b>사후 검산</b>을 합니다 —
+      실제로 그려 보고 안 덮인 잉크만 윤곽으로 보탭니다.</li>
+  </ul>
+
+  <h3>아직 없는 것</h3>
+  <p class="sub">
+    기획서의 topology 엔진(SLD · Deep Sketch Vectorization), differentiable refinement
+    (Bézier · NURBS Splatting), dense correspondence(DINOv3), appearance 분해(COVec)는
+    <b>모델 가중치와 GPU가 필요해 붙이지 않았습니다.</b> 교차점을 전역으로 푸는 일,
+    가변 폭, 사진↔도면의 조밀 대응은 그래서 여전히 남아 있습니다.
+    지금은 그 자리에 어댑터 경계만 두고 현재 경로로 돕니다.
+  </p>
+</section>
+
 <!-- ─────────── V3 VRINGON 도면 기반 라인 벡터 ─────────── -->
 <section id="v3" hidden>
   <h2>V3.2 — VRINGON 플랫스케치 → 라인 기준 벡터화
     <span style="font-size:14px;font-weight:400;color:var(--dim)">· 2026-08-24 기준</span></h2>
 
   <div class="note" style="border-left-color:var(--accent)">
-    <b>현재 배포본은 V3.2 입니다. V4 는 아직 없습니다.</b>
+    <b>V3.2 는 안정 경로입니다. 그 위에 V4 탭이 따로 있습니다.</b>
     외부 감사와 V4 기획서를 받아 <b>검증을 통과한 항목만</b> V3 안에 반영했습니다.
     통과하지 못한 항목은 적용하지 않았고, 그 근거도 아래에 남겼습니다.
     <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
@@ -837,6 +913,156 @@ async function openV2(i) {
     tbl.querySelectorAll("input").forEach(b => { if (!b.checked) { b.checked = true; b.onchange(); } });
   document.getElementById("v2AllOff").onclick = () =>
     tbl.querySelectorAll("input").forEach(b => { if (b.checked) { b.checked = false; b.onchange(); } });
+}
+
+// ── V4 (Semantic Topology) ─────────────────────────────────
+let V4 = null;
+fetch("samples-v4/index.json").then(r => r.json()).then(d => {
+  V4 = d;
+  const c = document.getElementById("v4cards");
+  c.innerHTML = d.samples.map((s, i) => `
+    <button class="card" data-i="${i}">
+      <img src="${s.files.schematic || s.files.input}" alt="${s.name}" loading="lazy">
+      <div class="meta">
+        <div class="t">${s.categoryLabel} · ${s.name}</div>
+        <div class="d">패스 ${s.qa.editability.paths.toLocaleString()} · 선F@2 ${s.qa.fidelity.lineF2.toFixed(3)}</div>
+      </div>
+    </button>`).join("");
+  c.querySelectorAll(".card").forEach(x => x.onclick = () => openV4(+x.dataset.i));
+
+  const t = document.getElementById("v4cmp");
+  let a = { p3: 0, p4: 0, f03: 0, f04: 0, s3: 0, s4: 0 };
+  for (const s of d.samples) {
+    const v3 = s.v3, q = s.qa;
+    if (!v3) continue;
+    a.p3 += v3.paths; a.p4 += q.editability.paths;
+    a.f03 += v3.f0; a.f04 += q.fidelity.f0;
+    a.s3 += v3.lineF2; a.s4 += q.fidelity.lineF2;
+    const g = s.state.replace(/FIDELITY_/, `F`).replace(/EDITABILITY_/, `E`).replace(/SEMANTIC_/, `S`)
+      .replace(/PASS/g, "✓").replace(/REVIEW/g, "✗").replace(/ \/ /g, " ");
+    const up = (x, y) => (y > x ? `<span style="color:var(--ok,#3a9)">${y.toFixed(3)}</span>` : y.toFixed(3));
+    t.insertAdjacentHTML("beforeend", `<tr>
+      <td>${s.name}</td>
+      <td class="num" style="color:var(--dim)">${v3.paths.toLocaleString()}</td>
+      <td class="num"><b>${q.editability.paths.toLocaleString()}</b></td>
+      <td class="num" style="color:var(--dim)">${v3.f0.toFixed(3)}</td>
+      <td class="num"><b>${up(v3.f0, q.fidelity.f0)}</b></td>
+      <td class="num" style="color:var(--dim)">${v3.lineF2.toFixed(3)}</td>
+      <td class="num"><b>${up(v3.lineF2, q.fidelity.lineF2)}</b></td>
+      <td class="num">${q.editability.primitives}</td>
+      <td class="num">${q.editability.pathsSavedByPatterns.toLocaleString()}</td>
+      <td><code>${g}</code></td></tr>`);
+  }
+  const n = d.samples.filter(s => s.v3).length || 1;
+  t.insertAdjacentHTML("beforeend", `<tr style="background:var(--panel-2)">
+    <td><b>합계·평균</b></td>
+    <td class="num" style="color:var(--dim)">${a.p3.toLocaleString()}</td>
+    <td class="num"><b>${a.p4.toLocaleString()}</b> <span style="color:var(--dim);font-size:11.5px">${Math.round((1 - a.p4 / a.p3) * 100)}%↓</span></td>
+    <td class="num" style="color:var(--dim)">${(a.f03 / n).toFixed(3)}</td>
+    <td class="num"><b>${(a.f04 / n).toFixed(3)}</b></td>
+    <td class="num" style="color:var(--dim)">${(a.s3 / n).toFixed(3)}</td>
+    <td class="num"><b>${(a.s4 / n).toFixed(3)}</b></td>
+    <td class="num"></td><td class="num"></td><td></td></tr>`);
+  openV4(0);
+}).catch(e => {
+  const c = document.getElementById("v4cards");
+  if (c) c.innerHTML = `<p class="sub">V4 샘플을 불러오지 못했습니다: ${e.message}</p>`;
+});
+
+async function openV4(i) {
+  const s = V4.samples[i];
+  const host = document.getElementById("v4detail");
+  document.querySelectorAll("#v4cards .card").forEach((c, k) => c.setAttribute("aria-current", String(k === i)));
+  host.hidden = false;
+  const q = s.qa;
+  const kpi = (ok, label) => `<span class="badge ${ok ? "ok" : "warn"}">${label}</span>`;
+  const gate = (g, name) => `<span class="badge ${g.pass ? "ok" : "warn"}">${name} ${g.pass ? "PASS" : "REVIEW"}</span>`;
+
+  const total = Object.values(s.counts).reduce((x, y) => x + y, 0);
+  const routeRows = Object.entries(s.counts).sort((x, y) => y[1] - x[1]).map(([k, v]) =>
+    `<tr><td><code>${k}</code></td><td class="num">${v}</td><td class="num">${((v / total) * 100).toFixed(1)}%</td></tr>`).join("");
+
+  host.innerHTML = `
+    <div class="detail-head">
+      <div class="t">${s.categoryLabel} · ${s.name}</div>
+      <div class="badges">
+        <span class="badge">${s.canvas.width}×${s.canvas.height}</span>
+        ${gate(q.fidelity, `충실도`)} ${gate(q.editability, `편집성`)} ${gate(q.semantic, `의미`)}
+        ${kpi(q.fidelity.lineF2 >= 0.95, `선 일치 F@2px ${q.fidelity.lineF2.toFixed(3)}`)}
+        ${kpi(q.fidelity.detailRecall >= 0.9, `작은 디테일 ${(q.fidelity.detailRecall * 100).toFixed(0)}%`)}
+        <span class="badge">패스 ${q.editability.paths.toLocaleString()} · 앵커 ${q.editability.anchors.toLocaleString()} · ${q.editability.kb}KB</span>
+      </div>
+    </div>
+    <div class="stage3">
+      <div class="pane"><h4>1. VRINGON 도면</h4><div class="frame"><img src="${s.files.schematic}" alt="도면"></div></div>
+      <div class="pane"><h4>2. V3.2 (비교)</h4><div class="frame" id="v4prev">${s.v3 ? "불러오는 중…" : "<span style='color:var(--dim);font-size:13px'>없음</span>"}</div></div>
+      <div class="pane"><h4>3. V4 <span style="font-weight:400;color:var(--dim)">— 아래에서 모드 전환</span></h4><div class="frame" id="v4svg">불러오는 중…</div></div>
+    </div>
+    <div class="layers">
+      <div class="layerbar">
+        <b style="font-size:13.5px">export 모드</b>
+        <button class="btn pri" data-mode="fidelity">fidelity</button>
+        <button class="btn" data-mode="editable">editable</button>
+        <button class="btn" data-mode="production">production</button>
+        <span id="v4modeinfo" style="color:var(--dim);font-size:12.5px"></span>
+      </div>
+    </div>
+    <div class="layers">
+      <b style="font-size:13.5px">표현 라우팅 — 한 성분에 하나씩</b>
+      <div style="overflow-x:auto;margin-top:8px"><table>
+        <tr><th>표현</th><th class="num">개수</th><th class="num">비중</th></tr>${routeRows}
+      </table></div>
+      <div style="margin-top:10px;color:var(--dim);font-size:12.5px">
+        프리미티브 ${q.editability.primitives}개 (앵커 ${q.editability.anchorsSavedByPrimitives.toLocaleString()} 절감) ·
+        패턴으로 패스 ${q.editability.pathsSavedByPatterns.toLocaleString()} 절감 ·
+        editable 절감 패스 ${(q.editability.editableReduction.paths * 100).toFixed(0)}% · 앵커 ${(q.editability.editableReduction.anchors * 100).toFixed(0)}%
+      </div>
+    </div>
+    <div class="layers">
+      <b style="font-size:13.5px">3-gate</b>
+      <div style="margin-top:8px;font-size:13px;line-height:1.9">
+        <b>충실도</b> — F@0 ${q.fidelity.f0} · F@1 ${q.fidelity.f1} · F@2 ${q.fidelity.f2}
+        ${q.fidelity.textureShare > 0.01 ? ` · 해프톤 ${(q.fidelity.textureShare * 100).toFixed(0)}% 제외 시 F@2 ${q.fidelity.lineF2}` : ""}<br>
+        선 굵기 ${q.fidelity.inkRatio}× · 거리 평균 ${q.fidelity.chamfer}px · p95 ${q.fidelity.p95}px ·
+        구멍 ${q.fidelity.holes[0]} → ${q.fidelity.holes[1]} · 큰 성분 ${q.fidelity.majorComponents[0]} → ${q.fidelity.majorComponents[1]}<br>
+        <b>편집성</b> — 앵커 밀도 ${q.editability.anchorDensity}/100px · 짧은 패스 ${(q.editability.shortPathRatio * 100).toFixed(0)}% · use ${q.editability.uses}<br>
+        <b>의미</b> — 파트 배분 평균 precision ${q.semantic.meanPrecision} · 공유 경계 ${q.semantic.sharedBoundaries}개 ·
+        종횡비 불일치 ${q.semantic.aspectRatio}
+      </div>
+      <div style="margin-top:8px">${[...q.fidelity.notes, ...q.editability.notes, ...q.semantic.notes].map(n => `<div style="font-size:12.5px;margin-bottom:4px">· ${n}</div>`).join("")}</div>
+    </div>
+    <div class="dl">
+      <b style="font-size:13.5px">다운로드</b>
+      <a class="btn pri" href="${s.files.fidelity}" download="${s.name}-fidelity.svg">fidelity.svg</a>
+      <a class="btn" href="${s.files.editable}" download="${s.name}-editable.svg">editable.svg</a>
+      <a class="btn" href="${s.files.production}" download="${s.name}-production.svg">production.svg</a>
+      <a class="btn" href="${s.files.routes}" download>routes.json</a>
+      <a class="btn" href="${s.files.qa}" download>qa_v4.json</a>
+    </div>`;
+
+  const inline = async (id, url) => {
+    const h = document.getElementById(id);
+    if (!h || !url) return;
+    try {
+      h.innerHTML = await (await fetch(url)).text();
+      const el = h.querySelector("svg");
+      if (el) { el.removeAttribute("width"); el.removeAttribute("height"); el.style.width = "100%"; el.style.height = "100%"; }
+    } catch { h.textContent = "불러오지 못했습니다"; }
+  };
+  await inline("v4svg", s.files.fidelity);
+  if (s.v3) await inline("v4prev", s.v3.svg);
+  const info = document.getElementById("v4modeinfo");
+  if (info) info.textContent = `지금: fidelity — 패스 ${s.qa.editability.paths.toLocaleString()}`;
+  host.querySelectorAll("[data-mode]").forEach(b => b.onclick = async () => {
+    host.querySelectorAll("[data-mode]").forEach(x => x.classList.remove("pri"));
+    b.classList.add("pri");
+    await inline("v4svg", s.files[b.dataset.mode]);
+    if (info) {
+      const r = await fetch(s.files[b.dataset.mode]).then(x => x.text());
+      const paths = (r.match(/<path/g) || []).length, uses = (r.match(/<use/g) || []).length;
+      info.textContent = `지금: ${b.dataset.mode} — 패스 ${paths.toLocaleString()}${uses ? ` · use ${uses}` : ""} · ${(r.length / 1024).toFixed(0)}KB`;
+    }
+  });
 }
 
 // ── V3 (VRINGON 도면 기반 라인 벡터) ────────────────────────

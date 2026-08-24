@@ -1,0 +1,331 @@
+{
+  "job": {
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS",
+    "canvas": {
+      "width": 2800,
+      "height": 2118,
+      "sourceWidth": 1400,
+      "sourceHeight": 1059,
+      "supersample": 2
+    },
+    "totalMs": 31991,
+    "createdAt": "2026-08-24T03:29:44.454Z"
+  },
+  "options": {
+    "minParts": 3,
+    "maxParts": 10,
+    "grayscale": true,
+    "workLong": 1400,
+    "vectorLong": 2200,
+    "inkThreshold": 170,
+    "localContrast": 22,
+    "textureMode": "auto",
+    "categoryHint": "shoe",
+    "schematicFrom": "outputs/v3/v3_shoe_3_v31/schematics/schematic_6c3d8cb982723136.png",
+    "upscale": false
+  },
+  "plan": {
+    "category": "shoe",
+    "objectNoun": "folded athletic shoe",
+    "view": "oblique lateral view with the flexible outsole folded toward the camera",
+    "parts": [
+      {
+        "id": "tongue",
+        "label": "Tongue",
+        "description": "Dark textile tongue inside the shoe beneath the closure system.",
+        "bbox": [
+          0.42,
+          0.31,
+          0.82,
+          0.79
+        ],
+        "z": 0,
+        "occludedBy": [
+          "mesh_upper",
+          "eyestay_overlay",
+          "lace_loops",
+          "laces",
+          "outsole"
+        ],
+        "kind": "component",
+        "confidence": 0.73
+      },
+      {
+        "id": "mesh_upper",
+        "label": "Mesh upper",
+        "description": "Gray woven vamp and quarter forming the main body of the shoe.",
+        "bbox": [
+          0.35,
+          0.19,
+          0.98,
+          0.99
+        ],
+        "z": 1,
+        "occludedBy": [
+          "padded_collar",
+          "eyestay_overlay",
+          "lace_loops",
+          "laces",
+          "outsole"
+        ],
+        "kind": "component",
+        "confidence": 0.94
+      },
+      {
+        "id": "padded_collar",
+        "label": "Padded collar",
+        "description": "Thick gray textile rim surrounding the heel opening.",
+        "bbox": [
+          0.61,
+          0.14,
+          0.995,
+          0.59
+        ],
+        "z": 2,
+        "occludedBy": [
+          "laces",
+          "outsole"
+        ],
+        "kind": "component",
+        "confidence": 0.94
+      },
+      {
+        "id": "eyestay_overlay",
+        "label": "Eyestay overlay",
+        "description": "Gray synthetic reinforcement panel around the lace attachment area.",
+        "bbox": [
+          0.44,
+          0.41,
+          0.94,
+          0.91
+        ],
+        "z": 3,
+        "occludedBy": [
+          "lace_loops",
+          "laces",
+          "outsole"
+        ],
+        "kind": "component",
+        "confidence": 0.91
+      },
+      {
+        "id": "lace_loops",
+        "label": "Yellow lace loops",
+        "description": "Separate yellow webbing loops sewn to the upper for routing the lace.",
+        "bbox": [
+          0.43,
+          0.55,
+          0.67,
+          0.82
+        ],
+        "z": 4,
+        "occludedBy": [
+          "laces",
+          "outsole"
+        ],
+        "kind": "component",
+        "confidence": 0.9
+      },
+      {
+        "id": "laces",
+        "label": "Laces",
+        "description": "Dark gray webbing lace threaded across the upper and around the collar area.",
+        "bbox": [
+          0.42,
+          0.18,
+          0.98,
+          0.8
+        ],
+        "z": 5,
+        "occludedBy": [
+          "lace_stitching",
+          "outsole"
+        ],
+        "kind": "component",
+        "confidence": 0.93
+      },
+      {
+        "id": "outsole",
+        "label": "Flexible tread outsole",
+        "description": "Large purple molded rubber sole with raised tread, folded upward over the shoe; darker heel edge remains visible at right.",
+        "bbox": [
+          0.005,
+          0.01,
+          0.98,
+          0.94
+        ],
+        "z": 6,
+        "occludedBy": [],
+        "kind": "component",
+        "confidence": 0.98
+      },
+      {
+        "id": "lace_stitching",
+        "label": "Yellow lace stitching",
+        "description": "Yellow contrast stitching woven along the dark lace and webbing surfaces.",
+        "bbox": [
+          0.43,
+          0.18,
+          0.98,
+          0.78
+        ],
+        "z": 7,
+        "occludedBy": [
+          "outsole"
+        ],
+        "kind": "marking",
+        "confidence": 0.92
+      }
+    ],
+    "provenance": {
+      "model": "gpt-5.6",
+      "promptVersion": "v3.parts.v1.0.0",
+      "inputSha256": "91a70e033e2befed8fb2309a66f86095b63f9d6c25f2e3538cac51b26a828091",
+      "createdAt": "2026-08-22T04:39:42.646Z"
+    }
+  },
+  "counts": {
+    "GEOMETRIC_PRIMITIVE": 208,
+    "FACE_FILL": 497,
+    "OUTLINE_SHAPE": 34
+  },
+  "qa": {
+    "fidelity": {
+      "pass": true,
+      "f0": 0.9443,
+      "f1": 0.9671,
+      "f2": 0.9679,
+      "lineF1": 0.9987,
+      "lineF2": 0.9997,
+      "textureShare": 0.2525,
+      "inkRatio": 0.992,
+      "chamfer": 0.026,
+      "p95": 0,
+      "detailRecall": 1,
+      "holes": [
+        750,
+        750
+      ],
+      "majorComponents": [
+        1,
+        1
+      ],
+      "notes": [
+        "해프톤이 도면 잉크의 25% — 전체 F@2px 0.9679, 그 영역 뺀 선 충실도 0.9997"
+      ]
+    },
+    "editability": {
+      "pass": true,
+      "paths": 739,
+      "anchors": 32579,
+      "uses": 0,
+      "kb": 1346.8,
+      "anchorDensity": 9.06,
+      "shortPathRatio": 0.001,
+      "primitives": 208,
+      "anchorsSavedByPrimitives": 2649,
+      "pathsSavedByPatterns": 0,
+      "editableReduction": {
+        "paths": 0.005,
+        "anchors": 0.098,
+        "kb": 0.092
+      },
+      "notes": []
+    },
+    "semantic": {
+      "pass": true,
+      "perPart": [
+        {
+          "id": "tongue",
+          "paths": 19,
+          "precision": 0.9414,
+          "recall": 0.1072,
+          "iou": 0.1065
+        },
+        {
+          "id": "mesh_upper",
+          "paths": 0,
+          "precision": -1,
+          "recall": -1,
+          "iou": -1
+        },
+        {
+          "id": "padded_collar",
+          "paths": 0,
+          "precision": -1,
+          "recall": -1,
+          "iou": -1
+        },
+        {
+          "id": "eyestay_overlay",
+          "paths": 7,
+          "precision": 0.5293,
+          "recall": 0.5699,
+          "iou": 0.3782
+        },
+        {
+          "id": "lace_loops",
+          "paths": 56,
+          "precision": 0.7995,
+          "recall": 0.3469,
+          "iou": 0.3192
+        },
+        {
+          "id": "laces",
+          "paths": 0,
+          "precision": -1,
+          "recall": -1,
+          "iou": -1
+        },
+        {
+          "id": "outsole",
+          "paths": 337,
+          "precision": 0.8749,
+          "recall": 0.6417,
+          "iou": 0.5878
+        },
+        {
+          "id": "lace_stitching",
+          "paths": 320,
+          "precision": 0.4588,
+          "recall": 0.8543,
+          "iou": 0.4255
+        }
+      ],
+      "meanPrecision": 0.7208,
+      "misassigned": [
+        "lace_stitching"
+      ],
+      "emptyVisibleParts": [],
+      "sharedOnlyParts": [
+        "mesh_upper",
+        "padded_collar",
+        "laces"
+      ],
+      "sharedBoundaries": 32,
+      "aspectRatio": 1.006,
+      "lowConfidenceRoutes": 28,
+      "notes": [
+        "배분이 의심되는 레이어 1개: lace_stitching",
+        "공유 경계로만 그려진 파트 3개: mesh_upper, padded_collar, laces",
+        "라우터가 확신하지 못한 성분 28개"
+      ]
+    },
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
+  },
+  "timings": {
+    "S1_preprocess": 3562,
+    "S2_plan": 4,
+    "S3_masks": 11560,
+    "S4_schematic": 642,
+    "S5_evidence": 10159,
+    "S7_export": 151,
+    "S8_qa": 5711
+  },
+  "correspondence": {
+    "method": "global-similarity",
+    "aspectRatio": 1.006474820143885,
+    "confident": false,
+    "note": ""
+  }
+}
