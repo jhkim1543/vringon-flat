@@ -127,7 +127,7 @@ function findBreaks(refSk: Uint8Array, vecInk: Uint8Array, W: number, H: number,
   for (let i = 0; i < W * H; i++) if (refSk[i] && !covered[i]) missing[i] = 1;
   const { components } = labelComponents(missing, W, H, 8, 1);
 
-  let gaps = 0, gapLen = 0, longest = 0, tails = 0;
+  let gaps = 0, gapLen = 0, longest = 0, tails = 0, orphans = 0, orphanLen = 0;
   for (const c of components) {
     // 이 조각의 이웃 중 "덮인 기준 골격" 픽셀이 몇 방향에 있나
     const touch = new Set<number>();
@@ -152,8 +152,12 @@ function findBreaks(refSk: Uint8Array, vecInk: Uint8Array, W: number, H: number,
     }
     if (far) { gaps++; gapLen += c.area; longest = Math.max(longest, c.area); }
     else if (touch.size > 0) tails++;
+    // **덮인 이웃이 하나도 없다** = 끊긴 게 아니라 그 선이 통째로 없다.
+    // 이것을 따로 세지 않으면 "끊김 0곳"이 "다 그렸다"로 잘못 읽힌다 —
+    // bag_1 의 스티치 점선과 로고 글자가 정확히 이 경우다.
+    else { orphans++; orphanLen += c.area; }
   }
-  return { gaps, gapLen, longest, tails, missingComponents: components.length };
+  return { gaps, gapLen, longest, tails, orphans, orphanLen, missingComponents: components.length };
 }
 
 // ── 실행 ────────────────────────────────────────────────────
@@ -164,6 +168,7 @@ for (const name of names) {
   const dir = path.join("docs", "samples-v4", name);
   const aiPath = path.join(dir, "layered.ai");
   const pdf = await fs.readFile(aiPath, "latin1");
+  const rep = JSON.parse(await fs.readFile(path.join(dir, "qa_v4.json"), "utf8"));
 
   const ocg = parseOcg(pdf);
   const ct = auditContent(pdf);
@@ -206,6 +211,7 @@ for (const name of names) {
   console.log(`  그림     .ai(poppler) vs SVG  IoU ${iou.toFixed(4)} · .ai에만 ${aOnly} · SVG에만 ${bOnly}`);
   console.log(`  골격     끝점 도면 ${sRef.ends} → .ai ${sAi.ends} · 성분 도면 ${sRef.components} → .ai ${sAi.components}`);
   console.log(`  끊김     선 중간 끊김 ${br.gaps}곳 (합 ${br.gapLen}px · 최장 ${br.longest}px) · 짧게 끝난 꼬리 ${br.tails}곳`);
+  console.log(`  누락     통째로 없는 조각 ${br.orphans}곳 (합 ${br.orphanLen}px) · 도면 잉크 중 해프톤으로 분류돼 제외된 비율 ${(rep.qa?.fidelity?.textureShare ?? 0) * 100}%`);
   console.log();
 
   report.push({
@@ -225,6 +231,9 @@ for (const name of names) {
     refEnds: sRef.ends, aiEnds: sAi.ends,
     refComponents: sRef.components, aiComponents: sAi.components,
     gaps: br.gaps, gapLen: br.gapLen, longestGap: br.longest, tails: br.tails,
+    orphans: br.orphans, orphanLen: br.orphanLen,
+    textureShare: rep.qa?.fidelity?.textureShare ?? 0,
+    f2All: rep.qa?.fidelity?.f2 ?? null, f2Line: rep.qa?.fidelity?.lineF2 ?? null,
   });
 }
 

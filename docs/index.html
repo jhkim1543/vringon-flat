@@ -231,7 +231,8 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
   <h3>.ai 를 세 가지로 검증했습니다</h3>
   <div style="overflow-x:auto"><table id="v4ai">
     <tr><th>샘플</th><th class="num">레이어</th><th class="num">하위</th><th class="num">레이어 밖 패스</th>
-        <th class="num">.ai vs SVG IoU</th><th class="num">선 중간 끊김</th></tr>
+        <th class="num">.ai vs SVG IoU</th><th class="num">선 중간 끊김</th>
+        <th class="num">통째로 빠진 조각</th><th class="num">해프톤 제외비</th></tr>
   </table></div>
   <ul>
     <li><b>레이어</b> — .ai 를 되읽어 OCG 트리를 세웁니다. 9종 모두 중첩 깊이 2, BDC/EMC 짝이 맞고,
@@ -239,9 +240,10 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
     <li><b>그림</b> — Illustrator 가 아닌 <b>제3의 렌더러(poppler)</b>로 .ai 를 굽고 같은 장면의 SVG 와
       픽셀로 비교합니다. 우리 코드가 자기 자신을 채점하지 않게 하려는 것입니다. 평균 IoU 0.968,
       남은 차이는 두 렌더러의 안티에일리어싱 차이입니다(양방향으로 고르게 납니다).</li>
-    <li><b>끊김</b> — 도면 선의 골격 중 .ai 가 덮지 못한 구간을 찾습니다.
-      <b>제품 구조선에서는 끊김이 0곳</b>입니다. 검출되는 것은 전부 해프톤 점무늬와
-      보석 안쪽 광채 텍스처 — 톤 채움으로 <b>의도적으로 치환한</b> 영역입니다.</li>
+    <li><b>끊김과 누락</b> — 도면 선의 골격 중 .ai 가 덮지 못한 구간을 찾아,
+      양끝이 이어져 있는 <b>끊김</b>과 이웃이 아예 없는 <b>통째 누락</b>을 갈라 셉니다.
+      <b>제품 구조선에서 끊김은 0곳</b>입니다. 다만 누락은 0이 아니고, 해프톤으로 분류된
+      영역에서 나옵니다 — 아래 경고를 보십시오.</li>
   </ul>
   <div class="note" style="border-left-color:var(--warn)">
     <b>이 작업에서 실제 버그를 하나 잡았습니다.</b> 공유 경계 레이어는 맨 위에 그려지는데,
@@ -1017,7 +1019,9 @@ fetch("samples-v4/ai-verify.json").then(r => r.json()).then(v => {
       <td class="num">${s.sublayers}</td>
       <td class="num" style="color:${s.outsideLeaf ? "var(--warn)" : "var(--ok,#3a9)"}">${s.outsideLeaf}</td>
       <td class="num"><b>${s.iou.toFixed(3)}</b></td>
-      <td class="num" style="color:${s.gaps ? "var(--dim)" : "var(--ok,#3a9)"}">${s.gaps ? `${s.gaps}곳 · ${s.gapLen}px` : "0"}</td></tr>`);
+      <td class="num" style="color:${s.gaps ? "var(--dim)" : "var(--ok,#3a9)"}">${s.gaps ? `${s.gaps}곳 · ${s.gapLen}px` : "0"}</td>
+      <td class="num" style="color:${s.orphans > 100 ? "var(--warn)" : s.orphans ? "var(--dim)" : "var(--ok,#3a9)"}">${s.orphans ? `${s.orphans.toLocaleString()}곳 · ${s.orphanLen.toLocaleString()}px` : "0"}</td>
+      <td class="num" style="color:${s.textureShare > 0.2 ? "var(--warn)" : "var(--dim)"}">${(s.textureShare * 100).toFixed(0)}%</td></tr>`);
   }
   const mean = rows.reduce((a, s) => a + s.iou, 0) / rows.length;
   t.insertAdjacentHTML("beforeend", `<tr style="background:var(--panel-2)">
@@ -1026,10 +1030,17 @@ fetch("samples-v4/ai-verify.json").then(r => r.json()).then(v => {
     <td class="num">${rows.reduce((a, s) => a + s.sublayers, 0)}</td>
     <td class="num"><b>0</b></td>
     <td class="num"><b>${mean.toFixed(3)}</b></td>
-    <td class="num"></td></tr>`);
-  t.insertAdjacentHTML("beforeend", `<tr><td colspan="6" style="color:var(--dim);font-size:12.5px;line-height:1.7">
-    끊김으로 잡힌 곳은 전부 해프톤 점무늬와 보석 안쪽 광채 텍스처입니다 — 톤 채움으로 의도적으로 치환한 영역이고,
-    <b>제품 구조선(외곽·솔·끈·시임·로고)에서는 0곳</b>입니다. jewelry_3 의 673px 이 그 예입니다.
+    <td class="num"></td><td class="num"></td><td class="num"></td></tr>`);
+  t.insertAdjacentHTML("beforeend", `<tr><td colspan="8" style="color:var(--dim);font-size:12.5px;line-height:1.75">
+    <b>선 중간 끊김</b>은 이어져야 할 선이 갈라진 것이고, <b>통째로 빠진 조각</b>은 그 선이 아예 없는 것입니다.
+    둘을 갈라 세지 않으면 “끊김 0곳”이 “다 그렸다”로 잘못 읽힙니다.<br>
+    끊김으로 잡힌 곳은 전부 보석 안쪽 광채이고(jewelry_3 의 673px), <b>제품 구조선은 끊기지 않았습니다</b> —
+    도면 위에 겹쳐 9종 모두 눈으로 확인했습니다.<br>
+    <span style="color:var(--warn)"><b>빠진 조각은 해프톤 제외비와 정확히 함께 움직입니다.</b></span>
+    해프톤으로 분류된 영역은 톤으로 치환되는데, bag_1 은 도면 잉크의 62%가 그렇게 분류되면서
+    <b>스트랩 스티치 점선과 ORBITEC 로고 글자까지 함께 빠졌습니다.</b> 그 영역을 뺀 “선 F@2px 0.998”은
+    그래서 이 4종에서는 전체를 대표하지 않습니다 — 전체 잉크 기준은 bag_1 0.895 · shoe_1 0.895 ·
+    shoe_2 0.908 · shoe_3 0.968 입니다.
     </td></tr>`);
 }).catch(() => {});
 

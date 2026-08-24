@@ -67,7 +67,12 @@
    "gaps": 0,
    "gapLen": 0,
    "longestGap": 0,
-   "tails": 17
+   "tails": 17,
+   "orphans": 858,
+   "orphanLen": 3414,
+   "textureShare": 0.596,
+   "f2All": 0.8946,
+   "f2Line": 0.9992
   },
   {
    "name": "shoe_2",
@@ -133,7 +138,12 @@
    "gaps": 3,
    "gapLen": 11,
    "longestGap": 7,
-   "tails": 42
+   "tails": 42,
+   "orphans": 1143,
+   "orphanLen": 2910,
+   "textureShare": 0.4392,
+   "f2All": 0.9081,
+   "f2Line": 0.9989
   },
   {
    "name": "shoe_3",
@@ -193,7 +203,12 @@
    "gaps": 0,
    "gapLen": 0,
    "longestGap": 0,
-   "tails": 8
+   "tails": 8,
+   "orphans": 772,
+   "orphanLen": 1652,
+   "textureShare": 0.2525,
+   "f2All": 0.9679,
+   "f2Line": 0.9997
   },
   {
    "name": "bag_1",
@@ -254,7 +269,12 @@
    "gaps": 0,
    "gapLen": 0,
    "longestGap": 0,
-   "tails": 11
+   "tails": 11,
+   "orphans": 1297,
+   "orphanLen": 3668,
+   "textureShare": 0.6183,
+   "f2All": 0.8953,
+   "f2Line": 0.9981
   },
   {
    "name": "bag_2",
@@ -317,7 +337,12 @@
    "gaps": 0,
    "gapLen": 0,
    "longestGap": 0,
-   "tails": 28
+   "tails": 28,
+   "orphans": 17,
+   "orphanLen": 33,
+   "textureShare": 0,
+   "f2All": 0.9368,
+   "f2Line": 0.9368
   },
   {
    "name": "bag_3",
@@ -365,7 +390,12 @@
    "gaps": 0,
    "gapLen": 0,
    "longestGap": 0,
-   "tails": 0
+   "tails": 0,
+   "orphans": 0,
+   "orphanLen": 0,
+   "textureShare": 0,
+   "f2All": 1,
+   "f2Line": 1
   },
   {
    "name": "jewelry_1",
@@ -411,7 +441,12 @@
    "gaps": 0,
    "gapLen": 0,
    "longestGap": 0,
-   "tails": 0
+   "tails": 0,
+   "orphans": 0,
+   "orphanLen": 0,
+   "textureShare": 0,
+   "f2All": 0.9933,
+   "f2Line": 0.9933
   },
   {
    "name": "jewelry_2",
@@ -468,7 +503,12 @@
    "gaps": 4,
    "gapLen": 29,
    "longestGap": 14,
-   "tails": 3
+   "tails": 3,
+   "orphans": 0,
+   "orphanLen": 0,
+   "textureShare": 0,
+   "f2All": 0.9925,
+   "f2Line": 0.9925
   },
   {
    "name": "jewelry_3",
@@ -537,7 +577,12 @@
    "gaps": 13,
    "gapLen": 673,
    "longestGap": 183,
-   "tails": 8
+   "tails": 8,
+   "orphans": 3,
+   "orphanLen": 12,
+   "textureShare": 0.0102,
+   "f2All": 0.8615,
+   "f2Line": 0.865
   }
  ]
 }
