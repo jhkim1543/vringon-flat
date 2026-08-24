@@ -206,7 +206,20 @@ npx tsx server/run-v3.ts <이미지> <이름> --category shoe   # V3 (도면 →
 
 ---
 
-## V3 — VRINGON 플랫스케치 → 라인 기준 벡터화
+## V3.2 — VRINGON 플랫스케치 → 라인 기준 벡터화
+
+**현재 버전은 V3.2 입니다. V4 는 아직 없습니다.** 외부 감사와 V4 기획서를 받아 검증을 통과한
+항목만 V3 안에 반영했습니다 — 통과하지 못한 항목은 적용하지 않았고 그 근거를 아래에 남겼습니다.
+
+| 버전 | 무엇 |
+|---|---|
+| V3.0 | 도면 기반 라인 기준 벡터화 |
+| V3.1 | 외부 감사 반영 — 좌표계·해상도·전처리·QA 재작성 (평균 F@2px 0.620 → 0.940) |
+| V3.2 | V4 기획 검증 반영 — 선 굵기 상한 · 파트별 실측 QA · 공유 경계 (패스 −29% · 노드 −33%) |
+
+V4 기획의 나머지(topology 엔진 · differentiable refinement · dense correspondence)는
+SLD / Deep Sketch Vectorization / Bézier Splatting / DINOv3 를 Python 워커로 띄우고 모델
+가중치와 GPU 를 붙여야 해서 아직 착수하지 않았습니다.
 
 사진을 먼저 **VRINGON schematic 워커**로 도면화하고, 그 **라인을 기준으로** 벡터를 만드는
 세 번째 파이프라인입니다. `server/v3/`.

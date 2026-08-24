@@ -135,7 +135,7 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
     </div>
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-tab="gallery">결과 갤러리</button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="v3">V3 · VRINGON 도면</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="v3">V3.2 · VRINGON 도면</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="v2">V2 · 레이어 SVG</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="run">직접 실행</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="api">API 문서</button>
@@ -159,7 +159,24 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
 
 <!-- ─────────── V3 VRINGON 도면 기반 라인 벡터 ─────────── -->
 <section id="v3" hidden>
-  <h2>V3 — VRINGON 플랫스케치 → 라인 기준 벡터화</h2>
+  <h2>V3.2 — VRINGON 플랫스케치 → 라인 기준 벡터화
+    <span style="font-size:14px;font-weight:400;color:var(--dim)">· 2026-08-24 기준</span></h2>
+
+  <div class="note" style="border-left-color:var(--accent)">
+    <b>현재 배포본은 V3.2 입니다. V4 는 아직 없습니다.</b>
+    외부 감사와 V4 기획서를 받아 <b>검증을 통과한 항목만</b> V3 안에 반영했습니다.
+    통과하지 못한 항목은 적용하지 않았고, 그 근거도 아래에 남겼습니다.
+    <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+      <span class="badge">V3.0 도면 기반 라인 벡터화</span>
+      <span class="badge">V3.1 외부 감사 반영 — 좌표계·해상도·전처리·QA 재작성</span>
+      <span class="badge ok">V3.2 V4 기획 검증 반영 — 선 굵기 상한 · 파트별 QA · 공유 경계</span>
+    </div>
+    <div style="margin-top:10px;color:var(--dim);font-size:12.5px">
+      V4 기획의 나머지(topology 엔진 · differentiable refinement · dense correspondence)는
+      SLD / Deep Sketch Vectorization / Bézier Splatting / DINOv3 를 Python 워커로 띄우고
+      모델 가중치와 GPU 를 붙여야 해서 아직 착수하지 않았습니다.
+    </div>
+  </div>
   <p class="sub">
     사진을 먼저 <b>VRINGON schematic 워커</b>로 도면화하고, 그 <b>라인만 기준으로</b> 벡터를 만듭니다.
     도면은 흰 배경에 선이 명확하므로 색 클러스터링이 필요 없고, 면과 선이 <b>같은 이진 마스크</b>에서
@@ -239,7 +256,8 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
     구조적으로 겹칠 수가 없습니다. 진짜 원인은 굵기 상한 하나였습니다.
   </p>
 
-  <h4>9종 실측 (기준 = 사용자가 보는 도면)</h4>
+  <h4>9종 실측 — 현재 배포본(V3.2) 기준</h4>
+  <p class="sub" style="margin-bottom:8px">아래 카드·SVG·수치가 모두 이 표와 같은 실행 결과입니다.</p>
   <div style="overflow-x:auto"><table id="v3fix">
     <tr><th>샘플</th><th class="num">이전 F@2px</th><th class="num">현재 F@2px</th>
         <th class="num">선 F@2px</th><th class="num">작은 디테일</th><th class="num">패스</th><th>판정</th></tr>
