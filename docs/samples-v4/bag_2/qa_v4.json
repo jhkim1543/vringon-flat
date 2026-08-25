@@ -8,8 +8,8 @@
       "sourceHeight": 1024,
       "supersample": 2
     },
-    "totalMs": 27171,
-    "createdAt": "2026-08-25T06:05:54.795Z"
+    "totalMs": 31568,
+    "createdAt": "2026-08-25T06:39:03.749Z"
   },
   "options": {
     "minParts": 3,
@@ -131,27 +131,28 @@
   "qa": {
     "fidelity": {
       "pass": false,
-      "f0": 0.7341,
-      "f1": 0.9051,
-      "f2": 0.9415,
-      "lineF1": 0.9051,
-      "lineF2": 0.9415,
+      "f0": 0.7244,
+      "f1": 0.8972,
+      "f2": 0.9392,
+      "lineF1": 0.8972,
+      "lineF2": 0.9392,
       "textureShare": 0,
-      "inkRatio": 1.628,
-      "chamfer": 0.601,
+      "inkRatio": 1.607,
+      "chamfer": 0.622,
       "p95": 3,
-      "detailRecall": 0.9793,
+      "detailRecall": 0.978,
       "holes": [
         182,
-        158
+        139
       ],
       "majorComponents": [
         1,
         1
       ],
       "notes": [
-        "선 일치 F@2px 0.9415 < 0.95",
-        "선 굵기 1.628× (1.0 이 원본)"
+        "선 일치 F@2px 0.9392 < 0.95",
+        "선 굵기 1.607× (1.0 이 원본)",
+        "구멍 수 182 → 139 (15% 이상 차이)"
       ]
     },
     "editability": {
@@ -161,21 +162,21 @@
       "maxSubpathsInPath": 108,
       "maxSplittableSubpaths": 108,
       "objectComplexity": 4161,
-      "anchors": 7013,
+      "anchors": 4255,
       "uses": 2602,
-      "kb": 713.6,
-      "anchorDensity": 10.18,
-      "shortPathRatio": 0.464,
+      "kb": 615,
+      "anchorDensity": 6.26,
+      "shortPathRatio": 0.481,
       "primitives": 522,
       "anchorsSavedByPrimitives": 4106,
       "pathsSavedByPatterns": 2585,
       "editableReduction": {
-        "paths": 0.067,
-        "anchors": 0.195,
-        "kb": 0.062
+        "paths": 0.119,
+        "anchors": 0.191,
+        "kb": 0.045
       },
       "notes": [
-        "짧은 서브패스 46% — 파편화 의심"
+        "짧은 서브패스 48% — 파편화 의심"
       ]
     },
     "semantic": {
@@ -187,10 +188,10 @@
           "kind": "thin",
           "paths": 2,
           "areaShare": 0.0007,
-          "precision": 0.0226,
-          "recall": 0.5465,
-          "iou": 0.0222,
-          "boundaryF1": 0.0387
+          "precision": 0.0219,
+          "recall": 0.5315,
+          "iou": 0.0215,
+          "boundaryF1": 0.0375
         },
         {
           "id": "bag_body",
@@ -198,9 +199,9 @@
           "kind": "area",
           "paths": 605,
           "areaShare": 0.2897,
-          "precision": 0.9897,
-          "recall": 0.994,
-          "iou": 0.9837,
+          "precision": 0.9889,
+          "recall": 0.9942,
+          "iou": 0.9832,
           "boundaryF1": -1
         },
         {
@@ -209,10 +210,10 @@
           "kind": "thin",
           "paths": 65,
           "areaShare": 0.0297,
-          "precision": 0.8914,
-          "recall": 0.3994,
-          "iou": 0.3809,
-          "boundaryF1": 0.9364
+          "precision": 0.8907,
+          "recall": 0.3977,
+          "iou": 0.3792,
+          "boundaryF1": 0.936
         },
         {
           "id": "closure_clasp",
@@ -221,8 +222,8 @@
           "paths": 2,
           "areaShare": 0.0003,
           "precision": 1,
-          "recall": 0.2781,
-          "iou": 0.2781,
+          "recall": 0.2801,
+          "iou": 0.2801,
           "boundaryF1": 1
         },
         {
@@ -231,14 +232,14 @@
           "kind": "area",
           "paths": 13,
           "areaShare": 0.0093,
-          "precision": 1,
-          "recall": 0.9395,
-          "iou": 0.9395,
+          "precision": 0.9988,
+          "recall": 0.9436,
+          "iou": 0.9425,
           "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.7807,
-      "weightedMeanIou": 0.9255,
+      "meanPrecision": 0.7801,
+      "weightedMeanIou": 0.925,
       "failingMajorParts": [],
       "maskFit": 0.7917,
       "misassigned": [],
@@ -256,13 +257,13 @@
     "state": "FIDELITY_REVIEW / EDITABILITY_REVIEW / SEMANTIC_PASS"
   },
   "timings": {
-    "S1_preprocess": 7479,
-    "S2_plan": 7,
-    "S3_masks": 4965,
-    "S4_schematic": 1679,
-    "S5_evidence": 7794,
-    "S7_export": 84,
-    "S8_qa": 4790
+    "S1_preprocess": 6238,
+    "S2_plan": 9,
+    "S3_masks": 5166,
+    "S4_schematic": 1768,
+    "S5_evidence": 9392,
+    "S7_export": 67,
+    "S8_qa": 8554
   },
   "rescued": {
     "stitch": [

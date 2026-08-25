@@ -19,6 +19,21 @@ import { bestFit, type FitResult } from "./primitives.js";
 import { findPatterns, findDashRuns } from "./pattern.js";
 import { buildOwnerMap, splitByOwner, neighborsOf, fillTinyHoles } from "./inkOwner.js";
 import { splitCompound } from "./compound.js";
+import { refitPath } from "./refit.js";
+
+/**
+ * 재피팅 허용오차(작업 캔버스 px). 0 이면 끈다.
+ * VTracer 는 곡선 조각을 잘게 내보내 직선 한 줄에도 앵커가 수십 개 붙는다 —
+ * 점들에 새 곡선을 맞춰 다시 만든다.
+ *
+ * 2.4 는 실측으로 정했다 (jewelry_2, 도면 기준 QA):
+ *   끄면      앵커 3,056 · F@0 0.9290 · 선F@2 0.9938
+ *   1.6       앵커 2,517 (−18%) · F@0 0.9262 · 선F@2 0.9938 (불변)
+ *   **2.4**   앵커 2,035 (−33%) · F@0 0.9170 · 선F@2 0.9924
+ *   3.2       앵커 1,461 (−52%) · F@0 0.9062 · 선F@2 0.9906
+ * 선F@2(게이트 기준)는 2.4 까지 사실상 그대로다.
+ */
+const REFIT_ERR = Number(process.env.V4_REFIT ?? 2.4);
 
 /**
  * 단순화 허용오차의 상한(작업 캔버스 px). 원본 좌표 기준으로 환산한 값이 이보다 커지지
@@ -129,7 +144,8 @@ async function traceMask(
       dd = d.replace(NUMBER, (num) => String(Math.round((parseFloat(num) + (k++ % 2 === 0 ? tx : ty)) * 100) / 100));
     }
     const opt = optimizePathData(dd, { minArea: 4, epsilon: simplifyPx });
-    if (opt.d && new RegExp("[LCQS]").test(opt.d)) out.push(opt.d);
+    if (!opt.d || !new RegExp("[LCQS]").test(opt.d)) continue;
+    out.push(REFIT_ERR > 0 ? refitPath(opt.d, REFIT_ERR).d : opt.d);
   }
   return out;
 }

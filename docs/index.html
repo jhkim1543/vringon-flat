@@ -135,7 +135,7 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
     </div>
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-tab="gallery">결과 갤러리</button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="v4">V4.6 · Semantic Topology</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="v4">V4.7 · Semantic Topology</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="v3">V3.2 · VRINGON 도면</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="v2">V2 · 레이어 SVG</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="run">직접 실행</button>
@@ -160,8 +160,8 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
 
 <!-- ─────────── V4 Semantic Topology ─────────── -->
 <section id="v4" hidden>
-  <h2>V4.6 — Semantic Topology Vectorizer
-    <span style="font-size:14px;font-weight:400;color:var(--dim)">· 2026-08-25 · 앵커 −22% · 편집성 8/9</span></h2>
+  <h2>V4.7 — Semantic Topology Vectorizer
+    <span style="font-size:14px;font-weight:400;color:var(--dim)">· 2026-08-25 · 앵커 −56% 누적 · 밀도 3.73</span></h2>
   <p class="sub">
     V3까지는 잉크 전체를 한 방식으로 훑고 SVG 하나를 만들었습니다. V4는 <b>성분마다 표현을 먼저
     정하고</b>, 같은 장면(<code>VectorScene</code>)에서 목적별로 다른 SVG를 굽습니다.
@@ -209,6 +209,33 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
     패스가 크게 줄면서 <b>정확 일치(F@0px)는 오히려 올랐습니다</b>. 앵커 총량은 거의 같습니다 —
     줄어든 것은 <b>객체 수</b>이지 형상 정보가 아니라는 뜻입니다.
   </p>
+
+  <h3>V4.7 — 직선 한 줄에 앵커 서른 개가 붙던 것</h3>
+  <div class="note" style="border-left-color:var(--warn)">
+    <b>병합이 직선 세그먼트만 합치고 있었습니다.</b> <code>mergeSegments</code> 는 연속한
+    <b>L(직선)</b> 이 공선일 때만 합치는데, VTracer 는 Spline 모드라 거의 전부 <b>C(곡선)</b> 을
+    냅니다(jewelry_2 의 한 패스가 C 69개 · L 0개). 그래서 허용오차를 두 배로 올려도 앵커가
+    <b>한 개도</b> 안 줄었습니다.
+  </div>
+  <p class="sub">
+    <code>refit.ts</code> 가 각 서브패스를 폴리라인으로 편 뒤 <b>Schneider 최소자승 큐빅 피팅</b>으로
+    다시 만듭니다. 조각을 잇는 것이 아니라 <b>점들에 새 곡선을 맞추는 것</b>이라 곡률이 달라도
+    합쳐집니다. 코너는 진행 방향 각도로 잘라 보존하고, 서브패스마다 이탈을 재서 넘으면 그 조각만
+    원본을 씁니다.
+  </p>
+  <div style="overflow-x:auto"><table>
+    <tr><th>재피팅 허용오차</th><th class="num">앵커</th><th class="num">F@0</th><th class="num">선 F@2 (게이트)</th></tr>
+    <tr><td>끔</td><td class="num">3,056</td><td class="num">0.9290</td><td class="num">0.9938</td></tr>
+    <tr><td>1.6</td><td class="num">2,517 (−18%)</td><td class="num">0.9262</td><td class="num">0.9938</td></tr>
+    <tr style="background:var(--panel-2)"><td><b>2.4 (채택)</b></td><td class="num"><b>2,035 (−33%)</b></td><td class="num">0.9170</td><td class="num"><b>0.9924</b></td></tr>
+    <tr><td>3.2</td><td class="num">1,461 (−52%)</td><td class="num">0.9062</td><td class="num">0.9906</td></tr>
+  </table></div>
+  <div class="note">
+    9종 누적 — 앵커 <b>103,789 → 45,585 (−56%)</b> · 밀도 8.47 → <b>3.73/100px</b> ·
+    3-gate <b>충실도 8/9 · 편집성 8/9 · 의미 7/9</b>.
+    밀도 3.73 은 <b>V2 컬러 플랫(7.62)의 절반</b>입니다. 값은 치렀습니다 — F@0 평균이
+    0.862 → 0.847 로 0.015 내렸고, 게이트 기준인 선 F@2 는 0.973 → 0.971 로 사실상 그대로입니다.
+  </div>
 
   <h3>V4.6 — 앵커를 22% 줄였습니다</h3>
   <div class="note">

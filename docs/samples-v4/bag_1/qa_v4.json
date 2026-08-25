@@ -8,8 +8,8 @@
       "sourceHeight": 1024,
       "supersample": 2
     },
-    "totalMs": 24172,
-    "createdAt": "2026-08-25T06:05:23.933Z"
+    "totalMs": 25316,
+    "createdAt": "2026-08-25T06:38:27.996Z"
   },
   "options": {
     "minParts": 3,
@@ -191,47 +191,47 @@
   "qa": {
     "fidelity": {
       "pass": true,
-      "f0": 0.8536,
-      "f1": 0.9091,
-      "f2": 0.9143,
-      "lineF1": 0.9914,
-      "lineF2": 0.9966,
+      "f0": 0.8435,
+      "f1": 0.9035,
+      "f2": 0.914,
+      "lineF1": 0.9862,
+      "lineF2": 0.9961,
       "textureShare": 0.5882,
-      "inkRatio": 1.102,
-      "chamfer": 0.085,
+      "inkRatio": 1.096,
+      "chamfer": 0.097,
       "p95": 1,
       "detailRecall": 1,
       "holes": [
         53,
-        56
+        55
       ],
       "majorComponents": [
         2,
         3
       ],
       "notes": [
-        "해프톤이 도면 잉크의 59% — 전체 F@2px 0.9143, 그 영역 뺀 선 충실도 0.9966"
+        "해프톤이 도면 잉크의 59% — 전체 F@2px 0.914, 그 영역 뺀 선 충실도 0.9961"
       ]
     },
     "editability": {
       "pass": true,
       "paths": 111,
-      "subpaths": 163,
-      "maxSubpathsInPath": 12,
-      "maxSplittableSubpaths": 12,
-      "objectComplexity": 306,
-      "anchors": 5052,
+      "subpaths": 174,
+      "maxSubpathsInPath": 14,
+      "maxSplittableSubpaths": 14,
+      "objectComplexity": 317,
+      "anchors": 3055,
       "uses": 32,
-      "kb": 191.7,
-      "anchorDensity": 5.77,
-      "shortPathRatio": 0.012,
+      "kb": 123.4,
+      "anchorDensity": 3.49,
+      "shortPathRatio": 0.017,
       "primitives": 5,
       "anchorsSavedByPrimitives": 67,
       "pathsSavedByPatterns": 31,
       "editableReduction": {
         "paths": 0.081,
-        "anchors": 0.055,
-        "kb": 0.049
+        "anchors": 0.038,
+        "kb": 0.03
       },
       "notes": []
     },
@@ -244,10 +244,10 @@
           "kind": "thin",
           "paths": 14,
           "areaShare": 0.0052,
-          "precision": 0.6441,
-          "recall": 0.5752,
-          "iou": 0.4365,
-          "boundaryF1": 0.7835
+          "precision": 0.6326,
+          "recall": 0.5718,
+          "iou": 0.4292,
+          "boundaryF1": 0.7749
         },
         {
           "id": "main_compartment_shell",
@@ -255,10 +255,10 @@
           "kind": "thin",
           "paths": 3,
           "areaShare": 0.0008,
-          "precision": 0.9956,
-          "recall": 0.2451,
-          "iou": 0.2449,
-          "boundaryF1": 0.9853
+          "precision": 0.9921,
+          "recall": 0.2552,
+          "iou": 0.2547,
+          "boundaryF1": 0.9835
         },
         {
           "id": "left_side_gusset",
@@ -266,9 +266,9 @@
           "kind": "area",
           "paths": 13,
           "areaShare": 0.0929,
-          "precision": 0.9238,
-          "recall": 0.9825,
-          "iou": 0.9089,
+          "precision": 0.924,
+          "recall": 0.9827,
+          "iou": 0.9092,
           "boundaryF1": -1
         },
         {
@@ -277,9 +277,9 @@
           "kind": "area",
           "paths": 14,
           "areaShare": 0.0888,
-          "precision": 0.9719,
-          "recall": 0.9804,
-          "iou": 0.9533,
+          "precision": 0.9711,
+          "recall": 0.9803,
+          "iou": 0.9525,
           "boundaryF1": -1
         },
         {
@@ -288,9 +288,9 @@
           "kind": "area",
           "paths": 25,
           "areaShare": 0.2108,
-          "precision": 0.9741,
-          "recall": 0.9943,
-          "iou": 0.9687,
+          "precision": 0.9726,
+          "recall": 0.9939,
+          "iou": 0.9669,
           "boundaryF1": -1
         },
         {
@@ -299,9 +299,9 @@
           "kind": "area",
           "paths": 18,
           "areaShare": 0.0398,
-          "precision": 0.9891,
-          "recall": 0.9763,
-          "iou": 0.966,
+          "precision": 0.9881,
+          "recall": 0.9759,
+          "iou": 0.9646,
           "boundaryF1": -1
         },
         {
@@ -310,9 +310,9 @@
           "kind": "area",
           "paths": 19,
           "areaShare": 0.037,
-          "precision": 0.9858,
-          "recall": 0.9413,
-          "iou": 0.9287,
+          "precision": 0.985,
+          "recall": 0.9408,
+          "iou": 0.9275,
           "boundaryF1": -1
         },
         {
@@ -322,13 +322,13 @@
           "paths": 7,
           "areaShare": 0.0086,
           "precision": 1,
-          "recall": 0.5761,
-          "iou": 0.5761,
-          "boundaryF1": 0.986
+          "recall": 0.5826,
+          "iou": 0.5826,
+          "boundaryF1": 0.9862
         }
       ],
-      "meanPrecision": 0.9355,
-      "weightedMeanIou": 0.9372,
+      "meanPrecision": 0.9332,
+      "weightedMeanIou": 0.9362,
       "failingMajorParts": [],
       "maskFit": 0.8112,
       "misassigned": [],
@@ -346,13 +346,13 @@
     "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
   },
   "timings": {
-    "S1_preprocess": 7626,
+    "S1_preprocess": 5602,
     "S2_plan": 7,
-    "S3_masks": 2348,
-    "S4_schematic": 1726,
-    "S5_evidence": 7833,
-    "S7_export": 46,
-    "S8_qa": 4442
+    "S3_masks": 2610,
+    "S4_schematic": 1800,
+    "S5_evidence": 9400,
+    "S7_export": 30,
+    "S8_qa": 5699
   },
   "rescued": {
     "stitch": [

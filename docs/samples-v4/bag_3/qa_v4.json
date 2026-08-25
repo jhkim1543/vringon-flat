@@ -8,8 +8,8 @@
       "sourceHeight": 1400,
       "supersample": 2
     },
-    "totalMs": 24526,
-    "createdAt": "2026-08-25T06:06:23.118Z"
+    "totalMs": 26803,
+    "createdAt": "2026-08-25T06:39:34.094Z"
   },
   "options": {
     "minParts": 3,
@@ -110,24 +110,24 @@
     "REPEATING_PATTERN": 13,
     "GEOMETRIC_PRIMITIVE": 32,
     "FACE_FILL": 320,
-    "OUTLINE_SHAPE": 9
+    "OUTLINE_SHAPE": 11
   },
   "qa": {
     "fidelity": {
       "pass": true,
-      "f0": 0.9544,
-      "f1": 0.9988,
-      "f2": 1,
-      "lineF1": 0.9988,
-      "lineF2": 1,
+      "f0": 0.914,
+      "f1": 0.9836,
+      "f2": 0.9978,
+      "lineF1": 0.9836,
+      "lineF2": 0.9978,
       "textureShare": 0,
-      "inkRatio": 1.038,
-      "chamfer": 0.046,
-      "p95": 0,
+      "inkRatio": 1.025,
+      "chamfer": 0.099,
+      "p95": 1,
       "detailRecall": 1,
       "holes": [
         1075,
-        1057
+        1029
       ],
       "majorComponents": [
         1,
@@ -137,26 +137,26 @@
     },
     "editability": {
       "pass": true,
-      "paths": 374,
+      "paths": 376,
       "subpaths": 1425,
-      "maxSubpathsInPath": 773,
+      "maxSubpathsInPath": 771,
       "maxSplittableSubpaths": 31,
-      "objectComplexity": 2197,
-      "anchors": 13378,
+      "objectComplexity": 2199,
+      "anchors": 7373,
       "uses": 398,
-      "kb": 503.2,
-      "anchorDensity": 9.55,
-      "shortPathRatio": 0.006,
+      "kb": 305.2,
+      "anchorDensity": 5.35,
+      "shortPathRatio": 0.013,
       "primitives": 32,
       "anchorsSavedByPrimitives": 290,
       "pathsSavedByPatterns": 385,
       "editableReduction": {
         "paths": 0.003,
-        "anchors": 0.095,
-        "kb": 0.075
+        "anchors": 0.096,
+        "kb": 0.055
       },
       "notes": [
-        "한 패스에 서브패스 773개 — 바깥 윤곽 하나에 구멍이 뚫린 진짜 한 덩이라 쪼갤 수 없다(쪼개면 구멍이 메워진다). 컴파운드 패스가 옳은 표현이다."
+        "한 패스에 서브패스 771개 — 바깥 윤곽 하나에 구멍이 뚫린 진짜 한 덩이라 쪼갤 수 없다(쪼개면 구멍이 메워진다). 컴파운드 패스가 옳은 표현이다."
       ]
     },
     "semantic": {
@@ -168,20 +168,20 @@
           "kind": "thin",
           "paths": 48,
           "areaShare": 0.002,
-          "precision": 0.276,
-          "recall": 0.4911,
-          "iou": 0.2146,
-          "boundaryF1": 0.4326
+          "precision": 0.2739,
+          "recall": 0.4909,
+          "iou": 0.2133,
+          "boundaryF1": 0.43
         },
         {
           "id": "chain_strap",
           "label": "Chain shoulder strap",
           "kind": "area",
-          "paths": 17,
+          "paths": 18,
           "areaShare": 0.0359,
-          "precision": 0.9976,
-          "recall": 0.9086,
-          "iou": 0.9066,
+          "precision": 0.997,
+          "recall": 0.9175,
+          "iou": 0.915,
           "boundaryF1": -1
         },
         {
@@ -190,25 +190,25 @@
           "kind": "thin",
           "paths": 18,
           "areaShare": 0.0061,
-          "precision": 0.6359,
-          "recall": 0.5487,
-          "iou": 0.4176,
-          "boundaryF1": 0.7667
+          "precision": 0.6349,
+          "recall": 0.5532,
+          "iou": 0.4197,
+          "boundaryF1": 0.7671
         },
         {
           "id": "turquoise_stone_embellishments",
           "label": "Turquoise stone embellishments",
           "kind": "area",
-          "paths": 304,
+          "paths": 305,
           "areaShare": 0.1804,
-          "precision": 0.9475,
-          "recall": 0.911,
-          "iou": 0.8672,
+          "precision": 0.9465,
+          "recall": 0.9073,
+          "iou": 0.863,
           "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.7143,
-      "weightedMeanIou": 0.8555,
+      "meanPrecision": 0.7131,
+      "weightedMeanIou": 0.8535,
       "failingMajorParts": [],
       "maskFit": 0.8779,
       "misassigned": [
@@ -228,13 +228,13 @@
     "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
   },
   "timings": {
-    "S1_preprocess": 5950,
+    "S1_preprocess": 6326,
     "S2_plan": 8,
-    "S3_masks": 5722,
+    "S3_masks": 5821,
     "S4_schematic": 1513,
-    "S5_evidence": 6424,
-    "S7_export": 90,
-    "S8_qa": 4514
+    "S5_evidence": 7928,
+    "S7_export": 60,
+    "S8_qa": 4835
   },
   "rescued": {
     "stitch": [

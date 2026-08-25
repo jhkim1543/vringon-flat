@@ -3662,9 +3662,9 @@
  {
   "id": "oa7",
   "cls": "OUTLINE_SHAPE",
-  "partId": "metal_lattice_shell",
+  "partId": "chain_strap",
   "area": 0,
-  "why": "윤곽 — metal_lattice_shell 몫만 추적 (파트 경계에서 분할)",
+  "why": "윤곽 — chain_strap 몫만 추적 (파트 경계에서 분할)",
   "confidence": 0.85,
   "kind": null,
   "instances": null
@@ -3702,9 +3702,9 @@
  {
   "id": "oab",
   "cls": "OUTLINE_SHAPE",
-  "partId": "inner_pouch",
+  "partId": "metal_lattice_shell",
   "area": 0,
-  "why": "윤곽 — inner_pouch 몫만 추적 (파트 경계에서 분할)",
+  "why": "윤곽 — metal_lattice_shell 몫만 추적 (파트 경계에서 분할)",
   "confidence": 0.85,
   "kind": null,
   "instances": null
@@ -3731,6 +3731,26 @@
  },
  {
   "id": "oae",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "inner_pouch",
+  "area": 0,
+  "why": "윤곽 — inner_pouch 몫만 추적 (파트 경계에서 분할)",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "oaf",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "turquoise_stone_embellishments",
+  "area": 0,
+  "why": "윤곽 — turquoise_stone_embellishments 몫만 추적 (파트 경계에서 분할)",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "oag",
   "cls": "OUTLINE_SHAPE",
   "partId": "turquoise_stone_embellishments",
   "area": 0,

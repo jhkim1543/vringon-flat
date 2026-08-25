@@ -8,8 +8,8 @@
       "sourceHeight": 961,
       "supersample": 2
     },
-    "totalMs": 23302,
-    "createdAt": "2026-08-25T06:06:50.126Z"
+    "totalMs": 26584,
+    "createdAt": "2026-08-25T06:40:04.676Z"
   },
   "options": {
     "minParts": 3,
@@ -94,14 +94,14 @@
   "qa": {
     "fidelity": {
       "pass": true,
-      "f0": 0.9524,
-      "f1": 0.9899,
-      "f2": 0.9935,
-      "lineF1": 0.9899,
-      "lineF2": 0.9935,
+      "f0": 0.9505,
+      "f1": 0.9891,
+      "f2": 0.9932,
+      "lineF1": 0.9891,
+      "lineF2": 0.9932,
       "textureShare": 0,
-      "inkRatio": 1.087,
-      "chamfer": 0.099,
+      "inkRatio": 1.085,
+      "chamfer": 0.102,
       "p95": 0,
       "detailRecall": 1,
       "holes": [
@@ -121,18 +121,18 @@
       "maxSubpathsInPath": 9,
       "maxSplittableSubpaths": 9,
       "objectComplexity": 49,
-      "anchors": 2040,
+      "anchors": 1855,
       "uses": 0,
-      "kb": 82.3,
-      "anchorDensity": 3.86,
+      "kb": 75.1,
+      "anchorDensity": 3.51,
       "shortPathRatio": 0,
       "primitives": 1,
       "anchorsSavedByPrimitives": 10,
       "pathsSavedByPatterns": 0,
       "editableReduction": {
         "paths": 0,
-        "anchors": 0.019,
-        "kb": 0.016
+        "anchors": 0.013,
+        "kb": 0.011
       },
       "notes": []
     },
@@ -145,9 +145,9 @@
           "kind": "area",
           "paths": 14,
           "areaShare": 0.2044,
-          "precision": 0.9232,
-          "recall": 0.9859,
-          "iou": 0.9111,
+          "precision": 0.9233,
+          "recall": 0.986,
+          "iou": 0.9113,
           "boundaryF1": -1
         },
         {
@@ -157,8 +157,8 @@
           "paths": 5,
           "areaShare": 0.0147,
           "precision": 1,
-          "recall": 0.4869,
-          "iou": 0.4869,
+          "recall": 0.4866,
+          "iou": 0.4866,
           "boundaryF1": 1
         },
         {
@@ -174,7 +174,7 @@
         }
       ],
       "meanPrecision": 0.6411,
-      "weightedMeanIou": 0.8826,
+      "weightedMeanIou": 0.8828,
       "failingMajorParts": [],
       "maskFit": 0.7165,
       "misassigned": [],
@@ -195,13 +195,13 @@
     "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
   },
   "timings": {
-    "S1_preprocess": 6441,
+    "S1_preprocess": 6902,
     "S2_plan": 7,
-    "S3_masks": 7144,
-    "S4_schematic": 1220,
-    "S5_evidence": 5698,
-    "S7_export": 30,
-    "S8_qa": 2669
+    "S3_masks": 9523,
+    "S4_schematic": 1248,
+    "S5_evidence": 6040,
+    "S7_export": 26,
+    "S8_qa": 2743
   },
   "rescued": {
     "stitch": [

@@ -8,8 +8,8 @@
       "sourceHeight": 464,
       "supersample": 2
     },
-    "totalMs": 21804,
-    "createdAt": "2026-08-25T06:07:53.533Z"
+    "totalMs": 23881,
+    "createdAt": "2026-08-25T06:41:15.653Z"
   },
   "options": {
     "minParts": 3,
@@ -199,14 +199,14 @@
   "qa": {
     "fidelity": {
       "pass": false,
-      "f0": 0.6951,
-      "f1": 0.7355,
-      "f2": 0.7459,
-      "lineF1": 0.8233,
-      "lineF2": 0.8355,
+      "f0": 0.6856,
+      "f1": 0.7283,
+      "f2": 0.7441,
+      "lineF1": 0.8144,
+      "lineF2": 0.8333,
       "textureShare": 0.1741,
-      "inkRatio": 0.858,
-      "chamfer": 7.673,
+      "inkRatio": 0.86,
+      "chamfer": 7.649,
       "p95": 66,
       "detailRecall": 1,
       "holes": [
@@ -218,9 +218,9 @@
         3
       ],
       "notes": [
-        "선 일치 F@2px 0.8355 < 0.95",
+        "선 일치 F@2px 0.8333 < 0.95",
         "구멍 수 38 → 16 (15% 이상 차이)",
-        "해프톤이 도면 잉크의 17% — 전체 F@2px 0.7459, 그 영역 뺀 선 충실도 0.8355"
+        "해프톤이 도면 잉크의 17% — 전체 F@2px 0.7441, 그 영역 뺀 선 충실도 0.8333"
       ]
     },
     "editability": {
@@ -230,18 +230,18 @@
       "maxSubpathsInPath": 3,
       "maxSplittableSubpaths": 3,
       "objectComplexity": 172,
-      "anchors": 1540,
+      "anchors": 912,
       "uses": 0,
-      "kb": 60.8,
-      "anchorDensity": 3.73,
-      "shortPathRatio": 0,
+      "kb": 39.2,
+      "anchorDensity": 2.22,
+      "shortPathRatio": 0.011,
       "primitives": 1,
       "anchorsSavedByPrimitives": 11,
       "pathsSavedByPatterns": 0,
       "editableReduction": {
-        "paths": 0.185,
-        "anchors": 0.131,
-        "kb": 0.117
+        "paths": 0.198,
+        "anchors": 0.077,
+        "kb": 0.077
       },
       "notes": []
     },
@@ -254,9 +254,9 @@
           "kind": "area",
           "paths": 9,
           "areaShare": 0.0311,
-          "precision": 0.9584,
-          "recall": 0.9812,
-          "iou": 0.9412,
+          "precision": 0.9551,
+          "recall": 0.9805,
+          "iou": 0.9373,
           "boundaryF1": -1
         },
         {
@@ -265,10 +265,10 @@
           "kind": "thin",
           "paths": 5,
           "areaShare": 0.0005,
-          "precision": 0.9453,
-          "recall": 0.2698,
-          "iou": 0.2656,
-          "boundaryF1": 0.9586
+          "precision": 0.9479,
+          "recall": 0.2705,
+          "iou": 0.2665,
+          "boundaryF1": 0.9601
         },
         {
           "id": "rear_bezel",
@@ -276,9 +276,9 @@
           "kind": "area",
           "paths": 9,
           "areaShare": 0.0274,
-          "precision": 0.9719,
-          "recall": 0.9831,
-          "iou": 0.956,
+          "precision": 0.9684,
+          "recall": 0.9814,
+          "iou": 0.951,
           "boundaryF1": -1
         },
         {
@@ -287,9 +287,9 @@
           "kind": "area",
           "paths": 14,
           "areaShare": 0.0125,
-          "precision": 0.8407,
-          "recall": 0.8956,
-          "iou": 0.7656,
+          "precision": 0.8338,
+          "recall": 0.8948,
+          "iou": 0.7593,
           "boundaryF1": -1
         },
         {
@@ -298,9 +298,9 @@
           "kind": "area",
           "paths": 4,
           "areaShare": 0.0594,
-          "precision": 0.7744,
-          "recall": 0.9943,
-          "iou": 0.7709,
+          "precision": 0.7743,
+          "recall": 0.9944,
+          "iou": 0.771,
           "boundaryF1": -1
         },
         {
@@ -309,9 +309,9 @@
           "kind": "area",
           "paths": 8,
           "areaShare": 0.0223,
-          "precision": 0.8219,
-          "recall": 0.2427,
-          "iou": 0.2306,
+          "precision": 0.8037,
+          "recall": 0.2472,
+          "iou": 0.2331,
           "boundaryF1": -1
         },
         {
@@ -320,9 +320,9 @@
           "kind": "area",
           "paths": 9,
           "areaShare": 0.0748,
-          "precision": 0.9627,
-          "recall": 0.962,
-          "iou": 0.9275,
+          "precision": 0.9611,
+          "recall": 0.9623,
+          "iou": 0.9262,
           "boundaryF1": -1
         },
         {
@@ -331,9 +331,9 @@
           "kind": "area",
           "paths": 10,
           "areaShare": 0.0601,
-          "precision": 0.9912,
-          "recall": 0.988,
-          "iou": 0.9794,
+          "precision": 0.9914,
+          "recall": 0.9891,
+          "iou": 0.9807,
           "boundaryF1": -1
         },
         {
@@ -342,14 +342,14 @@
           "kind": "area",
           "paths": 13,
           "areaShare": 0.0243,
-          "precision": 0.9806,
-          "recall": 0.9686,
-          "iou": 0.9504,
+          "precision": 0.9783,
+          "recall": 0.966,
+          "iou": 0.9457,
           "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.9163,
-      "weightedMeanIou": 0.8561,
+      "meanPrecision": 0.9127,
+      "weightedMeanIou": 0.8548,
       "failingMajorParts": [
         "middle_bezel"
       ],
@@ -370,13 +370,13 @@
     "state": "FIDELITY_REVIEW / EDITABILITY_PASS / SEMANTIC_REVIEW"
   },
   "timings": {
-    "S1_preprocess": 5958,
-    "S2_plan": 8,
-    "S3_masks": 4750,
-    "S4_schematic": 1310,
-    "S5_evidence": 7042,
-    "S7_export": 33,
-    "S8_qa": 2645
+    "S1_preprocess": 6435,
+    "S2_plan": 6,
+    "S3_masks": 4723,
+    "S4_schematic": 1313,
+    "S5_evidence": 8317,
+    "S7_export": 21,
+    "S8_qa": 3006
   },
   "rescued": {
     "stitch": [

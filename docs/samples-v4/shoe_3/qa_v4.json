@@ -8,8 +8,8 @@
       "sourceHeight": 1059,
       "supersample": 2
     },
-    "totalMs": 51929,
-    "createdAt": "2026-08-25T06:04:56.161Z"
+    "totalMs": 57460,
+    "createdAt": "2026-08-25T06:37:58.700Z"
   },
   "options": {
     "minParts": 3,
@@ -194,26 +194,26 @@
   "qa": {
     "fidelity": {
       "pass": true,
-      "f0": 0.9335,
-      "f1": 0.9649,
-      "f2": 0.9678,
-      "lineF1": 0.996,
-      "lineF2": 0.9991,
+      "f0": 0.9154,
+      "f1": 0.9574,
+      "f2": 0.9667,
+      "lineF1": 0.988,
+      "lineF2": 0.9979,
       "textureShare": 0.2515,
-      "inkRatio": 1.031,
-      "chamfer": 0.041,
-      "p95": 0,
+      "inkRatio": 1.015,
+      "chamfer": 0.068,
+      "p95": 1,
       "detailRecall": 1,
       "holes": [
         750,
-        748
+        741
       ],
       "majorComponents": [
         1,
         1
       ],
       "notes": [
-        "해프톤이 도면 잉크의 25% — 전체 F@2px 0.9678, 그 영역 뺀 선 충실도 0.9991"
+        "해프톤이 도면 잉크의 25% — 전체 F@2px 0.9667, 그 영역 뺀 선 충실도 0.9979"
       ]
     },
     "editability": {
@@ -223,18 +223,18 @@
       "maxSubpathsInPath": 334,
       "maxSplittableSubpaths": 57,
       "objectComplexity": 2131,
-      "anchors": 23209,
+      "anchors": 13125,
       "uses": 257,
-      "kb": 891.2,
-      "anchorDensity": 6.72,
-      "shortPathRatio": 0.024,
+      "kb": 518.9,
+      "anchorDensity": 3.82,
+      "shortPathRatio": 0.033,
       "primitives": 125,
       "anchorsSavedByPrimitives": 1367,
       "pathsSavedByPatterns": 246,
       "editableReduction": {
-        "paths": 0.036,
-        "anchors": 0.049,
-        "kb": 0.042
+        "paths": 0.041,
+        "anchors": 0.032,
+        "kb": 0.025
       },
       "notes": [
         "한 패스에 서브패스 334개 — 바깥 윤곽 하나에 구멍이 뚫린 진짜 한 덩이라 쪼갤 수 없다(쪼개면 구멍이 메워진다). 컴파운드 패스가 옳은 표현이다."
@@ -250,9 +250,9 @@
           "paths": 48,
           "areaShare": 0.0403,
           "precision": 0.9999,
-          "recall": 0.5438,
-          "iou": 0.5438,
-          "boundaryF1": 0.9777
+          "recall": 0.5465,
+          "iou": 0.5465,
+          "boundaryF1": 0.9775
         },
         {
           "id": "mesh_upper",
@@ -261,9 +261,9 @@
           "paths": 1,
           "areaShare": 0.0027,
           "precision": 1,
-          "recall": 0.2787,
-          "iou": 0.2787,
-          "boundaryF1": 0.9076
+          "recall": 0.2729,
+          "iou": 0.2729,
+          "boundaryF1": 0.9081
         },
         {
           "id": "padded_collar",
@@ -272,8 +272,8 @@
           "paths": 2,
           "areaShare": 0.0018,
           "precision": 1,
-          "recall": 0.4731,
-          "iou": 0.4731,
+          "recall": 0.4656,
+          "iou": 0.4656,
           "boundaryF1": 0.9926
         },
         {
@@ -282,9 +282,9 @@
           "kind": "area",
           "paths": 18,
           "areaShare": 0.0575,
-          "precision": 0.9725,
-          "recall": 0.9816,
-          "iou": 0.9551,
+          "precision": 0.9713,
+          "recall": 0.9822,
+          "iou": 0.9544,
           "boundaryF1": -1
         },
         {
@@ -293,9 +293,9 @@
           "kind": "area",
           "paths": 47,
           "areaShare": 0.097,
-          "precision": 0.9995,
-          "recall": 0.9634,
-          "iou": 0.9629,
+          "precision": 0.999,
+          "recall": 0.9629,
+          "iou": 0.962,
           "boundaryF1": -1
         },
         {
@@ -305,8 +305,8 @@
           "paths": 8,
           "areaShare": 0.0004,
           "precision": 1,
-          "recall": 0.1641,
-          "iou": 0.1641,
+          "recall": 0.1743,
+          "iou": 0.1743,
           "boundaryF1": 1
         },
         {
@@ -315,9 +315,9 @@
           "kind": "area",
           "paths": 248,
           "areaShare": 0.3627,
-          "precision": 0.9968,
-          "recall": 0.9388,
-          "iou": 0.936,
+          "precision": 0.9966,
+          "recall": 0.9368,
+          "iou": 0.9338,
           "boundaryF1": -1
         },
         {
@@ -326,14 +326,14 @@
           "kind": "area",
           "paths": 197,
           "areaShare": 0.1401,
-          "precision": 0.997,
-          "recall": 0.9564,
-          "iou": 0.9537,
+          "precision": 0.9967,
+          "recall": 0.9551,
+          "iou": 0.9521,
           "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.9957,
-      "weightedMeanIou": 0.9182,
+      "meanPrecision": 0.9954,
+      "weightedMeanIou": 0.9166,
       "failingMajorParts": [],
       "maskFit": 0.9824,
       "misassigned": [],
@@ -351,13 +351,13 @@
     "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
   },
   "timings": {
-    "S1_preprocess": 3817,
-    "S2_plan": 12,
-    "S3_masks": 15258,
-    "S4_schematic": 2608,
-    "S5_evidence": 19438,
-    "S7_export": 137,
-    "S8_qa": 10381
+    "S1_preprocess": 4513,
+    "S2_plan": 11,
+    "S3_masks": 14888,
+    "S4_schematic": 2651,
+    "S5_evidence": 23554,
+    "S7_export": 94,
+    "S8_qa": 11458
   },
   "rescued": {
     "stitch": [
