@@ -135,7 +135,7 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
     </div>
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-tab="gallery">결과 갤러리</button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="v4">V4.3 · Semantic Topology</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="v4">V4.5 · Semantic Topology</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="v3">V3.2 · VRINGON 도면</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="v2">V2 · 레이어 SVG</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="run">직접 실행</button>
@@ -160,8 +160,8 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
 
 <!-- ─────────── V4 Semantic Topology ─────────── -->
 <section id="v4" hidden>
-  <h2>V4.3 — Semantic Topology Vectorizer
-    <span style="font-size:14px;font-weight:400;color:var(--dim)">· 2026-08-24 · 도면 직접 segmentation (Phase B 1단계)</span></h2>
+  <h2>V4.5 — Semantic Topology Vectorizer
+    <span style="font-size:14px;font-weight:400;color:var(--dim)">· 2026-08-25 · 주얼리 반사 제거 · 앵커 −12%</span></h2>
   <p class="sub">
     V3까지는 잉크 전체를 한 방식으로 훑고 SVG 하나를 만들었습니다. V4는 <b>성분마다 표현을 먼저
     정하고</b>, 같은 장면(<code>VectorScene</code>)에서 목적별로 다른 SVG를 굽습니다.
@@ -197,17 +197,137 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
   <div class="grid" id="v4cards"></div>
   <div class="detail" id="v4detail" hidden></div>
 
-  <h3>V3.2 → V4.2 실측</h3>
+  <h3>V3.2 → V4.5 실측</h3>
   <div style="overflow-x:auto"><table id="v4cmp">
-    <tr><th>샘플</th><th class="num">V3.2 패스</th><th class="num">V4.2 패스</th>
+    <tr><th>샘플</th><th class="num">V3.2 패스</th><th class="num">V4.5 패스</th>
         <th class="num">서브패스</th><th class="num">한 패스 최대</th>
-        <th class="num">V3.2 F@0</th><th class="num">V4.2 F@0</th>
-        <th class="num">V3.2 선F@2</th><th class="num">V4.2 선F@2</th>
+        <th class="num">V3.2 F@0</th><th class="num">V4.5 F@0</th>
+        <th class="num">V3.2 선F@2</th><th class="num">V4.5 선F@2</th>
         <th class="num">프리미티브</th><th class="num">패턴 절감</th><th>게이트</th></tr>
   </table></div>
   <p class="sub" style="margin-top:8px">
     패스가 크게 줄면서 <b>정확 일치(F@0px)는 오히려 올랐습니다</b>. 앵커 총량은 거의 같습니다 —
     줄어든 것은 <b>객체 수</b>이지 형상 정보가 아니라는 뜻입니다.
+  </p>
+
+  <h3>V4.5 — 주얼리 반사 제거 · 촘촘한 점 정리</h3>
+  <div class="note" style="border-left-color:var(--warn)">
+    <b>도면에 사진의 하늘 반사가 그대로 남아 있었습니다.</b> VRINGON 도면은 주얼리를 그릴 때
+    스톤 안쪽에 사진의 반사를 옮깁니다(jewelry_3 세 스톤 전부 파란 대리석 무늬). 벡터화하면
+    그것이 검은 파편 수백 개가 됩니다 — 테크팩에서 반사는 <b>조명의 산물이지 제품의 형상이
+    아닙니다.</b>
+  </div>
+  <p class="sub">
+    <code>gemFlatten.ts</code> 가 그것을 지웁니다. 다섯 번 고쳐 쓴 자리라 각 선택에 근거가 있습니다 —
+    파트 마스크를 침식하는 방식은 마스크가 어긋난 곳에서 실패했고, 신장률로 패싯을 가르는 방식은
+    <b>반사 줄무늬도 길쭉해서</b> 뚫렸습니다. 결국 <b>도면의 닫힌 면에 뚫린 구멍</b>으로 잡습니다 —
+    마스크 정합과 무관해집니다. 다만 구멍을 전부 메우면 베젤 안쪽 링까지 사라지므로
+    (47,546px 삭제 실측) <b>면을 두르는 큰 고리는 보존</b>합니다. 패싯 능선도 남깁니다 —
+    면을 가로지를 만큼 길고 곧고 가는 것만.
+  </p>
+  <div class="note">
+    <b>카테고리로 막아야 합니다.</b> <code>bead</code> 는 주얼리에서는 진주 알이지만 가방에서는
+    소재 그 자체입니다. 게이트 없이 돌렸더니 bag_2 "Beaded pouch body" 가 보석으로 잡혀
+    <b>비즈 조직이 통째로 지워졌습니다</b>(패스 671 → 136). 이제 주얼리에서만 돕니다.
+  </div>
+
+  <h3>촘촘한 점 — 보이지 않는 구멍이 서브패스를 수천 개로 만들고 있었습니다</h3>
+  <p class="sub">
+    비즈·메시 도면의 배경 면은 알 하나마다 구멍이 뚫려 컴파운드 패스 하나에 서브패스가 수천 개가
+    됩니다(bag_2 <code>f8</code> 이 <b>2,739개</b>). Illustrator 에서 그 패스는 통째로만 선택되므로
+    사실상 편집이 불가능합니다. 그런데 <b>그 구멍은 보이지 않습니다</b> — 알 자체는 그 위에 따로
+    그려지고 구멍 아래는 흰 배경뿐입니다. 지우는 것이 아니라 <b>덮이는 것을 안 그리는 것</b>이라
+    충실도가 한 자리도 안 변합니다.
+  </p>
+  <div style="overflow-x:auto"><table>
+    <tr><th>bag_2</th><th class="num">이전</th><th class="num">지금</th></tr>
+    <tr><td>서브패스</td><td class="num">3,628</td><td class="num"><b>888</b></td></tr>
+    <tr><td>한 패스 최대 서브패스</td><td class="num">2,739</td><td class="num"><b>108</b></td></tr>
+    <tr><td>앵커</td><td class="num">20,068</td><td class="num"><b>8,312 (−59%)</b></td></tr>
+    <tr><td>F@0 · 선F@2 · 디테일 · 구멍</td><td class="num">0.734 · 0.941 · 0.979 · 182→159</td><td class="num"><b>전부 동일</b></td></tr>
+  </table></div>
+
+  <h3>역대 버전 비교 — 지금이 정말 제일 나은가</h3>
+  <p class="sub">
+    버전마다 좋아진 지표만 골라 보고하면 회귀를 못 봅니다. 세 축을 모두 놓고 함께 봅니다
+    (<code>npx tsx server/v4/version-compare.ts</code>).
+  </p>
+  <div style="overflow-x:auto"><table>
+    <tr><th>버전</th><th class="num">패스</th><th class="num">서브패스</th><th class="num">앵커</th>
+        <th class="num">F@0</th><th class="num">선F@2</th><th class="num">빈 파트</th>
+        <th class="num">선 없음</th><th class="num">가중 IoU</th><th class="num">의미 gate</th></tr>
+    <tr><td>V3.2</td><td class="num">8,738</td><td class="num">—</td><td class="num">124,337</td><td class="num">0.839</td><td class="num">0.975</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+    <tr><td>V4.0</td><td class="num">2,800</td><td class="num">—</td><td class="num">123,248</td><td class="num">0.885</td><td class="num">0.976</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">5/9 (거짓)</td></tr>
+    <tr><td>V4.1</td><td class="num">2,800</td><td class="num">8,469</td><td class="num">123,248</td><td class="num">0.885</td><td class="num">0.976</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">0/9</td></tr>
+    <tr><td>V4.2</td><td class="num">2,179</td><td class="num">7,886</td><td class="num">114,890</td><td class="num">0.885</td><td class="num">0.976</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">0/9</td></tr>
+    <tr><td>V4.3</td><td class="num">2,179</td><td class="num">7,886</td><td class="num">114,890</td><td class="num">0.885</td><td class="num">0.976</td><td class="num">14</td><td class="num">23</td><td class="num">0.777</td><td class="num">0/9</td></tr>
+    <tr><td>V4.4</td><td class="num">2,581</td><td class="num">8,047</td><td class="num">118,279</td><td class="num">0.874</td><td class="num">0.976</td><td class="num">2</td><td class="num">0</td><td class="num">0.907</td><td class="num">8/9</td></tr>
+    <tr style="background:var(--panel-2)"><td><b>V4.5</b></td><td class="num"><b>2,468</b></td><td class="num"><b>5,027</b></td><td class="num"><b>103,789</b></td><td class="num">0.865</td><td class="num">0.973</td><td class="num"><b>2</b></td><td class="num"><b>0</b></td><td class="num"><b>0.908</b></td><td class="num"><b>7/9</b></td></tr>
+  </table></div>
+  <div class="note">
+    <b>지금이 제일 낫습니다 — 다만 두 자리는 정직하게 내려갔습니다.</b><br>
+    · <b>편집성·레이어는 역대 최고.</b> 서브패스 −38% · 앵커 −12%(V3.2 대비 −17%) ·
+      빈 파트 14→2 · 자기 선 없는 파트 23→0 · 주인 없는 기하 0 · 앵커 밀도 평균 7.90/100px(상한 12).<br>
+    · <b>F@0 0.874 → 0.865 는 전부 jewelry_3 하나입니다</b>(0.794 → 0.705). 반사를 <b>일부러</b>
+      지웠으니 도면과의 일치도는 떨어지는 것이 맞습니다. 나머지 8종은 소수점 셋째 자리까지 동일합니다.<br>
+    · <b>의미 gate 8/9 → 7/9 은 품질이 아니라 규칙이 엄해진 것입니다.</b>
+      <code>failingMajorParts</code> 는 이미 얇은 파트를 경계 F1 로 재는데 <code>misassigned</code> 만
+      면 precision 을 쓰고 있었습니다. 같은 규칙으로 맞추자 bag_3 <code>inner_pouch</code> 가
+      경계 F1 0.432 로 걸립니다 — 예전에는 "너무 작아 판정 보류"로 빠졌습니다. 숨기지 않는 쪽을 택했습니다.
+  </div>
+
+  <h3>V4.4 — 레이어가 충분히 나뉘었는지 직접 물었습니다</h3>
+  <p class="sub">
+    9종 전부를 레이어 관점으로 감사했습니다(<code>server/v4/layer-audit.ts</code>). 의미 gate 의
+    IoU 와는 다른 질문입니다 — 디자이너가 레이어 패널에서 하는 일(켜고 끄고, 골라 고치고,
+    하나만 빼기)이 되는가.
+  </p>
+  <div class="note" style="border-left-color:var(--warn)">
+    <b>나뉘지 않았습니다.</b> 빈 파트 <b>14/64 (22%)</b> — 레이어 패널에 아예 없습니다.
+    자기 선이 없는 파트 <b>23/64 (36%)</b> — 면만 있고 윤곽은 남의 것입니다.
+    한 파트가 최대 <b>93%</b> 를 독점했습니다(jewelry_1 ring_body).
+  </div>
+  <p class="sub">
+    원인은 하나였습니다. <b><code>assignByCurve</code> 가 패스 전체를 다수결로 한 파트에 통째
+    배정</b>합니다. 제품 선화는 외곽·시임·끈·로고가 서로 닿아 하나의 거대한 성분이 되므로,
+    거기서 나온 컴파운드 패스 하나가 통째로 한 레이어에 들어갔습니다. 딥리서치가 지적한
+    "라우팅 단위가 connected component 라 너무 크다"가 레이어 문제의 <b>직접 원인</b>이었습니다.
+  </p>
+  <div class="note">
+    <b>고친 것 — 배정이 아니라 분할.</b> 픽셀은 이미 나뉘어 있습니다(파트 마스크).
+    그러니 <b>추적 전에</b> 잉크를 파트별로 쪼갭니다. 그러면 어떤 패스도 파트 경계를
+    넘지 않습니다. 마스크에 없는 잉크는 <b>잉크 연결을 따라</b> BFS 로 주인을 물려받습니다 —
+    유클리드 거리로 하면 선이 마스크 밖으로 삐져나간 곳에서 엉뚱한 파트가 잡힙니다.
+  </div>
+  <div style="overflow-x:auto"><table>
+    <tr><th>레이어 감사</th><th class="num">V4.3</th><th class="num">V4.4</th></tr>
+    <tr><td>빈 파트 (자기 기하 0)</td><td class="num">14 / 64 (22%)</td><td class="num"><b>2 / 64 (3%)</b> — 둘 다 도면에 없는 파트</td></tr>
+    <tr><td>자기 선이 없는 파트</td><td class="num">23 / 64</td><td class="num"><b>0</b></td></tr>
+    <tr><td>주인 없는 기하</td><td class="num">—</td><td class="num"><b>0 / 5,848</b></td></tr>
+    <tr><td>면적가중 IoU 평균</td><td class="num">0.777</td><td class="num"><b>0.907</b></td></tr>
+    <tr style="background:var(--panel-2)"><td><b>의미 gate</b></td><td class="num"><b>0 / 9</b></td><td class="num"><b>8 / 9</b></td></tr>
+    <tr><td>충실도 gate</td><td class="num">7 / 9</td><td class="num">7 / 9 (변화 없음)</td></tr>
+  </table></div>
+  <p class="sub">
+    함께 고친 것 둘 — <b>폴리곤 크기 온전성</b>(Gemini 폴리곤이 대상의 일부만 훑으면 그 파트가
+    쪼그라듭니다. bag_1 손잡이 마스크 0.03% → <b>0.5%</b>, precision 0.118 → <b>0.635</b>),
+    <b>면 귀속의 특정성</b>(자격을 갖춘 후보 중 마스크가 가장 작은 파트가 갖습니다 — 큰 마스크가
+    작은 파트를 감싸는 일이 흔합니다).
+  </p>
+  <div class="note">
+    <b>주체탐지 플래그를 마스크 정합으로 교체했습니다.</b> 의미 gate 는 "사진·도면에서 배경과
+    전경이 분리됐는가"를 보고 있었는데, V4.3 부터 파트 경계는 도면의 닫힌 면에 스냅되므로 그것이
+    배분을 결정하지 않습니다. <b>실측이 그것을 뒤집습니다</b> — 그 플래그가 실패로 표시한
+    shoe_2·shoe_3 의 마스크 정합이 9종 중 <b>가장 높습니다</b>(0.964·0.982). 품질과 역상관입니다.
+    대신 파트 마스크가 도면 잉크를 직접 덮은 비율(BFS 상속은 안 셈)을 봅니다. 하한 0.7 은
+    현재 9종이 전부 0.717 이상이라 <b>아무도 떨어뜨리지 않습니다</b> — 등급이 아니라 실패 모드를
+    잡기 위한 장치입니다.
+  </div>
+  <p class="sub">
+    <b>남은 하나 — jewelry_3 <code>middle_bezel</code>.</b> 중앙 스톤이 베젤 링의 면을 삼킵니다
+    (recall 0.313). 같은 도면의 <code>front_bezel</code> 0.972 · <code>rear_bezel</code> 0.984 는
+    정상이라 국소 결함입니다. 특정성 규칙과 Gemini 마스크 혼용을 시험했고 둘 다 실패했습니다
+    (혼용은 오히려 IoU 0.871 → 0.713). 혼용 금지 규칙이 재측정으로도 유효함이 확인된 것은 소득입니다.
   </p>
 
   <h3>V4.3 — 레이어의 천장을 건드렸습니다</h3>

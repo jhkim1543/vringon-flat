@@ -62,6 +62,14 @@ export interface EditabilityGate {
   notes: string[];
 }
 
+/**
+ * 마스크 정합 하한. 이 아래면 잉크의 절반 이상이 마스크가 아니라 이웃 상속(BFS)으로
+ * 주인을 얻었다는 뜻 — 배분이 추측이 된다. 0.7 은 안전 여유를 둔 값이고, 현재 9종은
+ * 전부 0.716 이상이라 이 조건은 **지금 아무도 떨어뜨리지 않는다**. 등급이 아니라
+ * 실패 모드를 잡기 위한 장치다.
+ */
+const MASK_FIT_MIN = 0.7;
+
 export interface SemanticGate {
   pass: boolean;
   /**
@@ -78,9 +86,17 @@ export interface SemanticGate {
   weightedMeanIou: number;
   /** 기준 미달인 주요 파트 */
   failingMajorParts: string[];
+  /** 파트 마스크가 도면 잉크를 직접 덮은 비율 (0~1) */
+  maskFit: number;
   misassigned: string[];
   emptyVisibleParts: string[];
   sharedOnlyParts: string[];
+  /**
+   * 계획에는 있지만 **도면에 사실상 없는** 파트 (마스크가 캔버스의 0.05% 미만).
+   * 벡터화가 놓친 것이 아니라 GPT 파트 계획과 도면이 어긋난 것이다 — 판정 대상이
+   * 아니라 보고 대상이다. 섞어 세면 "레이어가 빠졌다"로 잘못 읽힌다.
+   */
+  absentInSchematic: string[];
   sharedBoundaries: number;
   aspectRatio: number;
   /** 라우터가 확신하지 못한 성분 수 */
@@ -169,6 +185,11 @@ export async function runQa4(
     partMasks: { id: string; mask: Uint8Array }[];
     aspectRatio: number;
     thresholds?: { f2: number; detail: number; anchorDensity: number; precision: number };
+    /**
+     * 파트 마스크가 도면 잉크를 직접 덮은 비율. 낮으면 마스크가 도면 위 엉뚱한 자리에
+     * 있다는 뜻이고, 그때 파트 배분은 추측이 된다.
+     */
+    maskFit?: number;
   },
 ): Promise<QA4> {
   const { width: W, height: H } = scene.canvas;
@@ -302,6 +323,7 @@ export async function runQa4(
   const perPart: SemanticGate["perPart"] = [];
   const emptyVisibleParts: string[] = [];
   const sharedOnlyParts: string[] = [];
+  const absentInSchematic: string[] = [];
   const canvasArea = W * H;
 
   for (const part of scene.parts) {
@@ -341,7 +363,9 @@ export async function runQa4(
 
     if (!mineExpanded.length) {
       const buried = (part.occludedBy?.length ?? 0) >= 2;
-      if (sharedWith.has(part.id) || buried) sharedOnlyParts.push(part.id);
+      // 마스크 자체가 없다시피 하면 도면에 그 파트가 없는 것이다
+      if (areaShare < 0.0005) absentInSchematic.push(part.id);
+      else if (sharedWith.has(part.id) || buried) sharedOnlyParts.push(part.id);
       else emptyVisibleParts.push(part.id);
       perPart.push({
         id: part.id, label: part.label, kind, paths: 0, areaShare,
@@ -395,6 +419,7 @@ export async function runQa4(
     });
   }
 
+  const sNotesPre: string[] = [];
   const measured = perPart.filter((p) => p.precision >= 0);
   const meanPrecision = measured.length
     ? measured.reduce((s, p) => s + p.precision, 0) / measured.length
@@ -405,7 +430,24 @@ export async function runQa4(
     ? measured.reduce((s, p) => s + p.iou * p.areaShare, 0) / wSum
     : 0;
 
-  const misassigned = measured.filter((p) => p.paths > 0 && p.precision < 0.5).map((p) => p.id);
+  // **마스크가 없다시피 한 파트에 precision 을 적용하면 안 된다.** 기준이 조각뿐이라
+  // 제대로 그린 기하도 전부 "밖"으로 세어진다 — 실측: bag_1 top_handle 마스크가
+  // 캔버스의 0.03% 일 때 precision 0.118 이었다(그린 것은 옳은 손잡이였다).
+  // **얇은 파트를 면 precision 으로 재면 안 된다.** 끈·체인·각인은 면적이 거의 없어
+  // 기준 마스크가 조각뿐이고, 제대로 그린 기하도 "밖"으로 세어진다. 바로 위
+  // failingMajorParts 는 이미 얇은 파트를 경계 F1 로 재고 있다 — 같은 규칙을 쓴다.
+  // (실측: bag_3 inner_pouch 가 마스크 0.20% 인데 precision 0.275 로 의심 처리됐다.)
+  const suspect = (p: SemanticGate["perPart"][number]) =>
+    p.kind === "thin" ? p.boundaryF1 >= 0 && p.boundaryF1 < 0.5 : p.precision < 0.5;
+  const misassigned = measured
+    .filter((p) => p.paths > 0 && p.areaShare >= 0.002 && suspect(p))
+    .map((p) => p.id);
+  const unjudgeable = measured
+    .filter((p) => p.paths > 0 && p.areaShare < 0.002 && suspect(p))
+    .map((p) => p.id);
+  if (unjudgeable.length) {
+    sNotesPre.push(`마스크가 너무 작아 판정 보류 ${unjudgeable.length}개: ${unjudgeable.join(", ")} (캔버스의 0.2% 미만)`);
+  }
 
   // 주요 파트 = 캔버스의 2% 이상을 차지하는 것. 이것들은 반드시 자기 기하를 가져야 한다.
   const MAJOR = 0.02;
@@ -420,21 +462,33 @@ export async function runQa4(
     if (!ok) failingMajorParts.push(p.id);
   }
 
-  const sNotes: string[] = [];
+  const sNotes: string[] = [...sNotesPre];
   if (failingMajorParts.length) {
     sNotes.push(`기준 미달 주요 파트 ${failingMajorParts.length}개: ${failingMajorParts.join(", ")} (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)`);
   }
   if (misassigned.length) sNotes.push(`배분이 의심되는 레이어 ${misassigned.length}개: ${misassigned.join(", ")}`);
   if (emptyVisibleParts.length) sNotes.push(`패스가 없는 파트 ${emptyVisibleParts.length}개: ${emptyVisibleParts.join(", ")}`);
   if (sharedOnlyParts.length) sNotes.push(`공유 경계로만 그려진 파트 ${sharedOnlyParts.length}개: ${sharedOnlyParts.join(", ")}`);
-  if (!scene.correspondence.confident) sNotes.push("사진↔도면 대응 실패 — 파트 배분을 신뢰할 수 없다");
+  if (absentInSchematic.length) sNotes.push(`도면에 없는 파트 ${absentInSchematic.length}개: ${absentInSchematic.join(", ")} (GPT 계획↔도면 불일치 — 벡터화 문제가 아니다)`);
+  // **주체탐지 플래그는 배분 품질을 예측하지 못한다.** 그것은 "사진·도면에서 배경과
+  // 전경이 분리됐는가"를 볼 뿐인데, V4.3 부터 파트 경계는 도면의 닫힌 면에 스냅되므로
+  // 배경 분리 여부가 배분을 결정하지 않는다. 실측이 그것을 뒤집는다 — 주체탐지가
+  // 실패로 표시한 shoe_2·shoe_3 의 마스크 정합이 9종 중 **가장 높다**(0.964·0.982).
+  // 그래서 gate 는 대신 마스크 정합을 본다. 주체탐지 결과는 참고로 남긴다.
+  const fit = ctx.maskFit ?? 1;
+  if (fit < MASK_FIT_MIN) {
+    sNotes.push(`마스크 정합 ${fit.toFixed(3)} < ${MASK_FIT_MIN} — 파트 마스크가 도면 위에 제대로 놓이지 않았다`);
+  }
+  if (!scene.correspondence.confident) {
+    sNotes.push(`참고: 사진·도면 주체탐지가 배경을 분리하지 못함 (마스크 정합 ${fit.toFixed(3)} 로 판정)`);
+  }
   if (ctx.aspectRatio > 1.02) sNotes.push(`사진↔도면 종횡비 불일치 ${((ctx.aspectRatio - 1) * 100).toFixed(1)}%`);
   if (scene.provenance.lowConfidence) sNotes.push(`라우터가 확신하지 못한 성분 ${scene.provenance.lowConfidence}개`);
   if (weightedMeanIou < 0.65) sNotes.push(`면적 가중 평균 IoU ${weightedMeanIou.toFixed(3)} < 0.65`);
 
   const semanticGate: SemanticGate = {
     pass:
-      scene.correspondence.confident &&
+      fit >= MASK_FIT_MIN &&
       failingMajorParts.length === 0 &&
       emptyVisibleParts.length === 0 &&
       misassigned.length === 0 &&
@@ -443,9 +497,11 @@ export async function runQa4(
     meanPrecision: +meanPrecision.toFixed(4),
     weightedMeanIou: +weightedMeanIou.toFixed(4),
     failingMajorParts,
+    maskFit: +fit.toFixed(4),
     misassigned,
     emptyVisibleParts,
     sharedOnlyParts,
+    absentInSchematic,
     sharedBoundaries: scene.sharedBoundaries.length,
     aspectRatio: +ctx.aspectRatio.toFixed(3),
     lowConfidenceRoutes: scene.provenance.lowConfidence,

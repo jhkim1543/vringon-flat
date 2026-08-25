@@ -1,6 +1,6 @@
 {
   "job": {
-    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW",
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS",
     "canvas": {
       "width": 2800,
       "height": 1572,
@@ -8,8 +8,8 @@
       "sourceHeight": 786,
       "supersample": 2
     },
-    "totalMs": 27024,
-    "createdAt": "2026-08-24T12:25:02.202Z"
+    "totalMs": 43248,
+    "createdAt": "2026-08-25T01:54:19.522Z"
   },
   "options": {
     "minParts": 3,
@@ -196,20 +196,20 @@
     "REPEATING_PATTERN": 1,
     "GEOMETRIC_PRIMITIVE": 24,
     "FACE_FILL": 221,
-    "OUTLINE_SHAPE": 55
+    "OUTLINE_SHAPE": 148
   },
   "qa": {
     "fidelity": {
       "pass": true,
-      "f0": 0.8733,
-      "f1": 0.9062,
-      "f2": 0.9082,
-      "lineF1": 0.996,
-      "lineF2": 0.9988,
+      "f0": 0.8597,
+      "f1": 0.9042,
+      "f2": 0.908,
+      "lineF1": 0.994,
+      "lineF2": 0.9984,
       "textureShare": 0.4386,
-      "inkRatio": 1.019,
-      "chamfer": 0.059,
-      "p95": 0,
+      "inkRatio": 1.071,
+      "chamfer": 0.076,
+      "p95": 1,
       "detailRecall": 1,
       "holes": [
         317,
@@ -217,100 +217,100 @@
       ],
       "majorComponents": [
         3,
-        10
+        4
       ],
       "notes": [
-        "해프톤이 도면 잉크의 44% — 전체 F@2px 0.9082, 그 영역 뺀 선 충실도 0.9988"
+        "해프톤이 도면 잉크의 44% — 전체 F@2px 0.908, 그 영역 뺀 선 충실도 0.9984"
       ]
     },
     "editability": {
       "pass": true,
-      "paths": 301,
-      "subpaths": 727,
-      "maxSubpathsInPath": 153,
-      "objectComplexity": 1049,
-      "anchors": 20983,
+      "paths": 394,
+      "subpaths": 732,
+      "maxSubpathsInPath": 97,
+      "objectComplexity": 1147,
+      "anchors": 21747,
       "uses": 21,
-      "kb": 840.8,
-      "anchorDensity": 8.6,
-      "shortPathRatio": 0.034,
+      "kb": 871,
+      "anchorDensity": 8.79,
+      "shortPathRatio": 0.047,
       "primitives": 24,
       "anchorsSavedByPrimitives": 285,
       "pathsSavedByPatterns": 20,
       "editableReduction": {
-        "paths": 0.013,
-        "anchors": 0.12,
-        "kb": 0.114
+        "paths": 0.124,
+        "anchors": 0.128,
+        "kb": 0.122
       },
       "notes": []
     },
     "semantic": {
-      "pass": false,
+      "pass": true,
       "perPart": [
         {
           "id": "rear_shoe_upper",
           "label": "Rear shoe upper",
           "kind": "area",
-          "paths": 22,
+          "paths": 64,
           "areaShare": 0.0646,
-          "precision": 0.9993,
-          "recall": 0.7767,
-          "iou": 0.7762,
+          "precision": 0.9937,
+          "recall": 0.9653,
+          "iou": 0.9595,
           "boundaryF1": -1
         },
         {
           "id": "rear_shoe_outsole",
           "label": "Rear shoe outsole",
           "kind": "area",
-          "paths": 144,
+          "paths": 152,
           "areaShare": 0.1381,
-          "precision": 0.848,
-          "recall": 0.9848,
-          "iou": 0.8371,
+          "precision": 0.9939,
+          "recall": 0.9788,
+          "iou": 0.9729,
           "boundaryF1": -1
         },
         {
           "id": "foreground_sole_unit",
           "label": "Foreground sole unit",
           "kind": "thin",
-          "paths": 2,
+          "paths": 5,
           "areaShare": 0.0044,
           "precision": 1,
-          "recall": 0.1871,
-          "iou": 0.1871,
-          "boundaryF1": 0.7478
+          "recall": 0.5359,
+          "iou": 0.5359,
+          "boundaryF1": 0.9995
         },
         {
           "id": "foreground_mesh_upper",
           "label": "Foreground mesh upper",
           "kind": "thin",
-          "paths": 10,
+          "paths": 14,
           "areaShare": 0.0053,
           "precision": 1,
-          "recall": 0.1909,
-          "iou": 0.1909,
-          "boundaryF1": 0.8197
+          "recall": 0.5467,
+          "iou": 0.5467,
+          "boundaryF1": 0.9997
         },
         {
           "id": "padded_collar",
           "label": "Padded collar and lining",
           "kind": "thin",
-          "paths": 0,
+          "paths": 6,
           "areaShare": 0.0036,
-          "precision": 0,
-          "recall": 0,
-          "iou": 0,
-          "boundaryF1": 0
+          "precision": 0.9997,
+          "recall": 0.1427,
+          "iou": 0.1427,
+          "boundaryF1": 0.7267
         },
         {
           "id": "shoe_tongue",
           "label": "Shoe tongue",
           "kind": "area",
-          "paths": 53,
+          "paths": 65,
           "areaShare": 0.0512,
-          "precision": 0.9999,
-          "recall": 0.5563,
-          "iou": 0.5563,
+          "precision": 0.9955,
+          "recall": 0.8979,
+          "iou": 0.8942,
           "boundaryF1": -1
         },
         {
@@ -319,61 +319,60 @@
           "kind": "area",
           "paths": 61,
           "areaShare": 0.219,
-          "precision": 0.8819,
-          "recall": 0.9928,
-          "iou": 0.8762,
+          "precision": 0.9949,
+          "recall": 0.9878,
+          "iou": 0.9828,
           "boundaryF1": -1
         },
         {
           "id": "heel_pull_tab",
           "label": "Heel pull tab",
           "kind": "area",
-          "paths": 2,
+          "paths": 3,
           "areaShare": 0.005,
-          "precision": 1,
-          "recall": 0.4951,
-          "iou": 0.4951,
+          "precision": 0.9633,
+          "recall": 0.9369,
+          "iou": 0.9046,
           "boundaryF1": -1
         },
         {
           "id": "orange_laces",
           "label": "Orange shoelaces",
           "kind": "thin",
-          "paths": 12,
-          "areaShare": 0.0099,
-          "precision": 0.9984,
-          "recall": 0.1721,
-          "iou": 0.1721,
-          "boundaryF1": 0.7038
+          "paths": 29,
+          "areaShare": 0.0098,
+          "precision": 1,
+          "recall": 0.3897,
+          "iou": 0.3897,
+          "boundaryF1": 0.9231
         }
       ],
-      "meanPrecision": 0.8586,
-      "weightedMeanIou": 0.7825,
+      "meanPrecision": 0.9934,
+      "weightedMeanIou": 0.9411,
       "failingMajorParts": [],
+      "maskFit": 0.9644,
       "misassigned": [],
       "emptyVisibleParts": [],
-      "sharedOnlyParts": [
-        "padded_collar"
-      ],
-      "sharedBoundaries": 8,
+      "sharedOnlyParts": [],
+      "absentInSchematic": [],
+      "sharedBoundaries": 2,
       "aspectRatio": 1.003,
       "lowConfidenceRoutes": 35,
       "notes": [
-        "공유 경계로만 그려진 파트 1개: padded_collar",
-        "사진↔도면 대응 실패 — 파트 배분을 신뢰할 수 없다",
+        "참고: 사진·도면 주체탐지가 배경을 분리하지 못함 (마스크 정합 0.964 로 판정)",
         "라우터가 확신하지 못한 성분 35개"
       ]
     },
-    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
   },
   "timings": {
-    "S1_preprocess": 3452,
-    "S2_plan": 7,
-    "S3_masks": 7549,
-    "S4_schematic": 1904,
-    "S5_evidence": 8517,
-    "S7_export": 90,
-    "S8_qa": 5330
+    "S1_preprocess": 3636,
+    "S2_plan": 9,
+    "S3_masks": 11180,
+    "S4_schematic": 2784,
+    "S5_evidence": 16293,
+    "S7_export": 140,
+    "S8_qa": 8967
   },
   "rescued": {
     "stitch": [
@@ -386,16 +385,17 @@
     ]
   },
   "maskSource": {
-    "rear_shoe_upper": "photo-warp (표결 6/9 미달)",
-    "rear_shoe_outsole": "photo-warp (표결 6/9 미달)",
-    "foreground_sole_unit": "photo-warp (표결 6/9 미달)",
-    "foreground_mesh_upper": "photo-warp (표결 6/9 미달)",
-    "padded_collar": "photo-warp (표결 6/9 미달)",
-    "shoe_tongue": "photo-warp (표결 6/9 미달)",
-    "synthetic_support_overlays": "photo-warp (표결 6/9 미달)",
-    "heel_pull_tab": "photo-warp (표결 6/9 미달)",
-    "orange_laces": "photo-warp (표결 6/9 미달)"
+    "rear_shoe_upper": "photo-warp (표결 5/9 미달)",
+    "rear_shoe_outsole": "photo-warp (표결 5/9 미달)",
+    "foreground_sole_unit": "photo-warp (표결 5/9 미달)",
+    "foreground_mesh_upper": "photo-warp (표결 5/9 미달)",
+    "padded_collar": "photo-warp (표결 5/9 미달)",
+    "shoe_tongue": "photo-warp (표결 5/9 미달)",
+    "synthetic_support_overlays": "photo-warp (표결 5/9 미달)",
+    "heel_pull_tab": "photo-warp (표결 5/9 미달)",
+    "orange_laces": "photo-warp (표결 5/9 미달)"
   },
+  "maskFit": 0.9644,
   "correspondence": {
     "method": "global-similarity",
     "aspectRatio": 1.0032985982348142,

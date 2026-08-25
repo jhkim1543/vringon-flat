@@ -8,8 +8,8 @@
       "sourceHeight": 464,
       "supersample": 2
     },
-    "totalMs": 18555,
-    "createdAt": "2026-08-24T12:28:20.660Z"
+    "totalMs": 24693,
+    "createdAt": "2026-08-25T01:58:24.564Z"
   },
   "options": {
     "minParts": 3,
@@ -192,56 +192,55 @@
     }
   },
   "counts": {
-    "GEOMETRIC_PRIMITIVE": 21,
     "FACE_FILL": 15,
-    "STRUCTURAL_STROKE": 1,
-    "OUTLINE_SHAPE": 90
+    "GEOMETRIC_PRIMITIVE": 1,
+    "OUTLINE_SHAPE": 65
   },
   "qa": {
     "fidelity": {
       "pass": false,
-      "f0": 0.8016,
-      "f1": 0.8471,
-      "f2": 0.8615,
-      "lineF1": 0.8507,
-      "lineF2": 0.865,
-      "textureShare": 0.0102,
-      "inkRatio": 0.877,
-      "chamfer": 2.12,
-      "p95": 15,
+      "f0": 0.7046,
+      "f1": 0.7437,
+      "f2": 0.7503,
+      "lineF1": 0.8326,
+      "lineF2": 0.8405,
+      "textureShare": 0.1741,
+      "inkRatio": 0.86,
+      "chamfer": 7.653,
+      "p95": 66.05,
       "detailRecall": 1,
       "holes": [
         38,
-        25
+        17
       ],
       "majorComponents": [
         8,
-        17
+        3
       ],
       "notes": [
-        "선 일치 F@2px 0.865 < 0.95",
-        "구멍 수 38 → 25 (15% 이상 차이)",
-        "해프톤이 도면 잉크의 1% — 전체 F@2px 0.8615, 그 영역 뺀 선 충실도 0.865"
+        "선 일치 F@2px 0.8405 < 0.95",
+        "구멍 수 38 → 17 (15% 이상 차이)",
+        "해프톤이 도면 잉크의 17% — 전체 F@2px 0.7503, 그 영역 뺀 선 충실도 0.8405"
       ]
     },
     "editability": {
       "pass": true,
-      "paths": 127,
-      "subpaths": 234,
-      "maxSubpathsInPath": 46,
-      "objectComplexity": 361,
-      "anchors": 3570,
+      "paths": 81,
+      "subpaths": 91,
+      "maxSubpathsInPath": 3,
+      "objectComplexity": 172,
+      "anchors": 2067,
       "uses": 0,
-      "kb": 143.8,
-      "anchorDensity": 6.54,
-      "shortPathRatio": 0.026,
-      "primitives": 21,
-      "anchorsSavedByPrimitives": 161,
+      "kb": 83.5,
+      "anchorDensity": 5,
+      "shortPathRatio": 0,
+      "primitives": 1,
+      "anchorsSavedByPrimitives": 11,
       "pathsSavedByPatterns": 0,
       "editableReduction": {
-        "paths": 0.228,
-        "anchors": 0.197,
-        "kb": 0.179
+        "paths": 0.173,
+        "anchors": 0.167,
+        "kb": 0.158
       },
       "notes": []
     },
@@ -252,66 +251,66 @@
           "id": "rear_band",
           "label": "Rear ring band",
           "kind": "area",
-          "paths": 2,
+          "paths": 9,
           "areaShare": 0.0311,
-          "precision": 0.9872,
-          "recall": 0.8358,
-          "iou": 0.8268,
+          "precision": 0.9663,
+          "recall": 0.9831,
+          "iou": 0.9506,
           "boundaryF1": -1
         },
         {
           "id": "rear_gemstone",
           "label": "Rear gemstone",
           "kind": "thin",
-          "paths": 0,
+          "paths": 5,
           "areaShare": 0.0005,
-          "precision": 0,
-          "recall": 0,
-          "iou": 0,
-          "boundaryF1": 0
+          "precision": 0.9405,
+          "recall": 0.2546,
+          "iou": 0.2506,
+          "boundaryF1": 0.9556
         },
         {
           "id": "rear_bezel",
           "label": "Rear bezel setting",
           "kind": "area",
-          "paths": 22,
+          "paths": 9,
           "areaShare": 0.0274,
-          "precision": 0.7325,
-          "recall": 0.9776,
-          "iou": 0.7205,
+          "precision": 0.9722,
+          "recall": 0.9853,
+          "iou": 0.9583,
           "boundaryF1": -1
         },
         {
           "id": "middle_band",
           "label": "Middle ring band",
           "kind": "area",
-          "paths": 5,
+          "paths": 14,
           "areaShare": 0.0125,
-          "precision": 0.8354,
-          "recall": 0.5687,
-          "iou": 0.5114,
+          "precision": 0.8523,
+          "recall": 0.8903,
+          "iou": 0.7714,
           "boundaryF1": -1
         },
         {
           "id": "middle_gemstone",
           "label": "Middle gemstone",
           "kind": "area",
-          "paths": 46,
+          "paths": 4,
           "areaShare": 0.0594,
-          "precision": 0.7888,
-          "recall": 0.9428,
-          "iou": 0.7527,
+          "precision": 0.7752,
+          "recall": 0.9945,
+          "iou": 0.7718,
           "boundaryF1": -1
         },
         {
           "id": "middle_bezel",
           "label": "Middle bezel setting",
           "kind": "area",
-          "paths": 3,
+          "paths": 8,
           "areaShare": 0.0223,
-          "precision": 0.7189,
-          "recall": 0.064,
-          "iou": 0.0625,
+          "precision": 0.8275,
+          "recall": 0.2413,
+          "iou": 0.2297,
           "boundaryF1": -1
         },
         {
@@ -320,68 +319,63 @@
           "kind": "area",
           "paths": 9,
           "areaShare": 0.0748,
-          "precision": 0.9814,
-          "recall": 0.8354,
-          "iou": 0.8225,
+          "precision": 0.9677,
+          "recall": 0.9615,
+          "iou": 0.9316,
           "boundaryF1": -1
         },
         {
           "id": "front_gemstone",
           "label": "Front gemstone",
           "kind": "area",
-          "paths": 35,
+          "paths": 10,
           "areaShare": 0.0601,
-          "precision": 0.9968,
-          "recall": 0.9185,
-          "iou": 0.9158,
+          "precision": 0.9905,
+          "recall": 0.9876,
+          "iou": 0.9783,
           "boundaryF1": -1
         },
         {
           "id": "front_bezel",
           "label": "Front bezel setting",
           "kind": "area",
-          "paths": 5,
+          "paths": 13,
           "areaShare": 0.0243,
-          "precision": 0.4232,
-          "recall": 0.9555,
-          "iou": 0.415,
+          "precision": 0.9816,
+          "recall": 0.9714,
+          "iou": 0.9541,
           "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.7182,
-      "weightedMeanIou": 0.7189,
+      "meanPrecision": 0.9193,
+      "weightedMeanIou": 0.8586,
       "failingMajorParts": [
-        "middle_bezel",
-        "front_bezel"
+        "middle_bezel"
       ],
-      "misassigned": [
-        "front_bezel"
-      ],
-      "emptyVisibleParts": [
-        "rear_gemstone"
-      ],
+      "maskFit": 0.9029,
+      "misassigned": [],
+      "emptyVisibleParts": [],
       "sharedOnlyParts": [],
-      "sharedBoundaries": 7,
+      "absentInSchematic": [],
+      "sharedBoundaries": 0,
       "aspectRatio": 1.057,
-      "lowConfidenceRoutes": 19,
+      "lowConfidenceRoutes": 5,
       "notes": [
-        "기준 미달 주요 파트 2개: middle_bezel, front_bezel (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
-        "배분이 의심되는 레이어 1개: front_bezel",
-        "패스가 없는 파트 1개: rear_gemstone",
+        "기준 미달 주요 파트 1개: middle_bezel (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
         "사진↔도면 종횡비 불일치 5.7%",
-        "라우터가 확신하지 못한 성분 19개"
+        "라우터가 확신하지 못한 성분 5개"
       ]
     },
     "state": "FIDELITY_REVIEW / EDITABILITY_PASS / SEMANTIC_REVIEW"
   },
   "timings": {
-    "S1_preprocess": 6200,
-    "S2_plan": 8,
-    "S3_masks": 4595,
-    "S4_schematic": 1328,
-    "S5_evidence": 4482,
-    "S7_export": 55,
-    "S8_qa": 1824
+    "S1_preprocess": 6193,
+    "S2_plan": 9,
+    "S3_masks": 5148,
+    "S4_schematic": 1513,
+    "S5_evidence": 8517,
+    "S7_export": 31,
+    "S8_qa": 3207
   },
   "rescued": {
     "stitch": [
@@ -394,16 +388,17 @@
     ]
   },
   "maskSource": {
-    "rear_band": "photo-warp (표결 7/9 미달)",
-    "rear_gemstone": "photo-warp (표결 7/9 미달)",
-    "rear_bezel": "photo-warp (표결 7/9 미달)",
-    "middle_band": "photo-warp (표결 7/9 미달)",
-    "middle_gemstone": "photo-warp (표결 7/9 미달)",
-    "middle_bezel": "photo-warp (표결 7/9 미달)",
-    "front_band": "photo-warp (표결 7/9 미달)",
-    "front_gemstone": "photo-warp (표결 7/9 미달)",
-    "front_bezel": "photo-warp (표결 7/9 미달)"
+    "rear_band": "photo-warp (표결 5/9 미달)",
+    "rear_gemstone": "photo-warp (표결 5/9 미달)",
+    "rear_bezel": "photo-warp (표결 5/9 미달)",
+    "middle_band": "photo-warp (표결 5/9 미달)",
+    "middle_gemstone": "photo-warp (표결 5/9 미달)",
+    "middle_bezel": "photo-warp (표결 5/9 미달)",
+    "front_band": "photo-warp (표결 5/9 미달)",
+    "front_gemstone": "photo-warp (표결 5/9 미달)",
+    "front_bezel": "photo-warp (표결 5/9 미달)"
   },
+  "maskFit": 0.9029,
   "correspondence": {
     "method": "global-similarity",
     "aspectRatio": 1.0566916083745643,

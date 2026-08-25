@@ -137,6 +137,14 @@ async function chromaShare(src: string): Promise<number> {
   return colored / n;
 }
 
+/**
+ * Gemini 마스크 채택 표결 하한. 원래 0.8 이었다 — 절반씩 섞으면 좌표 정합이 달라
+ * 무너졌기 때문이다(bag_3 0.708→0.435). 그 측정은 **잉크 분할 이전**이었다.
+ * 분할 후에 다시 실측했다 — **여전히 0.8 이 맞다.** 혼용을 허용하면 jewelry_3 의
+ * 가중 IoU 가 0.871 → 0.713, 마스크 정합이 0.926 → 0.681 로 떨어진다.
+ */
+const MIX_VOTE_MIN = Number(process.env.V4_MIX_VOTE ?? 0.8);
+
 export async function runV4(
   inputPath: string,
   jobDir: string,
@@ -297,8 +305,16 @@ export async function runV4(
           if (a || b) uni++;
         }
         const iou = uni ? inter / uni : 0;
-        if (iou >= 0.1) { blended.push({ id: pm.id, mask: g }); maskSource[pm.id] = "gemini-schematic"; }
-        else { blended.push(pm); maskSource[pm.id] = `photo-warp (gemini 불일치 IoU ${iou.toFixed(2)})`; }
+        // **크기 온전성도 본다.** 폴리곤이 대상의 일부만 훑고 끝나면 IoU 는 통과해도
+        // 그 파트가 쪼그라든다 — 실측: bag_1 top_handle 폴리곤이 캔버스의 0.42% 뿐이라
+        // 손잡이 면이 전부 이웃에게 넘어갔다(마스크 0.03%, precision 0.118).
+        // warp 는 경계는 못 믿어도 **넓이**는 대체로 맞다. 절반도 안 되면 폴리곤을 버린다.
+        let gA = 0, wA = 0;
+        for (let i = 0; i < g.length; i++) { gA += g[i]; wA += pm.mask[i]; }
+        const ratio = wA ? gA / wA : 1;
+        if (iou >= 0.1 && ratio >= 0.5) { blended.push({ id: pm.id, mask: g }); maskSource[pm.id] = "gemini-schematic"; }
+        else if (iou < 0.1) { blended.push(pm); maskSource[pm.id] = `photo-warp (gemini 자리 불일치 IoU ${iou.toFixed(2)})`; }
+        else { blended.push(pm); maskSource[pm.id] = `photo-warp (gemini 폴리곤이 ${(ratio * 100).toFixed(0)}% 로 축소)`; }
       }
       // warp 가 아예 없던 파트도 Gemini 가 찾았으면 쓴다
       for (const sp of seg.parts) {
@@ -315,7 +331,7 @@ export async function runV4(
       // 이웃 파트끼리 기준이 어긋나 배분이 무너진다(실측: bag_3 가중 IoU 0.708 → 0.435,
       // jewelry_3 0.651 → 0.588). 채택률 80% 이상일 때만 통째로 쓰고, 아니면 전부 warp.
       const nGem = Object.values(maskSource).filter((v) => v.startsWith("gemini")).length;
-      if (nGem >= blended.length * 0.8) {
+      if (nGem >= blended.length * MIX_VOTE_MIN) {
         partMasks = blended;
         say("SEGMENTING", `도면 직접 seg 채택: ${nGem}/${blended.length} 파트가 Gemini 마스크`);
       } else {
@@ -353,7 +369,24 @@ export async function runV4(
     thresholds: DEFAULT_THRESHOLDS,
     parts: partMasks,
     partNodes,
+    category: plan.category,
   }, (m) => say("ROUTING", m));
+  // **마스크가 도면을 실제로 설명하는가.** 파트 마스크가 잉크를 직접 덮은 비율이다.
+  // 낮으면 마스크가 도면 위 엉뚱한 자리에 있다는 뜻 — 그때는 배분이 추측이 된다.
+  // (BFS 로 이웃에게서 물려받은 잉크는 "덮었다"로 세지 않는다.)
+  let inkOwned = 0, inkTotal = 0;
+  {
+    const cover = new Uint8Array(VW * VH);
+    for (const pm of partMasks) for (let i = 0; i < cover.length; i++) if (pm.mask[i]) cover[i] = 1;
+    for (let i = 0; i < evidence.ink.length; i++) {
+      if (!evidence.ink[i]) continue;
+      inkTotal++;
+      if (cover[i]) inkOwned++;
+    }
+  }
+  const maskFit = inkTotal ? inkOwned / inkTotal : 0;
+  say("VALIDATING", `마스크 정합 — 도면 잉크의 ${(maskFit * 100).toFixed(1)}% 를 파트 마스크가 직접 덮는다`);
+
   const usedGemini = Object.values(maskSource).some((v) => v.startsWith("gemini"));
   scene.correspondence = {
     method: usedGemini ? "schematic-direct-seg" : "global-similarity",
@@ -386,9 +419,20 @@ export async function runV4(
   ts = Date.now();
   say("VALIDATING", "3-gate QA");
   const qa = await runQa4(scene, geomPath, svgs, {
-    texture: evidence.textureKept ? undefined : evidence.texture,
+    // 해프톤 톤 치환 + 보석 반사 제거는 **의도한 치환**이다. 둘 다 제외 영역에 넣지
+    // 않으면 지표가 옳은 동작을 손실로 센다(실측: 반사를 지우자 jewelry_3 선 F@2 가
+    // 0.869 → 0.842 로 "떨어졌다" — 지운 것이 기준에는 남아 있기 때문이다).
+    texture: (() => {
+      const t = evidence.textureKept ? undefined : evidence.texture;
+      const g = evidence.gemFlatten?.removedMask;
+      if (!g) return t;
+      const out = new Uint8Array(g.length);
+      for (let i = 0; i < g.length; i++) out[i] = (t?.[i] ? 1 : 0) | g[i];
+      return out;
+    })(),
     partMasks,
     aspectRatio: fit.aspectRatio,
+    maskFit,
   });
   mark("S8_qa", ts);
 
@@ -405,6 +449,7 @@ export async function runV4(
     // 질감으로 오인돼 사라질 뻔했다는 뜻이다.
     rescued: { stitch: evidence.rescuedStitch, detail: evidence.rescuedDetail },
     maskSource,
+    maskFit: +maskFit.toFixed(4),
     correspondence: scene.correspondence,
   };
   await fs.writeFile(path.join(jobDir, "qa_v4.json"), JSON.stringify(report, null, 2), "utf8");

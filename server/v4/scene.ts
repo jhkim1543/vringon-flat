@@ -17,6 +17,8 @@ import { area, deltaE2000Rgb, dilate, toHex } from "../v2/raster.js";
 import { extractEvidence, traceContour, type EvidenceField, type ComponentEvidence } from "./evidence.js";
 import { bestFit, type FitResult } from "./primitives.js";
 import { findPatterns, findDashRuns } from "./pattern.js";
+import { buildOwnerMap, splitByOwner, neighborsOf, fillTinyHoles } from "./inkOwner.js";
+import { isGemPart } from "./gemFlatten.js";
 import type { Pt } from "./types.js";
 import { routeComponent, DEFAULT_THRESHOLDS, type RouteThresholds } from "./router.js";
 import type {
@@ -57,6 +59,8 @@ export interface SceneOptions {
   thresholds: RouteThresholds;
   parts?: { id: string; mask: Uint8Array }[];
   partNodes?: PartNode[];
+  /** 제품 카테고리 — 보석 반사 제거처럼 카테고리에만 맞는 처리를 가른다 */
+  category?: string;
 }
 
 export const DEFAULT_SCENE_OPTIONS: Omit<SceneOptions, "workDir"> = {
@@ -169,15 +173,28 @@ export async function buildScene(
   seq = 0;
   await fsp.mkdir(opts.workDir, { recursive: true });
 
+  // 보석 파트를 골라 넘긴다 — 그 안쪽의 빛 반사·그림자는 제품의 형상이 아니다
+  // **주얼리에서만 돈다.** "bead" 는 주얼리에서는 진주 알이지만 가방에서는 소재 그 자체다
+  // (실측: bag_2 "Beaded pouch body" 가 보석으로 잡혀 비즈 조직이 통째로 지워졌다 —
+  // 패스 671 → 136). 카테고리를 안 보면 이 처리는 남의 제품을 망친다.
+  const isJewelry = /jewel|ring|earring|necklace|bracelet|pendant/i.test(opts.category ?? "");
+  const gemParts = !isJewelry ? [] : (opts.parts ?? []).filter((pm) => {
+    const node = opts.partNodes?.find((n) => n.id === pm.id);
+    return isGemPart(node?.label ?? "", pm.id);
+  });
   const ev = await extractEvidence(pngPath, {
     inkThreshold: opts.inkThreshold,
     localContrast: opts.localContrast,
     workLong: opts.workLong,
     textureMode: opts.textureMode,
+    gemParts: gemParts.length ? gemParts : undefined,
   });
   const { width: W, height: H } = ev;
   const N = W * H;
   say?.(`증거 ${W}×${H} (×${ev.supersample}) · 성분 ${ev.components.length}`);
+  if (ev.gemFlatten?.removed[0]) {
+    say?.(`보석 반사 제거 — ${ev.gemFlatten.parts.join(", ")}: 얼룩 ${ev.gemFlatten.removed[0]}개(${ev.gemFlatten.removed[1]}px) 삭제 · 패싯 능선 ${ev.gemFlatten.keptFacets}개 보존`);
+  }
 
   // 색 샘플링 원본
   let colorData: Buffer | Uint8Array = ev.rgb;
@@ -192,6 +209,7 @@ export async function buildScene(
   const primitives: ScenePrimitive[] = [];
   /** 픽셀별 최전면 파트 — 면 배정에서 만들어 패턴 배정에도 쓴다 */
   let facePartAt: Int16Array | null = null;
+  let tinyHolesFilled = 0;
 
   // ── 닫힌 면 ──────────────────────────────────────────────
   {
@@ -211,7 +229,6 @@ export async function buildScene(
     const enclosed = new Uint8Array(N);
     for (let i = 0; i < N; i++) if (!ev.inkFill[i] && !outside[i]) enclosed[i] = 1;
 
-    const epsWork = Math.min(1.6, opts.simplifyPx * ev.supersample);
     const faces = labelComponents(enclosed, W, H, 4, opts.minRegionPx * ev.supersample * ev.supersample);
     const faceTol = Math.min(W, H) * opts.thresholds.primitiveToleranceRatio;
     const faceMember = new Uint8Array(N);
@@ -365,7 +382,12 @@ export async function buildScene(
     for (let gi = 0; gi < groups.length; gi++) {
       const g = groups[gi];
       const grown = dilate(g.mask, W, H, Math.max(1, Math.round(ev.supersample / 2)));
-      for (const d of await traceMask(grown, W, H, path.join(opts.workDir, `face_${gi}.png`), epsWork)) {
+      const faceEps = Math.min(1.6, opts.simplifyPx * ev.supersample);
+      for (const draw of await traceMask(grown, W, H, path.join(opts.workDir, `face_${gi}.png`), faceEps)) {
+        // 비즈·메시 배경 면은 알마다 구멍이 뚫려 서브패스가 수천 개가 된다. 그 구멍은
+        // 위에 알이 그려지므로 보이지 않는다 — 메우면 편집만 쉬워지고 그림은 그대로다.
+        const { d, dropped } = fillTinyHoles(draw);
+        if (dropped) tinyHolesFilled += dropped;
         primitives.push({
           id: nextId("f"), cls: "FACE_FILL", area: g.area, bbox: [0, 0, W, H], d, fill: g.color,
           partId: g.partId, shared: g.shared.length ? g.shared : undefined,
@@ -378,9 +400,15 @@ export async function buildScene(
         } as ShapePrimitive);
       }
     }
+    if (tinyHolesFilled) say?.(`면의 미세 구멍 ${tinyHolesFilled}개를 메움 (위에 덮이는 자리)`);
     facePartAt = partAt;
     say?.(`면 ${primitives.length}개 (색 묶음 ${groups.length})`);
   }
+
+  // 단순화 허용오차는 **원본 좌표 기준**이어야 한다 — 작업 캔버스는 supersample 배로
+  // 커져 있으므로 그대로 쓰면 원본 기준 0.4px 로 재는 셈이다.
+  const epsWork = Math.min(1.6, opts.simplifyPx * ev.supersample);
+  void tinyHolesFilled;
 
   // ── 반복 패턴 · 점선 ─────────────────────────────────────
   const clusters = findPatterns(ev.components, N);
@@ -427,25 +455,55 @@ export async function buildScene(
     }
   }
 
-  // ── 구조선 → centerline (한 번에) ────────────────────────
+  // ── 잉크 주인 지도 ───────────────────────────────────────
+  //
+  // 추적 **전에** 잉크를 파트별로 쪼갠다. 통째로 추적한 뒤 패스 단위로 배정하면
+  // 거대 성분 하나가 한 파트를 독점한다(실측: 빈 파트 22%, 한 파트 최대 93%).
+  const owners = opts.parts?.length
+    ? buildOwnerMap(ev.ink, opts.parts, W, H)
+    : null;
+  if (owners) {
+    say?.(`잉크 주인 지도: 이웃 상속 ${owners.inherited}px · 무주공산 ${owners.unowned}px`);
+  }
+  const partOf = (pi: number) => opts.parts![pi].id;
+
+  // ── 구조선 → centerline (파트별) ─────────────────────────
   if (area(strokeMask)) {
-    const png = path.join(opts.workDir, "stroke.png");
-    await writeMask(strokeMask, W, H, png);
-    const traced = await centerlineTrace(png, {
-      color: "#111111",
-      inkThreshold: 128,
-      minLength: Math.max(4, Math.round(Math.min(W, H) * 0.012)),
-      maxPaths: 4000,
-      // V3에서 배운 것: 기본 상한 6은 원본 해상도 기준 값이라 확대 캔버스에서 모든 선을 누른다
-      maxWidth: ev.lineWidthLimit,
-    });
-    for (const st of traced) {
-      primitives.push({
-        id: nextId("s"), cls: "STRUCTURAL_STROKE", d: st.d,
-        width: st.strokeWidth ?? 2, color: st.stroke ?? "#111111",
-        area: 0, bbox: [0, 0, W, H],
-        route: { chosen: "STRUCTURAL_STROKE", features: {}, why: "구조선 마스크 일괄 중심선 추출", confidence: 0.8 },
-      } as StrokePrimitive);
+    const allTraced: Awaited<ReturnType<typeof centerlineTrace>> = [];
+    const traceOne = async (m: Uint8Array, tag: string, partId?: string, shared?: string[]) => {
+      const png = path.join(opts.workDir, `stroke_${tag}.png`);
+      await writeMask(m, W, H, png);
+      const traced = await centerlineTrace(png, {
+        color: "#111111",
+        inkThreshold: 128,
+        minLength: Math.max(4, Math.round(Math.min(W, H) * 0.012)),
+        maxPaths: 4000,
+        // V3에서 배운 것: 기본 상한 6은 원본 해상도 기준 값이라 확대 캔버스에서 모든 선을 누른다
+        maxWidth: ev.lineWidthLimit,
+      });
+      allTraced.push(...traced);
+      for (const st of traced) {
+        primitives.push({
+          id: nextId("s"), cls: "STRUCTURAL_STROKE", d: st.d,
+          width: st.strokeWidth ?? 2, color: st.stroke ?? "#111111",
+          area: 0, bbox: [0, 0, W, H],
+          partId, shared: shared?.length ? shared : undefined,
+          route: {
+            chosen: "STRUCTURAL_STROKE", features: {},
+            why: partId ? `구조선 — ${partId} 몫만 중심선 추출` : "구조선 마스크 중심선 추출",
+            confidence: 0.8,
+          },
+        } as StrokePrimitive);
+      }
+    };
+    if (owners) {
+      const sp = splitByOwner(strokeMask, owners.owner, opts.parts!.length, W, H);
+      for (const [pi, m] of sp.byPart) {
+        await traceOne(m, `p${pi}`, partOf(pi), neighborsOf(m, opts.parts!, pi, W, H));
+      }
+      if (sp.restN) await traceOne(sp.rest, "rest");
+    } else {
+      await traceOne(strokeMask, "all");
     }
 
     // **사후 검산.** 라우터가 "구조선"이라 판정해도 centerline 이 그 잉크를 다 설명한다는
@@ -453,17 +511,26 @@ export async function buildScene(
     // 그만큼 도면에서 사라진다(실측: 검산 없이 shoe_2 선 F@2px 0.995 → 0.944).
     // 실제로 그려 보고 안 덮인 잉크만 outline 으로 보탠다. residual 을 ink ∧ ¬dilate(cover,1)
     // 로 정의하므로 stroke 와 겹치지 않는다 — 같은 선을 두 번 그리지 않는다.
-    const cover = await rasterizeStrokes(traced, W, H);
+    const cover = await rasterizeStrokes(allTraced, W, H);
     const grown = dilate(cover, W, H, 1);
     const residual = new Uint8Array(N);
     let residN = 0;
     for (let i = 0; i < N; i++) if (strokeMask[i] && !grown[i]) { residual[i] = 1; residN++; }
     if (residN > N * 0.00002) {
-      const d2 = await traceMask(residual, W, H, path.join(opts.workDir, "stroke_residual.png"), opts.simplifyPx);
+      // 남은 잉크도 주인별로 쪼개 보탠다 — 여기서 통째로 넣으면 분할이 새어 나간다
+      const rs = owners
+        ? splitByOwner(residual, owners.owner, opts.parts!.length, W, H)
+        : { byPart: new Map<number, Uint8Array>([[-1, residual]]), rest: new Uint8Array(N), restN: 0 };
+      const chunks: { m: Uint8Array; pid?: string }[] = [];
+      for (const [pi, m] of rs.byPart) chunks.push({ m, pid: pi >= 0 ? partOf(pi) : undefined });
+      if (rs.restN) chunks.push({ m: rs.rest });
+      for (let ci = 0; ci < chunks.length; ci++) {
+        const d2 = await traceMask(chunks[ci].m, W, H, path.join(opts.workDir, `stroke_residual_${ci}.png`), epsWork);
       for (const d of d2) {
         primitives.push({
           id: nextId("or"), cls: "OUTLINE_SHAPE", d, fill: "#111111",
           area: 0, bbox: [0, 0, W, H],
+          partId: chunks[ci].pid,
           route: {
             chosen: "OUTLINE_SHAPE",
             features: { residualPx: residN },
@@ -471,19 +538,36 @@ export async function buildScene(
             confidence: 0.7,
           },
         } as ShapePrimitive);
+        }
       }
       say?.(`구조선 검산 — 남은 잉크 ${(residN / Math.max(1, area(strokeMask)) * 100).toFixed(1)}% 를 outline 으로 보탬`);
     }
   }
 
-  // ── 나머지 → outline (한 번에) ───────────────────────────
+  // ── 나머지 → outline (파트별) ────────────────────────────
   if (area(outlineMask)) {
-    for (const d of await traceMask(outlineMask, W, H, path.join(opts.workDir, "outline.png"), opts.simplifyPx)) {
-      primitives.push({
-        id: nextId("o"), cls: "OUTLINE_SHAPE", d, fill: "#111111",
-        area: 0, bbox: [0, 0, W, H],
-        route: { chosen: "OUTLINE_SHAPE", features: {}, why: "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적", confidence: 0.85 },
-      } as ShapePrimitive);
+    const outlineOne = async (m: Uint8Array, tag: string, partId?: string, shared?: string[]) => {
+      for (const d of await traceMask(m, W, H, path.join(opts.workDir, `outline_${tag}.png`), epsWork)) {
+        primitives.push({
+          id: nextId("o"), cls: "OUTLINE_SHAPE", d, fill: "#111111",
+          area: 0, bbox: [0, 0, W, H],
+          partId, shared: shared?.length ? shared : undefined,
+          route: {
+            chosen: "OUTLINE_SHAPE", features: {},
+            why: partId ? `윤곽 — ${partId} 몫만 추적 (파트 경계에서 분할)` : "윤곽 추적 (주인 없는 잉크)",
+            confidence: 0.85,
+          },
+        } as ShapePrimitive);
+      }
+    };
+    if (owners) {
+      const sp = splitByOwner(outlineMask, owners.owner, opts.parts!.length, W, H);
+      for (const [pi, m] of sp.byPart) {
+        await outlineOne(m, `p${pi}`, partOf(pi), neighborsOf(m, opts.parts!, pi, W, H));
+      }
+      if (sp.restN) await outlineOne(sp.rest, "rest");
+    } else {
+      await outlineOne(outlineMask, "all");
     }
   }
 
@@ -537,6 +621,12 @@ export async function buildScene(
       // 배정하면 면에 맞지 않는 기준으로 덮어쓰게 된다.
       if (p.cls === "FACE_FILL" || (p.cls === "GEOMETRIC_PRIMITIVE" && (p as GeometricPrimitive).paint === "fill")) {
         if (p.shared?.length) sharedBoundaries.push({ primitiveId: p.id, between: [p.partId!, ...p.shared].filter(Boolean) });
+        continue;
+      }
+      // **분할된 기하는 이미 주인이 있다.** 곡선 표본 다수결로 덮어쓰면 그 분할이
+      // 무효가 된다 — 파트 경계에서 자른 조각을 다시 통째로 한 파트에 몰아넣는 셈이다.
+      if (p.partId) {
+        if (p.shared?.length) sharedBoundaries.push({ primitiveId: p.id, between: [p.partId, ...p.shared] });
         continue;
       }
       const d = (p as { d?: string }).d;

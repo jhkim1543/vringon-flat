@@ -1,6 +1,6 @@
 {
   "job": {
-    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW",
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS",
     "canvas": {
       "width": 1388,
       "height": 2048,
@@ -8,8 +8,8 @@
       "sourceHeight": 1024,
       "supersample": 2
     },
-    "totalMs": 33421,
-    "createdAt": "2026-08-24T12:27:57.427Z"
+    "totalMs": 41728,
+    "createdAt": "2026-08-25T01:57:53.457Z"
   },
   "options": {
     "minParts": 3,
@@ -193,24 +193,24 @@
   "counts": {
     "GEOMETRIC_PRIMITIVE": 4,
     "FACE_FILL": 43,
-    "OUTLINE_SHAPE": 4
+    "OUTLINE_SHAPE": 43
   },
   "qa": {
     "fidelity": {
       "pass": true,
-      "f0": 0.9486,
-      "f1": 0.9883,
-      "f2": 0.9925,
-      "lineF1": 0.9883,
-      "lineF2": 0.9925,
+      "f0": 0.9278,
+      "f1": 0.9872,
+      "f2": 0.9926,
+      "lineF1": 0.9872,
+      "lineF2": 0.9926,
       "textureShare": 0,
-      "inkRatio": 1.011,
-      "chamfer": 0.08,
+      "inkRatio": 1.114,
+      "chamfer": 0.101,
       "p95": 1,
       "detailRecall": 1,
       "holes": [
         49,
-        49
+        48
       ],
       "majorComponents": [
         5,
@@ -220,48 +220,48 @@
     },
     "editability": {
       "pass": true,
-      "paths": 51,
-      "subpaths": 104,
-      "maxSubpathsInPath": 39,
-      "objectComplexity": 155,
-      "anchors": 3683,
+      "paths": 90,
+      "subpaths": 123,
+      "maxSubpathsInPath": 13,
+      "objectComplexity": 213,
+      "anchors": 4054,
       "uses": 0,
-      "kb": 150.3,
-      "anchorDensity": 4.73,
-      "shortPathRatio": 0.01,
+      "kb": 165.1,
+      "anchorDensity": 5.1,
+      "shortPathRatio": 0.016,
       "primitives": 4,
       "anchorsSavedByPrimitives": 193,
       "pathsSavedByPatterns": 0,
       "editableReduction": {
-        "paths": 0,
-        "anchors": 0.093,
-        "kb": 0.088
+        "paths": 0.033,
+        "anchors": 0.108,
+        "kb": 0.1
       },
       "notes": []
     },
     "semantic": {
-      "pass": false,
+      "pass": true,
       "perPart": [
         {
           "id": "pin_clasp_assembly",
           "label": "Rear pin and clasp assembly",
-          "kind": "thin",
-          "paths": 6,
-          "areaShare": 0.0205,
-          "precision": 1,
-          "recall": 0.3167,
-          "iou": 0.3167,
-          "boundaryF1": 0.8414
+          "kind": "area",
+          "paths": 16,
+          "areaShare": 0.039,
+          "precision": 0.9891,
+          "recall": 0.9705,
+          "iou": 0.9602,
+          "boundaryF1": -1
         },
         {
           "id": "string_set",
           "label": "Harp string set",
           "kind": "area",
-          "paths": 4,
+          "paths": 9,
           "areaShare": 0.016,
-          "precision": 0.9809,
-          "recall": 0.7727,
-          "iou": 0.7612,
+          "precision": 0.9846,
+          "recall": 0.9751,
+          "iou": 0.9604,
           "boundaryF1": -1
         },
         {
@@ -279,99 +279,98 @@
           "id": "outer_column",
           "label": "Curved outer column",
           "kind": "thin",
-          "paths": 0,
+          "paths": 1,
           "areaShare": 0.0002,
-          "precision": 0,
-          "recall": 0,
-          "iou": 0,
-          "boundaryF1": 0
+          "precision": 1,
+          "recall": 0.3064,
+          "iou": 0.3064,
+          "boundaryF1": 1
         },
         {
           "id": "main_body",
           "label": "Main harp body and lower frame",
           "kind": "area",
-          "paths": 32,
-          "areaShare": 0.3498,
-          "precision": 0.9344,
-          "recall": 0.9911,
-          "iou": 0.9266,
+          "paths": 35,
+          "areaShare": 0.3312,
+          "precision": 0.9977,
+          "recall": 0.9923,
+          "iou": 0.9901,
           "boundaryF1": -1
         },
         {
           "id": "top_neck",
           "label": "Upper curved neck bar",
           "kind": "thin",
-          "paths": 1,
+          "paths": 7,
           "areaShare": 0.0036,
           "precision": 1,
-          "recall": 0.0811,
-          "iou": 0.0811,
-          "boundaryF1": 0.427
+          "recall": 0.3954,
+          "iou": 0.3954,
+          "boundaryF1": 0.9949
         },
         {
           "id": "leaf_appliques",
           "label": "Decorative leaf appliques",
           "kind": "area",
-          "paths": 6,
+          "paths": 12,
           "areaShare": 0.0544,
-          "precision": 0.9848,
-          "recall": 0.9046,
-          "iou": 0.8922,
+          "precision": 0.9862,
+          "recall": 0.9963,
+          "iou": 0.9826,
           "boundaryF1": -1
         },
         {
           "id": "neck_rivets",
           "label": "Neck rivets",
           "kind": "thin",
-          "paths": 1,
+          "paths": 5,
           "areaShare": 0.0017,
           "precision": 1,
-          "recall": 0.2298,
-          "iou": 0.2298,
-          "boundaryF1": 0.8809
+          "recall": 0.4877,
+          "iou": 0.4877,
+          "boundaryF1": 1
         },
         {
           "id": "engraved_flourish",
           "label": "Engraved body flourish",
           "kind": "thin",
-          "paths": 1,
+          "paths": 5,
           "areaShare": 0.0028,
           "precision": 1,
-          "recall": 0.0629,
-          "iou": 0.0629,
-          "boundaryF1": 0.4942
+          "recall": 0.3981,
+          "iou": 0.3981,
+          "boundaryF1": 1
         }
       ],
-      "meanPrecision": 0.7667,
-      "weightedMeanIou": 0.8735,
+      "meanPrecision": 0.8842,
+      "weightedMeanIou": 0.9749,
       "failingMajorParts": [],
+      "maskFit": 0.9996,
       "misassigned": [],
-      "emptyVisibleParts": [
+      "emptyVisibleParts": [],
+      "sharedOnlyParts": [],
+      "absentInSchematic": [
         "tuning_tab_set"
       ],
-      "sharedOnlyParts": [
-        "outer_column"
-      ],
-      "sharedBoundaries": 0,
+      "sharedBoundaries": 1,
       "aspectRatio": 1.604,
       "lowConfidenceRoutes": 4,
       "notes": [
-        "패스가 없는 파트 1개: tuning_tab_set",
-        "공유 경계로만 그려진 파트 1개: outer_column",
+        "도면에 없는 파트 1개: tuning_tab_set (GPT 계획↔도면 불일치 — 벡터화 문제가 아니다)",
         "사진↔도면 종횡비 불일치 60.4%",
         "라우터가 확신하지 못한 성분 4개"
       ]
     },
-    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
   },
   "timings": {
-    "S1_preprocess": 5939,
+    "S1_preprocess": 6252,
     "S2_plan": 8,
-    "S3_masks": 16911,
-    "S4_schematic": 1455,
-    "S5_evidence": 4578,
-    "S7_export": 40,
-    "S8_qa": 4355
+    "S3_masks": 21768,
+    "S4_schematic": 1768,
+    "S5_evidence": 6648,
+    "S7_export": 46,
+    "S8_qa": 5079
   },
   "rescued": {
     "stitch": [
@@ -384,16 +383,17 @@
     ]
   },
   "maskSource": {
-    "pin_clasp_assembly": "photo-warp (표결 4/9 미달)",
-    "string_set": "photo-warp (표결 4/9 미달)",
-    "tuning_tab_set": "photo-warp (표결 4/9 미달)",
-    "outer_column": "photo-warp (표결 4/9 미달)",
-    "main_body": "photo-warp (표결 4/9 미달)",
-    "top_neck": "photo-warp (표결 4/9 미달)",
-    "leaf_appliques": "photo-warp (표결 4/9 미달)",
-    "neck_rivets": "photo-warp (표결 4/9 미달)",
-    "engraved_flourish": "photo-warp (표결 4/9 미달)"
+    "pin_clasp_assembly": "photo-warp (표결 2/9 미달)",
+    "string_set": "photo-warp (표결 2/9 미달)",
+    "tuning_tab_set": "photo-warp (표결 2/9 미달)",
+    "outer_column": "photo-warp (표결 2/9 미달)",
+    "main_body": "photo-warp (표결 2/9 미달)",
+    "top_neck": "photo-warp (표결 2/9 미달)",
+    "leaf_appliques": "photo-warp (표결 2/9 미달)",
+    "neck_rivets": "photo-warp (표결 2/9 미달)",
+    "engraved_flourish": "photo-warp (표결 2/9 미달)"
   },
+  "maskFit": 0.9996,
   "correspondence": {
     "method": "global-similarity",
     "aspectRatio": 1.6038246554009583,

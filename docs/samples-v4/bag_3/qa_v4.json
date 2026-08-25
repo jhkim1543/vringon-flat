@@ -8,8 +8,8 @@
       "sourceHeight": 1400,
       "supersample": 2
     },
-    "totalMs": 19042,
-    "createdAt": "2026-08-24T12:26:53.235Z"
+    "totalMs": 26360,
+    "createdAt": "2026-08-25T01:51:51.786Z"
   },
   "options": {
     "minParts": 3,
@@ -110,19 +110,19 @@
     "REPEATING_PATTERN": 13,
     "GEOMETRIC_PRIMITIVE": 32,
     "FACE_FILL": 320,
-    "OUTLINE_SHAPE": 1
+    "OUTLINE_SHAPE": 9
   },
   "qa": {
     "fidelity": {
       "pass": true,
-      "f0": 0.9643,
-      "f1": 0.9996,
+      "f0": 0.9595,
+      "f1": 0.9991,
       "f2": 1,
-      "lineF1": 0.9996,
+      "lineF1": 0.9991,
       "lineF2": 1,
       "textureShare": 0,
-      "inkRatio": 1.007,
-      "chamfer": 0.036,
+      "inkRatio": 1.023,
+      "chamfer": 0.041,
       "p95": 0,
       "detailRecall": 1,
       "holes": [
@@ -137,25 +137,25 @@
     },
     "editability": {
       "pass": false,
-      "paths": 366,
-      "subpaths": 1454,
-      "maxSubpathsInPath": 1089,
-      "objectComplexity": 2218,
-      "anchors": 16230,
+      "paths": 374,
+      "subpaths": 1425,
+      "maxSubpathsInPath": 773,
+      "objectComplexity": 2197,
+      "anchors": 16339,
       "uses": 398,
-      "kb": 650.1,
-      "anchorDensity": 11.67,
+      "kb": 656,
+      "anchorDensity": 11.62,
       "shortPathRatio": 0.006,
       "primitives": 32,
       "anchorsSavedByPrimitives": 290,
       "pathsSavedByPatterns": 385,
       "editableReduction": {
-        "paths": 0,
-        "anchors": 0.126,
-        "kb": 0.11
+        "paths": 0.003,
+        "anchors": 0.123,
+        "kb": 0.108
       },
       "notes": [
-        "한 패스에 서브패스 1089개 — Illustrator 에서 통째로 선택된다"
+        "한 패스에 서브패스 773개 — Illustrator 에서 통째로 선택된다"
       ]
     },
     "semantic": {
@@ -165,62 +165,61 @@
           "id": "inner_pouch",
           "label": "Inner pouch body",
           "kind": "thin",
-          "paths": 42,
-          "areaShare": 0.0015,
-          "precision": 0.0536,
-          "recall": 0.0899,
-          "iou": 0.0348,
-          "boundaryF1": 0.0944
+          "paths": 48,
+          "areaShare": 0.002,
+          "precision": 0.2754,
+          "recall": 0.4979,
+          "iou": 0.2156,
+          "boundaryF1": 0.4319
         },
         {
           "id": "chain_strap",
           "label": "Chain shoulder strap",
           "kind": "area",
-          "paths": 16,
+          "paths": 17,
           "areaShare": 0.0359,
-          "precision": 0.996,
-          "recall": 0.5127,
-          "iou": 0.5117,
+          "precision": 0.9977,
+          "recall": 0.9007,
+          "iou": 0.8988,
           "boundaryF1": -1
         },
         {
           "id": "metal_lattice_shell",
           "label": "Linked metal outer shell",
           "kind": "thin",
-          "paths": 15,
-          "areaShare": 0.0062,
-          "precision": 1,
-          "recall": 0.1823,
-          "iou": 0.1823,
-          "boundaryF1": 0.7683
+          "paths": 18,
+          "areaShare": 0.0061,
+          "precision": 0.6374,
+          "recall": 0.5494,
+          "iou": 0.4186,
+          "boundaryF1": 0.7676
         },
         {
           "id": "turquoise_stone_embellishments",
           "label": "Turquoise stone embellishments",
           "kind": "area",
-          "paths": 305,
-          "areaShare": 0.1808,
-          "precision": 0.828,
-          "recall": 0.9086,
-          "iou": 0.7643,
+          "paths": 304,
+          "areaShare": 0.1804,
+          "precision": 0.9477,
+          "recall": 0.9083,
+          "iou": 0.865,
           "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.7194,
-      "weightedMeanIou": 0.7029,
-      "failingMajorParts": [
-        "chain_strap"
-      ],
+      "meanPrecision": 0.7146,
+      "weightedMeanIou": 0.8525,
+      "failingMajorParts": [],
+      "maskFit": 0.8779,
       "misassigned": [
         "inner_pouch"
       ],
       "emptyVisibleParts": [],
       "sharedOnlyParts": [],
+      "absentInSchematic": [],
       "sharedBoundaries": 1,
       "aspectRatio": 1.031,
       "lowConfidenceRoutes": 0,
       "notes": [
-        "기준 미달 주요 파트 1개: chain_strap (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
         "배분이 의심되는 레이어 1개: inner_pouch",
         "사진↔도면 종횡비 불일치 3.1%"
       ]
@@ -228,13 +227,13 @@
     "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
   },
   "timings": {
-    "S1_preprocess": 5722,
-    "S2_plan": 6,
-    "S3_masks": 4598,
-    "S4_schematic": 1137,
-    "S5_evidence": 4079,
-    "S7_export": 71,
-    "S8_qa": 3178
+    "S1_preprocess": 6265,
+    "S2_plan": 9,
+    "S3_masks": 6361,
+    "S4_schematic": 1667,
+    "S5_evidence": 6885,
+    "S7_export": 114,
+    "S8_qa": 4711
   },
   "rescued": {
     "stitch": [
@@ -247,11 +246,12 @@
     ]
   },
   "maskSource": {
-    "inner_pouch": "photo-warp (표결 2/4 미달)",
-    "chain_strap": "photo-warp (표결 2/4 미달)",
-    "metal_lattice_shell": "photo-warp (표결 2/4 미달)",
-    "turquoise_stone_embellishments": "photo-warp (표결 2/4 미달)"
+    "inner_pouch": "photo-warp (표결 1/4 미달)",
+    "chain_strap": "photo-warp (표결 1/4 미달)",
+    "metal_lattice_shell": "photo-warp (표결 1/4 미달)",
+    "turquoise_stone_embellishments": "photo-warp (표결 1/4 미달)"
   },
+  "maskFit": 0.8779,
   "correspondence": {
     "method": "global-similarity",
     "aspectRatio": 1.0314516129032258,

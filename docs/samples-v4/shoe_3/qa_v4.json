@@ -1,6 +1,6 @@
 {
   "job": {
-    "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_REVIEW",
+    "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_PASS",
     "canvas": {
       "width": 2800,
       "height": 2118,
@@ -8,8 +8,8 @@
       "sourceHeight": 1059,
       "supersample": 2
     },
-    "totalMs": 37378,
-    "createdAt": "2026-08-24T12:25:43.646Z"
+    "totalMs": 65612,
+    "createdAt": "2026-08-25T01:55:29.999Z"
   },
   "options": {
     "minParts": 3,
@@ -189,180 +189,174 @@
     "REPEATING_PATTERN": 11,
     "GEOMETRIC_PRIMITIVE": 125,
     "FACE_FILL": 324,
-    "OUTLINE_SHAPE": 38
+    "OUTLINE_SHAPE": 97
   },
   "qa": {
     "fidelity": {
       "pass": true,
-      "f0": 0.945,
-      "f1": 0.9672,
-      "f2": 0.9682,
-      "lineF1": 0.9984,
-      "lineF2": 0.9995,
+      "f0": 0.9353,
+      "f1": 0.966,
+      "f2": 0.9681,
+      "lineF1": 0.9972,
+      "lineF2": 0.9994,
       "textureShare": 0.2515,
-      "inkRatio": 0.994,
-      "chamfer": 0.027,
+      "inkRatio": 1.031,
+      "chamfer": 0.037,
       "p95": 0,
       "detailRecall": 1,
       "holes": [
         750,
-        751
+        750
       ],
       "majorComponents": [
         1,
         1
       ],
       "notes": [
-        "해프톤이 도면 잉크의 25% — 전체 F@2px 0.9682, 그 영역 뺀 선 충실도 0.9995"
+        "해프톤이 도면 잉크의 25% — 전체 F@2px 0.9681, 그 영역 뺀 선 충실도 0.9994"
       ]
     },
     "editability": {
       "pass": false,
-      "paths": 498,
-      "subpaths": 1312,
-      "maxSubpathsInPath": 760,
-      "objectComplexity": 2067,
-      "anchors": 30170,
+      "paths": 557,
+      "subpaths": 1317,
+      "maxSubpathsInPath": 334,
+      "objectComplexity": 2131,
+      "anchors": 30707,
       "uses": 257,
-      "kb": 1218.3,
-      "anchorDensity": 8.84,
-      "shortPathRatio": 0.019,
+      "kb": 1243.8,
+      "anchorDensity": 8.88,
+      "shortPathRatio": 0.024,
       "primitives": 125,
       "anchorsSavedByPrimitives": 1367,
       "pathsSavedByPatterns": 246,
       "editableReduction": {
-        "paths": 0.008,
-        "anchors": 0.096,
-        "kb": 0.093
+        "paths": 0.036,
+        "anchors": 0.095,
+        "kb": 0.092
       },
       "notes": [
-        "한 패스에 서브패스 760개 — Illustrator 에서 통째로 선택된다"
+        "한 패스에 서브패스 334개 — Illustrator 에서 통째로 선택된다"
       ]
     },
     "semantic": {
-      "pass": false,
+      "pass": true,
       "perPart": [
         {
           "id": "tongue",
           "label": "Tongue",
           "kind": "thin",
-          "paths": 28,
-          "areaShare": 0.0369,
+          "paths": 48,
+          "areaShare": 0.0403,
           "precision": 1,
-          "recall": 0.3116,
-          "iou": 0.3116,
-          "boundaryF1": 0.8772
+          "recall": 0.5433,
+          "iou": 0.5433,
+          "boundaryF1": 0.9776
         },
         {
           "id": "mesh_upper",
           "label": "Mesh upper",
           "kind": "thin",
-          "paths": 0,
+          "paths": 1,
           "areaShare": 0.0027,
-          "precision": 0,
-          "recall": 0,
-          "iou": 0,
-          "boundaryF1": 0
+          "precision": 1,
+          "recall": 0.2789,
+          "iou": 0.2789,
+          "boundaryF1": 0.9077
         },
         {
           "id": "padded_collar",
           "label": "Padded collar",
           "kind": "thin",
-          "paths": 0,
-          "areaShare": 0.0017,
-          "precision": 0,
-          "recall": 0,
-          "iou": 0,
-          "boundaryF1": 0
+          "paths": 2,
+          "areaShare": 0.0018,
+          "precision": 1,
+          "recall": 0.4739,
+          "iou": 0.4739,
+          "boundaryF1": 0.9926
         },
         {
           "id": "eyestay_overlay",
           "label": "Eyestay overlay",
           "kind": "area",
-          "paths": 5,
-          "areaShare": 0.0534,
-          "precision": 0.9796,
-          "recall": 0.8597,
-          "iou": 0.8446,
+          "paths": 18,
+          "areaShare": 0.0575,
+          "precision": 0.9722,
+          "recall": 0.9816,
+          "iou": 0.9547,
           "boundaryF1": -1
         },
         {
           "id": "lace_loops",
           "label": "Yellow lace loops",
           "kind": "area",
-          "paths": 41,
-          "areaShare": 0.0968,
-          "precision": 0.9993,
-          "recall": 0.8673,
-          "iou": 0.8668,
+          "paths": 47,
+          "areaShare": 0.097,
+          "precision": 0.9995,
+          "recall": 0.9635,
+          "iou": 0.963,
           "boundaryF1": -1
         },
         {
           "id": "laces",
           "label": "Laces",
           "kind": "thin",
-          "paths": 0,
+          "paths": 8,
           "areaShare": 0.0004,
-          "precision": 0,
-          "recall": 0,
-          "iou": 0,
-          "boundaryF1": 0
+          "precision": 1,
+          "recall": 0.1641,
+          "iou": 0.1641,
+          "boundaryF1": 1
         },
         {
           "id": "outsole",
           "label": "Flexible tread outsole",
           "kind": "area",
-          "paths": 243,
+          "paths": 248,
           "areaShare": 0.3627,
-          "precision": 0.9976,
-          "recall": 0.6937,
-          "iou": 0.6925,
+          "precision": 0.9968,
+          "recall": 0.9393,
+          "iou": 0.9364,
           "boundaryF1": -1
         },
         {
           "id": "lace_stitching",
           "label": "Yellow lace stitching",
           "kind": "area",
-          "paths": 194,
-          "areaShare": 0.1479,
-          "precision": 0.48,
-          "recall": 0.9575,
-          "iou": 0.47,
+          "paths": 197,
+          "areaShare": 0.1401,
+          "precision": 0.9971,
+          "recall": 0.9564,
+          "iou": 0.9538,
           "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.5571,
-      "weightedMeanIou": 0.6565,
+      "meanPrecision": 0.9957,
+      "weightedMeanIou": 0.9183,
       "failingMajorParts": [],
-      "misassigned": [
-        "lace_stitching"
-      ],
+      "maskFit": 0.9824,
+      "misassigned": [],
       "emptyVisibleParts": [],
-      "sharedOnlyParts": [
-        "mesh_upper",
-        "padded_collar",
-        "laces"
-      ],
-      "sharedBoundaries": 12,
+      "sharedOnlyParts": [],
+      "absentInSchematic": [],
+      "sharedBoundaries": 6,
       "aspectRatio": 1.006,
       "lowConfidenceRoutes": 28,
       "notes": [
-        "배분이 의심되는 레이어 1개: lace_stitching",
-        "공유 경계로만 그려진 파트 3개: mesh_upper, padded_collar, laces",
-        "사진↔도면 대응 실패 — 파트 배분을 신뢰할 수 없다",
+        "참고: 사진·도면 주체탐지가 배경을 분리하지 못함 (마스크 정합 0.982 로 판정)",
         "라우터가 확신하지 못한 성분 28개"
       ]
     },
-    "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
+    "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_PASS"
   },
   "timings": {
-    "S1_preprocess": 3683,
-    "S2_plan": 9,
-    "S3_masks": 12931,
-    "S4_schematic": 1910,
-    "S5_evidence": 12806,
-    "S7_export": 129,
-    "S8_qa": 5646
+    "S1_preprocess": 4217,
+    "S2_plan": 19,
+    "S3_masks": 17448,
+    "S4_schematic": 2990,
+    "S5_evidence": 28271,
+    "S7_export": 207,
+    "S8_qa": 12058
   },
   "rescued": {
     "stitch": [
@@ -384,6 +378,7 @@
     "outsole": "photo-warp (표결 2/8 미달)",
     "lace_stitching": "photo-warp (표결 2/8 미달)"
   },
+  "maskFit": 0.9824,
   "correspondence": {
     "method": "global-similarity",
     "aspectRatio": 1.006474820143885,

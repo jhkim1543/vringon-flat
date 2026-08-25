@@ -1,6 +1,6 @@
 {
   "job": {
-    "state": "FIDELITY_REVIEW / EDITABILITY_REVIEW / SEMANTIC_REVIEW",
+    "state": "FIDELITY_REVIEW / EDITABILITY_REVIEW / SEMANTIC_PASS",
     "canvas": {
       "width": 1748,
       "height": 2048,
@@ -8,8 +8,8 @@
       "sourceHeight": 1024,
       "supersample": 2
     },
-    "totalMs": 19765,
-    "createdAt": "2026-08-24T12:26:29.955Z"
+    "totalMs": 29552,
+    "createdAt": "2026-08-25T01:56:34.815Z"
   },
   "options": {
     "minParts": 3,
@@ -125,147 +125,144 @@
   "counts": {
     "GEOMETRIC_PRIMITIVE": 522,
     "FACE_FILL": 21,
-    "OUTLINE_SHAPE": 68,
+    "OUTLINE_SHAPE": 111,
     "REPEATING_PATTERN": 17
   },
   "qa": {
     "fidelity": {
       "pass": false,
-      "f0": 0.7448,
-      "f1": 0.8992,
-      "f2": 0.9368,
-      "lineF1": 0.8992,
-      "lineF2": 0.9368,
+      "f0": 0.7335,
+      "f1": 0.9052,
+      "f2": 0.9414,
+      "lineF1": 0.9052,
+      "lineF2": 0.9414,
       "textureShare": 0,
-      "inkRatio": 1.518,
-      "chamfer": 0.605,
-      "p95": 3.41,
-      "detailRecall": 0.9768,
+      "inkRatio": 1.629,
+      "chamfer": 0.602,
+      "p95": 3,
+      "detailRecall": 0.9793,
       "holes": [
         182,
-        160
+        159
       ],
       "majorComponents": [
         1,
         1
       ],
       "notes": [
-        "선 일치 F@2px 0.9368 < 0.95",
-        "선 굵기 1.518× (1.0 이 원본)"
+        "선 일치 F@2px 0.9414 < 0.95",
+        "선 굵기 1.629× (1.0 이 원본)"
       ]
     },
     "editability": {
       "pass": false,
-      "paths": 628,
-      "subpaths": 3599,
-      "maxSubpathsInPath": 2739,
-      "objectComplexity": 6829,
-      "anchors": 20128,
+      "paths": 671,
+      "subpaths": 888,
+      "maxSubpathsInPath": 108,
+      "objectComplexity": 4161,
+      "anchors": 8312,
       "uses": 2602,
-      "kb": 1115.3,
-      "anchorDensity": 14.27,
-      "shortPathRatio": 0.202,
+      "kb": 775.7,
+      "anchorDensity": 12.06,
+      "shortPathRatio": 0.464,
       "primitives": 522,
       "anchorsSavedByPrimitives": 4106,
       "pathsSavedByPatterns": 2585,
       "editableReduction": {
-        "paths": 0.024,
-        "anchors": 0.67,
-        "kb": 0.371
+        "paths": 0.067,
+        "anchors": 0.219,
+        "kb": 0.083
       },
       "notes": [
-        "앵커 밀도 14.3/100px > 12",
-        "한 패스에 서브패스 2739개 — Illustrator 에서 통째로 선택된다"
+        "앵커 밀도 12.1/100px > 12",
+        "짧은 서브패스 46% — 파편화 의심"
       ]
     },
     "semantic": {
-      "pass": false,
+      "pass": true,
       "perPart": [
         {
           "id": "chain_handle",
           "label": "Chain handle",
           "kind": "thin",
-          "paths": 0,
-          "areaShare": 0.0006,
-          "precision": 0,
-          "recall": 0,
-          "iou": 0,
-          "boundaryF1": 0
+          "paths": 2,
+          "areaShare": 0.0007,
+          "precision": 0.0226,
+          "recall": 0.5468,
+          "iou": 0.0222,
+          "boundaryF1": 0.0387
         },
         {
           "id": "bag_body",
           "label": "Beaded pouch body",
           "kind": "area",
-          "paths": 594,
-          "areaShare": 0.3689,
-          "precision": 1,
-          "recall": 0.9367,
-          "iou": 0.9366,
+          "paths": 605,
+          "areaShare": 0.2897,
+          "precision": 0.9895,
+          "recall": 0.994,
+          "iou": 0.9837,
           "boundaryF1": -1
         },
         {
           "id": "metal_frame",
           "label": "Metal purse frame",
           "kind": "thin",
-          "paths": 43,
-          "areaShare": 0.0377,
-          "precision": 0.6827,
-          "recall": 0.4443,
-          "iou": 0.3682,
-          "boundaryF1": 0.8068
+          "paths": 65,
+          "areaShare": 0.0297,
+          "precision": 0.8909,
+          "recall": 0.3993,
+          "iou": 0.3807,
+          "boundaryF1": 0.9361
         },
         {
           "id": "closure_clasp",
           "label": "Closure clasp",
           "kind": "thin",
-          "paths": 0,
-          "areaShare": 0.0001,
-          "precision": 0,
-          "recall": 0,
-          "iou": 0,
-          "boundaryF1": 0
+          "paths": 2,
+          "areaShare": 0.0003,
+          "precision": 1,
+          "recall": 0.282,
+          "iou": 0.282,
+          "boundaryF1": 1
         },
         {
           "id": "floral_ornament",
           "label": "Floral metal ornament",
-          "kind": "thin",
-          "paths": 7,
-          "areaShare": 0.0028,
+          "kind": "area",
+          "paths": 13,
+          "areaShare": 0.0093,
           "precision": 1,
-          "recall": 0.3609,
-          "iou": 0.3609,
-          "boundaryF1": 0.9514
+          "recall": 0.9384,
+          "iou": 0.9384,
+          "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.5365,
-      "weightedMeanIou": 0.8788,
+      "meanPrecision": 0.7806,
+      "weightedMeanIou": 0.9254,
       "failingMajorParts": [],
+      "maskFit": 0.7917,
       "misassigned": [],
-      "emptyVisibleParts": [
-        "closure_clasp"
-      ],
-      "sharedOnlyParts": [
-        "chain_handle"
-      ],
-      "sharedBoundaries": 8,
+      "emptyVisibleParts": [],
+      "sharedOnlyParts": [],
+      "absentInSchematic": [],
+      "sharedBoundaries": 10,
       "aspectRatio": 1.015,
       "lowConfidenceRoutes": 11,
       "notes": [
-        "패스가 없는 파트 1개: closure_clasp",
-        "공유 경계로만 그려진 파트 1개: chain_handle",
+        "마스크가 너무 작아 판정 보류 1개: chain_handle (캔버스의 0.2% 미만)",
         "라우터가 확신하지 못한 성분 11개"
       ]
     },
-    "state": "FIDELITY_REVIEW / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
+    "state": "FIDELITY_REVIEW / EDITABILITY_REVIEW / SEMANTIC_PASS"
   },
   "timings": {
-    "S1_preprocess": 5767,
-    "S2_plan": 6,
-    "S3_masks": 3867,
-    "S4_schematic": 1267,
-    "S5_evidence": 5337,
-    "S7_export": 89,
-    "S8_qa": 3120
+    "S1_preprocess": 5990,
+    "S2_plan": 9,
+    "S3_masks": 5368,
+    "S4_schematic": 1930,
+    "S5_evidence": 9759,
+    "S7_export": 101,
+    "S8_qa": 5960
   },
   "rescued": {
     "stitch": [
@@ -278,14 +275,15 @@
     ]
   },
   "maskSource": {
-    "chain_handle": "photo-warp (gemini 불일치 IoU 0.01)",
-    "bag_body": "gemini-schematic",
-    "metal_frame": "gemini-schematic",
-    "closure_clasp": "gemini-schematic",
-    "floral_ornament": "gemini-schematic"
+    "chain_handle": "photo-warp (표결 2/5 미달)",
+    "bag_body": "photo-warp (표결 2/5 미달)",
+    "metal_frame": "photo-warp (표결 2/5 미달)",
+    "closure_clasp": "photo-warp (표결 2/5 미달)",
+    "floral_ornament": "photo-warp (표결 2/5 미달)"
   },
+  "maskFit": 0.7917,
   "correspondence": {
-    "method": "schematic-direct-seg",
+    "method": "global-similarity",
     "aspectRatio": 1.0154628381473387,
     "confident": true,
     "note": ""

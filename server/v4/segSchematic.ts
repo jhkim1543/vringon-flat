@@ -238,6 +238,12 @@ export function snapMasksToFaces(
   const { labels, components } = labelComponents2(enclosed, W, H);
 
   const out = masks.map((m) => ({ id: m.id, mask: new Uint8Array(N) }));
+  // 파트별 마스크 크기 — 특정성 판정에 쓴다
+  const maskSize = masks.map((m) => {
+    let n = 0;
+    for (let i = 0; i < N; i++) n += m.mask[i];
+    return n;
+  });
   // 면마다 각 파트 마스크의 커버율을 잰다. 귀속 규칙에 순서가 있다:
   //   1) 커버율 40% 이상인 파트가 여럿이면 **가장 뒤(배열 끝 = z 최상위) 파트**.
   //      보이는 면은 그 자리의 최전면 파트 것이다 — 트림 밴드가 플랩 위에 있으면
@@ -247,12 +253,27 @@ export function snapMasksToFaces(
   // masks 배열은 호출부가 z 오름차순으로 준다.
   for (const c of components) {
     let best = -1, bestCov = 0, front = -1;
+    const covs = new Int32Array(masks.length);
     for (let mi = 0; mi < masks.length; mi++) {
       let cov = 0;
       const mm = masks[mi].mask;
       for (let k = 0; k < c.pixels.length; k++) if (mm[c.pixels[k]]) cov++;
       if (cov > bestCov) { bestCov = cov; best = mi; }
-      if (cov >= c.pixels.length * 0.4) front = mi;
+      covs[mi] = cov;
+    }
+    // **맨 앞이 이기되, 압도적으로 더 많이 덮는 파트는 못 이긴다.** 큰 폴리곤(플랩)이
+    // 자기 영역 밖의 면(손잡이)까지 40%만 걸쳐도 가져가던 것을 막는다 — 실측: bag_1
+    // top_handle 마스크가 캔버스의 0.03% 로 쪼그라들고 precision 0.118 이었다.
+    // 맨 앞 후보는 최고 커버율의 80% 이상일 때만 우선권을 갖는다.
+    // 자격을 갖춘 후보(면의 40% 이상 + 최고 커버율의 80% 이상) 중에서 **마스크가 가장
+    // 작은** 파트가 갖는다. 큰 마스크가 작은 파트를 감싸는 일이 흔하기 때문이다 —
+    // 베젤 마스크는 보석을 포함하고, 플랩 마스크는 손잡이를 포함한다. 작은 마스크가
+    // 이 면을 덮는다면 그 면에 더 **특정한** 파트라는 뜻이다.
+    // (실측: 이 규칙 없이는 jewelry_3 중앙 보석이 베젤 링을 통째로 삼켰다 — recall 0.313.)
+    let bestSize = Infinity;
+    for (let mi = 0; mi < masks.length; mi++) {
+      if (covs[mi] < c.pixels.length * 0.4 || covs[mi] < bestCov * 0.8) continue;
+      if (maskSize[mi] < bestSize) { bestSize = maskSize[mi]; front = mi; }
     }
     const pick = front >= 0 ? front : (bestCov >= c.pixels.length * 0.25 ? best : -1);
     if (pick >= 0) {

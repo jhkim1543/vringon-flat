@@ -134,7 +134,57 @@
   "cls": "OUTLINE_SHAPE",
   "partId": "ring_body",
   "area": 0,
-  "why": "구조선·프리미티브 조건 미달 성분 일괄 윤곽 추적",
+  "why": "윤곽 — ring_body 몫만 추적 (파트 경계에서 분할)",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "of",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "ring_body",
+  "area": 0,
+  "why": "윤곽 — ring_body 몫만 추적 (파트 경계에서 분할)",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "og",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "side_engraving",
+  "area": 0,
+  "why": "윤곽 — side_engraving 몫만 추적 (파트 경계에서 분할)",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "oh",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "side_engraving",
+  "area": 0,
+  "why": "윤곽 — side_engraving 몫만 추적 (파트 경계에서 분할)",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "oi",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "side_engraving",
+  "area": 0,
+  "why": "윤곽 — side_engraving 몫만 추적 (파트 경계에서 분할)",
+  "confidence": 0.85,
+  "kind": null,
+  "instances": null
+ },
+ {
+  "id": "oj",
+  "cls": "OUTLINE_SHAPE",
+  "partId": "side_engraving",
+  "area": 0,
+  "why": "윤곽 — side_engraving 몫만 추적 (파트 경계에서 분할)",
   "confidence": 0.85,
   "kind": null,
   "instances": null

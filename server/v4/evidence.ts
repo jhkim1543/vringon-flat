@@ -15,6 +15,7 @@ import sharp from "sharp";
 import { skeletonize, crossingNumber } from "../vector/centerline.js";
 import { labelComponents, type Component } from "../v3/label.js";
 import { rescueDetails } from "../v3/detailRescue.js";
+import { flattenGemInteriors, type GemFlattenResult } from "./gemFlatten.js";
 import { area, close, dilate, erode } from "../v2/raster.js";
 import type { Pt } from "./types.js";
 
@@ -63,6 +64,8 @@ export interface EvidenceField {
   /** 해프톤 삭제 직전에 구제한 것 — [스티치 대시 수, px] · [디테일(로고 등) 수, px] */
   rescuedStitch: [number, number];
   rescuedDetail: [number, number];
+  /** 보석 안쪽 반사 제거 결과 */
+  gemFlatten?: GemFlattenResult;
   /** 질감이 그림을 지배해 톤 치환을 포기했는가 */
   textureKept: boolean;
   /** 원본 픽셀 (색 샘플링용) */
@@ -80,6 +83,11 @@ export interface EvidenceOptions {
   textureMode: "auto" | "tone" | "keep";
   /** 이 면적 미만 성분은 잡티로 버린다 (작업 캔버스 기준) */
   minComponentPx: number;
+  /**
+   * 안쪽 반사·그림자를 지울 파트 마스크 (보석). 주얼리 도면은 스톤 안에 사진의 하늘
+   * 반사를 그대로 남기는데, 그것은 조명의 산물이지 제품의 형상이 아니다.
+   */
+  gemParts?: { id: string; mask: Uint8Array }[];
 }
 
 export const DEFAULT_EVIDENCE_OPTIONS: EvidenceOptions = {
@@ -328,6 +336,15 @@ export async function extractEvidence(
     }
   }
 
+  // ── 보석 안쪽 반사·그림자 제거 ────────────────────────────
+  //
+  // 해프톤 처리 **다음에** 돈다. 반사는 해프톤이 아니라 큰 얼룩이라 앞 단계가 못 잡는다.
+  // 경계는 건드리지 않는다 — 침식 안쪽만 본다.
+  let gemFlatten: GemFlattenResult | undefined;
+  if (o.gemParts?.length) {
+    gemFlatten = flattenGemInteriors(ink, o.gemParts, W, H);
+  }
+
   const inkFill = close(ink, W, H, Math.max(1, Math.round(supersample / 2)));
 
   // ── 성분별 증거 ──────────────────────────────────────────
@@ -398,7 +415,7 @@ export async function extractEvidence(
 
   return {
     width: W, height: H, supersample, sourceWidth: srcW, sourceHeight: srcH,
-    ink, inkFill, texture, textureKept, rescuedStitch, rescuedDetail,
+    ink, inkFill, texture, textureKept, rescuedStitch, rescuedDetail, gemFlatten,
     rgb: data, channels: ch, lineWidthLimit,
     components,
   };

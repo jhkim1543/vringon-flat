@@ -1,6 +1,6 @@
 {
   "job": {
-    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW",
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS",
     "canvas": {
       "width": 2048,
       "height": 1922,
@@ -8,8 +8,8 @@
       "sourceHeight": 961,
       "supersample": 2
     },
-    "totalMs": 21998,
-    "createdAt": "2026-08-24T12:27:19.430Z"
+    "totalMs": 25314,
+    "createdAt": "2026-08-25T01:57:05.037Z"
   },
   "options": {
     "minParts": 3,
@@ -89,19 +89,19 @@
   "counts": {
     "GEOMETRIC_PRIMITIVE": 1,
     "FACE_FILL": 12,
-    "OUTLINE_SHAPE": 1
+    "OUTLINE_SHAPE": 6
   },
   "qa": {
     "fidelity": {
       "pass": true,
-      "f0": 0.967,
+      "f0": 0.9533,
       "f1": 0.991,
-      "f2": 0.9933,
+      "f2": 0.994,
       "lineF1": 0.991,
-      "lineF2": 0.9933,
+      "lineF2": 0.994,
       "textureShare": 0,
-      "inkRatio": 1.032,
-      "chamfer": 0.084,
+      "inkRatio": 1.088,
+      "chamfer": 0.096,
       "p95": 0,
       "detailRecall": 1,
       "holes": [
@@ -116,49 +116,49 @@
     },
     "editability": {
       "pass": true,
-      "paths": 14,
-      "subpaths": 27,
-      "maxSubpathsInPath": 14,
-      "objectComplexity": 41,
-      "anchors": 2603,
+      "paths": 19,
+      "subpaths": 30,
+      "maxSubpathsInPath": 9,
+      "objectComplexity": 49,
+      "anchors": 2628,
       "uses": 0,
-      "kb": 108.6,
-      "anchorDensity": 4.94,
+      "kb": 109.6,
+      "anchorDensity": 4.96,
       "shortPathRatio": 0,
       "primitives": 1,
       "anchorsSavedByPrimitives": 10,
       "pathsSavedByPatterns": 0,
       "editableReduction": {
         "paths": 0,
-        "anchors": 0.069,
-        "kb": 0.068
+        "anchors": 0.066,
+        "kb": 0.065
       },
       "notes": []
     },
     "semantic": {
-      "pass": false,
+      "pass": true,
       "perPart": [
         {
           "id": "ring_body",
           "label": "Open metal ring body",
           "kind": "area",
-          "paths": 13,
+          "paths": 14,
           "areaShare": 0.2044,
-          "precision": 0.8771,
-          "recall": 0.9887,
-          "iou": 0.8684,
+          "precision": 0.923,
+          "recall": 0.9858,
+          "iou": 0.9108,
           "boundaryF1": -1
         },
         {
           "id": "side_engraving",
           "label": "Engraved side lettering",
           "kind": "thin",
-          "paths": 1,
+          "paths": 5,
           "areaShare": 0.0147,
           "precision": 1,
-          "recall": 0.0119,
-          "iou": 0.0119,
-          "boundaryF1": 0.1218
+          "recall": 0.4856,
+          "iou": 0.4856,
+          "boundaryF1": 1
         },
         {
           "id": "tip_hallmark",
@@ -172,33 +172,35 @@
           "boundaryF1": 0
         }
       ],
-      "meanPrecision": 0.6257,
-      "weightedMeanIou": 0.8109,
+      "meanPrecision": 0.641,
+      "weightedMeanIou": 0.8823,
       "failingMajorParts": [],
+      "maskFit": 0.7165,
       "misassigned": [],
-      "emptyVisibleParts": [
+      "emptyVisibleParts": [],
+      "sharedOnlyParts": [],
+      "absentInSchematic": [
         "tip_hallmark"
       ],
-      "sharedOnlyParts": [],
       "sharedBoundaries": 0,
       "aspectRatio": 1.382,
       "lowConfidenceRoutes": 1,
       "notes": [
-        "패스가 없는 파트 1개: tip_hallmark",
+        "도면에 없는 파트 1개: tip_hallmark (GPT 계획↔도면 불일치 — 벡터화 문제가 아니다)",
         "사진↔도면 종횡비 불일치 38.2%",
         "라우터가 확신하지 못한 성분 1개"
       ]
     },
-    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
   },
   "timings": {
-    "S1_preprocess": 5810,
-    "S2_plan": 6,
-    "S3_masks": 7179,
-    "S4_schematic": 1233,
-    "S5_evidence": 5044,
-    "S7_export": 26,
-    "S8_qa": 2615
+    "S1_preprocess": 6431,
+    "S2_plan": 8,
+    "S3_masks": 7793,
+    "S4_schematic": 1348,
+    "S5_evidence": 6679,
+    "S7_export": 35,
+    "S8_qa": 2921
   },
   "rescued": {
     "stitch": [
@@ -211,10 +213,11 @@
     ]
   },
   "maskSource": {
-    "ring_body": "photo-warp (표결 2/3 미달)",
-    "side_engraving": "photo-warp (표결 2/3 미달)",
-    "tip_hallmark": "photo-warp (표결 2/3 미달)"
+    "ring_body": "photo-warp (표결 1/3 미달)",
+    "side_engraving": "photo-warp (표결 1/3 미달)",
+    "tip_hallmark": "photo-warp (표결 1/3 미달)"
   },
+  "maskFit": 0.7165,
   "correspondence": {
     "method": "global-similarity",
     "aspectRatio": 1.382258064516129,

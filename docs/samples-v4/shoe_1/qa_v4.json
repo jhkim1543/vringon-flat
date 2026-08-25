@@ -1,6 +1,6 @@
 {
   "job": {
-    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW",
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS",
     "canvas": {
       "width": 2800,
       "height": 2196,
@@ -8,8 +8,8 @@
       "sourceHeight": 1098,
       "supersample": 2
     },
-    "totalMs": 37494,
-    "createdAt": "2026-08-24T12:24:30.837Z"
+    "totalMs": 55500,
+    "createdAt": "2026-08-25T01:53:31.425Z"
   },
   "options": {
     "minParts": 3,
@@ -193,20 +193,20 @@
   "counts": {
     "GEOMETRIC_PRIMITIVE": 28,
     "FACE_FILL": 75,
-    "OUTLINE_SHAPE": 13
+    "OUTLINE_SHAPE": 68
   },
   "qa": {
     "fidelity": {
       "pass": true,
-      "f0": 0.8676,
-      "f1": 0.8934,
-      "f2": 0.8949,
-      "lineF1": 0.9967,
-      "lineF2": 0.9983,
+      "f0": 0.8514,
+      "f1": 0.8922,
+      "f2": 0.8954,
+      "lineF1": 0.9929,
+      "lineF2": 0.9968,
       "textureShare": 0.5945,
-      "inkRatio": 1.017,
-      "chamfer": 0.039,
-      "p95": 0,
+      "inkRatio": 1.101,
+      "chamfer": 0.07,
+      "p95": 1,
       "detailRecall": 1,
       "holes": [
         111,
@@ -217,164 +217,159 @@
         6
       ],
       "notes": [
-        "해프톤이 도면 잉크의 59% — 전체 F@2px 0.8949, 그 영역 뺀 선 충실도 0.9983"
+        "해프톤이 도면 잉크의 59% — 전체 F@2px 0.8954, 그 영역 뺀 선 충실도 0.9968"
       ]
     },
     "editability": {
       "pass": true,
-      "paths": 116,
-      "subpaths": 254,
-      "maxSubpathsInPath": 86,
-      "objectComplexity": 370,
-      "anchors": 11030,
+      "paths": 171,
+      "subpaths": 259,
+      "maxSubpathsInPath": 25,
+      "objectComplexity": 430,
+      "anchors": 11388,
       "uses": 0,
-      "kb": 462,
-      "anchorDensity": 7.17,
-      "shortPathRatio": 0.055,
+      "kb": 479.5,
+      "anchorDensity": 7.22,
+      "shortPathRatio": 0.058,
       "primitives": 28,
       "anchorsSavedByPrimitives": 460,
       "pathsSavedByPatterns": 0,
       "editableReduction": {
-        "paths": 0.009,
-        "anchors": 0.104,
-        "kb": 0.1
+        "paths": 0.064,
+        "anchors": 0.101,
+        "kb": 0.097
       },
       "notes": []
     },
     "semantic": {
-      "pass": false,
+      "pass": true,
       "perPart": [
         {
           "id": "rubber_outsole",
           "label": "Rubber outsole",
           "kind": "thin",
           "paths": 3,
-          "areaShare": 0.0154,
-          "precision": 0.9756,
-          "recall": 0.1339,
-          "iou": 0.1335,
-          "boundaryF1": 0.7771
+          "areaShare": 0.0084,
+          "precision": 1,
+          "recall": 0.5389,
+          "iou": 0.5389,
+          "boundaryF1": 1
         },
         {
           "id": "cushioned_midsole",
           "label": "Cushioned midsole",
           "kind": "area",
-          "paths": 16,
-          "areaShare": 0.1153,
-          "precision": 0.9954,
-          "recall": 0.8907,
-          "iou": 0.8871,
+          "paths": 23,
+          "areaShare": 0.1053,
+          "precision": 0.9994,
+          "recall": 0.9842,
+          "iou": 0.9836,
           "boundaryF1": -1
         },
         {
           "id": "tongue",
           "label": "Tongue",
-          "kind": "thin",
-          "paths": 0,
-          "areaShare": 0.003,
-          "precision": 0,
-          "recall": 0,
-          "iou": 0,
-          "boundaryF1": 0
+          "kind": "area",
+          "paths": 14,
+          "areaShare": 0.0153,
+          "precision": 1,
+          "recall": 0.9372,
+          "iou": 0.9372,
+          "boundaryF1": -1
         },
         {
           "id": "eyelet_underlay",
           "label": "Eyelet underlay",
           "kind": "thin",
-          "paths": 0,
-          "areaShare": 0.0026,
-          "precision": 0,
-          "recall": 0,
-          "iou": 0,
-          "boundaryF1": 0
+          "paths": 21,
+          "areaShare": 0.0132,
+          "precision": 1,
+          "recall": 0.6555,
+          "iou": 0.6555,
+          "boundaryF1": 0.9915
         },
         {
           "id": "main_upper",
           "label": "Main upper",
           "kind": "area",
-          "paths": 70,
-          "areaShare": 0.2272,
-          "precision": 0.8873,
-          "recall": 0.9605,
-          "iou": 0.8561,
+          "paths": 48,
+          "areaShare": 0.1844,
+          "precision": 0.9821,
+          "recall": 0.9815,
+          "iou": 0.9643,
           "boundaryF1": -1
         },
         {
           "id": "heel_overlay",
           "label": "Heel reinforcement overlay",
           "kind": "thin",
-          "paths": 6,
-          "areaShare": 0.0172,
-          "precision": 1,
-          "recall": 0.4242,
-          "iou": 0.4242,
-          "boundaryF1": 0.8898
+          "paths": 11,
+          "areaShare": 0.0201,
+          "precision": 0.9903,
+          "recall": 0.5958,
+          "iou": 0.5923,
+          "boundaryF1": 0.9478
         },
         {
           "id": "laces",
           "label": "Laces",
           "kind": "thin",
-          "paths": 0,
-          "areaShare": 0.0014,
-          "precision": 0,
-          "recall": 0,
-          "iou": 0,
-          "boundaryF1": 0
+          "paths": 22,
+          "areaShare": 0.0169,
+          "precision": 1,
+          "recall": 0.4183,
+          "iou": 0.4183,
+          "boundaryF1": 0.9662
         },
         {
           "id": "swoosh_logo",
           "label": "Swoosh logo",
           "kind": "thin",
-          "paths": 1,
+          "paths": 6,
           "areaShare": 0.0113,
           "precision": 1,
-          "recall": 0.1445,
-          "iou": 0.1445,
-          "boundaryF1": 0.7184
+          "recall": 0.3227,
+          "iou": 0.3227,
+          "boundaryF1": 0.9025
         },
         {
           "id": "airmax_badge",
           "label": "AIRMAX badge",
-          "kind": "thin",
-          "paths": 20,
-          "areaShare": 0.0117,
-          "precision": 0.9501,
-          "recall": 0.6534,
-          "iou": 0.6317,
-          "boundaryF1": 0.9244
+          "kind": "area",
+          "paths": 23,
+          "areaShare": 0.0131,
+          "precision": 0.9982,
+          "recall": 0.8825,
+          "iou": 0.8811,
+          "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.6454,
-      "weightedMeanIou": 0.778,
+      "meanPrecision": 0.9967,
+      "weightedMeanIou": 0.8842,
       "failingMajorParts": [],
+      "maskFit": 0.9702,
       "misassigned": [],
-      "emptyVisibleParts": [
-        "laces"
-      ],
-      "sharedOnlyParts": [
-        "tongue",
-        "eyelet_underlay"
-      ],
+      "emptyVisibleParts": [],
+      "sharedOnlyParts": [],
+      "absentInSchematic": [],
       "sharedBoundaries": 0,
       "aspectRatio": 1.052,
       "lowConfidenceRoutes": 7,
       "notes": [
-        "패스가 없는 파트 1개: laces",
-        "공유 경계로만 그려진 파트 2개: tongue, eyelet_underlay",
         "사진↔도면 종횡비 불일치 5.2%",
         "라우터가 확신하지 못한 성분 7개"
       ]
     },
-    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_REVIEW"
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
   },
   "timings": {
-    "S1_preprocess": 4037,
-    "S2_plan": 11,
-    "S3_masks": 11340,
-    "S4_schematic": 2519,
-    "S5_evidence": 12028,
-    "S7_export": 59,
-    "S8_qa": 7400
+    "S1_preprocess": 4198,
+    "S2_plan": 13,
+    "S3_masks": 13937,
+    "S4_schematic": 3435,
+    "S5_evidence": 19554,
+    "S7_export": 92,
+    "S8_qa": 14100
   },
   "rescued": {
     "stitch": [
@@ -387,18 +382,19 @@
     ]
   },
   "maskSource": {
-    "rubber_outsole": "gemini-schematic",
-    "cushioned_midsole": "gemini-schematic",
-    "tongue": "gemini-schematic",
-    "eyelet_underlay": "gemini-schematic",
-    "main_upper": "gemini-schematic",
-    "heel_overlay": "gemini-schematic",
-    "laces": "gemini-schematic",
-    "swoosh_logo": "photo-warp (gemini 불일치 IoU 0.00)",
-    "airmax_badge": "gemini-schematic"
+    "rubber_outsole": "photo-warp (표결 5/9 미달)",
+    "cushioned_midsole": "photo-warp (표결 5/9 미달)",
+    "tongue": "photo-warp (표결 5/9 미달)",
+    "eyelet_underlay": "photo-warp (표결 5/9 미달)",
+    "main_upper": "photo-warp (표결 5/9 미달)",
+    "heel_overlay": "photo-warp (표결 5/9 미달)",
+    "laces": "photo-warp (표결 5/9 미달)",
+    "swoosh_logo": "photo-warp (표결 5/9 미달)",
+    "airmax_badge": "photo-warp (표결 5/9 미달)"
   },
+  "maskFit": 0.9702,
   "correspondence": {
-    "method": "schematic-direct-seg",
+    "method": "global-similarity",
     "aspectRatio": 1.0519794727545186,
     "confident": true,
     "note": ""

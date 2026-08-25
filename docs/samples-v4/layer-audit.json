@@ -1,0 +1,749 @@
+{
+ "samples": [
+  {
+   "name": "shoe_1",
+   "parts": [
+    {
+     "id": "rubber_outsole",
+     "label": "Rubber outsole",
+     "z": 0,
+     "own": 3,
+     "inkOwn": 1,
+     "share": 0.0175,
+     "sharedWith": []
+    },
+    {
+     "id": "cushioned_midsole",
+     "label": "Cushioned midsole",
+     "z": 1,
+     "own": 23,
+     "inkOwn": 14,
+     "share": 0.1345,
+     "sharedWith": []
+    },
+    {
+     "id": "tongue",
+     "label": "Tongue",
+     "z": 2,
+     "own": 14,
+     "inkOwn": 3,
+     "share": 0.0819,
+     "sharedWith": []
+    },
+    {
+     "id": "eyelet_underlay",
+     "label": "Eyelet underlay",
+     "z": 3,
+     "own": 21,
+     "inkOwn": 5,
+     "share": 0.1228,
+     "sharedWith": []
+    },
+    {
+     "id": "main_upper",
+     "label": "Main upper",
+     "z": 4,
+     "own": 48,
+     "inkOwn": 24,
+     "share": 0.2807,
+     "sharedWith": []
+    },
+    {
+     "id": "heel_overlay",
+     "label": "Heel reinforcement overlay",
+     "z": 5,
+     "own": 11,
+     "inkOwn": 4,
+     "share": 0.0643,
+     "sharedWith": []
+    },
+    {
+     "id": "laces",
+     "label": "Laces",
+     "z": 6,
+     "own": 22,
+     "inkOwn": 17,
+     "share": 0.1287,
+     "sharedWith": []
+    },
+    {
+     "id": "swoosh_logo",
+     "label": "Swoosh logo",
+     "z": 7,
+     "own": 6,
+     "inkOwn": 5,
+     "share": 0.0351,
+     "sharedWith": []
+    },
+    {
+     "id": "airmax_badge",
+     "label": "AIRMAX badge",
+     "z": 8,
+     "own": 23,
+     "inkOwn": 1,
+     "share": 0.1345,
+     "sharedWith": []
+    }
+   ],
+   "totalPrimitives": 171,
+   "orphans": 0,
+   "orphanShare": 0,
+   "emptyParts": [],
+   "maxShare": 0.2807,
+   "maxSharePart": "main_upper",
+   "noInkParts": [],
+   "weightedIou": 0.8842,
+   "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
+  },
+  {
+   "name": "shoe_2",
+   "parts": [
+    {
+     "id": "rear_shoe_upper",
+     "label": "Rear shoe upper",
+     "z": 0,
+     "own": 64,
+     "inkOwn": 49,
+     "share": 0.1546,
+     "sharedWith": [
+      "synthetic_support_overlays"
+     ]
+    },
+    {
+     "id": "rear_shoe_outsole",
+     "label": "Rear shoe outsole",
+     "z": 1,
+     "own": 164,
+     "inkOwn": 34,
+     "share": 0.3961,
+     "sharedWith": [
+      "synthetic_support_overlays"
+     ]
+    },
+    {
+     "id": "foreground_sole_unit",
+     "label": "Foreground sole unit",
+     "z": 2,
+     "own": 5,
+     "inkOwn": 3,
+     "share": 0.0121,
+     "sharedWith": []
+    },
+    {
+     "id": "foreground_mesh_upper",
+     "label": "Foreground mesh upper",
+     "z": 3,
+     "own": 15,
+     "inkOwn": 4,
+     "share": 0.0362,
+     "sharedWith": [
+      "synthetic_support_overlays"
+     ]
+    },
+    {
+     "id": "padded_collar",
+     "label": "Padded collar and lining",
+     "z": 4,
+     "own": 6,
+     "inkOwn": 6,
+     "share": 0.0145,
+     "sharedWith": []
+    },
+    {
+     "id": "shoe_tongue",
+     "label": "Shoe tongue",
+     "z": 5,
+     "own": 65,
+     "inkOwn": 11,
+     "share": 0.157,
+     "sharedWith": [
+      "synthetic_support_overlays"
+     ]
+    },
+    {
+     "id": "synthetic_support_overlays",
+     "label": "Synthetic support overlays",
+     "z": 6,
+     "own": 63,
+     "inkOwn": 29,
+     "share": 0.1522,
+     "sharedWith": [
+      "synthetic_support_overlays",
+      "shoe_tongue"
+     ]
+    },
+    {
+     "id": "heel_pull_tab",
+     "label": "Heel pull tab",
+     "z": 7,
+     "own": 3,
+     "inkOwn": 1,
+     "share": 0.0072,
+     "sharedWith": []
+    },
+    {
+     "id": "orange_laces",
+     "label": "Orange shoelaces",
+     "z": 8,
+     "own": 29,
+     "inkOwn": 20,
+     "share": 0.07,
+     "sharedWith": [
+      "synthetic_support_overlays"
+     ]
+    }
+   ],
+   "totalPrimitives": 414,
+   "orphans": 0,
+   "orphanShare": 0,
+   "emptyParts": [],
+   "maxShare": 0.3961,
+   "maxSharePart": "rear_shoe_outsole",
+   "noInkParts": [],
+   "weightedIou": 0.9411,
+   "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
+  },
+  {
+   "name": "shoe_3",
+   "parts": [
+    {
+     "id": "tongue",
+     "label": "Tongue",
+     "z": 0,
+     "own": 49,
+     "inkOwn": 16,
+     "share": 0.061,
+     "sharedWith": [
+      "lace_loops"
+     ]
+    },
+    {
+     "id": "mesh_upper",
+     "label": "Mesh upper",
+     "z": 1,
+     "own": 1,
+     "inkOwn": 1,
+     "share": 0.0012,
+     "sharedWith": []
+    },
+    {
+     "id": "padded_collar",
+     "label": "Padded collar",
+     "z": 2,
+     "own": 2,
+     "inkOwn": 1,
+     "share": 0.0025,
+     "sharedWith": []
+    },
+    {
+     "id": "eyestay_overlay",
+     "label": "Eyestay overlay",
+     "z": 3,
+     "own": 18,
+     "inkOwn": 12,
+     "share": 0.0224,
+     "sharedWith": []
+    },
+    {
+     "id": "lace_loops",
+     "label": "Yellow lace loops",
+     "z": 4,
+     "own": 65,
+     "inkOwn": 11,
+     "share": 0.0809,
+     "sharedWith": [
+      "lace_loops",
+      "outsole"
+     ]
+    },
+    {
+     "id": "laces",
+     "label": "Laces",
+     "z": 5,
+     "own": 8,
+     "inkOwn": 8,
+     "share": 0.01,
+     "sharedWith": []
+    },
+    {
+     "id": "outsole",
+     "label": "Flexible tread outsole",
+     "z": 6,
+     "own": 345,
+     "inkOwn": 25,
+     "share": 0.4296,
+     "sharedWith": [
+      "lace_loops",
+      "outsole",
+      "lace_stitching"
+     ]
+    },
+    {
+     "id": "lace_stitching",
+     "label": "Yellow lace stitching",
+     "z": 7,
+     "own": 315,
+     "inkOwn": 24,
+     "share": 0.3923,
+     "sharedWith": [
+      "lace_loops",
+      "outsole",
+      "lace_stitching"
+     ]
+    }
+   ],
+   "totalPrimitives": 803,
+   "orphans": 0,
+   "orphanShare": 0,
+   "emptyParts": [],
+   "maxShare": 0.4296,
+   "maxSharePart": "outsole",
+   "noInkParts": [],
+   "weightedIou": 0.9183,
+   "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_PASS"
+  },
+  {
+   "name": "bag_1",
+   "parts": [
+    {
+     "id": "top_handle",
+     "label": "Top carry handle",
+     "z": 0,
+     "own": 14,
+     "inkOwn": 8,
+     "share": 0.0986,
+     "sharedWith": []
+    },
+    {
+     "id": "main_compartment_shell",
+     "label": "Main compartment shell",
+     "z": 1,
+     "own": 3,
+     "inkOwn": 3,
+     "share": 0.0211,
+     "sharedWith": []
+    },
+    {
+     "id": "left_side_gusset",
+     "label": "Left side gusset",
+     "z": 2,
+     "own": 15,
+     "inkOwn": 8,
+     "share": 0.1056,
+     "sharedWith": []
+    },
+    {
+     "id": "front_lower_panel",
+     "label": "Front lower body panel",
+     "z": 3,
+     "own": 14,
+     "inkOwn": 7,
+     "share": 0.0986,
+     "sharedWith": []
+    },
+    {
+     "id": "front_flap",
+     "label": "Front cover flap",
+     "z": 4,
+     "own": 52,
+     "inkOwn": 43,
+     "share": 0.3662,
+     "sharedWith": []
+    },
+    {
+     "id": "red_trim_bands",
+     "label": "Red decorative trim bands",
+     "z": 5,
+     "own": 18,
+     "inkOwn": 12,
+     "share": 0.1268,
+     "sharedWith": []
+    },
+    {
+     "id": "closure_strap",
+     "label": "Vertical closure strap",
+     "z": 6,
+     "own": 19,
+     "inkOwn": 14,
+     "share": 0.1338,
+     "sharedWith": []
+    },
+    {
+     "id": "clasp_assembly",
+     "label": "Front clasp assembly",
+     "z": 7,
+     "own": 7,
+     "inkOwn": 4,
+     "share": 0.0493,
+     "sharedWith": []
+    }
+   ],
+   "totalPrimitives": 142,
+   "orphans": 0,
+   "orphanShare": 0,
+   "emptyParts": [],
+   "maxShare": 0.3662,
+   "maxSharePart": "front_flap",
+   "noInkParts": [],
+   "weightedIou": 0.9377,
+   "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
+  },
+  {
+   "name": "bag_2",
+   "parts": [
+    {
+     "id": "chain_handle",
+     "label": "Chain handle",
+     "z": 0,
+     "own": 2,
+     "inkOwn": 1,
+     "share": 0.0006,
+     "sharedWith": []
+    },
+    {
+     "id": "bag_body",
+     "label": "Beaded pouch body",
+     "z": 1,
+     "own": 2953,
+     "inkOwn": 2950,
+     "share": 0.9069,
+     "sharedWith": [
+      "metal_frame"
+     ]
+    },
+    {
+     "id": "metal_frame",
+     "label": "Metal purse frame",
+     "z": 2,
+     "own": 286,
+     "inkOwn": 273,
+     "share": 0.0878,
+     "sharedWith": [
+      "bag_body",
+      "metal_frame"
+     ]
+    },
+    {
+     "id": "closure_clasp",
+     "label": "Closure clasp",
+     "z": 3,
+     "own": 2,
+     "inkOwn": 1,
+     "share": 0.0006,
+     "sharedWith": []
+    },
+    {
+     "id": "floral_ornament",
+     "label": "Floral metal ornament",
+     "z": 4,
+     "own": 13,
+     "inkOwn": 3,
+     "share": 0.004,
+     "sharedWith": []
+    }
+   ],
+   "totalPrimitives": 3256,
+   "orphans": 0,
+   "orphanShare": 0,
+   "emptyParts": [],
+   "maxShare": 0.9069,
+   "maxSharePart": "bag_body",
+   "noInkParts": [],
+   "weightedIou": 0.9254,
+   "state": "FIDELITY_REVIEW / EDITABILITY_REVIEW / SEMANTIC_PASS"
+  },
+  {
+   "name": "bag_3",
+   "parts": [
+    {
+     "id": "inner_pouch",
+     "label": "Inner pouch body",
+     "z": 0,
+     "own": 62,
+     "inkOwn": 3,
+     "share": 0.0817,
+     "sharedWith": [
+      "turquoise_stone_embellishments"
+     ]
+    },
+    {
+     "id": "chain_strap",
+     "label": "Chain shoulder strap",
+     "z": 1,
+     "own": 35,
+     "inkOwn": 1,
+     "share": 0.0461,
+     "sharedWith": [
+      "turquoise_stone_embellishments"
+     ]
+    },
+    {
+     "id": "metal_lattice_shell",
+     "label": "Linked metal outer shell",
+     "z": 2,
+     "own": 18,
+     "inkOwn": 4,
+     "share": 0.0237,
+     "sharedWith": []
+    },
+    {
+     "id": "turquoise_stone_embellishments",
+     "label": "Turquoise stone embellishments",
+     "z": 3,
+     "own": 644,
+     "inkOwn": 1,
+     "share": 0.8485,
+     "sharedWith": [
+      "turquoise_stone_embellishments"
+     ]
+    }
+   ],
+   "totalPrimitives": 759,
+   "orphans": 0,
+   "orphanShare": 0,
+   "emptyParts": [],
+   "maxShare": 0.8485,
+   "maxSharePart": "turquoise_stone_embellishments",
+   "noInkParts": [],
+   "weightedIou": 0.8525,
+   "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_REVIEW"
+  },
+  {
+   "name": "jewelry_1",
+   "parts": [
+    {
+     "id": "ring_body",
+     "label": "Open metal ring body",
+     "z": 0,
+     "own": 14,
+     "inkOwn": 2,
+     "share": 0.7368,
+     "sharedWith": []
+    },
+    {
+     "id": "side_engraving",
+     "label": "Engraved side lettering",
+     "z": 1,
+     "own": 5,
+     "inkOwn": 4,
+     "share": 0.2632,
+     "sharedWith": []
+    },
+    {
+     "id": "tip_hallmark",
+     "label": "Tip hallmark",
+     "z": 2,
+     "own": 0,
+     "inkOwn": 0,
+     "share": 0,
+     "sharedWith": []
+    }
+   ],
+   "totalPrimitives": 19,
+   "orphans": 0,
+   "orphanShare": 0,
+   "emptyParts": [
+    "tip_hallmark"
+   ],
+   "maxShare": 0.7368,
+   "maxSharePart": "ring_body",
+   "noInkParts": [],
+   "weightedIou": 0.8823,
+   "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
+  },
+  {
+   "name": "jewelry_2",
+   "parts": [
+    {
+     "id": "pin_clasp_assembly",
+     "label": "Rear pin and clasp assembly",
+     "z": 0,
+     "own": 16,
+     "inkOwn": 9,
+     "share": 0.1778,
+     "sharedWith": []
+    },
+    {
+     "id": "string_set",
+     "label": "Harp string set",
+     "z": 1,
+     "own": 9,
+     "inkOwn": 5,
+     "share": 0.1,
+     "sharedWith": []
+    },
+    {
+     "id": "tuning_tab_set",
+     "label": "Upper tuning tabs",
+     "z": 2,
+     "own": 0,
+     "inkOwn": 0,
+     "share": 0,
+     "sharedWith": []
+    },
+    {
+     "id": "outer_column",
+     "label": "Curved outer column",
+     "z": 3,
+     "own": 1,
+     "inkOwn": 1,
+     "share": 0.0111,
+     "sharedWith": [
+      "string_set"
+     ]
+    },
+    {
+     "id": "main_body",
+     "label": "Main harp body and lower frame",
+     "z": 4,
+     "own": 35,
+     "inkOwn": 9,
+     "share": 0.3889,
+     "sharedWith": []
+    },
+    {
+     "id": "top_neck",
+     "label": "Upper curved neck bar",
+     "z": 5,
+     "own": 7,
+     "inkOwn": 6,
+     "share": 0.0778,
+     "sharedWith": []
+    },
+    {
+     "id": "leaf_appliques",
+     "label": "Decorative leaf appliques",
+     "z": 6,
+     "own": 12,
+     "inkOwn": 6,
+     "share": 0.1333,
+     "sharedWith": []
+    },
+    {
+     "id": "neck_rivets",
+     "label": "Neck rivets",
+     "z": 7,
+     "own": 5,
+     "inkOwn": 4,
+     "share": 0.0556,
+     "sharedWith": []
+    },
+    {
+     "id": "engraved_flourish",
+     "label": "Engraved body flourish",
+     "z": 8,
+     "own": 5,
+     "inkOwn": 4,
+     "share": 0.0556,
+     "sharedWith": []
+    }
+   ],
+   "totalPrimitives": 90,
+   "orphans": 0,
+   "orphanShare": 0,
+   "emptyParts": [
+    "tuning_tab_set"
+   ],
+   "maxShare": 0.3889,
+   "maxSharePart": "main_body",
+   "noInkParts": [],
+   "weightedIou": 0.9749,
+   "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
+  },
+  {
+   "name": "jewelry_3",
+   "parts": [
+    {
+     "id": "rear_band",
+     "label": "Rear ring band",
+     "z": 0,
+     "own": 9,
+     "inkOwn": 7,
+     "share": 0.1111,
+     "sharedWith": []
+    },
+    {
+     "id": "rear_gemstone",
+     "label": "Rear gemstone",
+     "z": 1,
+     "own": 5,
+     "inkOwn": 5,
+     "share": 0.0617,
+     "sharedWith": []
+    },
+    {
+     "id": "rear_bezel",
+     "label": "Rear bezel setting",
+     "z": 2,
+     "own": 9,
+     "inkOwn": 7,
+     "share": 0.1111,
+     "sharedWith": []
+    },
+    {
+     "id": "middle_band",
+     "label": "Middle ring band",
+     "z": 3,
+     "own": 14,
+     "inkOwn": 11,
+     "share": 0.1728,
+     "sharedWith": []
+    },
+    {
+     "id": "middle_gemstone",
+     "label": "Middle gemstone",
+     "z": 4,
+     "own": 4,
+     "inkOwn": 3,
+     "share": 0.0494,
+     "sharedWith": []
+    },
+    {
+     "id": "middle_bezel",
+     "label": "Middle bezel setting",
+     "z": 5,
+     "own": 8,
+     "inkOwn": 8,
+     "share": 0.0988,
+     "sharedWith": []
+    },
+    {
+     "id": "front_band",
+     "label": "Front ring band",
+     "z": 6,
+     "own": 9,
+     "inkOwn": 4,
+     "share": 0.1111,
+     "sharedWith": []
+    },
+    {
+     "id": "front_gemstone",
+     "label": "Front gemstone",
+     "z": 7,
+     "own": 10,
+     "inkOwn": 9,
+     "share": 0.1235,
+     "sharedWith": []
+    },
+    {
+     "id": "front_bezel",
+     "label": "Front bezel setting",
+     "z": 8,
+     "own": 13,
+     "inkOwn": 12,
+     "share": 0.1605,
+     "sharedWith": []
+    }
+   ],
+   "totalPrimitives": 81,
+   "orphans": 0,
+   "orphanShare": 0,
+   "emptyParts": [],
+   "maxShare": 0.1728,
+   "maxSharePart": "middle_band",
+   "noInkParts": [],
+   "weightedIou": 0.8586,
+   "state": "FIDELITY_REVIEW / EDITABILITY_PASS / SEMANTIC_REVIEW"
+  }
+ ]
+}
