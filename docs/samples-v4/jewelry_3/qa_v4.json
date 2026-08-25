@@ -8,8 +8,8 @@
       "sourceHeight": 464,
       "supersample": 2
     },
-    "totalMs": 24693,
-    "createdAt": "2026-08-25T01:58:24.564Z"
+    "totalMs": 21804,
+    "createdAt": "2026-08-25T06:07:53.533Z"
   },
   "options": {
     "minParts": 3,
@@ -199,28 +199,28 @@
   "qa": {
     "fidelity": {
       "pass": false,
-      "f0": 0.7046,
-      "f1": 0.7437,
-      "f2": 0.7503,
-      "lineF1": 0.8326,
-      "lineF2": 0.8405,
+      "f0": 0.6951,
+      "f1": 0.7355,
+      "f2": 0.7459,
+      "lineF1": 0.8233,
+      "lineF2": 0.8355,
       "textureShare": 0.1741,
-      "inkRatio": 0.86,
-      "chamfer": 7.653,
-      "p95": 66.05,
+      "inkRatio": 0.858,
+      "chamfer": 7.673,
+      "p95": 66,
       "detailRecall": 1,
       "holes": [
         38,
-        17
+        16
       ],
       "majorComponents": [
         8,
         3
       ],
       "notes": [
-        "선 일치 F@2px 0.8405 < 0.95",
-        "구멍 수 38 → 17 (15% 이상 차이)",
-        "해프톤이 도면 잉크의 17% — 전체 F@2px 0.7503, 그 영역 뺀 선 충실도 0.8405"
+        "선 일치 F@2px 0.8355 < 0.95",
+        "구멍 수 38 → 16 (15% 이상 차이)",
+        "해프톤이 도면 잉크의 17% — 전체 F@2px 0.7459, 그 영역 뺀 선 충실도 0.8355"
       ]
     },
     "editability": {
@@ -228,19 +228,20 @@
       "paths": 81,
       "subpaths": 91,
       "maxSubpathsInPath": 3,
+      "maxSplittableSubpaths": 3,
       "objectComplexity": 172,
-      "anchors": 2067,
+      "anchors": 1540,
       "uses": 0,
-      "kb": 83.5,
-      "anchorDensity": 5,
+      "kb": 60.8,
+      "anchorDensity": 3.73,
       "shortPathRatio": 0,
       "primitives": 1,
       "anchorsSavedByPrimitives": 11,
       "pathsSavedByPatterns": 0,
       "editableReduction": {
-        "paths": 0.173,
-        "anchors": 0.167,
-        "kb": 0.158
+        "paths": 0.185,
+        "anchors": 0.131,
+        "kb": 0.117
       },
       "notes": []
     },
@@ -253,9 +254,9 @@
           "kind": "area",
           "paths": 9,
           "areaShare": 0.0311,
-          "precision": 0.9663,
-          "recall": 0.9831,
-          "iou": 0.9506,
+          "precision": 0.9584,
+          "recall": 0.9812,
+          "iou": 0.9412,
           "boundaryF1": -1
         },
         {
@@ -264,10 +265,10 @@
           "kind": "thin",
           "paths": 5,
           "areaShare": 0.0005,
-          "precision": 0.9405,
-          "recall": 0.2546,
-          "iou": 0.2506,
-          "boundaryF1": 0.9556
+          "precision": 0.9453,
+          "recall": 0.2698,
+          "iou": 0.2656,
+          "boundaryF1": 0.9586
         },
         {
           "id": "rear_bezel",
@@ -275,9 +276,9 @@
           "kind": "area",
           "paths": 9,
           "areaShare": 0.0274,
-          "precision": 0.9722,
-          "recall": 0.9853,
-          "iou": 0.9583,
+          "precision": 0.9719,
+          "recall": 0.9831,
+          "iou": 0.956,
           "boundaryF1": -1
         },
         {
@@ -286,9 +287,9 @@
           "kind": "area",
           "paths": 14,
           "areaShare": 0.0125,
-          "precision": 0.8523,
-          "recall": 0.8903,
-          "iou": 0.7714,
+          "precision": 0.8407,
+          "recall": 0.8956,
+          "iou": 0.7656,
           "boundaryF1": -1
         },
         {
@@ -297,9 +298,9 @@
           "kind": "area",
           "paths": 4,
           "areaShare": 0.0594,
-          "precision": 0.7752,
-          "recall": 0.9945,
-          "iou": 0.7718,
+          "precision": 0.7744,
+          "recall": 0.9943,
+          "iou": 0.7709,
           "boundaryF1": -1
         },
         {
@@ -308,9 +309,9 @@
           "kind": "area",
           "paths": 8,
           "areaShare": 0.0223,
-          "precision": 0.8275,
-          "recall": 0.2413,
-          "iou": 0.2297,
+          "precision": 0.8219,
+          "recall": 0.2427,
+          "iou": 0.2306,
           "boundaryF1": -1
         },
         {
@@ -319,9 +320,9 @@
           "kind": "area",
           "paths": 9,
           "areaShare": 0.0748,
-          "precision": 0.9677,
-          "recall": 0.9615,
-          "iou": 0.9316,
+          "precision": 0.9627,
+          "recall": 0.962,
+          "iou": 0.9275,
           "boundaryF1": -1
         },
         {
@@ -330,9 +331,9 @@
           "kind": "area",
           "paths": 10,
           "areaShare": 0.0601,
-          "precision": 0.9905,
-          "recall": 0.9876,
-          "iou": 0.9783,
+          "precision": 0.9912,
+          "recall": 0.988,
+          "iou": 0.9794,
           "boundaryF1": -1
         },
         {
@@ -341,14 +342,14 @@
           "kind": "area",
           "paths": 13,
           "areaShare": 0.0243,
-          "precision": 0.9816,
-          "recall": 0.9714,
-          "iou": 0.9541,
+          "precision": 0.9806,
+          "recall": 0.9686,
+          "iou": 0.9504,
           "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.9193,
-      "weightedMeanIou": 0.8586,
+      "meanPrecision": 0.9163,
+      "weightedMeanIou": 0.8561,
       "failingMajorParts": [
         "middle_bezel"
       ],
@@ -369,13 +370,13 @@
     "state": "FIDELITY_REVIEW / EDITABILITY_PASS / SEMANTIC_REVIEW"
   },
   "timings": {
-    "S1_preprocess": 6193,
-    "S2_plan": 9,
-    "S3_masks": 5148,
-    "S4_schematic": 1513,
-    "S5_evidence": 8517,
-    "S7_export": 31,
-    "S8_qa": 3207
+    "S1_preprocess": 5958,
+    "S2_plan": 8,
+    "S3_masks": 4750,
+    "S4_schematic": 1310,
+    "S5_evidence": 7042,
+    "S7_export": 33,
+    "S8_qa": 2645
   },
   "rescued": {
     "stitch": [

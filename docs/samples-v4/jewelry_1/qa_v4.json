@@ -8,8 +8,8 @@
       "sourceHeight": 961,
       "supersample": 2
     },
-    "totalMs": 25314,
-    "createdAt": "2026-08-25T01:57:05.037Z"
+    "totalMs": 23302,
+    "createdAt": "2026-08-25T06:06:50.126Z"
   },
   "options": {
     "minParts": 3,
@@ -94,14 +94,14 @@
   "qa": {
     "fidelity": {
       "pass": true,
-      "f0": 0.9533,
-      "f1": 0.991,
-      "f2": 0.994,
-      "lineF1": 0.991,
-      "lineF2": 0.994,
+      "f0": 0.9524,
+      "f1": 0.9899,
+      "f2": 0.9935,
+      "lineF1": 0.9899,
+      "lineF2": 0.9935,
       "textureShare": 0,
-      "inkRatio": 1.088,
-      "chamfer": 0.096,
+      "inkRatio": 1.087,
+      "chamfer": 0.099,
       "p95": 0,
       "detailRecall": 1,
       "holes": [
@@ -119,19 +119,20 @@
       "paths": 19,
       "subpaths": 30,
       "maxSubpathsInPath": 9,
+      "maxSplittableSubpaths": 9,
       "objectComplexity": 49,
-      "anchors": 2628,
+      "anchors": 2040,
       "uses": 0,
-      "kb": 109.6,
-      "anchorDensity": 4.96,
+      "kb": 82.3,
+      "anchorDensity": 3.86,
       "shortPathRatio": 0,
       "primitives": 1,
       "anchorsSavedByPrimitives": 10,
       "pathsSavedByPatterns": 0,
       "editableReduction": {
         "paths": 0,
-        "anchors": 0.066,
-        "kb": 0.065
+        "anchors": 0.019,
+        "kb": 0.016
       },
       "notes": []
     },
@@ -144,9 +145,9 @@
           "kind": "area",
           "paths": 14,
           "areaShare": 0.2044,
-          "precision": 0.923,
-          "recall": 0.9858,
-          "iou": 0.9108,
+          "precision": 0.9232,
+          "recall": 0.9859,
+          "iou": 0.9111,
           "boundaryF1": -1
         },
         {
@@ -156,8 +157,8 @@
           "paths": 5,
           "areaShare": 0.0147,
           "precision": 1,
-          "recall": 0.4856,
-          "iou": 0.4856,
+          "recall": 0.4869,
+          "iou": 0.4869,
           "boundaryF1": 1
         },
         {
@@ -172,8 +173,8 @@
           "boundaryF1": 0
         }
       ],
-      "meanPrecision": 0.641,
-      "weightedMeanIou": 0.8823,
+      "meanPrecision": 0.6411,
+      "weightedMeanIou": 0.8826,
       "failingMajorParts": [],
       "maskFit": 0.7165,
       "misassigned": [],
@@ -194,13 +195,13 @@
     "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
   },
   "timings": {
-    "S1_preprocess": 6431,
-    "S2_plan": 8,
-    "S3_masks": 7793,
-    "S4_schematic": 1348,
-    "S5_evidence": 6679,
-    "S7_export": 35,
-    "S8_qa": 2921
+    "S1_preprocess": 6441,
+    "S2_plan": 7,
+    "S3_masks": 7144,
+    "S4_schematic": 1220,
+    "S5_evidence": 5698,
+    "S7_export": 30,
+    "S8_qa": 2669
   },
   "rescued": {
     "stitch": [

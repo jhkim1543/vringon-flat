@@ -11,6 +11,7 @@ import { inkMask, svgInkMask, fidelity, detailRecall, topology, distanceTransfor
 import { dilate } from "../v2/raster.js";
 import { samplePath, flattenPath } from "../v3/pathSample.js";
 import { complexity, renderStandalone } from "./export.js";
+import { splitCompound } from "./compound.js";
 import type { GeometricPrimitive, PatternPrimitive, ScenePrimitive, StrokePrimitive, VectorScene } from "./types.js";
 
 export interface FidelityGate {
@@ -43,6 +44,16 @@ export interface EditabilityGate {
   subpaths: number;
   /** 한 패스가 가진 최대 서브패스 수 */
   maxSubpathsInPath: number;
+  /**
+   * **쪼갤 수 있는데 안 쪼갠** 최대 서브패스 수.
+   *
+   * 서브패스가 많다고 다 나쁜 게 아니다. 그물의 웹은 바깥 윤곽 하나에 셀 구멍 수백 개가
+   * 뚫린 **진짜 한 덩이**라, 쪼개면 even-odd 가 깨져 구멍이 메워진다. 그건 컴파운드
+   * 패스가 옳은 표현이다. 반대로 서로 무관한 도형이 한 패스에 뭉쳐 있으면 쪼개야 한다.
+   * gate 는 실제로 쪼개 보고 남은 최대치를 본다 — 실측: 9종의 160 초과 패스 4개가
+   * 전부 쪼갤 수 없는 한 덩이였다.
+   */
+  maxSplittableSubpaths: number;
   /** 요소 + 서브패스 + use 인스턴스 — Illustrator 에서 실제로 다루게 되는 객체 규모 */
   objectComplexity: number;
   anchors: number;
@@ -165,15 +176,21 @@ function inkSvg(scene: VectorScene): string {
 }
 
 /** SVG 의 서브패스 통계 — 컴파운드 패스가 몇 개의 도형을 숨기고 있는가 */
-function subpathStats(svg: string): { subpaths: number; maxInPath: number } {
-  let total = 0, max = 0;
+function subpathStats(svg: string): { subpaths: number; maxInPath: number; maxSplittable: number } {
+  let total = 0, max = 0, maxSplit = 0;
   // 경계 없이 d="…" 로 찾으면 data-shared="main_compartment_shell" 같은 값의 m 까지 센다.
   for (const m of svg.matchAll(new RegExp('(?:^|[\\s"])d="([^"]*)"', "g"))) {
     const n = (m[1].match(new RegExp("[Mm]", "g")) ?? []).length;
     total += n;
     if (n > max) max = n;
+    // 실제로 쪼개 본다. 조각이 하나로 나오면 **쪼갤 수 없는 한 덩이**다 —
+    // 바깥 윤곽 하나에 구멍이 뚫린 그물의 웹이 그렇고, 그건 컴파운드 패스가 옳은 표현이다.
+    // 그런 것을 세면 지표가 피할 수 없는 것을 벌한다. 둘 이상으로 쪼개지는데도 한 패스에
+    // 남아 있다면 그것이 진짜 결함이다(export 가 이미 쪼개므로 정상이면 0 이어야 한다).
+    if (n > 160 && splitCompound(m[1], 160).length > 1 && n > maxSplit) maxSplit = n;
+    else if (n <= 160 && n > maxSplit) maxSplit = n;
   }
-  return { subpaths: total, maxInPath: max };
+  return { subpaths: total, maxInPath: max, maxSplittable: maxSplit };
 }
 
 export async function runQa4(
@@ -280,14 +297,22 @@ export async function runQa4(
   if (anchorDensity > th.anchorDensity) eNotes.push(`앵커 밀도 ${anchorDensity.toFixed(1)}/100px > ${th.anchorDensity}`);
   const shortRatio = subCount ? shortSubpaths / subCount : 0;
   if (shortRatio > 0.35) eNotes.push(`짧은 서브패스 ${(shortRatio * 100).toFixed(0)}% — 파편화 의심`);
-  if (sub.maxInPath > 200) eNotes.push(`한 패스에 서브패스 ${sub.maxInPath}개 — Illustrator 에서 통째로 선택된다`);
+  if (sub.maxSplittable > 200) {
+    eNotes.push(`한 패스에 쪼갤 수 있는 서브패스 ${sub.maxSplittable}개 — Illustrator 에서 통째로 선택된다`);
+  } else if (sub.maxInPath > 200) {
+    eNotes.push(
+      `한 패스에 서브패스 ${sub.maxInPath}개 — 바깥 윤곽 하나에 구멍이 뚫린 진짜 한 덩이라 ` +
+      `쪼갤 수 없다(쪼개면 구멍이 메워진다). 컴파운드 패스가 옳은 표현이다.`,
+    );
+  }
   if (!prims.length) eNotes.push("기하 프리미티브로 승격된 성분 없음 — 잔차 임계 확인");
 
   const editabilityGate: EditabilityGate = {
-    pass: anchorDensity <= th.anchorDensity && shortRatio <= 0.35 && sub.maxInPath <= 200,
+    pass: anchorDensity <= th.anchorDensity && shortRatio <= 0.35 && sub.maxSplittable <= 200,
     paths: cf.paths,
     subpaths: sub.subpaths,
     maxSubpathsInPath: sub.maxInPath,
+    maxSplittableSubpaths: sub.maxSplittable,
     objectComplexity,
     anchors: cf.anchors, uses: cf.uses, kb: cf.kb,
     anchorDensity: +anchorDensity.toFixed(2),

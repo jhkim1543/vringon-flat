@@ -1,6 +1,6 @@
 {
   "job": {
-    "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_PASS",
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS",
     "canvas": {
       "width": 2800,
       "height": 2118,
@@ -8,8 +8,8 @@
       "sourceHeight": 1059,
       "supersample": 2
     },
-    "totalMs": 65612,
-    "createdAt": "2026-08-25T01:55:29.999Z"
+    "totalMs": 51929,
+    "createdAt": "2026-08-25T06:04:56.161Z"
   },
   "options": {
     "minParts": 3,
@@ -194,49 +194,50 @@
   "qa": {
     "fidelity": {
       "pass": true,
-      "f0": 0.9353,
-      "f1": 0.966,
-      "f2": 0.9681,
-      "lineF1": 0.9972,
-      "lineF2": 0.9994,
+      "f0": 0.9335,
+      "f1": 0.9649,
+      "f2": 0.9678,
+      "lineF1": 0.996,
+      "lineF2": 0.9991,
       "textureShare": 0.2515,
       "inkRatio": 1.031,
-      "chamfer": 0.037,
+      "chamfer": 0.041,
       "p95": 0,
       "detailRecall": 1,
       "holes": [
         750,
-        750
+        748
       ],
       "majorComponents": [
         1,
         1
       ],
       "notes": [
-        "해프톤이 도면 잉크의 25% — 전체 F@2px 0.9681, 그 영역 뺀 선 충실도 0.9994"
+        "해프톤이 도면 잉크의 25% — 전체 F@2px 0.9678, 그 영역 뺀 선 충실도 0.9991"
       ]
     },
     "editability": {
-      "pass": false,
+      "pass": true,
       "paths": 557,
       "subpaths": 1317,
       "maxSubpathsInPath": 334,
+      "maxSplittableSubpaths": 57,
       "objectComplexity": 2131,
-      "anchors": 30707,
+      "anchors": 23209,
       "uses": 257,
-      "kb": 1243.8,
-      "anchorDensity": 8.88,
+      "kb": 891.2,
+      "anchorDensity": 6.72,
       "shortPathRatio": 0.024,
       "primitives": 125,
       "anchorsSavedByPrimitives": 1367,
       "pathsSavedByPatterns": 246,
       "editableReduction": {
         "paths": 0.036,
-        "anchors": 0.095,
-        "kb": 0.092
+        "anchors": 0.049,
+        "kb": 0.042
       },
       "notes": [
-        "한 패스에 서브패스 334개 — Illustrator 에서 통째로 선택된다"
+        "한 패스에 서브패스 334개 — 바깥 윤곽 하나에 구멍이 뚫린 진짜 한 덩이라 쪼갤 수 없다(쪼개면 구멍이 메워진다). 컴파운드 패스가 옳은 표현이다."
       ]
     },
     "semantic": {
@@ -248,10 +249,10 @@
           "kind": "thin",
           "paths": 48,
           "areaShare": 0.0403,
-          "precision": 1,
-          "recall": 0.5433,
-          "iou": 0.5433,
-          "boundaryF1": 0.9776
+          "precision": 0.9999,
+          "recall": 0.5438,
+          "iou": 0.5438,
+          "boundaryF1": 0.9777
         },
         {
           "id": "mesh_upper",
@@ -260,9 +261,9 @@
           "paths": 1,
           "areaShare": 0.0027,
           "precision": 1,
-          "recall": 0.2789,
-          "iou": 0.2789,
-          "boundaryF1": 0.9077
+          "recall": 0.2787,
+          "iou": 0.2787,
+          "boundaryF1": 0.9076
         },
         {
           "id": "padded_collar",
@@ -271,8 +272,8 @@
           "paths": 2,
           "areaShare": 0.0018,
           "precision": 1,
-          "recall": 0.4739,
-          "iou": 0.4739,
+          "recall": 0.4731,
+          "iou": 0.4731,
           "boundaryF1": 0.9926
         },
         {
@@ -281,9 +282,9 @@
           "kind": "area",
           "paths": 18,
           "areaShare": 0.0575,
-          "precision": 0.9722,
+          "precision": 0.9725,
           "recall": 0.9816,
-          "iou": 0.9547,
+          "iou": 0.9551,
           "boundaryF1": -1
         },
         {
@@ -293,8 +294,8 @@
           "paths": 47,
           "areaShare": 0.097,
           "precision": 0.9995,
-          "recall": 0.9635,
-          "iou": 0.963,
+          "recall": 0.9634,
+          "iou": 0.9629,
           "boundaryF1": -1
         },
         {
@@ -315,8 +316,8 @@
           "paths": 248,
           "areaShare": 0.3627,
           "precision": 0.9968,
-          "recall": 0.9393,
-          "iou": 0.9364,
+          "recall": 0.9388,
+          "iou": 0.936,
           "boundaryF1": -1
         },
         {
@@ -325,14 +326,14 @@
           "kind": "area",
           "paths": 197,
           "areaShare": 0.1401,
-          "precision": 0.9971,
+          "precision": 0.997,
           "recall": 0.9564,
-          "iou": 0.9538,
+          "iou": 0.9537,
           "boundaryF1": -1
         }
       ],
       "meanPrecision": 0.9957,
-      "weightedMeanIou": 0.9183,
+      "weightedMeanIou": 0.9182,
       "failingMajorParts": [],
       "maskFit": 0.9824,
       "misassigned": [],
@@ -347,16 +348,16 @@
         "라우터가 확신하지 못한 성분 28개"
       ]
     },
-    "state": "FIDELITY_PASS / EDITABILITY_REVIEW / SEMANTIC_PASS"
+    "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
   },
   "timings": {
-    "S1_preprocess": 4217,
-    "S2_plan": 19,
-    "S3_masks": 17448,
-    "S4_schematic": 2990,
-    "S5_evidence": 28271,
-    "S7_export": 207,
-    "S8_qa": 12058
+    "S1_preprocess": 3817,
+    "S2_plan": 12,
+    "S3_masks": 15258,
+    "S4_schematic": 2608,
+    "S5_evidence": 19438,
+    "S7_export": 137,
+    "S8_qa": 10381
   },
   "rescued": {
     "stitch": [

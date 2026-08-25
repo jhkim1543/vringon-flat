@@ -18,6 +18,13 @@ import { extractEvidence, traceContour, type EvidenceField, type ComponentEviden
 import { bestFit, type FitResult } from "./primitives.js";
 import { findPatterns, findDashRuns } from "./pattern.js";
 import { buildOwnerMap, splitByOwner, neighborsOf, fillTinyHoles } from "./inkOwner.js";
+import { splitCompound } from "./compound.js";
+
+/**
+ * 단순화 허용오차의 상한(작업 캔버스 px). 원본 좌표 기준으로 환산한 값이 이보다 커지지
+ * 않게 막는다. 실측으로 정한다 — 올리면 앵커가 줄고 형상이 흐려진다.
+ */
+const EPS_CAP = Number(process.env.V4_EPS_CAP ?? 1.6);
 import { isGemPart } from "./gemFlatten.js";
 import type { Pt } from "./types.js";
 import { routeComponent, DEFAULT_THRESHOLDS, type RouteThresholds } from "./router.js";
@@ -33,9 +40,19 @@ const TRACE = {
   colorPrecision: 6,
   layerDifference: 16,
   cornerThreshold: 60,
-  lengthThreshold: 4,
+  /**
+   * 스플라인 한 조각의 최소 길이. **앵커 수를 정하는 진짜 손잡이다.**
+   * optimizePathData 의 epsilon 을 올려도 앵커가 안 줄었다 — VTracer 가 이미 만들어 놓은
+   * 조각들이 곡률이 달라 병합 조건에 안 걸리기 때문이다. 여기서 줄여야 준다.
+   *
+   * 4 → **8** 로 올렸다. A/B 실측(jewelry_2 · shoe_1 · bag_2 · bag_3):
+   *   4 → 8   앵커 −16~24% · 충실도 불변 (jewelry_2 는 F@0 0.9278 → 0.9290 으로 **개선**)
+   *   8 → 14  앵커 −10% 더 · F@0 −0.005~0.010 손해
+   * 8 이 공짜에 가깝고 14 부터 값을 치른다. 그래서 8.
+   */
+  lengthThreshold: Number(process.env.V4_LEN_TH ?? 8),
   maxIterations: 10,
-  spliceThreshold: 45,
+  spliceThreshold: Number(process.env.V4_SPLICE ?? 45),
   pathPrecision: 3,
 } as const;
 
@@ -382,12 +399,13 @@ export async function buildScene(
     for (let gi = 0; gi < groups.length; gi++) {
       const g = groups[gi];
       const grown = dilate(g.mask, W, H, Math.max(1, Math.round(ev.supersample / 2)));
-      const faceEps = Math.min(1.6, opts.simplifyPx * ev.supersample);
+      const faceEps = Math.min(EPS_CAP, opts.simplifyPx * ev.supersample);
       for (const draw of await traceMask(grown, W, H, path.join(opts.workDir, `face_${gi}.png`), faceEps)) {
         // 비즈·메시 배경 면은 알마다 구멍이 뚫려 서브패스가 수천 개가 된다. 그 구멍은
         // 위에 알이 그려지므로 보이지 않는다 — 메우면 편집만 쉬워지고 그림은 그대로다.
-        const { d, dropped } = fillTinyHoles(draw);
+        const { d: filled, dropped } = fillTinyHoles(draw);
         if (dropped) tinyHolesFilled += dropped;
+        for (const d of splitCompound(filled)) {
         primitives.push({
           id: nextId("f"), cls: "FACE_FILL", area: g.area, bbox: [0, 0, W, H], d, fill: g.color,
           partId: g.partId, shared: g.shared.length ? g.shared : undefined,
@@ -398,6 +416,7 @@ export async function buildScene(
             confidence: g.shared.length ? 0.6 : 0.9,
           },
         } as ShapePrimitive);
+        }
       }
     }
     if (tinyHolesFilled) say?.(`면의 미세 구멍 ${tinyHolesFilled}개를 메움 (위에 덮이는 자리)`);
@@ -407,7 +426,7 @@ export async function buildScene(
 
   // 단순화 허용오차는 **원본 좌표 기준**이어야 한다 — 작업 캔버스는 supersample 배로
   // 커져 있으므로 그대로 쓰면 원본 기준 0.4px 로 재는 셈이다.
-  const epsWork = Math.min(1.6, opts.simplifyPx * ev.supersample);
+  const epsWork = Math.min(EPS_CAP, opts.simplifyPx * ev.supersample);
   void tinyHolesFilled;
 
   // ── 반복 패턴 · 점선 ─────────────────────────────────────
@@ -547,7 +566,10 @@ export async function buildScene(
   // ── 나머지 → outline (파트별) ────────────────────────────
   if (area(outlineMask)) {
     const outlineOne = async (m: Uint8Array, tag: string, partId?: string, shared?: string[]) => {
-      for (const d of await traceMask(m, W, H, path.join(opts.workDir, `outline_${tag}.png`), epsWork)) {
+      for (const draw of await traceMask(m, W, H, path.join(opts.workDir, `outline_${tag}.png`), epsWork)) {
+      // 그물·니트 윤곽은 셀마다 서브패스가 생겨 한 패스에 수백 개가 된다 —
+      // Illustrator 에서 통째로만 선택되므로 덩이(바깥+그 구멍) 단위로 쪼갠다.
+      for (const d of splitCompound(draw)) {
         primitives.push({
           id: nextId("o"), cls: "OUTLINE_SHAPE", d, fill: "#111111",
           area: 0, bbox: [0, 0, W, H],
@@ -558,6 +580,7 @@ export async function buildScene(
             confidence: 0.85,
           },
         } as ShapePrimitive);
+      }
       }
     };
     if (owners) {

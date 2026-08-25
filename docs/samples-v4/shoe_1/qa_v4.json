@@ -8,8 +8,8 @@
       "sourceHeight": 1098,
       "supersample": 2
     },
-    "totalMs": 55500,
-    "createdAt": "2026-08-25T01:53:31.425Z"
+    "totalMs": 51190,
+    "createdAt": "2026-08-25T06:03:18.786Z"
   },
   "options": {
     "minParts": 3,
@@ -198,14 +198,14 @@
   "qa": {
     "fidelity": {
       "pass": true,
-      "f0": 0.8514,
-      "f1": 0.8922,
-      "f2": 0.8954,
+      "f0": 0.8509,
+      "f1": 0.8915,
+      "f2": 0.8953,
       "lineF1": 0.9929,
-      "lineF2": 0.9968,
+      "lineF2": 0.9973,
       "textureShare": 0.5945,
-      "inkRatio": 1.101,
-      "chamfer": 0.07,
+      "inkRatio": 1.09,
+      "chamfer": 0.067,
       "p95": 1,
       "detailRecall": 1,
       "holes": [
@@ -217,7 +217,7 @@
         6
       ],
       "notes": [
-        "해프톤이 도면 잉크의 59% — 전체 F@2px 0.8954, 그 영역 뺀 선 충실도 0.9968"
+        "해프톤이 도면 잉크의 59% — 전체 F@2px 0.8953, 그 영역 뺀 선 충실도 0.9973"
       ]
     },
     "editability": {
@@ -225,19 +225,20 @@
       "paths": 171,
       "subpaths": 259,
       "maxSubpathsInPath": 25,
+      "maxSplittableSubpaths": 25,
       "objectComplexity": 430,
-      "anchors": 11388,
+      "anchors": 8702,
       "uses": 0,
-      "kb": 479.5,
-      "anchorDensity": 7.22,
+      "kb": 350,
+      "anchorDensity": 5.52,
       "shortPathRatio": 0.058,
       "primitives": 28,
       "anchorsSavedByPrimitives": 460,
       "pathsSavedByPatterns": 0,
       "editableReduction": {
         "paths": 0.064,
-        "anchors": 0.101,
-        "kb": 0.097
+        "anchors": 0.047,
+        "kb": 0.041
       },
       "notes": []
     },
@@ -251,8 +252,8 @@
           "paths": 3,
           "areaShare": 0.0084,
           "precision": 1,
-          "recall": 0.5389,
-          "iou": 0.5389,
+          "recall": 0.5362,
+          "iou": 0.5362,
           "boundaryF1": 1
         },
         {
@@ -261,9 +262,9 @@
           "kind": "area",
           "paths": 23,
           "areaShare": 0.1053,
-          "precision": 0.9994,
-          "recall": 0.9842,
-          "iou": 0.9836,
+          "precision": 0.9987,
+          "recall": 0.9819,
+          "iou": 0.9806,
           "boundaryF1": -1
         },
         {
@@ -272,9 +273,9 @@
           "kind": "area",
           "paths": 14,
           "areaShare": 0.0153,
-          "precision": 1,
-          "recall": 0.9372,
-          "iou": 0.9372,
+          "precision": 0.9976,
+          "recall": 0.9377,
+          "iou": 0.9356,
           "boundaryF1": -1
         },
         {
@@ -284,8 +285,8 @@
           "paths": 21,
           "areaShare": 0.0132,
           "precision": 1,
-          "recall": 0.6555,
-          "iou": 0.6555,
+          "recall": 0.6556,
+          "iou": 0.6556,
           "boundaryF1": 0.9915
         },
         {
@@ -294,9 +295,9 @@
           "kind": "area",
           "paths": 48,
           "areaShare": 0.1844,
-          "precision": 0.9821,
-          "recall": 0.9815,
-          "iou": 0.9643,
+          "precision": 0.9818,
+          "recall": 0.9803,
+          "iou": 0.9628,
           "boundaryF1": -1
         },
         {
@@ -305,9 +306,9 @@
           "kind": "thin",
           "paths": 11,
           "areaShare": 0.0201,
-          "precision": 0.9903,
-          "recall": 0.5958,
-          "iou": 0.5923,
+          "precision": 0.9904,
+          "recall": 0.5954,
+          "iou": 0.592,
           "boundaryF1": 0.9478
         },
         {
@@ -317,8 +318,8 @@
           "paths": 22,
           "areaShare": 0.0169,
           "precision": 1,
-          "recall": 0.4183,
-          "iou": 0.4183,
+          "recall": 0.418,
+          "iou": 0.418,
           "boundaryF1": 0.9662
         },
         {
@@ -328,9 +329,9 @@
           "paths": 6,
           "areaShare": 0.0113,
           "precision": 1,
-          "recall": 0.3227,
-          "iou": 0.3227,
-          "boundaryF1": 0.9025
+          "recall": 0.3223,
+          "iou": 0.3223,
+          "boundaryF1": 0.9023
         },
         {
           "id": "airmax_badge",
@@ -338,14 +339,14 @@
           "kind": "area",
           "paths": 23,
           "areaShare": 0.0131,
-          "precision": 0.9982,
-          "recall": 0.8825,
-          "iou": 0.8811,
+          "precision": 0.9983,
+          "recall": 0.8808,
+          "iou": 0.8795,
           "boundaryF1": -1
         }
       ],
-      "meanPrecision": 0.9967,
-      "weightedMeanIou": 0.8842,
+      "meanPrecision": 0.9963,
+      "weightedMeanIou": 0.8825,
       "failingMajorParts": [],
       "maskFit": 0.9702,
       "misassigned": [],
@@ -363,13 +364,13 @@
     "state": "FIDELITY_PASS / EDITABILITY_PASS / SEMANTIC_PASS"
   },
   "timings": {
-    "S1_preprocess": 4198,
-    "S2_plan": 13,
-    "S3_masks": 13937,
-    "S4_schematic": 3435,
-    "S5_evidence": 19554,
-    "S7_export": 92,
-    "S8_qa": 14100
+    "S1_preprocess": 4666,
+    "S2_plan": 11,
+    "S3_masks": 13419,
+    "S4_schematic": 3334,
+    "S5_evidence": 18769,
+    "S7_export": 56,
+    "S8_qa": 10814
   },
   "rescued": {
     "stitch": [

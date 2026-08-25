@@ -135,7 +135,7 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
     </div>
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-tab="gallery">결과 갤러리</button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="v4">V4.5 · Semantic Topology</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="v4">V4.6 · Semantic Topology</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="v3">V3.2 · VRINGON 도면</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="v2">V2 · 레이어 SVG</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="run">직접 실행</button>
@@ -160,8 +160,8 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
 
 <!-- ─────────── V4 Semantic Topology ─────────── -->
 <section id="v4" hidden>
-  <h2>V4.5 — Semantic Topology Vectorizer
-    <span style="font-size:14px;font-weight:400;color:var(--dim)">· 2026-08-25 · 주얼리 반사 제거 · 앵커 −12%</span></h2>
+  <h2>V4.6 — Semantic Topology Vectorizer
+    <span style="font-size:14px;font-weight:400;color:var(--dim)">· 2026-08-25 · 앵커 −22% · 편집성 8/9</span></h2>
   <p class="sub">
     V3까지는 잉크 전체를 한 방식으로 훑고 SVG 하나를 만들었습니다. V4는 <b>성분마다 표현을 먼저
     정하고</b>, 같은 장면(<code>VectorScene</code>)에서 목적별로 다른 SVG를 굽습니다.
@@ -208,6 +208,40 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px;padding:
   <p class="sub" style="margin-top:8px">
     패스가 크게 줄면서 <b>정확 일치(F@0px)는 오히려 올랐습니다</b>. 앵커 총량은 거의 같습니다 —
     줄어든 것은 <b>객체 수</b>이지 형상 정보가 아니라는 뜻입니다.
+  </p>
+
+  <h3>V4.6 — 앵커를 22% 줄였습니다</h3>
+  <div class="note">
+    <b>손잡이는 단순화 허용오차가 아니었습니다.</b> epsilon 을 1.6 → 3.2 로 올려도 앵커가
+    <b>한 개도 안 줄었습니다</b> — VTracer 가 이미 만든 스플라인 조각들이 곡률이 달라 병합
+    조건에 안 걸리기 때문입니다. 진짜 손잡이는 그 앞, VTracer 의 <code>lengthThreshold</code>
+    (스플라인 한 조각의 최소 길이)였습니다.
+  </div>
+  <div style="overflow-x:auto"><table>
+    <tr><th>lengthThreshold</th><th class="num">앵커</th><th>충실도</th></tr>
+    <tr><td>4 (기존)</td><td class="num">기준</td><td>기준</td></tr>
+    <tr style="background:var(--panel-2)"><td><b>8 (채택)</b></td><td class="num"><b>−16~24%</b></td><td><b>불변</b> — jewelry_2 는 F@0 0.9278 → 0.9290 으로 오히려 개선</td></tr>
+    <tr><td>14</td><td class="num">−10% 더</td><td>F@0 −0.005~0.010 손해</td></tr>
+    <tr><td>20</td><td class="num">−5% 더</td><td>F@0 −0.008~0.010 손해</td></tr>
+  </table></div>
+  <p class="sub">
+    9종 합계 앵커 <b>103,789 → 80,607 (−22%)</b> · 앵커 밀도 8.47 → <b>6.21</b>/100px ·
+    F@0 0.865 → 0.862 · 선 F@2 0.973 그대로. 밀도 6.21 은 <b>V2 컬러 플랫(7.62)보다 성깁니다</b> —
+    앵커 총량이 V2 의 3.8배인 것은 촘촘해서가 아니라 도면의 선 길이가 4.4배이기 때문입니다.
+  </p>
+  <h3>서브패스가 많다고 다 나쁜 게 아닙니다</h3>
+  <p class="sub">
+    편집성 gate 는 "한 패스에 서브패스 200개 초과"를 벌하고 있었습니다. 그런데 그물의 웹은
+    바깥 윤곽 하나에 셀 구멍 수백 개가 뚫린 <b>진짜 한 덩이</b>입니다 — 쪼개면 even-odd 가 깨져
+    구멍이 메워집니다. <code>compound.ts</code> 가 bbox 포함 관계로 "바깥 + 그 구멍"을 덩이로
+    묶어 <b>실제로 쪼개 봅니다</b>. 실측: 9종의 200 초과 패스 4개가 <b>전부 쪼갤 수 없는 한 덩이</b>였습니다.
+    gate 가 그것을 반영해 편집성이 <b>6/9 → 8/9</b> 가 됐습니다.
+  </p>
+  <h3>앵커를 눈으로 봅니다</h3>
+  <p class="sub">
+    <code>npx tsx server/v4/anchor-render.ts &lt;샘플&gt; out.png [--zoom=x,y,w,h]</code> —
+    최종 SVG 의 모든 앵커를 점으로, 베지에 제어 핸들을 옅은 선으로 얹습니다.
+    파랑은 곡선 앵커, 빨강은 꺾임 앵커입니다.
   </p>
 
   <h3>V4.5 — 주얼리 반사 제거 · 촘촘한 점 정리</h3>
