@@ -30,10 +30,14 @@ function head(scene: VectorScene, extra = ""): string {
 function defsFor(prims: ScenePrimitive[]): string {
   const pats = prims.filter((p) => p.cls === "REPEATING_PATTERN") as PatternPrimitive[];
   if (!pats.length) return "";
-  const body = pats.map((p) =>
-    `    <symbol id="motif-${p.id}" viewBox="0 0 ${p.motifSize[0]} ${p.motifSize[1]}" ` +
-    `overflow="visible"><path d="${p.motif}" fill="${p.fill}" fill-rule="evenodd"/></symbol>`,
-  ).join("\n");
+  const body = pats.map((p) => {
+    // stroke 패턴(물결 테두리)은 채우면 안 된다 — 채우면 굽이 사이가 검게 메워진다
+    const inner = p.paint === "stroke"
+      ? `<path d="${p.motif}" fill="none" stroke="${p.fill}" stroke-width="${p.strokeWidth ?? 1}" stroke-linecap="round" stroke-linejoin="round"/>`
+      : `<path d="${p.motif}" fill="${p.fill}" fill-rule="evenodd"/>`;
+    return `    <symbol id="motif-${p.id}" viewBox="0 0 ${p.motifSize[0]} ${p.motifSize[1]}" ` +
+      `overflow="visible">${inner}</symbol>`;
+  }).join("\n");
   return `\n  <defs>\n${body}\n  </defs>`;
 }
 
@@ -79,9 +83,12 @@ export function renderPrimitive(
       // QA 에서는 <use> 를 못 쓸 수 있으므로(별도 SVG 로 잘라 낼 때 defs 가 없다)
       // ink 모드에서는 모티프를 인스턴스마다 펼쳐 그린다.
       if (mode === "ink") {
+        const inner = t.paint === "stroke"
+          ? `<path d="${t.motif}" fill="none" stroke="#000000" stroke-width="${t.strokeWidth ?? 1}" stroke-linecap="round" stroke-linejoin="round"/>`
+          : `<path d="${t.motif}" fill="#000000" fill-rule="evenodd"/>`;
         const body = t.instances.map((i) =>
           `${ind}  <g transform="translate(${i.x} ${i.y})${i.rotate ? ` rotate(${i.rotate})` : ""}${i.scale !== 1 ? ` scale(${i.scale})` : ""}">` +
-          `<path d="${t.motif}" fill="#000000" fill-rule="evenodd"/></g>`).join("\n");
+          inner + `</g>`).join("\n");
         return `${ind}<g${cls}>\n${body}\n${ind}</g>`;
       }
       const uses = t.instances.map((i) =>
@@ -261,4 +268,35 @@ export function complexity(svg: string): { paths: number; anchors: number; uses:
     anchors += (m[1].match(new RegExp("[MLCQSTA]", "g")) ?? []).length;
   }
   return { paths, anchors, uses, kb: +(Buffer.byteLength(svg) / 1024).toFixed(1) };
+}
+
+/**
+ * **잉크로 볼 프리미티브인가** — QA·진단 도구가 공유하는 단 하나의 판정.
+ *
+ * 도면의 "잉크"는 그레이 160 미만이다. 벡터 쪽도 같은 잣대여야 한다:
+ *   · 옅은 면 채움(#ffffff, #ebebeb …)은 종이지 선이 아니다 → 뺀다
+ *   · **짙은 면 채움은 잉크다** → 넣는다. 검은 갑피·체커보드의 검은 칸이 여기 해당한다.
+ *
+ * 이 판정을 파일마다 따로 적어 두었더니 진단 도구가 면까지 검정으로 그려서
+ * 멀쩡한 결과가 통짜 덩어리로 보였다. 판정은 한 곳에만 둔다.
+ */
+export const INK_LUMA = 160;
+
+export function lumaOf(hex: string | undefined): number {
+  if (!hex) return 255;
+  let h = hex.replace("#", "").trim();
+  if (h.length === 3) h = [...h].map((c) => c + c).join("");
+  if (h.length < 6) return 255;
+  const r = parseInt(h.slice(0, 2), 16), g = parseInt(h.slice(2, 4), 16), b = parseInt(h.slice(4, 6), 16);
+  if (!Number.isFinite(r + g + b)) return 255;
+  return 0.299 * r + 0.587 * g + 0.114 * b;
+}
+
+export function isInkPrimitive(p: ScenePrimitive): boolean {
+  const fillish =
+    p.cls === "FACE_FILL" || p.cls === "TEXTURE_TONE" ||
+    ((p.cls === "GEOMETRIC_PRIMITIVE" || p.cls === "REPEATING_PATTERN") &&
+      (p as GeometricPrimitive | PatternPrimitive).paint === "fill");
+  if (!fillish) return true;
+  return lumaOf((p as { fill?: string }).fill) < INK_LUMA;
 }

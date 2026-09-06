@@ -233,7 +233,11 @@ export function flattenGemInteriors(
       // 반사 얼룩은 면에 비해 작다(실측 평균 134px).
       // 두르는 테는 아래에서 따로 걸러지므로, 여기 상한은 넉넉해도 된다.
       // 하이라이트 초승달은 면의 20% 를 넘기도 한다.
-      if (h.area > face.area * 0.3) continue;
+      //
+      // 분모는 **스톤 내부 전체(면+구멍)**다. 흰 면적(face.area)만 쓰면 반사가 스톤을
+      // 많이 덮을수록 상한이 같이 쪼그라들어, 정작 큰 반사 덩어리가 "구조"로 오인돼
+      // 살아남는다(실측 jewelry_3: 지우다 만 조각 2,043px 등이 남아 선 F@2 0.83).
+      if (h.area > (face.area + holeN) * 0.3) continue;
       // 가장자리에 닿는 구멍은 둘 중 하나다 — 면을 **두르는 금속 테**(베젤)이거나,
       // 테 근처에 앉은 반사 조각이다. 테는 면을 거의 다 감싸므로 bbox 가 면만 하다.
       // 반사 조각은 짧은 호라 bbox 가 작다. 그것으로 가른다.
@@ -256,6 +260,121 @@ export function flattenGemInteriors(
         if (ink[i]) { ink[i] = 0; removedMask[i] = 1; removedPx++; }
       }
       removedN++;
+    }
+
+    // ── 2차: 테두리에 붙은 반사 ────────────────────────────
+    // 구멍 방식은 **경계와 연결된 잉크를 못 본다** — 반사 줄기가 스톤 윤곽선에 닿아
+    // 있으면 윤곽과 한 성분이라 구멍이 아니다(실측 jewelry_3: 2,043px 등 5덩이 잔존).
+    // 면에서 잉크를 타고 자란 영역을 스톤 내부로 보고, 테두리에서 침식한 안쪽의
+    // 잉크만 지운다 — 윤곽선·베젤은 테두리 곁이라 침식에 보호된다.
+    {
+      // 면은 `dilate(ink,1)` 로 닫은 영역이라 실제 잉크와 1px 떨어져 있다 — 그 완충을
+      // 건너려면 성장 통로도 1px 팽창한 잉크로 잡아야 한다(안 그러면 한 픽셀도 못 자란다).
+      const grow = dilate(ink, W, H, 1);
+      const interior = new Uint8Array(N);
+      const q: number[] = [];
+      for (let k = 0; k < face.pixels.length; k++) { interior[face.pixels[k]] = 1; q.push(face.pixels[k]); }
+      while (q.length) {
+        const i = q.pop()!;
+        const x = i % W, y = (i / W) | 0;
+        for (const j of [x > 0 ? i - 1 : -1, x < W - 1 ? i + 1 : -1, y > 0 ? i - W : -1, y < H - 1 ? i + W : -1]) {
+          if (j < 0 || interior[j]) continue;
+          const jx = j % W, jy = (j / W) | 0;
+          if (jx < fx0 || jx > face.x1 || jy < fy0 || jy > face.y1) continue;
+          if (!grow[j] && !removedMask[j]) continue; // 흰 바깥으로는 안 자란다
+          interior[j] = 1;
+          q.push(j);
+        }
+      }
+      // 보호 폭 1.5×rim 은 실측으로 정했다 — 0.75×rim 으로 좁히면 스톤이 더 깨끗해
+      // 보이지만 middle_bezel 의 안쪽 명암(도면 내용)까지 지워져 recall 0.37 로
+      // 떨어지고 F@0 도 0.855 → 0.802 로 밀린다. 남는 부스러기는 베젤 명암이다.
+      const inner2 = erodeLocal(interior, W, H, Math.round(rim * 1.5), fx0, fy0, fw, fh);
+      const deep = new Uint8Array(N);
+      let deepN = 0;
+      for (let i = 0; i < N; i++) if (ink[i] && inner2[i]) { deep[i] = 1; deepN++; }
+      if (deepN) {
+        for (const h of labelComponents(deep, W, H, 8, 1).components) {
+          const hw = h.x1 - h.x0 + 1, hh = h.y1 - h.y0 + 1;
+          if (hw >= fw * 0.7 && hh >= fh * 0.7) continue; // 두르는 테
+          const st2 = shapeStats(h, W);
+          if (st2.elong >= 5 && st2.straight <= 0.05 && st2.span >= faceSpan * 0.45) { keptFacets++; continue; }
+          for (let k = 0; k < h.pixels.length; k++) {
+            const i = h.pixels[k];
+            if (ink[i]) { ink[i] = 0; removedMask[i] = 1; removedPx++; }
+          }
+          removedN++;
+        }
+      }
+    }
+  }
+
+  // ── 3차: 스톤 파트 마스크 안쪽 청소 ─────────────────────
+  // 면 검출은 흰 영역에서 출발하므로, 반사가 짙어 흰 면이 조각나면 그 사이 덩어리를
+  // 놓친다(실측 jewelry_3: 2,043px 덩어리가 1·2차를 다 빠져나갔다). 스톤 파트 마스크가
+  // 있으면 그 침식 안쪽은 **비어 있어야 하는 영역**이다 — 남은 잉크를 같은 가드
+  // (두르는 테·패싯 능선)로 거른 뒤 지운다. 베젤·밴드 마스크에는 적용하지 않는다.
+  for (const g of gemParts) {
+    // **판정 사전은 하나여야 한다.** 여기에만 짧은 정규식을 두었더니 GEM_WORDS 에는
+    // 있는 opal·turquoise·sapphire 등이 3차 패스를 건너뛰었다(실측 t_jewelry_03:
+    // "Opal inlay" 의 얼룩 78,627px 이 통째로 남아 F@0 0.673). 베젤·세팅(SURROUND)은
+    // 스톤을 감싸는 금속이라 여기서는 제외한다 — 그 안쪽만 스톤이다.
+    if (!GEM_WORDS.some((w) => g.id.toLowerCase().includes(w))) continue;
+    let x0 = W, y0 = H, x1 = -1, y1 = -1, area = 0;
+    for (let i = 0; i < N; i++) {
+      if (!g.mask[i]) continue;
+      area++;
+      const x = i % W, y = (i / W) | 0;
+      if (x < x0) x0 = x; if (x > x1) x1 = x;
+      if (y < y0) y0 = y; if (y > y1) y1 = y;
+    }
+    if (area < N * minFaceRatio) continue;
+    const gw = x1 - x0 + 1, gh = y1 - y0 + 1;
+    const rim3 = Math.max(4, Math.round(Math.min(gw, gh) * 0.14));
+    const inner3 = erodeLocal(g.mask, W, H, rim3, x0, y0, gw, gh);
+    const deep = new Uint8Array(N);
+    let deepN = 0;
+    for (let i = 0; i < N; i++) if (ink[i] && inner3[i]) { deep[i] = 1; deepN++; }
+    if (!deepN) continue;
+    for (const h of labelComponents(deep, W, H, 8, 1).components) {
+      const hw = h.x1 - h.x0 + 1, hh = h.y1 - h.y0 + 1;
+      if (hw >= gw * 0.6 && hh >= gh * 0.6) continue; // 두르는 테(안쪽 베젤 링)
+      const st2 = shapeStats(h, W);
+      if (st2.elong >= 5 && st2.straight <= 0.05 && st2.span >= Math.max(gw, gh) * 0.45) { keptFacets++; continue; }
+      for (let k = 0; k < h.pixels.length; k++) {
+        const i = h.pixels[k];
+        if (ink[i]) { ink[i] = 0; removedMask[i] = 1; removedPx++; }
+      }
+      removedN++;
+    }
+    touched.add(g.id);
+  }
+
+  // ── 4차: 지운 반사의 가장자리 부스러기 ──────────────────
+  // 반사를 지우면 그 경계선(어두운 픽셀의 바깥 띠)이 조각조각 남는다 — 침식 보호 안에
+  // 있어서 2·3차가 못 건드린 것들이다. 이 부스러기는 "지운 영역에 붙어 있다"는 성질로
+  // 가른다: 성분의 6할 이상이 지운 픽셀의 2px 이웃이면 반사의 잔해다. 베젤 명암 같은
+  // 도면 내용은 지운 영역과 무관한 자리에 있어 안 걸린다.
+  if (removedPx) {
+    const nearRemoved = dilate(removedMask, W, H, 2);
+    const nearGem = near; // 스톤 근방으로 한정
+    const cand = new Uint8Array(N);
+    let candN = 0;
+    for (let i = 0; i < N; i++) if (ink[i] && nearGem[i]) { cand[i] = 1; candN++; }
+    if (candN) {
+      for (const h of labelComponents(cand, W, H, 8, 1).components) {
+        let adj = 0;
+        for (let k = 0; k < h.pixels.length; k++) if (nearRemoved[h.pixels[k]]) adj++;
+        if (adj < h.pixels.length * 0.6) continue;
+        const st2 = shapeStats(h, W);
+        // 곧고 긴 것은 도면의 선일 수 있다 — 남긴다
+        if (st2.elong >= 5 && st2.straight <= 0.05) { keptFacets++; continue; }
+        for (let k = 0; k < h.pixels.length; k++) {
+          const i = h.pixels[k];
+          if (ink[i]) { ink[i] = 0; removedMask[i] = 1; removedPx++; }
+        }
+        removedN++;
+      }
     }
   }
 

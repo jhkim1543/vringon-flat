@@ -47,6 +47,15 @@ const opts: V4Options = {
   textureMode: (flag("texture") as V4Options["textureMode"]) ?? "auto",
   schematicFrom: flag("schematic-from"),
   upscale: !has("no-upscale"),
+  lineMode: has("line"),
+  // 면은 채울 수 있게 두고 선만 라이브 스트로크로 — 사람이 그린 도식화의 구조
+  strokeLines: has("stroke") || has("line"),
+  // **스트로크를 내는 모드면 굵기도 등급화한다.** `--stroke` 에만 걸었더니 `--line` 은
+  // 실측 굵기를 그대로 써서 고유값이 41개가 됐다(실측 jewelry_1_line) — "같은 뜻의 선이
+  // 같은 굵기"가 깨지고, 디자이너가 굵기를 숫자로 일괄 변경할 수 없다.
+  widthGrades: Number(flag("width-grades") ?? (has("stroke") || has("line") ? 4 : 0)),
+  thinFinish: has("thin"),
+  lineartSchematic: has("lineart"),
 };
 
 console.log("입력    ", input);

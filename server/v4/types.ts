@@ -80,6 +80,12 @@ export interface StrokePrimitive extends BasePrimitive {
   d: string;
   /** 선 굵기. 지금은 상수 하나 — 가변 폭은 미구현(README의 남은 과제) */
   width: number;
+  /**
+   * 채점용 폭. 얇은 마감(--thin)은 표현 폭을 사다리로 눌러 놓는데, 그대로 재면
+   * "선 굵기 0.18×" 같은 가짜 벌점이 나온다. QA 는 이 폭(누르기 전 등급 폭)으로
+   * 다시 그려 "경로가 도면과 일치하나"만 묻는다.
+   */
+  qaWidth?: number;
   color: string;
   /** DASH_OR_STITCH 일 때만 */
   dashArray?: string;
@@ -126,7 +132,9 @@ export interface PatternPrimitive extends BasePrimitive {
    * 잉크 QA에서 제외된다 — 이걸 구분하지 않으면 흰 면이 QA에서 검정 잉크가 되어
    * bag_3 F@2 가 1.000 → 0.867 로 무너진다(실측).
    */
-  paint?: "ink" | "fill";
+  paint?: "ink" | "fill" | "stroke";
+  /** paint 가 "stroke" 일 때의 선 굵기 — 모티프는 채우지 않고 이 굵기로 긋는다 */
+  strokeWidth?: number;
   /** 모티프 하나의 패스 (모티프 로컬 좌표) */
   motif: string;
   motifSize: [number, number];
@@ -175,6 +183,17 @@ export interface VectorScene {
     createdAt: string;
     /** 라우터가 못 정한 성분 수 */
     lowConfidence: number;
+    /**
+     * **재현에 필요한 것.** 같은 사진에서 같은 결과가 나온다는 근거다 —
+     * 백엔드·프롬프트·시드만으로는 부족하고, 파이프라인 코드 판과 실행 설정이 있어야
+     * 나중에 결과가 달라졌을 때 무엇이 달라졌는지 짚을 수 있다.
+     */
+    run?: {
+      codeVersion: string;
+      options: Record<string, unknown>;
+      env: Record<string, string>;
+      inputSha256: string | null;
+    };
   };
 }
 

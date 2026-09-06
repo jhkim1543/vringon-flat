@@ -30,9 +30,9 @@ import {
   COLORIZE_MODEL, COLOR_SKETCH_ASPECT_RATIO, COLOR_SKETCH_PROMPT,
   DEFAULT_LORA_URL, LORA_STRENGTH, OUTPUT_DIVISIBLE_BY,
   QWEN_INPUT_DIVISIBLE_BY, QWEN_INPUT_SIZE, SAMPLER_SEED,
-  QWEN_GO_FAST, QWEN_OUTPUT_QUALITY,
+  QWEN_GO_FAST, goFastEffective, QWEN_OUTPUT_QUALITY,
   UPSCALE_FACTOR, UPSCALE_MODE, UPSCALE_MODEL, UPSCALE_OUTPUT_QUALITY, UPSCALE_TARGET,
-  resolvePrompt, type SchematicCategory,
+  resolvePrompt, LINEART_CLAUSE, type SchematicCategory,
 } from "./schematicConstants.js";
 
 export * from "./schematicConstants.js";
@@ -53,6 +53,8 @@ export interface SchematicOptions {
    * 해상도는 모델 캔버스(1024) 아래로 내리지 않는다. 이유는 #214 복원 단계의 주석 참조.
    */
   matchWorkerResolution?: boolean;
+  /** 선화 변형 — 베이크 프롬프트에 LINEART_CLAUSE 를 덧붙인다 (별도 캐시 키) */
+  lineart?: boolean;
 }
 
 export interface SchematicResult {
@@ -110,7 +112,13 @@ export async function generateSchematic(
   }
 
   await fs.mkdir(outDir, { recursive: true });
-  const prompt = resolvePrompt(normalizeCategory(opts.category));
+  // **사내 워커는 프롬프트를 받지 않는다** — 요청 본문이 {category, image, is_grayscale}
+  // 뿐이다. 그런데 lineart 절이 캐시 키에는 들어가므로, 그대로 두면 같은 그림을 두 번
+  // 생성하고(키가 갈려서) 재합성은 자기 자신을 이식하는 무의미한 일을 한다.
+  const promptTakesEffect = backend !== "vringon";
+  const prompt =
+    resolvePrompt(normalizeCategory(opts.category)) +
+    (opts.lineart && promptTakesEffect ? LINEART_CLAUSE : "");
   const seed = opts.seed ?? SAMPLER_SEED;
   const loraScale = opts.loraScale ?? LORA_STRENGTH;
   const loraUrl = config.schematicLoraUrl || DEFAULT_LORA_URL;
@@ -120,7 +128,7 @@ export async function generateSchematic(
   const key = crypto
     .createHash("sha256")
     .update(src)
-    .update(JSON.stringify({ prompt, seed, loraScale, loraUrl, backend, gray: opts.grayscale, up: wantUpscale, native: !opts.matchWorkerResolution }))
+    .update(JSON.stringify({ prompt, seed, loraScale, loraUrl, backend, gray: opts.grayscale, up: wantUpscale, native: !opts.matchWorkerResolution, fast: goFastEffective() }))
     .digest("hex")
     .slice(0, 16);
   const dest = path.join(outDir, `schematic_${key}.png`);
@@ -346,7 +354,7 @@ async function replicateQwenEdit(
   const input: Record<string, unknown> = {
     prompt,
     image: [dataUri(image)],
-    go_fast: QWEN_GO_FAST,
+    go_fast: goFastEffective(),
     seed,
     disable_safety_checker: false,
     output_format: "png",

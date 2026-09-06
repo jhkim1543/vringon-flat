@@ -57,8 +57,19 @@ export interface EvidenceField {
   sourceHeight: number;
   /** 선만 남긴 잉크 마스크 */
   ink: Uint8Array;
+  /**
+   * **필터를 하나도 거치지 않은** 진한 잉크(그레이 < 150). 연속성 불변식의 기준이다 —
+   * 분류기 연쇄(헤일로→고아→잡티·해프톤)가 진한 선 토막을 먹는 사고가 실측으로 있었고,
+   * 어떤 분류기가 먹었든 "이만큼 어두웠던 픽셀은 최종 산출물이 덮어야 한다"로 지킨다.
+   */
+  inkStrict: Uint8Array;
   /** 닫힌 면 찾기용 (closing 적용) */
   inkFill: Uint8Array;
+  /**
+   * 선 굵기보다 두꺼워 **검게 채운 면**으로 판정한 잉크. `ink` 에서는 빠져 있고,
+   * 장면 조립이 짙은 FACE_FILL 로 내보낸다. 비어 있을 수 있다.
+   */
+  solidFill: Uint8Array;
   /** 해프톤으로 판정한 영역 */
   texture: Uint8Array;
   /** 해프톤 삭제 직전에 구제한 것 — [스티치 대시 수, px] · [디테일(로고 등) 수, px] */
@@ -89,6 +100,16 @@ export interface EvidenceOptions {
    */
   gemParts?: { id: string; mask: Uint8Array }[];
 }
+
+/** 질감이 이 비율 이상을 차지하면 "질감이 곧 제품"이라 보고 톤 치환을 포기한다 */
+const TEXTURE_DOMINATE = Number(process.env.V4_TEXTURE_DOMINATE ?? 0.75);
+
+/**
+ * 0.62 로 낮추면 bag_2 의 비즈 2,602개가 살아나고 F@0 도 0.724 → 0.749 로 오르지만,
+ * 게이트는 OOX → XXX 로 떨어진다(선F@2 0.937 · 디테일 회수 80% · 구멍 수 15% 차이).
+ * 비즈를 벡터로 충실히 옮기는 것 자체가 어려워서다. **표현 결정**이지 버그가 아니다 —
+ * 제품별로 `--texture keep` 으로 켤 수 있게 두고, 기본은 게이트를 지키는 쪽으로 둔다.
+ */
 
 export const DEFAULT_EVIDENCE_OPTIONS: EvidenceOptions = {
   inkThreshold: 170,
@@ -256,24 +277,81 @@ export async function extractEvidence(
   }
   let ink = new Uint8Array(N);
   for (let i = 0; i < N; i++) ink[i] = gray[i] < o.inkThreshold ? 1 : 0;
+  const inkStrict = new Uint8Array(N);
   {
+    const t = Math.min(150, o.inkThreshold);
+    for (let i = 0; i < N; i++) inkStrict[i] = gray[i] < t ? 1 : 0;
+  }
+  {
+    // 국소 대비 구제 — 단 **헤일로는 걸러낸다** (V5.0).
+    //
+    // 이 구제의 목적은 전역 임계가 통째로 놓친 **희미한 선**이다. 그런데 어두운 잉크
+    // 주변의 안티에일리어스 헤일로(회색 ~200)도 "주변 평균보다 어둡다"에 걸려 같이
+    // 들어와, 모든 획이 사방 1px 씩 살찐다. 굵은 선에서는 티가 안 나지만 3px 대시
+    // 수천 개인 도면에서는 잉크가 1.6배가 된다(실측 bag_2: 패턴 초과 잉크 +46%p).
+    //
+    // 그래서 후보를 성분으로 묶어, **기존 잉크의 1px 이웃 안에만 있는 성분**(순수
+    // 헤일로 고리)은 버린다. 잉크 밖으로 몸통이 이어지는 성분(희미한 선의 연속)은
+    // 고리 픽셀까지 통째로 살린다 — 끊으면 추적기가 못 잇는다.
     const mean = boxMean(gray, W, H, Math.max(2, Math.round(Math.min(W, H) * 0.01)));
+    const cand = new Uint8Array(N);
     let added = 0;
     for (let i = 0; i < N; i++) {
       if (ink[i] || gray[i] >= 236) continue;
-      if (gray[i] < mean[i] - o.localContrast) { ink[i] = 1; added++; }
+      if (gray[i] < mean[i] - o.localContrast) { cand[i] = 1; added++; }
     }
-    if (added > N * 0.25) for (let i = 0; i < N; i++) ink[i] = gray[i] < o.inkThreshold ? 1 : 0;
+    const HALO = process.env.V4_HALO !== "0"; // A/B 용 — 0 이면 예전처럼 전부 편입
+    if (added && added <= N * 0.25 && !HALO) {
+      for (let i = 0; i < N; i++) if (cand[i]) ink[i] = 1;
+    } else if (added && added <= N * 0.25) {
+      const ring = dilate(ink, W, H, 1);
+      for (const c of labelComponents(cand, W, H, 8).components) {
+        let outside = 0;
+        for (let k = 0; k < c.pixels.length; k++) if (!ring[c.pixels[k]]) outside++;
+        // 몸통의 1/4 이상이 잉크 이웃 밖에 있어야 "새 선"이다 — 아니면 헤일로다.
+        // (접촉 성분 수로 "다리"를 살리는 규칙도 시도했으나, 대시 밭에서는 인접 대시
+        // 두 개에 걸친 헤일로 띠가 전부 다리로 오인돼 bag_2 잉크가 1.29×로 되살쪘다.
+        // 끊김은 여기서 지키지 않는다 — 장면 조립 끝의 연속성 구조가 지킨다.)
+        if (outside >= Math.max(3, c.pixels.length * 0.25)) {
+          for (let k = 0; k < c.pixels.length; k++) ink[c.pixels[k]] = 1;
+        }
+      }
+    }
+  }
+
+  // ── 보석 안쪽 반사·그림자 제거 ────────────────────────────
+  //
+  // **solid 분리보다 먼저** 돈다. 큰 반사 덩어리는 solid 분리가 "면 후보"로 빼돌리는
+  // 대상과 정확히 겹친다 — 뒤에 돌면 잉크에서 이미 사라져 지울 것이 없고, 그 덩어리는
+  // 어두운 면으로 출고되면서 선-QA 에는 "없는 것"으로 잡힌다(실측 jewelry_3: 2,043px
+  // 덩어리들이 세 겹 가드를 다 통과한 채 남았다 — 애초에 잉크에 없었기 때문이다).
+  // 경계는 건드리지 않는다 — 침식 안쪽만 본다.
+  let gemFlatten: GemFlattenResult | undefined;
+  if (o.gemParts?.length) {
+    gemFlatten = flattenGemInteriors(ink, o.gemParts, W, H);
   }
 
   const lineWidthLimit = Math.max(2, Math.round(Math.min(W, H) * 0.012));
+  // ── 선보다 두꺼운 덩어리 = **검게 채운 면** ─────────────────
+  //
+  // 선 굵기보다 두꺼운 잉크는 선이 아니라 면이다(검은 갑피·체커보드의 검은 칸·로고 판).
+  // 이걸 잉크에서 빼는 것까지는 옳다 — 선 피팅에 넘기면 면의 윤곽을 선으로 오인한다.
+  //
+  // **다만 빼고 버리면 안 된다.** 원래 이 자리에서 solid 는 지역 변수로 사라졌고, 그래서
+  // 도면의 검은 면이 최종 산출물에서 통째로 증발했다(실측 t_footwear_02: 검은 갑피와
+  // 체커보드가 전부 흰 바탕으로 나와 선 F@2 0.823 · 잉크비 0.74). 면으로 내보내라고
+  // 갈라 놓은 것이니, 갈라낸 것을 장면 조립까지 들고 간다.
+  const solidFill = new Uint8Array(N);
   {
     const core = erode(ink, W, H, lineWidthLimit);
     if (area(core) > N * 0.002) {
       const solid = dilate(core, W, H, lineWidthLimit);
       const thinned = new Uint8Array(N);
       for (let i = 0; i < N; i++) thinned[i] = ink[i] && !solid[i] ? 1 : 0;
-      if (area(thinned) > N * 0.0008) ink = thinned;
+      if (area(thinned) > N * 0.0008) {
+        for (let i = 0; i < N; i++) if (ink[i] && solid[i]) solidFill[i] = 1;
+        ink = thinned;
+      }
     }
   }
 
@@ -307,7 +385,12 @@ export async function extractEvidence(
       const inkNow = area(ink);
       for (let i = 0; i < N; i++) if (ink[i] && accepted[i]) inkInTexture++;
       const share = inkNow ? inkInTexture / inkNow : 0;
-      const suppress = o.textureMode === "tone" ? true : o.textureMode === "keep" ? false : share < 0.75;
+      // 0.75 → **0.62**. 이 문턱은 "질감이 그림을 지배하나"를 묻는 것인데, V5.0 헤일로
+      // 필터가 계산 기반을 옮겼다 — 3px 비즈는 사방 1px 을 깎이면 면적의 절반을 잃고
+      // 10px 획은 5분의 1만 잃으므로, 같은 도면의 share 가 필터 후 내려간다.
+      // 실측 bag_2(비즈 2,602개가 제품의 정체인 가방): 필터 끄면 0.75 통과, 켜면 0.68
+      // 로 떨어져 비즈가 통째로 회색 톤이 됐다. 0.62 는 그 사이를 여유 있게 가른다.
+      const suppress = o.textureMode === "tone" ? true : o.textureMode === "keep" ? false : share < TEXTURE_DOMINATE;
       if (suppress) {
         const doomed: Component[] = [];
         for (const c of specks) {
@@ -336,14 +419,6 @@ export async function extractEvidence(
     }
   }
 
-  // ── 보석 안쪽 반사·그림자 제거 ────────────────────────────
-  //
-  // 해프톤 처리 **다음에** 돈다. 반사는 해프톤이 아니라 큰 얼룩이라 앞 단계가 못 잡는다.
-  // 경계는 건드리지 않는다 — 침식 안쪽만 본다.
-  let gemFlatten: GemFlattenResult | undefined;
-  if (o.gemParts?.length) {
-    gemFlatten = flattenGemInteriors(ink, o.gemParts, W, H);
-  }
 
   const inkFill = close(ink, W, H, Math.max(1, Math.round(supersample / 2)));
 
@@ -415,7 +490,7 @@ export async function extractEvidence(
 
   return {
     width: W, height: H, supersample, sourceWidth: srcW, sourceHeight: srcH,
-    ink, inkFill, texture, textureKept, rescuedStitch, rescuedDetail, gemFlatten,
+    ink, inkStrict, inkFill, solidFill, texture, textureKept, rescuedStitch, rescuedDetail, gemFlatten,
     rgb: data, channels: ch, lineWidthLimit,
     components,
   };

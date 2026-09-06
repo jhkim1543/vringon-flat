@@ -31,21 +31,38 @@ export interface AiPath {
   strokeWidth: number;
   /** SVG stroke-dasharray 를 그대로 (PDF 의 d 연산자로 옮긴다) */
   dash?: string;
+  /**
+   * **반복 모티프의 인스턴스**. 있으면 `d` 를 쓰지 않고 Form XObject 를 참조한다.
+   *
+   * 예전에는 인스턴스마다 모티프를 펼쳐 그렸다 — SVG 는 `<use>` 로 간결한데 `.ai` 만
+   * 1,360배로 부풀었다(실측 s_bag_04: 모티프 앵커 135 → 펼치면 4,962). 파일이 무겁고,
+   * 모티프 하나를 고쳐 전체를 바꾸는 것도 불가능했다.
+   */
+  motifRef?: { key: string; matrix: [number, number, number, number, number, number] };
 }
 export interface AiGroup { name: string; paths: AiPath[] }
 export interface AiLayer { name: string; groups: AiGroup[] }
-export interface AiDoc { width: number; height: number; layers: AiLayer[] }
+export interface AiDoc {
+  width: number; height: number; layers: AiLayer[];
+  /** 반복 모티프 — 키마다 한 번만 정의하고 인스턴스가 참조한다 */
+  motifs?: Map<string, { d: string; fill: string | null; stroke?: string | null; strokeWidth?: number }>;
+}
 
 /** production.svg 와 같은 순서 — 면이 먼저, 그 위에 선 */
 const BUCKET_ORDER = [
   "FILLS", "TEXTURE", "PATTERNS", "OUTLINES",
-  "PRIMITIVES", "STITCH", "STRUCTURE", "SHARED_BOUNDARIES",
+  "PRIMITIVES", "STITCH", "STRUCTURE", "REVIEW_TEXT", "SHARED_BOUNDARIES",
 ] as const;
 
 /** 위로 올리면 아래 잉크를 덮는 표현 */
 const OPAQUE_AREA = new Set(["FACE_FILL", "TEXTURE_TONE"]);
 
 function bucketOf(p: ScenePrimitive): string {
+  // **각인·로고는 따로 뺀다.** 도면에서 온 글자는 윤곽을 그대로 뜬 것이라 자모가
+  // 뭉개져 있고, 실무자는 그걸 고쳐 쓰지 않는다 — 폰트로 새로 친다(주얼리 디자이너·
+  // 어패럴 그래픽 두 명이 같은 말을 했다). 그러려면 **어디가 글자인지 한눈에 보여야**
+  // 한다. 레이어를 따로 두면 통째로 선택해 지우고 텍스트를 얹을 수 있다.
+  if ((p.route?.features as Record<string, unknown> | undefined)?.glyph) return "REVIEW_TEXT";
   switch (p.cls) {
     case "FACE_FILL": return "FILLS";
     case "TEXTURE_TONE": return "TEXTURE";
@@ -120,11 +137,28 @@ function primToPaths(p: ScenePrimitive): { path: AiPath; partId?: string }[] {
     }
     case "REPEATING_PATTERN": {
       const t = p as PatternPrimitive;
-      const motif = parsePath(t.motif);
-      return t.instances.map((i) => ({
-        partId: i.partId ?? t.partId,
-        path: { d: subsToD(motif, instanceMatrix(i)), fill: t.fill, stroke: null, strokeWidth: 0 },
-      }));
+      // **모티프는 한 번만 정의하고 인스턴스는 참조한다.** 행렬은 SVG 의 transform 과
+      // 같은 뜻이지만 PDF 는 y 가 위로 가므로, 실제 뒤집기는 조립 단계에서 한다.
+      // **되돌릴 수 있게 둔다.** poppler 로는 같은 그림이 나오는 것을 확인했지만
+      // Illustrator 가 Form XObject 를 어떻게 푸는지는 여기서 검증할 수 없다.
+      // 문제가 생기면 `V4_AI_EXPAND=1` 로 예전처럼 인스턴스마다 펼친다.
+      if (process.env.V4_AI_EXPAND === "1") {
+        const motif = parsePath(t.motif);
+        return t.instances.map((i) => ({
+          partId: i.partId ?? t.partId,
+          path: { d: subsToD(motif, instanceMatrix(i)), fill: t.fill, stroke: null, strokeWidth: 0 },
+        }));
+      }
+      return t.instances.map((i) => {
+        const m = instanceMatrix(i);
+        return {
+          partId: i.partId ?? t.partId,
+          path: {
+            d: "", fill: t.fill, stroke: null, strokeWidth: 0,
+            motifRef: { key: `${t.id}`, matrix: m as [number, number, number, number, number, number] },
+          },
+        };
+      });
     }
     default: {
       const sh = p as ShapePrimitive;
@@ -136,9 +170,32 @@ function primToPaths(p: ScenePrimitive): { path: AiPath; partId?: string }[] {
 /** 레이어 이름은 PDF 문자열로 나가므로 ASCII 로 접는다 (Illustrator 레이어 패널 표기) */
 const ascii = (s: string) => s.replace(/[^\x20-\x7e]/g, "").trim();
 
-export function sceneToAiDoc(scene: VectorScene): AiDoc {
+/**
+ * 레이어를 무엇 단위로 나눌지 — **한 답이 없다.**
+ *
+ * 실무 심사에서 세 직군이 서로 배타적인 것을 요구했다.
+ *   `function` 기능 단위 (FILLS / OUTLINES / STITCH …)  — 기본. 표현별로 일괄 손보기 좋다
+ *   `part`     부품 단위 (Vamp / Quarter / Heel …)      — 풋웨어·패키징. 부품째 소재를 바꾼다
+ *   `color`    잉크 색 단위                              — 스크린프린트. 색 하나 = 판 하나
+ *
+ * 예전에는 "요구가 상충하니 못 정한다"고 미뤄 뒀다. 그건 답이 아니다 — **셋 다 낼 수
+ * 있게** 하고 쓰는 쪽이 고르면 된다.
+ */
+export type LayerPreset = "function" | "part" | "color";
+
+export function sceneToAiDoc(scene: VectorScene, preset: LayerPreset = "function"): AiDoc {
+  if (preset === "part") return byPartDoc(scene);
+  if (preset === "color") return byColorDoc(scene);
   const byId = new Map(scene.parts.map((p) => [p.id, p]));
   const sharedIds = new Set(scene.sharedBoundaries.map((s) => s.primitiveId));
+
+  const motifs = new Map<string, { d: string; fill: string | null; stroke?: string | null; strokeWidth?: number }>();
+  for (const p of scene.primitives) {
+    if (p.cls !== "REPEATING_PATTERN") continue;
+    const t = p as PatternPrimitive;
+    if (t.paint === "stroke") motifs.set(String(t.id), { d: t.motif, fill: null, stroke: t.fill, strokeWidth: t.strokeWidth ?? 1 });
+    else motifs.set(String(t.id), { d: t.motif, fill: t.fill });
+  }
 
   const buckets = new Map<string, { partId: string; path: AiPath }[]>();
   for (const p of scene.primitives) {
@@ -168,7 +225,7 @@ export function sceneToAiDoc(scene: VectorScene): AiDoc {
     layers.push({ name, groups });
   }
 
-  return { width: scene.canvas.width, height: scene.canvas.height, layers };
+  return { width: scene.canvas.width, height: scene.canvas.height, layers, motifs };
 }
 
 // ── PDF 조립 ────────────────────────────────────────────────
@@ -190,7 +247,30 @@ function pdfString(s: string): string {
   return s.replace(/[\\()]/g, (c) => `\\${c}`).replace(/[^\x20-\x7e]/g, "_");
 }
 
-function pathOps(p: AiPath, flip: (y: number) => number): string {
+function pathOps(p: AiPath, flip: (y: number) => number, H?: number): string {
+  // **모티프 참조**는 패스를 그리지 않고 Form XObject 를 호출한다.
+  //
+  // 좌표계가 뒤집혀 있다는 점이 함정이다. 모티프는 **SVG 좌표(y 아래)** 로 정의되고,
+  // XObject 안에서 뒤집힌 뒤 페이지 좌표로 놓인다. 그래서 인스턴스 행렬을 그대로 쓰면
+  // 안 되고, "페이지 뒤집기 → 인스턴스 이동 → 다시 뒤집기" 를 합성해야 제자리에 앉는다.
+  if (p.motifRef && H !== undefined) {
+    const [a, b, c, d, e, f] = p.motifRef.matrix;
+    // 모티프는 y 아래 좌표로 그려져 있고 페이지는 y 위다. 인스턴스 행렬 M 을 적용한 뒤
+    // 페이지 뒤집기 F = [1,0,0,-1,0,H] 를 씌우면 되므로 CTM = F · M 이다.
+    //   x'' = a·x + c·y + e
+    //   y'' = -(b·x + d·y + f) + H
+    // → [a, -b, c, -d, e, H-f]. (앞뒤로 두 번 씌우면 제자리로 돌아와 그림이 어긋난다 —
+    //    실제로 그렇게 적었다가 IoU 0.87 에 2만 픽셀이 더 그려졌다.)
+    const m: [number, number, number, number, number, number] = [
+      a, -b, c, -d, e, H - f,
+    ];
+    return `q
+${f2(m[0])} ${f2(m[1])} ${f2(m[2])} ${f2(m[3])} ${f2(m[4])} ${f2(m[5])} cm
+` +
+      `/M${p.motifRef.key} Do
+Q
+`;
+  }
   const subs = parsePath(p.d);
   if (!subs.length) return "";
   let ops = "";
@@ -251,7 +331,7 @@ export function buildAiV4(doc: AiDoc): Buffer {
     content += `/OC /oc${parent.id} BDC\n`;
     l.groups.forEach((g, gi) => {
       content += `/OC /oc${parent.children[gi].id} BDC\nq\n`;
-      for (const p of g.paths) content += pathOps(p, flip);
+      for (const p of g.paths) content += pathOps(p, flip, H);
       content += "Q\nEMC\n";
     });
     content += "EMC\n";
@@ -266,6 +346,37 @@ export function buildAiV4(doc: AiDoc): Buffer {
     .map((p) => `${ref(p)} [${[...p.children].reverse().map(ref).join(" ")}]`)
     .join(" ");
 
+  // ── 반복 모티프를 Form XObject 로 ────────────────────────
+  //
+  // 인스턴스마다 펼치면 같은 모양이 수백~수천 벌 들어간다(실측 s_bag_04: 1,360 인스턴스).
+  // 한 번만 정의하고 참조하면 파일이 그만큼 가벼워지고, 모티프 하나를 고쳐 전체를 바꿀
+  // 여지도 생긴다.
+  //
+  // **모티프는 자기 좌표계(y 아래)로 그린다.** 페이지 뒤집기는 인스턴스 행렬이 맡는다 —
+  // 여기서 또 뒤집으면 두 번 뒤집혀 제자리로 돌아온다.
+  /** 모티프 로컬 좌표의 경계 — M/L/C 절대좌표만 나오므로 숫자 쌍 전수로 충분하다 */
+  const motifBBox = (d: string, pad: number): [number, number, number, number] => {
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    const nums = d.match(/-?\d*\.?\d+(?:[eE][-+]?\d+)?/g) ?? [];
+    for (let i = 0; i + 1 < nums.length; i += 2) {
+      const x = +nums[i], y = +nums[i + 1];
+      if (x < x0) x0 = x; if (x > x1) x1 = x;
+      if (y < y0) y0 = y; if (y > y1) y1 = y;
+    }
+    if (!Number.isFinite(x0)) return [0, 0, 1, 1];
+    return [x0 - pad, y0 - pad, x1 + pad, y1 + pad];
+  };
+  const usedMotifs = new Set<string>();
+  for (const l of doc.layers) for (const g of l.groups) for (const pp of g.paths) {
+    if (pp.motifRef) usedMotifs.add(pp.motifRef.key);
+  }
+  const motifOrder = [...usedMotifs].filter((k) => doc.motifs?.has(k));
+  const motifStreams = motifOrder.map((k) => {
+    const mo = doc.motifs!.get(k)!;
+    // 모티프 안에서는 뒤집지 않는다 (flip = 항등)
+    return pathOps({ d: mo.d, fill: mo.fill, stroke: mo.stroke ?? null, strokeWidth: mo.strokeWidth ?? 0 }, (y) => y);
+  });
+
   const objects: string[] = [];
   objects[1] =
     `<< /Type /Catalog /Pages 2 0 R ` +
@@ -273,12 +384,30 @@ export function buildAiV4(doc: AiDoc): Buffer {
     `/D << /Order [${order}] /ON [${allRefs}] /BaseState /ON >> >> >>`;
   objects[2] = `<< /Type /Pages /Kids [3 0 R] /Count 1 >>`;
   const props = ocs.map((o) => `/oc${o.id} ${ref(o)}`).join(" ");
+  const XO0 = OC0 + ocs.length;
+  const xoRes = motifOrder.map((k, i) => `/M${k} ${XO0 + i} 0 R`).join(" ");
   objects[3] =
     `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${f2(doc.width)} ${f2(doc.height)}] ` +
-    `/Contents 4 0 R /Resources << /Properties << ${props} >> >> >>`;
+    `/Contents 4 0 R /Resources << /Properties << ${props} >>` +
+    (xoRes ? ` /XObject << ${xoRes} >>` : "") + ` >> >>`;
   const bytes = Buffer.byteLength(content, "latin1");
   objects[4] = `<< /Length ${bytes} >>\nstream\n${content}endstream`;
   for (const o of ocs) objects[OC0 + o.id] = `<< /Type /OCG /Name (${pdfString(o.name)}) >>`;
+  motifOrder.forEach((k, i) => {
+    const body = motifStreams[i];
+    // **BBox 는 모티프 자기 크기다.** 캔버스 전체로 두면 Illustrator 가 인스턴스마다
+    // 캔버스만 한 선택 박스를 잡는다 — 실측: 메시 패턴 수백 인스턴스가 전부 페이지
+    // 크기 바운딩으로 잡혀 편집이 불가능했다. 좌표 전수(컨트롤 포인트 포함)에
+    // 선 굵기 절반을 더한 값이면 넉넉하고 정확하다.
+    const mo = doc.motifs!.get(k)!;
+    const bb = motifBBox(mo.d, (mo.strokeWidth ?? 0) / 2 + 0.5);
+    objects[XO0 + i] =
+      `<< /Type /XObject /Subtype /Form /FormType 1 ` +
+      `/BBox [${f2(bb[0])} ${f2(bb[1])} ${f2(bb[2])} ${f2(bb[3])}] ` +
+      `/Resources << >> /Length ${Buffer.byteLength(body, "latin1")} >>
+stream
+${body}endstream`;
+  });
 
   let pdf = "%PDF-1.6\n%\xE2\xE3\xCF\xD3\n";
   const offsets: number[] = [];
@@ -295,6 +424,77 @@ export function buildAiV4(doc: AiDoc): Buffer {
   return Buffer.from(pdf, "latin1");
 }
 
-export function exportAi(scene: VectorScene): Buffer {
-  return buildAiV4(sceneToAiDoc(scene));
+export function exportAi(scene: VectorScene, preset: LayerPreset = "function"): Buffer {
+  return buildAiV4(sceneToAiDoc(scene, preset));
+}
+
+/** 색을 6비트로 접어 묶는다 — 미세한 차이로 판이 갈리면 인쇄에서 못 쓴다 */
+function inkBucket(p: ScenePrimitive): string {
+  const c = (p as { fill?: string; color?: string; stroke?: string });
+  const hex = (c.fill ?? c.stroke ?? c.color ?? "#000000").replace("#", "");
+  if (hex.length < 6) return "OTHER";
+  const q = (i: number) => (parseInt(hex.slice(i, i + 2), 16) >> 5) << 5;
+  const r = q(0), g = q(2), b = q(4);
+  return `INK_${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+}
+
+/** 부품 우선 — 레이어 = 부품, 하위 = 표현 */
+function collectMotifs(scene: VectorScene): Map<string, { d: string; fill: string | null; stroke?: string | null; strokeWidth?: number }> {
+  const m = new Map<string, { d: string; fill: string | null; stroke?: string | null; strokeWidth?: number }>();
+  for (const p of scene.primitives) {
+    if (p.cls !== "REPEATING_PATTERN") continue;
+    const t = p as PatternPrimitive;
+    if (t.paint === "stroke") m.set(String(t.id), { d: t.motif, fill: null, stroke: t.fill, strokeWidth: t.strokeWidth ?? 1 });
+    else m.set(String(t.id), { d: t.motif, fill: t.fill });
+  }
+  return m;
+}
+
+function byPartDoc(scene: VectorScene): AiDoc {
+  const byId = new Map(scene.parts.map((p) => [p.id, p]));
+  const perPart = new Map<string, Map<string, AiPath[]>>();
+  for (const p of scene.primitives) {
+    const b = bucketOf(p);
+    for (const { path, partId } of primToPaths(p)) {
+      const pid = partId ?? p.partId ?? "_unassigned";
+      const m = perPart.get(pid) ?? perPart.set(pid, new Map()).get(pid)!;
+      (m.get(b) ?? m.set(b, []).get(b)!).push(path);
+    }
+  }
+  // **부품 순서는 z 를 따른다** — 뒤에 있는 부품이 먼저 칠해져야 앞 부품이 덮는다
+  const layers: AiLayer[] = [...perPart.entries()]
+    .sort((a, b) => (byId.get(a[0])?.z ?? 99) - (byId.get(b[0])?.z ?? 99))
+    .map(([pid, m]) => ({
+      name: ascii(byId.get(pid)?.label ?? pid) || pid,
+      // 부품 안에서는 면이 먼저, 그 위에 선 — 안 그러면 면이 자기 선을 덮는다
+      groups: BUCKET_ORDER.filter((b) => m.has(b))
+        .map((b) => ({ name: b, paths: m.get(b)! })),
+    }));
+  return { width: scene.canvas.width, height: scene.canvas.height, layers, motifs: collectMotifs(scene) };
+}
+
+/** 잉크 색 우선 — 레이어 = 색, 하위 = 부품. 스크린프린트 분판용 */
+function byColorDoc(scene: VectorScene): AiDoc {
+  const byId = new Map(scene.parts.map((p) => [p.id, p]));
+  const perInk = new Map<string, Map<string, AiPath[]>>();
+  for (const p of scene.primitives) {
+    const ink = inkBucket(p);
+    for (const { path, partId } of primToPaths(p)) {
+      const pid = partId ?? p.partId ?? "_unassigned";
+      const m = perInk.get(ink) ?? perInk.set(ink, new Map()).get(ink)!;
+      (m.get(pid) ?? m.set(pid, []).get(pid)!).push(path);
+    }
+  }
+  // 어두운 잉크가 마지막에 찍히도록 — 밝은 판부터
+  const lum = (k: string) => (k.startsWith("INK_") ? parseInt(k.slice(4, 6), 16) : 0);
+  const layers: AiLayer[] = [...perInk.entries()]
+    .sort((a, b) => lum(b[0]) - lum(a[0]))
+    .map(([ink, m]) => ({
+      name: ink,
+      groups: [...m.entries()].map(([pid, paths]) => ({
+        name: ascii(byId.get(pid)?.label ?? pid) || pid,
+        paths,
+      })),
+    }));
+  return { width: scene.canvas.width, height: scene.canvas.height, layers, motifs: collectMotifs(scene) };
 }

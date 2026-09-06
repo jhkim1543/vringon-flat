@@ -30,27 +30,79 @@ const normalize = (a: Pt): Pt => {
   return [a[0] / n, a[1] / n];
 };
 
+export interface FitOpts {
+  /** 재구성 허용오차(px) */
+  maxError?: number;
+  /** 진행 방향이 이보다 크게 꺾이면 코너로 자른다(도). **꺾인 각** 기준이다. */
+  cornerTurnDeg?: number;
+  /** 코너 컷 사이 최소 거리(px) — 둥근 모서리를 여러 번 찍지 않게 */
+  minCornerGapPx?: number;
+  /** 이보다 짧은 구간은 더 쪼개지 않는다(px) — 잔조각 폭주 방지 */
+  minSpanPx?: number;
+}
+
+/** 누적 호 길이 */
+function arcAcc(pts: Pt[]): Float64Array {
+  const acc = new Float64Array(pts.length);
+  for (let i = 1; i < pts.length; i++) {
+    acc[i] = acc[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
+  }
+  return acc;
+}
+
+/**
+ * 코너 위치를 고른다. 셋을 지킨다.
+ *
+ *  - **거리 기준 창** — 방향을 샘플 *개수*로 재면 점이 촘촘한 곳에서 픽셀 잡음이 코너로 보인다.
+ *    항상 같은 물리 거리(px)만큼 앞뒤를 본다.
+ *  - **비최대 억제** — 둥근 모서리는 여러 점이 한꺼번에 임계를 넘는다. 그 덩어리에서 가장
+ *    많이 꺾인 점 **하나만** 남긴다. 안 그러면 모서리 하나에 앵커가 대여섯 개 박힌다.
+ *  - **최소 간격** — 채택된 컷끼리 px 거리로 떨어뜨리고, 양 끝에 붙은 컷은 버린다.
+ */
+function cornerCuts(pts: Pt[], turnDeg: number, lookPx: number, gapPx: number): number[] {
+  const n = pts.length;
+  const acc = arcAcc(pts);
+  const turn = new Float64Array(n);
+  for (let i = 0; i < n; i++) {
+    let a = i;
+    while (a > 0 && acc[i] - acc[a] < lookPx) a--;
+    let b = i;
+    while (b < n - 1 && acc[b] - acc[i] < lookPx) b++;
+    if (a === i || b === i) continue;
+    const c = dot(normalize(sub(pts[i], pts[a])), normalize(sub(pts[b], pts[i])));
+    turn[i] = (Math.acos(Math.max(-1, Math.min(1, c))) * 180) / Math.PI;
+  }
+
+  const cuts = [0];
+  let i = 1;
+  while (i < n - 1) {
+    if (turn[i] <= turnDeg) { i++; continue; }
+    // 임계를 넘은 지점부터 gapPx 안쪽을 한 덩어리로 보고 가장 날카로운 점만 취한다
+    let j = i, best = i;
+    while (j + 1 < n - 1 && acc[j + 1] - acc[i] <= gapPx) {
+      j++;
+      if (turn[j] > turn[best]) best = j;
+    }
+    if (acc[best] - acc[cuts[cuts.length - 1]] >= gapPx && acc[n - 1] - acc[best] >= gapPx) {
+      cuts.push(best);
+    }
+    i = j + 1;
+  }
+  cuts.push(n - 1);
+  return cuts;
+}
+
 /** 폴리라인을 코너에서 잘라 구간별로 피팅한다. */
-export function fitPolyline(
-  pts: Pt[],
-  maxError = 1.5,
-  cornerAngleDeg = 55,
-): CubicSeg[] {
+export function fitPolyline(pts: Pt[], opts: FitOpts = {}): CubicSeg[] {
+  const maxError = opts.maxError ?? 1.5;
+  const turnDeg = opts.cornerTurnDeg ?? 60;
+  const gapPx = opts.minCornerGapPx ?? Math.max(2, maxError * 1.5);
+  const minSpan = opts.minSpanPx ?? maxError * 2.5;
+
   if (pts.length < 2) return [];
   if (pts.length === 2) return [lineSeg(pts[0], pts[1])];
 
-  // 코너 검출 — 앞뒤 방향 벡터 사이 각
-  const cornerCos = Math.cos(((180 - cornerAngleDeg) * Math.PI) / 180);
-  const cuts = [0];
-  const LOOK = 2; // 픽셀 노이즈에 강하도록 2칸 떨어진 방향으로 판단
-  for (let i = LOOK; i < pts.length - LOOK; i++) {
-    const din = normalize(sub(pts[i], pts[i - LOOK]));
-    const dout = normalize(sub(pts[i + LOOK], pts[i]));
-    if (dot(din, dout) < cornerCos) {
-      if (i - cuts[cuts.length - 1] >= 2) cuts.push(i);
-    }
-  }
-  cuts.push(pts.length - 1);
+  const cuts = cornerCuts(pts, turnDeg, Math.max(2, maxError), gapPx);
 
   const out: CubicSeg[] = [];
   for (let c = 0; c + 1 < cuts.length; c++) {
@@ -58,9 +110,29 @@ export function fitPolyline(
     if (seg.length < 2) continue;
     const tanL = computeTangent(seg, true);
     const tanR = computeTangent(seg, false);
-    fitCubicRec(seg, tanL, tanR, maxError, out, 0);
+    fitCubicRec(seg, tanL, tanR, maxError, out, 0, minSpan);
   }
   return out;
+}
+
+/**
+ * 점들에 **큐빅 하나만** 맞춘다 — 쪼개지 않는다.
+ *
+ * 앵커를 하나 빼도 되는지 판단하려면 "양옆 두 조각을 하나로 합쳤을 때 얼마나 어긋나나"를
+ * 알아야 한다. `fitPolyline` 은 오차가 크면 스스로 쪼개 버려서 그 답을 주지 못한다.
+ */
+export function fitSingleCubic(pts: Pt[]): CubicSeg | null {
+  if (pts.length < 2) return null;
+  if (pts.length === 2) return lineSeg(pts[0], pts[1]);
+  const tanL = computeTangent(pts, true);
+  const tanR = computeTangent(pts, false);
+  let u = chordLengthParams(pts);
+  let seg = generateBezier(pts, u, tanL, tanR);
+  for (let it = 0; it < 2; it++) {
+    u = reparameterize(pts, u, seg);
+    seg = generateBezier(pts, u, tanL, tanR);
+  }
+  return seg;
 }
 
 function lineSeg(a: Pt, b: Pt): CubicSeg {
@@ -127,6 +199,15 @@ function generateBezier(pts: Pt[], u: number[], tanL: Pt, tanR: Pt): CubicSeg {
     // 퇴화 시 Wu/Barsky 휴리스틱
     aL = aR = segLen / 3;
   }
+  // **상한도 잘라야 한다.** 최소자승은 접선 방향이 조금만 틀려도 α 를 현의 수십 배로
+  // 풀 수 있다 — 그 곡선은 부풀거나 고리를 만든다. 실측: 상한 없이 .ai 5종에서 제어
+  // 핸들이 현보다 20px 이상 뻗은 세그먼트가 1,250개(6.1%)였다. 이탈 검사는 샘플 지점의
+  // 최근접 거리만 보므로 앵커 근처로 되돌아오는 고리를 못 잡는다 — 생성 지점에서 막는다.
+  const aMax = Math.max(segLen, 1) * 1.2;
+  if (aL > aMax || aR > aMax) {
+    aL = Math.min(aL, aMax);
+    aR = Math.min(aR, aMax);
+  }
   return {
     p0: first,
     c1: add(first, scale(tanL, aL)),
@@ -167,6 +248,7 @@ function fitCubicRec(
   maxError: number,
   out: CubicSeg[],
   depth: number,
+  minSpan: number,
 ): void {
   if (pts.length === 2) {
     out.push(lineSeg(pts[0], pts[1]));
@@ -185,14 +267,18 @@ function fitCubicRec(
       if (err <= maxError) break;
     }
   }
-  if (err <= maxError || depth > 12 || pts.length < 5) {
+  // **짧은 구간은 더 쪼개지 않는다.** 코너를 제대로 잘라내고 나면 남는 고오차 지점은
+  // 대개 픽셀 잡음이다. 그걸 재귀로 따라가면 몇 px 안에 앵커가 대여섯 개 박힌다 —
+  // 형상은 그만큼 좋아지지 않는데 편집만 불가능해진다.
+  const span = arcAcc(pts)[pts.length - 1];
+  if (err <= maxError || depth > 12 || pts.length < 5 || span < minSpan) {
     out.push(seg);
     return;
   }
   // 최악 지점에서 분할, 접선은 이웃 점으로
   const centerTan = normalize(sub(pts[Math.max(0, idx - 1)], pts[Math.min(pts.length - 1, idx + 1)]));
-  fitCubicRec(pts.slice(0, idx + 1), tanL, centerTan, maxError, out, depth + 1);
-  fitCubicRec(pts.slice(idx), scale(centerTan, -1), tanR, maxError, out, depth + 1);
+  fitCubicRec(pts.slice(0, idx + 1), tanL, centerTan, maxError, out, depth + 1, minSpan);
+  fitCubicRec(pts.slice(idx), scale(centerTan, -1), tanR, maxError, out, depth + 1, minSpan);
 }
 
 /**
@@ -210,29 +296,47 @@ function fitCubicRec(
  */
 export function fitAdaptive(
   pts: Pt[],
-  opts: { baseError?: number; cornerAngleDeg?: number; maxAnchorsPerPx?: number } = {},
+  opts: {
+    baseError?: number;
+    /** @deprecated **내각** 기준(180 − 꺾인각). V2/V3 호출부 호환용. */
+    cornerAngleDeg?: number;
+    /** **꺾인각** 기준(도). 이쪽을 쓴다. */
+    cornerTurnDeg?: number;
+    minCornerGapPx?: number;
+    minSpanPx?: number;
+    maxAnchorsPerPx?: number;
+  } = {},
 ): { segs: CubicSeg[]; usedError: number } {
   const base = opts.baseError ?? 1.2;
-  const corner = opts.cornerAngleDeg ?? 55;
+  // 예전 호출부는 내각으로 넘긴다 — 꺾인각으로 옮겨 준다
+  const turnDeg =
+    opts.cornerTurnDeg ?? (opts.cornerAngleDeg != null ? 180 - opts.cornerAngleDeg : 60);
   const maxDensity = opts.maxAnchorsPerPx ?? 0.08; // 앵커/px — 이보다 촘촘하면 과밀
+  const fit = (e: number) =>
+    fitPolyline(pts, {
+      maxError: e,
+      cornerTurnDeg: turnDeg,
+      minCornerGapPx: opts.minCornerGapPx,
+      minSpanPx: opts.minSpanPx,
+    });
 
   let len = 0;
   for (let i = 1; i < pts.length; i++) len += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
-  if (len < 1) return { segs: fitPolyline(pts, base, corner), usedError: base };
+  if (len < 1) return { segs: fit(base), usedError: base };
 
   let err = base;
-  let segs = fitPolyline(pts, err, corner);
+  let segs = fit(err);
   // 1) 앵커 과밀이면 허용오차를 키워 다시 (최대 2배까지, 형상 손실 방지)
   for (let it = 0; it < 3 && segs.length / len > maxDensity && err < base * 2; it++) {
     err *= 1.25;
-    segs = fitPolyline(pts, err, corner);
+    segs = fit(err);
   }
   // 2) 긴 구조선인데 실제 재구성 오차가 예산을 넘으면 허용오차를 줄여 다시
   if (len > 80) {
     const worst = maxDeviation(pts, segs);
     if (worst > base * 1.6 && err > base * 0.6) {
       err = Math.max(base * 0.6, err * 0.75);
-      segs = fitPolyline(pts, err, corner);
+      segs = fit(err);
     }
   }
   return { segs, usedError: err };

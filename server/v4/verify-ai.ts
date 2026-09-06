@@ -165,10 +165,20 @@ const LONG = 1400;
 const report: Record<string, unknown>[] = [];
 console.log();
 for (const name of names) {
-  const dir = path.join("docs", "samples-v4", name);
+  // 산출물은 docs 사본과 잡 폴더 양쪽에 있다. **둘 다 볼 것** — docs 에는 대표 9종만
+  // 복사되므로, 크롤링 배치나 라인 모드 변형을 검증하려 하면 여기서 통째로 죽는다.
+  let dir = path.join("docs", "samples-v4", name);
+  try { await fs.access(path.join(dir, "qa_v4.json")); }
+  catch { dir = path.join("outputs", "v4", `v4_${name}`); }
   const aiPath = path.join(dir, "layered.ai");
-  const pdf = await fs.readFile(aiPath, "latin1");
-  const rep = JSON.parse(await fs.readFile(path.join(dir, "qa_v4.json"), "utf8"));
+  let pdf: string, rep: { qa?: { fidelity?: Record<string, number> } };
+  try {
+    pdf = await fs.readFile(aiPath, "latin1");
+    rep = JSON.parse(await fs.readFile(path.join(dir, "qa_v4.json"), "utf8"));
+  } catch (e) {
+    console.log(`${name}\n  ! 건너뜀 — ${(e as Error).message.slice(0, 70)}\n`);
+    continue;
+  }
 
   const ocg = parseOcg(pdf);
   const ct = auditContent(pdf);
@@ -190,7 +200,21 @@ for (const name of names) {
 
   const aiMask = await inkMask(aiPng, W, H);
   const svgMask = await svgInkMask(await fs.readFile(path.join(dir, "fidelity.svg"), "utf8"), W, H);
-  const schMask = await inkMask(await fs.readFile(path.join(dir, "schematic.jpg")), W, H);
+  // 도면 파일 이름은 폴더마다 다르다 — docs 사본은 `schematic.jpg`, 잡 폴더는
+  // `schematics/schematic_<해시>.png`. 이름을 하나로 못 박으면 잡 폴더에서 죽는다.
+  const schBuf = await (async () => {
+    for (const p of [path.join(dir, "schematic.jpg"), path.join(dir, "schematic.png")]) {
+      try { return await fs.readFile(p); } catch { /* 다음 후보 */ }
+    }
+    const sd = path.join(dir, "schematics");
+    // `schematic_<해시>.png` 가 정본이지만, 도면을 재사용해 돌린 잡은 `reuse.png` 만
+    // 남긴다. 이름을 고집하지 말고 이미지면 받는다.
+    const all = await fs.readdir(sd);
+    const f = all.find((x) => /^schematic.*\.(png|jpg)$/.test(x)) ?? all.find((x) => /\.(png|jpg)$/.test(x));
+    if (!f) throw new Error(`도면을 못 찾음: ${dir}`);
+    return fs.readFile(path.join(sd, f));
+  })();
+  const schMask = await inkMask(schBuf, W, H);
 
   let inter = 0, aOnly = 0, bOnly = 0;
   for (let i = 0; i < W * H; i++) {

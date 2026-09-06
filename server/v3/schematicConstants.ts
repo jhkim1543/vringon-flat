@@ -38,6 +38,13 @@ export const RESIZE_UPSCALE_METHOD = "bilinear" as const;
  * 운영도 이 값으로 돈다. go_fast=true는 fp8 양자화 경로다.
  */
 export const QWEN_GO_FAST = true;
+/**
+ * 품질 실험용 오버라이드. Replicate 의 qwen-image-edit 는 steps 를 노출하지 않고
+ * `go_fast`(fp8 양자화 고속 경로) 토글만 준다 — 선 품질을 흔드는 유일한 레버다.
+ * `V3_GO_FAST=0` 으로 끄면 느리지만 정밀한 경로로 돈다. 캐시 키에 포함된다.
+ */
+export const goFastEffective = (): boolean =>
+  process.env.V3_GO_FAST === undefined ? QWEN_GO_FAST : process.env.V3_GO_FAST !== "0";
 export const QWEN_OUTPUT_QUALITY = 95;
 
 /** #192 KSampler 고정 시드 */
@@ -116,6 +123,15 @@ export const VTRACER_MONO = { colormode: "binary", mode: "polygon", filter_speck
 export const VTRACER_COLOR = {
   colormode: "color", mode: "polygon", filter_speckle: 1, color_precision: 8,
 } as const;
+
+// ── 이하는 워커 베이크 상수가 아니다 — 이 저장소의 옵트인 실험 변형 ──────────
+/**
+ * 선화 변형 절(`--lineart`). 베이크 프롬프트 뒤에 덧붙어 **별도 캐시 키**로 생성된다
+ * (베이크 프롬프트 자체는 한 글자도 건드리지 않는다).
+ * 부정 나열("no shading" 따위)은 그 대상을 소환한다(실측 6/6) — 원하는 상태만 서술한다.
+ */
+export const LINEART_CLAUSE =
+  ", rendered as clean vector-style line art: every stroke a thin uniform-weight solid black line on pure white paper, every contour continuous and fully closed, panels and details described by their outlines, keeping the exact same size, position, and framing on the canvas as the input";
 
 /** 워커 contract가 받는 카테고리 */
 export const SCHEMATIC_CATEGORIES = [

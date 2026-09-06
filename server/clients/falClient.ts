@@ -65,6 +65,7 @@ export async function sam3Concepts(
   concepts: string[],
 ): Promise<Sam3Mask[]> {
   const image = await toDataUri(imagePath, 1024);
+  let firstErr: Error | null = null;
   const results = await Promise.all(
     concepts.map(async (concept) => {
       try {
@@ -83,12 +84,17 @@ export async function sam3Concepts(
           maskPng: await fetchBuffer(m.url),
           score: j.scores?.[0] ?? 1,
         } satisfies Sam3Mask;
-      } catch {
+      } catch (e) {
+        // 개념 하나가 인식 안 되는 것과 **호출 자체가 죽는 것**은 다르다 — 전부 실패면
+        // 첫 오류를 올려서 원인이 보이게 한다(실측: 계정 잠김 403 이 "0개 인식"으로 위장).
+        firstErr = e as Error;
         return null;
       }
     }),
   );
-  return results.filter((r): r is Sam3Mask => r !== null);
+  const ok = results.filter((r): r is Sam3Mask => r !== null);
+  if (!ok.length && firstErr) throw firstErr;
+  return ok;
 }
 
 export interface Sam3Instance {

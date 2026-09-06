@@ -20,7 +20,8 @@ const out = process.argv[3] ?? `outputs/v4/_verify/anchors_${name}.png`;
 const zoomArg = process.argv.find((a) => a.startsWith("--zoom="));
 const which = (process.argv.find((a) => a.startsWith("--svg=")) ?? "--svg=fidelity").slice(6);
 
-const svgPath = `outputs/v4/v4_${name}/${which}.svg`;
+const dirArg = process.argv.find((a) => a.startsWith("--dir="));
+const svgPath = dirArg ? `${dirArg.slice(6)}/${name}/${which}.svg` : `outputs/v4/v4_${name}/${which}.svg`;
 const svg = await fs.readFile(svgPath, "utf8");
 const vb = new RegExp('viewBox="0 0 ([\\d.]+) ([\\d.]+)"').exec(svg)!;
 const W = Number(vb[1]), H = Number(vb[2]);
@@ -29,16 +30,51 @@ interface Dot { x: number; y: number; corner: boolean }
 const dots: Dot[] = [];
 const handles: [number, number, number, number][] = [];
 
-for (const m of svg.matchAll(new RegExp('(?:^|[\\s"])d="([^"]*)"', "g"))) {
-  for (const sp of parsePath(m[1])) {
-    dots.push({ x: sp.start[0], y: sp.start[1], corner: true });
+/**
+ * **패턴은 펼쳐서 센다.** 반복 패턴은 SVG 안에 모티프 하나 + `<use>` 참조로 저장되지만
+ * Illustrator 는 인스턴스마다 실제 패스로 펼친다. `d=` 만 훑으면 모티프를 한 번만 세고
+ * 원점에 그려 버려서, 화면에 실제로 보이는 것과 전혀 다른 그림이 나온다.
+ */
+const dEnd = svg.indexOf("</defs>");
+const defs = dEnd > 0 ? svg.slice(svg.indexOf("<defs"), dEnd + 7) : "";
+const body = dEnd > 0 ? svg.slice(dEnd) : svg;
+
+const motifD = new Map<string, string>();
+for (const m of defs.matchAll(new RegExp('<symbol id="motif-([^"]+)"[^>]*>\\s*<path d="([^"]*)"', "g"))) {
+  motifD.set(m[1], m[2]);
+}
+
+function collect(d: string, tx = 0, ty = 0, sc = 1, rot = 0): void {
+  const rad = (rot * Math.PI) / 180, cs = Math.cos(rad), sn = Math.sin(rad);
+  const at = (p: [number, number]): [number, number] => {
+    const x = p[0] * sc, y = p[1] * sc;
+    return [tx + x * cs - y * sn, ty + x * sn + y * cs];
+  };
+  for (const sp of parsePath(d)) {
+    const s = at(sp.start);
+    dots.push({ x: s[0], y: s[1], corner: true });
     for (const seg of sp.segs) {
-      dots.push({ x: seg.end[0], y: seg.end[1], corner: seg.type === "L" });
+      const e = at(seg.end);
+      dots.push({ x: e[0], y: e[1], corner: seg.type === "L" });
       if (seg.type === "C") {
-        handles.push([seg.c1![0], seg.c1![1], seg.c2![0], seg.c2![1]]);
+        const c1 = at(seg.c1!), c2 = at(seg.c2!);
+        handles.push([c1[0], c1[1], c2[0], c2[1]]);
       }
     }
   }
+}
+
+for (const m of body.matchAll(new RegExp('(?:^|[\\s"])d="([^"]*)"', "g"))) collect(m[1]);
+
+const USE = new RegExp('<use[^>]*xlink:href="#motif-([^"]+)"[^>]*>', "g");
+const TR = new RegExp("translate\\(([-\\d.]+)[ ,]+([-\\d.]+)\\)");
+const RO = new RegExp("rotate\\(([-\\d.]+)\\)");
+const SC = new RegExp("scale\\(([-\\d.]+)\\)");
+for (const u of body.matchAll(USE)) {
+  const d = motifD.get(u[1]);
+  if (!d) continue;
+  const t = TR.exec(u[0]);
+  collect(d, t ? +t[1] : 0, t ? +t[2] : 0, SC.exec(u[0]) ? +SC.exec(u[0])![1] : 1, RO.exec(u[0]) ? +RO.exec(u[0])![1] : 0);
 }
 
 // 원본 도면을 옅게 깔고 그 위에 벡터 선 + 앵커

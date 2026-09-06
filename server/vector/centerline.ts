@@ -21,6 +21,11 @@ export interface CenterlineOptions {
   /** 이 길이(px) 미만 체인은 노이즈로 버린다 */
   minLength?: number;
   /**
+   * 가짜 가지를 칠 기준 — **선 굵기의 배수**. 0 이면 안 친다.
+   * 절대 픽셀이 아니라 굵기 비례여야 한다: 굵은 선일수록 가지가 길게 생긴다.
+   */
+  spurFactor?: number;
+  /**
    * 면 레이어의 경계 마스크(전체 해상도). 여기에 대부분 겹치는 선은
    * 면 경계와 중복이므로 버린다 — 넣지 않으면 파트 경계마다 선이 이중으로
    * 그려져 도면이 지저분해진다(라인아트와 컬러플랫이 서로 다른 후보 이미지라
@@ -75,7 +80,7 @@ export async function centerlineTrace(
   }
   if (!inkCount) return [];
 
-  const skel = skeletonize(ink, W, H);
+  let skel = skeletonize(ink, W, H);
   let skelCount = 0;
   for (let i = 0; i < skel.length; i++) skelCount += skel[i];
   if (!skelCount) return [];
@@ -85,6 +90,18 @@ export async function centerlineTrace(
   // 쓰면 굵은 윤곽선과 가는 스티치가 같은 값으로 뭉개져 충실도가 떨어진다
   // (실측: 메시 가방에서 전역 굵기로는 IoU 83%가 한계였다).
   const dist = distanceTransform(ink, W, H);
+
+  // 세선화가 만든 가짜 가지를 먼저 친다 — 안 치면 짧은 획 수백 개가 앵커만 먹는다
+  {
+    const k = opts.spurFactor ?? Number(process.env.V4_SPUR ?? 1.5);
+    if (k > 0) {
+      const r = pruneSpurs(skel, W, H, dist, k);
+      if (r.pruned) {
+        skel = r.skel;
+        opts.onNote?.(`골격 가짜 가지 ${r.pruned}개 제거 (선 굵기의 ${k}배 미만)`);
+      }
+    }
+  }
 
   // 질감 억제 — 길이 + **연결성**으로 판단한다.
   //
@@ -183,7 +200,12 @@ export async function centerlineTrace(
     // 선 충실도가 평균 93.3% → 88.1%로 떨어졌다(jewelry_2 99.7→85.3,
     // jewelry_3 87.7→62.4, 앵커도 절반으로 줄어 과단순화).
     // 미세 일렁임보다 형상 손실이 훨씬 큰 손해라 아래 값을 유지한다.
-    const smoothed = smoothChain(chain, 1);
+    // **거리변환 능선으로 서브픽셀 정렬.** Zhang-Suen 골격은 정수 격자 위에 있어 실제 선의
+    // 중앙에서 최대 반 픽셀 비껴 있고 계단이 진다. 각 점을 3×3 이웃의 거리값(제곱) 가중
+    // 무게중심으로 옮기면 잉크 한복판(능선)에 앉는다. 이동은 1px 로 막는다 — 교차점처럼
+    // 거리값이 한쪽으로 기운 곳에서 선을 끌고 가면 안 된다. (외부 검토가 지목, 실측으로 채택)
+    const ridged = EDT_NUDGE ? ridgeNudge(chain, dist, W, H) : chain;
+    const smoothed = smoothChain(ridged, 1);
     if (smoothed.length < 2) continue;
     // 오차 예산 적응 피팅 (AmodalSVG ALV) — 긴 구조선은 형상 우선, 짧은 디테일은 앵커 예산 우선
     const { segs } = fitAdaptive(smoothed, { baseError: 1.2, cornerAngleDeg: 55 });
@@ -457,6 +479,38 @@ function isClosed(c: Pt[]): boolean {
   return Math.hypot(c[0][0] - c[c.length - 1][0], c[0][1] - c[c.length - 1][1]) < 1.5;
 }
 
+const EDT_NUDGE = process.env.V4_EDT_NUDGE !== "0";
+
+/** 골격 점을 거리변환 능선(잉크 중앙)으로 서브픽셀 이동. 양 끝점은 고정 */
+function ridgeNudge(pts: Pt[], dist: Float32Array, W: number, H: number): Pt[] {
+  if (pts.length < 3) return pts;
+  const out: Pt[] = [pts[0]];
+  for (let i = 1; i < pts.length - 1; i++) {
+    const [x, y] = pts[i];
+    let sw = 0, sx = 0, sy = 0;
+    for (let dy = -1; dy <= 1; dy++) {
+      const yy = y + dy;
+      if (yy < 0 || yy >= H) continue;
+      for (let dx = -1; dx <= 1; dx++) {
+        const xx = x + dx;
+        if (xx < 0 || xx >= W) continue;
+        const d = dist[yy * W + xx];
+        if (d <= 0) continue;
+        const w = d * d;
+        sw += w; sx += w * xx; sy += w * yy;
+      }
+    }
+    if (sw <= 0) { out.push(pts[i]); continue; }
+    let nx = sx / sw, ny = sy / sw;
+    const mx = nx - x, my = ny - y;
+    const m = Math.hypot(mx, my);
+    if (m > 1) { nx = x + mx / m; ny = y + my / m; }
+    out.push([nx, ny]);
+  }
+  out.push(pts[pts.length - 1]);
+  return out;
+}
+
 /** 이동평균 평활화 (양 끝점은 고정) */
 function smoothChain(pts: Pt[], passes: number): Pt[] {
   if (pts.length < 5) return pts;
@@ -473,3 +527,77 @@ function smoothChain(pts: Pt[], passes: number): Pt[] {
   return cur;
 }
 
+
+/**
+ * **가짜 가지를 친다.**
+ *
+ * 세선화는 정의상 경계의 요철마다 뼈대에 곁가지를 만든다. 접합부·끝단에서 특히 심해서,
+ * 짧은 갈고리 같은 획이 수백 개 생긴다(실측 shoe_1_line: 획 709개 중 384개가 20px 미만).
+ * 그 하나하나가 앵커 두 개(시작·끝)를 먹으므로, 눈에는 안 보이면서 파일만 무거워진다.
+ *
+ * **길이 문턱은 절대 픽셀이 아니라 선 굵기의 배수다.** 굵은 선일수록 가지가 길게 생기기
+ * 때문이다 — 5px 같은 고정값으로는 굵은 윤곽선의 가지를 못 잡고, 가는 선의 진짜 디테일을
+ * 자른다.
+ *
+ * 한쪽 끝이 **자유 끝점**이고 다른 쪽이 **분기점**인 가지만 친다. 양쪽이 다 분기점이면
+ * 그건 두 접합부를 잇는 진짜 연결선이고, 양쪽이 다 자유 끝점이면 독립된 짧은 선(스티치
+ * 대시 등)이라 내용이다.
+ *
+ * @param k 굵기의 몇 배까지 가지로 볼지
+ */
+export function pruneSpurs(
+  skel: Uint8Array, W: number, H: number, dist: Float32Array, k = 1.5,
+): { skel: Uint8Array; pruned: number } {
+  const img = Uint8Array.from(skel);
+  let pruned = 0;
+
+  for (let pass = 0; pass < 3; pass++) {
+    const degree = new Int8Array(W * H);
+    const free: number[] = [];
+    for (let y = 0; y < H; y++) {
+      for (let x = 0; x < W; x++) {
+        const i = y * W + x;
+        if (!img[i]) continue;
+        const nb = neighbors(img, W, H, x, y).length;
+        const d = nb === 0 ? 0 : nb === 1 ? 1 : crossingNumber(img, W, H, x, y);
+        degree[i] = d;
+        if (d === 1) free.push(i);
+      }
+    }
+    if (!free.length) break;
+
+    let cut = 0;
+    for (const s of free) {
+      if (!img[s]) continue;
+      // 자유 끝점에서 분기점을 만날 때까지 따라간다
+      const walk: number[] = [s];
+      let prev = -1, cur = s;
+      let ok = false;
+      for (let step = 0; step < 400; step++) {
+        const nb = neighbors(img, W, H, cur % W, (cur / W) | 0).filter((n) => n !== prev);
+        if (nb.length !== 1) { ok = nb.length > 1; break; }   // 분기점에 닿음
+        prev = cur; cur = nb[0];
+        if (degree[cur] >= 3) { ok = true; break; }           // 분기점
+        if (degree[cur] === 1) { ok = false; break; }         // 반대쪽도 자유 끝 — 독립 선이다
+        walk.push(cur);
+      }
+      if (!ok || walk.length < 2) continue;
+
+      // 길이 vs 굵기 — 굵기는 가지 위 거리변환의 중앙값 × 2
+      let len = 0;
+      for (let i = 1; i < walk.length; i++) {
+        const ax = walk[i - 1] % W, ay = (walk[i - 1] / W) | 0;
+        const bx = walk[i] % W, by = (walk[i] / W) | 0;
+        len += Math.hypot(bx - ax, by - ay);
+      }
+      const ws = walk.map((i) => dist[i]).filter((v) => v > 0 && v < 1e5).sort((a, b) => a - b);
+      const width = ws.length ? ws[ws.length >> 1] * 2 : 1;
+      if (len > Math.max(3, width * k)) continue;
+
+      for (const i of walk) { img[i] = 0; cut++; }
+      pruned++;
+    }
+    if (!cut) break;
+  }
+  return { skel: img, pruned };
+}

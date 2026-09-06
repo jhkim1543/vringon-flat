@@ -95,9 +95,21 @@ export interface Fidelity {
  *   recall    = ref 픽셀 중 vec의 t px 안에 대응이 있는 비율
  *   precision = vec 픽셀 중 ref의 t px 안에 대응이 있는 비율
  */
-export function fidelity(ref: Mask, vec: Mask, tolerances = [0, 1, 2]): Fidelity {
+/**
+ * @param refSoft 정밀도 전용의 **너그러운 기준선.** 없으면 `ref` 를 쓴다.
+ *
+ * 재현율과 정밀도는 묻는 것이 다르다.
+ *   재현율  "도면의 **진한 선**을 벡터가 다 그렸나" → 엄격한 기준(그레이 < 160)
+ *   정밀도  "벡터가 **빈 종이**에 없는 것을 그렸나" → 너그러운 기준(그레이 < 215)
+ *
+ * 하나의 기준으로 둘 다 재면, 도면이 옅은 회색으로 그려 놓은 질감을 벡터가 옳게
+ * 잡아냈을 때 그것이 "지어낸 것"으로 벌받는다(실측 t_bag_09: 크로커다일 무늬가
+ * 도면에 그레이 176~207 로 분명히 있는데 잉크비 1.35 · 선 F@2 0.88 로 깎였다).
+ * 그렇다고 기준을 통째로 215 로 올리면 종이 얼룩과 안티에일리어싱까지 "선"이 된다.
+ */
+export function fidelity(ref: Mask, vec: Mask, tolerances = [0, 1, 2], refSoft?: Mask): Fidelity {
   const W = ref.width, H = ref.height, N = W * H;
-  const dRef = distanceTransform(ref);
+  const dRef = distanceTransform(refSoft ?? ref);
   const dVec = distanceTransform(vec);
 
   let refN = 0, vecN = 0;
@@ -183,9 +195,15 @@ export interface DetailRecall {
  * 기존 파이프라인은 작은 연결성분을 전부 `speck`으로 지웠기 때문에 이 지표가 없으면
  * 그 손실이 전체 F1에 묻혀 보이지 않는다(작은 성분은 픽셀 수가 적어 F1을 거의 못 움직인다).
  */
-export function detailRecall(ref: Mask, vec: Mask, maxArea: number, tol = 2, exclude?: Uint8Array): DetailRecall {
+export function detailRecall(
+  ref: Mask, vec: Mask, maxArea: number, tol = 2, exclude?: Uint8Array, minArea = 1,
+): DetailRecall {
   const dVec = distanceTransform(vec);
-  const comps = componentSizes(ref).filter((c) => c.area <= maxArea);
+  // **바닥을 둔다.** 파이프라인은 minComponentPx(기본 12px) 미만을 잡티로 버리기로
+  // 계약돼 있는데, 지표가 1~2px 성분까지 세면 "버리기로 한 것을 버렸다"는 이유로
+  // 벌점을 준다(실측 t_bag_04: 소실 76개의 크기 중앙값이 2px, jewelry_09 은 1px).
+  // 지표는 파이프라인의 계약과 같은 바닥을 써야 실제 손실만 보인다.
+  const comps = componentSizes(ref).filter((c) => c.area <= maxArea && c.area >= minArea);
   const W = ref.width;
   const missing: { x: number; y: number; area: number }[] = [];
   let kept = 0;

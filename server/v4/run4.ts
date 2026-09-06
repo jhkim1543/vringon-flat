@@ -26,6 +26,36 @@ import { planParts, type PartPlan } from "../v3/partPlan.js";
 import { generateSchematic, activeBackend, normalizeCategory, type SchematicResult } from "../v3/schematicClient.js";
 import { detectSubject, similarityFit, warpMask } from "../v3/subject.js";
 import { segmentSchematic, snapMasksToFaces, type SegHint } from "./segSchematic.js";
+import { segmentSam3 } from "./segSam3.js";
+import { assignResidualInk } from "./residualAssign.js";
+
+/** 마스크 내부의 배경까지 chamfer 거리 — SAM 점 프롬프트용 봉우리 찾기 */
+function distanceInsideMask(mask: Uint8Array, W: number, H: number): Float32Array {
+  const d = new Float32Array(W * H);
+  for (let i = 0; i < W * H; i++) d[i] = mask[i] ? 1e6 : 0;
+  const A = 1, B = 1.414;
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    const i = y * W + x;
+    if (!mask[i]) continue;
+    let v = d[i];
+    if (x > 0) v = Math.min(v, d[i - 1] + A);
+    if (y > 0) v = Math.min(v, d[i - W] + A);
+    if (x > 0 && y > 0) v = Math.min(v, d[i - W - 1] + B);
+    if (x < W - 1 && y > 0) v = Math.min(v, d[i - W + 1] + B);
+    d[i] = v;
+  }
+  for (let y = H - 1; y >= 0; y--) for (let x = W - 1; x >= 0; x--) {
+    const i = y * W + x;
+    if (!mask[i]) continue;
+    let v = d[i];
+    if (x < W - 1) v = Math.min(v, d[i + 1] + A);
+    if (y < H - 1) v = Math.min(v, d[i + W] + A);
+    if (x < W - 1 && y < H - 1) v = Math.min(v, d[i + W + 1] + B);
+    if (x > 0 && y < H - 1) v = Math.min(v, d[i + W - 1] + B);
+    d[i] = v;
+  }
+  return d;
+}
 import { inkMask } from "../v3/metrics.js";
 import { config } from "../config.js";
 import { buildVisibleMasks } from "../v2/masks.js";
@@ -33,6 +63,16 @@ import { area } from "../v2/raster.js";
 import type { LayerManifest, ManifestLayer } from "../v2/schema.js";
 import { buildScene, DEFAULT_SCENE_OPTIONS } from "./scene.js";
 import { exportFidelity, exportEditable, exportProduction, countByClass } from "./export.js";
+import { exportAi, sceneToAiDoc } from "./aiExport.js";
+import { buildJsx } from "../writers/jsxWriter.js";
+import type { VectorIR } from "../types.js";
+
+/**
+ * 파이프라인 코드 판. **손으로 올린다** — 실행에 영향을 주는 변경을 했으면 여기도 올린다.
+ * 산출물에 박혀서, 나중에 "같은 사진인데 결과가 다르다"를 짚을 근거가 된다.
+ */
+const CODE_VERSION = "v7.0";
+import { lineartRecompose } from "./lineartRecompose.js";
 import { runQa4, type QA4 } from "./qa4.js";
 import { DEFAULT_THRESHOLDS } from "./router.js";
 import type { PartNode, VectorScene } from "./types.js";
@@ -53,6 +93,13 @@ export interface V4Options {
   inkThreshold: number;
   localContrast: number;
   textureMode: "auto" | "tone" | "keep";
+  /** 라인 모드 — 중심선 스트로크 전용, 면 없음 */
+  lineMode?: boolean;
+  /** 선을 라이브 스트로크로 (면은 유지) */
+  strokeLines?: boolean;
+  /** 선 굵기를 몇 등급으로 통일할지 (0 = 실측값 유지) */
+  widthGrades?: number;
+  thinFinish?: boolean;
   /**
    * 파트 마스크 출처. "schematic"(기본)은 도면을 Gemini 로 직접 segment 하고 warp 는
    * 위치 힌트로만 쓴다. "photo"는 예전 방식(사진 마스크 warp) — 회귀 비교용.
@@ -61,6 +108,8 @@ export interface V4Options {
   segMode: "schematic" | "photo";
   /** 기존 도면 재사용 (백엔드 없이 검증) */
   schematicFrom?: string;
+  /** 도면을 선화 변형 프롬프트로 생성한다 (--lineart) */
+  lineartSchematic?: boolean;
   upscale?: boolean;
 }
 
@@ -170,8 +219,14 @@ export async function runV4(
   const isolated = path.join(jobDir, "isolated.png");
   try {
     const noun = guessNoun(opts.categoryHint);
-    await isolateProduct(normalized, isolated, noun.noun, noun.category);
-  } catch { await fs.copyFile(normalized, isolated); }
+    const iso = await isolateProduct(normalized, isolated, noun.noun, noun.category);
+    // **격리 결과를 말한다.** 여태 반환값을 버려서, 배경이 안 지워진 채로 도면 모델에
+    // 들어가도 아무도 몰랐다(실측: fal 잔액 잠금 → 검은 배경 그대로 → 선 일치 0.21).
+    say("PREPROCESSING", `${iso.isolated ? "배경 격리" : "격리 못 함"} — ${iso.note}`);
+  } catch (e) {
+    say("PREPROCESSING", `격리 실패(무시) — ${(e as Error).message?.slice(0, 120)}`);
+    await fs.copyFile(normalized, isolated);
+  }
   const cropped = path.join(jobDir, "cropped.png");
   await cropToSubject(isolated, cropped);
   const cm = await sharp(cropped).metadata();
@@ -186,15 +241,30 @@ export async function runV4(
   ts = Date.now();
   say("PLANNING", "GPT 구성품 분해");
   const planPath = path.join(jobDir, "part_plan.json");
+  const inputSha = crypto.createHash("sha256").update(await fs.readFile(canonical)).digest("hex");
+  // **파트 계획은 사진 해시로 공유 캐시한다.**
+  //
+  // 잡 폴더에만 캐시했더니 잡 이름을 바꿀 때마다 GPT 를 다시 불렀고, **매번 다른 파트가
+  // 나왔다**(실측 jewelry_1: engraved_lettering → brand_engraving → engraved_side_text).
+  // 글리프 판정이 파트 이름으로 갈리므로 파트가 바뀌면 획·앵커가 통째로 달라진다 —
+  // 같은 사진에서 앵커가 449 → 562 로 튀었다. 실무자는 결정성을 신뢰의 조건으로 본다.
+  const sharedPlan = path.join(".cache", "plan", `${inputSha}_${opts.categoryHint ?? "generic"}.json`);
   let plan: PartPlan;
   try {
     plan = JSON.parse(await fs.readFile(planPath, "utf8"));
-    const sha = crypto.createHash("sha256").update(await fs.readFile(canonical)).digest("hex");
-    if (plan.provenance?.inputSha256 !== sha) throw new Error("입력이 바뀜");
+    if (plan.provenance?.inputSha256 !== inputSha) throw new Error("입력이 바뀜");
   } catch {
-    plan = await planParts(canonical, {
-      categoryHint: opts.categoryHint, minParts: opts.minParts, maxParts: opts.maxParts,
-    }, (m) => say("PLANNING", m));
+    try {
+      plan = JSON.parse(await fs.readFile(sharedPlan, "utf8"));
+      if (plan.provenance?.inputSha256 !== inputSha) throw new Error("해시 불일치");
+      say("PLANNING", `파트 계획 캐시 재사용 (${plan.parts.length}개)`);
+    } catch {
+      plan = await planParts(canonical, {
+        categoryHint: opts.categoryHint, minParts: opts.minParts, maxParts: opts.maxParts,
+      }, (m) => say("PLANNING", m));
+      await fs.mkdir(path.dirname(sharedPlan), { recursive: true });
+      await fs.writeFile(sharedPlan, JSON.stringify(plan, null, 2), "utf8");
+    }
     await fs.writeFile(planPath, JSON.stringify(plan, null, 2), "utf8");
   }
   mark("S2_plan", ts);
@@ -218,8 +288,24 @@ export async function runV4(
     if (!activeBackend()) throw new Error("schematic 백엔드가 없습니다 (REPLICATE_API_TOKEN 등)");
     sketch = await generateSchematic(canonical, sketchDir, {
       category: normalizeCategory(plan.category), grayscale: opts.grayscale, upscale: opts.upscale,
+      lineart: opts.lineartSchematic,
     }, (m) => say("SKETCHING", m));
     raw = sketch.pngPath;
+    if (opts.lineartSchematic && activeBackend() !== "vringon") {
+      // 선화 변형의 두 드리프트(크기 이동·글자 뭉갬)를 표준 도면으로 바로잡는다.
+      // 표준 도면은 같은 입력의 베이크 프롬프트 생성이라 캐시가 있으면 공짜다.
+      const std = await generateSchematic(canonical, sketchDir, {
+        category: normalizeCategory(plan.category), grayscale: opts.grayscale, upscale: opts.upscale,
+      }, (m) => say("SKETCHING", m));
+      const spliced = path.join(sketchDir, "lineart_recomposed.png");
+      await lineartRecompose(raw, std.pngPath, spliced, path.join(".cache", "letters"),
+        (m) => say("SKETCHING", m));
+      raw = spliced;
+    } else if (opts.lineartSchematic) {
+      // 사내 워커는 프롬프트를 못 받으므로 선화 변형·재합성이 성립하지 않는다.
+      // 두 번 부르지 않고 그대로 쓴다 — 워커 자체가 이미 도면 전용으로 학습돼 있다.
+      say("SKETCHING", "사내 워커 — 선화 프롬프트를 받지 않아 --lineart 는 무시한다");
+    }
   }
   const geomPath = (!opts.grayscale && sketch?.monoPath) ? sketch.monoPath : raw;
   let colorFrom = (!opts.grayscale && sketch?.monoPath) ? raw : undefined;
@@ -277,7 +363,12 @@ export async function runV4(
           ] as [number, number, number, number],
         };
       });
-      const seg = await segmentSchematic(raw, plan, hints, masksDir, (m) => say("SEGMENTING", m));
+      // **캐시는 잡 폴더 밖에 둔다.** 캐시 키는 (도면 sha × 파트 목록)이라 내용이 같으면
+      // 같은 답이 나와야 하는데, 잡 폴더 안에 두면 **잡 이름만 바꿔도 캐시를 못 찾고**
+      // Gemini 를 다시 불러 다른 답을 받는다(실측 jewelry_1: terminal_hallmark 가 한 번은
+      // 영역 0개, 한 번은 1개 — 그 탓에 같은 사진에서 패스 3개가 달라졌다).
+      const segCache = path.join(".cache", "seg");
+      const seg = await segmentSchematic(raw, plan, hints, segCache, (m) => say("SEGMENTING", m));
       // 도면 해상도 → 작업 캔버스(supersample 배)
       const up = (m: Uint8Array): Uint8Array => {
         if (seg.width === VW && seg.height === VH) return m;
@@ -292,11 +383,64 @@ export async function runV4(
         return out;
       };
       const byId = new Map(seg.parts.map((sp) => [sp.id, up(sp.mask)]));
+
+      // ── SAM 3 (fal.ai) — 있으면 폴리곤보다 우선 ─────────
+      // 폴리곤은 점 목록을 "말로" 불러 주다 조밀한 형상을 일부만 훑는 실패가 잦았다.
+      // SAM 은 픽셀 마스크라 그 실패 양식이 없다. 같은 가드(자리 IoU·크기 온전성)를
+      // 통과한 파트만 폴리곤 대신 쓴다.
+      const samById = new Map<string, Uint8Array>();
+      if (config.falKey) {
+        try {
+          const boxHints = new Map<string, {
+            box: [number, number, number, number];
+            points: [number, number][];
+            warpPng: Buffer;
+          }>();
+          for (const hpm of warped) {
+            let x0 = VW, y0 = VH, x1 = 0, y1 = 0;
+            for (let y = 0; y < VH; y++) for (let x = 0; x < VW; x++) {
+              if (!hpm.mask[y * VW + x]) continue;
+              if (x < x0) x0 = x; if (x > x1) x1 = x;
+              if (y < y0) y0 = y; if (y > y1) y1 = y;
+            }
+            if (x1 <= x0) continue;
+            // 내부 점 — 거리변환 봉우리에서 최대 5개 (가는 파트는 박스만으로 무너진다)
+            const dt = distanceInsideMask(hpm.mask, VW, VH);
+            const pts: [number, number][] = [];
+            const taken: [number, number][] = [];
+            const minGap = Math.max(12, Math.round(Math.min(x1 - x0, y1 - y0) / 3));
+            const cand: { x: number; y: number; d: number }[] = [];
+            for (let y = y0; y <= y1; y += 2) for (let x = x0; x <= x1; x += 2) {
+              const d = dt[y * VW + x];
+              if (d >= 2) cand.push({ x, y, d });
+            }
+            cand.sort((p1, p2) => p2.d - p1.d);
+            for (const c of cand) {
+              if (pts.length >= 5) break;
+              if (taken.some(([tx, ty]) => Math.hypot(tx - c.x, ty - c.y) < minGap)) continue;
+              taken.push([c.x, c.y]);
+              pts.push([c.x / VW, c.y / VH]);
+            }
+            const buf = Buffer.alloc(VW * VH);
+            for (let i = 0; i < VW * VH; i++) buf[i] = hpm.mask[i] ? 255 : 0;
+            const warpPng = await sharp(buf, { raw: { width: VW, height: VH, channels: 1 } }).png().toBuffer();
+            boxHints.set(hpm.id, { box: [x0 / VW, y0 / VH, x1 / VW, y1 / VH], points: pts, warpPng });
+          }
+          const sam = await segmentSam3(
+            raw, ordered.map((p) => ({ id: p.id, label: p.label })), VW, VH,
+            path.join(".cache", "seg"), (m) => say("SEGMENTING", m), boxHints,
+          );
+          for (const sp of sam) samById.set(sp.id, sp.mask);
+        } catch (e) {
+          say("SEGMENTING", `SAM 3 실패 — 폴리곤으로 진행: ${(e as Error).message.slice(0, 80)}`);
+        }
+      }
       // 파트별 선택: Gemini 마스크가 있고 warp 와 자리가 겹치면(IoU ≥ 0.1) 채택.
       // 자리가 아예 다르면 모델이 엉뚱한 곳을 잡은 것이므로 warp 를 유지한다.
       const blended: { id: string; mask: Uint8Array }[] = [];
       for (const pm of warped) {
-        const g = byId.get(pm.id);
+        const g = samById.get(pm.id) ?? byId.get(pm.id);
+        const src = samById.has(pm.id) ? "sam3-schematic" : "gemini-schematic";
         if (!g) { blended.push(pm); continue; }
         let inter = 0, uni = 0;
         for (let i = 0; i < g.length; i++) {
@@ -312,15 +456,21 @@ export async function runV4(
         let gA = 0, wA = 0;
         for (let i = 0; i < g.length; i++) { gA += g[i]; wA += pm.mask[i]; }
         const ratio = wA ? gA / wA : 1;
-        if (iou >= 0.1 && ratio >= 0.5) { blended.push({ id: pm.id, mask: g }); maskSource[pm.id] = "gemini-schematic"; }
-        else if (iou < 0.1) { blended.push(pm); maskSource[pm.id] = `photo-warp (gemini 자리 불일치 IoU ${iou.toFixed(2)})`; }
-        else { blended.push(pm); maskSource[pm.id] = `photo-warp (gemini 폴리곤이 ${(ratio * 100).toFixed(0)}% 로 축소)`; }
+        say("SEGMENTING", `  · ${pm.id}: ${src.slice(0, 4)} IoU ${iou.toFixed(2)} · 크기비 ${ratio.toFixed(2)}`);
+        // 크기 온전성은 **양쪽**으로 본다. 하한만 두면 부푼 마스크가 그대로 통과해
+        // 이웃의 잉크까지 흡수한다(실측 jewelry_2 string_set: 워프의 1.76배 마스크가
+        // 하프 줄 파트에 면 33개를 몰아줘 정밀도 0.31, semantic 게이트 붕괴).
+        // 상한 1.6 은 실측 분포에서 정상(0.84~0.95)과 과대(1.76~2.48)를 가른다.
+        if (iou >= 0.1 && ratio >= 0.5 && ratio <= 1.6) { blended.push({ id: pm.id, mask: g }); maskSource[pm.id] = src; }
+        else if (iou < 0.1) { blended.push(pm); maskSource[pm.id] = `photo-warp (${src} 자리 불일치 IoU ${iou.toFixed(2)})`; }
+        else { blended.push(pm); maskSource[pm.id] = `photo-warp (${src} 마스크 크기비 ${ratio.toFixed(2)})`; }
       }
       // warp 가 아예 없던 파트도 Gemini 가 찾았으면 쓴다
       for (const sp of seg.parts) {
         if (!blended.some((b) => b.id === sp.id)) {
-          blended.push({ id: sp.id, mask: up(sp.mask) });
-          maskSource[sp.id] = "gemini-schematic (warp 없음)";
+          const m2 = samById.get(sp.id) ?? up(sp.mask);
+          blended.push({ id: sp.id, mask: m2 });
+          maskSource[sp.id] = `${samById.has(sp.id) ? "sam3" : "gemini"}-schematic (warp 없음)`;
         }
       }
       const zOf = new Map(ordered.map((o2, i) => [o2.id, i]));
@@ -330,8 +480,13 @@ export async function runV4(
       // **혼용 금지.** Gemini 마스크와 warp 마스크는 좌표 정합이 다르다 — 절반씩 섞으면
       // 이웃 파트끼리 기준이 어긋나 배분이 무너진다(실측: bag_3 가중 IoU 0.708 → 0.435,
       // jewelry_3 0.651 → 0.588). 채택률 80% 이상일 때만 통째로 쓰고, 아니면 전부 warp.
-      const nGem = Object.values(maskSource).filter((v) => v.startsWith("gemini")).length;
-      if (nGem >= blended.length * MIX_VOTE_MIN) {
+      // **SAM 마스크는 표결 없이 파트별 혼용을 허용한다.** 혼용 금지의 근거는 Gemini
+      // 폴리곤과 warp 의 좌표 정합이 달라 이웃 기준이 어긋난다는 것이었는데, SAM 은
+      // warp 와 같은 도면 픽셀 위에서 자른 마스크라 그 문제가 없다(실측 bag_3: 3/4
+      // 채택이 표결에 걸려 통째 기각 — strap 0.85·stones 0.86 개선분까지 버려졌다).
+      const nSam = Object.values(maskSource).filter((v) => v.startsWith("sam3")).length;
+      const nGem = Object.values(maskSource).filter((v) => v.startsWith("gemini") || v.startsWith("sam3")).length;
+      if (nSam > 0 || nGem >= blended.length * MIX_VOTE_MIN) {
         partMasks = blended;
         say("SEGMENTING", `도면 직접 seg 채택: ${nGem}/${blended.length} 파트가 Gemini 마스크`);
       } else {
@@ -346,6 +501,18 @@ export async function runV4(
     // 가중 IoU 0.495 → 0.628). 경계는 도면에 이미 그려져 있다 — 그걸 쓰는 것뿐이다.
     {
       const inkV = await inkMask(raw, VW, VH, opts.inkThreshold);
+      // 퇴화 마스크 파트(워프가 무효였던 것)에 주인 없는 잉크 성분을 승계 — 정체만 LLM
+      if (config.openaiKey) {
+        try {
+          await assignResidualInk({
+            ink: inkV.data, W: VW, H: VH, partMasks,
+            partLabels: ordered.map((p) => ({ id: p.id, label: p.label })),
+            tmpDir: jobDir, say: (m) => say("SEGMENTING", m),
+          });
+        } catch (e) {
+          say("SEGMENTING", `잔여 승계 실패(무시): ${(e as Error).message.slice(0, 80)}`);
+        }
+      }
       partMasks = snapMasksToFaces(partMasks, inkV.data, VW, VH);
     }
   }
@@ -361,6 +528,11 @@ export async function runV4(
     ...DEFAULT_SCENE_OPTIONS,
     inkThreshold: opts.inkThreshold,
     localContrast: opts.localContrast,
+    lineMode: opts.lineMode,
+    strokeLines: opts.strokeLines,
+    widthGrades: opts.widthGrades,
+    thinFinish: opts.thinFinish,
+    schematicPath: raw,
     workLong: opts.vectorLong,
     textureMode: opts.textureMode,
     sampleFill,
@@ -399,6 +571,28 @@ export async function runV4(
     prompt: sketch?.prompt ?? "(재사용)",
     seed: sketch?.seed ?? null,
   };
+  // **같은 사진에서 같은 결과가 나온다는 근거를 남긴다.**
+  // 백엔드·프롬프트·시드만으로는 부족하다 — 파이프라인 코드가 바뀌면 같은 도면에서도
+  // 다른 벡터가 나온다. 실행에 영향을 주는 설정과 코드 판을 함께 적어 둔다.
+  scene.provenance.run = {
+    codeVersion: CODE_VERSION,
+    options: {
+      lineMode: !!opts.lineMode,
+      strokeLines: !!opts.strokeLines,
+      widthGrades: opts.widthGrades ?? 0,
+      inkThreshold: opts.inkThreshold,
+      localContrast: opts.localContrast,
+      vectorLong: opts.vectorLong,
+      textureMode: opts.textureMode,
+    },
+    // 실행을 바꾸는 환경변수만 — 값이 아니라 **설정됐는지**와 값 자체를 남긴다
+    env: Object.fromEntries(
+      Object.entries(process.env)
+        .filter(([k]) => k.startsWith("V4_") || k === "SAM3_SSH_HOST")
+        .map(([k, v]) => [k, k.endsWith("_KEY") ? "(설정됨)" : v ?? ""]),
+    ),
+    inputSha256: inputSha,
+  };
   mark("S5_evidence", ts);
 
   // ── S7 export ────────────────────────────────────────────
@@ -413,6 +607,50 @@ export async function runV4(
   await fs.writeFile(path.join(jobDir, "editable.svg"), svgs.editable, "utf8");
   await fs.writeFile(path.join(jobDir, "production.svg"), svgs.production, "utf8");
   await fs.writeFile(path.join(jobDir, "scene.json"), JSON.stringify(scene, null, 2), "utf8");
+
+  // **`.ai` 도 여기서 낸다.** 예전에는 SVG 세 종류만 쓰고 `.ai` 는 rebuild-exports 를
+  // 따로 돌려야 나왔다 — README 의 실행 설명과 실제 동작이 어긋났고, 한 번만 돌린
+  // 사람은 정작 최종 산출물을 못 받았다(외부 검토 지적).
+  // **세 프리셋을 다 낸다.** 레이어를 무엇 단위로 나눌지는 직군마다 요구가 배타적이라
+  // 하나로 못 정한다 — 고르는 것은 쓰는 쪽의 몫이다.
+  await fs.writeFile(path.join(jobDir, "layered.ai"), exportAi(scene, "function"));
+  await fs.writeFile(path.join(jobDir, "layered-bypart.ai"), exportAi(scene, "part"));
+  await fs.writeFile(path.join(jobDir, "layered-bycolor.ai"), exportAi(scene, "color"));
+  {
+    const doc = sceneToAiDoc(scene);
+    const ir: VectorIR = {
+      width: doc.width, height: doc.height,
+      layers: doc.layers.map((l) => ({
+        name: l.name,
+        groups: l.groups.map((g) => ({
+          name: g.name,
+          paths: g.paths.map((p) => ({
+            d: p.d, fill: p.fill, stroke: p.stroke,
+            strokeWidth: p.strokeWidth, vectorizer: "vtracer" as const,
+          })),
+        })),
+      })),
+    };
+    await fs.writeFile(path.join(jobDir, "native-layers.jsx"), buildJsx(ir, `${path.basename(jobDir).replace(/^v4_/, "")}.ai`), "utf8");
+  }
+  // ── 실루엣 전용 산출물 ───────────────────────────────────
+  // 촘촘한 질감 제품의 앵커는 줄일 수 없다 — 대신 **쓸 수 있는 최소 산출물**을 따로 낸다.
+  try {
+    const { buildSilhouette, silhouetteSvg } = await import("./silhouette.js");
+    const sil = await buildSilhouette(
+      partMasks.map((b) => b.mask),
+      { width: VW, height: VH, workDir, simplifyPx: 2 },
+    );
+    if (sil.paths.length) {
+      await fs.writeFile(
+        path.join(jobDir, "silhouette.svg"),
+        silhouetteSvg(sil.paths, VW, VH), "utf8",
+      );
+      say("EXPORTING", `실루엣 ${sil.paths.length}개 · 앵커 ${sil.anchors}`);
+    }
+  } catch (e) {
+    say("EXPORTING", `실루엣 생성 건너뜀: ${(e as Error).message.slice(0, 60)}`);
+  }
   mark("S7_export", ts);
 
   // ── S8 QA ────────────────────────────────────────────────
@@ -422,17 +660,32 @@ export async function runV4(
     // 해프톤 톤 치환 + 보석 반사 제거는 **의도한 치환**이다. 둘 다 제외 영역에 넣지
     // 않으면 지표가 옳은 동작을 손실로 센다(실측: 반사를 지우자 jewelry_3 선 F@2 가
     // 0.869 → 0.842 로 "떨어졌다" — 지운 것이 기준에는 남아 있기 때문이다).
-    texture: (() => {
+    texture: await (async () => {
       const t = evidence.textureKept ? undefined : evidence.texture;
       const g = evidence.gemFlatten?.removedMask;
-      if (!g) return t;
-      const out = new Uint8Array(g.length);
-      for (let i = 0; i < g.length; i++) out[i] = (t?.[i] ? 1 : 0) | g[i];
+      let out: Uint8Array | undefined;
+      if (!g) out = t;
+      else {
+        out = new Uint8Array(g.length);
+        for (let i = 0; i < g.length; i++) out[i] = (t?.[i] ? 1 : 0) | g[i];
+      }
+      // 제외 영역을 파일로 남긴다 — "지웠으니 빼고 쟀다"는 주장을 눈으로 검증할 수 있게
+      if (out) {
+        const buf = Buffer.alloc(out.length, 255);
+        for (let i = 0; i < out.length; i++) if (out[i]) buf[i] = 0;
+        await sharp(buf, { raw: { width: scene.canvas.width, height: scene.canvas.height, channels: 1 } })
+          .png().toFile(path.join(jobDir, "qa_excluded.png")).catch(() => {});
+      }
       return out;
     })(),
     partMasks,
     aspectRatio: fit.aspectRatio,
     maskFit,
+    // 얇은 마감은 여기서 우회하지 않는다 — QA 가 qaWidth(누르기 전 폭)로 다시
+    // 그려 재므로 질량 자가 그대로 유효하다(qa4.ts 첫머리).
+    lineMode: opts.lineMode,
+    // 얇은 마감은 면을 안 만든다(로고·글씨 예외) — 파트 판정만 thin 기준으로.
+    noFaces: opts.thinFinish,
   });
   mark("S8_qa", ts);
 
@@ -461,6 +714,11 @@ export async function runV4(
       "fidelity.svg": "fidelity.svg",
       "editable.svg": "editable.svg",
       "production.svg": "production.svg",
+      "layered.ai": "layered.ai",
+      "layered-bypart.ai": "layered-bypart.ai",
+      "layered-bycolor.ai": "layered-bycolor.ai",
+      "silhouette.svg": "silhouette.svg",
+      "native-layers.jsx": "native-layers.jsx",
       "scene.json": "scene.json",
       "qa_v4.json": "qa_v4.json",
       "preview.png": "preview.png",

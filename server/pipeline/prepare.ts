@@ -165,6 +165,79 @@ const GENERIC_NOUNS = ["object", "product"];
  * 배경이 흰색이 아니면 SAM 3으로 제품만 오려 흰 배경에 올린다.
  * SAM 3이 실패하면 원본을 그대로 두고 사유를 note로 남긴다(작업 중단 없음).
  */
+/**
+ * **API 없이 도는 대비책 — 테두리에서 번져 나가는 균일 배경만 흰색으로.**
+ *
+ * SAM 3 이 없거나 실패하면(잔액 잠금·장애) 검은 배경 사진이 그대로 도면 모델에 들어가고,
+ * 모델은 선화가 아니라 회색 음영 렌더를 돌려준다. 그러면 벡터화가 배경 그라데이션을
+ * 선으로 떠서 선 일치가 0.21 까지 떨어진다(실측 jewelry_2, 검은 배경).
+ *
+ * 여기서는 **테두리에서 flood fill** 로 이어진 배경만 지운다. 임계로 어두운 픽셀을 모두
+ * 지우면 제품의 어두운 속까지 뚫리지만, 테두리에서 이어진 것만 지우면 제품 안은 남는다.
+ * 배경이 균일하지 않거나(테두리 분산이 크다) 지워질 넓이가 이상하면 손대지 않는다 —
+ * 애매하면 아무것도 안 하는 쪽이 낫다.
+ */
+export async function flattenUniformBackground(
+  srcPath: string,
+  destPath: string,
+  opts: { tolerance?: number; minShare?: number; maxShare?: number } = {},
+): Promise<{ flattened: boolean; note: string }> {
+  const tol = opts.tolerance ?? 26;
+  const minShare = opts.minShare ?? 0.12;
+  const maxShare = opts.maxShare ?? 0.92;
+  const { data, info } = await sharp(srcPath).flatten({ background: "#ffffff" }).removeAlpha()
+    .raw().toBuffer({ resolveWithObject: true });
+  const W = info.width, H = info.height, ch = info.channels;
+  const at = (i: number) => [data[i * ch], data[i * ch + 1], data[i * ch + 2]] as [number, number, number];
+
+  // 테두리 표본으로 배경색과 균일도를 잰다
+  const edge: number[] = [];
+  for (let x = 0; x < W; x++) { edge.push(x, (H - 1) * W + x); }
+  for (let y = 0; y < H; y++) { edge.push(y * W, y * W + W - 1); }
+  let sr = 0, sg = 0, sb = 0;
+  for (const i of edge) { const [r, g, b] = at(i); sr += r; sg += g; sb += b; }
+  const n = edge.length;
+  const bg: [number, number, number] = [sr / n, sg / n, sb / n];
+  let varSum = 0;
+  for (const i of edge) {
+    const [r, g, b] = at(i);
+    varSum += Math.abs(r - bg[0]) + Math.abs(g - bg[1]) + Math.abs(b - bg[2]);
+  }
+  const spread = varSum / n / 3;
+  if (spread > tol) return { flattened: false, note: `배경이 균일하지 않다 (테두리 분산 ${spread.toFixed(0)})` };
+  // 이미 밝으면 건드릴 이유가 없다
+  const lum = 0.299 * bg[0] + 0.587 * bg[1] + 0.114 * bg[2];
+  if (lum > 200) return { flattened: false, note: "배경이 이미 밝다" };
+
+  // 테두리에서 flood fill (4-이웃) — 배경색과 tol 안쪽인 것만 번진다
+  const mask = new Uint8Array(W * H);
+  const stack: number[] = [];
+  const near = (i: number) => {
+    const [r, g, b] = at(i);
+    return Math.abs(r - bg[0]) <= tol && Math.abs(g - bg[1]) <= tol && Math.abs(b - bg[2]) <= tol;
+  };
+  for (const i of edge) if (!mask[i] && near(i)) { mask[i] = 1; stack.push(i); }
+  while (stack.length) {
+    const i = stack.pop()!;
+    const x = i % W, y = (i / W) | 0;
+    const nb = [x > 0 ? i - 1 : -1, x < W - 1 ? i + 1 : -1, y > 0 ? i - W : -1, y < H - 1 ? i + W : -1];
+    for (const k of nb) if (k >= 0 && !mask[k] && near(k)) { mask[k] = 1; stack.push(k); }
+  }
+  let filled = 0;
+  for (let i = 0; i < W * H; i++) filled += mask[i];
+  const share = filled / (W * H);
+  if (share < minShare || share > maxShare) {
+    return { flattened: false, note: `지울 배경이 ${(share * 100).toFixed(0)}% — 손대지 않는다` };
+  }
+  const out = Buffer.from(data);
+  for (let i = 0; i < W * H; i++) {
+    if (!mask[i]) continue;
+    out[i * ch] = 255; out[i * ch + 1] = 255; out[i * ch + 2] = 255;
+  }
+  await sharp(out, { raw: { width: W, height: H, channels: ch } }).png().toFile(destPath);
+  return { flattened: true, note: `균일 배경 ${(share * 100).toFixed(0)}% 를 흰색으로 (밝기 ${lum.toFixed(0)})` };
+}
+
 export async function isolateProduct(
   srcPath: string,
   destPath: string,
@@ -182,8 +255,10 @@ export async function isolateProduct(
       await sharp(srcPath).png().toFile(destPath);
       return { isolated: false, note: "배경이 이미 흰색 — 격리 생략" };
     }
+    const fb = await flattenUniformBackground(srcPath, destPath);
+    if (fb.flattened) return { isolated: true, note: `FAL_KEY 없음 · ${fb.note}` };
     await sharp(srcPath).png().toFile(destPath);
-    return { isolated: false, note: "FAL_KEY 없음 — 배경 격리 불가" };
+    return { isolated: false, note: `FAL_KEY 없음 — 배경 격리 불가 (${fb.note})` };
   }
 
   const meta = await sharp(srcPath).metadata();
@@ -251,6 +326,10 @@ export async function isolateProduct(
     };
   }
 
+  // SAM 3 이 아무것도 못 찾았다(오검출·장애·잔액 잠금). 균일 배경이면 그것만이라도 지운다 —
+  // 어두운 배경을 그대로 넘기면 도면 모델이 선화가 아니라 음영 렌더를 돌려준다.
+  const fb = await flattenUniformBackground(srcPath, destPath);
+  if (fb.flattened) return { isolated: true, note: `SAM 3 실패 · ${fb.note}` };
   await sharp(srcPath).png().toFile(destPath);
-  return { isolated: false, note: "SAM 3이 제품을 찾지 못함 — 원본 그대로 진행" };
+  return { isolated: false, note: `SAM 3이 제품을 찾지 못함 — 원본 그대로 진행 (${fb.note})` };
 }

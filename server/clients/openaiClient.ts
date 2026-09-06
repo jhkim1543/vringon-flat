@@ -288,3 +288,52 @@ export async function gptImageEdit(
   const json = await post(`${API}/images/edits`, form);
   return json.data.map((d: { b64_json: string }) => Buffer.from(d.b64_json, "base64"));
 }
+
+/**
+ * 도면에서 **각인 글자·로고 영역**의 상자를 받는다.
+ *
+ * 라인 모드는 잉크를 중심선으로 접는데 글자는 채워진 글리프라 골격만 남으면 깨진다.
+ * "글자인가"는 기하가 아니라 의미 질문이므로 비전 모델에게 직접 묻는다.
+ * 좌표는 0~1000 정수로 받아 0~1 로 환산한다(모델이 정수 격자를 더 안정적으로 낸다).
+ */
+export async function detectLetterBoxes(
+  imagePath: string,
+): Promise<[number, number, number, number][]> {
+  const b64 = (await fs.readFile(imagePath)).toString("base64");
+  const body = {
+    model: config.openaiModel,
+    messages: [
+      {
+        role: "system",
+        content:
+          "You locate ENGRAVED TEXT, LETTERING, BRAND MARKS and LOGO GLYPHS in a " +
+          "technical flat sketch of a product. These are solid filled shapes that read " +
+          "as letters/characters/symbols — NOT outlines, seams, stitches or structural " +
+          "lines. Return a tight bounding box around each contiguous run of text " +
+          "(a whole word or logo is one box, not per letter). " +
+          "Coordinates are integers 0-1000 where x=0 is left and y=0 is top. " +
+          'Reply as JSON: {"regions":[{"x0":..,"y0":..,"x1":..,"y1":..,"what":"..."}]}. ' +
+          "If the drawing has no text or logo, return an empty regions array.",
+      },
+      {
+        role: "user",
+        content: [
+          { type: "text", text: "Find engraved text / logo glyph regions." },
+          { type: "image_url", image_url: { url: `data:image/png;base64,${b64}` } },
+        ],
+      },
+    ],
+    response_format: { type: "json_object" as const },
+  };
+  const res = await postChat(body);
+  let j: { regions?: unknown[] } = {};
+  try { j = JSON.parse(res?.choices?.[0]?.message?.content ?? "{}"); } catch { /* 빈 응답 */ }
+  const regions = (j?.regions ?? []) as { x0: number; y0: number; x1: number; y1: number }[];
+  return regions
+    .filter((r) => [r.x0, r.y0, r.x1, r.y1].every((v) => typeof v === "number"))
+    .map((r) => [
+      Math.min(r.x0, r.x1) / 1000, Math.min(r.y0, r.y1) / 1000,
+      Math.max(r.x0, r.x1) / 1000, Math.max(r.y0, r.y1) / 1000,
+    ] as [number, number, number, number])
+    .filter(([x0, y0, x1, y1]) => x1 > x0 && y1 > y0 && (x1 - x0) * (y1 - y0) < 0.5);
+}

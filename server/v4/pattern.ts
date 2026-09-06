@@ -24,6 +24,10 @@ export interface PatternCandidate {
   area: number;
   bbox: [number, number, number, number];
   contour: Pt[];
+  /** 성분 픽셀 — 있으면 모티프에서 **구멍까지 살린다**(악어비늘·니트 셀) */
+  comp?: { pixels: Int32Array };
+  /** comp.pixels 의 좌표 기준 폭 */
+  srcWidth?: number;
 }
 
 export interface MotifCluster<T extends PatternCandidate = ComponentEvidence> {
@@ -98,15 +102,117 @@ function descDistance(a: number[], b: number[]): number {
   return s / a.length;
 }
 
-/** 성분의 마스크를 모티프 로컬 좌표의 폴리곤 패스로 (윤곽 그대로) */
+/**
+ * 성분의 마스크를 모티프 로컬 좌표의 폴리곤 패스로.
+ *
+ * **바깥 윤곽만 그리면 속이 찬다.** 악어가죽 비늘·니트 셀처럼 잉크가 고리 모양인
+ * 모티프는 안쪽 구멍이 곧 내용인데, `contour` 는 외곽선만 담는다 — 그대로 쓰면
+ * 얇은 테두리가 통짜 덩어리가 되어 잉크가 폭증한다(실측 t_bag_07: 잉크 2.19배,
+ * 패턴 잉크의 95%가 도면 밖). 그래서 성분 픽셀이 있으면 **구멍까지 추적**해
+ * evenodd 컴파운드로 만든다.
+ */
 function motifPath(c: PatternCandidate): string {
-  const [x0, y0] = c.bbox;
+  const [x0, y0, x1, y1] = c.bbox;
+  const px = (c as { comp?: { pixels: Int32Array } }).comp?.pixels;
+  const srcW = (c as { srcWidth?: number }).srcWidth;
+  if (px && srcW) {
+    const bw = x1 - x0 + 3, bh = y1 - y0 + 3; // 1px 여백 — 테두리 추적을 위해
+    const grid = new Uint8Array(bw * bh);
+    for (let k = 0; k < px.length; k++) {
+      const gx = (px[k] % srcW) - x0 + 1, gy = ((px[k] / srcW) | 0) - y0 + 1;
+      if (gx >= 0 && gy >= 0 && gx < bw && gy < bh) grid[gy * bw + gx] = 1;
+    }
+    const d = maskToCompound(grid, bw, bh);
+    if (d) return d;
+  }
   const pts = c.contour;
   if (pts.length < 3) return "";
   const f = (v: number) => Math.round(v * 10) / 10;
   let d = `M ${f(pts[0].x - x0)} ${f(pts[0].y - y0)}`;
   for (let i = 1; i < pts.length; i++) d += ` L ${f(pts[i].x - x0)} ${f(pts[i].y - y0)}`;
   return d + " Z";
+}
+
+/**
+ * 이진 마스크 → evenodd 컴파운드 패스 (바깥 윤곽 + 구멍들).
+ * Moore 이웃 추적을 바깥과 각 구멍에 각각 돌린다.
+ */
+function maskToCompound(g: Uint8Array, W: number, H: number): string {
+  const f = (v: number) => Math.round(v * 10) / 10;
+  const N8 = [[1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1], [0, -1], [1, -1]];
+  const at = (x: number, y: number, m: Uint8Array) =>
+    x < 0 || y < 0 || x >= W || y >= H ? 0 : m[y * W + x];
+
+  const trace = (m: Uint8Array, sx: number, sy: number): string => {
+    const pts: [number, number][] = [];
+    let cx = sx, cy = sy, dir = 0;
+    for (let step = 0; step < W * H * 4; step++) {
+      pts.push([cx, cy]);
+      let found = false;
+      for (let k = 0; k < 8; k++) {
+        const nd = (dir + 6 + k) % 8;
+        const nx = cx + N8[nd][0], ny = cy + N8[nd][1];
+        if (at(nx, ny, m)) { cx = nx; cy = ny; dir = nd; found = true; break; }
+      }
+      if (!found) break;
+      if (cx === sx && cy === sy && pts.length > 2) break;
+    }
+    if (pts.length < 3) return "";
+    // 4px 마다 리샘플 — 픽셀 계단을 그대로 두면 앵커가 폭발한다
+    const step = Math.max(1, Math.round(pts.length / 48));
+    let d = `M ${f(pts[0][0] - 1)} ${f(pts[0][1] - 1)}`;
+    for (let i = step; i < pts.length; i += step) d += ` L ${f(pts[i][0] - 1)} ${f(pts[i][1] - 1)}`;
+    return d + " Z";
+  };
+
+  // 바깥 윤곽
+  let sx = -1, sy = -1;
+  for (let y = 0; y < H && sx < 0; y++) for (let x = 0; x < W; x++) if (g[y * W + x]) { sx = x; sy = y; break; }
+  if (sx < 0) return "";
+  let out = trace(g, sx, sy);
+  if (!out) return "";
+
+  // 구멍 — 테두리에서 채우고 남은 빈칸
+  const seen = new Uint8Array(W * H);
+  const stack: number[] = [];
+  const push = (i: number) => { if (!seen[i] && !g[i]) { seen[i] = 1; stack.push(i); } };
+  for (let x = 0; x < W; x++) { push(x); push((H - 1) * W + x); }
+  for (let y = 0; y < H; y++) { push(y * W); push(y * W + W - 1); }
+  while (stack.length) {
+    const i = stack.pop()!;
+    const x = i % W, y = (i / W) | 0;
+    if (x > 0) push(i - 1);
+    if (x < W - 1) push(i + 1);
+    if (y > 0) push(i - W);
+    if (y < H - 1) push(i + W);
+  }
+  const hole = new Uint8Array(W * H);
+  for (let i = 0; i < W * H; i++) if (!g[i] && !seen[i]) hole[i] = 1;
+  const done = new Uint8Array(W * H);
+  for (let y = 0; y < H; y++) {
+    for (let x = 0; x < W; x++) {
+      const i = y * W + x;
+      if (!hole[i] || done[i]) continue;
+      // 이 구멍 성분을 표시하고 윤곽을 딴다
+      const st2 = [i];
+      const cells: number[] = [];
+      done[i] = 1;
+      while (st2.length) {
+        const j = st2.pop()!;
+        cells.push(j);
+        const jx = j % W, jy = (j / W) | 0;
+        for (const k of [jx > 0 ? j - 1 : -1, jx < W - 1 ? j + 1 : -1, jy > 0 ? j - W : -1, jy < H - 1 ? j + W : -1]) {
+          if (k >= 0 && hole[k] && !done[k]) { done[k] = 1; st2.push(k); }
+        }
+      }
+      if (cells.length < 6) continue; // 잡티 구멍은 무시
+      const hm = new Uint8Array(W * H);
+      for (const c2 of cells) hm[c2] = 1;
+      const hd = trace(hm, x, y);
+      if (hd) out += hd;
+    }
+  }
+  return out;
 }
 
 /**
