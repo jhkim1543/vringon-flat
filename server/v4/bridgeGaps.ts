@@ -9,8 +9,17 @@
  * 판정은 tools/joinable.ts 의 자와 같다: 끝점 거리 ≤ NEAR, 접선이 마주 보며
  * 이어지는 꺾임 ≤ TURN. 같은 서브패스의 양끝이면 닫고(Z), 다른 획이면 한 획으로
  * 잇는다. 대시(DASH_OR_STITCH)는 일부러 열려 있는 것이라 건드리지 않는다.
+ *
+ * v7.1 (2026-09-07 외부 리뷰 반영) 셋을 더했다:
+ *   ① **코너 이음** — 두 획이 코너에서 맞닿은 2갈래 접촉은 꺾임이 커도 한 획으로.
+ *      끝점 둘(앵커 2)이 코너 앵커 하나가 되고, 디자이너가 "한 줄"로 잡는다.
+ *   ② **잉크 근거** — 먼 다리(> NEAR)는 도면 잉크가 그 사이를 실제로 잇고 있어야 한다.
+ *      지표 하나 낮추려고 빈 곳을 메우지 않는다.
+ *   ③ **이은 획 재피팅** — 이음매에 남는 끝점 앵커 둘을 dpMerge 로 한 번 더 솎는다.
+ *      잇기는 솎기 뒤에 도는데, 솎기는 서브패스 안에서만 돌아 이음매를 못 본다.
  */
 import { parsePath, serializePath, type Pt, type SubPath } from "../vector/pathdata.js";
+import { thinAnchors } from "./refit.js";
 import type { ScenePrimitive, StrokePrimitive } from "./types.js";
 
 /**
@@ -24,6 +33,22 @@ const TURN = Number(process.env.V4_BRIDGE_TURN ?? 60);
 const NEAR_FAR = Number(process.env.V4_BRIDGE_FAR ?? 16);
 const TURN_FAR = Number(process.env.V4_BRIDGE_FAR_TURN ?? 30);
 /**
+ * **코너 이음 상한(°).** 접촉한(≤ NEAR) 두 끝점이 서로에게 유일한 이웃(2갈래)이면
+ * 꺾임이 이만큼 커도 잇는다 — 코너를 지나는 한 획이다. 150° 를 넘으면 되접힌 선
+ * (같은 자리를 되돌아 그린 것)이라 따로 둔다. 실측 v7e 9종: 2갈래 60~150° 쌍이
+ * shoe_3 132 · shoe_2 58 · bag_2 49 … 합계 약 370 — 쌍마다 앵커 1·패스 1 이 준다.
+ * 0 이면 끔.
+ */
+const CORNER_TURN = Number(process.env.V4_BRIDGE_CORNER ?? 150);
+/**
+ * **잉크 근거 하한.** 먼 다리(> NEAR)의 안쪽 표본 중 도면 잉크(3×3 이웃) 위에 있는
+ * 비율이 이보다 낮으면 잇지 않는다. 골격이 교차점에서 끊긴 자리는 잉크가 이어져 있고,
+ * 도면이 정말 비운 자리는 잉크가 없다 — 둘을 가르는 자가 이것이다. 0 이면 끔.
+ */
+const INK_MIN = Number(process.env.V4_BRIDGE_INK ?? 0.6);
+/** 이은 획을 dpMerge 로 다시 솎는가 (V4_BRIDGE_REFIT=0 이면 끔) */
+const REFIT = process.env.V4_BRIDGE_REFIT !== "0";
+/**
  * **교차점 관통 연결.** 격자·메시의 선은 골격화가 교차점마다 끊는다 — 한 줄이
  * 셀 수만큼 토막 난다(실측 sf_shoe_2: 스트로크 앵커의 51%가 60px 미만 조각,
  * 그중 1,016개가 곧은 열린 조각으로 앵커 2,190개를 먹었다).
@@ -35,6 +60,27 @@ const TURN_FAR = Number(process.env.V4_BRIDGE_FAR_TURN ?? 30);
 const JUNC_R = Number(process.env.V4_JUNCTION_R ?? 26);
 /** 관통 판정 cos 하한 (0.985 ≈ 10°) */
 const JUNC_COS = Number(process.env.V4_JUNCTION_COS ?? 0.985);
+
+export interface BridgeCtx {
+  /** 도면 잉크(1 = 선). 장면과 같은 좌표계(W×H) */
+  ink?: Uint8Array;
+  W?: number;
+  H?: number;
+  /** 이은 획 재피팅 허용오차(px). 없으면 재피팅하지 않는다 */
+  refitTol?: number;
+}
+
+export interface BridgeReport {
+  closed: number;
+  /** 매끈한 이음 + 코너 이음 + 교차점 관통 */
+  joined: number;
+  corner: number;
+  through: number;
+  /** 잉크 근거가 없어 기각한 먼 다리 */
+  inkRejected: number;
+  /** 재피팅으로 줄인 앵커 수 */
+  refitSaved: number;
+}
 
 interface End {
   prim: StrokePrimitive;
@@ -60,22 +106,78 @@ function endpoints(prim: StrokePrimitive, sub: SubPath): End[] {
   ];
 }
 
-function joinOk(a: End, b: End): boolean {
-  const gap = Math.hypot(a.p[0] - b.p[0], a.p[1] - b.p[1]);
-  if (gap > NEAR_FAR) return false;
+function turnDeg(a: End, b: End): number | null {
   const na = Math.hypot(a.t[0], a.t[1]), nb = Math.hypot(b.t[0], b.t[1]);
-  if (na < 1e-6 || nb < 1e-6) return false;
+  if (na < 1e-6 || nb < 1e-6) return null;
   // 마주 보며 이어지려면 바깥 방향이 서로 반대여야 한다
   const cos = (a.t[0] * b.t[0] + a.t[1] * b.t[1]) / (na * nb);
-  const turn = (Math.acos(Math.max(-1, Math.min(1, -cos))) * 180) / Math.PI;
-  if (gap <= NEAR) return turn <= TURN;
+  return (Math.acos(Math.max(-1, Math.min(1, -cos))) * 180) / Math.PI;
+}
+
+type JoinKind = "smooth" | "corner" | false;
+
+/**
+ * **굵기가 같은 획만 잇는다.** 패스는 굵기를 하나만 가진다 — 1.2px 획이 3.2px 획을 흡수하면
+ * 흡수된 쪽이 얇게 그려져 충실도가 깎이고, 디자이너는 굵은 선이 사라진 것을 본다.
+ * 실측(v7.1 B): jewelry_1 코너 후보 8쌍 중 6쌍이 굵기가 달랐고, 그대로 이었더니
+ * 선 F@2 가 0.9715 → 0.9473 으로 떨어져 충실도 게이트를 놓쳤다. 채점 폭(qaWidth)도 본다.
+ */
+function sameWidth(a: StrokePrimitive, b: StrokePrimitive): boolean {
+  if (Math.abs(a.width - b.width) > 1e-6) return false;
+  const qa = (a as { qaWidth?: number }).qaWidth, qb = (b as { qaWidth?: number }).qaWidth;
+  return (qa ?? a.width) === (qb ?? b.width);
+}
+
+/**
+ * 잇는가. `deg2` 는 두 끝점이 NEAR 안에서 서로에게 유일한 이웃인지 — 코너 이음은
+ * 그때만 허용한다(세 갈래 이상은 어느 둘을 이을지 모호하다).
+ */
+function joinOk(a: End, b: End, deg2: boolean): JoinKind {
+  const gap = Math.hypot(a.p[0] - b.p[0], a.p[1] - b.p[1]);
+  if (gap > NEAR_FAR) return false;
+  const turn = turnDeg(a, b);
+  if (turn == null) return false;
+  if (gap <= NEAR) {
+    if (turn <= TURN) return "smooth";
+    if (deg2 && CORNER_TURN > 0 && turn <= CORNER_TURN) return "corner";
+    return false;
+  }
   // 먼 쌍 — 곧게 이어질 때만: 꺾임을 조이고, b 가 a 의 연장선에서 벗어나면 옆줄이다
   if (turn > TURN_FAR) return false;
+  const na = Math.hypot(a.t[0], a.t[1]);
   const ux = a.t[0] / na, uy = a.t[1] / na;
   const vx = b.p[0] - a.p[0], vy = b.p[1] - a.p[1];
   const lateral = Math.abs(vx * -uy + vy * ux);
   const forward = vx * ux + vy * uy;
-  return forward > 0 && lateral <= Math.max(3, gap * 0.35);
+  return forward > 0 && lateral <= Math.max(3, gap * 0.35) ? "smooth" : false;
+}
+
+/**
+ * 두 끝점 사이 **안쪽**(t 0.15~0.85)에 도면 잉크가 있는 비율. 끝점 자체는 이미
+ * 잉크 위라 세지 않는다. 골격이 실제 선 중앙에서 1px 쯤 비껴 있을 수 있어 3×3 을 본다.
+ */
+function inkSupport(ctx: BridgeCtx, a: Pt, b: Pt): number {
+  const { ink, W, H } = ctx;
+  if (!ink || !W || !H) return 1;
+  const gap = Math.hypot(b[0] - a[0], b[1] - a[1]);
+  const n = Math.max(5, Math.ceil(gap * 2));
+  let hit = 0;
+  for (let i = 0; i < n; i++) {
+    const t = 0.15 + (0.7 * i) / (n - 1);
+    const x = Math.round(a[0] + (b[0] - a[0]) * t), y = Math.round(a[1] + (b[1] - a[1]) * t);
+    let on = false;
+    for (let dy = -1; dy <= 1 && !on; dy++) {
+      const yy = y + dy;
+      if (yy < 0 || yy >= H) continue;
+      for (let dx = -1; dx <= 1; dx++) {
+        const xx = x + dx;
+        if (xx < 0 || xx >= W) continue;
+        if (ink[yy * W + xx]) { on = true; break; }
+      }
+    }
+    if (on) hit++;
+  }
+  return hit / n;
 }
 
 function subLen(sp: SubPath): number {
@@ -96,17 +198,85 @@ function reverseSub(sp: SubPath): SubPath {
   return out;
 }
 
+/** 끝점 쌍의 열쇠 — 같은 쌍을 패스마다 다시 세지 않기 위해 */
+function pairKey(a: End, b: End): string {
+  const ka = `${a.prim.id}:${a.side}`, kb = `${b.prim.id}:${b.side}`;
+  return ka < kb ? `${ka}|${kb}` : `${kb}|${ka}`;
+}
+
+function anchorCount(d: string): number {
+  return (d.match(/[MLC]/g) ?? []).length;
+}
+
+/** e.prim 이 m.prim 을 흡수한다 — e 쪽이 tail 이 되도록, m 쪽이 head 로 이어지도록 뒤집는다 */
+function absorb(e: End, m: End, single: Map<StrokePrimitive, SubPath>): void {
+  let keep = single.get(e.prim)!;
+  let take = single.get(m.prim)!;
+  if (e.side === "head") keep = reverseSub(keep);
+  if (m.side === "tail") take = reverseSub(take);
+  // 다리: 틈이 있으면 L 로 잇고, 이어서 흡수한 획의 세그를 붙인다
+  const gap = Math.hypot(m.p[0] - e.p[0], m.p[1] - e.p[1]);
+  if (gap > 0.05) keep.segs.push({ type: "L", end: take.start });
+  keep.segs.push(...take.segs);
+  e.prim.d = serializePath([keep]);
+  single.set(e.prim, keep);
+  e.prim.area += m.prim.area;
+  const bb = e.prim.bbox, b2 = m.prim.bbox;
+  e.prim.bbox = [
+    Math.min(bb[0], b2[0]), Math.min(bb[1], b2[1]),
+    Math.max(bb[2], b2[2]), Math.max(bb[3], b2[3]),
+  ];
+  if (m.prim.partId && m.prim.partId !== e.prim.partId) {
+    e.prim.shared = [...new Set([...(e.prim.shared ?? []), m.prim.partId])];
+  }
+  single.delete(m.prim);
+}
+
+/** 서브패스 하나짜리 열린 획만 모은다 — 잇기의 대상이다 */
+function collectSingles(
+  primitives: ScenePrimitive[],
+  absorbed: Set<StrokePrimitive>,
+): { single: Map<StrokePrimitive, SubPath>; all: End[] } {
+  const single = new Map<StrokePrimitive, SubPath>();
+  for (const p of primitives) {
+    if (p.cls !== "STRUCTURAL_STROKE" || absorbed.has(p as StrokePrimitive)) continue;
+    const prim = p as StrokePrimitive;
+    const subs = parsePath(prim.d);
+    if (subs.length === 1 && !subs[0].closed && subs[0].segs.length) single.set(prim, subs[0]);
+  }
+  const all: End[] = [];
+  for (const [prim, sub] of single) all.push(...endpoints(prim, sub));
+  return { single, all };
+}
+
+function makeGrid(all: End[], cell: number): (p: Pt) => End[] {
+  const grid = new Map<string, End[]>();
+  for (const e of all) {
+    const k = `${Math.floor(e.p[0] / cell)},${Math.floor(e.p[1] / cell)}`;
+    (grid.get(k) ?? grid.set(k, []).get(k)!).push(e);
+  }
+  return (p: Pt): End[] => {
+    const gx = Math.floor(p[0] / cell), gy = Math.floor(p[1] / cell);
+    const out: End[] = [];
+    for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) out.push(...(grid.get(`${gx + i},${gy + j}`) ?? []));
+    return out;
+  };
+}
+
 /**
- * 프리미티브 배열을 제자리에서 수리한다. 반환은 { closed, joined } 개수.
+ * 프리미티브 배열을 제자리에서 수리한다.
  * 단순함을 위해 **서브패스 하나짜리 획만** 잇는다(실측 대상의 대부분이다).
  */
 export function bridgeGaps(
   primitives: ScenePrimitive[],
   say?: (m: string) => void,
-): { closed: number; joined: number } {
+  ctx: BridgeCtx = {},
+): BridgeReport {
   const strokes = primitives.filter(
     (p): p is StrokePrimitive => p.cls === "STRUCTURAL_STROKE",
   );
+  const modified = new Set<StrokePrimitive>();
+  const stats = { corner: 0, inkRejected: new Set<string>() };
 
   let closed = 0;
 
@@ -122,12 +292,12 @@ export function bridgeGaps(
       if (gap > NEAR) continue;
       // 점 같은 조각을 고리로 오므리면 안 된다 — 둘레가 틈의 4배는 되어야 도형이다
       if (subLen(sub) < Math.max(12, gap * 4)) continue;
-      if (!joinOk(ends[0], ends[1])) continue;
+      if (!joinOk(ends[0], ends[1], false)) continue;
       sub.closed = true;
       changed = true;
       closed++;
     }
-    if (changed) prim.d = serializePath(subs);
+    if (changed) { prim.d = serializePath(subs); modified.add(prim); }
   }
 
   // ── 2) 획 잇기: 다른 획의 끝점끼리 상호 최근접이면 한 획으로 ─────────
@@ -138,7 +308,7 @@ export function bridgeGaps(
   let joined = 0;
   const absorbed = new Set<StrokePrimitive>();
   for (let pass = 0; pass < 4; pass++) {
-    const j = joinPass(primitives, absorbed);
+    const j = joinPass(primitives, absorbed, modified, ctx, stats);
     joined += j;
     if (!j) break;
   }
@@ -146,7 +316,7 @@ export function bridgeGaps(
   let through = 0;
   if (process.env.V4_JUNCTION !== "0") {
     for (let pass = 0; pass < 4; pass++) {
-      const j = junctionPass(primitives, absorbed);
+      const j = junctionPass(primitives, absorbed, modified, ctx, stats);
       through += j;
       if (!j) break;
     }
@@ -157,10 +327,30 @@ export function bridgeGaps(
       if (p.cls === "STRUCTURAL_STROKE" && absorbed.has(p as StrokePrimitive)) primitives.splice(i, 1);
     }
   }
-  if (closed || joined || through) {
-    say?.(`끝점 잇기 — 고리 닫음 ${closed} · 획 이음 ${joined} · 교차점 관통 ${through}`);
+
+  // ── 3) 이은 획 재피팅 ──────────────────────────────────────
+  //
+  // 이음매에는 앵커가 둘 남는다(A 의 끝, B 의 시작 — 틈이 있었으면 L 다리까지).
+  // 솎기는 이미 돌았지만 서브패스 안에서만 돌아 이음매를 넘어 합치지 못했다.
+  // **바뀐 획만** 다시 솎는다 — 안 바뀐 획을 다시 솎으면 오차만 쌓인다.
+  let refitSaved = 0;
+  if (REFIT && ctx.refitTol && ctx.refitTol > 0) {
+    for (const prim of modified) {
+      if (absorbed.has(prim)) continue;
+      const before = anchorCount(prim.d);
+      const nd = thinAnchors(prim.d, ctx.refitTol);
+      const after = anchorCount(nd);
+      if (after < before) { prim.d = nd; refitSaved += before - after; }
+    }
   }
-  return { closed, joined: joined + through };
+
+  if (closed || joined || through) {
+    const bits = [`고리 닫음 ${closed}`, `획 이음 ${joined}${stats.corner ? ` (코너 ${stats.corner})` : ""}`, `교차점 관통 ${through}`];
+    if (stats.inkRejected.size) bits.push(`잉크 없어 기각 ${stats.inkRejected.size}`);
+    if (refitSaved) bits.push(`이음매 재피팅 앵커 −${refitSaved}`);
+    say?.(`끝점 잇기 — ${bits.join(" · ")}`);
+  }
+  return { closed, joined: joined + through, corner: stats.corner, through, inkRejected: stats.inkRejected.size, refitSaved };
 }
 
 /**
@@ -170,30 +360,12 @@ export function bridgeGaps(
 function junctionPass(
   primitives: ScenePrimitive[],
   absorbed: Set<StrokePrimitive>,
+  modified: Set<StrokePrimitive>,
+  ctx: BridgeCtx,
+  stats: { inkRejected: Set<string> },
 ): number {
-  const strokes = primitives.filter(
-    (p): p is StrokePrimitive => p.cls === "STRUCTURAL_STROKE" && !absorbed.has(p as StrokePrimitive),
-  );
-  const single = new Map<StrokePrimitive, SubPath>();
-  for (const prim of strokes) {
-    const subs = parsePath(prim.d);
-    if (subs.length === 1 && !subs[0].closed && subs[0].segs.length) single.set(prim, subs[0]);
-  }
-  const all: End[] = [];
-  for (const [prim, sub] of single) all.push(...endpoints(prim, sub));
-
-  const cell = Math.max(JUNC_R, 2);
-  const grid = new Map<string, End[]>();
-  for (const e of all) {
-    const k = `${Math.floor(e.p[0] / cell)},${Math.floor(e.p[1] / cell)}`;
-    (grid.get(k) ?? grid.set(k, []).get(k)!).push(e);
-  }
-  const near9 = (p: Pt): End[] => {
-    const gx = Math.floor(p[0] / cell), gy = Math.floor(p[1] / cell);
-    const out: End[] = [];
-    for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) out.push(...(grid.get(`${gx + i},${gy + j}`) ?? []));
-    return out;
-  };
+  const { single, all } = collectSingles(primitives, absorbed);
+  const near9 = makeGrid(all, Math.max(JUNC_R, 2));
 
   /**
    * a 에서 곧게 관통해 이어지는 최선의 짝. 판정 셋을 **모두** 넘어야 한다:
@@ -207,7 +379,7 @@ function junctionPass(
     const ux = a.t[0] / na, uy = a.t[1] / na;
     let best: { e: End; score: number } | null = null;
     for (const b of near9(a.p)) {
-      if (b.prim === a.prim || dead.has(b.prim)) continue;
+      if (b.prim === a.prim || dead.has(b.prim) || !sameWidth(a.prim, b.prim)) continue;
       const vx = b.p[0] - a.p[0], vy = b.p[1] - a.p[1];
       const gap = Math.hypot(vx, vy);
       if (gap < 1e-6 || gap > JUNC_R) continue;
@@ -227,33 +399,21 @@ function junctionPass(
 
   let joined = 0;
   const frozen = new Set<StrokePrimitive>();
-  const dead = new Set<StrokePrimitive>();
-  const isDead = (p: StrokePrimitive) => absorbed.has(p) || frozen.has(p) || dead.has(p);
+  const isDead = (p: StrokePrimitive) => absorbed.has(p) || frozen.has(p);
   for (const e of all) {
     if (isDead(e.prim)) continue;
-    const m = straightBest(e, new Set([...absorbed, ...frozen, ...dead]));
+    const dead = new Set([...absorbed, ...frozen]);
+    const m = straightBest(e, dead);
     if (!m) continue;
     // 반대편에서도 이쪽이 최선이어야 한다 — 아니면 더 곧은 짝이 따로 있다
-    const back = straightBest(m.e, new Set([...absorbed, ...frozen, ...dead]));
+    const back = straightBest(m.e, dead);
     if (!back || back.e.prim !== e.prim) continue;
+    // 관통 다리도 도면 잉크 위를 지나야 한다 — 교차선을 건너는 자리는 잉크가 있다
+    if (INK_MIN > 0 && inkSupport(ctx, e.p, m.e.p) < INK_MIN) { stats.inkRejected.add(pairKey(e, m.e)); continue; }
 
-    let keep = single.get(e.prim)!;
-    let take = single.get(m.e.prim)!;
-    if (e.side === "head") keep = reverseSub(keep);
-    if (m.e.side === "tail") take = reverseSub(take);
-    const gap = Math.hypot(m.e.p[0] - e.p[0], m.e.p[1] - e.p[1]);
-    if (gap > 0.05) keep.segs.push({ type: "L", end: take.start });
-    keep.segs.push(...take.segs);
-    e.prim.d = serializePath([keep]);
-    single.set(e.prim, keep);
-    e.prim.area += m.e.prim.area;
-    const bb = e.prim.bbox, b2 = m.e.prim.bbox;
-    e.prim.bbox = [Math.min(bb[0], b2[0]), Math.min(bb[1], b2[1]), Math.max(bb[2], b2[2]), Math.max(bb[3], b2[3])];
-    if (m.e.prim.partId && m.e.prim.partId !== e.prim.partId) {
-      e.prim.shared = [...new Set([...(e.prim.shared ?? []), m.e.prim.partId])];
-    }
+    absorb(e, m.e, single);
     absorbed.add(m.e.prim);
-    single.delete(m.e.prim);
+    modified.add(e.prim);
     frozen.add(e.prim);
     joined++;
   }
@@ -264,39 +424,35 @@ function junctionPass(
 function joinPass(
   primitives: ScenePrimitive[],
   absorbed: Set<StrokePrimitive>,
+  modified: Set<StrokePrimitive>,
+  ctx: BridgeCtx,
+  stats: { corner: number; inkRejected: Set<string> },
 ): number {
-  const strokes = primitives.filter(
-    (p): p is StrokePrimitive => p.cls === "STRUCTURAL_STROKE" && !absorbed.has(p as StrokePrimitive),
-  );
-  const single = new Map<StrokePrimitive, SubPath>();
-  for (const prim of strokes) {
-    const subs = parsePath(prim.d);
-    if (subs.length === 1 && !subs[0].closed && subs[0].segs.length) single.set(prim, subs[0]);
-  }
-  const all: End[] = [];
-  for (const [prim, sub] of single) all.push(...endpoints(prim, sub));
+  const { single, all } = collectSingles(primitives, absorbed);
+  const near9 = makeGrid(all, Math.max(NEAR_FAR, 2));
 
-  const cell = Math.max(NEAR_FAR, 2);
-  const grid = new Map<string, End[]>();
+  // 끝점마다 NEAR 안의 **다른 획** 끝점 수 — 1 이면 2갈래 접촉의 한쪽이다
+  const degree = new Map<End, number>();
   for (const e of all) {
-    const k = `${Math.floor(e.p[0] / cell)},${Math.floor(e.p[1] / cell)}`;
-    (grid.get(k) ?? grid.set(k, []).get(k)!).push(e);
-  }
-  const near9 = (p: Pt): End[] => {
-    const gx = Math.floor(p[0] / cell), gy = Math.floor(p[1] / cell);
-    const out: End[] = [];
-    for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) out.push(...(grid.get(`${gx + i},${gy + j}`) ?? []));
-    return out;
-  };
-  const bestOf = (e: End, absorbedSet: Set<StrokePrimitive>, frozenSet: Set<StrokePrimitive>): End | null => {
-    let best: End | null = null, bd = Infinity;
+    let n = 0;
     for (const c of near9(e.p)) {
-      if (c.prim === e.prim || absorbedSet.has(c.prim) || frozenSet.has(c.prim)) continue;
-      if (!joinOk(e, c)) continue;
-      const d = Math.hypot(e.p[0] - c.p[0], e.p[1] - c.p[1]);
-      if (d < bd) { bd = d; best = c; }
+      if (c.prim === e.prim) continue;
+      if (Math.hypot(e.p[0] - c.p[0], e.p[1] - c.p[1]) <= NEAR) n++;
     }
-    return best;
+    degree.set(e, n);
+  }
+  const deg2 = (a: End, b: End) => degree.get(a) === 1 && degree.get(b) === 1;
+
+  const bestOf = (e: End, dead: (p: StrokePrimitive) => boolean): { e: End; kind: JoinKind } | null => {
+    let best: End | null = null, bk: JoinKind = false, bd = Infinity;
+    for (const c of near9(e.p)) {
+      if (c.prim === e.prim || dead(c.prim) || !sameWidth(e.prim, c.prim)) continue;
+      const kind = joinOk(e, c, deg2(e, c));
+      if (!kind) continue;
+      const d = Math.hypot(e.p[0] - c.p[0], e.p[1] - c.p[1]);
+      if (d < bd) { bd = d; best = c; bk = kind; }
+    }
+    return best ? { e: best, kind: bk } : null;
   };
 
   let joined = 0;
@@ -306,33 +462,16 @@ function joinPass(
   // 상호 최근접만 잇는다 — 한쪽만의 최근접은 세 갈래 교차점을 잘못 삼킬 수 있다
   for (const e of all) {
     if (dead(e.prim)) continue;
-    const m = bestOf(e, absorbed, frozen);
-    if (!m || bestOf(m, absorbed, frozen) !== e) continue;
+    const m = bestOf(e, dead);
+    if (!m || bestOf(m.e, dead)?.e !== e) continue;
+    const gap = Math.hypot(m.e.p[0] - e.p[0], m.e.p[1] - e.p[1]);
+    // 먼 다리는 도면 잉크가 사이를 잇고 있어야 한다
+    if (gap > NEAR && INK_MIN > 0 && inkSupport(ctx, e.p, m.e.p) < INK_MIN) { stats.inkRejected.add(pairKey(e, m.e)); continue; }
 
-    // e.prim 을 살리고 m.prim 을 흡수한다. e 쪽이 tail 이 되도록 뒤집고,
-    // m 쪽은 head 가 이어지도록 뒤집는다.
-    let keep = single.get(e.prim)!;
-    let take = single.get(m.prim)!;
-    if (e.side === "head") keep = reverseSub(keep);
-    if (m.side === "tail") take = reverseSub(take);
-    // 다리: 틈이 있으면 L 로 잇고, 이어서 흡수한 획의 세그를 붙인다
-    const gap = Math.hypot(m.p[0] - e.p[0], m.p[1] - e.p[1]);
-    if (gap > 0.05) keep.segs.push({ type: "L", end: take.start });
-    keep.segs.push(...take.segs);
-
-    e.prim.d = serializePath([keep]);
-    single.set(e.prim, keep);
-    e.prim.area += m.prim.area;
-    const bb = e.prim.bbox, b2 = m.prim.bbox;
-    e.prim.bbox = [
-      Math.min(bb[0], b2[0]), Math.min(bb[1], b2[1]),
-      Math.max(bb[2], b2[2]), Math.max(bb[3], b2[3]),
-    ];
-    if (m.prim.partId && m.prim.partId !== e.prim.partId) {
-      e.prim.shared = [...new Set([...(e.prim.shared ?? []), m.prim.partId])];
-    }
-    absorbed.add(m.prim);
-    single.delete(m.prim);
+    absorb(e, m.e, single);
+    absorbed.add(m.e.prim);
+    modified.add(e.prim);
+    if (m.kind === "corner") stats.corner++;
     joined++;
     // 좌표가 바뀐 끝점 정보는 낡았다 — 보수적으로 이 획의 추가 병합은 다음 기회로
     frozen.add(e.prim);

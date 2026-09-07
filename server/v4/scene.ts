@@ -1510,7 +1510,14 @@ export async function buildScene(
   // 가 바로 옆에 짝이 있었다 — 굵기 등급화가 끝난 뒤(굵기 게이트가 무의미해진 뒤)
   // joinable 의 자로 닫고 잇는다.
   if (opts.thinFinish) {
-    bridgeGaps(primitives, say);
+    // 잉크 근거(먼 다리 검증)와 재피팅 허용오차(이음매 앵커 솎기)를 함께 넘긴다.
+    // 재피팅 허용오차는 솎기(1.3)보다 조인다 — 이미 솎은 곡선 위에 다시 솎는 것이라
+    // 오차가 쌓인다. 실측 v7e 9종: 1.3 이면 이탈 2px 초과 12패스, 1.0 이면 0 (최대 1.74px).
+    const refitTol = Number(process.env.V4_BRIDGE_REFIT_TOL ?? Math.min(1.0, THIN_TOL));
+    // 잉크 근거는 **필터 전 진한 잉크(inkStrict)** 로 본다. `ink` 는 굵은 자리(면 판정)와
+    // 해프톤이 빠진 마스크라, 굵은 선을 건너는 옳은 다리를 "잉크 없음"으로 기각한다
+    // (실측 v7.1 C: bag_1 다리 73쌍 기각 → 선 F@2 −0.0033).
+    bridgeGaps(primitives, say, { ink: ev.inkStrict, W, H, refitTol });
   }
 
   // ── 퇴화 조각 정리 ───────────────────────────────────────
