@@ -182,6 +182,8 @@ export async function flattenUniformBackground(
   destPath: string,
   opts: { tolerance?: number; minShare?: number; maxShare?: number } = {},
 ): Promise<{ flattened: boolean; note: string }> {
+  // 끄는 스위치 — 옛 산출물과 같은 조건으로 재현할 때(도면 고정 A/B) 크롭 틀이 달라지면 안 된다
+  if (process.env.V4_BG_FLATTEN === "0") return { flattened: false, note: "대비책 꺼짐(V4_BG_FLATTEN=0)" };
   const tol = opts.tolerance ?? 26;
   const minShare = opts.minShare ?? 0.12;
   const maxShare = opts.maxShare ?? 0.92;
