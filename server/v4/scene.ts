@@ -22,6 +22,7 @@ import { distanceTransform } from "../v3/metrics.js";
 import { splitCompound } from "./compound.js";
 import { refitPath, pathDeviation, thinAnchors, dropDegenerate, widthGrades, snapGrade, enforceAnchorSpacing, mergeStraightRuns } from "./refit.js";
 import { bridgeGaps } from "./bridgeGaps.js";
+import { promoteChainLinks } from "./chainLinks.js";
 import { rescueContinuity } from "./continuity.js";
 import { mergeOpenStrokes } from "./lineMerge.js";
 import { compressPeriodic, clusterStrokes } from "./periodic.js";
@@ -1509,6 +1510,14 @@ export async function buildScene(
   // 얇은 선화는 끊김이 그대로 "안 닫힌 도형"으로 보인다. 실측 열린 끝점의 28~32%
   // 가 바로 옆에 짝이 있었다 — 굵기 등급화가 끝난 뒤(굵기 게이트가 무의미해진 뒤)
   // joinable 의 자로 닫고 잇는다.
+  // ── 체인 고리 승격 ──────────────────────────────────────
+  //
+  // 사슬은 구멍이 한 줄로 늘어선 띠다. 골격으로 뜨면 겹친 고리가 엉키고 굵기가 제멋대로
+  // 갈린다(실측 bag_2). 잇기 전에 띠를 찾아 고리 타원 모티프로 바꾸고 엉킨 획을 걷어낸다.
+  if (opts.thinFinish) {
+    promoteChainLinks(primitives, ev.ink, W, H, nextId, say);
+  }
+
   if (opts.thinFinish) {
     // 잉크 근거(먼 다리 검증)와 재피팅 허용오차(이음매 앵커 솎기)를 함께 넘긴다.
     // 재피팅 허용오차는 솎기(1.3)보다 조인다 — 이미 솎은 곡선 위에 다시 솎는 것이라
