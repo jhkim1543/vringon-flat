@@ -1,6 +1,12 @@
 /**
- * VRINGON `generate_schematic_image` 워커의 베이크 상수 — **qa 브랜치 기준**.
- * (RebuilderAI/vringon-ai-workers-services @ qa → src/services/features/generate_schematic_image)
+ * VRINGON `generate_schematic_image` 워커의 베이크 상수 — **dev 브랜치 f4d39f9 기준** (2026-09-07 대조).
+ * (RebuilderAI/vringon-ai-workers-services @ dev → src/services/features/generate_schematic_image)
+ *
+ * dev 에서 바뀐 것 둘을 그대로 따른다:
+ *  · 입력을 1024² 로 **늘리지 않고** 긴 변 1024 로 비율을 지켜 줄인다(`resize_longest_side`),
+ *    Replicate 에는 `aspect_ratio: match_input_image` 를 보내고 결과를 되돌려 늘리지 않는다 —
+ *    VO-522 의 가늘어짐(크롭 비율을 두 번 적용)이 이 때문이었다.
+ *  · 컬러화(nano-banana)도 `match_input_image` (1:1 강제 폐기).
  *
  * 워커의 `src/pipeline_constants.py`를 그대로 옮긴다. 문구·수치를 요약하거나 다듬으면
  * 산출물이 달라지므로 한 글자도 바꾸지 않는다.
@@ -26,8 +32,10 @@ export function resolvePrompt(category: string): string {
   return CATEGORY_PROMPTS[category] ?? DEFAULT_PROMPT;
 }
 
-/** #191 생성측 작업 해상도 / #214 복원 */
+/** #191 생성측 작업 해상도 — 긴 변 기준 (dev: resize_longest_side) */
 export const QWEN_INPUT_SIZE = 1024;
+/** 결과 기하는 입력과 같게 — 워커 QWEN_ASPECT_RATIO */
+export const QWEN_ASPECT_RATIO = "match_input_image";
 export const QWEN_INPUT_DIVISIBLE_BY = 2;
 export const OUTPUT_DIVISIBLE_BY = 1;
 /** 워커는 bilinear를 쓴다 — cubic으로 바꾸면 선 굵기가 미묘하게 달라진다 */
@@ -102,8 +110,8 @@ pure solid white, fully empty, with no shadow beneath the object.
 Output:
 a clean, sharp, print-ready vector-style technical flat illustration based on Image 1’s exact drawing, colorized using Image 2’s color and material reference only.`;
 
-/** 레거시가 nano-banana에 고정으로 넘기던 값. 비정방 입력도 1:1로 강제된다 */
-export const COLOR_SKETCH_ASPECT_RATIO = "1:1";
+/** 컬러화도 Image 1(도식)의 비율 그대로 — dev 워커: 1:1 강제 후 stretch-back 은 비율을 두 번 적용한다 */
+export const COLOR_SKETCH_ASPECT_RATIO = "match_input_image";
 
 // ── 업스케일 (prunaai/p-image-upscale). 흑백·컬러 공통 단계 ─────────────────
 export const UPSCALE_MODEL = "prunaai/p-image-upscale";

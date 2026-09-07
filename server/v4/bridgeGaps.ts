@@ -19,7 +19,7 @@
  *      잇기는 솎기 뒤에 도는데, 솎기는 서브패스 안에서만 돌아 이음매를 못 본다.
  */
 import { parsePath, serializePath, type Pt, type SubPath } from "../vector/pathdata.js";
-import { thinAnchors } from "./refit.js";
+import { thinAnchors, pathDeviation } from "./refit.js";
 import type { ScenePrimitive, StrokePrimitive } from "./types.js";
 
 /**
@@ -68,6 +68,10 @@ export interface BridgeCtx {
   H?: number;
   /** 이은 획 재피팅 허용오차(px). 없으면 재피팅하지 않는다 */
   refitTol?: number;
+  /** 먼저 시도하는 넓은 허용오차 — 이탈이 devLimit 안일 때만 채택 (v0.2 리뷰: 1.5 가 최적) */
+  refitWide?: number;
+  /** 재피팅 전후 양방향 이탈 상한(px) */
+  devLimit?: number;
 }
 
 export interface BridgeReport {
@@ -80,6 +84,8 @@ export interface BridgeReport {
   inkRejected: number;
   /** 재피팅으로 줄인 앵커 수 */
   refitSaved: number;
+  /** 다른 획 안쪽에 붙인 끝점 수 */
+  attached: number;
 }
 
 interface End {
@@ -337,20 +343,27 @@ export function bridgeGaps(
   if (REFIT && ctx.refitTol && ctx.refitTol > 0) {
     for (const prim of modified) {
       if (absorbed.has(prim)) continue;
-      const before = anchorCount(prim.d);
-      const nd = thinAnchors(prim.d, ctx.refitTol);
-      const after = anchorCount(nd);
-      if (after < before) { prim.d = nd; refitSaved += before - after; }
+      const r = guardedThin(prim.d, ctx.refitTol, ctx.refitWide ?? ctx.refitTol, ctx.devLimit ?? 2.0);
+      if (r.saved > 0) { prim.d = r.d; refitSaved += r.saved; }
     }
   }
 
-  if (closed || joined || through) {
+  // ── 4) 가지 붙이기 — 끝점이 다른 획의 **안쪽**에 닿아 있으면 그 위로 옮긴다 ──
+  //
+  // 끝점끼리만 이으면 T 자로 만나는 옆선(스티치 끝·패널 가지)은 영원히 "살짝 떠" 있다.
+  // 외부 리뷰 v0.2 의 지적: 끝점-곡선 내부 접합이 외곽 연속성의 본체다. 끝점과 그 손잡이를
+  // 같은 변위로 옮겨 접선을 지키고, 상대 획의 끝 근처(NEAR 안)는 제외한다(그건 잇기 몫).
+  let attached = 0;
+  if (process.env.V4_BRIDGE_ATTACH !== "0") attached = attachPass(primitives, absorbed, modified);
+
+  if (closed || joined || through || attached) {
     const bits = [`고리 닫음 ${closed}`, `획 이음 ${joined}${stats.corner ? ` (코너 ${stats.corner})` : ""}`, `교차점 관통 ${through}`];
+    if (attached) bits.push(`가지 붙임 ${attached}`);
     if (stats.inkRejected.size) bits.push(`잉크 없어 기각 ${stats.inkRejected.size}`);
     if (refitSaved) bits.push(`이음매 재피팅 앵커 −${refitSaved}`);
     say?.(`끝점 잇기 — ${bits.join(" · ")}`);
   }
-  return { closed, joined: joined + through, corner: stats.corner, through, inkRejected: stats.inkRejected.size, refitSaved };
+  return { closed, joined: joined + through, corner: stats.corner, through, inkRejected: stats.inkRejected.size, refitSaved, attached };
 }
 
 /**
@@ -477,4 +490,105 @@ function joinPass(
     frozen.add(e.prim);
   }
   return joined;
+}
+
+
+/**
+ * **이탈을 재 가며 솎는다.** 넓은 허용오차(wide)로 먼저 솎고, 원래 패스 대비 양방향 이탈이
+ * devLimit 안이면 채택, 넘으면 좁은 허용오차(tol)로 다시. 둘 다 넘으면 원본 유지.
+ * v0.2 리뷰의 스윕(0.75/1.5/3.0 → 1.5 가 최소 앵커)을 우리 자(2px 게이트 창)로 받아들인 것.
+ */
+export function guardedThin(d: string, tol: number, wide: number, devLimit: number): { d: string; saved: number } {
+  const before = anchorCount(d);
+  const tries = wide > tol ? [wide, tol] : [tol];
+  for (const t of tries) {
+    const nd = thinAnchors(d, t);
+    const after = anchorCount(nd);
+    if (after >= before) continue;
+    const dev = pathDeviation(d, nd, 0.5);
+    if (Number.isFinite(dev) && dev <= devLimit) return { d: nd, saved: before - after };
+  }
+  return { d, saved: 0 };
+}
+
+/** 획을 촘촘히 표본 — 가지 붙이기의 과녁 */
+function denseSamples(sub: SubPath, step = 2): Pt[] {
+  const out: Pt[] = [sub.start];
+  let cur = sub.start;
+  for (const s of sub.segs) {
+    if (s.type === "L") {
+      const L = Math.hypot(s.end[0] - cur[0], s.end[1] - cur[1]);
+      const n = Math.max(1, Math.ceil(L / step));
+      for (let i = 1; i <= n; i++) out.push([cur[0] + (s.end[0] - cur[0]) * i / n, cur[1] + (s.end[1] - cur[1]) * i / n]);
+    } else {
+      const rough = Math.hypot(s.end[0] - cur[0], s.end[1] - cur[1]) + Math.hypot(s.c1![0] - cur[0], s.c1![1] - cur[1]);
+      const n = Math.max(2, Math.min(64, Math.ceil(rough / step)));
+      for (let i = 1; i <= n; i++) {
+        const t = i / n, u = 1 - t;
+        out.push([
+          u * u * u * cur[0] + 3 * u * u * t * s.c1![0] + 3 * u * t * t * s.c2![0] + t * t * t * s.end[0],
+          u * u * u * cur[1] + 3 * u * u * t * s.c1![1] + 3 * u * t * t * s.c2![1] + t * t * t * s.end[1],
+        ]);
+      }
+    }
+    cur = s.end;
+  }
+  return out;
+}
+
+function attachPass(primitives: ScenePrimitive[], absorbed: Set<StrokePrimitive>, modified: Set<StrokePrimitive>): number {
+  const strokes = primitives.filter(
+    (p): p is StrokePrimitive => p.cls === "STRUCTURAL_STROKE" && !absorbed.has(p as StrokePrimitive),
+  );
+  // 과녁: 모든 획의 안쪽 표본 (양 끝 NEAR 안은 제외 — 끝점끼리는 잇기가 다룬다)
+  type Target = { prim: StrokePrimitive; p: Pt };
+  const cell = Math.max(NEAR, 2);
+  const grid = new Map<string, Target[]>();
+  const parsed = new Map<StrokePrimitive, SubPath[]>();
+  for (const prim of strokes) {
+    const subs = parsePath(prim.d);
+    parsed.set(prim, subs);
+    for (const sub of subs) {
+      const pts = denseSamples(sub);
+      const ends = sub.closed ? [] : [sub.start, pts[pts.length - 1]];
+      for (const q of pts) {
+        if (ends.some((e) => Math.hypot(e[0] - q[0], e[1] - q[1]) <= NEAR)) continue;
+        const k = `${Math.floor(q[0] / cell)},${Math.floor(q[1] / cell)}`;
+        (grid.get(k) ?? grid.set(k, []).get(k)!).push({ prim, p: q });
+      }
+    }
+  }
+  let attached = 0;
+  for (const prim of strokes) {
+    const subs = parsed.get(prim)!;
+    if (subs.length !== 1 || subs[0].closed || !subs[0].segs.length) continue;
+    const sub = subs[0];
+    let changed = false;
+    for (const side of ["head", "tail"] as const) {
+      const p: Pt = side === "head" ? sub.start : sub.segs[sub.segs.length - 1].end;
+      const gx = Math.floor(p[0] / cell), gy = Math.floor(p[1] / cell);
+      let best: Target | null = null, bd = NEAR;
+      for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) {
+        for (const t of grid.get(`${gx + i},${gy + j}`) ?? []) {
+          if (t.prim === prim || !sameWidth(prim, t.prim)) continue;
+          const d = Math.hypot(t.p[0] - p[0], t.p[1] - p[1]);
+          if (d < bd) { bd = d; best = t; }
+        }
+      }
+      if (!best || bd < 0.3) continue;
+      const dx = best.p[0] - p[0], dy = best.p[1] - p[1];
+      if (side === "head") {
+        sub.start = [sub.start[0] + dx, sub.start[1] + dy];
+        const f = sub.segs[0];
+        if (f.type === "C") f.c1 = [f.c1![0] + dx, f.c1![1] + dy];
+      } else {
+        const l = sub.segs[sub.segs.length - 1];
+        l.end = [l.end[0] + dx, l.end[1] + dy];
+        if (l.type === "C") l.c2 = [l.c2![0] + dx, l.c2![1] + dy];
+      }
+      changed = true; attached++;
+    }
+    if (changed) { prim.d = serializePath([sub]); modified.add(prim); }
+  }
+  return attached;
 }

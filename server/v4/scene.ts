@@ -21,7 +21,7 @@ import { buildOwnerMap, splitByOwner, neighborsOf, fillTinyHoles } from "./inkOw
 import { distanceTransform } from "../v3/metrics.js";
 import { splitCompound } from "./compound.js";
 import { refitPath, pathDeviation, thinAnchors, dropDegenerate, widthGrades, snapGrade, enforceAnchorSpacing, mergeStraightRuns } from "./refit.js";
-import { bridgeGaps } from "./bridgeGaps.js";
+import { bridgeGaps, guardedThin } from "./bridgeGaps.js";
 import { promoteChainLinks } from "./chainLinks.js";
 import { rescueContinuity } from "./continuity.js";
 import { mergeOpenStrokes } from "./lineMerge.js";
@@ -1526,7 +1526,26 @@ export async function buildScene(
     // 잉크 근거는 **필터 전 진한 잉크(inkStrict)** 로 본다. `ink` 는 굵은 자리(면 판정)와
     // 해프톤이 빠진 마스크라, 굵은 선을 건너는 옳은 다리를 "잉크 없음"으로 기각한다
     // (실측 v7.1 C: bag_1 다리 73쌍 기각 → 선 F@2 −0.0033).
-    bridgeGaps(primitives, say, { ink: ev.inkStrict, W, H, refitTol });
+    // v0.2 리뷰의 스윕(허용오차 1.5 가 최소 앵커)을 이탈 2px 게이트 안에서만 받는다.
+    const refitWide = Number(process.env.V4_BRIDGE_REFIT_WIDE ?? 1.5);
+    bridgeGaps(primitives, say, { ink: ev.inkStrict, W, H, refitTol, refitWide, devLimit: 2.0 });
+  }
+
+  // ── 최종 솎기 — 이탈을 재 가며 한 번 더 ────────────────────
+  //
+  // 외부 리뷰 v0.2 의 실측: 허용오차 1.5 가 0.75·3.0 보다 앵커를 덜 남긴다. 우리 스윕(v7.1 9종):
+  // 1.5 는 4~19% 절감이지만 몇 패스가 2px 창을 넘고, 1.0 은 0 패스 초과. 그래서 패스마다
+  // 1.5 → 이탈 ≤2px 이면 채택, 아니면 1.0, 그것도 넘으면 원본 — 최대 절감을 게이트 안에서만.
+  if (opts.thinFinish && process.env.V4_FINAL_THIN !== "0") {
+    const wide = Number(process.env.V4_FINAL_THIN ?? 1.5);
+    let saved = 0, touched = 0;
+    for (const p of primitives) {
+      if (p.cls !== "STRUCTURAL_STROKE") continue;
+      const sp = p as StrokePrimitive;
+      const r = guardedThin(sp.d, 1.0, wide, 2.0);
+      if (r.saved > 0) { sp.d = r.d; saved += r.saved; touched++; }
+    }
+    if (saved) say?.(`최종 솎기 — 이탈 2px 안에서 앵커 −${saved} (패스 ${touched}개)`);
   }
 
   // ── 퇴화 조각 정리 ───────────────────────────────────────

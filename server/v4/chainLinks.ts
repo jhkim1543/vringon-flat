@@ -19,7 +19,8 @@ import { parsePath, type Pt } from "../vector/pathdata.js";
 import { labelComponents } from "../v3/label.js";
 import { traceContour } from "./evidence.js";
 import { thinAnchors } from "./refit.js";
-import type { GeometricPrimitive, ScenePrimitive, StrokePrimitive } from "./types.js";
+import { bestFit } from "./primitives.js";
+import type { GeometricPrimitive, ScenePrimitive, StrokePrimitive, Pt as FitPt } from "./types.js";
 
 /** 구멍 면적 범위(px², 증거 해상도) — 이보다 작으면 잡음, 크면 고리가 아니라 면이다 */
 const HOLE_MIN = Number(process.env.V4_CHAIN_HOLE_MIN ?? 16);
@@ -36,6 +37,12 @@ const MIN_ELONG = Number(process.env.V4_CHAIN_MIN_ELONG ?? 10);
 const CLUSTER_R = Number(process.env.V4_CHAIN_CLUSTER_R ?? 5);
 /** 이웃 간격이 중앙 간격의 이 배수를 넘으면 빠진 고리로 보고 띠 범위를 보간한다 */
 const GAP_FILL = Number(process.env.V4_CHAIN_GAP_FILL ?? 1.6);
+/**
+ * 구멍을 타원 프리미티브로 바꿀 때 허용 잔차(px). **기본 끔(0)** — 실측 bag_2: 1.8 이면 16개, 2.5 면 40개가
+ * 타원이 됐지만 앵커는 1,582 → 1,609 → 1,657 로 **늘었다**. 작은 구멍 윤곽은 솎으면 앵커 3~4개라
+ * 타원(4)보다 싸다. 큰 고리 구멍이 있는 사슬에서만 켤 값이다.
+ */
+const ELLIPSE_TOL = Number(process.env.V4_CHAIN_ELLIPSE_TOL ?? 0);
 /** 윤곽 솎기 허용오차(px) */
 const CONTOUR_TOL = Number(process.env.V4_CHAIN_TOL ?? 1.3);
 
@@ -397,6 +404,24 @@ export function promoteChainLinks(
       const pts = traceContour(c, W, H, holesM, 1e9) as unknown as { x: number; y: number }[];
       if (pts.length < 4) continue;
       const d0 = `M${pts[0].x} ${pts[0].y}` + pts.slice(1).map((p) => `L${p.x} ${p.y}`).join("") + "Z";
+      // 작은 구멍은 대개 타원이다 — 잔차 1.2px 안이면 타원 프리미티브(앵커 4)로, 아니면 윤곽으로
+      const fit = ELLIPSE_TOL > 0 && pts.length >= 6 ? bestFit(pts.map((q) => ({ x: q.x, y: q.y }) as unknown as FitPt), { tolerance: ELLIPSE_TOL, closed: true }) : null;
+      if (fit && (fit.kind === "ellipse" || fit.kind === "circle") && fit.max <= ELLIPSE_TOL) {
+        anchorsAdded += fit.anchors; holeContours++;
+        primitives.push({
+          id: nextId("ce"), cls: "GEOMETRIC_PRIMITIVE", kind: fit.kind, params: fit.params, paint: "stroke",
+          stroke: "#111111", width: strokeWidth, qaWidth, d: fit.d,
+          anchorsSaved: 0, residual: { rms: fit.rms, max: fit.max },
+          area: c.area, bbox: [c.x0, c.y0, c.x1, c.y1], partId,
+          route: {
+            chosen: "GEOMETRIC_PRIMITIVE",
+            features: { chainHole: 1, fitMax: fit.max },
+            why: `체인 고리 안쪽 — ${fit.kind} (잔차 max ${fit.max}px)`,
+            confidence: 0.8,
+          },
+        } as unknown as GeometricPrimitive);
+        continue;
+      }
       const d = thinAnchors(d0, CONTOUR_TOL);
       anchorsAdded += anchorCount(d); holeContours++;
       primitives.push({
@@ -412,6 +437,7 @@ export function promoteChainLinks(
     }
     contours += holeContours;
     void band;
+    if (process.env.V4_CHAIN_DEBUG) say?.(`[chain debug] 구멍 윤곽 ${holeContours}개 중 타원 승격 ${primitives.filter((p) => String(p.id).startsWith("ce")).length}개`);
 
     rep.bands++; rep.links += real.length; rep.contours += contours;
     rep.removedStrokes += removedStrokes; rep.removedPrims += removedPrims;

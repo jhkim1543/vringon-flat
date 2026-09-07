@@ -32,8 +32,7 @@ import {
   QWEN_INPUT_DIVISIBLE_BY, QWEN_INPUT_SIZE, SAMPLER_SEED,
   QWEN_GO_FAST, goFastEffective, QWEN_OUTPUT_QUALITY,
   UPSCALE_FACTOR, UPSCALE_MODE, UPSCALE_MODEL, UPSCALE_OUTPUT_QUALITY, UPSCALE_TARGET,
-  resolvePrompt, LINEART_CLAUSE, type SchematicCategory,
-} from "./schematicConstants.js";
+  resolvePrompt, LINEART_CLAUSE, type SchematicCategory, QWEN_ASPECT_RATIO } from "./schematicConstants.js";
 
 export * from "./schematicConstants.js";
 
@@ -128,7 +127,7 @@ export async function generateSchematic(
   const key = crypto
     .createHash("sha256")
     .update(src)
-    .update(JSON.stringify({ prompt, seed, loraScale, loraUrl, backend, gray: opts.grayscale, up: wantUpscale, native: !opts.matchWorkerResolution, fast: goFastEffective() }))
+    .update(JSON.stringify({ prompt, seed, loraScale, loraUrl, backend, gray: opts.grayscale, up: wantUpscale, native: !opts.matchWorkerResolution, fast: goFastEffective(), geom: "longest-1024" }))
     .digest("hex")
     .slice(0, 16);
   const dest = path.join(outDir, `schematic_${key}.png`);
@@ -158,11 +157,14 @@ export async function generateSchematic(
     return { pngPath: dest, backend, prompt, seed, loraUrl, loraScale, stages, cached: false, ms: Date.now() - t0 };
   }
 
-  // #191 stretch → 1024×1024 (bilinear)
-  const sized = divisible(QWEN_INPUT_SIZE, QWEN_INPUT_DIVISIBLE_BY);
+  // #191 — dev 워커 `resize_longest_side`: 긴 변을 1024 로, 비율은 그대로, divisible_by 2 (내림)
+  const scale = QWEN_INPUT_SIZE / Math.max(origW, origH);
+  const rw = Math.max(1, Math.round(origW * scale)), rh = Math.max(1, Math.round(origH * scale));
+  const inW = Math.max(QWEN_INPUT_DIVISIBLE_BY, rw - (rw % QWEN_INPUT_DIVISIBLE_BY));
+  const inH = Math.max(QWEN_INPUT_DIVISIBLE_BY, rh - (rh % QWEN_INPUT_DIVISIBLE_BY));
   const qwenInput = await sharp(src)
     .flatten({ background: "#ffffff" })
-    .resize(sized, sized, { fit: "fill", kernel: BILINEAR })
+    .resize(inW, inH, { fit: "fill", kernel: BILINEAR })
     .png()
     .toBuffer();
 
@@ -356,6 +358,7 @@ async function replicateQwenEdit(
     image: [dataUri(image)],
     go_fast: goFastEffective(),
     seed,
+    aspect_ratio: QWEN_ASPECT_RATIO,
     disable_safety_checker: false,
     output_format: "png",
     output_quality: QWEN_OUTPUT_QUALITY,
