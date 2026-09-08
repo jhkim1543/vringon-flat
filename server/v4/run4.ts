@@ -72,7 +72,7 @@ import type { VectorIR } from "../types.js";
  * 파이프라인 코드 판. **손으로 올린다** — 실행에 영향을 주는 변경을 했으면 여기도 올린다.
  * 산출물에 박혀서, 나중에 "같은 사진인데 결과가 다르다"를 짚을 근거가 된다.
  */
-const CODE_VERSION = "v7.4";
+const CODE_VERSION = "v7.5";
 import { lineartRecompose } from "./lineartRecompose.js";
 import { runQa4, type QA4 } from "./qa4.js";
 import { DEFAULT_THRESHOLDS } from "./router.js";

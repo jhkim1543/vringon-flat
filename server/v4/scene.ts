@@ -24,6 +24,7 @@ import { refitPath, pathDeviation, thinAnchors, dropDegenerate, widthGrades, sna
 import { bridgeGaps, guardedThin } from "./bridgeGaps.js";
 import { bridgeEvidenceGaps } from "./gapBridge.js";
 import { promoteChainLinks } from "./chainLinks.js";
+import { pruneDuplicateStrokes } from "./pruneStrokes.js";
 import { rescueContinuity } from "./continuity.js";
 import { mergeOpenStrokes } from "./lineMerge.js";
 import { compressPeriodic, clusterStrokes } from "./periodic.js";
@@ -1547,6 +1548,11 @@ export async function buildScene(
     }
     bridgeEvidenceGaps(primitives, gray, W, H, say);
   }
+
+  // ── 겹선·티끌 정리 — 진짜 선 옆에 나란히 붙은 짧은 찌꺼기 (v7.5) ─────
+  // 실측 v7.4: 앵커의 12.7% 가 20px 미만 조각이고, 그 대부분이 기존 선을 따라 나란히 놓인
+  // halo·이중 추적 잔여였다. 솎기 전에 지워야 솎기가 진짜 선에만 든다.
+  if (opts.thinFinish && process.env.V4_PRUNE !== "0") pruneDuplicateStrokes(primitives, say);
 
   // ── 최종 솎기 — 이탈을 재 가며 한 번 더 ────────────────────
   //
