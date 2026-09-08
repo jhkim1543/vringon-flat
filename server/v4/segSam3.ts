@@ -81,6 +81,17 @@ export function conceptOf(label: string): string {
   return words[words.length - 1] ?? label;
 }
 
+/**
+ * **사진**의 개념 마스크 — 패키지가 없는 카테고리의 "일반 SAM" 경로.
+ * H100 워커(`SAM3_SSH_HOST`)가 있으면 그쪽(GroundingDINO + SAM 2.1, HF 토큰이 있으면 SAM 3)을,
+ * 없으면 fal.ai SAM 3 를 쓴다. 사진은 선화와 달리 텍스트 접지가 잘 되므로 개념 이름만 넘긴다.
+ */
+export async function photoConcepts(imagePath: string, concepts: string[]): Promise<Sam3Mask[]> {
+  const host = process.env.SAM3_SSH_HOST;
+  if (host) return sshConcepts(host, imagePath, concepts);
+  return sam3Concepts(imagePath, concepts);
+}
+
 export interface Sam3PartMask {
   id: string;
   mask: Uint8Array;

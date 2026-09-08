@@ -49,6 +49,8 @@ async function cmdRun() {
     widthGrades: 4,
     thinFinish: true,
     lineartSchematic: has("lineart"),
+    // --no-seg-first: 사내 SAM 3.1 세그 우선을 끄고 GPT 파트 계획 경로로 (회귀 비교용)
+    segFirst: !has("no-seg-first"),
   };
   emit({ stage: "START", msg: `도면 백엔드 ${backend ?? "재사용"} · 얇은 마감 v7`, backend });
   const t0 = Date.now();

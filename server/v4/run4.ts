@@ -28,6 +28,7 @@ import { detectSubject, similarityFit, warpMask } from "../v3/subject.js";
 import { segmentSchematic, snapMasksToFaces, type SegHint } from "./segSchematic.js";
 import { segmentSam3 } from "./segSam3.js";
 import { assignResidualInk } from "./residualAssign.js";
+import { segmentWithVringon, type VringonSegResult } from "./segVringon.js";
 
 /** 마스크 내부의 배경까지 chamfer 거리 — SAM 점 프롬프트용 봉우리 찾기 */
 function distanceInsideMask(mask: Uint8Array, W: number, H: number): Float32Array {
@@ -71,7 +72,7 @@ import type { VectorIR } from "../types.js";
  * 파이프라인 코드 판. **손으로 올린다** — 실행에 영향을 주는 변경을 했으면 여기도 올린다.
  * 산출물에 박혀서, 나중에 "같은 사진인데 결과가 다르다"를 짚을 근거가 된다.
  */
-const CODE_VERSION = "v7.3";
+const CODE_VERSION = "v7.4";
 import { lineartRecompose } from "./lineartRecompose.js";
 import { runQa4, type QA4 } from "./qa4.js";
 import { DEFAULT_THRESHOLDS } from "./router.js";
@@ -111,6 +112,13 @@ export interface V4Options {
   /** 도면을 선화 변형 프롬프트로 생성한다 (--lineart) */
   lineartSchematic?: boolean;
   upscale?: boolean;
+  /**
+   * **세그 우선.** 사내 SAM 3.1 패키지가 있는 카테고리(신발·가방·주얼리·상의·하의)는 사진을
+   * 먼저 파트로 나누고 그 파트를 레이어로 삼는다 — GPT 파트 계획을 쓰지 않는다. 패키지가
+   * 없는 카테고리·워커 미설정이면 자동으로 기존 경로(GPT 계획 + 일반 SAM)로 간다.
+   * 기본 켬. false 면 회귀 비교용으로 끈다.
+   */
+  segFirst?: boolean;
 }
 
 export const DEFAULT_V4_OPTIONS: V4Options = {
@@ -250,9 +258,23 @@ export async function runV4(
   // 같은 사진에서 앵커가 449 → 562 로 튀었다. 실무자는 결정성을 신뢰의 조건으로 본다.
   const sharedPlan = path.join(".cache", "plan", `${inputSha}_${opts.categoryHint ?? "generic"}.json`);
   let plan: PartPlan;
-  try {
+  // ── 세그 우선 — 사내 SAM 3.1 패키지로 사진을 먼저 파트로 나눈다 ──
+  // 파트 목록이 학습된 고정 어휘라 결정적이고, 사내 다른 기능과 같은 이름을 쓴다.
+  let vseg: VringonSegResult | null = null;
+  if (opts.segFirst !== false) {
+    try {
+      vseg = await segmentWithVringon(canonical, opts.categoryHint, path.join(".cache", "vseg"), (m) => say("SEGMENTING", m));
+    } catch (e) {
+      say("SEGMENTING", `사내 세그 실패 — GPT 파트 계획으로 진행: ${(e as Error).message.slice(0, 120)}`);
+    }
+  }
+  if (vseg) {
+    plan = vseg.plan;
+    await fs.writeFile(planPath, JSON.stringify(plan, null, 2), "utf8");
+  } else try {
     plan = JSON.parse(await fs.readFile(planPath, "utf8"));
     if (plan.provenance?.inputSha256 !== inputSha) throw new Error("입력이 바뀜");
+    if (plan.provenance?.model?.startsWith("vringon-sam3.1")) throw new Error("세그 우선 계획은 재사용하지 않는다");
   } catch {
     try {
       plan = JSON.parse(await fs.readFile(sharedPlan, "utf8"));
@@ -271,9 +293,30 @@ export async function runV4(
 
   // ── S3 ───────────────────────────────────────────────────
   ts = Date.now();
-  say("SEGMENTING", "파트별 가시 마스크");
-  const vm = await buildVisibleMasks(canonical, toManifest(plan), masksDir);
+  say("SEGMENTING", vseg ? "파트별 가시 마스크 — 사내 세그 마스크 그대로" : "파트별 가시 마스크");
+  const vm = vseg
+    ? { masks: vseg.masks }
+    : await buildVisibleMasks(canonical, toManifest(plan), masksDir);
+  if (vseg) {
+    // 마스크를 파일로도 남긴다 — 눈으로 검증할 수 있게 (buildVisibleMasks 와 같은 자리)
+    for (const [id, m] of vseg.masks) {
+      const buf = Buffer.alloc(W * H);
+      for (let i = 0; i < buf.length; i++) buf[i] = m[i] ? 255 : 0;
+      await sharp(buf, { raw: { width: W, height: H, channels: 1 } }).png()
+        .toFile(path.join(masksDir, `${id}.png`)).catch(() => {});
+    }
+  }
   const photoSubject = await detectSubject(canonical);
+  if (vseg && (vseg.reflectionsRemoved > 0 || process.env.V4_VSEG_BOX === "1")) {
+    // **반사상을 지운 경우에만** 정합 기준 상자를 세그 전경으로 바꾼다. 배경 검출 상자는
+    // 반사상을 전경으로 세어 정합이 반사만큼 어긋난다(실측 jewelry_2: 마스크 정합 0.48 → 0.87).
+    // 반사가 없을 때는 바꾸지 않는다 — 도면 쪽 상자도 배경 검출로 재므로 **같은 잣대**여야
+    // 한다. 사진 쪽만 세그 상자로 재면 잣대가 어긋나 오히려 나빠진다(실측 9종 재실행: bag_1
+    // 앵커 742 → 1,259 · jewelry_1 360 → 568 · bag_2 정합 0.89 → 0.74).
+    photoSubject.box = vseg.foregroundBox;
+    photoSubject.confident = true;
+    say("SEGMENTING", "정합 기준 상자 — 반사상을 지운 세그 전경으로 교체");
+  }
   mark("S3_masks", ts);
 
   // ── S4 도면 ──────────────────────────────────────────────
@@ -343,7 +386,7 @@ export async function runV4(
   // warp 마스크의 bbox 는 Gemini 에게 주는 **위치 힌트**, 실제 경계는 **도면에서 직접**.
   let partMasks = warped;
   const maskSource: Record<string, string> = {};
-  for (const pm of warped) maskSource[pm.id] = "photo-warp";
+  for (const pm of warped) maskSource[pm.id] = vseg ? "vringon-sam3.1 warp" : "photo-warp";
   if (opts.segMode === "schematic" && config.geminiKey) {
     try {
       const hints: SegHint[] = warped.map((pm) => {
@@ -704,6 +747,11 @@ export async function runV4(
     maskSource,
     maskFit: +maskFit.toFixed(4),
     correspondence: scene.correspondence,
+    // 파트를 누가 정했나 — 사내 세그(고정 어휘) 인지 GPT 계획인지. 결과를 읽는 사람이
+    // 파트 이름의 출처를 알아야 한다.
+    segFirst: vseg
+      ? { engine: vseg.engine, package: vseg.package, category: vseg.category, parts: vseg.detail }
+      : null,
   };
   await fs.writeFile(path.join(jobDir, "qa_v4.json"), JSON.stringify(report, null, 2), "utf8");
   say("DONE", qa.state);

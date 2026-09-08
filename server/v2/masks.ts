@@ -15,7 +15,7 @@
 import path from "node:path";
 import fs from "node:fs/promises";
 import sharp from "sharp";
-import { sam3Concepts } from "../clients/falClient.js";
+import { photoConcepts as sam3Concepts } from "../v4/segSam3.js";
 import {
   alphaMask, area, backgroundMask, boundary, close, components, deltaE2000Rgb,
   dilate, dominantColor, iou, loadRaster, maskToPng, open, subtract, toHex, union,
