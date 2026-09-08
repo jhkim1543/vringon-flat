@@ -22,6 +22,7 @@ import { distanceTransform } from "../v3/metrics.js";
 import { splitCompound } from "./compound.js";
 import { refitPath, pathDeviation, thinAnchors, dropDegenerate, widthGrades, snapGrade, enforceAnchorSpacing, mergeStraightRuns } from "./refit.js";
 import { bridgeGaps, guardedThin } from "./bridgeGaps.js";
+import { bridgeEvidenceGaps } from "./gapBridge.js";
 import { promoteChainLinks } from "./chainLinks.js";
 import { rescueContinuity } from "./continuity.js";
 import { mergeOpenStrokes } from "./lineMerge.js";
@@ -1529,6 +1530,22 @@ export async function buildScene(
     // v0.2 리뷰의 스윕(허용오차 1.5 가 최소 앵커)을 이탈 2px 게이트 안에서만 받는다.
     const refitWide = Number(process.env.V4_BRIDGE_REFIT_WIDE ?? 1.5);
     bridgeGaps(primitives, say, { ink: ev.inkStrict, W, H, refitTol, refitWide, devLimit: 2.0 });
+  }
+
+  // ── 먼 틈 잇기 — 도면 잉크 근거로 (v0.4 리뷰) ──────────────
+  //
+  // bridgeGaps 는 16px 까지만 본다. 도면에는 선이 이어져 있는데 벡터에서만 빠진 큰 틈은
+  // 거리로는 못 가른다 — 실제 놓일 곡선 위의 잉크 농도·연속성·**국소 대비**로 가른다.
+  if (opts.thinFinish && process.env.V4_GAP !== "0") {
+    // 실제 농도(0=흰 · 1=검정). 이진 마스크로는 "넓은 검은 면"과 "선"을 못 가른다.
+    const gray = new Float32Array(N);
+    const ch = ev.channels, rgb = ev.rgb as Uint8Array;
+    for (let i = 0; i < N; i++) {
+      const o = i * ch;
+      const g = ch >= 3 ? (rgb[o] * 0.299 + rgb[o + 1] * 0.587 + rgb[o + 2] * 0.114) : rgb[o];
+      gray[i] = 1 - g / 255;
+    }
+    bridgeEvidenceGaps(primitives, gray, W, H, say);
   }
 
   // ── 최종 솎기 — 이탈을 재 가며 한 번 더 ────────────────────

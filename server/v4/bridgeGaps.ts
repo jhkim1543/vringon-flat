@@ -214,15 +214,38 @@ function anchorCount(d: string): number {
   return (d.match(/[MLC]/g) ?? []).length;
 }
 
+/**
+ * 틈을 잇는 세그먼트 — **접선을 이은 큐빅**이 기본이고, 되돌아가는 모양이면 직선으로 떨어진다.
+ *
+ * 직선(L)으로 이으면 이음매가 꺾여 보인다(외부 리뷰 v0.4 의 지적). 제어점을 양쪽 바깥 접선
+ * 방향으로 d/3 만큼 내밀면 원래 획의 방향을 이어받는다. 다만 코너 이음처럼 두 접선이 크게
+ * 꺾인 자리는 큐빅이 부풀거나 되돌 수 있어, **세 제어변이 모두 전진할 때만** 큐빅을 쓴다.
+ */
+function bridgeSeg(e: End, m: End, from: Pt, to: Pt): { type: "L" | "C"; c1?: Pt; c2?: Pt; end: Pt } {
+  const dx = to[0] - from[0], dy = to[1] - from[1];
+  const dist = Math.hypot(dx, dy);
+  const na = Math.hypot(e.t[0], e.t[1]), nb = Math.hypot(m.t[0], m.t[1]);
+  if (dist < 1e-6 || na < 1e-6 || nb < 1e-6) return { type: "L", end: to };
+  const ux = dx / dist, uy = dy / dist;
+  const c1: Pt = [from[0] + (e.t[0] / na) * dist / 3, from[1] + (e.t[1] / na) * dist / 3];
+  const c2: Pt = [to[0] + (m.t[0] / nb) * dist / 3, to[1] + (m.t[1] / nb) * dist / 3];
+  const fwd = [[c1, from], [c2, c1], [to, c2]].map(([q, r]) => (q[0] - r[0]) * ux + (q[1] - r[1]) * uy);
+  if (Math.min(...fwd) <= 0) return { type: "L", end: to };
+  return { type: "C", c1, c2, end: to };
+}
+
 /** e.prim 이 m.prim 을 흡수한다 — e 쪽이 tail 이 되도록, m 쪽이 head 로 이어지도록 뒤집는다 */
 function absorb(e: End, m: End, single: Map<StrokePrimitive, SubPath>): void {
   let keep = single.get(e.prim)!;
   let take = single.get(m.prim)!;
   if (e.side === "head") keep = reverseSub(keep);
   if (m.side === "tail") take = reverseSub(take);
-  // 다리: 틈이 있으면 L 로 잇고, 이어서 흡수한 획의 세그를 붙인다
+  // 다리: 틈이 있으면 접선 큐빅(또는 직선)으로 잇고, 이어서 흡수한 획의 세그를 붙인다
   const gap = Math.hypot(m.p[0] - e.p[0], m.p[1] - e.p[1]);
-  if (gap > 0.05) keep.segs.push({ type: "L", end: take.start });
+  const from: Pt = keep.segs.length ? keep.segs[keep.segs.length - 1].end : keep.start;
+  if (gap > 0.05) keep.segs.push(process.env.V4_BRIDGE_CUBIC === "0"
+    ? { type: "L", end: take.start }
+    : bridgeSeg(e, m, from, take.start));
   keep.segs.push(...take.segs);
   e.prim.d = serializePath([keep]);
   single.set(e.prim, keep);

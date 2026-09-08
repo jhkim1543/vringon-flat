@@ -13,6 +13,7 @@
  */
 import fs from "node:fs/promises";
 import path from "node:path";
+import crypto from "node:crypto";
 import sharp from "sharp";
 import { labelComponents } from "../v3/label.js";
 import { dilate } from "../v2/raster.js";
@@ -77,8 +78,27 @@ export async function assignResidualInk(opts: {
   const plan = {
     parts: opts.partLabels.map((p) => ({ id: p.id, name: p.label, parent: "" })),
   };
-  const named = await nameComponents(sheetPath, plan as never, infos);
-  say?.(`잔여 승계 — GPT 배정: ${JSON.stringify(named)}`);
+  // **배정을 캐시한다.** 이 호출만 캐시가 없어서 같은 입력·같은 도면·같은 seg 캐시로 돌려도
+  // 결과가 달랐다(실측 2026-09-08 jewelry_1: 잔여 성분 2개의 배정이 `cuff_body 합집합` 과
+  // `terminal_hallmark·side_inscription 교체` 로 갈려 마스크 정합 76.0% ↔ 80.8%, 앵커 383 ↔ 404).
+  // A/B 로 알고리즘을 재는데 ±5% 잡음이 섞이면 어떤 결론도 못 믿는다.
+  const cacheKey = crypto.createHash("sha256")
+    .update(sheet)
+    .update(JSON.stringify({ plan, infos }))
+    .digest("hex");
+  const cacheFile = path.join(".cache", "residual", `${cacheKey}.json`);
+  let named: Awaited<ReturnType<typeof nameComponents>>;
+  try {
+    named = JSON.parse(await fs.readFile(cacheFile, "utf8"));
+    say?.(`잔여 승계 — GPT 배정 캐시 재사용: ${JSON.stringify(named)}`);
+  } catch {
+    named = await nameComponents(sheetPath, plan as never, infos);
+    try {
+      await fs.mkdir(path.dirname(cacheFile), { recursive: true });
+      await fs.writeFile(cacheFile, JSON.stringify(named));
+    } catch { /* 캐시 실패는 무시 — 결과는 이미 있다 */ }
+    say?.(`잔여 승계 — GPT 배정: ${JSON.stringify(named)}`);
+  }
 
   // 잔여 성분은 **정의상 어떤 마스크에도 없는 영역**이다 — 배정을 합집합으로 받으면
   // 기존 마스크는 절대 줄지 않고, 못 덮던 영역만 주인을 얻는다. 퇴화 파트만 받게
