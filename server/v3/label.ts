@@ -28,6 +28,9 @@ export interface Labeling {
   height: number;
 }
 
+let scratchStack = new Int32Array(0);
+let scratchBuf = new Int32Array(0);
+
 /** 4-이웃(기본) 또는 8-이웃 라벨링 */
 export function labelComponents(
   mask: Uint8Array,
@@ -38,10 +41,13 @@ export function labelComponents(
 ): Labeling {
   const N = W * H;
   const labels = new Int32Array(N);
-  const stack = new Int32Array(N);
-  const buf = new Int32Array(N);
+  // **작업 버퍼는 재사용한다.** 호출마다 N 크기 배열 둘을 새로 잡으면 2048² 캔버스에서
+  // 호출당 32MB — 이 함수는 파이프라인에서 수십 번 불린다(프로파일: 전체 CPU 의 37%).
+  if (scratchStack.length < N) { scratchStack = new Int32Array(N); scratchBuf = new Int32Array(N); }
+  const stack = scratchStack, buf = scratchBuf;
   const components: Component[] = [];
   let next = 0;
+  const eight = connectivity === 8;
 
   for (let s = 0; s < N; s++) {
     if (!mask[s] || labels[s]) continue;
@@ -58,16 +64,18 @@ export function labelComponents(
       if (x > x1) x1 = x;
       if (y < y0) y0 = y;
       if (y > y1) y1 = y;
-      const push = (m: number) => { if (mask[m] && !labels[m]) { labels[m] = next; stack[sp++] = m; } };
-      if (x > 0) push(c - 1);
-      if (x < W - 1) push(c + 1);
-      if (y > 0) push(c - W);
-      if (y < H - 1) push(c + W);
-      if (connectivity === 8) {
-        if (x > 0 && y > 0) push(c - W - 1);
-        if (x < W - 1 && y > 0) push(c - W + 1);
-        if (x > 0 && y < H - 1) push(c + W - 1);
-        if (x < W - 1 && y < H - 1) push(c + W + 1);
+      // 이웃 넣기는 인라인 — 픽셀마다 화살표 함수를 만들면 esbuild 의 __name 래퍼까지 얹혀
+      // 픽셀당 함수 생성이 된다(프로파일 실측: 이 함수가 CPU 145초 중 54초). 순서는 그대로.
+      let m: number;
+      if (x > 0) { m = c - 1; if (mask[m] && !labels[m]) { labels[m] = next; stack[sp++] = m; } }
+      if (x < W - 1) { m = c + 1; if (mask[m] && !labels[m]) { labels[m] = next; stack[sp++] = m; } }
+      if (y > 0) { m = c - W; if (mask[m] && !labels[m]) { labels[m] = next; stack[sp++] = m; } }
+      if (y < H - 1) { m = c + W; if (mask[m] && !labels[m]) { labels[m] = next; stack[sp++] = m; } }
+      if (eight) {
+        if (x > 0 && y > 0) { m = c - W - 1; if (mask[m] && !labels[m]) { labels[m] = next; stack[sp++] = m; } }
+        if (x < W - 1 && y > 0) { m = c - W + 1; if (mask[m] && !labels[m]) { labels[m] = next; stack[sp++] = m; } }
+        if (x > 0 && y < H - 1) { m = c + W - 1; if (mask[m] && !labels[m]) { labels[m] = next; stack[sp++] = m; } }
+        if (x < W - 1 && y < H - 1) { m = c + W + 1; if (mask[m] && !labels[m]) { labels[m] = next; stack[sp++] = m; } }
       }
     }
     if (n < minArea) {

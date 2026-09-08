@@ -226,6 +226,11 @@ export async function nameComponents(
     // 결정론: 같은 입력이면 같은 명명이 나와야 재빌드 비교가 의미 있다
     temperature: 0,
     seed: 7,
+    // 추론 강도 — 이 호출은 "조각 몇 개가 어느 파트인가"를 고르는 단순 분류다. 기본 강도로 44초,
+    // low 로 13초(실측 링). 같은 조각 시트에 대한 답을 눈으로 대조하니 두 강도가 반반씩 맞고 틀려
+    // 기본 강도가 정확도를 사고 있지 않았다 — 최종 QA 도 같았다(앵커 975↔979, F@2 0.9806↔0.9804).
+    // OPENAI_RESIDUAL_EFFORT 로 되돌릴 수 있다.
+    reasoning_effort: process.env.OPENAI_RESIDUAL_EFFORT ?? "low",
     messages: [
       {
         role: "system",

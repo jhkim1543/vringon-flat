@@ -160,8 +160,9 @@ export async function segmentSchematic(
     onProgress?.(`Gemini seg 캐시 재사용 (${raw.length}파트)`);
   } catch {
     const png = await sharp(schematicPath).flatten({ background: "#ffffff" }).png().toBuffer();
-    raw = [];
-    for (const l of labels) {
+    // **파트별 호출은 서로 독립이라 동시에 보낸다.** 순차로 보내면 파트 수 × 12~24초가 쌓였다
+    // (실측 링 4파트 72초). 결과는 파트 순서대로 모아 캐시·라스터가 이전과 같다.
+    const results = await Promise.all(labels.map(async (l) => {
       const box = hintById.get(l.id);
       const hint = box
         ? `Hint: in a photo of the same product this part occupied roughly the box ` +
@@ -170,12 +171,14 @@ export async function segmentSchematic(
         : undefined;
       try {
         const polys = await askPolygons(png, l.ask, hint);
-        raw.push({ _part: l.id, polys });
         onProgress?.(`  ${l.id}: 영역 ${polys.length}개`);
+        return { _part: l.id, polys } as Tagged;
       } catch (e) {
         notes.push(`${l.id} 호출 실패: ${(e as Error).message.slice(0, 80)}`);
+        return null;
       }
-    }
+    }));
+    raw = results.filter((r): r is Tagged => r !== null);
     await fs.mkdir(cacheDir, { recursive: true });
     await fs.writeFile(cachePath, JSON.stringify(raw), "utf8");
   }

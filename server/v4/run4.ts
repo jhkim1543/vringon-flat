@@ -72,7 +72,7 @@ import type { VectorIR } from "../types.js";
  * 파이프라인 코드 판. **손으로 올린다** — 실행에 영향을 주는 변경을 했으면 여기도 올린다.
  * 산출물에 박혀서, 나중에 "같은 사진인데 결과가 다르다"를 짚을 근거가 된다.
  */
-const CODE_VERSION = "v7.5";
+const CODE_VERSION = "v7.6";
 import { lineartRecompose } from "./lineartRecompose.js";
 import { runQa4, type QA4 } from "./qa4.js";
 import { DEFAULT_THRESHOLDS } from "./router.js";
@@ -329,17 +329,22 @@ export async function runV4(
     await sharp(opts.schematicFrom).flatten({ background: "#ffffff" }).png().toFile(raw);
   } else {
     if (!activeBackend()) throw new Error("schematic 백엔드가 없습니다 (REPLICATE_API_TOKEN 등)");
+    // **선화 모드는 도면을 두 장 만든다(선화 + 표준). 둘 다 같은 사진에서 독립이라 동시에 부른다.**
+    // 순차로 부르면 Replicate 왕복이 두 번 쌓인다(실측 운영: 회당 107~187초). 결과는 같다.
+    const needStd = !!opts.lineartSchematic && activeBackend() !== "vringon";
+    const stdPromise = needStd
+      ? generateSchematic(canonical, sketchDir, {
+          category: normalizeCategory(plan.category), grayscale: opts.grayscale, upscale: opts.upscale,
+        }, (m) => say("SKETCHING", `[표준] ${m}`))
+      : null;
     sketch = await generateSchematic(canonical, sketchDir, {
       category: normalizeCategory(plan.category), grayscale: opts.grayscale, upscale: opts.upscale,
       lineart: opts.lineartSchematic,
     }, (m) => say("SKETCHING", m));
     raw = sketch.pngPath;
-    if (opts.lineartSchematic && activeBackend() !== "vringon") {
+    if (stdPromise) {
       // 선화 변형의 두 드리프트(크기 이동·글자 뭉갬)를 표준 도면으로 바로잡는다.
-      // 표준 도면은 같은 입력의 베이크 프롬프트 생성이라 캐시가 있으면 공짜다.
-      const std = await generateSchematic(canonical, sketchDir, {
-        category: normalizeCategory(plan.category), grayscale: opts.grayscale, upscale: opts.upscale,
-      }, (m) => say("SKETCHING", m));
+      const std = await stdPromise;
       const spliced = path.join(sketchDir, "lineart_recomposed.png");
       await lineartRecompose(raw, std.pngPath, spliced, path.join(".cache", "letters"),
         (m) => say("SKETCHING", m));
@@ -411,7 +416,9 @@ export async function runV4(
       // Gemini 를 다시 불러 다른 답을 받는다(실측 jewelry_1: terminal_hallmark 가 한 번은
       // 영역 0개, 한 번은 1개 — 그 탓에 같은 사진에서 패스 3개가 달라졌다).
       const segCache = path.join(".cache", "seg");
-      const seg = await segmentSchematic(raw, plan, hints, segCache, (m) => say("SEGMENTING", m));
+      // Gemini 폴리곤과 SAM 박스 프롬프트는 서로 독립이다 — Gemini 를 먼저 띄워 두고 SAM 을 돈다.
+      const segPromise = segmentSchematic(raw, plan, hints, segCache, (m) => say("SEGMENTING", m));
+      let seg!: Awaited<typeof segPromise>;
       // 도면 해상도 → 작업 캔버스(supersample 배)
       const up = (m: Uint8Array): Uint8Array => {
         if (seg.width === VW && seg.height === VH) return m;
@@ -425,8 +432,6 @@ export async function runV4(
         }
         return out;
       };
-      const byId = new Map(seg.parts.map((sp) => [sp.id, up(sp.mask)]));
-
       // ── SAM 3 (fal.ai) — 있으면 폴리곤보다 우선 ─────────
       // 폴리곤은 점 목록을 "말로" 불러 주다 조밀한 형상을 일부만 훑는 실패가 잦았다.
       // SAM 은 픽셀 마스크라 그 실패 양식이 없다. 같은 가드(자리 IoU·크기 온전성)를
@@ -478,6 +483,8 @@ export async function runV4(
           say("SEGMENTING", `SAM 3 실패 — 폴리곤으로 진행: ${(e as Error).message.slice(0, 80)}`);
         }
       }
+      seg = await segPromise;
+      const byId = new Map(seg.parts.map((sp) => [sp.id, up(sp.mask)]));
       // 파트별 선택: Gemini 마스크가 있고 warp 와 자리가 겹치면(IoU ≥ 0.1) 채택.
       // 자리가 아예 다르면 모델이 엉뚱한 곳을 잡은 것이므로 warp 를 유지한다.
       const blended: { id: string; mask: Uint8Array }[] = [];
