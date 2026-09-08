@@ -1,5 +1,6 @@
 import sharp from "sharp";
 import { config } from "../config.js";
+import { requiredConnectors } from "./connectors.js";
 import { fitAdaptive, segsToPathD } from "./fitCurve.js";
 import type { IRPath } from "../types.js";
 import type { Pt } from "./pathdata.js";
@@ -113,10 +114,12 @@ export async function centerlineTrace(
   //   3) 고립돼 있고 수가 적음 → 스티치 대시 등 의미 있는 디테일. 보존
   const minLen =
     opts.minLength ?? Math.max(3, Math.round(Math.min(W, H) * config.textureMinLen));
-  const allChains = traceChains(skel, W, H).filter((c) => chainLength(c) >= 3);
+  // **판정은 어떤 필터보다 먼저 한다.** 길이 3 미만을 먼저 버리면 1~2픽셀짜리 연결선을
+  // 되살릴 방법이 없다(외부 리뷰 v0.6 의 지적). 추적한 전부를 놓고 무엇이 연결선인지부터 정한다.
+  const traced = traceChains(skel, W, H);
   const longs: Pt[][] = [];
-  const shorts: Pt[][] = [];
-  for (const c of allChains) (chainLength(c) >= minLen ? longs : shorts).push(c);
+  const shortsAll: Pt[][] = [];
+  for (const c of traced) (chainLength(c) >= minLen ? longs : shortsAll).push(c);
 
   // 긴 체인의 끝점(접합부) 집합
   const longEnds = new Set<number>();
@@ -124,13 +127,48 @@ export async function centerlineTrace(
     longEnds.add(c[0][1] * W + c[0][0]);
     longEnds.add(c[c.length - 1][1] * W + c[c.length - 1][0]);
   }
+  const endsOf = (c: Pt[]): [number, number] =>
+    [c[0][1] * W + c[0][0], c[c.length - 1][1] * W + c[c.length - 1][0]];
+
+  // **다단 연결선까지 지킨다.** 긴 선 A와 B 사이를 짧은 조각 셋이 이어 달리면, 직접 닿는
+  // 규칙은 양 끝 둘만 지키고 중간을 버려 결국 A와 B가 끊긴 채 남는다. 짧은 체인을 그래프로
+  // 보고 구조선 접점 사이의 경로에 놓인 것을 전부 지킨다(connectors.ts).
+  const multi = process.env.V4_MULTIHOP === "0"
+    ? new Set<number>()
+    : requiredConnectors(
+        shortsAll.map((c, i) => { const [u, v] = endsOf(c); return { id: i, u, v }; }),
+        longEnds,
+      ).required;
+
   const connectors: Pt[][] = [];
   const textureCands: Pt[][] = [];
-  for (const c of shorts) {
-    const e0 = c[0][1] * W + c[0][0];
-    const e1 = c[c.length - 1][1] * W + c[c.length - 1][0];
-    if (longEnds.has(e0) || longEnds.has(e1)) connectors.push(c);
-    else textureCands.push(c);
+  let multiOnly = 0, tinyKept = 0;
+  shortsAll.forEach((c, i) => {
+    const [e0, e1] = endsOf(c);
+    const touches = longEnds.has(e0) || longEnds.has(e1);
+    const onRoute = multi.has(i);
+    if (chainLength(c) < 3) {
+      // **1~2px 조각은 "접점에 닿는다"만으로 지키지 않는다.** 한쪽만 닿고 반대쪽이 막다른
+      // 것은 잇는 데가 없는 골격 잔가시다(실측 shoe_1: 그런 조각이 535개, 전부 지키면
+      // 앵커 +12%). 접점 **사이의 경로**에 놓인 것만 지킨다 — 그때만 끊김을 실제로 메운다.
+      if (onRoute) { connectors.push(c); tinyKept++; }
+      return;
+    }
+    if (touches || onRoute) {
+      if (!touches) multiOnly++;
+      connectors.push(c);
+    } else {
+      textureCands.push(c);
+    }
+  });
+  if (multiOnly || tinyKept) {
+    opts.onNote?.(
+      `연결선 보호 — 다단 경로 ${multiOnly}개 · 길이 3 미만 ${tinyKept}개 (예전에는 버려졌다)`,
+    );
+  }
+  if (process.env.V4_CONNECTOR_STAT) {
+    console.error(`[connector] 추적 ${traced.length} · 긴 ${longs.length} · 짧은 ${shortsAll.length}`
+      + ` → 연결선 ${connectors.length}(다단만 ${multiOnly} · 길이3미만 ${tinyKept}) · 질감후보 ${textureCands.length}`);
   }
   // 짧은 고립 체인이 대량이면 질감, 소량이면 스티치류 디테일
   const TEXTURE_CLUSTER = 60;

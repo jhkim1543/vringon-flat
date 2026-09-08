@@ -29,6 +29,7 @@ import { segmentSchematic, snapMasksToFaces, type SegHint } from "./segSchematic
 import { segmentSam3 } from "./segSam3.js";
 import { assignResidualInk } from "./residualAssign.js";
 import { segmentWithVringon, type VringonSegResult } from "./segVringon.js";
+import { auditContinuity } from "./continuityAudit.js";
 
 /** 마스크 내부의 배경까지 chamfer 거리 — SAM 점 프롬프트용 봉우리 찾기 */
 function distanceInsideMask(mask: Uint8Array, W: number, H: number): Float32Array {
@@ -72,7 +73,7 @@ import type { VectorIR } from "../types.js";
  * 파이프라인 코드 판. **손으로 올린다** — 실행에 영향을 주는 변경을 했으면 여기도 올린다.
  * 산출물에 박혀서, 나중에 "같은 사진인데 결과가 다르다"를 짚을 근거가 된다.
  */
-const CODE_VERSION = "v7.6";
+const CODE_VERSION = "v7.7";
 import { lineartRecompose } from "./lineartRecompose.js";
 import { runQa4, type QA4 } from "./qa4.js";
 import { DEFAULT_THRESHOLDS } from "./router.js";
@@ -745,6 +746,10 @@ export async function runV4(
     .toFile(path.join(jobDir, "preview.png"));
 
   const counts = countByClass(scene);
+  const continuity = auditContinuity(scene.primitives as { cls: string; d?: string }[]);
+  say("VALIDATING",
+    `연속성 — 긴 경계 끝점 ${continuity.longEnds}개 중 ${continuity.freeLong}개가 떠 있다`
+    + ` · 갈라진 이음 ${continuity.splitJoins}곳`);
   const report = {
     job: { state: qa.state, canvas: scene.canvas, totalMs: Date.now() - t0, createdAt: new Date().toISOString() },
     options: opts, plan, counts, qa, timings,
@@ -753,6 +758,9 @@ export async function runV4(
     rescued: { stitch: evidence.rescuedStitch, detail: evidence.rescuedDetail },
     maskSource,
     maskFit: +maskFit.toFixed(4),
+    // **연속성은 따로 잰다.** 선 F@2 와 앵커 수로는 "이어져 보이는가"를 못 잰다(외부 리뷰
+    // v0.6 §3). 아직 게이트를 가르지 않는다 — 무엇이 필수 곡선인지 정답이 없다. 재서 남긴다.
+    continuity,
     correspondence: scene.correspondence,
     // 파트를 누가 정했나 — 사내 세그(고정 어휘) 인지 GPT 계획인지. 결과를 읽는 사람이
     // 파트 이름의 출처를 알아야 한다.
