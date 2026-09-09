@@ -8,3 +8,6 @@ _probe*
 dist/
 node_modules/
 outputs/
+
+# 시험 입력 사진 (52MB, Wikimedia CC) — 저장소에 담지 않는다
+inputs/
