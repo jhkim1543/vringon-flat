@@ -30,6 +30,7 @@ import { segmentSam3 } from "./segSam3.js";
 import { assignResidualInk } from "./residualAssign.js";
 import { segmentWithVringon, type VringonSegResult } from "./segVringon.js";
 import { auditContinuity } from "./continuityAudit.js";
+import { selectGeometry, writeStageManifest } from "./stageManifest.js";
 
 /** 마스크 내부의 배경까지 chamfer 거리 — SAM 점 프롬프트용 봉우리 찾기 */
 function distanceInsideMask(mask: Uint8Array, W: number, H: number): Float32Array {
@@ -73,7 +74,7 @@ import type { VectorIR } from "../types.js";
  * 파이프라인 코드 판. **손으로 올린다** — 실행에 영향을 주는 변경을 했으면 여기도 올린다.
  * 산출물에 박혀서, 나중에 "같은 사진인데 결과가 다르다"를 짚을 근거가 된다.
  */
-const CODE_VERSION = "v7.7";
+const CODE_VERSION = "v7.9";
 import { lineartRecompose } from "./lineartRecompose.js";
 import { runQa4, type QA4 } from "./qa4.js";
 import { DEFAULT_THRESHOLDS } from "./router.js";
@@ -325,6 +326,8 @@ export async function runV4(
   say("SKETCHING", "VRINGON 도면");
   let sketch: SchematicResult | null = null;
   let raw: string;
+  let recomposedMono:string|undefined;
+  const stageFiles:{role:string;file:string}[]=[{role:"canonical_input",file:canonical}];
   if (opts.schematicFrom) {
     raw = path.join(sketchDir, "reuse.png");
     await sharp(opts.schematicFrom).flatten({ background: "#ffffff" }).png().toFile(raw);
@@ -343,20 +346,35 @@ export async function runV4(
       lineart: opts.lineartSchematic,
     }, (m) => say("SKETCHING", m));
     raw = sketch.pngPath;
+    stageFiles.push({role:"generated_schematic",file:raw});
+    for(const stage of ["generated","pre-upscale"]) {
+      const file=raw.replace(/\.png$/,`.${stage}.png`);
+      try{await fs.access(file);stageFiles.push({role:stage,file});}catch{/* Older caches and opaque hosted workers may not expose this stage. */}
+    }
+    if(sketch.monoPath)stageFiles.push({role:"pre_color_geometry",file:sketch.monoPath});
     if (stdPromise) {
       // 선화 변형의 두 드리프트(크기 이동·글자 뭉갬)를 표준 도면으로 바로잡는다.
       const std = await stdPromise;
+      stageFiles.push({role:"standard_schematic",file:std.pngPath});
       const spliced = path.join(sketchDir, "lineart_recomposed.png");
       await lineartRecompose(raw, std.pngPath, spliced, path.join(".cache", "letters"),
         (m) => say("SKETCHING", m));
       raw = spliced;
+      if(!opts.grayscale&&sketch.monoPath) {
+        // Previously the colour preview was recomposed but geomPath selected
+        // the OLD monochrome file, silently bypassing that correction.
+        recomposedMono=path.join(sketchDir,"lineart_recomposed.mono.png");
+        await lineartRecompose(sketch.monoPath,std.monoPath??std.pngPath,recomposedMono,path.join(".cache","letters"),(m)=>say("SKETCHING",m));
+      }
     } else if (opts.lineartSchematic) {
       // 사내 워커는 프롬프트를 못 받으므로 선화 변형·재합성이 성립하지 않는다.
       // 두 번 부르지 않고 그대로 쓴다 — 워커 자체가 이미 도면 전용으로 학습돼 있다.
       say("SKETCHING", "사내 워커 — 선화 프롬프트를 받지 않아 --lineart 는 무시한다");
     }
   }
-  const geomPath = (!opts.grayscale && sketch?.monoPath) ? sketch.monoPath : raw;
+  const geomPath = selectGeometry(raw,sketch?.monoPath,recomposedMono,opts.grayscale);
+  stageFiles.push({role:"display_schematic",file:raw},{role:"vectorization_input",file:geomPath});
+  await writeStageManifest(path.join(jobDir,"stage-manifest.json"),stageFiles,geomPath);
   let colorFrom = (!opts.grayscale && sketch?.monoPath) ? raw : undefined;
   let sampleFill = !opts.grayscale;
   let corrNote = "";
@@ -746,10 +764,10 @@ export async function runV4(
     .toFile(path.join(jobDir, "preview.png"));
 
   const counts = countByClass(scene);
-  const continuity = auditContinuity(scene.primitives as { cls: string; d?: string }[]);
+  const continuity = auditContinuity(scene.primitives as { cls: string; d?: string }[], {scale:scene.canvas.width/scene.canvas.sourceWidth});
   say("VALIDATING",
     `연속성 — 긴 경계 끝점 ${continuity.longEnds}개 중 ${continuity.freeLong}개가 떠 있다`
-    + ` · 갈라진 이음 ${continuity.splitJoins}곳`);
+    + ` · 맞닿은 분리 패스 끝점 ${continuity.splitJoins}개`);
   const report = {
     job: { state: qa.state, canvas: scene.canvas, totalMs: Date.now() - t0, createdAt: new Date().toISOString() },
     options: opts, plan, counts, qa, timings,
@@ -761,6 +779,7 @@ export async function runV4(
     // **연속성은 따로 잰다.** 선 F@2 와 앵커 수로는 "이어져 보이는가"를 못 잰다(외부 리뷰
     // v0.6 §3). 아직 게이트를 가르지 않는다 — 무엇이 필수 곡선인지 정답이 없다. 재서 남긴다.
     continuity,
+    cleanup: scene.provenance.cleanup,
     correspondence: scene.correspondence,
     // 파트를 누가 정했나 — 사내 세그(고정 어휘) 인지 GPT 계획인지. 결과를 읽는 사람이
     // 파트 이름의 출처를 알아야 한다.

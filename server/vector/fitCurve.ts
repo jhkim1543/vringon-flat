@@ -128,7 +128,7 @@ export function fitSingleCubic(pts: Pt[]): CubicSeg | null {
   const tanR = computeTangent(pts, false);
   let u = chordLengthParams(pts);
   let seg = generateBezier(pts, u, tanL, tanR);
-  for (let it = 0; it < 2; it++) {
+  for (let it = 0; it < 8; it++) {
     u = reparameterize(pts, u, seg);
     seg = generateBezier(pts, u, tanL, tanR);
   }
@@ -145,10 +145,15 @@ function lineSeg(a: Pt, b: Pt): CubicSeg {
 }
 
 function computeTangent(pts: Pt[], left: boolean): Pt {
-  const k = Math.min(3, pts.length - 1);
-  return left
-    ? normalize(sub(pts[k], pts[0]))
-    : normalize(sub(pts[pts.length - 1 - k], pts[pts.length - 1]));
+  const p = left ? pts : [...pts].reverse();
+  const total = arcAcc(p).at(-1)!;
+  const reach = Math.min(6, Math.max(1, total * 0.12));
+  let k = 1, length = 0;
+  for (; k < p.length - 1; k++) {
+    length += norm(sub(p[k], p[k-1]));
+    if (length >= reach) break;
+  }
+  return normalize(sub(p[k], p[0]));
 }
 
 function chordLengthParams(pts: Pt[]): number[] {
@@ -228,17 +233,26 @@ function maxErrorOf(pts: Pt[], seg: CubicSeg, u: number[]): { err: number; idx: 
 
 /** 뉴턴-랩슨으로 파라미터 재배치 (피팅 품질 향상) */
 function reparameterize(pts: Pt[], u: number[], s: CubicSeg): number[] {
-  return u.map((ui, i) => {
+  const nextU = u.map((ui, i) => {
+    if (i === 0) return 0;
+    if (i === u.length - 1) return 1;
     const d: Pt = sub(bezierPoint(s, ui), pts[i]);
     const d1: Pt = [
       3 * (1 - ui) ** 2 * (s.c1[0] - s.p0[0]) + 6 * (1 - ui) * ui * (s.c2[0] - s.c1[0]) + 3 * ui * ui * (s.p3[0] - s.c2[0]),
       3 * (1 - ui) ** 2 * (s.c1[1] - s.p0[1]) + 6 * (1 - ui) * ui * (s.c2[1] - s.c1[1]) + 3 * ui * ui * (s.p3[1] - s.c2[1]),
     ];
     const num = dot(d, d1);
-    const den = dot(d1, d1);
-    const next = den ? ui - num / den : ui;
+    const d2: Pt = [
+      6 * (1-ui) * (s.c2[0]-2*s.c1[0]+s.p0[0]) + 6*ui*(s.p3[0]-2*s.c2[0]+s.c1[0]),
+      6 * (1-ui) * (s.c2[1]-2*s.c1[1]+s.p0[1]) + 6*ui*(s.p3[1]-2*s.c2[1]+s.c1[1]),
+    ];
+    const den = dot(d1, d1) + dot(d, d2);
+    const next = den > 1e-12 ? ui - Math.max(-0.1, Math.min(0.1, num / den)) : ui;
     return Math.max(0, Math.min(1, next));
   });
+  // Independent closest-point updates may reverse sample order and introduce loops.
+  for (let i = 1; i < nextU.length; i++) if (nextU[i] <= nextU[i-1]) return u;
+  return nextU;
 }
 
 function fitCubicRec(
@@ -260,7 +274,7 @@ function fitCubicRec(
 
   if (err > maxError && err < maxError * 4) {
     // 재파라미터화 2회로 개선 시도
-    for (let it = 0; it < 2; it++) {
+    for (let it = 0; it < 8; it++) {
       u = reparameterize(pts, u, seg);
       seg = generateBezier(pts, u, tanL, tanR);
       ({ err, idx } = maxErrorOf(pts, seg, u));

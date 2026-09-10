@@ -176,6 +176,7 @@ export async function generateSchematic(
       ? await replicateQwenEdit(qwenInput, prompt, seed, loraUrl, loraScale)
       : await falQwenEdit(qwenInput, prompt, seed, loraUrl, loraScale);
   stages.push(`${backend}:qwen-image-edit`);
+  await sharp(current).png().toFile(path.join(outDir, `schematic_${key}.generated.png`));
 
   // #214 종횡비 복원.
   //
@@ -223,6 +224,8 @@ export async function generateSchematic(
       stages.push("replicate:nano-banana");
     }
   }
+
+  await sharp(current).png().toFile(path.join(outDir, `schematic_${key}.pre-upscale.png`));
 
   // 업스케일 — 흑백·컬러 공통. 실패해도 잡을 죽이지 않는다(레거시 copy fallback).
   if (wantUpscale && backend === "replicate") {

@@ -6,6 +6,9 @@
  * 배타성은 마스크 수준에서 지킨다 — 한 성분의 픽셀은 정확히 하나의 마스크에만 들어간다.
  */
 import path from "node:path";
+import { traceOwnedCenterlines } from "../vector/ownerStrokes.js";
+import { cleanFinish } from "./cleanFinish.js";
+import { detailRole } from "./junctionRepair.js";
 import fsp from "node:fs/promises";
 import sharp from "sharp";
 import { vectorize, ColorMode, Hierarchical, PathSimplifyMode } from "@neplex/vectorizer";
@@ -836,6 +839,14 @@ export async function buildScene(
     say?.(`잉크 주인 지도: 이웃 상속 ${owners.inherited}px · 무주공산 ${owners.unowned}px`);
   }
   const partOf = (pi: number) => opts.parts![pi].id;
+  const topologyReports:import("../vector/junctionTopology.js").TopologyReport[]=[];
+  const protectedOwners=new Set((opts.parts??[]).map((p,i)=>
+    detailRole(p.id+" "+(opts.partNodes?.find(n=>n.id===p.id)?.label??""))?i:-1).filter(i=>i>=0));
+  // Audit before fitting; repair in cleanFinish where semantic ownership is
+  // available and the legacy joining passes can no longer recreate a knot.
+  const topologyOptions={auditTopology:!!opts.thinFinish,sourceScale:W/ev.sourceWidth,
+    topologyProtectedAt:(p:import("../vector/pathdata.js").Pt)=>owners?protectedOwners.has(owners.owner[Math.round(p[1])*W+Math.round(p[0])]):false,
+    onTopology:(r:import("../vector/junctionTopology.js").TopologyReport)=>topologyReports.push(r)};
 
   // ── 구조선 → centerline (파트별) ─────────────────────────
   if (area(strokeMask)) {
@@ -843,21 +854,22 @@ export async function buildScene(
     const traceOne = async (m: Uint8Array, tag: string, partId?: string, shared?: string[]) => {
       const png = path.join(opts.workDir, `stroke_${tag}.png`);
       await writeMask(m, W, H, png);
-      const traced = await centerlineTrace(png, {
+      const traced = await traceOwnedCenterlines(png, {
+        ...topologyOptions,
         color: "#111111",
         inkThreshold: 128,
         minLength: Math.max(4, Math.round(Math.min(W, H) * 0.012)),
         maxPaths: 4000,
         // V3에서 배운 것: 기본 상한 6은 원본 해상도 기준 값이라 확대 캔버스에서 모든 선을 누른다
         maxWidth: ev.lineWidthLimit,
-      });
+      }, W, H, owners?.owner, opts.parts);
       allTraced.push(...traced);
       for (const st of traced) {
         primitives.push({
           id: nextId("s"), cls: "STRUCTURAL_STROKE", d: st.d,
           width: st.strokeWidth ?? 2, color: st.stroke ?? "#111111",
           area: 0, bbox: bboxOfPath(st.d, W, H),
-          partId, shared: shared?.length ? shared : undefined,
+          partId: st.partId ?? partId, shared: st.shared ?? (shared?.length ? shared : undefined),
           route: {
             chosen: "STRUCTURAL_STROKE", features: {},
             why: partId ? `구조선 — ${partId} 몫만 중심선 추출` : "구조선 마스크 중심선 추출",
@@ -866,15 +878,9 @@ export async function buildScene(
         } as StrokePrimitive);
       }
     };
-    if (owners) {
-      const sp = splitByOwner(strokeMask, owners.owner, opts.parts!.length, W, H);
-      for (const [pi, m] of sp.byPart) {
-        await traceOne(m, `p${pi}`, partOf(pi), neighborsOf(m, opts.parts!, pi, W, H));
-      }
-      if (sp.restN) await traceOne(sp.rest, "rest");
-    } else {
-      await traceOne(strokeMask, "all");
-    }
+    // Trace the whole structural mask once; cut vector curves at ownership
+    // changes afterward so the two parts retain a shared endpoint and tangent.
+    await traceOne(strokeMask, "all");
 
     // **사후 검산.** 라우터가 "구조선"이라 판정해도 centerline 이 그 잉크를 다 설명한다는
     // 보장은 없다 — 굵기가 국소적으로 변하거나 끝이 뭉툭하면 남는다. 남은 것을 그대로 두면
@@ -1020,6 +1026,7 @@ export async function buildScene(
      * 이은 획의 레이어는 긴 쪽 부품이 대표한다(경계를 걸쳤다는 사실은 shared 로 남긴다).
      */
     const pendingStrokes: import("./lineMerge.js").OpenStroke[] = [];
+    const pendingStrokeMask = new Uint8Array(N);
     let roundPromotedAll = 0;
     let periodicFolded = 0, periodicSaved = 0;
 
@@ -1102,24 +1109,9 @@ export async function buildScene(
           for (let i = 0; i < N; i++) sn += m2[i];
           if (!sn) return; // 전부 글리프였다 — 중심선 없음
         }
-        // 중심선 스트로크 — 마스크를 임시 PNG 로 내려 centerlineTrace(골격→체인→체인별
-        // 굵기 실측)를 태운다. 체인 하나 = 패스 하나, 앵커는 중심선 위에 한 줄.
-        const tmp = path.join(opts.workDir, `line_${tag}.png`);
-        await writeMask(m2, W, H, tmp);
-        const paths = await centerlineTrace(tmp, {
-          color: "#111111",
-          inkThreshold: 128,
-          maxWidth: Math.max(8, ev.lineWidthLimit * 2),
-          minLength: 6,
-          maxPaths: 100000,
-        });
-        // 파트 안에서 먼저 병합해 두고(값싸다), 출고는 전역 병합 뒤로 미룬다
-        const mergedStrokes = mergeOpenStrokes(
-          paths.filter((ir) => ir.d).map((ir) => ({
-            d: ir.d, width: Math.max(1, ir.strokeWidth), partId, shared,
-          })),
-        );
-        pendingStrokes.push(...mergedStrokes);
+        // Collect ink across semantic parts before skeletonization. Glyphs and
+        // dense texture remain separate; only geometry is shared, not ownership.
+        for (let i = 0; i < N; i++) if (m2[i]) pendingStrokeMask[i] = 1;
         return;
       }
       for (const draw of await traceMask(m, W, H, path.join(opts.workDir, `outline_${tag}.png`), epsWork)) {
@@ -1147,6 +1139,17 @@ export async function buildScene(
       if (sp.restN) await outlineOne(sp.rest, "rest");
     } else {
       await outlineOne(outlineMask, "all");
+    }
+
+    if (area(pendingStrokeMask)) {
+      const tmp = path.join(opts.workDir, "line_global.png");
+      await writeMask(pendingStrokeMask, W, H, tmp);
+      const traced = await traceOwnedCenterlines(tmp, {
+        ...topologyOptions,
+        color: "#111111", inkThreshold: 128, maxWidth: Math.max(8, ev.lineWidthLimit * 2),
+        minLength: 6, maxPaths: 100000,
+      }, W, H, owners?.owner, opts.parts);
+      pendingStrokes.push(...traced.map(ir => ({ d: ir.d, width: Math.max(1, ir.strokeWidth), partId: ir.partId, shared: ir.shared })));
     }
 
     // ── 전역 병합 → 승격 → 출고 ─────────────────────────────
@@ -1237,7 +1240,7 @@ export async function buildScene(
         // "이 구간이 직선인가"로 다시 물어 현 하나로 편다 (V4_STRAIGHT_TOL, 0 이면 끔).
         if (opts.thinFinish) {
           const st = Number(process.env.V4_STRAIGHT_TOL ?? Math.max(1.6, THIN_TOL * 2));
-          if (st > 0) d = mergeStraightRuns(d, st);
+          if (st > 0 && process.env.V4_CLEAN_CONTOURS === "0") d = mergeStraightRuns(d, st);
         }
         const partId = ir.partId;
         const shared = ir.shared;
@@ -1569,6 +1572,14 @@ export async function buildScene(
       if (r.saved > 0) { sp.d = r.d; saved += r.saved; touched++; }
     }
     if (saved) say?.(`최종 솎기 — 이탈 2px 안에서 앵커 −${saved} (패스 ${touched}개)`);
+  }
+
+  // v7.8: the shipping path runs cleanup, not just a standalone experiment.
+  if (opts.thinFinish && process.env.V4_CLEAN_CONTOURS !== "0") {
+    await fsp.writeFile(path.join(opts.workDir,"scene-before-clean.json"),JSON.stringify(scene));
+    await fsp.writeFile(path.join(opts.workDir,"skeleton-topology.json"),JSON.stringify(topologyReports,null,2));
+    const cleanup = await cleanFinish(scene, path.join(opts.workDir, "clean-finish"), say);
+    await fsp.writeFile(path.join(opts.workDir, "clean-finish.json"), JSON.stringify(cleanup, null, 2));
   }
 
   // ── 퇴화 조각 정리 ───────────────────────────────────────

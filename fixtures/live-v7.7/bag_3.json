@@ -1,0 +1,75 @@
+{
+  "id": "bag_3",
+  "kind": "sample",
+  "ok": true,
+  "category": "bag",
+  "parts": [
+    {
+      "id": "panel_front",
+      "label": "panel-front"
+    },
+    {
+      "id": "strap",
+      "label": "strap"
+    },
+    {
+      "id": "chain",
+      "label": "chain"
+    }
+  ],
+  "codeVersion": "v7.7",
+  "canvas": {
+    "width": 1254,
+    "height": 2800,
+    "sourceWidth": 627,
+    "sourceHeight": 1400,
+    "supersample": 2
+  },
+  "qa": {
+    "fidelity": {
+      "pass": true,
+      "lineF2": 0.9994,
+      "shippedLineF2": 0.9864,
+      "notes": []
+    },
+    "editability": {
+      "pass": true,
+      "anchors": 4412,
+      "paths": 235,
+      "kb": 217.2,
+      "notes": [
+        "한 패스에 서브패스 833개 — 바깥 윤곽 하나에 구멍이 뚫린 진짜 한 덩이라 쪼갤 수 없다(쪼개면 구멍이 메워진다). 컴파운드 패스가 옳은 표현이다."
+      ]
+    },
+    "semantic": {
+      "pass": true,
+      "notes": [
+        "마스크가 너무 작아 판정 보류 1개: strap (캔버스의 0.2% 미만)",
+        "사진↔도면 종횡비 불일치 3.1%"
+      ]
+    }
+  },
+  "files": {
+    "preview": "preview.png",
+    "production": "production.svg",
+    "scene": "scene.json",
+    "ai": "layered.ai",
+    "aiByPart": "layered-bypart.ai",
+    "aiByColor": "layered-bycolor.ai",
+    "input": "input.jpg",
+    "photo": "photo.jpg",
+    "thumb": "thumb.jpg",
+    "schematic": "schematic.jpg"
+  },
+  "urls": {
+    "preview": "/api/flat/samples/bag_3/file/preview.png",
+    "production": "/api/flat/samples/bag_3/file/production.svg",
+    "input": "/api/flat/samples/bag_3/file/input.jpg",
+    "photo": "/api/flat/samples/bag_3/file/photo.jpg",
+    "schematic": "/api/flat/samples/bag_3/file/schematic.jpg",
+    "ai": "/api/flat/samples/bag_3/file/layered.ai",
+    "aiByPart": "/api/flat/samples/bag_3/file/layered-bypart.ai",
+    "aiByColor": "/api/flat/samples/bag_3/file/layered-bycolor.ai",
+    "doc": "/api/flat/samples/bag_3/doc"
+  }
+}

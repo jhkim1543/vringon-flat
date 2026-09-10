@@ -1,0 +1,72 @@
+{
+  "id": "jewelry_1",
+  "kind": "sample",
+  "ok": true,
+  "category": "jewelry",
+  "parts": [
+    {
+      "id": "body",
+      "label": "body"
+    },
+    {
+      "id": "logo",
+      "label": "logo"
+    }
+  ],
+  "codeVersion": "v7.7",
+  "canvas": {
+    "width": 2598,
+    "height": 1612,
+    "sourceWidth": 2598,
+    "sourceHeight": 1612,
+    "supersample": 1
+  },
+  "qa": {
+    "fidelity": {
+      "pass": true,
+      "lineF2": 0.9903,
+      "shippedLineF2": 0.8666,
+      "notes": [
+        "구멍 수 13 → 19 (15% 이상 차이)"
+      ]
+    },
+    "editability": {
+      "pass": true,
+      "anchors": 316,
+      "paths": 60,
+      "kb": 19.2,
+      "notes": []
+    },
+    "semantic": {
+      "pass": true,
+      "notes": [
+        "도면에 없는 파트 1개: logo (GPT 계획↔도면 불일치 — 벡터화 문제가 아니다)",
+        "사진↔도면 종횡비 불일치 41.2%",
+        "라우터가 확신하지 못한 성분 1개"
+      ]
+    }
+  },
+  "files": {
+    "preview": "preview.png",
+    "production": "production.svg",
+    "scene": "scene.json",
+    "ai": "layered.ai",
+    "aiByPart": "layered-bypart.ai",
+    "aiByColor": "layered-bycolor.ai",
+    "input": "input.jpg",
+    "photo": "photo.jpg",
+    "thumb": "thumb.jpg",
+    "schematic": "schematic.jpg"
+  },
+  "urls": {
+    "preview": "/api/flat/samples/jewelry_1/file/preview.png",
+    "production": "/api/flat/samples/jewelry_1/file/production.svg",
+    "input": "/api/flat/samples/jewelry_1/file/input.jpg",
+    "photo": "/api/flat/samples/jewelry_1/file/photo.jpg",
+    "schematic": "/api/flat/samples/jewelry_1/file/schematic.jpg",
+    "ai": "/api/flat/samples/jewelry_1/file/layered.ai",
+    "aiByPart": "/api/flat/samples/jewelry_1/file/layered-bypart.ai",
+    "aiByColor": "/api/flat/samples/jewelry_1/file/layered-bycolor.ai",
+    "doc": "/api/flat/samples/jewelry_1/doc"
+  }
+}

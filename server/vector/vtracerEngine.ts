@@ -19,6 +19,8 @@ export interface VtraceOptions {
   kind: "fill" | "line" | "logo";
   /** 결과 패스에 입힐 색 */
   color: string;
+  /** Retry small glyph clearances when the usual spline overshoots the mask. */
+  tight?: boolean;
 }
 
 export async function vtraceLayer(pngPath: string, opts: VtraceOptions): Promise<IRPath[]> {
@@ -37,16 +39,16 @@ export async function vtraceLayer(pngPath: string, opts: VtraceOptions): Promise
     hierarchical: Hierarchical.Stacked,
     mode: PathSimplifyMode.Spline,
     // 노이즈 조각 제거 — 선은 스티치가 작아서 보수적으로
-    filterSpeckle: isLine ? 3 : 5,
+    filterSpeckle: opts.tight ? 1 : isLine ? 3 : 5,
     colorPrecision: 6,
     layerDifference: 16,
     // 아래 면 레이어 값은 실측 튜닝 결과다: 기본값(45/6/60) 대비
     // 앵커 18% 감소하면서 충실도(IoU 95.6%)는 동일했다.
     cornerThreshold: isLine ? 60 : 60,
-    lengthThreshold: isLine ? 4 : 10,
+    lengthThreshold: opts.tight ? 2 : isLine ? 4 : 10,
     maxIterations: 10,
-    spliceThreshold: isLine ? 45 : 75,
-    pathPrecision: 2,
+    spliceThreshold: opts.tight ? 45 : isLine ? 45 : 75,
+    pathPrecision: opts.tight ? 3 : 2,
   });
 
   return extractPaths(svg, opts.color);
