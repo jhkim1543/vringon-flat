@@ -18,5 +18,9 @@ export function sceneFromEditor(doc:any,canvas?:VectorScene["canvas"]):VectorSce
   return {canvas:canvas??{...doc.canvas,sourceWidth:doc.canvas.width,sourceHeight:doc.canvas.height,supersample:1},
     primitives:prims,parts:doc.parts.map((p:any,i:number)=>({...p,z:i,kind:"imported",confidence:0,occludedBy:[]})),
     sharedBoundaries:[],correspondence:{method:"none",aspectRatio:1,confident:false,note:"Offline editor geometry replay; not full pipeline QA"},
-    provenance:{pipeline:`${CODE_VERSION}-offline-editor-replay`,schematic:{backend:"existing",prompt:"",seed:null},createdAt:new Date().toISOString(),lowConfidence:0}};
+    provenance:{pipeline:"v4.offline-editor-replay",schematic:{backend:"existing",prompt:"",seed:null},
+      createdAt:new Date().toISOString(),lowConfidence:0,
+      // pipeline 은 이름이고(본 경로는 "v4.semantic-topology") 판은 run.codeVersion 이 든다.
+      // 재생이라 실행 설정도 입력 해시도 없지만, 판은 있어야 이 씬이 어느 코드에서 나왔는지 짚는다.
+      run:{codeVersion:CODE_VERSION,options:{},env:{},inputSha256:null}}};
 }
