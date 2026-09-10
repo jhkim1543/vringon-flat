@@ -1,3 +1,4 @@
+import { CODE_VERSION } from "./version.js";
 import type { VectorScene, ScenePrimitive } from "./types.js";
 
 /** Public editor documents omit masks, route evidence and qaWidth. Import only
@@ -17,5 +18,5 @@ export function sceneFromEditor(doc:any,canvas?:VectorScene["canvas"]):VectorSce
   return {canvas:canvas??{...doc.canvas,sourceWidth:doc.canvas.width,sourceHeight:doc.canvas.height,supersample:1},
     primitives:prims,parts:doc.parts.map((p:any,i:number)=>({...p,z:i,kind:"imported",confidence:0,occludedBy:[]})),
     sharedBoundaries:[],correspondence:{method:"none",aspectRatio:1,confident:false,note:"Offline editor geometry replay; not full pipeline QA"},
-    provenance:{pipeline:"v7.8-offline-editor-replay",schematic:{backend:"existing",prompt:"",seed:null},createdAt:new Date().toISOString(),lowConfidence:0}};
+    provenance:{pipeline:`${CODE_VERSION}-offline-editor-replay`,schematic:{backend:"existing",prompt:"",seed:null},createdAt:new Date().toISOString(),lowConfidence:0}};
 }

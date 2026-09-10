@@ -1,3 +1,4 @@
+import { CODE_VERSION } from "./version.js";
 import { cleanContours, type CleanReport } from "./cleanContours.js";
 import { separateGlyphs, type GlyphReport } from "./glyphClearance.js";
 import type { VectorScene } from "./types.js";
@@ -49,6 +50,6 @@ export async function cleanFinish(scene:VectorScene,workDir:string,say?:(m:strin
   scene.sharedBoundaries=scene.primitives.filter(p=>p.partId&&p.shared?.length)
     .map(p=>({primitiveId:p.id,between:[p.partId!,...p.shared!]}));
   const finalAudit=auditLineQuality(scene,scale,baseline);
-  scene.provenance.cleanup={codeVersion:"v7.9",glyphReview:glyphs.deferred,lineReview:finalAudit.review};
+  scene.provenance.cleanup={codeVersion:CODE_VERSION,glyphReview:glyphs.deferred,lineReview:finalAudit.review};
   return {scale,widthChanges,topology,contours,glyphs,postGlyphJoins,finalAudit};
 }
