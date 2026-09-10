@@ -14,7 +14,7 @@ STAGE="$(mktemp -d)"
 trap 'rm -rf "$STAGE"' EXIT
 
 # 담는다 — 디렉터리 통째로
-for d in server scripts web tools; do
+for d in server scripts web tools fixtures; do
   [ -d "$d" ] || continue
   mkdir -p "$STAGE/$d"
   # node_modules·빌드 산출물만 뺀다
@@ -52,6 +52,15 @@ while IFS= read -r m; do
   [ -f "$STAGE/server/v4/$m.ts" ] || { echo "  ! server/v4/$m.ts 누락"; MISSING=1; }
 done < <(grep -rhoE 'from "\./([a-zA-Z0-9_]+)\.js"' server/v4/*.ts | sed -E 's|from "\./||; s|\.js"||' | sort -u)
 [ "$MISSING" -eq 0 ] || { echo "누락 모듈이 있다 — 묶지 않는다"; exit 1; }
+
+# 코드가 이름으로 여는 **데이터 파일**도 들어갔는지 — import 검사만으로는 안 잡힌다.
+# 실측: fixtures/ 를 안 담아서 푼 쪽에서 topology.test.ts 가 60/60 이 아니라 59/60 이 됐다.
+# 이 스크립트 자체가 "이름을 손으로 나열해서 빠뜨린" 사고 뒤에 쓰였는데 같은 실수를 반복했다.
+DMISS=0
+while IFS= read -r f; do
+  [ -e "$STAGE/$f" ] || { echo "  ! $f 누락 (코드가 이 경로를 연다)"; DMISS=1; }
+done < <(grep -rhoE '"(fixtures|docs)/[^"]+"' server scripts 2>/dev/null | tr -d '"' | sort -u)
+[ "$DMISS" -eq 0 ] || { echo "누락 데이터 파일이 있다 — 묶지 않는다"; exit 1; }
 
 mkdir -p "$(dirname "$OUT")"
 rm -f "$OUT"
