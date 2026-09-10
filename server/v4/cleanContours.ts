@@ -82,11 +82,26 @@ export function removeTerminalSpurs(prims:ScenePrimitive[],scale:number):string[
   return [...drop];
 }
 
-/** Tiny disconnected remnants beside a long contour are a separate failure
- * from leaf spurs. Do not remove glyphs, holed shapes, stitches or marks that
- * could sit between two different contours. The source-pixel policy is explicit. */
+/**
+ * 긴 윤곽 옆의 작은 조각 제거 — **기본 끔(0). 켜지 말 것.**
+ *
+ * 세 번째로 같은 실패를 봤다. 이 규칙 모양은 "작은 잔여물"과 "작은 진짜 디테일"을
+ * 기하로 가르려 하는데, 도면에서 둘은 구별되지 않는다.
+ *
+ *   · v7.5 우리 `pruneStrokes` 의 고립 티끌 규칙 — 작은 디테일 회수율 0.94 → 0.81, 껐다.
+ *   · v7.9 이 규칙 — 9종 실측에서 **shoe_3 한 종에서만 발동**해 레이스 눈금 3개를 지우고
+ *     충실도 게이트를 깼다(회수율 0.625). 9종 전체에서 얻은 앵커는 **6개(0.04%)** 뿐이다.
+ *
+ * 보호 목록을 partId 정규식(`logo|letter|text|chain|stitch|...`)으로 두는 방식도 근본이
+ * 아니다 — shoe_3 이 걸린 이유가 바로 `laces`·`loop` 가 목록에 없어서였고, 다음 제품은
+ * 또 다른 이름을 들고 온다. 이름을 늘리는 것은 두더지잡기다.
+ *
+ * 지울 값어치가 있으려면 **지워도 QA 의 디테일 회수율이 안 떨어진다는 것을 재서** 알아야
+ * 하는데, 그 측정은 이 단계에서 할 수 없다. 그래서 지우지 않는다.
+ * `V4_CLEAN_SPECK_PX=<px>` 로 켤 수 있게만 남긴다.
+ */
 export function removeNearContourSpecks(prims:ScenePrimitive[],scale:number):string[] {
-  const limit=envNumber("V4_CLEAN_SPECK_PX",6)*scale;if(!limit)return [];
+  const limit=envNumber("V4_CLEAN_SPECK_PX",0)*scale;if(!limit)return [];
   const long=prims.filter(eligible).map(p=>({p,pts:parsePath(p.d).flatMap(s=>sampleSubpath(s,scale))}))
     .filter(x=>(arcLengths(x.pts).at(-1)??0)>100*scale);
   const removed:string[]=[];

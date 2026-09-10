@@ -1155,7 +1155,13 @@ export async function buildScene(
     // ── 전역 병합 → 승격 → 출고 ─────────────────────────────
     if (strokeLines && pendingStrokes.length) {
       const before = pendingStrokes.length;
-      const globallyMerged = mergeOpenStrokes(pendingStrokes);
+      // **회귀 진단용 스위치.** v7.9 에서 이 병합이 폭증했다(shoe_3 57쌍 → 2,681쌍) —
+      // 새 추적기가 짧은 조각 대신 긴 체인을 내서(길이 중앙값 2.0 → 27.9px) 질감 필터에
+      // 덜 걸리고, 그만큼 병합 후보가 늘어난 것이다. 껐다 켜서 확인했다: 꺼도 잃은
+      // 디테일이 그대로라 **병합은 원인이 아니었다**(진범은 티끌 제거, cleanContours 참조).
+      const globallyMerged = process.env.V4_LINE_MERGE === "0"
+        ? pendingStrokes
+        : mergeOpenStrokes(pendingStrokes);
       const crossJoined = before - globallyMerged.length;
       if (crossJoined > 0) say?.(`파트 경계를 넘어 획 ${crossJoined}쌍 병합 (${before} → ${globallyMerged.length})`);
 

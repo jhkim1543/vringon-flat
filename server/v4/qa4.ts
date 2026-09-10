@@ -183,7 +183,7 @@ function countHoles(m: Mask): number {
  * **정본 렌더러로 다시 그린다.** 최종 SVG 문자열을 정규식으로 깎으면 패턴의 `<use>` 가
  * defs 없이 남아 아무것도 안 그려지고, 면 프리미티브도 걸러지지 않는다.
  */
-function inkSvg(scene: VectorScene): string {
+export function inkSvg(scene: VectorScene): string {
   const { width: W, height: H } = scene.canvas;
   const prims = scene.primitives.filter(isInkPrimitive);
   return renderStandalone(prims, W, H, "ink");

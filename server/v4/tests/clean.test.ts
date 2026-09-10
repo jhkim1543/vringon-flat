@@ -170,10 +170,18 @@ test("longer hair is removed but a collinear continuation survives",()=>{
   const p=[stroke("main","M0 50L200 50"),stroke("hair","M100 50L100 36"),stroke("along","M120 50L135 50")];
   assert.deepEqual(removeTerminalSpurs(p,1),["hair"]);
 });
-test("tiny isolated remnants near one contour are removed, glyphs and remote detail survive",()=>{
-  const p:ScenePrimitive[]=[stroke("main","M0 50L200 50"),stroke("speck","M80 45L83 45"),stroke("remote","M80 10L83 10"),
+test("speck removal is off by default; when switched on it spares glyphs and remote detail",()=>{
+  // **기본은 지우지 않는다.** 작은 잔여물과 작은 진짜 디테일은 기하로 안 갈린다 —
+  // 9종 실측: shoe_3 한 종에서만 발동해 레이스 눈금 3개를 지우고 충실도 게이트를 깼고,
+  // 9종 전체에서 얻은 앵커는 6개(0.04%)뿐이었다. v7.5 에서도 같은 이유로 껐다.
+  const mk=():ScenePrimitive[]=>[stroke("main","M0 50L200 50"),stroke("speck","M80 45L83 45"),stroke("remote","M80 10L83 10"),
     {...stroke("glyph","M100 45L103 45"),route:{chosen:"STRUCTURAL_STROKE",features:{glyph:true},why:"text",confidence:1}}];
-  assert.deepEqual(removeNearContourSpecks(p,1),["speck"]);
+  assert.deepEqual(removeNearContourSpecks(mk(),1),[],"기본값에서는 아무것도 지우지 않는다");
+  process.env.V4_CLEAN_SPECK_PX="6";
+  try {
+    // 켜면 동작은 그대로다 — 잔여물만 지우고 글자·멀리 있는 디테일은 남긴다.
+    assert.deepEqual(removeNearContourSpecks(mk(),1),["speck"]);
+  } finally {delete process.env.V4_CLEAN_SPECK_PX;}
 });
 test("a bridge entirely inside a filled glyph is blocked",()=>{
   const p:ScenePrimitive[]=[stroke("a","M0 50L60 50"),stroke("b","M62 50L180 50"),

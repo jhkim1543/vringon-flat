@@ -124,7 +124,16 @@ export async function centerlineTrace(
     opts.minLength ?? Math.max(3, Math.round(Math.min(W, H) * config.textureMinLen));
   // **판정은 어떤 필터보다 먼저 한다.** 길이 3 미만을 먼저 버리면 1~2픽셀짜리 연결선을
   // 되살릴 방법이 없다(외부 리뷰 v0.6 의 지적). 추적한 전부를 놓고 무엇이 연결선인지부터 정한다.
+  // 진단용 골격 덤프 — 추적기 비교에 쓴다(V4_DUMP_SKEL=경로)
+  if (process.env.V4_DUMP_SKEL) {
+    const buf = Buffer.alloc(W * H);
+    for (let i = 0; i < W * H; i++) buf[i] = skel[i] ? 255 : 0;
+    const { default: sharpMod } = await import("sharp");
+    await sharpMod(buf, { raw: { width: W, height: H, channels: 1 } })
+      .png().toFile(`${process.env.V4_DUMP_SKEL}_${W}x${H}.png`);
+  }
   let traced = traceSkeletonChains(skel, W, H);
+  if (process.env.V4_DUMP_SKEL) console.error(`[tracer] 골격 픽셀 ${skel.reduce((a2,b2)=>a2+b2,0)} → 체인 ${traced.length}`);
   let topologyChanged=false;
   if(opts.auditTopology||opts.repairJunctions) {
     const g=buildStrokeGraph(traced.map((points,source)=>({points,source,
