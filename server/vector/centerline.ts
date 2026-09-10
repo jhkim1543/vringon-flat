@@ -1,9 +1,11 @@
 import sharp from "sharp";
+import { traceSkeletonChains, pruneSkeletonSpurs } from "./skeletonGraph.js";
 import { config } from "../config.js";
 import { requiredConnectors } from "./connectors.js";
 import { fitAdaptive, segsToPathD } from "./fitCurve.js";
 import type { IRPath } from "../types.js";
 import type { Pt } from "./pathdata.js";
+import { buildStrokeGraph, repairJunctionTopology, type TopologyReport } from "./junctionTopology.js";
 
 /**
  * 선 레이어 중심선 추출 (Centerline tracing).
@@ -58,6 +60,12 @@ export interface CenterlineOptions {
    * "흰 배경이 아닌 모든 픽셀"을 잉크로 본다.
    */
   inkThreshold?: number;
+  /** Only enable on structural ink; protect semantic detail BEFORE ownership cuts. */
+  repairJunctions?: boolean;
+  auditTopology?: boolean;
+  sourceScale?: number;
+  topologyProtectedAt?: (p:Pt)=>boolean;
+  onTopology?: (report:TopologyReport)=>void;
   onNote?: (msg: string) => void;
 }
 
@@ -116,19 +124,31 @@ export async function centerlineTrace(
     opts.minLength ?? Math.max(3, Math.round(Math.min(W, H) * config.textureMinLen));
   // **판정은 어떤 필터보다 먼저 한다.** 길이 3 미만을 먼저 버리면 1~2픽셀짜리 연결선을
   // 되살릴 방법이 없다(외부 리뷰 v0.6 의 지적). 추적한 전부를 놓고 무엇이 연결선인지부터 정한다.
-  const traced = traceChains(skel, W, H);
+  let traced = traceSkeletonChains(skel, W, H);
+  let topologyChanged=false;
+  if(opts.auditTopology||opts.repairJunctions) {
+    const g=buildStrokeGraph(traced.map((points,source)=>({points,source,
+      protected:isClosed(points)||points.some(p=>opts.topologyProtectedAt?.(p))})),0.01);
+    const result=repairJunctionTopology(g,opts.sourceScale??1,!!opts.repairJunctions&&process.env.V4_JUNCTION_REPAIR!=="0");
+    opts.onTopology?.(result.report);
+    if(result.report.repaired.length){traced=result.graph.edges.map(e=>e.points);topologyChanged=true;
+      opts.onNote?.(`골격 접합 고리 ${result.report.cyclesBefore} → ${result.report.cyclesAfter}`);}
+  }
   const longs: Pt[][] = [];
   const shortsAll: Pt[][] = [];
   for (const c of traced) (chainLength(c) >= minLen ? longs : shortsAll).push(c);
 
   // 긴 체인의 끝점(접합부) 집합
   const longEnds = new Set<number>();
+  const endpointIds=new Map<string,number>();
+  const endpointId=(p:Pt)=>{const key=`${p[0].toFixed(5)},${p[1].toFixed(5)}`;
+    if(!endpointIds.has(key))endpointIds.set(key,endpointIds.size);return endpointIds.get(key)!;};
   for (const c of longs) {
-    longEnds.add(c[0][1] * W + c[0][0]);
-    longEnds.add(c[c.length - 1][1] * W + c[c.length - 1][0]);
+    longEnds.add(endpointId(c[0]));
+    longEnds.add(endpointId(c[c.length - 1]));
   }
   const endsOf = (c: Pt[]): [number, number] =>
-    [c[0][1] * W + c[0][0], c[c.length - 1][1] * W + c[c.length - 1][0]];
+    [endpointId(c[0]),endpointId(c[c.length-1])];
 
   // **다단 연결선까지 지킨다.** 긴 선 A와 B 사이를 짧은 조각 셋이 이어 달리면, 직접 닿는
   // 규칙은 양 끝 둘만 지키고 중간을 버려 결국 A와 B가 끊긴 채 남는다. 짧은 체인을 그래프로
@@ -189,12 +209,11 @@ export async function centerlineTrace(
   // LINE_BUDGET 환경변수로 조절한다.
   const budget = opts.maxPaths ?? config.lineBudget;
   if (chains.length > budget) {
-    const sorted = [...chains].sort((a, b) => chainLength(b) - chainLength(a));
-    const droppedNoise = chains.length - budget;
-    chains = sorted.slice(0, budget);
-    opts.onNote?.(
-      `질감 노이즈 ${droppedNoise}개 제외 (선 예산 ${budget}개 · 길이 상위만 유지)`,
-    );
+    const protectedSet = new Set([...longs, ...connectors]);
+    const candidates = chains.filter(c => !protectedSet.has(c)).sort((a, b) => chainLength(b) - chainLength(a));
+    const before = chains.length;
+    chains = [...protectedSet, ...candidates.slice(0, Math.max(0, budget - protectedSet.size))];
+    opts.onNote?.(`선 예산 ${budget}: 구조선·연결선 ${protectedSet.size}개 보호, 비연결 후보 ${before - chains.length}개 제외`);
   }
 
   // 제품 영역 클리핑을 쓸지 판단한다.
@@ -242,7 +261,7 @@ export async function centerlineTrace(
     // 중앙에서 최대 반 픽셀 비껴 있고 계단이 진다. 각 점을 3×3 이웃의 거리값(제곱) 가중
     // 무게중심으로 옮기면 잉크 한복판(능선)에 앉는다. 이동은 1px 로 막는다 — 교차점처럼
     // 거리값이 한쪽으로 기운 곳에서 선을 끌고 가면 안 된다. (외부 검토가 지목, 실측으로 채택)
-    const ridged = EDT_NUDGE ? ridgeNudge(chain, dist, W, H) : chain;
+    const ridged = EDT_NUDGE && !topologyChanged ? ridgeNudge(chain, dist, W, H) : chain;
     const smoothed = smoothChain(ridged, 1);
     if (smoothed.length < 2) continue;
     // 오차 예산 적응 피팅 (AmodalSVG ALV) — 긴 구조선은 형상 우선, 짧은 디테일은 앵커 예산 우선
@@ -282,7 +301,7 @@ function onFillEdge(
 function chainWidth(chain: Pt[], dist: Float32Array, W: number, maxWidth: number): number {
   const vals: number[] = [];
   for (const [x, y] of chain) {
-    const v = dist[y * W + x];
+    const v = dist[Math.round(y) * W + Math.round(x)];
     if (v > 0 && v < 1e5) vals.push(v);
   }
   if (!vals.length) return 1;
@@ -373,22 +392,6 @@ export function skeletonize(src: Uint8Array, W: number, H: number): Uint8Array {
 }
 
 // ── 골격 → 체인 추출 ─────────────────────────────────────────
-const N8 = [
-  [-1, -1], [0, -1], [1, -1],
-  [-1, 0], [1, 0],
-  [-1, 1], [0, 1], [1, 1],
-];
-
-function neighbors(skel: Uint8Array, W: number, H: number, x: number, y: number): number[] {
-  const out: number[] = [];
-  for (const [dx, dy] of N8) {
-    const nx = x + dx, ny = y + dy;
-    if (nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
-    if (skel[ny * W + nx]) out.push(ny * W + nx);
-  }
-  return out;
-}
-
 /**
  * 골격 픽셀의 분기 수 = 교차수(crossing number).
  *
@@ -410,100 +413,6 @@ export function crossingNumber(skel: Uint8Array, W: number, H: number, x: number
   let t = 0;
   for (let i = 0; i < 8; i++) if (ring[i] === 0 && ring[(i + 1) % 8] === 1) t++;
   return t;
-}
-
-/** 끝점·분기점 사이의 픽셀 체인들을 뽑는다 (닫힌 고리 포함) */
-function traceChains(skel: Uint8Array, W: number, H: number): Pt[][] {
-  const degree = new Uint8Array(W * H);
-  const nodes: number[] = [];
-  for (let y = 0; y < H; y++) {
-    for (let x = 0; x < W; x++) {
-      const i = y * W + x;
-      if (!skel[i]) continue;
-      const nb = neighbors(skel, W, H, x, y).length;
-      // 고립점은 버리고, 나머지는 교차수로 분기 판정
-      const d = nb === 0 ? 0 : nb === 1 ? 1 : crossingNumber(skel, W, H, x, y);
-      degree[i] = d;
-      if (d !== 2) nodes.push(i);
-    }
-  }
-
-  const usedEdge = new Set<string>();
-  const chains: Pt[][] = [];
-  const key = (a: number, b: number) => (a < b ? `${a}_${b}` : `${b}_${a}`);
-
-  // 1) 끝점/분기점에서 출발하는 체인
-  for (const start of nodes) {
-    const sx = start % W, sy = (start / W) | 0;
-    for (const next of neighbors(skel, W, H, sx, sy)) {
-      if (usedEdge.has(key(start, next))) continue;
-      const chain: Pt[] = [[sx, sy]];
-      let prev = start, cur = next;
-      usedEdge.add(key(prev, cur));
-      for (;;) {
-        chain.push([cur % W, (cur / W) | 0]);
-        if (degree[cur] !== 2) break;
-        const nxt = pickNext(skel, W, H, cur, prev);
-        if (nxt < 0) break;
-        if (usedEdge.has(key(cur, nxt))) break;
-        usedEdge.add(key(cur, nxt));
-        prev = cur;
-        cur = nxt;
-      }
-      chains.push(chain);
-    }
-  }
-
-  // 2) 남은 닫힌 고리 (분기점이 없는 순환)
-  const visited = new Uint8Array(W * H);
-  for (const c of chains) for (const [x, y] of c) visited[y * W + x] = 1;
-  for (let y = 0; y < H; y++) {
-    for (let x = 0; x < W; x++) {
-      const i = y * W + x;
-      if (!skel[i] || visited[i]) continue;
-      const chain: Pt[] = [];
-      let cur = i, prev = -1;
-      for (;;) {
-        visited[cur] = 1;
-        chain.push([cur % W, (cur / W) | 0]);
-        const nb = neighbors(skel, W, H, cur % W, (cur / W) | 0).filter(
-          (n) => n !== prev && (!visited[n] || n === i),
-        );
-        if (!nb.length) break;
-        if (nb[0] === i) { chain.push([i % W, (i / W) | 0]); break; }
-        prev = cur;
-        cur = nb[0];
-      }
-      if (chain.length > 3) chains.push(chain);
-    }
-  }
-  return chains;
-}
-
-/**
- * 다음 골격 픽셀 선택.
- * 8-이웃에서는 이전 픽셀에 붙어 있는 이웃이 "옆걸음"으로 잡힐 수 있으므로,
- * 이전 픽셀과 인접하지 않은 이웃을 우선한다 (진짜 진행 방향).
- */
-function pickNext(skel: Uint8Array, W: number, H: number, cur: number, prev: number): number {
-  const cx = cur % W, cy = (cur / W) | 0;
-  const px = prev % W, py = (prev / W) | 0;
-  const cand = neighbors(skel, W, H, cx, cy).filter((n) => n !== prev);
-  if (!cand.length) return -1;
-  const notAdjToPrev = cand.filter((n) => {
-    const nx = n % W, ny = (n / W) | 0;
-    return Math.abs(nx - px) > 1 || Math.abs(ny - py) > 1;
-  });
-  const pool = notAdjToPrev.length ? notAdjToPrev : cand;
-  // 직진에 가까운 이웃 우선
-  const dx = cx - px, dy = cy - py;
-  let best = pool[0], bestScore = -Infinity;
-  for (const n of pool) {
-    const nx = n % W - cx, ny = ((n / W) | 0) - cy;
-    const score = nx * dx + ny * dy;
-    if (score > bestScore) { bestScore = score; best = n; }
-  }
-  return best;
 }
 
 function chainLength(c: Pt[]): number {
@@ -586,56 +495,5 @@ function smoothChain(pts: Pt[], passes: number): Pt[] {
 export function pruneSpurs(
   skel: Uint8Array, W: number, H: number, dist: Float32Array, k = 1.5,
 ): { skel: Uint8Array; pruned: number } {
-  const img = Uint8Array.from(skel);
-  let pruned = 0;
-
-  for (let pass = 0; pass < 3; pass++) {
-    const degree = new Int8Array(W * H);
-    const free: number[] = [];
-    for (let y = 0; y < H; y++) {
-      for (let x = 0; x < W; x++) {
-        const i = y * W + x;
-        if (!img[i]) continue;
-        const nb = neighbors(img, W, H, x, y).length;
-        const d = nb === 0 ? 0 : nb === 1 ? 1 : crossingNumber(img, W, H, x, y);
-        degree[i] = d;
-        if (d === 1) free.push(i);
-      }
-    }
-    if (!free.length) break;
-
-    let cut = 0;
-    for (const s of free) {
-      if (!img[s]) continue;
-      // 자유 끝점에서 분기점을 만날 때까지 따라간다
-      const walk: number[] = [s];
-      let prev = -1, cur = s;
-      let ok = false;
-      for (let step = 0; step < 400; step++) {
-        const nb = neighbors(img, W, H, cur % W, (cur / W) | 0).filter((n) => n !== prev);
-        if (nb.length !== 1) { ok = nb.length > 1; break; }   // 분기점에 닿음
-        prev = cur; cur = nb[0];
-        if (degree[cur] >= 3) { ok = true; break; }           // 분기점
-        if (degree[cur] === 1) { ok = false; break; }         // 반대쪽도 자유 끝 — 독립 선이다
-        walk.push(cur);
-      }
-      if (!ok || walk.length < 2) continue;
-
-      // 길이 vs 굵기 — 굵기는 가지 위 거리변환의 중앙값 × 2
-      let len = 0;
-      for (let i = 1; i < walk.length; i++) {
-        const ax = walk[i - 1] % W, ay = (walk[i - 1] / W) | 0;
-        const bx = walk[i] % W, by = (walk[i] / W) | 0;
-        len += Math.hypot(bx - ax, by - ay);
-      }
-      const ws = walk.map((i) => dist[i]).filter((v) => v > 0 && v < 1e5).sort((a, b) => a - b);
-      const width = ws.length ? ws[ws.length >> 1] * 2 : 1;
-      if (len > Math.max(3, width * k)) continue;
-
-      for (const i of walk) { img[i] = 0; cut++; }
-      pruned++;
-    }
-    if (!cut) break;
-  }
-  return { skel: img, pruned };
+  return pruneSkeletonSpurs(skel, W, H, dist, k);
 }

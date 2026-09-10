@@ -183,6 +183,8 @@ export interface VectorScene {
     createdAt: string;
     /** 라우터가 못 정한 성분 수 */
     lowConfidence: number;
+    /** Automatic cleanup is not equivalent to a clean-line quality guarantee. */
+    cleanup?: { codeVersion: string; glyphReview: {id:string;reason:string}[]; lineReview?:{id:string;reason:string}[] };
     /**
      * **재현에 필요한 것.** 같은 사진에서 같은 결과가 나온다는 근거다 —
      * 백엔드·프롬프트·시드만으로는 부족하고, 파이프라인 코드 판과 실행 설정이 있어야

@@ -19,6 +19,7 @@
  */
 import { parsePath, serializePath, type Pt, type SubPath } from "../vector/pathdata.js";
 import type { ScenePrimitive, StrokePrimitive } from "./types.js";
+import { sampleSubpath } from "../vector/curveGeometry.js";
 
 /** 굵기의 몇 배까지 이을 것인가 */
 const MAX_W = Number(process.env.V4_GAP_MAX_WIDTHS ?? 12);
@@ -75,27 +76,8 @@ const quant = (v: number[], q: number) => {
 
 /** 획을 촘촘히 표본 — 길이·접선·충돌 판정의 공통 재료 */
 function samples(sub: SubPath, step: number): Pt[] {
-  const out: Pt[] = [sub.start];
-  let cur = sub.start;
-  for (const s of sub.segs) {
-    if (s.type === "L") {
-      const L = Math.hypot(s.end[0] - cur[0], s.end[1] - cur[1]);
-      const n = Math.max(1, Math.ceil(L / step));
-      for (let i = 1; i <= n; i++) out.push([cur[0] + (s.end[0] - cur[0]) * i / n, cur[1] + (s.end[1] - cur[1]) * i / n]);
-    } else {
-      const rough = Math.hypot(s.end[0] - cur[0], s.end[1] - cur[1]) + Math.hypot(s.c1![0] - cur[0], s.c1![1] - cur[1]);
-      const n = Math.max(2, Math.min(64, Math.ceil(rough / step)));
-      for (let i = 1; i <= n; i++) {
-        const t = i / n, u = 1 - t;
-        out.push([
-          u * u * u * cur[0] + 3 * u * u * t * s.c1![0] + 3 * u * t * t * s.c2![0] + t * t * t * s.end[0],
-          u * u * u * cur[1] + 3 * u * u * t * s.c1![1] + 3 * u * t * t * s.c2![1] + t * t * t * s.end[1],
-        ]);
-      }
-    }
-    cur = s.end;
-  }
-  return out;
+  // A fixed 64-sample ceiling can skip a real crossing on a long cubic.
+  return sampleSubpath(sub,step);
 }
 
 const polyLen = (pts: Pt[]) => {

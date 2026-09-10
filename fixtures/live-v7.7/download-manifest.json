@@ -1,0 +1,78 @@
+[
+  {
+    "sample": "shoe_1",
+    "name": "scene.json",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "sample": "shoe_1",
+    "name": "production.svg",
+    "bytes": 85055,
+    "sha256": "a479b4f0bb465fe4f108f04a05557e853a2ac4d6e6b934de07208a1ec09a44f6",
+    "url": "https://demo.rebuilderai.com/api/flat/samples/shoe_1/file/production.svg"
+  },
+  {
+    "sample": "shoe_1",
+    "name": "schematic.jpg",
+    "bytes": 246792,
+    "sha256": "d504a6771ca23fbdc51b5dfaa91d27de7387757c90ae67461bf85e59c01b29f0",
+    "url": "https://demo.rebuilderai.com/api/flat/samples/shoe_1/file/schematic.jpg"
+  },
+  {
+    "sample": "jewelry_1",
+    "name": "scene.json",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "sample": "jewelry_1",
+    "name": "production.svg",
+    "bytes": 20711,
+    "sha256": "e1629e4b5fc425343d3444f49bae533be1cd776b45e602c26894c9ffe05b97dd",
+    "url": "https://demo.rebuilderai.com/api/flat/samples/jewelry_1/file/production.svg"
+  },
+  {
+    "sample": "jewelry_1",
+    "name": "schematic.jpg",
+    "bytes": 66995,
+    "sha256": "c532b31575700be1ef8cbc1336547c6745394be311dfb158990b7559eced2b8d",
+    "url": "https://demo.rebuilderai.com/api/flat/samples/jewelry_1/file/schematic.jpg"
+  },
+  {
+    "sample": "bag_2",
+    "name": "scene.json",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "sample": "bag_2",
+    "name": "production.svg",
+    "bytes": 71413,
+    "sha256": "e6980582b9b5b8e0210f2e2b490d070450fc54a3aae2becbfcea2e53a9177cec",
+    "url": "https://demo.rebuilderai.com/api/flat/samples/bag_2/file/production.svg"
+  },
+  {
+    "sample": "bag_2",
+    "name": "schematic.jpg",
+    "bytes": 108098,
+    "sha256": "4d9df83d7d5d62521140162443de51bae78f3f503c0d6435ecf13f07c3280ea6",
+    "url": "https://demo.rebuilderai.com/api/flat/samples/bag_2/file/schematic.jpg"
+  },
+  {
+    "sample": "bag_3",
+    "name": "scene.json",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "sample": "bag_3",
+    "name": "production.svg",
+    "bytes": 224755,
+    "sha256": "2fa7e26f4490a1a84a13acb99111d4349ede5fc43336ee664d07b2c5e0cf55ed",
+    "url": "https://demo.rebuilderai.com/api/flat/samples/bag_3/file/production.svg"
+  },
+  {
+    "sample": "bag_3",
+    "name": "schematic.jpg",
+    "bytes": 113149,
+    "sha256": "ad9beb71d5439e33d01d3f4e7e71fa52234ca2e228a5c71228de95029a8d6d3b",
+    "url": "https://demo.rebuilderai.com/api/flat/samples/bag_3/file/schematic.jpg"
+  }
+]

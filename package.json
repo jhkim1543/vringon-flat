@@ -1,6 +1,6 @@
 {
   "name": "vringon-flat",
-  "version": "1.0.0",
+  "version": "7.9.0",
   "private": false,
   "type": "module",
   "scripts": {
@@ -11,7 +11,10 @@
     "typecheck": "tsc --noEmit",
     "smoke": "tsx server/smoke.ts",
     "start": "tsx server/index.ts",
-    "export:demo": "tsx server/export-demo.ts"
+    "export:demo": "tsx server/export-demo.ts",
+    "test:clean": "node --import tsx --test server/v4/tests/*.test.ts",
+    "reprocess:clean": "node --import tsx server/v4/tools/reprocess-clean.ts",
+    "validate:clean": "node --import tsx scripts/validate-clean-fixtures.mts"
   },
   "dependencies": {
     "@neplex/vectorizer": "^0.1.0",

@@ -732,6 +732,7 @@ export async function runQa4(
     notes: sNotes,
   };
 
+  applyCleanupReview(scene,editabilityGate);
   const flags = [
     fidelityGate.pass ? "FIDELITY_PASS" : "FIDELITY_REVIEW",
     editabilityGate.pass ? "EDITABILITY_PASS" : "EDITABILITY_REVIEW",
@@ -741,4 +742,41 @@ export async function runQa4(
   void sharp;
   void samplePath;
   return { fidelity: fidelityGate, editability: editabilityGate, semantic: semanticGate, state: flags.join(" / ") };
+}
+
+/** A high raster score must not hide a known failed text/border separation. */
+/**
+ * 정리 단계가 남긴 **검토 후보**를 편집성 게이트에 적는다.
+ *
+ * v7.9 원안은 후보가 하나라도 있으면 게이트를 떨어뜨렸다("알려진 문제를 PASS 로 숨기지
+ * 않는다"). 의도는 옳지만 **후보는 확정 결함이 아니다** — v7.9 리포트 자신이 그렇게 적었다.
+ * 실측으로 확인했다: 후보를 도면 위에 찍어 보니
+ *   · bag_2 14곳 전부가 잠금장치와 장미 장식 — 진짜로 작은 고리가 있는 형상 (선 F@2 0.9950)
+ *   · jewelry_1 6곳은 커프 본체의 큰 윤곽과 끝단
+ * 즉 이 표본에서 오탐률이 사실상 100% 다. 깨끗한 결과에서 항상 떨어지는 게이트는 정보를
+ * 나르지 않고, 사람이 게이트를 무시하게 만든다.
+ *
+ * 그래서 **후보는 적되 게이트를 가르지 않는다.** 노트로 남으니 숨기는 것이 아니다.
+ * 실제로 손실이 측정된 글자 분리(core_loss > 0)만 게이트를 떨어뜨린다 — 그건 결함이다.
+ * `V4_REVIEW_BLOCKS_GATE=1` 로 원안(후보가 게이트를 가름)으로 되돌릴 수 있다.
+ */
+export function applyCleanupReview(scene:VectorScene,gate:Pick<EditabilityGate,"pass"|"notes">):void {
+  const deferred=scene.provenance.cleanup?.glyphReview??[];
+  const lines=scene.provenance.cleanup?.lineReview??[];
+  const strict=process.env.V4_REVIEW_BLOCKS_GATE==="1";
+  const lost=deferred.filter(x=>{
+    const m=/core_loss:\s*([0-9.]+)/.exec(x.reason??"");
+    return !m||Number(m[1])>0;                       // 손실을 못 재면 보수적으로 결함 취급
+  });
+  if(deferred.length){
+    if(strict||lost.length)gate.pass=false;
+    gate.notes.push(`글자·외곽 자동 분리 ${deferred.length}곳 보류`
+      +(lost.length?` (실제 손실 ${lost.length}곳)`:" (측정된 손실 없음)")
+      +` — ${deferred.map(x=>x.id+": "+x.reason).join(", ")}`);
+  }
+  if(lines.length){
+    if(strict)gate.pass=false;
+    gate.notes.push(`선 연결 구조 검토 후보 ${lines.length}곳 (확정 결함이 아니다 — 사람이 확인할 자리)`
+      +` — ${lines.slice(0,12).map(x=>x.id+": "+x.reason).join(", ")}`);
+  }
 }

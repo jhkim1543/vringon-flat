@@ -1,0 +1,74 @@
+{
+  "id": "bag_2",
+  "kind": "sample",
+  "ok": true,
+  "category": "bag",
+  "parts": [
+    {
+      "id": "unclassified",
+      "label": "unclassified"
+    },
+    {
+      "id": "panel_front",
+      "label": "panel-front"
+    },
+    {
+      "id": "chain",
+      "label": "chain"
+    }
+  ],
+  "codeVersion": "v7.7",
+  "canvas": {
+    "width": 1892,
+    "height": 2216,
+    "sourceWidth": 1892,
+    "sourceHeight": 2216,
+    "supersample": 1
+  },
+  "qa": {
+    "fidelity": {
+      "pass": true,
+      "lineF2": 0.9852,
+      "shippedLineF2": 0.9659,
+      "notes": [
+        "구멍 수 221 → 81 (15% 이상 차이)"
+      ]
+    },
+    "editability": {
+      "pass": true,
+      "anchors": 1096,
+      "paths": 245,
+      "kb": 66.7,
+      "notes": []
+    },
+    "semantic": {
+      "pass": true,
+      "notes": [
+        "사진↔도면 종횡비 불일치 2.6%"
+      ]
+    }
+  },
+  "files": {
+    "preview": "preview.png",
+    "production": "production.svg",
+    "scene": "scene.json",
+    "ai": "layered.ai",
+    "aiByPart": "layered-bypart.ai",
+    "aiByColor": "layered-bycolor.ai",
+    "input": "input.jpg",
+    "photo": "photo.jpg",
+    "thumb": "thumb.jpg",
+    "schematic": "schematic.jpg"
+  },
+  "urls": {
+    "preview": "/api/flat/samples/bag_2/file/preview.png",
+    "production": "/api/flat/samples/bag_2/file/production.svg",
+    "input": "/api/flat/samples/bag_2/file/input.jpg",
+    "photo": "/api/flat/samples/bag_2/file/photo.jpg",
+    "schematic": "/api/flat/samples/bag_2/file/schematic.jpg",
+    "ai": "/api/flat/samples/bag_2/file/layered.ai",
+    "aiByPart": "/api/flat/samples/bag_2/file/layered-bypart.ai",
+    "aiByColor": "/api/flat/samples/bag_2/file/layered-bycolor.ai",
+    "doc": "/api/flat/samples/bag_2/doc"
+  }
+}

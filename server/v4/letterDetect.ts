@@ -60,6 +60,7 @@ export function letterMaskFromBoxes(
   dist: Float32Array,
 ): Uint8Array {
   const out = new Uint8Array(W * H);
+  const allowed = new Uint8Array(W * H);
   if (!boxes.length) return out;
 
   for (const [bx0, by0, bx1, by1] of boxes) {
@@ -69,6 +70,7 @@ export function letterMaskFromBoxes(
     for (let y = y0; y <= y1; y++) {
       for (let x = x0; x <= x1; x++) {
         const i = y * W + x;
+        allowed[i] = 1;
         if (ink[i] && dist[i] > 0) halves.push(dist[i]);
       }
     }
@@ -91,7 +93,7 @@ export function letterMaskFromBoxes(
     for (let y = 1; y < H - 1; y++) {
       for (let x = 1; x < W - 1; x++) {
         const i = y * W + x;
-        if (grow[i] || !ink[i]) continue;
+        if (grow[i] || !ink[i] || !allowed[i]) continue;
         if (grow[i - 1] || grow[i + 1] || grow[i - W] || grow[i + W]) nx[i] = 1;
       }
     }

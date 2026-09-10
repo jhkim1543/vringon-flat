@@ -1,0 +1,111 @@
+{
+  "id": "shoe_1",
+  "kind": "sample",
+  "ok": true,
+  "category": "shoe",
+  "parts": [
+    {
+      "id": "outsole",
+      "label": "outsole"
+    },
+    {
+      "id": "midsole",
+      "label": "midsole"
+    },
+    {
+      "id": "vamp",
+      "label": "vamp"
+    },
+    {
+      "id": "quarter",
+      "label": "quarter"
+    },
+    {
+      "id": "backcounter",
+      "label": "backcounter"
+    },
+    {
+      "id": "toecap",
+      "label": "toecap"
+    },
+    {
+      "id": "tongue",
+      "label": "tongue"
+    },
+    {
+      "id": "eyestay",
+      "label": "eyestay"
+    },
+    {
+      "id": "logo",
+      "label": "logo"
+    },
+    {
+      "id": "laces",
+      "label": "laces"
+    },
+    {
+      "id": "heeltap",
+      "label": "heeltap"
+    }
+  ],
+  "codeVersion": "v7.7",
+  "canvas": {
+    "width": 2310,
+    "height": 1812,
+    "sourceWidth": 2310,
+    "sourceHeight": 1812,
+    "supersample": 1
+  },
+  "qa": {
+    "fidelity": {
+      "pass": true,
+      "lineF2": 0.9803,
+      "shippedLineF2": 0.842,
+      "notes": [
+        "해프톤이 도면 잉크의 46% — 전체 F@2px 0.8735, 그 영역 뺀 선 충실도 0.9803"
+      ]
+    },
+    "editability": {
+      "pass": true,
+      "anchors": 1090,
+      "paths": 289,
+      "kb": 75.7,
+      "notes": []
+    },
+    "semantic": {
+      "pass": false,
+      "notes": [
+        "기준 미달 주요 파트 3개: quarter, backcounter, toecap (면 recall≥0.55·IoU≥0.45 / 선 F1≥0.80)",
+        "배분이 의심되는 레이어 1개: logo",
+        "패스가 없는 파트 1개: outsole",
+        "공유 경계로만 그려진 파트 1개: vamp",
+        "사진↔도면 종횡비 불일치 4.6%",
+        "라우터가 확신하지 못한 성분 6개"
+      ]
+    }
+  },
+  "files": {
+    "preview": "preview.png",
+    "production": "production.svg",
+    "scene": "scene.json",
+    "ai": "layered.ai",
+    "aiByPart": "layered-bypart.ai",
+    "aiByColor": "layered-bycolor.ai",
+    "input": "input.jpg",
+    "photo": "photo.jpg",
+    "thumb": "thumb.jpg",
+    "schematic": "schematic.jpg"
+  },
+  "urls": {
+    "preview": "/api/flat/samples/shoe_1/file/preview.png",
+    "production": "/api/flat/samples/shoe_1/file/production.svg",
+    "input": "/api/flat/samples/shoe_1/file/input.jpg",
+    "photo": "/api/flat/samples/shoe_1/file/photo.jpg",
+    "schematic": "/api/flat/samples/shoe_1/file/schematic.jpg",
+    "ai": "/api/flat/samples/shoe_1/file/layered.ai",
+    "aiByPart": "/api/flat/samples/shoe_1/file/layered-bypart.ai",
+    "aiByColor": "/api/flat/samples/shoe_1/file/layered-bycolor.ai",
+    "doc": "/api/flat/samples/shoe_1/doc"
+  }
+}
